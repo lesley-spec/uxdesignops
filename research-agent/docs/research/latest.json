@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-08-27T13:44:17.898797Z",
+  "week_start": "2026-08-24",
+  "summary": {
+    "issues_found": 0,
+    "high_severity": 0,
+    "medium_severity": 0,
+    "issues_with_research_context": 0,
+    "pendo_feedback_count": 0,
+    "dovetail_insights_count": 0,
+    "freshdesk_tickets_count": 0,
+    "outset_studies_count": 0
+  },
+  "sources": {
+    "posthog": true,
+    "pendo": false,
+    "dovetail": false,
+    "freshdesk": false,
+    "outset": false
+  },
+  "confluence_weekly_report": null,
+  "issues": [],
+  "synthesis": {},
+  "pendo_feedback": [],
+  "dovetail_insights": [],
+  "freshdesk_tickets": []
+}

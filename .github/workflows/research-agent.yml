@@ -1,0 +1,122 @@
+name: Research Insight Agent
+
+on:
+  schedule:
+    # Every Monday at 7:00 AM UTC
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: research-agent-pages
+  cancel-in-progress: false
+
+jobs:
+  run-research-agent:
+    name: Run Research Insight Agent
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: research-agent/requirements.txt
+
+      - name: Install dependencies
+        working-directory: research-agent
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+
+      - name: Authenticate to Google Cloud
+        if: ${{ secrets.GCP_SA_KEY != '' }}
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Run agent
+        working-directory: research-agent
+        env:
+          POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
+          POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          CONFLUENCE_URL: ${{ secrets.CONFLUENCE_URL }}
+          CONFLUENCE_USERNAME: ${{ secrets.CONFLUENCE_USERNAME }}
+          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+          CONFLUENCE_SPACE: ${{ secrets.CONFLUENCE_SPACE }}
+          PENDO_API_KEY: ${{ secrets.PENDO_API_KEY }}
+          PENDO_SUBSCRIPTION_ID: ${{ secrets.PENDO_SUBSCRIPTION_ID }}
+          PENDO_REGION: ${{ secrets.PENDO_REGION }}
+          OUTSET_API_KEY: ${{ secrets.OUTSET_API_KEY }}
+          DOVETAIL_API_KEY: ${{ secrets.DOVETAIL_API_KEY }}
+          DOVETAIL_BASE_URL: ${{ secrets.DOVETAIL_BASE_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          BIGQUERY_ENABLED: "true"
+          BIGQUERY_PROJECT: bt-impact-labs
+          BIGQUERY_DATASET: prod-data-enablement
+          BIGQUERY_TICKETS_TABLE: datalake_freshdesk
+          FRESHDESK_DOMAIN: ${{ vars.FRESHDESK_DOMAIN }}
+          GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          REPORT_OUTPUT_DIR: docs/research
+          PUBLISH_GITHUB_PAGES: "true"
+          PUBLISH_CONFLUENCE: "true"
+        run: python agent_cloud.py
+
+      - name: Commit research reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add research-agent/docs/research/
+          if git diff --staged --quiet; then
+            echo "No report changes to commit"
+          else
+            git commit -m "chore(research): update weekly UX insight report"
+            git push
+          fi
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: research-agent/docs/research
+
+      - name: Notify Slack on success
+        if: success()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            curl -X POST "$SLACK_WEBHOOK_URL" \
+              -H "Content-Type: application/json" \
+              -d "{\"text\": \"✅ Research Insight Agent completed. Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/\"}"
+          fi
+
+      - name: Notify Slack on failure
+        if: failure()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            curl -X POST "$SLACK_WEBHOOK_URL" \
+              -H "Content-Type: application/json" \
+              -d "{\"text\": \"❌ Research Insight Agent failed. Check GitHub Actions logs.\"}"
+          fi
+
+  deploy-github-pages:
+    name: Deploy GitHub Pages
+    needs: run-research-agent
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
