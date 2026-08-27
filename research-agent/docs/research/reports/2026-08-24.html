@@ -36,13 +36,13 @@
   <div class="wrap">
     <header>
       <h1>UX Research Insight Monitor</h1>
-      <p class="sub">Week of 2026-08-24 · Generated 2026-08-27T13:44:17.898797Z</p>
+      <p class="sub">Week of 2026-08-24 · Generated 2026-08-27T14:19:47.515833Z</p>
       
     </header>
 
     <section class="stats">
-      <div class="stat"><strong>0</strong> issues found</div>
-      <div class="stat"><strong>0</strong> high severity</div>
+      <div class="stat"><strong>18</strong> issues found</div>
+      <div class="stat"><strong>16</strong> high severity</div>
       <div class="stat"><strong>0</strong> with research context</div>
       <div class="stat"><strong>0</strong> Freshdesk tickets</div>
       <div class="stat"><strong>0</strong> Pendo responses</div>
@@ -55,7 +55,420 @@
     </div>
 
     <section>
-      <p class="empty">No significant funnel drop-offs detected this week.</p>
+      
+            <article class="issue-card">
+              <header>
+                <h3>Login Flow - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 52.49%</span>
+                <span><strong>Users:</strong> 55950</span>
+                <span><strong>Funnel:</strong> Login Flow</span>
+              </div>
+              <p class="step"><strong>Step:</strong> LOGIN:user_email_screen_view → LOGIN:user_password_screen_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>A critical **52.49% drop-off** (preventing **55,950 users** from logging in) indicates high-friction barriers on the login screen, which industry research typically attributes to forgotten passwords, complex validation rules, or a lack of single sign-on (SSO) alternatives. This massive attrition represents a severe retention bottleneck, actively locking out over 55,000 returning users and driving them to abandon the platform entirely. To resolve this, we must urgently analyze authentication error logs to see if users are failing password checks, review session replays to identify form-field errors, and evaluate the feasibility of implementing passwordless or social login options.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Publisher/Partner Signup Flow - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 65.92%</span>
+                <span><strong>Users:</strong> 44534</span>
+                <span><strong>Funnel:</strong> Publisher/Partner Signup Flow</span>
+              </div>
+              <p class="step"><strong>Step:</strong> SIGNUP:mediapartner_start_screen_view → SIGNUP:mediapartner_email_screen_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>A massive 65.92% of potential partners (44,534 users) are abandoning the signup flow at this specific step, indicating a severe usability barrier, technical error, or trust threshold that abruptly derails high-intent users. This represents a critical loss of potential partnership revenue and a highly frustrating first impression of our platform&#x27;s onboarding experience. Because we currently lack qualitative insights for this step, we must urgently conduct session replay analyses and moderated user testing to identify the exact friction points—such as intrusive data requests, confusing form fields, or system errors—driving this drop-off.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>UPS (Unified Proposal System) Flow - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 48.23%</span>
+                <span><strong>Users:</strong> 2504</span>
+                <span><strong>Funnel:</strong> UPS (Unified Proposal System) Flow</span>
+              </div>
+              <p class="step"><strong>Step:</strong> UPS:mediapartner_open → UPS:mediapartner_tab_details_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Nearly half of all users (48.23%, affecting 2,504 users) are dropping off at the &quot;step off&quot; phase of the UPS flow, a critical drop-off that UX research on complex workflows typically associates with high cognitive load, unclear input requirements, or sudden interaction friction during the proposal creation stage. This massive abandonment rate directly hinders user adoption and halts the core business cycle, as users are failing to successfully generate and send proposals. Because there is no existing qualitative research for this flow, we must urgently review session replays (like Hotjar/FullStory) and conduct targeted usability testing on this specific step to pinpoint the exact field-level friction or technical blockers causing users to exit.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Publisher Settings - Promotional Channels - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 38.87%</span>
+                <span><strong>Users:</strong> 2313</span>
+                <span><strong>Funnel:</strong> Publisher Settings - Promotional Channels</span>
+              </div>
+              <p class="step"><strong>Step:</strong> PUBLISHER_SETTINGS:mediapartner_promotional_channels_view → PUBLISHER_SETTINGS:mediapartner_promotional_channels_click</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Nearly 40% of users (2,313 affected) are abandoning the setup flow at the &quot;Promotional Channels&quot; step, likely due to friction surrounding channel selection, complex account-linking processes, or unclear validation requirements. This critical drop-off stalls the onboarding experience and prevents publishers from activating their accounts, directly hindering platform adoption and revenue generation. To resolve this, we should immediately analyze session recordings to identify interaction friction and conduct usability testing to understand user confusion during this specific settings step.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Onboarding Checklist - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 88.85%</span>
+                <span><strong>Users:</strong> 1842</span>
+                <span><strong>Funnel:</strong> Onboarding Checklist</span>
+              </div>
+              <p class="step"><strong>Step:</strong> CHECKLIST:mediapartner_partner_profile_view → CHECKLIST:mediapartner_business_model_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>An overwhelming 88.85% of users (1,842 individuals) are abandoning the onboarding checklist at the very first step, representing a critical activation failure during the user&#x27;s moment of highest intent. UX research indicates that such steep initial drop-offs typically stem from cognitive overload, friction, or a failure to quickly communicate the value of completing the checklist. To resolve this, we must immediately analyze session recordings of this step and launch targeted user testing to identify whether the barrier is technical, visual, or informational.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>UPS (Unified Proposal System) Flow - Step 2 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 77.44%</span>
+                <span><strong>Users:</strong> 565</span>
+                <span><strong>Funnel:</strong> UPS (Unified Proposal System) Flow</span>
+              </div>
+              <p class="step"><strong>Step:</strong> UPS:mediapartner_tab_details_view → UPS:mediapartner_modal_send_proposal_open</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Onboarding Checklist - Step 2 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 76.93%</span>
+                <span><strong>Users:</strong> 425</span>
+                <span><strong>Funnel:</strong> Onboarding Checklist</span>
+              </div>
+              <p class="step"><strong>Step:</strong> CHECKLIST:mediapartner_business_model_view → CHECKLIST:mediapartner_promotional_channels_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Onboarding Checklist - Step 3 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 48.24%</span>
+                <span><strong>Users:</strong> 220</span>
+                <span><strong>Funnel:</strong> Onboarding Checklist</span>
+              </div>
+              <p class="step"><strong>Step:</strong> CHECKLIST:mediapartner_promotional_channels_view → CHECKLIST:mediapartner_partner_profile_submit</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Multi-Link Widget (MLW) Creation - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 99.21%</span>
+                <span><strong>Users:</strong> 10</span>
+                <span><strong>Funnel:</strong> Multi-Link Widget (MLW) Creation</span>
+              </div>
+              <p class="step"><strong>Step:</strong> MLW:mediapartner_slideout_open → MLW:mediapartner_task_selection_change</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Multi-Link Widget (MLW) Creation - Step 3 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 60.0%</span>
+                <span><strong>Users:</strong> 4</span>
+                <span><strong>Funnel:</strong> Multi-Link Widget (MLW) Creation</span>
+              </div>
+              <p class="step"><strong>Step:</strong> MLW:mediapartner_link_create_api → MLW:mediapartner_sync_impact_execute</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Campaign Recruitment Flow - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 98.28%</span>
+                <span><strong>Users:</strong> 1</span>
+                <span><strong>Funnel:</strong> Campaign Recruitment Flow</span>
+              </div>
+              <p class="step"><strong>Step:</strong> UPS:mediapartner_modal_campaign_open → UPS:mediapartner_learn_more_instagram_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>PublisherPro - Link Management - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 100.0%</span>
+                <span><strong>Users:</strong> 0</span>
+                <span><strong>Funnel:</strong> PublisherPro - Link Management</span>
+              </div>
+              <p class="step"><strong>Step:</strong> PPX:publisherpro_manage_links_load_microlink_destination → PPX:publisherpro_manage_links_open_performance</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Finance/Reporting Access - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 100.0%</span>
+                <span><strong>Users:</strong> 0</span>
+                <span><strong>Funnel:</strong> Finance/Reporting Access</span>
+              </div>
+              <p class="step"><strong>Step:</strong> FINCORE:shell_landing_page_view → FINCORE:partner_balance_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Brand Finance Setup - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 100.0%</span>
+                <span><strong>Users:</strong> 0</span>
+                <span><strong>Funnel:</strong> Brand Finance Setup</span>
+              </div>
+              <p class="step"><strong>Step:</strong> FINCORE:brand_finance_setup_view → FINCORE:account_information_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Publisher Settings - Promotional Channels - Step 2 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 100.0%</span>
+                <span><strong>Users:</strong> 0</span>
+                <span><strong>Funnel:</strong> Publisher Settings - Promotional Channels</span>
+              </div>
+              <p class="step"><strong>Step:</strong> PUBLISHER_SETTINGS:mediapartner_promotional_channels_click → PUBLISHER_SETTINGS:connected_accounts_oauth_callback</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Brand Storefronts Setup - Step 1 Drop-off</h3>
+                <span class="badge" style="background:#d32f2f">HIGH</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 100.0%</span>
+                <span><strong>Users:</strong> 0</span>
+                <span><strong>Funnel:</strong> Brand Storefronts Setup</span>
+              </div>
+              <p class="step"><strong>Step:</strong> FINCORE:shell_landing_page_view → FINCORE:brand_finance_setup_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>Publisher/Partner Signup Flow - Step 2 Drop-off</h3>
+                <span class="badge" style="background:#f57c00">MEDIUM</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 26.57%</span>
+                <span><strong>Users:</strong> 32702</span>
+                <span><strong>Funnel:</strong> Publisher/Partner Signup Flow</span>
+              </div>
+              <p class="step"><strong>Step:</strong> SIGNUP:mediapartner_email_screen_view → SIGNUP:mediapartner_account_details_view</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
+
+            <article class="issue-card">
+              <header>
+                <h3>UPS (Unified Proposal System) Flow - Step 3 Drop-off</h3>
+                <span class="badge" style="background:#f57c00">MEDIUM</span>
+              </header>
+              <div class="metrics">
+                <span><strong>Drop-off:</strong> 17.88%</span>
+                <span><strong>Users:</strong> 464</span>
+                <span><strong>Funnel:</strong> UPS (Unified Proposal System) Flow</span>
+              </div>
+              <p class="step"><strong>Step:</strong> UPS:mediapartner_modal_send_proposal_open → UPS:mediapartner_modal_send_proposal_submit</p>
+              <div class="analysis ai-generated">
+                <h4>AI analysis</h4>
+                <p>Analysis pending.</p>
+              </div>
+              <div class="research">
+                <h4>Related research</h4>
+                <ul><li>No related qualitative research found.</li></ul>
+              </div>
+              <p class="links"><a href="https://us.posthog.com/project/186875/insights">View in PostHog</a></p>
+            </article>
+            
     </section>
 
     <section>

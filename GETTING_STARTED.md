@@ -146,7 +146,7 @@ After a successful run you get:
 
 - **Public report:** `https://impactinc.github.io/ux-designops-ai/reports/YYYY-MM-DD.html`
 - **Latest JSON:** `.../latest.json`
-- **Confluence page** in RESEARCH space (if token set)
+- **Confluence page** in [Impact UX](https://impact.atlassian.net/wiki/spaces/ux) space (if token set)
 - Console output with issue counts, triangulation flags, and share link
 
 ---

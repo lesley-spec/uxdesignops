@@ -34,6 +34,13 @@ def is_placeholder(value: str) -> bool:
     )
 
 
+def is_valid_google_key(value: str) -> bool:
+    if is_placeholder(value):
+        return False
+    # Google AI Studio now issues Auth keys (AQ.) as well as legacy Standard keys (AIza)
+    return value.startswith("AIza") or value.startswith("AQ.")
+
+
 def main() -> int:
     env = load_env()
     issues: list[str] = []
@@ -53,7 +60,11 @@ def main() -> int:
 
     for key, required, hint in checks:
         val = env.get(key, os.environ.get(key, ""))
-        if is_placeholder(val):
+        if key == "GOOGLE_API_KEY" and val and not is_valid_google_key(val):
+            issues.append(
+                f"  [INVALID] {key} — needs Google AI Studio key (AIza... or AQ....). {hint}"
+            )
+        elif is_placeholder(val):
             label = "MISSING" if required else "optional missing"
             issues.append(f"  [{label}] {key} — {hint}")
         else:

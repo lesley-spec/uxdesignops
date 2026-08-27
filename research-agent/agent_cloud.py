@@ -196,25 +196,28 @@ class ResearchInsightAgentCloud:
                 url = f"{POSTHOG_BASE_URL}/api/projects/{POSTHOG_PROJECT_ID}/query/"
                 series = [{"kind": "EventsNode", "event": event} for event in funnel["events"]]
                 payload = {
-                    "kind": "FunnelsQuery",
-                    "series": series,
-                    "dateRange": {"date_from": "-7d"},
-                    "filterTestAccounts": True
+                    "query": {
+                        "kind": "FunnelsQuery",
+                        "series": series,
+                        "dateRange": {"date_from": "-7d"},
+                        "filterTestAccounts": True,
+                    }
                 }
                 headers = {
                     "Authorization": f"Bearer {POSTHOG_API_KEY}",
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 }
 
                 response = requests.post(url, json=payload, headers=headers, timeout=30)
                 response.raise_for_status()
 
                 data = response.json()
-                if "results" in data and isinstance(data["results"], list) and len(data["results"]) > 0:
+                results = data.get("results", [])
+                if isinstance(results, list) and len(results) >= 2:
                     funnels_data.append({
                         "funnel_name": funnel["name"],
                         "events": funnel["events"],
-                        "data": data["results"][0]
+                        "data": {"data": results},
                     })
                     print(f"  ✅ {funnel['name']}")
 
@@ -552,6 +555,7 @@ class ResearchInsightAgentCloud:
             return self.mock_synthesis(issues)
 
         synthesis = {}
+        model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")
 
         for issue in issues[:5]:  # Synthesize top 5 only
             try:
@@ -572,14 +576,16 @@ Related qualitative research:
 
 Provide a concise 2-3 sentence analysis that connects the quantitative drop-off with any relevant research evidence."""
 
-                url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-                headers = {"Content-Type": "application/json"}
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+                headers = {
+                    "Content-Type": "application/json",
+                    "x-goog-api-key": GOOGLE_API_KEY,
+                }
                 payload = {
                     "contents": [{"parts": [{"text": prompt}]}]
                 }
-                params = {"key": GOOGLE_API_KEY}
 
-                response = requests.post(url, json=payload, headers=headers, params=params, timeout=30)
+                response = requests.post(url, json=payload, headers=headers, timeout=60)
                 response.raise_for_status()
 
                 data = response.json()
@@ -589,7 +595,8 @@ Provide a concise 2-3 sentence analysis that connects the quantitative drop-off 
                     print(f"  ✅ {issue['funnel_name']}")
 
             except Exception as e:
-                print(f"  ⚠️  Synthesis error for {issue['funnel_name']}: {str(e)}")
+                err = str(e).split("?key=")[0] if "?key=" in str(e) else str(e)
+                print(f"  ⚠️  Synthesis error for {issue['funnel_name']}: {err}")
                 synthesis[issue["title"]] = f"Drop-off detected: {issue['drop_percentage']}% of users affected"
 
         return synthesis

@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-27T13:44:17.898797Z",
+  "generated_at": "2026-08-27T14:19:47.515833Z",
   "week_start": "2026-08-24",
   "summary": {
-    "issues_found": 0,
-    "high_severity": 0,
-    "medium_severity": 0,
+    "issues_found": 18,
+    "high_severity": 16,
+    "medium_severity": 2,
     "issues_with_research_context": 0,
     "pendo_feedback_count": 0,
     "dovetail_insights_count": 0,
@@ -19,8 +19,393 @@
     "outset": false
   },
   "confluence_weekly_report": null,
-  "issues": [],
-  "synthesis": {},
+  "issues": [
+    {
+      "title": "Login Flow - Step 1 Drop-off",
+      "funnel_name": "Login Flow",
+      "severity": "HIGH",
+      "drop_percentage": 52.49,
+      "users_affected": 55950,
+      "step": "LOGIN:user_email_screen_view \u2192 LOGIN:user_password_screen_view",
+      "metrics": {
+        "step_from": 117771,
+        "step_to": 55950,
+        "drop_percentage": 52.49
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Publisher/Partner Signup Flow - Step 1 Drop-off",
+      "funnel_name": "Publisher/Partner Signup Flow",
+      "severity": "HIGH",
+      "drop_percentage": 65.92,
+      "users_affected": 44534,
+      "step": "SIGNUP:mediapartner_start_screen_view \u2192 SIGNUP:mediapartner_email_screen_view",
+      "metrics": {
+        "step_from": 130679,
+        "step_to": 44534,
+        "drop_percentage": 65.92
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "UPS (Unified Proposal System) Flow - Step 1 Drop-off",
+      "funnel_name": "UPS (Unified Proposal System) Flow",
+      "severity": "HIGH",
+      "drop_percentage": 48.23,
+      "users_affected": 2504,
+      "step": "UPS:mediapartner_open \u2192 UPS:mediapartner_tab_details_view",
+      "metrics": {
+        "step_from": 4837,
+        "step_to": 2504,
+        "drop_percentage": 48.23
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Publisher Settings - Promotional Channels - Step 1 Drop-off",
+      "funnel_name": "Publisher Settings - Promotional Channels",
+      "severity": "HIGH",
+      "drop_percentage": 38.87,
+      "users_affected": 2313,
+      "step": "PUBLISHER_SETTINGS:mediapartner_promotional_channels_view \u2192 PUBLISHER_SETTINGS:mediapartner_promotional_channels_click",
+      "metrics": {
+        "step_from": 3784,
+        "step_to": 2313,
+        "drop_percentage": 38.87
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Onboarding Checklist - Step 1 Drop-off",
+      "funnel_name": "Onboarding Checklist",
+      "severity": "HIGH",
+      "drop_percentage": 88.85,
+      "users_affected": 1842,
+      "step": "CHECKLIST:mediapartner_partner_profile_view \u2192 CHECKLIST:mediapartner_business_model_view",
+      "metrics": {
+        "step_from": 16514,
+        "step_to": 1842,
+        "drop_percentage": 88.85
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "UPS (Unified Proposal System) Flow - Step 2 Drop-off",
+      "funnel_name": "UPS (Unified Proposal System) Flow",
+      "severity": "HIGH",
+      "drop_percentage": 77.44,
+      "users_affected": 565,
+      "step": "UPS:mediapartner_tab_details_view \u2192 UPS:mediapartner_modal_send_proposal_open",
+      "metrics": {
+        "step_from": 2504,
+        "step_to": 565,
+        "drop_percentage": 77.44
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Onboarding Checklist - Step 2 Drop-off",
+      "funnel_name": "Onboarding Checklist",
+      "severity": "HIGH",
+      "drop_percentage": 76.93,
+      "users_affected": 425,
+      "step": "CHECKLIST:mediapartner_business_model_view \u2192 CHECKLIST:mediapartner_promotional_channels_view",
+      "metrics": {
+        "step_from": 1842,
+        "step_to": 425,
+        "drop_percentage": 76.93
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Onboarding Checklist - Step 3 Drop-off",
+      "funnel_name": "Onboarding Checklist",
+      "severity": "HIGH",
+      "drop_percentage": 48.24,
+      "users_affected": 220,
+      "step": "CHECKLIST:mediapartner_promotional_channels_view \u2192 CHECKLIST:mediapartner_partner_profile_submit",
+      "metrics": {
+        "step_from": 425,
+        "step_to": 220,
+        "drop_percentage": 48.24
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Multi-Link Widget (MLW) Creation - Step 1 Drop-off",
+      "funnel_name": "Multi-Link Widget (MLW) Creation",
+      "severity": "HIGH",
+      "drop_percentage": 99.21,
+      "users_affected": 10,
+      "step": "MLW:mediapartner_slideout_open \u2192 MLW:mediapartner_task_selection_change",
+      "metrics": {
+        "step_from": 1270,
+        "step_to": 10,
+        "drop_percentage": 99.21
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Multi-Link Widget (MLW) Creation - Step 3 Drop-off",
+      "funnel_name": "Multi-Link Widget (MLW) Creation",
+      "severity": "HIGH",
+      "drop_percentage": 60.0,
+      "users_affected": 4,
+      "step": "MLW:mediapartner_link_create_api \u2192 MLW:mediapartner_sync_impact_execute",
+      "metrics": {
+        "step_from": 10,
+        "step_to": 4,
+        "drop_percentage": 60.0
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Campaign Recruitment Flow - Step 1 Drop-off",
+      "funnel_name": "Campaign Recruitment Flow",
+      "severity": "HIGH",
+      "drop_percentage": 98.28,
+      "users_affected": 1,
+      "step": "UPS:mediapartner_modal_campaign_open \u2192 UPS:mediapartner_learn_more_instagram_view",
+      "metrics": {
+        "step_from": 58,
+        "step_to": 1,
+        "drop_percentage": 98.28
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "PublisherPro - Link Management - Step 1 Drop-off",
+      "funnel_name": "PublisherPro - Link Management",
+      "severity": "HIGH",
+      "drop_percentage": 100.0,
+      "users_affected": 0,
+      "step": "PPX:publisherpro_manage_links_load_microlink_destination \u2192 PPX:publisherpro_manage_links_open_performance",
+      "metrics": {
+        "step_from": 1,
+        "step_to": 0,
+        "drop_percentage": 100.0
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Finance/Reporting Access - Step 1 Drop-off",
+      "funnel_name": "Finance/Reporting Access",
+      "severity": "HIGH",
+      "drop_percentage": 100.0,
+      "users_affected": 0,
+      "step": "FINCORE:shell_landing_page_view \u2192 FINCORE:partner_balance_view",
+      "metrics": {
+        "step_from": 1,
+        "step_to": 0,
+        "drop_percentage": 100.0
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Brand Finance Setup - Step 1 Drop-off",
+      "funnel_name": "Brand Finance Setup",
+      "severity": "HIGH",
+      "drop_percentage": 100.0,
+      "users_affected": 0,
+      "step": "FINCORE:brand_finance_setup_view \u2192 FINCORE:account_information_view",
+      "metrics": {
+        "step_from": 1,
+        "step_to": 0,
+        "drop_percentage": 100.0
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Publisher Settings - Promotional Channels - Step 2 Drop-off",
+      "funnel_name": "Publisher Settings - Promotional Channels",
+      "severity": "HIGH",
+      "drop_percentage": 100.0,
+      "users_affected": 0,
+      "step": "PUBLISHER_SETTINGS:mediapartner_promotional_channels_click \u2192 PUBLISHER_SETTINGS:connected_accounts_oauth_callback",
+      "metrics": {
+        "step_from": 2313,
+        "step_to": 0,
+        "drop_percentage": 100.0
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Brand Storefronts Setup - Step 1 Drop-off",
+      "funnel_name": "Brand Storefronts Setup",
+      "severity": "HIGH",
+      "drop_percentage": 100.0,
+      "users_affected": 0,
+      "step": "FINCORE:shell_landing_page_view \u2192 FINCORE:brand_finance_setup_view",
+      "metrics": {
+        "step_from": 1,
+        "step_to": 0,
+        "drop_percentage": 100.0
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "Publisher/Partner Signup Flow - Step 2 Drop-off",
+      "funnel_name": "Publisher/Partner Signup Flow",
+      "severity": "MEDIUM",
+      "drop_percentage": 26.57,
+      "users_affected": 32702,
+      "step": "SIGNUP:mediapartner_email_screen_view \u2192 SIGNUP:mediapartner_account_details_view",
+      "metrics": {
+        "step_from": 44534,
+        "step_to": 32702,
+        "drop_percentage": 26.57
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    },
+    {
+      "title": "UPS (Unified Proposal System) Flow - Step 3 Drop-off",
+      "funnel_name": "UPS (Unified Proposal System) Flow",
+      "severity": "MEDIUM",
+      "drop_percentage": 17.88,
+      "users_affected": 464,
+      "step": "UPS:mediapartner_modal_send_proposal_open \u2192 UPS:mediapartner_modal_send_proposal_submit",
+      "metrics": {
+        "step_from": 565,
+        "step_to": 464,
+        "drop_percentage": 17.88
+      },
+      "posthog_link": "https://us.posthog.com/project/186875/insights",
+      "research_context": {
+        "pendo_feedback": [],
+        "dovetail_insights": [],
+        "freshdesk_tickets": [],
+        "outset_studies": [],
+        "triangulated": false
+      }
+    }
+  ],
+  "synthesis": {
+    "Login Flow - Step 1 Drop-off": "A critical **52.49% drop-off** (preventing **55,950 users** from logging in) indicates high-friction barriers on the login screen, which industry research typically attributes to forgotten passwords, complex validation rules, or a lack of single sign-on (SSO) alternatives. This massive attrition represents a severe retention bottleneck, actively locking out over 55,000 returning users and driving them to abandon the platform entirely. To resolve this, we must urgently analyze authentication error logs to see if users are failing password checks, review session replays to identify form-field errors, and evaluate the feasibility of implementing passwordless or social login options.",
+    "Publisher/Partner Signup Flow - Step 1 Drop-off": "A massive 65.92% of potential partners (44,534 users) are abandoning the signup flow at this specific step, indicating a severe usability barrier, technical error, or trust threshold that abruptly derails high-intent users. This represents a critical loss of potential partnership revenue and a highly frustrating first impression of our platform's onboarding experience. Because we currently lack qualitative insights for this step, we must urgently conduct session replay analyses and moderated user testing to identify the exact friction points\u2014such as intrusive data requests, confusing form fields, or system errors\u2014driving this drop-off.",
+    "UPS (Unified Proposal System) Flow - Step 1 Drop-off": "Nearly half of all users (48.23%, affecting 2,504 users) are dropping off at the \"step off\" phase of the UPS flow, a critical drop-off that UX research on complex workflows typically associates with high cognitive load, unclear input requirements, or sudden interaction friction during the proposal creation stage. This massive abandonment rate directly hinders user adoption and halts the core business cycle, as users are failing to successfully generate and send proposals. Because there is no existing qualitative research for this flow, we must urgently review session replays (like Hotjar/FullStory) and conduct targeted usability testing on this specific step to pinpoint the exact field-level friction or technical blockers causing users to exit.",
+    "Publisher Settings - Promotional Channels - Step 1 Drop-off": "Nearly 40% of users (2,313 affected) are abandoning the setup flow at the \"Promotional Channels\" step, likely due to friction surrounding channel selection, complex account-linking processes, or unclear validation requirements. This critical drop-off stalls the onboarding experience and prevents publishers from activating their accounts, directly hindering platform adoption and revenue generation. To resolve this, we should immediately analyze session recordings to identify interaction friction and conduct usability testing to understand user confusion during this specific settings step.",
+    "Onboarding Checklist - Step 1 Drop-off": "An overwhelming 88.85% of users (1,842 individuals) are abandoning the onboarding checklist at the very first step, representing a critical activation failure during the user's moment of highest intent. UX research indicates that such steep initial drop-offs typically stem from cognitive overload, friction, or a failure to quickly communicate the value of completing the checklist. To resolve this, we must immediately analyze session recordings of this step and launch targeted user testing to identify whether the barrier is technical, visual, or informational."
+  },
   "pendo_feedback": [],
   "dovetail_insights": [],
   "freshdesk_tickets": []
