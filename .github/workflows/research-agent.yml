@@ -49,16 +49,13 @@ jobs:
           POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GEMINI_MODEL: gemini-3.5-flash
-          CONFLUENCE_URL: ${{ secrets.CONFLUENCE_URL }}
-          CONFLUENCE_USERNAME: ${{ secrets.CONFLUENCE_USERNAME }}
-          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
-          CONFLUENCE_SPACE: ${{ secrets.CONFLUENCE_SPACE }}
           PENDO_API_KEY: ${{ secrets.PENDO_API_KEY }}
           PENDO_SUBSCRIPTION_ID: ${{ secrets.PENDO_SUBSCRIPTION_ID }}
           PENDO_REGION: ${{ secrets.PENDO_REGION }}
           OUTSET_API_KEY: ${{ secrets.OUTSET_API_KEY }}
           DOVETAIL_API_KEY: ${{ secrets.DOVETAIL_API_KEY }}
           DOVETAIL_BASE_URL: ${{ secrets.DOVETAIL_BASE_URL }}
+          OUTSET_API_KEY: ${{ secrets.OUTSET_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           BIGQUERY_ENABLED: "true"
           BIGQUERY_PROJECT: bt-impact-labs
@@ -68,7 +65,6 @@ jobs:
           GITHUB_PAGES_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           REPORT_OUTPUT_DIR: docs/research
           PUBLISH_GITHUB_PAGES: "true"
-          PUBLISH_CONFLUENCE: "true"
         run: python agent_cloud.py
 
       - name: Commit research reports

@@ -20,7 +20,7 @@ If MCPs work in Claude, you still need to **Connect each one again in Cursor**.
 | **pendo** | Connected | Ready to use |
 | **atlassian** | Connected | Via Cursor Atlassian plugin (Confluence/Jira) |
 | **dovetail** | Needs API token | Generate at Account Settings → add to `research-agent/.env` |
-| **outset** | Needs Connect | Requires Pro/Team/Enterprise plan |
+| **outset** | API key in `.env` | Weekly agent uses `Authorization: Api-Key` REST API |
 
 ## Dovetail in Cursor (not OAuth)
 

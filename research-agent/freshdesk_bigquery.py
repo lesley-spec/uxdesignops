@@ -11,7 +11,9 @@ BIGQUERY_PROJECT = os.environ.get("BIGQUERY_PROJECT", "bt-impact-labs")
 BIGQUERY_DATASET = os.environ.get("BIGQUERY_DATASET", "prod-data-enablement")
 BIGQUERY_TICKETS_TABLE = os.environ.get("BIGQUERY_TICKETS_TABLE", "datalake_freshdesk")
 BIGQUERY_FRESHDESK_TABLE = os.environ.get("BIGQUERY_FRESHDESK_TABLE", "")
-BIGQUERY_LOOKBACK_DAYS = int(os.environ.get("BIGQUERY_LOOKBACK_DAYS", "7"))
+BIGQUERY_LOOKBACK_DAYS = int(
+    os.environ.get("BIGQUERY_LOOKBACK_DAYS", os.environ.get("REPORT_LOOKBACK_DAYS", "90"))
+)
 BIGQUERY_MAX_TICKETS = int(os.environ.get("BIGQUERY_MAX_TICKETS", "100"))
 
 

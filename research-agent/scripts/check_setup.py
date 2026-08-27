@@ -49,11 +49,10 @@ def main() -> int:
     checks = [
         ("POSTHOG_API_KEY", True, "PostHog → Settings → Personal API keys"),
         ("GOOGLE_API_KEY", True, "Google AI Studio → API key (Gemini synthesis)"),
-        ("CONFLUENCE_URL", False, "https://impact.atlassian.net/wiki"),
-        ("CONFLUENCE_USERNAME", False, "your @impact.com email"),
-        ("CONFLUENCE_API_TOKEN", False, "Atlassian → Security → API tokens"),
         ("DOVETAIL_API_KEY", False, "Dovetail → Account → Personal API keys"),
-        ("PENDO_API_KEY", False, "Pendo → Settings → Integration keys"),
+        ("OUTSET_API_KEY", False, "Outset → Settings → API key (Authorization: Api-Key)"),
+        ("PENDO_API_KEY", False, "Pendo → Settings → Integrations → Integration Keys"),
+        ("PENDO_SUBSCRIPTION_ID", False, "Pendo subscription ID (Impact: 5150941101162496)"),
     ]
 
     print("Research Insight Agent — setup check\n")
