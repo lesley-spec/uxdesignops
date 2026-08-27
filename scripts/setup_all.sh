@@ -42,7 +42,7 @@ else
   fi
 
   # Create/push repo
-  REPO="${GITHUB_REPO:-impactinc/ux-designops-ai}"
+  REPO="${GITHUB_REPO:-lesley-spec/uxdesignops}"
   if ! gh repo view "$REPO" &>/dev/null; then
     echo "→ Creating GitHub repo $REPO..."
     gh repo create "$REPO" --private --source="$ROOT" --remote=origin --push
@@ -85,4 +85,4 @@ echo "  GOOGLE_API_KEY   → https://aistudio.google.com/apikey"
 echo "  CONFLUENCE_API_TOKEN → https://id.atlassian.com/manage-profile/security/api-tokens"
 echo ""
 echo "Then run:  cd research-agent && python3 agent_cloud.py"
-echo "Report URL: https://impactinc.github.io/ux-designops-ai/"
+echo "Report URL: https://lesley-spec.github.io/uxdesignops/"

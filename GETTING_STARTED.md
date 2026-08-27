@@ -62,9 +62,9 @@ gh auth login
 cd /Users/lesleylinnett/Documents/GitHub/ux-designops-ai
 git add .github .gitignore research-agent
 git commit -m "Add Research Insight Monitor agent and GitHub Pages publishing"
-gh repo create impactinc/ux-designops-ai --private --source=. --push
+gh repo create lesley-spec/uxdesignops --private --source=. --push
 # Or if repo already exists:
-# git remote add origin git@github.com:impactinc/ux-designops-ai.git
+# git remote add origin git@github.com:lesley-spec/uxdesignops.git
 # git push -u origin main
 ```
 
@@ -97,7 +97,7 @@ Optional: `PENDO_*`, `OUTSET_API_KEY`, `FRESHDESK_DOMAIN`
 2. Source: **GitHub Actions**
 3. After first workflow run, your report URL:
 
-   **https://impactinc.github.io/ux-designops-ai/**
+   **https://lesley-spec.github.io/uxdesignops/**
 
    (Update `GITHUB_PAGES_URL` in `.env` if org/repo name differs.)
 

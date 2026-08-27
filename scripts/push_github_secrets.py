@@ -61,7 +61,7 @@ def gh(*args: str, input_text: str | None = None) -> None:
 
 
 def main() -> int:
-    repo = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("GITHUB_REPO", "impactinc/ux-designops-ai")
+    repo = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("GITHUB_REPO", "lesley-spec/uxdesignops")
 
     try:
         subprocess.run(["gh", "auth", "status"], check=True, capture_output=True)
