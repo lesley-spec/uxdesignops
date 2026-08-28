@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script>(function(){var k="ux-designops-theme",s=localStorage.getItem(k),d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");})();</script>
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <title>UX Research Monitor — Week of 2026-08-24</title>
   <link rel="stylesheet" href="../shared/designops.css" />
   <style>
@@ -15,40 +15,22 @@
     .filters { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin: 0 0 16px; }
     .filter-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
     .filters label { display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; color: var(--muted); font-weight: 500; }
-    .filters select, .filters input, .filter-reset { font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: #fff; font-size: 0.88rem; }
+    .filters select, .filters input, .filter-reset { font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); font-size: 0.88rem; }
     .search-label { flex: 1; min-width: 180px; }
     .search-label input { width: 100%; }
     .filter-reset { cursor: pointer; background: var(--bg); font-weight: 500; }
     .filter-status { margin: 10px 0 0; color: var(--muted); font-size: 0.85rem; }
     .source-counts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .pill { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; border: 1px solid var(--border); white-space: nowrap; }
-    .pill.audience { background: #eff8ff; color: #175cd3; border-color: #b2ddff; }
-    .pill.product-area { background: #ecfdf3; color: #067647; border-color: #abefc6; }
-    .pill.theme { background: #f9f5ff; color: #6941c6; border-color: #e9d7fe; }
-    .pill.signal { background: #fff7ed; color: #c2410c; border-color: #fdba74; }
-    .pill.signal-user_feedback { background: #fff7ed; color: #c2410c; }
-    .pill.signal-bug { background: #fef3f2; color: #b42318; border-color: #fecdca; }
-    .pill.signal-friction { background: #fef3f2; color: #912018; }
-    .pill.signal-support { background: #fdf2fa; color: #c11574; }
-    .pill.signal-quant { background: #eff8ff; color: #175cd3; }
-    .pill.signal-research { background: #f9f5ff; color: #6941c6; }
-    .pill.source-pill { background: #fff; }
-    .voice-banner {
-      background: #fff7ed; border: 1px solid #fdba74; border-radius: 10px;
-      padding: 12px 14px; margin: 0 0 16px; font-size: 0.88rem;
-    }
-    .voice-banner strong { color: #9a3412; }
-    .voice-banner a { font-weight: 600; }
     .detail-meta { margin: 0 0 16px; display: grid; grid-template-columns: 120px 1fr; gap: 6px 12px; font-size: 0.88rem; }
     .detail-meta dt { color: var(--muted); }
     .detail-meta dd { margin: 0; }
     .table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: auto; }
     .listing-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-    .listing-table thead { background: #f9fafb; position: sticky; top: 0; z-index: 1; }
+    .listing-table thead { position: sticky; top: 0; z-index: 1; }
     .listing-table th { text-align: left; padding: 10px 14px; font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); white-space: nowrap; }
     .listing-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
     .listing-row { cursor: pointer; transition: background 0.12s; }
-    .listing-row:hover { background: #f9fafb; }
     .listing-row:focus { outline: 2px solid var(--link); outline-offset: -2px; }
     .listing-row.is-filtered-out { display: none; }
     .cell-finding { min-width: 220px; max-width: 420px; }
@@ -58,17 +40,10 @@
     .cell-date { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
     .sort-hint { color: var(--muted); font-weight: 400; }
     .badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
-    .badge-source { color: #344054; border: 1px solid var(--border); }
+    .badge-source { color: var(--text-default); border: 1px solid var(--border); }
     .badge-status, .badge-type { color: #fff; }
     .is-filtered-out { display: none !important; }
     .hint { color: var(--muted); font-size: 0.85rem; margin: 0 0 12px; }
-    .ask-fab {
-      position: fixed; right: 20px; bottom: 20px; z-index: 90;
-      border: none; border-radius: 999px; padding: 12px 18px;
-      background: #175cd3; color: #fff; font: inherit; font-weight: 600; font-size: 0.92rem;
-      box-shadow: 0 8px 24px rgba(16,24,40,0.18); cursor: pointer;
-    }
-    .ask-fab:hover { background: #1049a8; }
     .ask-backdrop { position: fixed; inset: 0; background: rgba(16,24,40,0.45); z-index: 110; }
     .ask-backdrop.hidden { display: none; }
     .ask-panel {
@@ -88,26 +63,25 @@
     .ask-audience label {
       flex-direction: row; align-items: center; gap: 6px; margin: 0;
       padding: 7px 12px; border: 1px solid var(--border); border-radius: 8px;
-      background: #fff; color: var(--text); font-size: 0.85rem; font-weight: 500; cursor: pointer;
+      background: var(--input-bg); color: var(--text); font-size: 0.85rem; font-weight: 500; cursor: pointer;
     }
     .ask-audience input { margin: 0; }
     .ask-audience label:has(input:checked) {
-      border-color: #84caff; background: #eff8ff; color: #175cd3;
+      border-color: var(--border-accent); background: var(--info-bg); color: var(--interactive-default);
     }
     .ask-body textarea {
       font: inherit; font-size: 0.9rem; padding: 10px 12px; border-radius: 8px;
-      border: 1px solid var(--border); resize: vertical; min-height: 72px; background: #fff;
+      border: 1px solid var(--border); resize: vertical; min-height: 72px; background: var(--input-bg); color: var(--text);
     }
     .ask-mcp-list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.8rem; }
     .ask-mcp-list li { margin-bottom: 3px; }
     .ask-mcp-list strong { color: var(--text); font-weight: 600; }
-    .ask-preview { min-height: 140px; font-size: 0.8rem !important; color: #344054; background: #f9fafb !important; }
     .ask-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .ask-copy {
-      border: none; border-radius: 8px; padding: 9px 14px; background: #175cd3; color: #fff;
+      border: none; border-radius: 8px; padding: 9px 14px; background: var(--interactive-default); color: #fff;
       font: inherit; font-weight: 600; font-size: 0.88rem; cursor: pointer;
     }
-    .ask-copy:hover { background: #1049a8; }
+    .ask-copy:hover { background: var(--interactive-hover); }
     .ask-status { margin: 0; color: #067647; font-size: 0.82rem; }
     .ask-tips { margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.8rem; }
     .ask-tips li { margin-bottom: 4px; }
@@ -136,7 +110,7 @@
   </style>
 </head>
 <body>
-  <header class="top-nav" role="banner"><div class="top-nav-inner"><a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a><div class="top-nav-actions"><nav class="report-nav" aria-label="Site sections"><a class="nav-link is-active" href="./2026-08-24.html" data-nav="listing">Research</a><a class="nav-link" href="./2026-08-24-affinity.html" data-nav="affinity">Affinity</a><a class="nav-link" href="../skills/" data-nav="skills">Skills</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch color theme">Dark</button></div></div></header>
+  <header class="top-nav" role="banner"><div class="top-nav-inner"><a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a><div class="top-nav-actions"><nav class="report-nav" aria-label="Site sections"><a class="nav-link is-active" href="./2026-08-24.html" data-nav="listing">Research</a><a class="nav-link" href="./2026-08-24-affinity.html" data-nav="affinity">Affinity</a><a class="nav-link" href="../skills/" data-nav="skills">Skills</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button></div></div></header>
   <div class="wrap">
     <header class="page-header">
       <h1>UX Research Insight Monitor</h1>

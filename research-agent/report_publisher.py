@@ -1499,40 +1499,22 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     .filters {{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin: 0 0 16px; }}
     .filter-row {{ display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }}
     .filters label {{ display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; color: var(--muted); font-weight: 500; }}
-    .filters select, .filters input, .filter-reset {{ font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: #fff; font-size: 0.88rem; }}
+    .filters select, .filters input, .filter-reset {{ font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); font-size: 0.88rem; }}
     .search-label {{ flex: 1; min-width: 180px; }}
     .search-label input {{ width: 100%; }}
     .filter-reset {{ cursor: pointer; background: var(--bg); font-weight: 500; }}
     .filter-status {{ margin: 10px 0 0; color: var(--muted); font-size: 0.85rem; }}
     .source-counts {{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }}
     .pill {{ display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.75rem; border: 1px solid var(--border); white-space: nowrap; }}
-    .pill.audience {{ background: #eff8ff; color: #175cd3; border-color: #b2ddff; }}
-    .pill.product-area {{ background: #ecfdf3; color: #067647; border-color: #abefc6; }}
-    .pill.theme {{ background: #f9f5ff; color: #6941c6; border-color: #e9d7fe; }}
-    .pill.signal {{ background: #fff7ed; color: #c2410c; border-color: #fdba74; }}
-    .pill.signal-user_feedback {{ background: #fff7ed; color: #c2410c; }}
-    .pill.signal-bug {{ background: #fef3f2; color: #b42318; border-color: #fecdca; }}
-    .pill.signal-friction {{ background: #fef3f2; color: #912018; }}
-    .pill.signal-support {{ background: #fdf2fa; color: #c11574; }}
-    .pill.signal-quant {{ background: #eff8ff; color: #175cd3; }}
-    .pill.signal-research {{ background: #f9f5ff; color: #6941c6; }}
-    .pill.source-pill {{ background: #fff; }}
-    .voice-banner {{
-      background: #fff7ed; border: 1px solid #fdba74; border-radius: 10px;
-      padding: 12px 14px; margin: 0 0 16px; font-size: 0.88rem;
-    }}
-    .voice-banner strong {{ color: #9a3412; }}
-    .voice-banner a {{ font-weight: 600; }}
     .detail-meta {{ margin: 0 0 16px; display: grid; grid-template-columns: 120px 1fr; gap: 6px 12px; font-size: 0.88rem; }}
     .detail-meta dt {{ color: var(--muted); }}
     .detail-meta dd {{ margin: 0; }}
     .table-wrap {{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: auto; }}
     .listing-table {{ width: 100%; border-collapse: collapse; font-size: 0.88rem; }}
-    .listing-table thead {{ background: #f9fafb; position: sticky; top: 0; z-index: 1; }}
+    .listing-table thead {{ position: sticky; top: 0; z-index: 1; }}
     .listing-table th {{ text-align: left; padding: 10px 14px; font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); white-space: nowrap; }}
     .listing-table td {{ padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }}
     .listing-row {{ cursor: pointer; transition: background 0.12s; }}
-    .listing-row:hover {{ background: #f9fafb; }}
     .listing-row:focus {{ outline: 2px solid var(--link); outline-offset: -2px; }}
     .listing-row.is-filtered-out {{ display: none; }}
     .cell-finding {{ min-width: 220px; max-width: 420px; }}
@@ -1542,24 +1524,17 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     .cell-date {{ color: var(--muted); font-size: 0.82rem; white-space: nowrap; }}
     .sort-hint {{ color: var(--muted); font-weight: 400; }}
     .badge {{ display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }}
-    .badge-source {{ color: #344054; border: 1px solid var(--border); }}
+    .badge-source {{ color: var(--text-default); border: 1px solid var(--border); }}
     .badge-status, .badge-type {{ color: #fff; }}
     .is-filtered-out {{ display: none !important; }}
     .hint {{ color: var(--muted); font-size: 0.85rem; margin: 0 0 12px; }}
-    .ask-fab {{
-      position: fixed; right: 20px; bottom: 20px; z-index: 90;
-      border: none; border-radius: 999px; padding: 12px 18px;
-      background: #175cd3; color: #fff; font: inherit; font-weight: 600; font-size: 0.92rem;
-      box-shadow: 0 8px 24px rgba(16,24,40,0.18); cursor: pointer;
-    }}
-    .ask-fab:hover {{ background: #1049a8; }}
     .ask-backdrop {{ position: fixed; inset: 0; background: rgba(16,24,40,0.45); z-index: 110; }}
     .ask-backdrop.hidden {{ display: none; }}
     .ask-panel {{
       position: fixed; right: 20px; bottom: 76px; z-index: 111;
       width: min(440px, calc(100vw - 32px)); max-height: min(78vh, 640px);
       background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-      box-shadow: 0 16px 48px rgba(16,24,40,0.18);
+      box-shadow: var(--fab-shadow);
       display: none; flex-direction: column; overflow: hidden;
     }}
     .ask-panel.open {{ display: flex; }}
@@ -1572,26 +1547,25 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     .ask-audience label {{
       flex-direction: row; align-items: center; gap: 6px; margin: 0;
       padding: 7px 12px; border: 1px solid var(--border); border-radius: 8px;
-      background: #fff; color: var(--text); font-size: 0.85rem; font-weight: 500; cursor: pointer;
+      background: var(--input-bg); color: var(--text); font-size: 0.85rem; font-weight: 500; cursor: pointer;
     }}
     .ask-audience input {{ margin: 0; }}
     .ask-audience label:has(input:checked) {{
-      border-color: #84caff; background: #eff8ff; color: #175cd3;
+      border-color: var(--border-accent); background: var(--info-bg); color: var(--interactive-default);
     }}
     .ask-body textarea {{
       font: inherit; font-size: 0.9rem; padding: 10px 12px; border-radius: 8px;
-      border: 1px solid var(--border); resize: vertical; min-height: 72px; background: #fff;
+      border: 1px solid var(--border); resize: vertical; min-height: 72px; background: var(--input-bg); color: var(--text);
     }}
     .ask-mcp-list {{ margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.8rem; }}
     .ask-mcp-list li {{ margin-bottom: 3px; }}
     .ask-mcp-list strong {{ color: var(--text); font-weight: 600; }}
-    .ask-preview {{ min-height: 140px; font-size: 0.8rem !important; color: #344054; background: #f9fafb !important; }}
     .ask-actions {{ display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }}
     .ask-copy {{
-      border: none; border-radius: 8px; padding: 9px 14px; background: #175cd3; color: #fff;
+      border: none; border-radius: 8px; padding: 9px 14px; background: var(--interactive-default); color: #fff;
       font: inherit; font-weight: 600; font-size: 0.88rem; cursor: pointer;
     }}
-    .ask-copy:hover {{ background: #1049a8; }}
+    .ask-copy:hover {{ background: var(--interactive-hover); }}
     .ask-status {{ margin: 0; color: #067647; font-size: 0.82rem; }}
     .ask-tips {{ margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.8rem; }}
     .ask-tips li {{ margin-bottom: 4px; }}
@@ -1824,29 +1798,20 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
     .stat {{ background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }}
     .stat strong {{ font-size: 1.1rem; margin-right: 4px; }}
     .hint {{ color: var(--muted); font-size: 0.85rem; margin: 0 0 16px; }}
-    .voice-section {{
-      background: #fff7ed; border: 1px solid #fdba74; border-radius: 12px;
-      padding: 16px; margin: 0 0 28px;
-    }}
+    .voice-section {{ border-radius: 12px; padding: 16px; margin: 0 0 28px; }}
     .voice-section h2 {{ margin: 0 0 6px; font-size: 1.15rem; }}
     .voice-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }}
-    .voice-col h3 {{ margin: 0 0 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: #9a3412; }}
     .voice-cards {{ display: flex; flex-direction: column; gap: 8px; }}
-    .voice-card {{ background: #fff; border: 1px solid #fed7aa; border-radius: 10px; padding: 10px 12px; }}
     .voice-card-top {{ display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }}
     .voice-card h3 {{ margin: 0 0 4px; font-size: 0.88rem; line-height: 1.35; }}
     .voice-card p {{ margin: 0; font-size: 0.78rem; color: var(--muted); line-height: 1.35; }}
     .pill {{ display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; border: 1px solid var(--border); }}
-    .pill.signal-user_feedback {{ background: #fff7ed; color: #c2410c; border-color: #fdba74; }}
-    .pill.signal-bug {{ background: #fef3f2; color: #b42318; border-color: #fecdca; }}
-    .pill.signal-friction {{ background: #fef3f2; color: #912018; border-color: #fecdca; }}
-    .pill.signal-support {{ background: #fdf2fa; color: #c11574; border-color: #fcceee; }}
     .aff-theme {{ margin-bottom: 28px; }}
     .aff-theme-title {{ margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; }}
     .aff-theme-title .count, .aff-col-title .count {{ color: var(--muted); font-weight: 500; font-size: 0.9em; }}
     .aff-grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }}
     @media (max-width: 960px) {{ .aff-grid {{ grid-template-columns: 1fr; }} }}
-    .aff-col {{ background: #eef0f3; border-radius: 12px; padding: 10px; min-height: 80px; }}
+    .aff-col {{ background: var(--background-hover); border-radius: 12px; padding: 10px; min-height: 80px; }}
     .aff-col-title {{ margin: 0 0 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }}
     .aff-col-cards {{ display: flex; flex-direction: column; gap: 10px; }}
     .col-empty {{ margin: 0; color: var(--muted); font-size: 0.85rem; text-align: center; padding: 12px 0; }}
@@ -1854,24 +1819,19 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
       background: var(--card); border: 1px solid var(--border); border-radius: 10px;
       padding: 12px 14px; cursor: pointer; transition: box-shadow 0.12s, border-color 0.12s;
     }}
-    .aff-card:hover, .aff-card:focus {{ border-color: #84caff; box-shadow: 0 4px 14px rgba(16,24,40,0.08); outline: none; }}
+    .aff-card:hover, .aff-card:focus {{ border-color: var(--border-accent); box-shadow: var(--elevation-xs); outline: none; }}
     .aff-card-head {{ display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }}
     .aff-card-title {{ margin: 0 0 6px; font-size: 0.95rem; line-height: 1.35; }}
-    .aff-card-metric {{ margin: 0 0 4px; font-size: 0.85rem; font-weight: 600; color: #b42318; }}
+    .aff-card-metric {{ margin: 0 0 4px; font-size: 0.85rem; font-weight: 600; color: var(--pill-bug-text); }}
     .aff-card-area {{ margin: 0 0 8px; font-size: 0.78rem; color: var(--muted); }}
     .aff-card-sources {{ display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }}
-    .src-pill {{ display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; border: 1px solid var(--border); background: #f9fafb; }}
-    .src-posthog {{ background: #e3f2fd; }}
-    .src-pendo {{ background: #fff3e0; }}
-    .src-dovetail {{ background: #ede7f6; }}
-    .src-outset {{ background: #e8f5e9; }}
-    .src-freshdesk {{ background: #fce4ec; }}
+    .src-pill {{ display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; border: 1px solid var(--border); }}
     .ev-count {{ font-size: 0.72rem; color: var(--muted); margin-left: 4px; }}
     .sev-badge {{ display: inline-block; padding: 2px 8px; border-radius: 999px; color: #fff; font-size: 0.7rem; font-weight: 700; }}
     .conf-badge {{ font-size: 0.72rem; font-weight: 600; text-transform: capitalize; }}
     .filters {{ background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }}
     .filters label {{ display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; color: var(--muted); font-weight: 500; }}
-    .filters select {{ font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); }}
+    .filters select {{ font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); }}
     .aff-card.is-filtered-out, .aff-theme.is-filtered-out {{ display: none; }}
     .slideout-backdrop {{ position: fixed; inset: 0; background: rgba(16,24,40,0.45); z-index: 100; }}
     .slideout-backdrop.hidden {{ display: none; }}
@@ -1893,12 +1853,6 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
     .muted {{ color: var(--muted); }}
     a {{ color: var(--link); }}
     template {{ display: none; }}
-    .ask-fab {{
-      position: fixed; right: 20px; bottom: 20px; z-index: 90;
-      border: none; border-radius: 999px; padding: 12px 18px;
-      background: #175cd3; color: #fff; font: inherit; font-weight: 600; font-size: 0.92rem;
-      box-shadow: 0 8px 24px rgba(16,24,40,0.18); cursor: pointer; text-decoration: none;
-    }}
   </style>
 </head>
 <body>

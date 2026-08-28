@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>(function(){var k="ux-designops-theme",s=localStorage.getItem(k),d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");})();</script>
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <title>UX DesignOps — Agent Skills</title>
   <link rel="stylesheet" href="../shared/designops.css" />
   <style>
@@ -20,7 +21,10 @@
           <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
           <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
         </nav>
-        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch color theme">Dark</button>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -37,7 +41,8 @@
       <a href="#empathize">Empathize</a> ·
       <a href="#define">Define</a> ·
       <a href="#ideate">Ideate</a> ·
-      <a href="#prototype">Prototype</a>
+      <a href="#prototype">Prototype</a> ·
+      <a href="#test">Test</a>
     </div>
 
     <h2 id="install">Install in any harness</h2>
@@ -97,6 +102,19 @@ ln -sfn ../../.agents/skills/write-spec .cursor/skills/write-spec</pre>
       </tbody>
     </table>
     <p class="muted">Prototype skills run <code>scripts/bootstrap.sh</code> — clone, <code>npm ci</code>, start Vite. Cursor preferred.</p>
+
+    <h2 id="test">Test (stage 5)</h2>
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr id="test-plan"><td><code>test-plan</code></td><td>Pre-flight + Outset/Maze study draft (Test Plan Generator)</td></tr>
+        <tr id="accessibility-review"><td><code>accessibility-review</code></td><td>Synthetic a11y check before recruiting</td></tr>
+        <tr id="ux-critique-test"><td><code>ux-critique</code></td><td>Prototype vs spec before sessions</td></tr>
+        <tr id="test-loopback"><td><code>test-loopback</code></td><td>Publish Verified session findings → Empathize</td></tr>
+        <tr id="synthesize-research-test"><td><code>synthesize-research</code></td><td>Theme completed test corpus (feeds test-loopback)</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Human gate: review AI drafts before stakeholders. Findings loop to Empathize.</p>
   </main>
   <script src="../shared/designops-theme.js"></script>
 </body>

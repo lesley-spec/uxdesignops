@@ -1,8 +1,7 @@
 /* impact.com Styleguide V2 tokens (shared across GitHub Pages) */
 @import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap");
 
-:root,
-[data-theme="light"] {
+:root {
   color-scheme: light;
 
   --font-size: 16px;
@@ -74,7 +73,7 @@
   --verified: var(--success-bg);
 }
 
-[data-theme="dark"] {
+.dark {
   color-scheme: dark;
 
   --background-default: #18191d;
@@ -196,6 +195,48 @@ a:hover { color: var(--text-interactive-hover); }
   flex-wrap: wrap;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--text-default);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--background-hover);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle .theme-icon-sun {
+  display: none;
+}
+
+.dark .theme-toggle .theme-icon-moon {
+  display: none;
+}
+
+.dark .theme-toggle .theme-icon-sun {
+  display: block;
+}
+
 .report-nav {
   display: flex;
   align-items: center;
@@ -227,27 +268,6 @@ a:hover { color: var(--text-interactive-hover); }
   color: var(--interactive-default);
   background: var(--info-bg);
   border-color: var(--border-accent);
-}
-
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 12px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border-default);
-  background: var(--background-hover);
-  color: var(--text-default);
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-
-.theme-toggle:hover {
-  border-color: var(--border-accent);
-  color: var(--interactive-default);
 }
 
 .wrap {
@@ -453,7 +473,11 @@ h2 {
 .voice-banner,
 .voice-section {
   background: var(--warning-bg);
-  border-color: var(--warning-border);
+  border: 1px solid var(--warning-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 0 0 16px;
+  font-size: 0.88rem;
 }
 
 .voice-banner strong,

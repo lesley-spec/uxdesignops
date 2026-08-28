@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script>(function(){var k="ux-designops-theme",s=localStorage.getItem(k),d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");})();</script>
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <title>UX Affinity — Week of 2026-08-24</title>
   <link rel="stylesheet" href="../shared/designops.css" />
   <style>
@@ -93,7 +93,7 @@
   </style>
 </head>
 <body>
-  <header class="top-nav" role="banner"><div class="top-nav-inner"><a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a><div class="top-nav-actions"><nav class="report-nav" aria-label="Site sections"><a class="nav-link" href="../" data-nav="listing">Research</a><a class="nav-link is-active" href="./2026-08-24-affinity.html" data-nav="affinity">Affinity</a><a class="nav-link" href="../skills/" data-nav="skills">Skills</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch color theme">Dark</button></div></div></header>
+  <header class="top-nav" role="banner"><div class="top-nav-inner"><a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a><div class="top-nav-actions"><nav class="report-nav" aria-label="Site sections"><a class="nav-link" href="../" data-nav="listing">Research</a><a class="nav-link is-active" href="./2026-08-24-affinity.html" data-nav="affinity">Affinity</a><a class="nav-link" href="../skills/" data-nav="skills">Skills</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button></div></div></header>
   <div class="wrap">
     <header class="page-header">
       <h1>UX Affinity Board</h1>
