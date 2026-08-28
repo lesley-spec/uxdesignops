@@ -5,19 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UX DesignOps — Agent Skills</title>
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: Inter, system-ui, sans-serif; line-height: 1.5; max-width: 52rem; margin: 2rem auto; padding: 0 1.25rem; color: #1e1e1e; }
-    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
-    h2 { font-size: 1.125rem; margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
-    h3 { font-size: 1rem; margin-top: 1.25rem; }
-    a { color: #0066cc; }
-    code { background: #f4f4f4; padding: 0.1em 0.35em; border-radius: 4px; font-size: 0.9em; }
-    table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 0.95rem; }
-    th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #eee; vertical-align: top; }
-    th { font-weight: 600; }
-    .muted { color: #595959; }
-    .nav { margin: 1rem 0 2rem; font-size: 0.95rem; }
-    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; border-radius: 6px; font-size: 0.85rem; }
+    :root {
+      --bg: #f4f5f7;
+      --card: #fff;
+      --text: #1a1a1a;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --link: #175cd3;
+      --code-bg: #f2f4f7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+      background: var(--bg);
+      color: var(--text);
+    }
+    h1 { font-size: 1.75rem; margin: 0 0 0.5rem; font-weight: 700; }
+    h2 {
+      font-size: 1.125rem;
+      margin-top: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.35rem;
+      font-weight: 600;
+    }
+    a { color: var(--link); }
+    a:hover { text-decoration: underline; }
+    code {
+      background: var(--code-bg);
+      color: var(--text);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0;
+      font-size: 0.95rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text);
+    }
+    th { font-weight: 600; background: #f9fafb; }
+    tr:last-child td { border-bottom: none; }
+    .muted { color: var(--muted); }
+    .nav { margin: 1rem 0 2rem; font-size: 0.95rem; color: var(--text); }
+    pre {
+      background: var(--card);
+      color: var(--text);
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+    }
+    p { color: var(--text); }
   </style>
 </head>
 <body>
