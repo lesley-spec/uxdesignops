@@ -1151,6 +1151,47 @@ html.dark .badge.badge-source {
   border-color: var(--interactive-default);
 }
 
+.examples-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  font-size: 0.82rem;
+}
+
+.examples-strip-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.examples-strip a {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--background-subdued);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.examples-strip a:hover {
+  border-color: var(--border-accent);
+  background: var(--background-hover);
+}
+
+.examples-strip-all {
+  margin-left: auto;
+}
+
 @media (max-width: 1200px) {
   .pipeline-board {
     display: flex;
