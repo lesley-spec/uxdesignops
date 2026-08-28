@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){var k="ux-designops-theme",s=localStorage.getItem(k),d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");})();</script>
   <title>UX DesignOps — Agent Skills</title>
   <link rel="stylesheet" href="../shared/designops.css" />
   <style>
@@ -13,11 +14,14 @@
   <header class="top-nav" role="banner">
     <div class="top-nav-inner">
       <a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a>
-      <nav class="report-nav" aria-label="Site sections">
-        <a class="nav-link" href="../" data-nav="listing">Research</a>
-        <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
-        <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
-      </nav>
+      <div class="top-nav-actions">
+        <nav class="report-nav" aria-label="Site sections">
+          <a class="nav-link" href="../" data-nav="listing">Research</a>
+          <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+          <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch color theme">Dark</button>
+      </div>
     </div>
   </header>
 
@@ -94,5 +98,6 @@ ln -sfn ../../.agents/skills/write-spec .cursor/skills/write-spec</pre>
     </table>
     <p class="muted">Prototype skills run <code>scripts/bootstrap.sh</code> — clone, <code>npm ci</code>, start Vite. Cursor preferred.</p>
   </main>
+  <script src="../shared/designops-theme.js"></script>
 </body>
 </html>

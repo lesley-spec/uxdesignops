@@ -19,6 +19,8 @@ from issue_taxonomy import (
 )
 from affinity_board import (
     build_affinity_cards,
+    designops_assets_hrefs,
+    designops_theme_boot_script,
     group_affinity_board,
     render_affinity_board_html,
     report_nav_html,
@@ -1445,7 +1447,10 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     filter_bar_html = _render_filter_bar(payload, listing_items)
     listing_html = _render_listing_table(listing_items)
     hrefs = report_nav_hrefs(week, at_root=at_root)
-    designops_css_href = "./shared/designops.css" if at_root else "../shared/designops.css"
+    assets = designops_assets_hrefs(at_root=at_root)
+    designops_css_href = assets["css"]
+    designops_js_href = assets["js"]
+    theme_boot_script = designops_theme_boot_script()
     nav_html = report_nav_html(
         week,
         "listing",
@@ -1482,6 +1487,7 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {theme_boot_script}
   <title>UX Research Monitor — Week of {_esc(week)}</title>
   <link rel="stylesheet" href="{designops_css_href}" />
   <style>
@@ -1716,6 +1722,7 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
       }});
     }})();
   </script>
+  <script src="{designops_js_href}"></script>
 {_render_app_script()}
 </body>
 </html>"""
@@ -1795,14 +1802,19 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
     )
     voice_cards = collect_user_report_cards(payload, limit=48)
     voice_html = _render_user_reports_section(voice_cards)
+    assets = designops_assets_hrefs(at_root=False)
+    designops_css_href = assets["css"]
+    designops_js_href = assets["js"]
+    theme_boot_script = designops_theme_boot_script()
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {theme_boot_script}
   <title>UX Affinity — Week of {_esc(week)}</title>
-  <link rel="stylesheet" href="../shared/designops.css" />
+  <link rel="stylesheet" href="{designops_css_href}" />
   <style>
     :root {{ --slideout-width: min(480px, 92vw); }}
     body.slideout-open {{ overflow: hidden; }}
@@ -2031,6 +2043,7 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
       applyFilters();
     }})();
   </script>
+  <script src="{designops_js_href}"></script>
 </body>
 </html>"""
 

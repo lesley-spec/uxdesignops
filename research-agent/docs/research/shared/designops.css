@@ -1,7 +1,10 @@
 /* impact.com Styleguide V2 tokens (shared across GitHub Pages) */
 @import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap");
 
-:root {
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
   --font-size: 16px;
   --font-family: "Sarabun", sans-serif;
   --font-family-code: "Roboto Mono", monospace;
@@ -11,6 +14,7 @@
   --background-default: #ffffff;
   --background-subdued: #f9fbff;
   --background-hover: #edf1f9;
+  --surface-raised: #f9fafb;
 
   --border-default: #e0e9f0;
   --border-accent: #0077db;
@@ -27,14 +31,105 @@
   --interactive-pressed: #005aaa;
 
   --card: #ffffff;
+  --input-bg: #ffffff;
   --info-bg: #dbeafe;
   --success-bg: #d1fae5;
+  --warning-bg: #fff7ed;
+  --warning-border: #fdba74;
+  --warning-text: #9a3412;
   --ai: #f3e8ff;
+
+  --pill-audience-bg: #eff8ff;
+  --pill-audience-text: #0077db;
+  --pill-audience-border: #b2ddff;
+  --pill-product-bg: #ecfdf3;
+  --pill-product-text: #067647;
+  --pill-product-border: #abefc6;
+  --pill-theme-bg: #f9f5ff;
+  --pill-theme-text: #6941c6;
+  --pill-theme-border: #e9d7fe;
+  --pill-signal-bg: #fff7ed;
+  --pill-signal-text: #c2410c;
+  --pill-signal-border: #fdba74;
+  --pill-bug-bg: #fef3f2;
+  --pill-bug-text: #b42318;
+  --pill-bug-border: #fecdca;
+  --pill-friction-bg: #fef3f2;
+  --pill-friction-text: #912018;
+  --pill-support-bg: #fdf2fa;
+  --pill-support-text: #c11574;
+  --pill-research-bg: #f9f5ff;
+  --pill-research-text: #6941c6;
 
   --radius: 8px;
   --elevation-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --fab-shadow: 0 8px 24px rgba(37, 40, 47, 0.18);
 
-  /* Aliases for research report CSS */
+  --bg: var(--background-subdued);
+  --text: var(--text-default);
+  --muted: var(--muted-foreground);
+  --border: var(--border-default);
+  --link: var(--interactive-default);
+  --foreground: var(--text-default);
+  --verified: var(--success-bg);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background-default: #18191d;
+  --background-subdued: #212329;
+  --background-hover: #323742;
+  --surface-raised: #25282f;
+
+  --border-default: #323742;
+  --border-accent: #0077db;
+
+  --text-default: #ffffff;
+  --text-subdued: #a9b4bd;
+  --muted-foreground: #a9b4bd;
+  --text-interactive: #60a5fa;
+  --text-interactive-hover: #93c5fd;
+  --text-invert: #18191d;
+
+  --interactive-default: #60a5fa;
+  --interactive-hover: #93c5fd;
+  --interactive-pressed: #0077db;
+
+  --card: #212329;
+  --input-bg: #25282f;
+  --info-bg: #0c2340;
+  --success-bg: #143c28;
+  --warning-bg: #3c280a;
+  --warning-border: #92400e;
+  --warning-text: #fcd34d;
+  --ai: #281e3c;
+
+  --pill-audience-bg: #0c2340;
+  --pill-audience-text: #93c5fd;
+  --pill-audience-border: #0077db;
+  --pill-product-bg: #143c28;
+  --pill-product-text: #4ade80;
+  --pill-product-border: #065f46;
+  --pill-theme-bg: #281e3c;
+  --pill-theme-text: #c8b4ff;
+  --pill-theme-border: #645096;
+  --pill-signal-bg: #3c280a;
+  --pill-signal-text: #fbbf24;
+  --pill-signal-border: #92400e;
+  --pill-bug-bg: #461414;
+  --pill-bug-text: #f87171;
+  --pill-bug-border: #991b1b;
+  --pill-friction-bg: #461414;
+  --pill-friction-text: #fca5a5;
+  --pill-support-bg: #3c1e3c;
+  --pill-support-text: #f0abfc;
+  --pill-research-bg: #281e3c;
+  --pill-research-text: #c8b4ff;
+
+  --elevation-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --fab-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+
   --bg: var(--background-subdued);
   --text: var(--text-default);
   --muted: var(--muted-foreground);
@@ -59,7 +154,6 @@ body {
 a { color: var(--link); }
 a:hover { color: var(--text-interactive-hover); }
 
-/* Site header — tokens only, not prototype AppShell */
 .top-nav {
   position: sticky;
   top: 0;
@@ -95,6 +189,13 @@ a:hover { color: var(--text-interactive-hover); }
   color: var(--muted-foreground);
 }
 
+.top-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .report-nav {
   display: flex;
   align-items: center;
@@ -126,6 +227,27 @@ a:hover { color: var(--text-interactive-hover); }
   color: var(--interactive-default);
   background: var(--info-bg);
   border-color: var(--border-accent);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-default);
+  background: var(--background-hover);
+  color: var(--text-default);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-accent);
+  color: var(--interactive-default);
 }
 
 .wrap {
@@ -245,12 +367,115 @@ h2 {
   border-radius: var(--radius);
   padding: 12px 18px;
   background: var(--interactive-default);
-  color: var(--text-invert);
+  color: #ffffff;
   font: inherit;
   font-weight: var(--font-weight-medium);
   font-size: 0.92rem;
-  box-shadow: 0 8px 24px rgba(37, 40, 47, 0.18);
+  box-shadow: var(--fab-shadow);
   cursor: pointer;
 }
 
 .ask-fab:hover { background: var(--interactive-hover); }
+
+/* Research report surfaces (inline styles reference these tokens) */
+.filters select,
+.filters input,
+.filter-reset,
+.listing-table thead,
+.listing-row:hover,
+.slideout-panel,
+.ask-panel textarea,
+.ask-preview,
+.voice-banner,
+.voice-section,
+.voice-card,
+.src-pill {
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filters select,
+.filters input,
+.filter-reset {
+  background: var(--input-bg);
+  color: var(--text);
+}
+
+.listing-table thead { background: var(--surface-raised); }
+.listing-row:hover { background: var(--background-hover); }
+
+.pill.audience,
+.pill.signal-quant {
+  background: var(--pill-audience-bg);
+  color: var(--pill-audience-text);
+  border-color: var(--pill-audience-border);
+}
+
+.pill.product-area {
+  background: var(--pill-product-bg);
+  color: var(--pill-product-text);
+  border-color: var(--pill-product-border);
+}
+
+.pill.theme,
+.pill.signal-research {
+  background: var(--pill-theme-bg);
+  color: var(--pill-theme-text);
+  border-color: var(--pill-theme-border);
+}
+
+.pill.signal,
+.pill.signal-user_feedback {
+  background: var(--pill-signal-bg);
+  color: var(--pill-signal-text);
+  border-color: var(--pill-signal-border);
+}
+
+.pill.signal-bug {
+  background: var(--pill-bug-bg);
+  color: var(--pill-bug-text);
+  border-color: var(--pill-bug-border);
+}
+
+.pill.signal-friction {
+  background: var(--pill-friction-bg);
+  color: var(--pill-friction-text);
+  border-color: var(--pill-friction-border);
+}
+
+.pill.signal-support {
+  background: var(--pill-support-bg);
+  color: var(--pill-support-text);
+  border-color: var(--pill-support-border);
+}
+
+.pill.source-pill { background: var(--card); }
+
+.voice-banner,
+.voice-section {
+  background: var(--warning-bg);
+  border-color: var(--warning-border);
+}
+
+.voice-banner strong,
+.voice-section h2,
+.voice-col h3 {
+  color: var(--warning-text);
+}
+
+.voice-card {
+  background: var(--card);
+  border-color: var(--warning-border);
+}
+
+.src-pill { background: var(--surface-raised); }
+
+.slideout-panel,
+.ask-panel textarea {
+  background: var(--card);
+  color: var(--text);
+}
+
+.ask-preview {
+  background: var(--surface-raised) !important;
+  color: var(--text) !important;
+}

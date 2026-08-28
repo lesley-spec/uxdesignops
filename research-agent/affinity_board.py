@@ -357,6 +357,28 @@ def render_affinity_board_html(rows: List[Dict[str, Any]]) -> str:
     return "\n".join(sections)
 
 
+def designops_assets_hrefs(*, at_root: bool = False) -> Dict[str, str]:
+    """Shared CSS/JS paths for GitHub Pages."""
+    prefix = "./shared" if at_root else "../shared"
+    return {
+        "css": f"{prefix}/designops.css",
+        "js": f"{prefix}/designops-theme.js",
+    }
+
+
+def designops_theme_boot_script() -> str:
+    """Inline script to apply saved theme before first paint."""
+    return (
+        "<script>"
+        "(function(){"
+        'var k="ux-designops-theme",s=localStorage.getItem(k),'
+        'd=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);'
+        'document.documentElement.setAttribute("data-theme",d?"dark":"light");'
+        "})();"
+        "</script>"
+    )
+
+
 def report_nav_html(
     week: str,
     active: str,
@@ -376,6 +398,7 @@ def report_nav_html(
         f'<div class="top-nav-inner">'
         f'<a class="top-nav-brand" href="{_esc(brand)}">'
         f'UX DesignOps <span class="brand-byline">· impact.com</span></a>'
+        f'<div class="top-nav-actions">'
         f'<nav class="report-nav" aria-label="Site sections">'
         f'<a class="nav-link{" is-active" if active == "listing" else ""}" '
         f'href="{_esc(listing)}" data-nav="listing">Research</a>'
@@ -384,6 +407,9 @@ def report_nav_html(
         f'<a class="nav-link{" is-active" if active == "skills" else ""}" '
         f'href="{_esc(skills)}" data-nav="skills">Skills</a>'
         f"</nav>"
+        f'<button type="button" class="theme-toggle" id="theme-toggle" '
+        f'aria-pressed="false" aria-label="Switch color theme">Dark</button>'
+        f"</div>"
         f"</div>"
         f"</header>"
     )
