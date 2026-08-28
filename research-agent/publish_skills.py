@@ -340,7 +340,8 @@ def render_skills_index(manifest: dict) -> str:
       <a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a>
       <div class="top-nav-actions">
         <nav class="report-nav" aria-label="Site sections">
-          <a class="nav-link" href="../" data-nav="listing">Research</a>
+          <a class="nav-link" href="../" data-nav="pipeline">Pipeline</a>
+          <a class="nav-link" href="../research/" data-nav="listing">Research</a>
           <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
           <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
         </nav>
@@ -356,7 +357,7 @@ def render_skills_index(manifest: dict) -> str:
     <header class="page-header">
       <h1>Agent Skills</h1>
       <p class="sub muted"><strong>{count} portable skills</strong> for all five Design Thinking phases on the
-        <a href="https://www.figma.com/board/slhZ9uzMTmaekjmbEosyzb/UX-DesignOps">UX DesignOps FigJam</a>.
+        <a href="../">UX DesignOps pipeline</a>.
         Download the full pack below — no repo clone required.</p>
     </header>
 

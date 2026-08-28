@@ -131,7 +131,8 @@ Table: `bt-impact-labs.prod-data-enablement.datalake_freshdesk`
 cd research-agent
 python3 -m pip install -r requirements.txt
 python3 agent_cloud.py
-open docs/research/index.html
+open docs/research/index.html          # Pipeline home
+open docs/research/research/index.html  # Research listing
 ```
 
 **CI:** Actions → **Research Insight Agent** → **Run workflow**

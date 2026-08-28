@@ -1450,27 +1450,28 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     filter_bar_html = _render_filter_bar(payload, listing_items)
     listing_html = _render_listing_table(listing_items)
     hrefs = report_nav_hrefs(week, at_root=at_root)
-    assets = designops_assets_hrefs(at_root=at_root)
+    assets = designops_assets_hrefs(at_root=False)
     designops_css_href = assets["css"]
     designops_js_href = assets["js"]
     theme_boot_script = designops_theme_boot_script()
-    auth_head_scripts = designops_auth_head_scripts(at_root=at_root)
+    auth_head_scripts = designops_auth_head_scripts(at_root=False)
     auth_gate_html = designops_auth_gate_html()
     nav_html = report_nav_html(
         week,
         "listing",
         listing_href=hrefs["listing"],
         affinity_href=hrefs["affinity"],
+        pipeline_href=hrefs["pipeline"],
         skills_href=hrefs["skills"],
         brand_href=hrefs["brand"],
     )
     report_path_hint = (
-        "research-agent/docs/research/index.html"
+        "research-agent/docs/research/research/index.html"
         if at_root
         else f"research-agent/docs/research/reports/{week}.html"
     )
     report_public_url = (
-        f"{GITHUB_PAGES_URL}/" if (GITHUB_PAGES_URL and at_root)
+        f"{GITHUB_PAGES_URL}/research/" if (GITHUB_PAGES_URL and at_root)
         else (f"{GITHUB_PAGES_URL}/reports/{week}.html" if GITHUB_PAGES_URL else "")
     )
     workflow_url = github_actions_workflow_url(pages_url=GITHUB_PAGES_URL)
@@ -1793,10 +1794,11 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
     nav_html = report_nav_html(
         week,
         "affinity",
-        listing_href="../",
+        listing_href=hrefs["listing"],
         affinity_href=hrefs["affinity"],
+        pipeline_href=hrefs["pipeline"],
         skills_href=hrefs["skills"],
-        brand_href="../",
+        brand_href=hrefs["brand"],
     )
     voice_cards = collect_user_report_cards(payload, limit=48)
     voice_html = _render_user_reports_section(voice_cards)
@@ -2033,7 +2035,8 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
 def publish_github_pages_report(payload: Dict[str, Any], docs_root: Optional[Path] = None) -> Optional[str]:
     """Write HTML + JSON report files. Returns public URL if GITHUB_PAGES_URL is set.
 
-    Latest listing is written as docs/research/index.html (Pages homepage).
+    Latest listing is written as docs/research/research/index.html.
+    Site home (pipeline) at docs/research/index.html is not overwritten.
     Archive copies remain under docs/research/reports/{week}.html.
     """
     root = docs_root or DOCS_ROOT
@@ -2053,17 +2056,18 @@ def publish_github_pages_report(payload: Dict[str, Any], docs_root: Optional[Pat
     affinity_path.write_text(affinity_html, encoding="utf-8")
     json_path.write_text(report_json, encoding="utf-8")
 
-    index_path = root / "index.html"
+    index_path = root / "research" / "index.html"
+    index_path.parent.mkdir(parents=True, exist_ok=True)
     index_path.write_text(index_html, encoding="utf-8")
 
     latest_path = root / "latest.json"
     latest_path.write_text(report_json, encoding="utf-8")
 
-    print(f"  ✅ GitHub Pages home (index): {index_path}")
+    print(f"  ✅ GitHub Pages listing: {index_path}")
     print(f"  ✅ Archive listing: {html_path}")
     print(f"  ✅ Affinity board: {affinity_path}")
     if GITHUB_PAGES_URL:
-        public_url = f"{GITHUB_PAGES_URL}/"
+        public_url = f"{GITHUB_PAGES_URL}/research/"
         print(f"  🔗 Public URL: {public_url}")
         print(f"  🔗 Affinity URL: {GITHUB_PAGES_URL}/reports/{week}-affinity.html")
         return public_url

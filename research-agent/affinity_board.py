@@ -444,13 +444,15 @@ def report_nav_html(
     listing_href: str = "",
     affinity_href: str = "",
     skills_href: str = "",
+    pipeline_href: str = "",
     brand_href: str = "",
 ) -> str:
-    """Top bar: Research | Affinity | Skills (Styleguide V2 tokens via shared CSS)."""
+    """Top bar: Pipeline (home) | Research | Affinity | Skills."""
     listing = listing_href or f"./{week}.html"
     affinity = affinity_href or f"./{week}-affinity.html"
     skills = skills_href or "../skills/"
-    brand = brand_href or listing
+    pipeline = pipeline_href or "../"
+    brand = brand_href or pipeline
     return (
         f'<header class="top-nav" role="banner">'
         f'<div class="top-nav-inner">'
@@ -458,6 +460,8 @@ def report_nav_html(
         f'UX DesignOps <span class="brand-byline">· impact.com</span></a>'
         f'<div class="top-nav-actions">'
         f'<nav class="report-nav" aria-label="Site sections">'
+        f'<a class="nav-link{" is-active" if active == "pipeline" else ""}" '
+        f'href="{_esc(pipeline)}" data-nav="pipeline">Pipeline</a>'
         f'<a class="nav-link{" is-active" if active == "listing" else ""}" '
         f'href="{_esc(listing)}" data-nav="listing">Research</a>'
         f'<a class="nav-link{" is-active" if active == "affinity" else ""}" '
@@ -498,21 +502,37 @@ def github_actions_workflow_url(
     return f"https://github.com/login?return_to={quote(workflow_url, safe='')}"
 
 
-def report_nav_hrefs(week: str, *, at_root: bool = False) -> Dict[str, str]:
+def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dict[str, str]:
     """Relative nav links for report HTML.
 
-    at_root=True: listing lives at docs/research/index.html (GitHub Pages home).
-    at_root=False: listing + affinity live under docs/research/reports/.
+    page:
+      pipeline — site home (docs/research/index.html)
+      research — latest listing (docs/research/research/index.html)
+      reports  — archive + affinity (docs/research/reports/)
+
+    at_root=True is kept as an alias for page="research" (listing is no longer
+    the GitHub Pages homepage).
     """
-    if at_root:
+    loc = page or ("research" if at_root else "reports")
+    if loc == "pipeline":
         return {
-            "listing": "./",
+            "pipeline": "./",
+            "listing": "./research/",
             "affinity": f"./reports/{week}-affinity.html",
             "skills": "./skills/",
             "brand": "./",
         }
+    if loc == "research":
+        return {
+            "pipeline": "../",
+            "listing": "./",
+            "affinity": f"../reports/{week}-affinity.html",
+            "skills": "../skills/",
+            "brand": "../",
+        }
     return {
-        "listing": f"./{week}.html",
+        "pipeline": "../",
+        "listing": "../research/",
         "affinity": f"./{week}-affinity.html",
         "skills": "../skills/",
         "brand": "../",

@@ -292,11 +292,16 @@
     if (ui.status) ui.status.textContent = "";
   }
 
+  function isLocalPreview() {
+    var host = String(window.location.hostname || "");
+    return host === "localhost" || host === "127.0.0.1" || host === "";
+  }
+
   function boot() {
     var clientId = (config().googleClientId || "").trim();
     var session = readSession();
 
-    if (session) {
+    if (isLocalPreview() || session) {
       unlock();
       return;
     }

@@ -21,7 +21,7 @@ python -m pip install -r requirements.txt
 python agent_cloud.py
 ```
 
-After a run, open `docs/research/index.html` locally or deploy via GitHub Actions.
+After a run, open `docs/research/index.html` (pipeline home) or `docs/research/research/index.html` (research listing) locally, or deploy via GitHub Actions.
 
 ---
 
