@@ -1445,11 +1445,14 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     filter_bar_html = _render_filter_bar(payload, listing_items)
     listing_html = _render_listing_table(listing_items)
     hrefs = report_nav_hrefs(week, at_root=at_root)
+    designops_css_href = "./shared/designops.css" if at_root else "../shared/designops.css"
     nav_html = report_nav_html(
         week,
         "listing",
         listing_href=hrefs["listing"],
         affinity_href=hrefs["affinity"],
+        skills_href=hrefs["skills"],
+        brand_href=hrefs["brand"],
     )
     report_path_hint = (
         "research-agent/docs/research/index.html"
@@ -1480,45 +1483,10 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>UX Research Monitor — Week of {_esc(week)}</title>
+  <link rel="stylesheet" href="{designops_css_href}" />
   <style>
-    :root {{
-      --bg: #f4f5f7; --card: #fff; --text: #1a1a1a; --muted: #667085;
-      --verified: #e8f5e9; --ai: #f3e8ff; --border: #e4e7ec; --link: #175cd3;
-      --slideout-width: min(480px, 92vw);
-    }}
-    * {{ box-sizing: border-box; }}
-    body {{ font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: var(--bg); color: var(--text); }}
+    :root {{ --slideout-width: min(480px, 92vw); }}
     body.slideout-open {{ overflow: hidden; }}
-    .top-nav {{
-      position: sticky; top: 0; z-index: 1000;
-      background: #fff; border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 0 rgba(16,24,40,0.04);
-    }}
-    .top-nav-inner {{
-      max-width: 1280px; margin: 0 auto; padding: 10px 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }}
-    .top-nav-brand {{
-      font-weight: 700; font-size: 0.95rem; color: var(--text); text-decoration: none;
-    }}
-    .top-nav-brand:hover {{ color: var(--link); }}
-    .report-nav {{ display: flex; gap: 6px; margin: 0; }}
-    .report-nav .nav-link {{
-      display: inline-block; padding: 7px 14px; border-radius: 8px; text-decoration: none;
-      font-size: 0.88rem; font-weight: 600; color: var(--muted); border: 1px solid var(--border); background: #fff;
-    }}
-    .report-nav .nav-link:hover {{ color: var(--text); border-color: #c5c9d1; }}
-    .report-nav .nav-link.is-active {{ color: #175cd3; border-color: #84caff; background: #eff8ff; }}
-    .wrap {{ max-width: 1280px; margin: 0 auto; padding: 24px 20px 48px; }}
-    .page-header {{ margin-bottom: 20px; }}
-    h1 {{ margin: 0 0 6px; font-size: 1.75rem; font-weight: 700; }}
-    .sub {{ color: var(--muted); margin: 0; font-size: 0.92rem; }}
-    .view-switch {{ margin: 12px 0 0; }}
-    .view-switch-link {{
-      display: inline-block; padding: 8px 14px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-      background: #eff8ff; border: 1px solid #84caff; color: #175cd3; text-decoration: none;
-    }}
-    .view-switch-link:hover {{ background: #d1e9ff; }}
     .stats {{ display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }}
     .stat {{ background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }}
     .stat strong {{ font-size: 1.1rem; margin-right: 4px; }}
@@ -1822,6 +1790,8 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
         "affinity",
         listing_href="../",
         affinity_href=hrefs["affinity"],
+        skills_href=hrefs["skills"],
+        brand_href="../",
     )
     voice_cards = collect_user_report_cards(payload, limit=48)
     voice_html = _render_user_reports_section(voice_cards)
@@ -1832,42 +1802,12 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>UX Affinity — Week of {_esc(week)}</title>
+  <link rel="stylesheet" href="../shared/designops.css" />
   <style>
-    :root {{
-      --bg: #f4f5f7; --card: #fff; --text: #1a1a1a; --muted: #667085;
-      --border: #e4e7ec; --link: #175cd3; --ai: #f3e8ff;
-      --slideout-width: min(480px, 92vw);
-    }}
-    * {{ box-sizing: border-box; }}
-    body {{ font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: var(--bg); color: var(--text); }}
+    :root {{ --slideout-width: min(480px, 92vw); }}
     body.slideout-open {{ overflow: hidden; }}
-    .top-nav {{
-      position: sticky; top: 0; z-index: 1000;
-      background: #fff; border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 0 rgba(16,24,40,0.04);
-    }}
-    .top-nav-inner {{
-      max-width: 1400px; margin: 0 auto; padding: 10px 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }}
-    .top-nav-brand {{ font-weight: 700; font-size: 0.95rem; color: var(--text); text-decoration: none; }}
-    .top-nav-brand:hover {{ color: var(--link); }}
-    .report-nav {{ display: flex; gap: 6px; margin: 0; }}
-    .report-nav .nav-link {{
-      display: inline-block; padding: 7px 14px; border-radius: 8px; text-decoration: none;
-      font-size: 0.88rem; font-weight: 600; color: var(--muted); border: 1px solid var(--border); background: #fff;
-    }}
-    .report-nav .nav-link:hover {{ color: var(--text); border-color: #c5c9d1; }}
-    .report-nav .nav-link.is-active {{ color: #175cd3; border-color: #84caff; background: #eff8ff; }}
-    .wrap {{ max-width: 1400px; margin: 0 auto; padding: 24px 20px 80px; }}
+    .wrap {{ max-width: 1400px; padding-bottom: 80px; }}
     .page-header {{ margin-bottom: 16px; }}
-    h1 {{ margin: 0 0 6px; font-size: 1.75rem; font-weight: 700; }}
-    .sub {{ color: var(--muted); margin: 0; font-size: 0.92rem; }}
-    .view-switch {{ margin: 12px 0 0; }}
-    .view-switch-link {{
-      display: inline-block; padding: 8px 14px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-      background: #eff8ff; border: 1px solid #84caff; color: #175cd3; text-decoration: none;
-    }}
     .stats {{ display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }}
     .stat {{ background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }}
     .stat strong {{ font-size: 1.1rem; margin-right: 4px; }}

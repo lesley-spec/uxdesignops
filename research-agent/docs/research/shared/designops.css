@@ -1,0 +1,256 @@
+/* impact.com Styleguide V2 tokens (shared across GitHub Pages) */
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&family=Roboto+Mono:wght@400;500&display=swap");
+
+:root {
+  --font-size: 16px;
+  --font-family: "Sarabun", sans-serif;
+  --font-family-code: "Roboto Mono", monospace;
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+
+  --background-default: #ffffff;
+  --background-subdued: #f9fbff;
+  --background-hover: #edf1f9;
+
+  --border-default: #e0e9f0;
+  --border-accent: #0077db;
+
+  --text-default: #25282f;
+  --text-subdued: #8a959d;
+  --muted-foreground: #606672;
+  --text-interactive: #0077db;
+  --text-interactive-hover: #006eca;
+  --text-invert: #ffffff;
+
+  --interactive-default: #0077db;
+  --interactive-hover: #006eca;
+  --interactive-pressed: #005aaa;
+
+  --card: #ffffff;
+  --info-bg: #dbeafe;
+  --success-bg: #d1fae5;
+  --ai: #f3e8ff;
+
+  --radius: 8px;
+  --elevation-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* Aliases for research report CSS */
+  --bg: var(--background-subdued);
+  --text: var(--text-default);
+  --muted: var(--muted-foreground);
+  --border: var(--border-default);
+  --link: var(--interactive-default);
+  --foreground: var(--text-default);
+  --verified: var(--success-bg);
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: var(--font-size); }
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a { color: var(--link); }
+a:hover { color: var(--text-interactive-hover); }
+
+/* Site header — tokens only, not prototype AppShell */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--card);
+  border-bottom: 1px solid var(--border-default);
+  box-shadow: var(--elevation-xs);
+}
+
+.top-nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.top-nav-brand {
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-default);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.top-nav-brand:hover { color: var(--interactive-default); }
+
+.top-nav-brand .brand-byline {
+  font-weight: var(--font-weight-normal);
+  color: var(--muted-foreground);
+}
+
+.report-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.report-nav .nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.report-nav .nav-link:hover {
+  color: var(--text-default);
+  background: var(--background-hover);
+}
+
+.report-nav .nav-link.is-active {
+  color: var(--interactive-default);
+  background: var(--info-bg);
+  border-color: var(--border-accent);
+}
+
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.page-header { margin-bottom: 20px; }
+
+.page-header h1,
+.wrap > h1 {
+  margin: 0 0 6px;
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-default);
+}
+
+.sub, .muted { color: var(--muted-foreground); }
+
+code {
+  font-family: var(--font-family-code);
+  background: var(--background-hover);
+  color: var(--text-default);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid var(--border-default);
+}
+
+pre {
+  font-family: var(--font-family-code);
+  background: var(--card);
+  color: var(--text-default);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  border: 1px solid var(--border-default);
+}
+
+.skills-table,
+table.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.95rem;
+  background: var(--card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.skills-table th,
+.skills-table td,
+table.skills-table th,
+table.skills-table td {
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--border-default);
+  vertical-align: top;
+  color: var(--text-default);
+}
+
+.skills-table th,
+table.skills-table th {
+  font-weight: var(--font-weight-medium);
+  background: var(--background-subdued);
+}
+
+.skills-table tr:last-child td,
+table.skills-table tr:last-child td {
+  border-bottom: none;
+}
+
+.skills-jump {
+  margin: 1rem 0 2rem;
+  font-size: 0.95rem;
+}
+
+.skills-jump a { margin-right: 0.25rem; }
+
+h2 {
+  font-size: 1.125rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--border-default);
+  padding-bottom: 0.35rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-default);
+}
+
+.view-switch { margin: 12px 0 0; }
+
+.view-switch-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9rem;
+  background: var(--info-bg);
+  border: 1px solid var(--border-accent);
+  color: var(--interactive-default);
+  text-decoration: none;
+}
+
+.view-switch-link:hover {
+  background: var(--background-hover);
+  color: var(--text-interactive-hover);
+}
+
+.ask-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 90;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  background: var(--interactive-default);
+  color: var(--text-invert);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  font-size: 0.92rem;
+  box-shadow: 0 8px 24px rgba(37, 40, 47, 0.18);
+  cursor: pointer;
+}
+
+.ask-fab:hover { background: var(--interactive-hover); }

@@ -4,148 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UX DesignOps — Agent Skills</title>
+  <link rel="stylesheet" href="../shared/designops.css" />
   <style>
-    :root {
-      --bg: #f4f5f7;
-      --card: #fff;
-      --text: #1a1a1a;
-      --muted: #667085;
-      --border: #e4e7ec;
-      --link: #175cd3;
-      --code-bg: #f2f4f7;
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
-      max-width: 52rem;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 3rem;
-      background: var(--bg);
-      color: var(--text);
-    }
-    h1 { font-size: 1.75rem; margin: 0 0 0.5rem; font-weight: 700; }
-    h2 {
-      font-size: 1.125rem;
-      margin-top: 2rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.35rem;
-      font-weight: 600;
-    }
-    a { color: var(--link); }
-    a:hover { text-decoration: underline; }
-    code {
-      background: var(--code-bg);
-      color: var(--text);
-      padding: 0.15em 0.4em;
-      border-radius: 4px;
-      font-size: 0.9em;
-      border: 1px solid var(--border);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0.75rem 0;
-      font-size: 0.95rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    th, td {
-      text-align: left;
-      padding: 0.65rem 0.85rem;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      color: var(--text);
-    }
-    th { font-weight: 600; background: #f9fafb; }
-    tr:last-child td { border-bottom: none; }
-    .muted { color: var(--muted); }
-    .nav { margin: 1rem 0 2rem; font-size: 0.95rem; color: var(--text); }
-    pre {
-      background: var(--card);
-      color: var(--text);
-      padding: 1rem;
-      overflow-x: auto;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      border: 1px solid var(--border);
-    }
-    p { color: var(--text); }
+    .skills-page .wrap { max-width: 52rem; }
   </style>
 </head>
-<body>
-  <h1>UX DesignOps — Agent Skills</h1>
-  <p class="muted">Portable skills for the <a href="https://www.figma.com/board/slhZ9uzMTmaekjmbEosyzb/UX-DesignOps">Design Thinking FigJam</a>. Canonical source: <a href="https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills">github.com/lesley-spec/uxdesignops/.agents/skills</a> (requires repo access).</p>
+<body class="skills-page">
+  <header class="top-nav" role="banner">
+    <div class="top-nav-inner">
+      <a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a>
+      <nav class="report-nav" aria-label="Site sections">
+        <a class="nav-link" href="../" data-nav="listing">Research</a>
+        <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+        <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="nav">
-    <strong>Jump:</strong>
-    <a href="#install">Install</a> ·
-    <a href="#empathize">Empathize</a> ·
-    <a href="#define">Define</a> ·
-    <a href="#ideate">Ideate</a> ·
-    <a href="#prototype">Prototype</a>
-  </div>
+  <main class="wrap">
+    <header class="page-header">
+      <h1>Agent Skills</h1>
+      <p class="sub muted">Portable skills for the <a href="https://www.figma.com/board/slhZ9uzMTmaekjmbEosyzb/UX-DesignOps">Design Thinking FigJam</a>. Canonical source: <a href="https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills">github.com/lesley-spec/uxdesignops/.agents/skills</a> (requires repo access).</p>
+    </header>
 
-  <h2 id="install">Install in any harness</h2>
-  <table>
-    <thead><tr><th>Harness</th><th>Path</th></tr></thead>
-    <tbody>
-      <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code> (symlink from <code>.agents/skills/</code>)</td></tr>
-      <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td></tr>
-      <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td></tr>
-    </tbody>
-  </table>
-  <pre>git clone https://github.com/lesley-spec/uxdesignops.git
+    <div class="skills-jump">
+      <strong>Jump:</strong>
+      <a href="#install">Install</a> ·
+      <a href="#empathize">Empathize</a> ·
+      <a href="#define">Define</a> ·
+      <a href="#ideate">Ideate</a> ·
+      <a href="#prototype">Prototype</a>
+    </div>
+
+    <h2 id="install">Install in any harness</h2>
+    <table class="skills-table">
+      <thead><tr><th>Harness</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code> (symlink from <code>.agents/skills/</code>)</td></tr>
+        <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td></tr>
+        <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td></tr>
+      </tbody>
+    </table>
+    <pre>git clone https://github.com/lesley-spec/uxdesignops.git
 cd uxdesignops
 mkdir -p .cursor/skills
 ln -sfn ../../.agents/skills/write-spec .cursor/skills/write-spec</pre>
-  <p>Invoke by name in chat, e.g. <code>use write-spec</code>, <code>use brand-prototype</code>.</p>
+    <p>Invoke by name in chat, e.g. <code>use write-spec</code>, <code>use brand-prototype</code>.</p>
 
-  <h2 id="empathize">Empathize (stage 1)</h2>
-  <table>
-    <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
-    <tbody>
-      <tr id="user-research"><td><code>user-research</code></td><td>Deep-dive a finding or design a study</td></tr>
-      <tr id="research-synthesis"><td><code>research-synthesis</code></td><td>Triangulate PostHog + Pendo + Dovetail</td></tr>
-      <tr id="synthesize-research"><td><code>synthesize-research</code></td><td>Affinity-map one corpus</td></tr>
-      <tr id="data-analyze"><td><code>data-analyze</code></td><td>Ad-hoc PostHog / Pendo questions</td></tr>
-    </tbody>
-  </table>
+    <h2 id="empathize">Empathize (stage 1)</h2>
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr id="user-research"><td><code>user-research</code></td><td>Deep-dive a finding or design a study</td></tr>
+        <tr id="research-synthesis"><td><code>research-synthesis</code></td><td>Triangulate PostHog + Pendo + Dovetail</td></tr>
+        <tr id="synthesize-research"><td><code>synthesize-research</code></td><td>Affinity-map one corpus</td></tr>
+        <tr id="data-analyze"><td><code>data-analyze</code></td><td>Ad-hoc PostHog / Pendo questions</td></tr>
+      </tbody>
+    </table>
 
-  <h2 id="define">Define (stage 2)</h2>
-  <table>
-    <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
-    <tbody>
-      <tr id="write-spec"><td><code>write-spec</code></td><td>Confirmed research → one-pager + UX Epic</td></tr>
-      <tr id="anti-sycophancy"><td><code>anti-sycophancy</code></td><td>Pressure-test framing</td></tr>
-      <tr id="brand-operator-ux-persona"><td><code>brand-operator-ux-persona</code></td><td>Brand-side JTBD lens</td></tr>
-      <tr id="creator-affiliate-ux-persona"><td><code>creator-affiliate-ux-persona</code></td><td>Partner / creator-affiliate lens</td></tr>
-      <tr id="design-system"><td><code>design-system</code></td><td>Styleguide + component library</td></tr>
-    </tbody>
-  </table>
+    <h2 id="define">Define (stage 2)</h2>
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr id="write-spec"><td><code>write-spec</code></td><td>Confirmed research → one-pager + UX Epic</td></tr>
+        <tr id="anti-sycophancy"><td><code>anti-sycophancy</code></td><td>Pressure-test framing</td></tr>
+        <tr id="brand-operator-ux-persona"><td><code>brand-operator-ux-persona</code></td><td>Brand-side JTBD lens</td></tr>
+        <tr id="creator-affiliate-ux-persona"><td><code>creator-affiliate-ux-persona</code></td><td>Partner / creator-affiliate lens</td></tr>
+        <tr id="design-system"><td><code>design-system</code></td><td>Styleguide + component library</td></tr>
+      </tbody>
+    </table>
 
-  <h2 id="ideate">Ideate (stage 3)</h2>
-  <table>
-    <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
-    <tbody>
-      <tr id="ideate"><td><code>ideate</code></td><td>Framing → ideation brief + tool routing</td></tr>
-      <tr id="ux-critique"><td><code>ux-critique</code></td><td>Coverage matrix: mocks vs spec</td></tr>
-      <tr id="prototype-handoff"><td><code>prototype-handoff</code></td><td>Exit pack after critique</td></tr>
-    </tbody>
-  </table>
+    <h2 id="ideate">Ideate (stage 3)</h2>
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr id="ideate"><td><code>ideate</code></td><td>Framing → ideation brief + tool routing</td></tr>
+        <tr id="ux-critique"><td><code>ux-critique</code></td><td>Coverage matrix: mocks vs spec</td></tr>
+        <tr id="prototype-handoff"><td><code>prototype-handoff</code></td><td>Exit pack after critique</td></tr>
+      </tbody>
+    </table>
 
-  <h2 id="prototype">Prototype (stage 4)</h2>
-  <table>
-    <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
-    <tbody>
-      <tr id="brand-prototype"><td><code>brand-prototype</code></td><td>One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)</td></tr>
-      <tr id="partner-prototype"><td><code>partner-prototype</code></td><td>One prompt → Partner UI shell (<code>localhost:5173/</code>)</td></tr>
-    </tbody>
-  </table>
-  <p class="muted">Prototype skills run <code>scripts/bootstrap.sh</code> — clone, <code>npm ci</code>, start Vite. Cursor preferred.</p>
-
-  <p style="margin-top:3rem" class="muted"><a href="../">← Research reports</a></p>
+    <h2 id="prototype">Prototype (stage 4)</h2>
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr id="brand-prototype"><td><code>brand-prototype</code></td><td>One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)</td></tr>
+        <tr id="partner-prototype"><td><code>partner-prototype</code></td><td>One prompt → Partner UI shell (<code>localhost:5173/</code>)</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Prototype skills run <code>scripts/bootstrap.sh</code> — clone, <code>npm ci</code>, start Vite. Cursor preferred.</p>
+  </main>
 </body>
 </html>

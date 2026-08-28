@@ -363,19 +363,26 @@ def report_nav_html(
     *,
     listing_href: str = "",
     affinity_href: str = "",
+    skills_href: str = "",
+    brand_href: str = "",
 ) -> str:
-    """Top bar with Listing | Affinity. Prefer explicit hrefs from caller."""
+    """Top bar: Research | Affinity | Skills (Styleguide V2 tokens via shared CSS)."""
     listing = listing_href or f"./{week}.html"
     affinity = affinity_href or f"./{week}-affinity.html"
+    skills = skills_href or "../skills/"
+    brand = brand_href or listing
     return (
         f'<header class="top-nav" role="banner">'
         f'<div class="top-nav-inner">'
-        f'<a class="top-nav-brand" href="{_esc(listing)}">UX Research Monitor</a>'
-        f'<nav class="report-nav" aria-label="Report views">'
+        f'<a class="top-nav-brand" href="{_esc(brand)}">'
+        f'UX DesignOps <span class="brand-byline">· impact.com</span></a>'
+        f'<nav class="report-nav" aria-label="Site sections">'
         f'<a class="nav-link{" is-active" if active == "listing" else ""}" '
-        f'href="{_esc(listing)}" data-nav="listing">Listing</a>'
+        f'href="{_esc(listing)}" data-nav="listing">Research</a>'
         f'<a class="nav-link{" is-active" if active == "affinity" else ""}" '
         f'href="{_esc(affinity)}" data-nav="affinity">Affinity</a>'
+        f'<a class="nav-link{" is-active" if active == "skills" else ""}" '
+        f'href="{_esc(skills)}" data-nav="skills">Skills</a>'
         f"</nav>"
         f"</div>"
         f"</header>"
@@ -392,8 +399,12 @@ def report_nav_hrefs(week: str, *, at_root: bool = False) -> Dict[str, str]:
         return {
             "listing": "./",
             "affinity": f"./reports/{week}-affinity.html",
+            "skills": "./skills/",
+            "brand": "./",
         }
     return {
         "listing": f"./{week}.html",
         "affinity": f"./{week}-affinity.html",
+        "skills": "../skills/",
+        "brand": "../",
     }
