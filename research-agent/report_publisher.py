@@ -1592,9 +1592,9 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     .ask-status {{ margin: 0; color: #067647; font-size: 0.82rem; }}
     .ask-tips {{ margin: 0; padding-left: 18px; color: var(--muted); font-size: 0.8rem; }}
     .ask-tips li {{ margin-bottom: 4px; }}
-    .slideout-backdrop {{ position: fixed; inset: 0; background: rgba(16,24,40,0.45); z-index: 100; opacity: 1; transition: opacity 0.2s; }}
+    .slideout-backdrop {{ position: fixed; inset: 0; background: rgba(16,24,40,0.45); z-index: 1100; opacity: 1; transition: opacity 0.2s; }}
     .slideout-backdrop.hidden {{ display: none; }}
-    .slideout {{ position: fixed; top: 0; right: 0; height: 100%; width: var(--slideout-width); background: var(--card); z-index: 101; box-shadow: -8px 0 32px rgba(16,24,40,0.12); transform: translateX(100%); transition: transform 0.25s ease; display: flex; flex-direction: column; }}
+    .slideout {{ position: fixed; top: 0; right: 0; height: 100%; width: var(--slideout-width); background: var(--card); z-index: 1101; box-shadow: -8px 0 32px rgba(16,24,40,0.12); transform: translateX(100%); transition: transform 0.25s ease; display: flex; flex-direction: column; }}
     .slideout.open {{ transform: translateX(0); }}
     .slideout-header {{ padding: 20px 20px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0; }}
     .slideout-header h2 {{ margin: 0 0 6px; font-size: 1.1rem; line-height: 1.35; padding-right: 32px; }}
@@ -1860,9 +1860,9 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
     .filters label {{ display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; color: var(--muted); font-weight: 500; }}
     .filters select {{ font: inherit; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text); }}
     .aff-card.is-filtered-out, .aff-theme.is-filtered-out {{ display: none; }}
-    .slideout-backdrop {{ position: fixed; inset: 0; background: rgba(16,24,40,0.45); z-index: 100; }}
+    .slideout-backdrop {{ position: fixed; inset: 0; background: rgba(16,24,40,0.45); z-index: 1100; }}
     .slideout-backdrop.hidden {{ display: none; }}
-    .slideout {{ position: fixed; top: 0; right: 0; height: 100%; width: var(--slideout-width); background: var(--card); z-index: 101; box-shadow: -8px 0 32px rgba(16,24,40,0.12); transform: translateX(100%); transition: transform 0.25s ease; display: flex; flex-direction: column; }}
+    .slideout {{ position: fixed; top: 0; right: 0; height: 100%; width: var(--slideout-width); background: var(--card); z-index: 1101; box-shadow: -8px 0 32px rgba(16,24,40,0.12); transform: translateX(100%); transition: transform 0.25s ease; display: flex; flex-direction: column; }}
     .slideout.open {{ transform: translateX(0); }}
     .slideout-header {{ padding: 20px 20px 12px; border-bottom: 1px solid var(--border); position: relative; }}
     .slideout-header h2 {{ margin: 0 0 6px; font-size: 1.1rem; line-height: 1.35; padding-right: 32px; }}

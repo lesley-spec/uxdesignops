@@ -52,10 +52,76 @@
       email: profile.email,
       hd: profile.hd || "",
       name: profile.name || "",
+      picture: profile.picture || "",
       expiresAt: Date.now() + hours * 60 * 60 * 1000,
     };
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     return session;
+  }
+
+  function escapeAttr(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function initials(name, email) {
+    var parts = String(name || "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return String(email || "?").slice(0, 1).toUpperCase();
+  }
+
+  function ensureNavUserSlot() {
+    var actions = document.querySelector(".top-nav-actions");
+    if (!actions || document.getElementById("designops-nav-user")) return;
+    var slot = document.createElement("div");
+    slot.id = "designops-nav-user";
+    slot.className = "designops-nav-user";
+    slot.hidden = true;
+    var toggle = document.getElementById("theme-toggle");
+    if (toggle) actions.insertBefore(slot, toggle);
+    else actions.appendChild(slot);
+  }
+
+  function renderNavUser(session) {
+    if (!session) return;
+    ensureNavUserSlot();
+    var slot = document.getElementById("designops-nav-user");
+    if (!slot) return;
+
+    var label = session.name || session.email;
+    var avatarHtml = session.picture
+      ? (
+        '<img class="designops-nav-avatar" src="' + escapeAttr(session.picture) + '" alt="" '
+        + 'referrerpolicy="no-referrer" width="32" height="32">'
+      )
+      : (
+        '<span class="designops-nav-avatar designops-nav-avatar-fallback" aria-hidden="true">'
+        + escapeAttr(initials(session.name, session.email))
+        + "</span>"
+      );
+
+    slot.innerHTML =
+      '<span class="designops-nav-user-inner" title="' + escapeAttr(session.email) + '">'
+      + avatarHtml
+      + '<span class="designops-nav-user-label">' + escapeAttr(label) + "</span>"
+      + "</span>";
+    slot.hidden = false;
+  }
+
+  function clearNavUser() {
+    var slot = document.getElementById("designops-nav-user");
+    if (!slot) return;
+    slot.hidden = true;
+    slot.innerHTML = "";
   }
 
   function els() {
@@ -81,6 +147,7 @@
   function showDenied(email) {
     var ui = els();
     setLocked(true);
+    clearNavUser();
     if (ui.gate) ui.gate.hidden = true;
     if (ui.denied) ui.denied.hidden = false;
     var deniedStatus = document.getElementById("designops-auth-status-denied");
@@ -94,6 +161,7 @@
     setLocked(false);
     if (ui.gate) ui.gate.hidden = true;
     if (ui.denied) ui.denied.hidden = true;
+    renderNavUser(readSession());
   }
 
   function showConfigError() {
@@ -128,6 +196,7 @@
       email: profile.email,
       hd: profile.hd,
       name: profile.name,
+      picture: profile.picture,
     });
     unlock();
   }
@@ -174,6 +243,7 @@
       return;
     }
 
+    clearNavUser();
     showGate();
 
     if (!clientId) {
