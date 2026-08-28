@@ -340,7 +340,7 @@ def render_skills_index(manifest: dict) -> str:
       {top_nav_brand_html("../")}
       <div class="top-nav-actions">
         <nav class="report-nav" aria-label="Site sections">
-          <a class="nav-link" href="../" data-nav="pipeline">Pipeline</a>
+          <a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a>
           <a class="nav-link" href="../research/" data-nav="listing">Research</a>
           <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
           <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>

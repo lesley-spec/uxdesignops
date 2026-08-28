@@ -467,7 +467,7 @@ def report_nav_html(
     pipeline_href: str = "",
     brand_href: str = "",
 ) -> str:
-    """Top bar: Pipeline (home) | Research | Affinity | Skills."""
+    """Top bar: Design Thinking Pipeline (home) | Research | Affinity | Skills."""
     listing = listing_href or f"./{week}.html"
     affinity = affinity_href or f"./{week}-affinity.html"
     skills = skills_href or "../skills/"
@@ -480,7 +480,7 @@ def report_nav_html(
         f'<div class="top-nav-actions">'
         f'<nav class="report-nav" aria-label="Site sections">'
         f'<a class="nav-link{" is-active" if active == "pipeline" else ""}" '
-        f'href="{_esc(pipeline)}" data-nav="pipeline">Pipeline</a>'
+        f'href="{_esc(pipeline)}" data-nav="pipeline">Design Thinking Pipeline</a>'
         f'<a class="nav-link{" is-active" if active == "listing" else ""}" '
         f'href="{_esc(listing)}" data-nav="listing">Research</a>'
         f'<a class="nav-link{" is-active" if active == "affinity" else ""}" '
