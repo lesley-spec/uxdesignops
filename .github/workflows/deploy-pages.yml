@@ -6,6 +6,7 @@ on:
     paths:
       - "research-agent/docs/research/**"
       - "research-agent/publish_skills.py"
+      - "research-agent/scripts/write_auth_config.py"
       - ".agents/skills/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
