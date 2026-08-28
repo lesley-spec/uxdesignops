@@ -21,6 +21,7 @@ from affinity_board import (
     build_affinity_cards,
     designops_assets_hrefs,
     designops_theme_boot_script,
+    github_actions_workflow_url,
     group_affinity_board,
     render_affinity_board_html,
     report_nav_html,
@@ -1468,6 +1469,23 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
         f"{GITHUB_PAGES_URL}/" if (GITHUB_PAGES_URL and at_root)
         else (f"{GITHUB_PAGES_URL}/reports/{week}.html" if GITHUB_PAGES_URL else "")
     )
+    workflow_url = github_actions_workflow_url(pages_url=GITHUB_PAGES_URL)
+    if at_root:
+        page_actions_html = (
+            f'<p class="page-actions">'
+            f'<a class="view-switch-link" href="{_esc(hrefs["affinity"])}">Open Affinity board →</a>'
+            f'<a class="run-workflow-btn" href="{_esc(workflow_url)}" target="_blank" '
+            f'rel="noopener noreferrer" '
+            f'title="Opens GitHub Actions — click Run workflow to refresh this report">'
+            f"Run Workflow</a>"
+            f"</p>"
+            f'<p class="run-workflow-hint muted">Manual override: opens GitHub Actions to run the Research Insight Agent (quarterly schedule otherwise).</p>'
+        )
+    else:
+        page_actions_html = (
+            f'<p class="view-switch"><a class="view-switch-link" href="{_esc(hrefs["affinity"])}">'
+            f"Open Affinity board →</a></p>"
+        )
     voice_cards = collect_user_report_cards(payload, limit=200)
     voice_written = len([
         c for c in voice_cards
@@ -1599,7 +1617,7 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     <header class="page-header">
       <h1>UX Research Insight Monitor</h1>
       <p class="sub">{_esc(period_label)} ({_esc(period_start)} → {_esc(period_end)}) · {total_items} items · {synthesized} AI analyzed · Generated {_esc(payload.get("generated_at", ""))}</p>
-      <p class="view-switch"><a class="view-switch-link" href="{_esc(hrefs['affinity'])}">Open Affinity board →</a></p>
+      {page_actions_html}
     </header>
 
     {filter_bar_html}

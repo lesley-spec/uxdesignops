@@ -475,6 +475,37 @@ h2 {
   color: var(--text-interactive-hover);
 }
 
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 0;
+  align-items: center;
+}
+
+.run-workflow-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9rem;
+  background: var(--interactive-default);
+  border: 1px solid var(--interactive-default);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.run-workflow-btn:hover {
+  background: var(--interactive-hover);
+  border-color: var(--interactive-hover);
+  color: #ffffff;
+}
+
+.run-workflow-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+}
+
 .ask-fab {
   position: fixed;
   right: 20px;

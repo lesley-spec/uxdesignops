@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import html
+import os
+import re
 from typing import Any, Dict, List
 
 from issue_taxonomy import (
@@ -431,6 +433,24 @@ def report_nav_html(
         f"</div>"
         f"</header>"
     )
+
+
+def github_actions_workflow_url(
+    workflow_file: str = "research-agent.yml",
+    *,
+    pages_url: str = "",
+) -> str:
+    """Link to GitHub Actions workflow page for manual workflow_dispatch runs."""
+    base = (
+        pages_url
+        or os.environ.get("GITHUB_PAGES_URL", "")
+        or "https://lesley-spec.github.io/uxdesignops"
+    ).rstrip("/")
+    match = re.match(r"https?://([^.]+)\.github\.io/([^/]+)", base)
+    if match:
+        owner, repo = match.group(1), match.group(2)
+        return f"https://github.com/{owner}/{repo}/actions/workflows/{workflow_file}"
+    return f"https://github.com/lesley-spec/uxdesignops/actions/workflows/{workflow_file}"
 
 
 def report_nav_hrefs(week: str, *, at_root: bool = False) -> Dict[str, str]:
