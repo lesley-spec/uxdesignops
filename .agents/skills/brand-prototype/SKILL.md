@@ -1,0 +1,118 @@
+---
+name: brand-prototype
+description: >-
+  Auto-sets up the impact.com Brand UI prototype shell on the designer's
+  machine: clones the public Brand template, installs deps, starts Vite.
+  Use when the user says brand-prototype, Brand UI shell, Brand prototype, or
+  wants a running Brand prototype after Ideate mocks / prototype-handoff.
+  Primary harness: Cursor (also Claude Code with shell). Figma Make cannot
+  clone repos — skill routes Make to a clear fallback.
+license: Proprietary
+metadata:
+  stage: prototype
+  pipeline: impact-ux-designops
+  author: impact.com-ux
+  figjam-agent: Prototype Scaffolder
+---
+
+# Brand prototype (shell bootstrap)
+
+**One invocation → running Brand UI shell.** Do not ask the designer to clone,
+install, or configure anything unless a prerequisite is missing (git / Node).
+
+This skill **only** bootstraps the shell. Building mocks into screens is a
+follow-on step in the same Cursor chat after READY.
+
+## Integrity
+
+1. **Run the bootstrap script** — do not improvise `mkdir` / `git clone` / `npm`
+   steps by hand unless the script is missing.
+2. Templates are **Vite + React** (Figma Make–origin bundles), **not** Next.js.
+3. Do **not** claim Figma Make can `git clone` or run this script. Be honest.
+4. After READY, move the Cursor workspace to the project path when possible.
+
+## When to use
+
+- “Use `brand-prototype`” / `/brand-prototype`
+- Designer ready to prototype Brand-side after mocks / `prototype-handoff`
+- Need the real Brand chrome + Styleguide-aligned shell locally
+
+## Hard requirements (agent must check)
+
+| Need | Why |
+|---|---|
+| Shell / terminal | Script runs locally |
+| `git`, `node` 18+, `npm` | Clone + install |
+| Network to GitHub | Public repo, no auth |
+
+If any are missing → stop with a plain-English fix (install Node / open in Cursor), not a partial setup.
+
+## Workflow (Cursor / Claude Code)
+
+1. **Locate script** —  
+   `.agents/skills/brand-prototype/scripts/bootstrap.sh`  
+   (or `.cursor/skills/brand-prototype/scripts/bootstrap.sh` via symlink).
+2. **Run it** (request full permissions / network if the harness asks):
+
+   ```bash
+   bash "/absolute/path/to/brand-prototype/scripts/bootstrap.sh"
+   ```
+
+   Optional flags: `--no-dev` (skip Vite), `--reclone` (wipe + fresh clone),  
+   `--parent ~/other/folder`.
+3. **Parse READY** — look for `IMPACT_PROTOTYPE_READY shell=brand path=… url=…`.
+4. **Cursor only** — call `move_agent_to_root` with that `path` so the designer
+   is inside the prototype project.
+5. **Confirm** — tell the designer the folder path + open the printed URL
+   (Brand default `http://localhost:5174/one-program-1/` — template uses a Vite base path).
+6. **Stop** — shell is ready. Wait for mock links / “build this flow” before
+   editing UI. Point Styleguide work at `design-system`.
+
+Default install location:
+
+`~/Documents/impact-prototypes/brand-ui`
+
+Override with `IMPACT_PROTOTYPE_HOME` or `--parent`.
+
+## Harness matrix
+
+See [references/harnesses.md](references/harnesses.md).
+
+| Harness | What to do |
+|---|---|
+| **Cursor** | Run script → `move_agent_to_root` → confirm URL. Preferred. |
+| **Claude Code** | Run script → tell user to open the path in the IDE → confirm URL. |
+| **Figma Make** | **Cannot** run bootstrap. Follow Make fallback in harnesses.md — do not fake a clone. |
+| **Claude chat (no shell)** | Tell user to open this repo in **Cursor** and say `use brand-prototype`. |
+
+## Template facts (do not invent)
+
+| | |
+|---|---|
+| Repo | https://github.com/lesley-spec/one-program-1.git (public) |
+| Stack | Vite · React · `npm run dev` |
+| Source design | https://www.figma.com/design/rwAqBrLfwQy8cLyfi2tm3Y/Brand-UI---Impact.com |
+| Entry | `index.html` + `src/` |
+| Note | Repo is **large**; first clone can take several minutes. Say so up front. |
+
+## Prompt examples
+
+1. `Use brand-prototype — set up the Brand shell for me.`
+2. `Use brand-prototype after prototype-handoff; then we'll drop in these Figma mocks: [link].`
+3. `Brand prototype isn't running — re-run brand-prototype with a clean setup.`  
+   → run bootstrap with `--reclone`.
+
+## Anti-patterns
+
+- Pasting multi-step git/npm instructions for the designer to run manually when the script exists
+- Describing a Next.js / `src/pages` layout that this template does not have
+- Claiming success in Figma Make without a running local shell
+- Editing product UI before bootstrap prints READY
+- Blocking on “where should I put the folder?” — use the default parent unless they specify
+
+## Success criteria
+
+- [ ] Script exited 0
+- [ ] `IMPACT_PROTOTYPE_READY` printed with path + url
+- [ ] Designer can open the URL and see Brand UI chrome
+- [ ] (Cursor) Workspace root is the prototype folder
