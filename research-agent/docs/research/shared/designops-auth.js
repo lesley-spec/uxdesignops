@@ -52,6 +52,8 @@
       email: profile.email,
       hd: profile.hd || "",
       name: profile.name || "",
+      givenName: profile.given_name || profile.givenName || "",
+      familyName: profile.family_name || profile.familyName || "",
       picture: profile.picture || "",
       expiresAt: Date.now() + hours * 60 * 60 * 1000,
     };
@@ -59,16 +61,19 @@
     return session;
   }
 
-  function escapeAttr(value) {
-    return String(value || "")
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
+  function googlePictureUrl(session) {
+    var url = String((session && session.picture) || "").trim();
+    return url || null;
   }
 
-  function initials(name, email) {
-    var parts = String(name || "")
+  function initials(session) {
+    var given = String((session && session.givenName) || "").trim();
+    var family = String((session && session.familyName) || "").trim();
+    if (given && family) {
+      return (given[0] + family[0]).toUpperCase();
+    }
+
+    var parts = String((session && session.name) || "")
       .trim()
       .split(/\s+/)
       .filter(Boolean);
@@ -76,7 +81,40 @@
       return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
     }
     if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-    return String(email || "?").slice(0, 1).toUpperCase();
+
+    var email = String((session && session.email) || "").trim();
+    if (email) {
+      var local = email.split("@")[0] || "";
+      if (local.length >= 2) return local.slice(0, 2).toUpperCase();
+      if (local.length === 1) return local.toUpperCase();
+    }
+    return "?";
+  }
+
+  function createInitialsAvatar(session) {
+    var span = document.createElement("span");
+    span.className = "designops-nav-avatar designops-nav-avatar-fallback";
+    span.setAttribute("aria-hidden", "true");
+    span.textContent = initials(session);
+    return span;
+  }
+
+  function createNavAvatar(session) {
+    var pictureUrl = googlePictureUrl(session);
+    if (!pictureUrl) return createInitialsAvatar(session);
+
+    var img = document.createElement("img");
+    img.className = "designops-nav-avatar";
+    img.src = pictureUrl;
+    img.alt = "";
+    img.referrerPolicy = "no-referrer";
+    img.width = 32;
+    img.height = 32;
+    img.addEventListener("error", function onAvatarError() {
+      img.removeEventListener("error", onAvatarError);
+      img.replaceWith(createInitialsAvatar(session));
+    });
+    return img;
   }
 
   function ensureNavUserSlot() {
@@ -98,22 +136,16 @@
     if (!slot) return;
 
     var label = session.name || session.email;
-    var avatarHtml = session.picture
-      ? (
-        '<img class="designops-nav-avatar" src="' + escapeAttr(session.picture) + '" alt="" '
-        + 'referrerpolicy="no-referrer" width="32" height="32">'
-      )
-      : (
-        '<span class="designops-nav-avatar designops-nav-avatar-fallback" aria-hidden="true">'
-        + escapeAttr(initials(session.name, session.email))
-        + "</span>"
-      );
-
-    slot.innerHTML =
-      '<span class="designops-nav-user-inner" title="' + escapeAttr(session.email) + '">'
-      + avatarHtml
-      + '<span class="designops-nav-user-label">' + escapeAttr(label) + "</span>"
-      + "</span>";
+    slot.innerHTML = "";
+    var inner = document.createElement("span");
+    inner.className = "designops-nav-user-inner";
+    inner.title = session.email || "";
+    inner.appendChild(createNavAvatar(session));
+    var nameEl = document.createElement("span");
+    nameEl.className = "designops-nav-user-label";
+    nameEl.textContent = label;
+    inner.appendChild(nameEl);
+    slot.appendChild(inner);
     slot.hidden = false;
   }
 
@@ -196,6 +228,8 @@
       email: profile.email,
       hd: profile.hd,
       name: profile.name,
+      given_name: profile.given_name,
+      family_name: profile.family_name,
       picture: profile.picture,
     });
     unlock();
