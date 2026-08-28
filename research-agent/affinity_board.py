@@ -5,6 +5,7 @@ from __future__ import annotations
 import html
 import os
 import re
+from pathlib import Path
 from typing import Any, Dict, List
 
 from issue_taxonomy import (
@@ -437,6 +438,25 @@ def theme_toggle_html() -> str:
     )
 
 
+def impact_logo_markup() -> str:
+    """Inline impact wordmark so currentColor follows light/dark theme."""
+    logo_path = Path(__file__).resolve().parent / "docs" / "research" / "shared" / "impact-logo.svg"
+    svg = logo_path.read_text(encoding="utf-8").strip()
+    svg = svg.replace(
+        'role="img" aria-label="impact"',
+        'class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false"',
+    )
+    return svg
+
+
+def top_nav_brand_html(brand_href: str) -> str:
+    return (
+        f'<a class="top-nav-brand" href="{_esc(brand_href)}">'
+        f"{impact_logo_markup()}"
+        f'<span class="top-nav-brand-text">UX DesignOps</span></a>'
+    )
+
+
 def report_nav_html(
     week: str,
     active: str,
@@ -456,8 +476,7 @@ def report_nav_html(
     return (
         f'<header class="top-nav" role="banner">'
         f'<div class="top-nav-inner">'
-        f'<a class="top-nav-brand" href="{_esc(brand)}">'
-        f'UX DesignOps <span class="brand-byline">· impact.com</span></a>'
+        f"{top_nav_brand_html(brand)}"
         f'<div class="top-nav-actions">'
         f'<nav class="report-nav" aria-label="Site sections">'
         f'<a class="nav-link{" is-active" if active == "pipeline" else ""}" '

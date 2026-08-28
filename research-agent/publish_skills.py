@@ -13,7 +13,7 @@ from pathlib import Path
 
 AGENT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(AGENT_DIR))
-from affinity_board import designops_auth_gate_html, designops_auth_head_scripts
+from affinity_board import designops_auth_gate_html, designops_auth_head_scripts, top_nav_brand_html
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_SRC = REPO_ROOT / ".agents" / "skills"
@@ -337,7 +337,7 @@ def render_skills_index(manifest: dict) -> str:
   {auth_gate_html}
   <header class="top-nav" role="banner">
     <div class="top-nav-inner">
-      <a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a>
+      {top_nav_brand_html("../")}
       <div class="top-nav-actions">
         <nav class="report-nav" aria-label="Site sections">
           <a class="nav-link" href="../" data-nav="pipeline">Pipeline</a>
