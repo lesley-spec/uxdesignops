@@ -51,4 +51,4 @@ for skill_dir in "$TMP/extract"/*/; do
 done
 
 echo "✓ Installed $count skills into $DEST ($HARNESS harness)"
-echo "  Invoke in chat, e.g. use write-spec · use ideate · use test-plan"
+echo "  Invoke in chat, e.g. use design-thinking-ux · use write-spec · use ideate · use test-plan"

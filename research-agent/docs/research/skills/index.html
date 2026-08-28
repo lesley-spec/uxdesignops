@@ -31,7 +31,6 @@
           <a class="nav-link" href="../research/" data-nav="listing">Research</a>
           <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
           <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
-          <a class="nav-link" href="../walkthroughs/2026-08-28-ups-step2.html" data-nav="walkthrough">Example</a>
         </nav>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
@@ -44,17 +43,22 @@
   <main class="wrap">
     <header class="page-header">
       <h1>Agent Skills</h1>
-      <p class="sub muted"><strong>17 portable skills</strong> for all five Design Thinking phases on the
-        <a href="../">UX DesignOps pipeline</a>.
+      <p class="sub muted"><strong>18 portable skills</strong> — start with the master skill
+        <code>design-thinking-ux</code>, which invokes Empathize through Test.
         Download the full pack below — no repo clone required.</p>
     </header>
+
+    <aside class="walkthrough-banner is-master">
+      <p><strong>Master skill.</strong> Start every full run with <code>use design-thinking-ux</code> (Design Thinking UX). It asks intake questions and invokes Empathize → Define → Ideate → Prototype → Test. Phase skills below still work on their own.</p>
+      <a href="#design-thinking-ux">See design-thinking-ux</a>
+    </aside>
 
     <section class="skills-download" id="install" aria-labelledby="install-heading">
       <h2 id="install-heading">Download all skills</h2>
       <div class="skills-download-grid">
         <div class="skills-download-card">
           <h3>Zip pack</h3>
-          <p class="muted">All 17 skills — Empathize through Test.</p>
+          <p class="muted">All 18 skills — Empathize through Test.</p>
           <a class="skills-btn skills-btn-primary" href="./designops-skills.zip" download>Download designops-skills.zip</a>
         </div>
         <div class="skills-download-card">
@@ -72,12 +76,13 @@
       <table class="skills-table skills-harness-table">
         <thead><tr><th>Harness</th><th>Install path</th><th>Skills installed</th></tr></thead>
         <tbody>
-          <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code></td><td>17 (all phases)</td></tr>
-          <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td><td>17 (all phases)</td></tr>
-          <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>17 (all phases)</td></tr>
+          <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code></td><td>18 (all phases)</td></tr>
+          <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td><td>18 (all phases)</td></tr>
+          <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>18 (all phases)</td></tr>
         </tbody>
       </table>
-      <p class="muted">Invoke by name in chat, e.g. <code>use write-spec</code>, <code>use ideate</code>, <code>use test-plan</code>.
+      <p class="muted">Start a full run with <code>use design-thinking-ux</code>, or invoke a phase skill
+        (<code>use write-spec</code>, <code>use ideate</code>, <code>use test-plan</code>).
         Persona and design-system skills appear in multiple phases — install once, reuse everywhere.
         <a href="./pack/README.md">Pack README</a> · <a href="./manifest.json">manifest.json</a></p>
     </section>
@@ -85,12 +90,22 @@
     <div class="skills-jump">
       <strong>Jump:</strong>
       <a href="#install">Install</a> ·
+      <a href="#pipeline">Start here</a> ·
       <a href="#empathize">Empathize</a> ·
       <a href="#define">Define</a> ·
       <a href="#ideate">Ideate</a> ·
       <a href="#prototype">Prototype</a> ·
       <a href="#test">Test</a>
     </div>
+
+    <h2 id="pipeline">Start here (master)</h2>
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
+      <tbody>
+        <tr id="design-thinking-ux"><td><code>design-thinking-ux</code></td><td>Master skill — guided Empathize → Test; invokes phase skills</td><td class="dl"><a href="./pack/design-thinking-ux/">Browse</a> · <a href="./pack/design-thinking-ux/SKILL.md">SKILL.md</a></td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Invoke <code>design-thinking-ux</code> first for a full run. It asks intake questions and loads the phase skill — you do not type each child skill unless you want a single step.</p>
 
     <h2 id="empathize">Empathize (stage 1)</h2>
     <table class="skills-table">

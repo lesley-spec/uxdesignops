@@ -4,6 +4,14 @@ Portable [Agent Skills](https://agentskills.io/specification) for the [UX Design
 
 Canonical source: `.agents/skills/` (open standard). Cursor discovers them via symlinks in `.cursor/skills/`.
 
+## Start here (master)
+
+| Skill | Use when |
+|---|---|
+| `design-thinking-ux` | Guided run Empathize → Test: intake questions, then the orchestrator **invokes** the phase skills (research, write-spec / tickets, ideate, prototype shells, test-plan). First skill to load for a full pipeline. |
+
+Phase skills below still work on their own. The master skill is for “take me through the process.”
+
 ## Empathize (stage 1)
 
 | Skill | Use when |
@@ -54,7 +62,7 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 | `partner-prototype` | One prompt → clone Partner UI shell, `npm install`, start Vite (Cursor preferred) |
 | `design-system` | After shell is up, when mapping mocks to Styleguide V2 |
 
-**Agent (on-demand):** Prototype Scaffolder — today these two shell skills; orchestrator `prototype` skill can come later.
+**Agent (on-demand):** Prototype Scaffolder — `brand-prototype` / `partner-prototype`. The master skill `design-thinking-ux` invokes the matching shell after Ideate handoff.
 
 **How it works:** Each skill ships `scripts/bootstrap.sh`. The agent **runs the script** (does not hand the designer a git/npm checklist). Default folders: `~/Documents/impact-prototypes/brand-ui` and `…/partner-ui`.
 
@@ -83,7 +91,7 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 
 ## Install in any harness
 
-**Download all 17 skills (all phases):** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
+**Download all 18 skills (master + all phases):** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
 
 One-command install (Cursor example — installs every skill):
 
@@ -106,7 +114,7 @@ mkdir -p .claude/skills
 ln -sfn ../../.agents/skills/write-spec .claude/skills/write-spec
 ```
 
-Invoke by name, e.g. “use `write-spec` on this confirmed finding” or “use `ideate` on UX-1234” or “run `ux-critique` before handoff” or “use `brand-prototype`” / “use `partner-prototype`” or “use `test-plan` on [prototype link]”.
+Invoke by name, e.g. “use `design-thinking-ux`” for the full pipeline, or a phase skill: “use `write-spec` on this confirmed finding” / “use `ideate` on UX-1234” / “run `ux-critique` before handoff” / “use `brand-prototype`” / “use `partner-prototype`” / “use `test-plan` on [prototype link]”.
 
 ```bash
 # Prototype shells (also symlink for Cursor)

@@ -1,9 +1,18 @@
 {
-  "generated_at": "2026-08-28T02:42:35Z",
-  "count": 17,
+  "generated_at": "2026-08-28T18:59:28Z",
+  "count": 18,
   "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip",
   "install_script": "https://lesley-spec.github.io/uxdesignops/skills/install.sh",
   "skills": [
+    {
+      "name": "design-thinking-ux",
+      "stage": "pipeline",
+      "description": "Master orchestrator for the impact.com UX Design Thinking pipeline. Walks a designer Empathize \u2192 Define \u2192 Ideate \u2192 Prototype \u2192 Test: asks intake questions, invokes the phase skills (research, write-spec, tickets, ideate, prototype shells, test-plan), and stops at each human gate. Use when the user says Design Thinking UX, design-thinking-ux, start the pipeline, take me through design thinking, walk me through Empathize to Test, or wants a guided run from research through usability testing.",
+      "figjam_agent": "Design Thinking Pipeline",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-thinking-ux/",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-thinking-ux/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/design-thinking-ux"
+    },
     {
       "name": "data-analyze",
       "stage": "empathize",
@@ -80,7 +89,7 @@
       "name": "write-spec",
       "stage": "define",
       "description": "Turns confirmed Empathize research into an impact.com UX one-pager and linked UX Jira epic (Confluence draft + research context). Use for Define-stage problem framing, write-spec, one-pager, PRD draft, or Problem Definition Generator handoffs after \u201cproblem worth solving.\u201d",
-      "figjam_agent": "",
+      "figjam_agent": "Problem Definition Generator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/write-spec/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/write-spec/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/write-spec"
@@ -89,7 +98,7 @@
       "name": "ideate",
       "stage": "ideate",
       "description": "Starts Ideate from framing (one-pager/PRD preferred; epic, tickets, Granola, or notes OK): prompts for fidelity/tool, emits an ideation brief, and seeds wireframe or mock directions. Use for Ideate-stage divergence, solution brainstorming, wireframes, mock variations, or Solution Ideator handoffs.",
-      "figjam_agent": "",
+      "figjam_agent": "Solution Ideator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ideate/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ideate/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ideate"
@@ -98,7 +107,7 @@
       "name": "prototype-handoff",
       "stage": "ideate",
       "description": "Packages a chosen Ideate direction into a Prototype handoff pack after ux-critique: decision, mock links, coverage report, open questions, DS notes, and epic/one-pager links. Use when the designer is happy with mocks and ready to leave Ideate for Prototype.",
-      "figjam_agent": "",
+      "figjam_agent": "Solution Ideator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/prototype-handoff/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/prototype-handoff/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/prototype-handoff"
@@ -107,7 +116,7 @@
       "name": "ux-critique",
       "stage": "ideate",
       "description": "Checks Ideate mocks and concepts against one-pager, PRD, epic, tickets, and notes \u2014 coverage matrix plus solution-quality critique. Use mid-Ideate or before prototype-handoff or Test pre-flight when the designer asks to critique, pressure-test concepts, or confirm framing issues are covered (UX Critique agent).",
-      "figjam_agent": "",
+      "figjam_agent": "UX Critique",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-critique/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-critique/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-critique"
@@ -116,7 +125,7 @@
       "name": "brand-prototype",
       "stage": "prototype",
       "description": "Auto-sets up the impact.com Brand UI prototype shell on the designer's machine: clones the public Brand template, installs deps, starts Vite. Use when the user says brand-prototype, Brand UI shell, Brand prototype, or wants a running Brand prototype after Ideate mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with shell). Figma Make cannot clone repos \u2014 skill routes Make to a clear fallback.",
-      "figjam_agent": "",
+      "figjam_agent": "Prototype Scaffolder",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-prototype/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-prototype/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/brand-prototype"
@@ -125,7 +134,7 @@
       "name": "partner-prototype",
       "stage": "prototype",
       "description": "Auto-sets up the impact.com Partner UI prototype shell on the designer's machine: clones PartnerUI-shell, installs deps, starts Vite. Use when the user says partner-prototype, Partner UI shell, Partner prototype, or wants a running Partner / creator-affiliate prototype after Ideate mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with shell). Figma Make cannot clone repos \u2014 skill routes Make to a clear fallback.",
-      "figjam_agent": "",
+      "figjam_agent": "Prototype Scaffolder",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/partner-prototype/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/partner-prototype/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/partner-prototype"
@@ -143,7 +152,7 @@
       "name": "test-loopback",
       "stage": "test",
       "description": "Publishes Verified usability-test findings to Confluence and Jira as Empathize input after sessions complete. Use after Outset/Maze when the designer wants findings looped back to research context \u2014 not for synthetic pre-test output.",
-      "figjam_agent": "",
+      "figjam_agent": "Test Plan Generator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-loopback/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-loopback/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/test-loopback"
@@ -152,7 +161,7 @@
       "name": "test-plan",
       "stage": "test",
       "description": "Drafts Outset or Maze usability studies from a prototype plus one-pager success criteria; orchestrates synthetic pre-tests before recruiting. Use in Test stage after Prototype is ready, or when the designer asks for a test plan, study script, or session guide (Test Plan Generator).",
-      "figjam_agent": "",
+      "figjam_agent": "Test Plan Generator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-plan/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-plan/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/test-plan"

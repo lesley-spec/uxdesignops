@@ -1126,6 +1126,31 @@ html.dark .badge.badge-source {
   color: var(--text-invert);
 }
 
+.pipe-skill.is-master {
+  padding: 10px 12px;
+  border: 1px solid var(--pill-theme-border);
+  border-radius: 10px;
+  background: var(--pill-theme-bg);
+}
+
+.pipe-master-label {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pill-theme-text);
+  border: 1px solid var(--pill-theme-border);
+  vertical-align: middle;
+}
+
+.walkthrough-banner.is-master {
+  border-color: var(--interactive-default);
+}
+
 @media (max-width: 1200px) {
   .pipeline-board {
     display: flex;

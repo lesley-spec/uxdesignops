@@ -44,10 +44,15 @@
     <header class="page-header pipeline-lede">
       <div>
         <h1>Design Thinking Automation Pipeline</h1>
-        <p class="sub muted">impact.com UX DesignOps — Automate gathering, synthesis, and production. Keep human judgment at decision gates.</p>
+        <p class="sub muted">impact.com UX DesignOps — Start with the master skill <code>design-thinking-ux</code>. It walks Empathize → Test and invokes every phase skill. Keep human judgment at decision gates.</p>
       </div>
       <a class="figjam-link" href="https://www.figma.com/board/slhZ9uzMTmaekjmbEosyzb/UX-DesignOps?node-id=2-207">Open FigJam board</a>
     </header>
+
+    <aside class="walkthrough-banner is-master">
+      <p><strong>Master skill — start here.</strong> In Cursor or Claude, say <code>use Design Thinking UX</code>. It asks intake questions (do you have research? which audience?) then invokes the skills for each phase — research, write-spec / tickets, ideate, prototype shells, test-plan. You do not type each child skill unless you want a single step.</p>
+      <a href="./skills/#design-thinking-ux">Open design-thinking-ux</a>
+    </aside>
 
     <aside class="walkthrough-banner">
       <p><strong>Worked example (28 Aug 2026).</strong> A live run of Empathize → Test on UPS Step 2 drop-off — with the one-pager, epic, FigJam, Figma mocks, and Partner prototype this run produced.</p>
@@ -63,6 +68,7 @@
     </nav>
 
     <p class="pipeline-flow">
+      <strong>design-thinking-ux</strong> <span class="arrow">→</span>
       <strong>1 Empathize</strong> <span class="arrow">→</span>
       <strong>2 Define</strong> <span class="arrow">→</span>
       <strong>3 Ideate</strong> <span class="arrow">→</span>
@@ -91,10 +97,10 @@
           <section>
             <h3>How to use it</h3>
             <ol>
+              <li><strong>Prefer the master skill:</strong> “use Design Thinking UX” — it asks if you have research and invokes Empathize skills for you.</li>
               <li>Open the <a href="./research/">latest research report</a>.</li>
               <li>Connect the same MCPs in your harness (PostHog, Pendo, Dovetail, Outset, Confluence/Jira) — then use the skills to ask questions in Cursor, Claude, Figma Agent, or any Agent Skills client.</li>
-              <li>Install a skill folder into your harness skills path (see <a href="./skills/pack/README.md">Pack README</a>), then invoke by name — e.g. “use data-analyze: why is PublisherPro link gen dropping?”</li>
-              <li>Pick a finding and deep-dive / triangulate with the skill that fits.</li>
+              <li>Or invoke a single Empathize skill by name — e.g. “use data-analyze: why is PublisherPro link gen dropping?”</li>
               <li>At the human gate, confirm or reject “problem worth solving” before Define.</li>
             </ol>
           </section>
@@ -110,6 +116,12 @@
           </section>
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
+            <div class="pipe-skill is-master">
+              <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
+              <span class="pipe-master-label">Master</span>
+              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <p>Start here. Guided Empathize → Test — asks intake questions and invokes the skills in this stage.</p>
+            </div>
             <div class="pipe-skill">
               <a href="./skills/#user-research">user-research</a>
               <a class="dl" href="./skills/pack/user-research/SKILL.md">download</a>
@@ -133,7 +145,15 @@
           </section>
           <section>
             <h3>Try these prompts (validated)</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Live-tested against PostHog and the research pack. Copy into Cursor or Claude after installing skills.</p>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Live-tested against PostHog and the research pack. Copy into Cursor or Claude after installing skills. Prefer the master skill for a full run.</p>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">design-thinking-ux — master</span>
+                <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX — Partner UPS Step 2. I don’t have research yet; pull live data and walk me Empathize through Test. Stop at each human gate.">Copy</button>
+              </div>
+              <pre>Use Design Thinking UX — Partner UPS Step 2. I don’t have research yet; pull live data and walk me Empathize through Test. Stop at each human gate.</pre>
+              <p class="pipe-prompt-meta"><strong>Result:</strong> Master skill asks intake, then invokes Empathize → … → Test skills. <strong>Action:</strong> start here unless you only want one step.</p>
+            </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">data-analyze — try this</span>
@@ -209,8 +229,8 @@
           <section>
             <h3>How to use it</h3>
             <ol>
-              <li>Only after the Empathize gate: problem confirmed worth solving.</li>
-              <li>In Cursor/Claude: “use write-spec on [finding]” — it pulls FigJam, chats, and the research pack.</li>
+              <li>Only after the Empathize gate: problem confirmed worth solving — or let <code>design-thinking-ux</code> entice Define and invoke <code>write-spec</code>.</li>
+              <li>In Cursor/Claude: “use Design Thinking UX” (master) or “use write-spec on [finding]” — it pulls FigJam, chats, and the research pack.</li>
               <li>Review the draft one-pager (Brand + Partner lenses + anti-sycophancy).</li>
               <li>Confirm to publish: Confluence page in space <code>ux</code> + UX Epic with research links.</li>
               <li>When the Designer is happy with framing, chat with a PM before Ideate.</li>
@@ -219,10 +239,16 @@
           <section>
             <h3>Agent (on-demand)</h3>
             <p class="pipe-agent-name">Problem Definition Generator</p>
-            <p>Invoked via the <code>write-spec</code> skill. Drafts one-pager → on confirm creates Confluence (ux) + UX Epic with research context. Dual marketplace persona lenses. Does not auto-advance to Ideate.</p>
+            <p>Invoked by the master skill <code>design-thinking-ux</code> after the Empathize gate, or directly via <code>write-spec</code>. Drafts one-pager → on confirm creates Confluence (ux) + UX Epic with research context. Dual marketplace persona lenses. Does not auto-advance to Ideate.</p>
           </section>
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
+            <div class="pipe-skill is-master">
+              <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
+              <span class="pipe-master-label">Master</span>
+              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <p>Start here. After Empathize, it invokes write-spec, personas, and anti-sycophancy.</p>
+            </div>
             <div class="pipe-skill">
               <a href="./skills/#write-spec">write-spec</a>
               <a class="dl" href="./skills/pack/write-spec/SKILL.md">download</a>
@@ -251,7 +277,14 @@
           </section>
           <section>
             <h3>Try these prompts (validated)</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy-paste into Cursor/Claude with Atlassian and Figma MCPs connected.</p>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy-paste into Cursor/Claude with Atlassian and Figma MCPs connected. Prefer the master skill if you are already in a pipeline run.</p>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">design-thinking-ux — master</span>
+                <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX. Empathize gate is confirmed for Partner UPS Step 2 — take me through Define. Draft the one-pager; don’t create Confluence or Jira until I confirm.">Copy</button>
+              </div>
+              <pre>Use Design Thinking UX. Empathize gate is confirmed for Partner UPS Step 2 — take me through Define. Draft the one-pager; don’t create Confluence or Jira until I confirm.</pre>
+            </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">write-spec — try this</span>
@@ -315,22 +348,28 @@
           <section>
             <h3>How to use it</h3>
             <ol>
-              <li>After Designer + PM chat on framing (or explicit override).</li>
-              <li>In Cursor/Claude/Figma Agent: “use ideate on [epic/one-pager/notes]” — it pulls sources, asks fidelity/surface/# directions, then drafts a brief + starter concepts.</li>
+              <li>After Designer + PM chat on framing (or explicit override) — or continue from <code>design-thinking-ux</code>.</li>
+              <li>In Cursor/Claude/Figma Agent: “use Design Thinking UX” (master) or “use ideate on [epic/one-pager/notes]” — it pulls sources, asks fidelity/surface/# directions, then drafts a brief + starter concepts.</li>
               <li>On-brand mocks → Figma Make or Cursor + <code>design-system</code>; wires → Claude/FigJam; variations → Figma Agent or Google Stitch.</li>
-              <li>Mid-loop or before exit: “use ux-critique”.</li>
+              <li>Mid-loop or before exit: “use ux-critique” (the master skill invokes this before handoff).</li>
               <li>When happy with mocks: “use prototype-handoff”.</li>
             </ol>
           </section>
           <section>
             <h3>Agents (on-demand)</h3>
             <p class="pipe-agent-name">Solution Ideator</p>
-            <p>Invoked via the <code>ideate</code> skill. Ingests framing → ideation brief + tool routing → 3–5 directions. Does not pick a winner or auto-advance to Prototype.</p>
+            <p>Invoked by the master skill <code>design-thinking-ux</code> after Define, or directly via the <code>ideate</code> skill. Ingests framing → ideation brief + tool routing → 3–5 directions. Does not pick a winner or auto-advance to Prototype.</p>
             <p class="pipe-agent-name" style="margin-top:12px">UX Critique</p>
             <p>Invoked via <code>ux-critique</code>. Coverage matrix of mocks vs one-pager/PRD/epic/tickets/notes + solution quality. Required before <code>prototype-handoff</code>.</p>
           </section>
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
+            <div class="pipe-skill is-master">
+              <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
+              <span class="pipe-master-label">Master</span>
+              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <p>Start here. Invokes ideate, ux-critique, then prototype-handoff.</p>
+            </div>
             <div class="pipe-skill">
               <a href="./skills/#ideate">ideate</a>
               <a class="dl" href="./skills/pack/ideate/SKILL.md">download</a>
@@ -364,7 +403,14 @@
           </section>
           <section>
             <h3>Try these prompts</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy-paste into Cursor, Claude, or Figma Agent after installing skills. Prefer one-pager/PRD; notes OK.</p>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy-paste into Cursor, Claude, or Figma Agent after installing skills. Prefer one-pager/PRD; notes OK. Prefer the master skill for a full run.</p>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">design-thinking-ux — master</span>
+                <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX. We already have a one-pager and UX-642. Jump to Ideate — 3 wireframe directions, Partner audience.">Copy</button>
+              </div>
+              <pre>Use Design Thinking UX. We already have a one-pager and UX-642. Jump to Ideate — 3 wireframe directions, Partner audience.</pre>
+            </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">ideate — try this</span>
@@ -421,8 +467,8 @@
           <section>
             <h3>How to use it</h3>
             <ol>
-              <li>After <code>prototype-handoff</code> is confirmed.</li>
-              <li>In Cursor: “use brand-prototype” or “use partner-prototype”. Agent runs bootstrap automatically — no manual git/npm checklist.</li>
+              <li>After <code>prototype-handoff</code> is confirmed — or continue from <code>design-thinking-ux</code>.</li>
+              <li>In Cursor: “use Design Thinking UX” (master picks Brand vs Partner shell) or “use brand-prototype” / “use partner-prototype”. Agent runs bootstrap automatically — no manual git/npm checklist.</li>
               <li>Default folders: <code>~/Documents/impact-prototypes/brand-ui</code> and <code>…/partner-ui</code>.</li>
               <li>Brand opens <code>http://localhost:5174/one-program-1/</code> · Partner <code>http://localhost:5173/</code>.</li>
               <li>Then paste mock links + ask AI to implement screens. Use <code>design-system</code> for Styleguide V2.</li>
@@ -431,10 +477,16 @@
           <section>
             <h3>Agent (on-demand)</h3>
             <p class="pipe-agent-name">Prototype Scaffolder</p>
-            <p>Invoked via <code>brand-prototype</code> / <code>partner-prototype</code> today. Agent runs one bootstrap script, moves Cursor workspace to the shell, prints <code>IMPACT_PROTOTYPE_READY</code>. Orchestrator <code>prototype</code> skill later for mock → screen build.</p>
+            <p>Invoked by the master skill <code>design-thinking-ux</code> after Ideate handoff, or directly via <code>brand-prototype</code> / <code>partner-prototype</code>. Agent runs one bootstrap script, moves Cursor workspace to the shell, prints <code>IMPACT_PROTOTYPE_READY</code>.</p>
           </section>
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
+            <div class="pipe-skill is-master">
+              <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
+              <span class="pipe-master-label">Master</span>
+              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <p>Start here. Invokes brand-prototype or partner-prototype from audience.</p>
+            </div>
             <div class="pipe-skill">
               <a href="./skills/#brand-prototype">brand-prototype</a>
               <a class="dl" href="./skills/pack/brand-prototype/SKILL.md">download</a>
@@ -453,7 +505,14 @@
           </section>
           <section>
             <h3>Try these prompts</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy into Cursor after prototype-handoff. Agent should run the script — not paste git commands.</p>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy into Cursor after prototype-handoff. Agent should run the script — not paste git commands. Prefer the master skill if you are already in a pipeline run.</p>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">design-thinking-ux — master</span>
+                <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX. Handoff is confirmed for Partner UPS Step 2 — bootstrap the Partner prototype shell.">Copy</button>
+              </div>
+              <pre>Use Design Thinking UX. Handoff is confirmed for Partner UPS Step 2 — bootstrap the Partner prototype shell.</pre>
+            </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">brand-prototype</span>
@@ -510,19 +569,25 @@
           <section>
             <h3>How to use it</h3>
             <ol>
-              <li>After the Prototype gate (prototype URL ready).</li>
-              <li>In Cursor/Claude: “use test-plan on [prototype link]” — it runs synthetic pre-tests, then drafts an Outset/Maze study.</li>
+              <li>After the Prototype gate (prototype URL ready) — or continue from <code>design-thinking-ux</code>.</li>
+              <li>In Cursor/Claude: “use Design Thinking UX” (master) or “use test-plan on [prototype link]” — it runs synthetic pre-tests, then drafts an Outset/Maze study.</li>
               <li>Designer publishes to Outset/Maze; review all AI output before stakeholders.</li>
-              <li>After sessions: “use synthesize-research” on the corpus, then “use test-loopback” to Confluence/Jira.</li>
+              <li>After sessions: the master skill invokes <code>synthesize-research</code> then <code>test-loopback</code> — or call those skills directly.</li>
             </ol>
           </section>
           <section>
             <h3>Agent (on-demand)</h3>
             <p class="pipe-agent-name">Test Plan Generator</p>
-            <p>Invoked via the <code>test-plan</code> skill. Drafts studies after synthetic pre-tests. Requires designer review before publishing. Does not recruit or auto-share with stakeholders.</p>
+            <p>Invoked by the master skill <code>design-thinking-ux</code> after Prototype, or directly via the <code>test-plan</code> skill. Drafts studies after synthetic pre-tests. Requires designer review before publishing. Does not recruit or auto-share with stakeholders.</p>
           </section>
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
+            <div class="pipe-skill is-master">
+              <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
+              <span class="pipe-master-label">Master</span>
+              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <p>Start here. Invokes test-plan (pre-flight) and, after sessions, test-loopback.</p>
+            </div>
             <div class="pipe-skill">
               <a href="./skills/#test-plan">test-plan</a>
               <a class="dl" href="./skills/pack/test-plan/SKILL.md">download</a>
@@ -566,7 +631,14 @@
           </section>
           <section>
             <h3>Try these prompts (validated)</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy-paste into Cursor or Claude. Review AI drafts before stakeholders.</p>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy-paste into Cursor or Claude. Review AI drafts before stakeholders. Prefer the master skill if you are already in a pipeline run.</p>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">design-thinking-ux — master</span>
+                <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX. Prototype is ready at [prototype link] — take me through Test. Run pre-flight and draft an Outset study; don’t publish until I review.">Copy</button>
+              </div>
+              <pre>Use Design Thinking UX. Prototype is ready at [prototype link] — take me through Test. Run pre-flight and draft an Outset study; don’t publish until I review.</pre>
+            </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">test-plan — try this</span>

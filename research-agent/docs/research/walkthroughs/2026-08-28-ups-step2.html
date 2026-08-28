@@ -181,7 +181,7 @@
   <main class="wrap">
     <header class="page-header wt-lede">
       <h1>Worked example: Empathize → Test</h1>
-      <p class="sub muted">A real run of the Design Thinking automation pipeline on one research finding, so you can see what each stage produces — and what still needs a designer.</p>
+      <p class="sub muted">A real run of the Design Thinking automation pipeline on one research finding. Today you can start the same path with the master skill <code>design-thinking-ux</code> — it invokes each stage skill so you do not have to.</p>
       <div class="wt-meta">
         <span class="wt-pill warn">PIPELINE TEST · 28 Aug 2026</span>
         <span class="wt-pill info">Partner · UPS</span>
@@ -189,6 +189,11 @@
         <span class="wt-pill ok">Not a production roadmap item</span>
       </div>
     </header>
+
+    <aside class="walkthrough-banner is-master">
+      <p><strong>Replay this run.</strong> In Cursor: <code>use Design Thinking UX</code> — the master skill invokes every stage skill from Empathize through Test.</p>
+      <a href="../skills/#design-thinking-ux">Open design-thinking-ux</a>
+    </aside>
 
     <nav class="wt-jump" aria-label="Jump to stage">
       <a href="#finding"><span class="wt-dot" style="background:#25282f"></span>Finding</a>
@@ -272,6 +277,7 @@
       </header>
       <div class="wt-stage-body">
         <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
           <a class="wt-skill" href="../skills/#user-research">user-research</a>
           <a class="wt-skill" href="../skills/#data-analyze">data-analyze</a>
           <a class="wt-skill" href="../skills/#research-synthesis">research-synthesis</a>
@@ -311,6 +317,7 @@
       </header>
       <div class="wt-stage-body">
         <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
           <a class="wt-skill" href="../skills/#write-spec">write-spec</a>
           <a class="wt-skill" href="../skills/#anti-sycophancy">anti-sycophancy</a>
           <a class="wt-skill" href="../skills/#brand-operator-ux-persona">brand-operator-ux-persona</a>
@@ -354,6 +361,7 @@
       </header>
       <div class="wt-stage-body">
         <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
           <a class="wt-skill" href="../skills/#ideate">ideate</a>
           <a class="wt-skill" href="../skills/#ux-critique">ux-critique</a>
           <a class="wt-skill" href="../skills/#prototype-handoff">prototype-handoff</a>
@@ -456,6 +464,7 @@
       </header>
       <div class="wt-stage-body">
         <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
           <a class="wt-skill" href="../skills/#partner-prototype">partner-prototype</a>
           <a class="wt-skill" href="../skills/#design-system">design-system</a>
         </div>
@@ -495,6 +504,7 @@
       </header>
       <div class="wt-stage-body">
         <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
           <a class="wt-skill" href="../skills/#accessibility-review">accessibility-review</a>
           <a class="wt-skill" href="../skills/#ux-critique">ux-critique</a>
           <a class="wt-skill" href="../skills/#test-plan">test-plan</a>
@@ -525,7 +535,14 @@
 
     <section id="how">
       <h2>How you would run this yourself</h2>
-      <p>In Cursor, with the UX DesignOps skills installed and PostHog / Atlassian / Figma MCPs connected:</p>
+      <p>In Cursor, with the UX DesignOps skills installed and PostHog / Atlassian / Figma MCPs connected. Prefer the master skill — it invokes each stage skill so you do not have to:</p>
+      <figure class="pipe-prompt">
+        <div class="pipe-prompt-top">
+          <span class="pipe-prompt-skill">Master skill — copy this</span>
+          <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX — walk me Empathize through Test. Pick a finding from the research listing that has real volume (not a tiny-N instrumentation drop). Stop at each human gate. Create Figma and FigJam files, a draft one-pager and UX epic labeled PIPELINE TEST, and a Partner or Brand prototype. Stop before test-loopback unless we have real sessions.">Copy</button>
+        </div>
+        <pre>Use Design Thinking UX — walk me Empathize through Test. Pick a finding from the research listing that has real volume (not a tiny-N instrumentation drop). Stop at each human gate. Create Figma and FigJam files, a draft one-pager and UX epic labeled PIPELINE TEST, and a Partner or Brand prototype. Stop before test-loopback unless we have real sessions.</pre>
+      </figure>
       <figure class="pipe-prompt">
         <div class="pipe-prompt-top">
           <span class="pipe-prompt-skill">Full pipeline — copy this</span>
@@ -533,7 +550,7 @@
         </div>
         <pre>Go through the DesignOps workflow from Empathize through Test. Pick a finding from the research listing that has real volume (not a tiny-N instrumentation drop). Use the skills at each stage. Create Figma and FigJam files, a draft one-pager and UX epic labeled PIPELINE TEST, and a Partner or Brand prototype. Stop before test-loopback unless we have real sessions. Write what happened at each stage, including quality catches and MCP failures.</pre>
       </figure>
-      <p>Or run one stage at a time, e.g. <code>Use data-analyze on UPS Step 2</code>, then <code>Use write-spec</code> only after you confirm it is worth solving.</p>
+      <p>Or run one stage at a time, e.g. <code>Use data-analyze on UPS Step 2</code>, then <code>Use write-spec</code> only after you confirm it is worth solving. The master skill <code>design-thinking-ux</code> is the default for a full run.</p>
     </section>
 
     <section>

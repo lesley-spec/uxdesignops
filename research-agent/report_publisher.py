@@ -1366,7 +1366,7 @@ def _render_app_script() -> str:
           "1. Check which of the MCPs above are available in this harness and list Connected vs Not connected.",
           "2. Use connected MCPs to pull the latest data for the audience scope (do not rely only on stale memory).",
           "3. Also fetch/read the report pack JSON for this period’s Verified findings; reconcile pack vs live when they differ.",
-          "4. If Empathize skills are available (research-synthesis, data-analyze, morning-intelligence), use them.",
+          "4. Prefer the master skill design-thinking-ux (Design Thinking UX) for a guided Empathize → Test run. It asks intake questions and invokes phase skills. For a single Empathize step, use research-synthesis, data-analyze, synthesize-research, or user-research.",
           "",
           "Rules:",
           "- Lead with Verified evidence; cite source + title/date (and link when present).",
@@ -1626,6 +1626,11 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
       <p class="sub">{_esc(period_label)} ({_esc(period_start)} → {_esc(period_end)}) · {total_items} items · {synthesized} AI analyzed · Generated {_esc(payload.get("generated_at", ""))}</p>
       {page_actions_html}
     </header>
+
+    <aside class="walkthrough-banner is-master">
+      <p><strong>Next step.</strong> Take a finding into Cursor with the master skill: <code>use Design Thinking UX</code>. It asks intake questions and invokes Empathize → Test.</p>
+      <a href="../skills/#design-thinking-ux">Open design-thinking-ux</a>
+    </aside>
 
     {filter_bar_html}
 
@@ -1893,6 +1898,11 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
       <p class="sub">{_esc(period_label)} ({_esc(period_start)} → {_esc(period_end)}) · PostHog issue spine · Themes × Brand/Partner</p>
       <p class="view-switch"><a class="view-switch-link" href="{_esc(hrefs['listing'])}">← Back to Listing</a></p>
     </header>
+
+    <aside class="walkthrough-banner is-master">
+      <p><strong>Next step.</strong> Clustered themes here are Empathize input. Start a guided run with the master skill: <code>use Design Thinking UX</code>.</p>
+      <a href="../skills/#design-thinking-ux">Open design-thinking-ux</a>
+    </aside>
 
     <div class="stats">
       <div class="stat"><strong>{len(cards)}</strong> issues</div>

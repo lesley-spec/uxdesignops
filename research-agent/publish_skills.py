@@ -26,9 +26,10 @@ MANIFEST_PATH = SKILLS_SITE / "manifest.json"
 PAGES_BASE = "https://lesley-spec.github.io/uxdesignops/skills"
 GITHUB_TREE = "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills"
 
-STAGE_ORDER = ("empathize", "define", "ideate", "prototype", "test")
+STAGE_ORDER = ("pipeline", "empathize", "define", "ideate", "prototype", "test")
 
 STAGE_LABELS = {
+    "pipeline": ("Start here", "master"),
     "empathize": ("Empathize", "stage 1"),
     "define": ("Define", "stage 2"),
     "ideate": ("Ideate", "stage 3"),
@@ -38,6 +39,9 @@ STAGE_LABELS = {
 
 # Skills listed under each pipeline phase (includes cross-phase reuse).
 STAGE_SKILLS: dict[str, list[str]] = {
+    "pipeline": [
+        "design-thinking-ux",
+    ],
     "empathize": [
         "user-research",
         "research-synthesis",
@@ -77,6 +81,7 @@ STAGE_SKILLS: dict[str, list[str]] = {
 }
 
 USE_WHEN: dict[str, str] = {
+    "design-thinking-ux": "Master skill — guided Empathize → Test; invokes phase skills",
     "user-research": "Deep-dive a finding, design a study, or post-session gate brief",
     "research-synthesis": "Triangulate PostHog + Pendo + Dovetail (+ Outset/Freshdesk)",
     "synthesize-research": "Affinity-map one corpus (Dovetail project, interview set, test export)",
@@ -97,6 +102,7 @@ USE_WHEN: dict[str, str] = {
 }
 
 STAGE_NOTES: dict[str, str] = {
+    "pipeline": "Invoke <code>design-thinking-ux</code> first for a full run. It asks intake questions and loads the phase skill — you do not type each child skill unless you want a single step.",
     "prototype": "Prototype skills run <code>scripts/bootstrap.sh</code> — clone, <code>npm ci</code>, start Vite. Cursor preferred.",
     "test": "Human gate: review AI drafts before stakeholders. Findings loop back to Empathize.",
 }
@@ -183,7 +189,7 @@ def build_manifest() -> dict:
                 "name": skill.name,
                 "stage": meta.get("stage", "unknown"),
                 "description": meta.get("description", ""),
-                "figjam_agent": meta.get("figjam-agent", ""),
+                "figjam_agent": meta.get("figjam_agent", ""),
                 "pack_url": f"{PAGES_BASE}/pack/{skill.name}/",
                 "skill_md_url": f"{PAGES_BASE}/pack/{skill.name}/SKILL.md",
                 "github_url": f"{GITHUB_TREE}/{skill.name}",
@@ -267,7 +273,7 @@ for skill_dir in "$TMP/extract"/*/; do
 done
 
 echo "✓ Installed $count skills into $DEST ($HARNESS harness)"
-echo "  Invoke in chat, e.g. use write-spec · use ideate · use test-plan"
+echo "  Invoke in chat, e.g. use design-thinking-ux · use write-spec · use ideate · use test-plan"
 """,
         encoding="utf-8",
     )
@@ -356,10 +362,15 @@ def render_skills_index(manifest: dict) -> str:
   <main class="wrap">
     <header class="page-header">
       <h1>Agent Skills</h1>
-      <p class="sub muted"><strong>{count} portable skills</strong> for all five Design Thinking phases on the
-        <a href="../">UX DesignOps pipeline</a>.
+      <p class="sub muted"><strong>{count} portable skills</strong> — start with the master skill
+        <code>design-thinking-ux</code>, which invokes Empathize through Test.
         Download the full pack below — no repo clone required.</p>
     </header>
+
+    <aside class="walkthrough-banner is-master">
+      <p><strong>Master skill.</strong> Start every full run with <code>use design-thinking-ux</code> (Design Thinking UX). It asks intake questions and invokes Empathize → Define → Ideate → Prototype → Test. Phase skills below still work on their own.</p>
+      <a href="#design-thinking-ux">See design-thinking-ux</a>
+    </aside>
 
     <section class="skills-download" id="install" aria-labelledby="install-heading">
       <h2 id="install-heading">Download all skills</h2>
@@ -389,7 +400,8 @@ def render_skills_index(manifest: dict) -> str:
           <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>{count} (all phases)</td></tr>
         </tbody>
       </table>
-      <p class="muted">Invoke by name in chat, e.g. <code>use write-spec</code>, <code>use ideate</code>, <code>use test-plan</code>.
+      <p class="muted">Start a full run with <code>use design-thinking-ux</code>, or invoke a phase skill
+        (<code>use write-spec</code>, <code>use ideate</code>, <code>use test-plan</code>).
         Persona and design-system skills appear in multiple phases — install once, reuse everywhere.
         <a href="./pack/README.md">Pack README</a> · <a href="./manifest.json">manifest.json</a></p>
     </section>
@@ -397,6 +409,7 @@ def render_skills_index(manifest: dict) -> str:
     <div class="skills-jump">
       <strong>Jump:</strong>
       <a href="#install">Install</a> ·
+      <a href="#pipeline">Start here</a> ·
       <a href="#empathize">Empathize</a> ·
       <a href="#define">Define</a> ·
       <a href="#ideate">Ideate</a> ·
