@@ -20,6 +20,8 @@ from issue_taxonomy import (
 from affinity_board import (
     build_affinity_cards,
     designops_assets_hrefs,
+    designops_auth_gate_html,
+    designops_auth_head_scripts,
     designops_theme_boot_script,
     github_actions_workflow_url,
     group_affinity_board,
@@ -1452,6 +1454,8 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     designops_css_href = assets["css"]
     designops_js_href = assets["js"]
     theme_boot_script = designops_theme_boot_script()
+    auth_head_scripts = designops_auth_head_scripts(at_root=at_root)
+    auth_gate_html = designops_auth_gate_html()
     nav_html = report_nav_html(
         week,
         "listing",
@@ -1506,6 +1510,7 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {theme_boot_script}
+  {auth_head_scripts}
   <title>UX Research Monitor — Week of {_esc(week)}</title>
   <link rel="stylesheet" href="{designops_css_href}" />
   <style>
@@ -1612,6 +1617,7 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
   </style>
 </head>
 <body>
+  {auth_gate_html}
   {nav_html}
   <div class="wrap">
     <header class="page-header">
@@ -1798,6 +1804,8 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
     designops_css_href = assets["css"]
     designops_js_href = assets["js"]
     theme_boot_script = designops_theme_boot_script()
+    auth_head_scripts = designops_auth_head_scripts(at_root=False)
+    auth_gate_html = designops_auth_gate_html()
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -1805,6 +1813,7 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {theme_boot_script}
+  {auth_head_scripts}
   <title>UX Affinity — Week of {_esc(week)}</title>
   <link rel="stylesheet" href="{designops_css_href}" />
   <style>
@@ -1874,6 +1883,7 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
   </style>
 </head>
 <body>
+  {auth_gate_html}
   {nav_html}
   <div class="wrap">
     <header class="page-header">

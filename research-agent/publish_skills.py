@@ -6,9 +6,14 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import sys
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
+
+AGENT_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(AGENT_DIR))
+from affinity_board import designops_auth_gate_html, designops_auth_head_scripts
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_SRC = REPO_ROOT / ".agents" / "skills"
@@ -300,6 +305,8 @@ def render_skills_index(manifest: dict) -> str:
         )
 
     stage_blocks = []
+    auth_head_scripts = designops_auth_head_scripts(skills_page=True)
+    auth_gate_html = designops_auth_gate_html()
     for stage in STAGE_ORDER:
         label, sub = STAGE_LABELS[stage]
         rows = "".join(skill_row(n) for n in STAGE_SKILLS[stage] if n in by_name)
@@ -324,8 +331,10 @@ def render_skills_index(manifest: dict) -> str:
   <script>(function(){{try{{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}}catch(x){{}}}})();</script>
   <title>UX DesignOps — Agent Skills</title>
   <link rel="stylesheet" href="../shared/designops.css" />
+  {auth_head_scripts}
 </head>
 <body class="skills-page">
+  {auth_gate_html}
   <header class="top-nav" role="banner">
     <div class="top-nav-inner">
       <a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a>

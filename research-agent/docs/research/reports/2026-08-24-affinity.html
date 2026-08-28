@@ -91,8 +91,10 @@
       box-shadow: 0 8px 24px rgba(16,24,40,0.18); cursor: pointer; text-decoration: none;
     }
   </style>
+  <script src="./shared/auth-config.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="./shared/designops-auth.js" defer></script>
 </head>
 <body>
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div><div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
   <header class="top-nav" role="banner"><div class="top-nav-inner"><a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a><div class="top-nav-actions"><nav class="report-nav" aria-label="Site sections"><a class="nav-link" href="../" data-nav="listing">Research</a><a class="nav-link is-active" href="./2026-08-24-affinity.html" data-nav="affinity">Affinity</a><a class="nav-link" href="../skills/" data-nav="skills">Skills</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button></div></div></header>
   <div class="wrap">
     <header class="page-header">

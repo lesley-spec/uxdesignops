@@ -359,13 +359,50 @@ def render_affinity_board_html(rows: List[Dict[str, Any]]) -> str:
     return "\n".join(sections)
 
 
-def designops_assets_hrefs(*, at_root: bool = False) -> Dict[str, str]:
+def designops_assets_hrefs(*, at_root: bool = False, skills_page: bool = False) -> Dict[str, str]:
     """Shared CSS/JS paths for GitHub Pages."""
-    prefix = "./shared" if at_root else "../shared"
+    if at_root:
+        prefix = "./shared"
+    elif skills_page:
+        prefix = "../shared"
+    else:
+        prefix = "../shared"
     return {
         "css": f"{prefix}/designops.css",
         "js": f"{prefix}/designops-theme.js",
+        "auth_config": f"{prefix}/auth-config.js",
+        "auth_js": f"{prefix}/designops-auth.js",
     }
+
+
+def designops_auth_head_scripts(*, at_root: bool = False, skills_page: bool = False) -> str:
+    assets = designops_assets_hrefs(at_root=at_root, skills_page=skills_page)
+    return (
+        f'<script src="{assets["auth_config"]}"></script>'
+        f'<script src="https://accounts.google.com/gsi/client" async defer></script>'
+        f'<script src="{assets["auth_js"]}" defer></script>'
+    )
+
+
+def designops_auth_gate_html() -> str:
+    domain = "impact.com"
+    return (
+        f'<div id="designops-auth-gate" class="designops-auth-screen" role="dialog" '
+        f'aria-modal="true" aria-labelledby="designops-auth-title">'
+        f'<div class="designops-auth-card">'
+        f'<h1 id="designops-auth-title">UX DesignOps</h1>'
+        f'<p>Sign in with your <strong>@{domain}</strong> Google account to view this site.</p>'
+        f'<div id="designops-google-signin"></div>'
+        f'<p id="designops-auth-status"></p>'
+        f"</div></div>"
+        f'<div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert">'
+        f'<div class="designops-auth-card">'
+        f'<h1 class="designops-auth-denied-title">You don\u2019t have permission to view this</h1>'
+        f'<p>This site is restricted to <strong>@{domain}</strong> Google accounts '
+        f"(for example lesley@{domain}).</p>"
+        f'<p id="designops-auth-status-denied"></p>'
+        f"</div></div>"
+    )
 
 
 def designops_theme_boot_script() -> str:

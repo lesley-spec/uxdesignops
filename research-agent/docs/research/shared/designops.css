@@ -506,6 +506,68 @@ h2 {
   font-size: 0.82rem;
 }
 
+html.designops-auth-locked body {
+  overflow: hidden;
+}
+
+html.designops-auth-locked body > :not(.designops-auth-screen) {
+  visibility: hidden;
+}
+
+.designops-auth-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--background-default);
+}
+
+.designops-auth-screen[hidden] {
+  display: none !important;
+}
+
+.designops-auth-card {
+  width: min(28rem, 100%);
+  background: var(--card);
+  border: 1px solid var(--border-default);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--elevation-xs, 0 1px 3px rgba(16, 24, 40, 0.08));
+  text-align: center;
+}
+
+.designops-auth-card h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.designops-auth-card p {
+  margin: 0 0 1rem;
+  color: var(--text-muted, var(--muted));
+  line-height: 1.45;
+}
+
+.designops-auth-denied-title {
+  color: var(--pill-bug-text, #b42318);
+}
+
+#designops-google-signin {
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
+
+#designops-auth-status {
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  color: var(--text-muted, var(--muted));
+  line-height: 1.4;
+}
+
 .ask-fab {
   position: fixed;
   right: 20px;

@@ -83,6 +83,16 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 
 ## Install in any harness
 
+**Download all 17 skills (all phases):** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
+
+One-command install (Cursor example — installs every skill):
+
+```bash
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .
+```
+
+Replace `cursor` with `claude` or `agents` for Claude Code or Copilot/Codex.
+
 | Harness | Typical path |
 |---|---|
 | Cursor | `.cursor/skills/<name>/` (symlinked in this repo) |
@@ -91,7 +101,7 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 | Figma Agent | Project or org skills that point at the same `SKILL.md` folders |
 
 ```bash
-# Example: Claude Code
+# Example: Claude Code (single skill)
 mkdir -p .claude/skills
 ln -sfn ../../.agents/skills/write-spec .claude/skills/write-spec
 ```

@@ -7,8 +7,10 @@
   <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <title>UX DesignOps — Agent Skills</title>
   <link rel="stylesheet" href="../shared/designops.css" />
+  <script src="../shared/auth-config.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../shared/designops-auth.js" defer></script>
 </head>
 <body class="skills-page">
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div><div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
   <header class="top-nav" role="banner">
     <div class="top-nav-inner">
       <a class="top-nav-brand" href="../">UX DesignOps <span class="brand-byline">· impact.com</span></a>

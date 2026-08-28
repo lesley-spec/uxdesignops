@@ -140,6 +140,34 @@ Runs automatically **quarterly** (1 Jan, 1 Apr, 1 Jul, 1 Oct at 7:00 UTC), or tr
 
 ---
 
+## Phase 5 — Protect the site (@impact.com Google login)
+
+The GitHub Pages site uses a **Google sign-in gate** restricted to `@impact.com` accounts.
+
+### One-time setup
+
+1. **Google Cloud Console** → [APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials)
+2. Create **OAuth 2.0 Client ID** → Application type: **Web application**
+3. **Authorized JavaScript origins:**
+   - `https://lesley-spec.github.io`
+4. Copy the **Client ID** (ends in `.apps.googleusercontent.com`)
+5. Add GitHub repo secret:
+   ```bash
+   gh secret set GOOGLE_OAUTH_CLIENT_ID --body "YOUR_CLIENT_ID.apps.googleusercontent.com"
+   ```
+6. Redeploy Pages (push any change under `research-agent/docs/research/` or run **Deploy Research Report to GitHub Pages** workflow)
+
+### Behavior
+
+- Visitors see a sign-in screen until they authenticate with Google
+- Only `@impact.com` emails (e.g. `lesley@impact.com`) can view the site
+- Others see: **You don't have permission to view this**
+- Session lasts 24 hours in the browser tab
+
+**Note:** GitHub Pages is static hosting — direct URLs like `/latest.json` can still be fetched without the UI gate. For strict enterprise lockdown, add [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/policies/access/) or similar in front of the domain.
+
+---
+
 ## What success looks like
 
 After a successful run you get:

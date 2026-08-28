@@ -33,6 +33,11 @@ jobs:
       - name: Publish skills pack for GitHub Pages
         run: python3 research-agent/publish_skills.py
 
+      - name: Write Google auth config
+        env:
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+        run: python3 research-agent/scripts/write_auth_config.py
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
