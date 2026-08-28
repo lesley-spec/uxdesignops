@@ -1547,7 +1547,7 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
     .cell-date {{ color: var(--muted); font-size: 0.82rem; white-space: nowrap; }}
     .sort-hint {{ color: var(--muted); font-weight: 400; }}
     .badge {{ display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }}
-    .badge-source {{ color: var(--text-default); border: 1px solid var(--border); }}
+    .badge-source {{ color: #101828; border: 1px solid rgba(16, 24, 40, 0.12); font-weight: 600; }}
     .badge-status, .badge-type {{ color: #fff; }}
     .is-filtered-out {{ display: none !important; }}
     .hint {{ color: var(--muted); font-size: 0.85rem; margin: 0 0 12px; }}

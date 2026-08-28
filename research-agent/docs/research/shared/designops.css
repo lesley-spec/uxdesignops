@@ -683,6 +683,17 @@ html.designops-auth-locked body > :not(.designops-auth-screen) {
 
 .src-pill { background: var(--surface-raised); }
 
+/* Source badges use light pastel backgrounds in both themes — keep label text dark */
+.badge.badge-source {
+  color: #101828;
+  border: 1px solid rgba(16, 24, 40, 0.12);
+  font-weight: 600;
+}
+
+html.dark .badge.badge-source {
+  color: #101828;
+}
+
 .slideout-panel,
 .ask-panel textarea {
   background: var(--card);
