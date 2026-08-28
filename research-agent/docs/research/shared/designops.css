@@ -1092,6 +1092,40 @@ html.dark .badge.badge-source {
 
 .pipeline-loop strong { color: var(--pill-support-text); }
 
+.walkthrough-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin: 0 0 20px;
+  padding: 14px 18px;
+  border: 1px solid var(--pill-theme-border);
+  border-radius: 12px;
+  background: var(--pill-theme-bg);
+}
+
+.walkthrough-banner p {
+  margin: 0;
+  font-size: 0.92rem;
+  max-width: 52rem;
+}
+
+.walkthrough-banner a {
+  flex-shrink: 0;
+  font-weight: var(--font-weight-medium);
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--interactive-default);
+  color: var(--text-invert);
+  text-decoration: none;
+}
+
+.walkthrough-banner a:hover {
+  background: var(--interactive-hover);
+  color: var(--text-invert);
+}
+
 @media (max-width: 1200px) {
   .pipeline-board {
     display: flex;

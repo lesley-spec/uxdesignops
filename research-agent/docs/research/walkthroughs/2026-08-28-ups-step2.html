@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>Worked example — UPS Step 2 through the DesignOps pipeline</title>
+  <link rel="stylesheet" href="../shared/designops.css" />
+  <script src="../shared/auth-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../shared/designops-auth.js" defer></script>
+  <style>
+    .wt-lede { margin-bottom: 8px; }
+    .wt-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+    .wt-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+      border: 1px solid var(--border); background: var(--card);
+    }
+    .wt-pill.warn { background: var(--warning-bg); border-color: var(--warning-border); color: var(--warning-text); }
+    .wt-pill.ok { background: var(--pill-product-bg); border-color: var(--pill-product-border); color: var(--pill-product-text); }
+    .wt-pill.info { background: var(--pill-audience-bg); border-color: var(--pill-audience-border); color: var(--pill-audience-text); }
+    .wt-artifacts {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px; margin: 20px 0 28px;
+    }
+    .wt-art {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px;
+      background: var(--card); text-decoration: none; color: inherit;
+    }
+    .wt-art:hover { border-color: var(--border-accent); background: var(--background-hover); }
+    .wt-art .kicker { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .wt-art strong { font-size: 0.95rem; }
+    .wt-art span { font-size: 0.82rem; color: var(--muted); }
+    .wt-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 16px 0 8px; }
+    @media (max-width: 800px) { .wt-stats { grid-template-columns: 1fr 1fr; } }
+    .wt-stat {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .wt-stat b { display: block; font-size: 1.45rem; line-height: 1.2; }
+    .wt-stat.danger b { color: var(--pill-bug-text); }
+    .wt-stat small { color: var(--muted); font-size: 0.8rem; }
+    .wt-funnel { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+    .wt-funnel-row { display: grid; grid-template-columns: 150px 1fr 90px; gap: 10px; align-items: center; font-size: 0.85rem; }
+    @media (max-width: 640px) { .wt-funnel-row { grid-template-columns: 1fr; } }
+    .wt-bar-track { height: 28px; background: var(--background-hover); border-radius: 6px; overflow: hidden; }
+    .wt-bar { height: 100%; background: var(--interactive-default); border-radius: 6px; display: flex; align-items: center; padding: 0 8px; color: var(--text-invert); font-size: 0.75rem; font-weight: 600; min-width: 2.5rem; }
+    .wt-bar.drop { background: var(--pill-bug-text); }
+    .wt-stage {
+      border: 1px solid var(--border); border-radius: 16px; background: var(--card);
+      margin: 0 0 20px; overflow: hidden;
+    }
+    .wt-stage-head {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border);
+    }
+    .wt-num {
+      width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 0.95rem;
+    }
+    .wt-stage-head h2 { margin: 0 0 4px; font-size: 1.2rem; }
+    .wt-stage-head p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .wt-stage-body { padding: 18px 20px 20px; display: grid; gap: 16px; }
+    .wt-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 860px) { .wt-split { grid-template-columns: 1fr; } }
+    .wt-box { background: var(--background-subdued); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+    .wt-box h3, .wt-stage-body h3 { margin: 0 0 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .wt-box ul, .wt-stage-body ul { margin: 0; padding-left: 1.15rem; }
+    .wt-box li, .wt-stage-body li { margin: 0 0 6px; font-size: 0.9rem; }
+    .wt-skills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .wt-skill {
+      font-size: 0.75rem; font-weight: 600; padding: 3px 8px; border-radius: 6px;
+      background: var(--pill-theme-bg); color: var(--pill-theme-text); border: 1px solid var(--pill-theme-border);
+      text-decoration: none;
+    }
+    .wt-skill:hover { color: var(--text-interactive-hover); }
+    .wt-gate {
+      border-left: 3px solid var(--warning-border);
+      background: var(--warning-bg); color: var(--warning-text);
+      border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 0.88rem;
+    }
+    .wt-gate strong { display: block; margin-bottom: 2px; }
+    .wt-embed {
+      width: 100%; height: 460px; border: 1px solid var(--border); border-radius: 12px;
+      background: var(--background-hover);
+    }
+    .wt-mocks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    @media (max-width: 980px) { .wt-mocks { grid-template-columns: 1fr; } }
+    .mock {
+      border: 1px solid var(--border); border-radius: 12px; background: var(--card);
+      overflow: hidden; font-size: 0.78rem;
+    }
+    .mock-label {
+      padding: 8px 12px; font-weight: 600; font-size: 0.75rem;
+      border-bottom: 1px solid var(--border); background: var(--background-subdued);
+    }
+    .mock-label.now { color: var(--pill-bug-text); }
+    .mock-label.chosen { color: var(--pill-product-text); }
+    .mock-screen { padding: 14px 14px 16px; min-height: 280px; display: flex; flex-direction: column; gap: 10px; }
+    .mock-top { display: flex; justify-content: space-between; align-items: center; }
+    .mock-x { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border); display: grid; place-items: center; font-size: 0.7rem; }
+    .mock-brand { font-size: 1.05rem; font-weight: 600; }
+    .mock-sub { color: var(--muted); }
+    .mock-cta {
+      margin-left: auto; background: var(--interactive-default); color: var(--text-invert);
+      border: 0; border-radius: 6px; padding: 6px 10px; font: inherit; font-weight: 600; font-size: 0.75rem;
+    }
+    .mock-tabs { display: flex; gap: 4px; background: var(--background-hover); border-radius: 999px; padding: 3px; }
+    .mock-tabs span { flex: 1; text-align: center; padding: 4px 0; border-radius: 999px; }
+    .mock-tabs .on { background: var(--card); font-weight: 600; }
+    .mock-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--border); }
+    .mock-row:last-child { border-bottom: 0; }
+    .mock-note { color: var(--pill-bug-text); font-size: 0.72rem; }
+    .mock-foot {
+      margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+      padding-top: 10px; border-top: 1px solid var(--border);
+    }
+    .mock-input { border: 1px solid var(--border); border-radius: 8px; padding: 10px; color: var(--muted); min-height: 72px; }
+    .mock-actions { display: flex; justify-content: flex-end; gap: 6px; }
+    .mock-btn { border: 1px solid var(--border); background: var(--card); border-radius: 6px; padding: 6px 10px; font: inherit; font-size: 0.75rem; }
+    .mock-btn.pri { background: var(--interactive-default); color: var(--text-invert); border-color: transparent; font-weight: 600; }
+    .wt-dirs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    @media (max-width: 860px) { .wt-dirs { grid-template-columns: 1fr; } }
+    .wt-dir { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--background-subdued); }
+    .wt-dir.chosen { border-color: var(--pill-product-border); background: var(--pill-product-bg); }
+    .wt-dir.parked { opacity: 0.85; }
+    .wt-dir h3 { margin: 0 0 6px; font-size: 0.95rem; text-transform: none; letter-spacing: 0; color: inherit; }
+    table.wt-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    table.wt-table th { text-align: left; font-size: 0.75rem; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    table.wt-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .wt-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
+    .wt-jump a {
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+      border-radius: 999px; border: 1px solid var(--border); background: var(--card);
+      color: var(--text); text-decoration: none; font-size: 0.82rem; font-weight: 600;
+    }
+    .wt-jump a:hover { background: var(--background-hover); }
+    .wt-dot { width: 8px; height: 8px; border-radius: 50%; }
+  </style>
+</head>
+<body>
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
+
+  <header class="top-nav" role="banner">
+    <div class="top-nav-inner">
+      <a class="top-nav-brand" href="../">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 97 32" fill="none" class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M35.9475 14.2949C35.7217 14.2949 35.4825 14.3346 35.27 14.4273C35.0574 14.52 34.8581 14.6391 34.6987 14.8112C34.5393 14.9701 34.4065 15.1687 34.3135 15.3805C34.2205 15.5923 34.1806 15.8306 34.1939 16.0556C34.2338 16.4925 34.433 16.9161 34.7519 17.2074C35.084 17.5119 35.5091 17.6707 35.9475 17.6707C36.3859 17.6707 36.8243 17.4986 37.1432 17.2074C37.4753 16.9029 37.6745 16.4925 37.7011 16.0556C37.7011 15.8173 37.6613 15.5923 37.5816 15.3805C37.4886 15.1687 37.369 14.9701 37.1963 14.8112C37.0369 14.6524 36.8376 14.52 36.625 14.4273C36.4125 14.3346 36.1866 14.2949 35.9475 14.2949Z"/>
+          <path fill="currentColor" d="M37.2492 20.2522H34.6719V32.7493H37.2492V20.2522Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M49.392 22.1453C50.322 20.7817 51.8896 20.0139 53.8159 20.0139C56.9511 20.0139 59.0634 22.0394 59.0369 25.0578V32.7361H56.4197V25.7329C56.4197 23.6942 55.3437 22.5292 53.4439 22.5292C51.5442 22.5292 50.2157 23.8663 50.2157 25.7726V32.7361H47.5853V25.7329C47.5853 23.6942 46.5092 22.5292 44.6094 22.5292C42.7097 22.5292 41.3812 23.8663 41.3812 25.7726V32.7361H38.7773V20.2654H41.4078V21.351C42.6034 20.2125 44.1445 20.0272 45.0213 20.0272C46.9077 20.0139 48.4886 20.795 49.392 22.1453Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M67.1001 20.0139C65.5457 20.0139 64.2039 20.5037 63.181 21.404V20.2522H60.5771V37.6343H63.181V31.4917C64.1907 32.4184 65.5457 32.8949 67.1001 32.8949C70.6604 32.8949 73.344 30.1149 73.344 26.4478C73.344 22.794 70.6604 20.0139 67.1001 20.0139ZM66.8609 30.4458C64.6556 30.4458 63.0481 28.7645 63.0481 26.4743C63.0481 24.1973 64.6423 22.5027 66.8609 22.5027C69.0662 22.5027 70.6737 24.1708 70.6737 26.4743C70.6737 28.791 69.0795 30.4458 66.8609 30.4458Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M85.0085 20.2654V21.4436C83.9855 20.5169 82.657 20.0271 81.1027 20.0271C77.5423 20.0271 74.8721 22.8204 74.8721 26.514C74.8721 30.2075 77.5556 33.0008 81.1027 33.0008C82.657 33.0008 83.9855 32.511 85.0085 31.571V32.7493H87.6389V20.2654H85.0085ZM81.3418 30.4855C79.1365 30.4855 77.5158 28.791 77.5158 26.5007C77.5158 24.2105 79.11 22.5027 81.3418 22.5027C83.5737 22.5027 85.1413 24.1707 85.1413 26.5007C85.1413 28.8174 83.5471 30.4855 81.3418 30.4855Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M95.6235 22.5027C96.7527 22.5027 97.7225 22.9264 98.6126 23.7604L98.8252 23.9722L100.539 22.185L100.366 21.9864C99.2503 20.7156 97.5897 20.0139 95.6899 20.0139C91.9037 20.0139 89.167 22.7543 89.167 26.5008C89.167 30.2473 91.9037 32.9876 95.6899 32.9876C97.5631 32.9876 99.237 32.286 100.366 31.0283L100.539 30.843L98.8916 29.0161L98.679 29.2279C97.8155 30.0619 96.7394 30.512 95.6501 30.512C93.4713 30.512 91.8638 28.8175 91.8638 26.5272C91.8506 24.2238 93.4182 22.5027 95.6235 22.5027Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M109.161 30.4854C109.905 30.4854 110.728 30.1942 111.419 29.7308L111.658 29.5852L112.934 31.5975L112.721 31.7563C111.645 32.5639 110.33 32.9875 108.988 32.9875C106.158 32.9875 104.591 31.3062 104.591 28.2481V22.7012H102.04V20.2521H104.591V16.5056H107.221V20.2389H112.203V22.6747H107.221V28.1952C107.221 29.6647 107.912 30.4854 109.161 30.4854Z"/>
+          <path fill="#A9B4BD" d="M24.3899 23.2308C25.1471 23.2308 25.9044 23.4029 26.5819 23.7206C27.2727 24.0383 27.8838 24.5017 28.3754 25.0709C28.6278 24.4884 28.7739 23.8662 28.7739 23.244C28.7739 22.6748 28.6544 22.1055 28.4418 21.5892C28.216 21.0597 27.8971 20.5831 27.4853 20.1859C27.0734 19.7888 26.5952 19.4711 26.0638 19.246C25.5324 19.0342 24.9611 18.915 24.3899 18.915C23.8186 18.915 23.2474 19.0209 22.716 19.246C22.1846 19.4578 21.693 19.7888 21.2945 20.1859C20.8827 20.5831 20.5638 21.0597 20.338 21.5892C20.1121 22.1187 20.0059 22.6748 20.0059 23.244C20.0191 23.8795 20.152 24.5017 20.4044 25.0709C20.896 24.4884 21.5071 24.0383 22.1846 23.7206C22.8754 23.3896 23.6326 23.2175 24.3899 23.2308Z"/>
+          <path fill="currentColor" d="M28.7735 28.4072C28.7735 27.5467 28.5211 26.7126 28.0295 25.9978C27.5513 25.2829 26.8604 24.7269 26.0634 24.3959C25.2663 24.0649 24.3762 23.9855 23.5259 24.1444C22.6757 24.3165 21.8919 24.7269 21.2808 25.3358C20.6697 25.9448 20.2445 26.7126 20.0851 27.5599C19.9124 28.4072 20.0054 29.2677 20.3375 30.062C20.6697 30.8563 21.2276 31.5314 21.9583 32.008C22.6757 32.4846 23.5259 32.7361 24.4027 32.7361C25.5585 32.7229 26.6745 32.2728 27.4981 31.452C28.3218 30.6312 28.7735 29.5589 28.7735 28.4072Z"/>
+          <path fill="#F5333F" d="M28.7735 13.3417C28.7735 12.4812 28.5211 11.6472 28.0295 10.9323C27.5513 10.2175 26.8737 9.66144 26.0634 9.33048C25.2663 8.99952 24.3762 8.92009 23.5259 9.07895C22.6757 9.25105 21.8919 9.66144 21.2808 10.2704C20.6697 10.8794 20.2445 11.6472 20.0851 12.4945C19.9124 13.3417 20.0054 14.2022 20.3375 14.9965C20.6697 15.7909 21.2276 16.466 21.9583 16.9426C22.6757 17.4192 23.5259 17.6707 24.4027 17.6707C25.5718 17.6707 26.6877 17.2074 27.5114 16.3998C28.3085 15.5923 28.7735 14.4802 28.7735 13.3417Z"/>
+        </svg>
+        <span class="top-nav-brand-text">UX DesignOps</span>
+      </a>
+      <div class="top-nav-actions">
+        <nav class="report-nav" aria-label="Site sections">
+          <a class="nav-link" href="../" data-nav="pipeline">Pipeline</a>
+          <a class="nav-link" href="../research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+          <a class="nav-link" href="../skills/" data-nav="skills">Skills</a>
+          <a class="nav-link is-active" href="./2026-08-28-ups-step2.html" data-nav="walkthrough">Example</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <header class="page-header wt-lede">
+      <h1>Worked example: Empathize → Test</h1>
+      <p class="sub muted">A real run of the Design Thinking automation pipeline on one research finding, so you can see what each stage produces — and what still needs a designer.</p>
+      <div class="wt-meta">
+        <span class="wt-pill warn">PIPELINE TEST · 28 Aug 2026</span>
+        <span class="wt-pill info">Partner · UPS</span>
+        <span class="wt-pill">Confidence: medium</span>
+        <span class="wt-pill ok">Not a production roadmap item</span>
+      </div>
+    </header>
+
+    <nav class="wt-jump" aria-label="Jump to stage">
+      <a href="#finding"><span class="wt-dot" style="background:#25282f"></span>Finding</a>
+      <a href="#empathize"><span class="wt-dot" style="background:#f59e0b"></span>1 Empathize</a>
+      <a href="#define"><span class="wt-dot" style="background:#8b5cf6"></span>2 Define</a>
+      <a href="#ideate"><span class="wt-dot" style="background:#ec4899"></span>3 Ideate</a>
+      <a href="#prototype"><span class="wt-dot" style="background:#10b981"></span>4 Prototype</a>
+      <a href="#test"><span class="wt-dot" style="background:#06b6d4"></span>5 Test</a>
+      <a href="#how"><span class="wt-dot" style="background:#0077db"></span>How to run this</a>
+    </nav>
+
+    <p>Skills gather, draft, and build. <strong>You still own every human gate</strong> — is this a problem worth solving, is the framing honest, which idea to prototype, and whether to recruit. This page is labeled a pipeline test: artifacts are real so you can click them, not so they replace a PM chat.</p>
+
+    <h2>Open the artifacts from this run</h2>
+    <div class="wt-artifacts">
+      <a class="wt-art" href="https://impact.atlassian.net/wiki/spaces/ux/pages/edit-v2/6627295237?draftShareId=cb0ce566-8ee1-463c-aac7-b30ea356e825" target="_blank" rel="noopener">
+        <span class="kicker">Define · Confluence</span>
+        <strong>Draft one-pager</strong>
+        <span>Partners drop between UPS details and send proposal</span>
+      </a>
+      <a class="wt-art" href="https://impact.atlassian.net/browse/UX-642" target="_blank" rel="noopener">
+        <span class="kicker">Define · Jira</span>
+        <strong>UX-642</strong>
+        <span>Epic with research links · To Do</span>
+      </a>
+      <a class="wt-art" href="https://www.figma.com/board/Q1xWryD6jflJt3Xj4NFN02" target="_blank" rel="noopener">
+        <span class="kicker">Ideate · FigJam</span>
+        <strong>Ideation board</strong>
+        <span>Funnel diagram + D1–D3 stickies</span>
+      </a>
+      <a class="wt-art" href="https://www.figma.com/design/ZqPWLgKSwmhlDVLc6F4PVQ" target="_blank" rel="noopener">
+        <span class="kicker">Ideate · Figma</span>
+        <strong>Mocks</strong>
+        <span>Current vs D1+D2 vs send-proposal modal</span>
+      </a>
+      <a class="wt-art" href="http://127.0.0.1:5173/discover?pipeline=ups" target="_blank" rel="noopener">
+        <span class="kicker">Prototype · local</span>
+        <strong>Partner UI shell</strong>
+        <span>http://127.0.0.1:5173/discover?pipeline=ups</span>
+      </a>
+      <a class="wt-art" href="../research/" target="_blank" rel="noopener">
+        <span class="kicker">Empathize · listing</span>
+        <strong>Research Insight Monitor</strong>
+        <span>The listing this finding came from</span>
+      </a>
+    </div>
+
+    <section id="finding">
+      <h2>The finding we picked</h2>
+      <p><strong>UPS (Unified Proposal System) Flow — Step 2 Drop-off.</strong> Partner · Proposals &amp; Campaigns · HIGH. Partners open program details, then rarely continue to Send proposal.</p>
+      <div class="wt-stats">
+        <div class="wt-stat danger"><b>74.68%</b><small>Details → send drop</small></div>
+        <div class="wt-stat"><b>7,195</b><small>Viewed details (90d)</small></div>
+        <div class="wt-stat"><b>1,822</b><small>Opened send modal</small></div>
+        <div class="wt-stat"><b>16m 54s</b><small>Median time to send</small></div>
+      </div>
+      <p class="muted" style="font-size:0.85rem">PostHog Impact Membersite · 30 May–28 Aug 2026 UTC · test accounts filtered. Pack week of 24 Aug reported 7,080 → 1,806 (74.49%) — live query agrees.</p>
+      <div class="wt-funnel" aria-label="UPS funnel">
+        <div class="wt-funnel-row"><span>Open UPS</span><div class="wt-bar-track"><div class="wt-bar" style="width:100%">12,985</div></div><span>100%</span></div>
+        <div class="wt-funnel-row"><span>View details</span><div class="wt-bar-track"><div class="wt-bar" style="width:55.4%">7,195</div></div><span>55%</span></div>
+        <div class="wt-funnel-row"><span>Open send proposal</span><div class="wt-bar-track"><div class="wt-bar drop" style="width:14%">1,822</div></div><span>14%</span></div>
+        <div class="wt-funnel-row"><span>Submit</span><div class="wt-bar-track"><div class="wt-bar" style="width:11.7%">1,518</div></div><span>12%</span></div>
+      </div>
+      <div class="wt-box">
+        <h3>What we did not pick — and why that is the framework working</h3>
+        <ul>
+          <li><strong>PublisherPro 14→0 (100% drop)</strong> — tiny N, likely instrumentation. Monitor only.</li>
+          <li><strong>Seven “bug report” affinity cards</strong> — NPS/Dovetail titles with no usable body.</li>
+          <li>Stale Confluence monitor dump (2,504 → 565) was <strong>not overwritten</strong>. A new draft one-pager was created instead.</li>
+        </ul>
+      </div>
+    </section>
+
+    <article class="wt-stage" id="empathize">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#f59e0b">1</div>
+        <div>
+          <h2>Empathize — is this a problem worth solving?</h2>
+          <p>Gather evidence. Skills recommend. You decide whether to continue.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#user-research">user-research</a>
+          <a class="wt-skill" href="../skills/#data-analyze">data-analyze</a>
+          <a class="wt-skill" href="../skills/#research-synthesis">research-synthesis</a>
+          <a class="wt-skill" href="../skills/#synthesize-research">synthesize-research</a>
+          <a class="wt-skill" href="../skills/#creator-affiliate-ux-persona">creator-affiliate-ux-persona</a>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>What ran</h3>
+            <ul>
+              <li>Live PostHog funnel on the UPS events (not just the pack numbers).</li>
+              <li>Triangulation across Dovetail, Outset, Pendo, Freshdesk.</li>
+              <li>Partner personas from Confluence (dated 2020–21, image-only — lens is thin).</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>What the quality filter did</h3>
+            <ul>
+              <li><strong>Kept:</strong> PostHog (verified). One Dovetail note: 2 people asked for commission details; 1 asked for deal runtime (N tiny).</li>
+              <li><strong>Discarded:</strong> 2 empty Dovetail titles, 3 off-topic Outset scripts, 0 Freshdesk.</li>
+              <li><strong>Down:</strong> Pendo MCP unavailable. Pack already had 0 Pendo for this issue.</li>
+            </ul>
+          </div>
+        </div>
+        <p><a href="https://impact.dovetail.com/data/m6YiU3R6j3L0HjijRNy0w#:v:h=3cMc4XSqOOvPHOf9IEe2cU" target="_blank" rel="noopener">Open the one usable Dovetail note</a> · <a href="../research/" target="_blank" rel="noopener">Research listing</a> · <a href="https://www.figma.com/board/slhZ9uzMTmaekjmbEosyzb/UX-DesignOps?node-id=2-207" target="_blank" rel="noopener">Pipeline FigJam</a></p>
+        <div class="wt-gate"><strong>Human gate</strong> Volume is enough to treat as worth solving for a pipeline test. Qual is not enough for a real PM chat without fieldwork. High confidence needs ≥2 independent usable sources — not met.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="define">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#8b5cf6">2</div>
+        <div>
+          <h2>Define — frame the problem, not the feature</h2>
+          <p>One-pager + UX epic, after anti-sycophancy and dual marketplace lenses.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#write-spec">write-spec</a>
+          <a class="wt-skill" href="../skills/#anti-sycophancy">anti-sycophancy</a>
+          <a class="wt-skill" href="../skills/#brand-operator-ux-persona">brand-operator-ux-persona</a>
+          <a class="wt-skill" href="../skills/#creator-affiliate-ux-persona">creator-affiliate-ux-persona</a>
+          <a class="wt-skill" href="../skills/#design-system">design-system</a>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>Framing (labeled)</h3>
+            <ul>
+              <li><strong>Verified:</strong> 74.68% drop details → send.</li>
+              <li><strong>AI interpretation:</strong> Partners stall while deciding if a proposal is worth sending. Details shows metadata; commission lives on Promote. No persistent Send CTA.</li>
+              <li><strong>Goal (not a feature):</strong> Partners who open details can decide and send in the same visit when they intend to.</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>Pressure test</h3>
+            <ul>
+              <li>A louder button is not the goal.</li>
+              <li>Brand ACMs receive proposals — making Send easier may raise low-quality inbound.</li>
+              <li>16m median could be reading terms, abandoning, or a second session. We do not know yet.</li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          <a href="https://impact.atlassian.net/wiki/spaces/ux/pages/edit-v2/6627295237?draftShareId=cb0ce566-8ee1-463c-aac7-b30ea356e825" target="_blank" rel="noopener">Open the draft one-pager</a>
+          · <a href="https://impact.atlassian.net/browse/UX-642" target="_blank" rel="noopener">Open UX-642</a>
+          · Stale dump left alone: <a href="https://impact.atlassian.net/wiki/spaces/ux/pages/6622478360" target="_blank" rel="noopener">monitor page</a>
+        </p>
+        <div class="wt-gate"><strong>Human gate</strong> In a real initiative you sign off, then chat with a PM before Ideate. This run published labeled <em>PIPELINE TEST</em> drafts because the walkthrough was authorized to create real artifacts.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="ideate">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#ec4899">3</div>
+        <div>
+          <h2>Ideate — three directions, one chosen</h2>
+          <p>FigJam for divergence. Figma mocks from Styleguide V2. Then ux-critique before handoff.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#ideate">ideate</a>
+          <a class="wt-skill" href="../skills/#ux-critique">ux-critique</a>
+          <a class="wt-skill" href="../skills/#prototype-handoff">prototype-handoff</a>
+          <a class="wt-skill" href="../skills/#design-system">design-system</a>
+        </div>
+        <div class="wt-dirs">
+          <div class="wt-dir chosen">
+            <h3>D1 — Sticky Send CTA</h3>
+            <p style="margin:0;font-size:0.88rem">Persistent Send proposal in the details header and a footer that stays on screen while you scroll.</p>
+            <p style="margin:8px 0 0;font-size:0.75rem;font-weight:600">Chosen</p>
+          </div>
+          <div class="wt-dir chosen">
+            <h3>D2 — Commission snapshot</h3>
+            <p style="margin:0;font-size:0.88rem">Sale rate and deal runtime on Details — not only on Promote. Matches the Dovetail note.</p>
+            <p style="margin:8px 0 0;font-size:0.75rem;font-weight:600">Chosen</p>
+          </div>
+          <div class="wt-dir parked">
+            <h3>D3 — Ready-to-propose checklist</h3>
+            <p style="margin:0;font-size:0.88rem">Guided checks before the modal. Heavier, unvalidated. Parked.</p>
+            <p style="margin:8px 0 0;font-size:0.75rem;font-weight:600">Not prototyped</p>
+          </div>
+        </div>
+
+        <h3>What the mocks look like</h3>
+        <div class="wt-mocks">
+          <div class="mock">
+            <div class="mock-label now">01 Current — the drop</div>
+            <div class="mock-screen">
+              <div class="mock-top"><span class="mock-x">×</span></div>
+              <div class="mock-brand">Expedia</div>
+              <div class="mock-sub">Travel · United States</div>
+              <div class="mock-tabs"><span>Promote</span><span>Performance</span><span class="on">Details</span></div>
+              <div>
+                <div class="mock-row"><span class="mock-sub">Program ID</span><span>102937</span></div>
+                <div class="mock-row"><span class="mock-sub">Cookie</span><span>30 days</span></div>
+                <div class="mock-row"><span class="mock-sub">Type</span><span>CPS</span></div>
+              </div>
+              <p class="mock-note">No Send proposal. Commission lives on Promote.</p>
+            </div>
+          </div>
+          <div class="mock">
+            <div class="mock-label chosen">02 Chosen — D1 + D2</div>
+            <div class="mock-screen">
+              <div class="mock-top"><span class="mock-x">×</span><button class="mock-cta" type="button">Send proposal</button></div>
+              <div class="mock-brand">Expedia</div>
+              <div class="mock-sub">Travel · United States</div>
+              <div class="mock-tabs"><span>Promote</span><span>Performance</span><span class="on">Details</span></div>
+              <div>
+                <strong>Commission &amp; terms</strong>
+                <div class="mock-row"><span>Sale</span><span>6% · 30 day window</span></div>
+                <div class="mock-row"><span>Deal runtime</span><span>Ongoing · 30-day cookie</span></div>
+              </div>
+              <div class="mock-foot">
+                <span>Sale 6% · Ongoing</span>
+                <button class="mock-cta" type="button">Send proposal</button>
+              </div>
+            </div>
+          </div>
+          <div class="mock">
+            <div class="mock-label">03 Send proposal modal</div>
+            <div class="mock-screen">
+              <div class="mock-top"><strong>Send proposal</strong><span class="mock-x">×</span></div>
+              <div class="mock-sub">Expedia · Sale 6% · Ongoing · 30-day cookie</div>
+              <div>Pitch to the brand</div>
+              <div class="mock-input">How you will promote this program…</div>
+              <div class="mock-actions">
+                <button class="mock-btn" type="button">Cancel</button>
+                <button class="mock-btn pri" type="button">Submit proposal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p><a href="https://www.figma.com/design/ZqPWLgKSwmhlDVLc6F4PVQ" target="_blank" rel="noopener">Open Figma mocks</a> (Styleguide V2 Close, Tabs, Primary / Secondary buttons) · <a href="https://www.figma.com/board/Q1xWryD6jflJt3Xj4NFN02" target="_blank" rel="noopener">Open FigJam board</a></p>
+        <iframe class="wt-embed" title="UPS Ideate mocks in Figma" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FZqPWLgKSwmhlDVLc6F4PVQ" allowfullscreen></iframe>
+        <iframe class="wt-embed" style="height:380px" title="UPS Ideate FigJam board" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fboard%2FQ1xWryD6jflJt3Xj4NFN02" allowfullscreen></iframe>
+
+        <h3>UX critique vs the one-pager</h3>
+        <table class="wt-table">
+          <thead><tr><th>Framing item</th><th>Status</th><th>Severity</th></tr></thead>
+          <tbody>
+            <tr><td>Partners stall on details before send</td><td>Addressed — Details first + persistent CTA</td><td>—</td></tr>
+            <tr><td>Commission / terms without hunting</td><td>Addressed — snapshot + footer</td><td>—</td></tr>
+            <tr><td>Deal runtime on details</td><td>Addressed</td><td>—</td></tr>
+            <tr><td>Brand-side cost of incomplete proposals</td><td>Missing from mocks</td><td>Major, deferred</td></tr>
+            <tr><td>Qual still thin</td><td>Labeled, not solved by UI</td><td>Major honesty</td></tr>
+          </tbody>
+        </table>
+        <div class="wt-gate"><strong>Human gate</strong> Residual Brand-side risk accepted for this pipeline test. A real handoff would either add an ACM quality check or explicitly defer it with a PM.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="prototype">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#10b981">4</div>
+        <div>
+          <h2>Prototype — Partner shell, not Brand UI</h2>
+          <p><code>partner-prototype</code> clones the Partner UI shell, installs, and starts Vite. Then the chosen mocks are built into the brand profile slideout.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#partner-prototype">partner-prototype</a>
+          <a class="wt-skill" href="../skills/#design-system">design-system</a>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>What you get</h3>
+            <ul>
+              <li>Path: <code>~/Documents/impact-prototypes/partner-ui</code></li>
+              <li>Dev URL: <a href="http://127.0.0.1:5173/discover?pipeline=ups">http://127.0.0.1:5173/discover?pipeline=ups</a></li>
+              <li>Opens Expedia (variation 1). Avoid Adidas / Nike / Shopify — those use other slideout variants.</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>What was built</h3>
+            <ul>
+              <li>Details is the default tab (matches the funnel event).</li>
+              <li>Commission &amp; terms card + deal runtime.</li>
+              <li>Send proposal in the header and a sticky footer.</li>
+              <li>Modal: labeled pitch field, Cancel / Submit, Escape closes the modal first.</li>
+            </ul>
+          </div>
+        </div>
+        <p>Headless Chrome on the running app confirmed the banner, Send proposal, Commission, Deal runtime, and Program Details in the live DOM.</p>
+        <div class="wt-gate"><strong>Human gate</strong> You own fidelity after the shell is up. This is a click-through prototype — Submit does not hit production.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="test">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#06b6d4">5</div>
+        <div>
+          <h2>Test — draft a study, do not fake findings</h2>
+          <p>Synthetic pre-flight, then an Outset study draft. No recruiting. No loopback.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#accessibility-review">accessibility-review</a>
+          <a class="wt-skill" href="../skills/#ux-critique">ux-critique</a>
+          <a class="wt-skill" href="../skills/#test-plan">test-plan</a>
+          <span class="wt-skill" style="background:var(--pill-bug-bg);color:var(--pill-bug-text);border-color:var(--pill-bug-border)">test-loopback skipped</span>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>Study draft (Outset, not Maze)</h3>
+            <ul>
+              <li>Moderated — we need to hear <em>why</em> people stall.</li>
+              <li>Recruit Partner / creator-affiliates who considered a proposal in the last 90 days. N = 5–8.</li>
+              <li>Tasks: decide if a program is worth proposing; name commission and deal runtime without switching tabs; send a proposal.</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>A11y pre-flight (synthetic)</h3>
+            <ul>
+              <li>No WCAG blockers for a pipeline demo.</li>
+              <li>Major: send modal has no focus trap; prev/next chevrons still unlabeled (pre-existing).</li>
+              <li>Duplicate Send CTAs are intentional (D1).</li>
+              <li>This is not a conformance audit.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wt-gate"><strong>Human gate — and a hard stop</strong> <code>test-loopback</code> publishes Verified findings to Confluence and Jira. It must not run on synthetic pre-tests. This walkthrough correctly did not publish fake session findings.</div>
+      </div>
+    </article>
+
+    <section id="how">
+      <h2>How you would run this yourself</h2>
+      <p>In Cursor, with the UX DesignOps skills installed and PostHog / Atlassian / Figma MCPs connected:</p>
+      <figure class="pipe-prompt">
+        <div class="pipe-prompt-top">
+          <span class="pipe-prompt-skill">Full pipeline — copy this</span>
+          <button type="button" class="pipe-copy" data-copy="Go through the DesignOps workflow from Empathize through Test. Pick a finding from the research listing that has real volume (not a tiny-N instrumentation drop). Use the skills at each stage. Create Figma and FigJam files, a draft one-pager and UX epic labeled PIPELINE TEST, and a Partner or Brand prototype. Stop before test-loopback unless we have real sessions. Write what happened at each stage, including quality catches and MCP failures.">Copy</button>
+        </div>
+        <pre>Go through the DesignOps workflow from Empathize through Test. Pick a finding from the research listing that has real volume (not a tiny-N instrumentation drop). Use the skills at each stage. Create Figma and FigJam files, a draft one-pager and UX epic labeled PIPELINE TEST, and a Partner or Brand prototype. Stop before test-loopback unless we have real sessions. Write what happened at each stage, including quality catches and MCP failures.</pre>
+      </figure>
+      <p>Or run one stage at a time, e.g. <code>Use data-analyze on UPS Step 2</code>, then <code>Use write-spec</code> only after you confirm it is worth solving.</p>
+    </section>
+
+    <section>
+      <h2>What the framework caught in this run</h2>
+      <table class="wt-table">
+        <thead><tr><th>Check</th><th>Worked as designed?</th></tr></thead>
+        <tbody>
+          <tr><td>Empty Dovetail / off-topic Outset discarded</td><td>Yes — would not claim high-confidence triangulation</td></tr>
+          <tr><td>PublisherPro 100% drop avoided</td><td>Yes — tiny N</td></tr>
+          <tr><td>Stale monitor Confluence not overwritten</td><td>Yes — new draft page</td></tr>
+          <tr><td>Pendo MCP down</td><td>Reported; pack already had 0 Pendo</td></tr>
+          <tr><td>Publish labeled PIPELINE TEST + draft</td><td>Yes</td></tr>
+          <tr><td>Vite served a stale bundle after a workspace move</td><td>Restart required — worth knowing for Prototype</td></tr>
+          <tr><td>test-loopback not run</td><td>Yes — no real sessions</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="pipeline-loop" style="margin-top:28px"><strong>Findings would loop back to Empathize</strong> after real Outset sessions — via synthesize-research, then test-loopback. That step is still ahead of this example.</p>
+  </main>
+  <script src="../shared/designops-theme.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll(".pipe-copy").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var text = btn.getAttribute("data-copy") || "";
+          navigator.clipboard.writeText(text).then(function () {
+            var prev = btn.textContent;
+            btn.textContent = "Copied";
+            btn.classList.add("is-copied");
+            setTimeout(function () {
+              btn.textContent = prev;
+              btn.classList.remove("is-copied");
+            }, 1500);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
