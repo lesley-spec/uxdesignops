@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>Partner Balance — pay Impact fees from earnings</title>
+  <link rel="stylesheet" href="../../shared/designops.css" />
+  <script src="../../shared/auth-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../../shared/designops-auth.js" defer></script>
+  <style>
+    body.proto-page { margin: 0; background: var(--background-subdued); }
+    .pp-app { min-height: 100vh; display: flex; flex-direction: column; }
+    .pp-nav {
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; background: var(--background-default); border-bottom: 1px solid var(--border);
+      flex-shrink: 0; gap: 16px;
+    }
+    .pp-nav-left, .pp-nav-right { display: flex; align-items: center; gap: 12px; }
+    .pp-nav-tabs { display: flex; gap: 4px; }
+    .pp-tab {
+      height: 40px; padding: 0 16px; border: 0; border-radius: 8px; background: transparent;
+      font: inherit; font-weight: 600; color: var(--text); cursor: default;
+    }
+    .pp-tab.is-on { background: var(--background-subdued); }
+    .pp-balance { font-size: 0.9rem; font-weight: 600; }
+    .pp-avatar {
+      width: 32px; height: 32px; border-radius: 50%; background: #0077db; color: #fff;
+      display: grid; place-items: center; font-weight: 600; font-size: 0.85rem;
+    }
+    .pp-main { flex: 1; padding: 32px; width: min(1200px, 94%); margin: 0 auto; }
+    .pp-banner {
+      margin: 12px 0 20px; padding: 12px 16px; border-radius: 8px;
+      border: 1px solid var(--pill-theme-border); background: var(--pill-theme-bg); font-size: 0.92rem;
+    }
+    .pp-banner a { font-weight: 600; }
+    .pp-title {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 0 0 16px;
+    }
+    .pp-title h1 { margin: 0; font-size: 1.5rem; }
+    .pp-title-actions { display: flex; gap: 8px; align-items: center; }
+    .pp-btn {
+      height: 38px; padding: 0 16px; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer;
+    }
+    .pp-btn:focus-visible { outline: 2px solid var(--interactive-default); outline-offset: 2px; }
+    .pp-btn-ghost { background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .pp-btn-pri { background: var(--interactive-default); color: var(--text-invert); border: 0; }
+    .pp-btn-pri:hover { background: var(--interactive-hover); }
+    .pp-btn-pri:disabled {
+      opacity: 0.5; cursor: not-allowed; background: var(--interactive-default);
+    }
+    .pp-link {
+      background: none; border: 0; color: var(--interactive-default); font: inherit; font-weight: 600; cursor: pointer; padding: 0;
+    }
+    .pp-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 16px; }
+    @media (max-width: 800px) { .pp-cards { grid-template-columns: 1fr; } }
+    .pp-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px;
+    }
+    .pp-card .k { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .pp-card .v { display: block; font-size: 1.45rem; font-weight: 700; margin: 4px 0 2px; }
+    .pp-card .s { font-size: 0.8rem; color: var(--muted); }
+    .pp-card.is-ok .v { color: #067647; }
+    .pp-card.is-due .v { color: #c01048; }
+    .dark .pp-card.is-ok .v { color: #4ade80; }
+    .dark .pp-card.is-due .v { color: #fb7185; }
+    .pp-due {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      margin: 0 0 16px; padding: 12px 16px; border-radius: 8px;
+      background: #fff1f3; border: 1px solid #fda4af; color: #9f1239; font-size: 0.9rem;
+    }
+    .dark .pp-due { background: #3f0d18; border-color: #9f1239; color: #fecdd3; }
+    .pp-table-wrap {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: auto;
+    }
+    .pp-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .pp-table th {
+      text-align: left; padding: 12px 16px; font-size: 0.72rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border);
+    }
+    .pp-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .pp-table tr:last-child td { border-bottom: 0; }
+    .pp-table tbody tr[data-open] { cursor: pointer; }
+    .pp-table tbody tr[data-open]:hover { background: var(--background-hover); }
+    .pp-table tbody tr[data-open]:focus-visible { outline: 2px solid var(--interactive-default); outline-offset: -2px; }
+    .amt-minus { color: #c01048; font-weight: 600; }
+    .amt-plus { color: #067647; font-weight: 600; }
+    .dark .amt-minus { color: #fb7185; }
+    .dark .amt-plus { color: #4ade80; }
+    .tag {
+      display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600;
+      border: 1px solid var(--border); background: var(--background-subdued);
+    }
+    .tag.open { color: #9f1239; border-color: #fda4af; background: #fff1f3; }
+    .tag.paid { color: #067647; border-color: #86efac; background: #ecfdf3; }
+    .pp-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; }
+    .pp-slideout {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(480px, 100%);
+      background: var(--card); z-index: 1001; display: flex; flex-direction: column;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+    }
+    .pp-slide-top {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 24px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .pp-icon-btn {
+      width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--card); cursor: pointer; font: inherit;
+    }
+    .pp-icon-btn:focus-visible { outline: 2px solid var(--interactive-default); outline-offset: 2px; }
+    .pp-scroll { flex: 1; overflow: auto; padding: 24px; }
+    .pp-split { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 0.95rem; }
+    .pp-split span:first-child { color: var(--muted); }
+    .pp-box {
+      background: var(--background-subdued); border-radius: 12px; padding: 16px; margin: 16px 0;
+    }
+    .pp-box h3 { margin: 0 0 10px; font-size: 0.95rem; }
+    .pp-warn {
+      background: #fff1f3; border: 1px solid #fda4af; color: #9f1239; border-radius: 8px;
+      padding: 12px 14px; font-size: 0.88rem; margin: 0 0 16px;
+    }
+    .dark .pp-warn { background: #3f0d18; border-color: #9f1239; color: #fecdd3; }
+    .pp-success {
+      background: #ecfdf3; border: 1px solid #86efac; color: #067647; border-radius: 8px;
+      padding: 12px 14px; font-size: 0.88rem; margin: 0 0 16px;
+    }
+    .dark .pp-success { background: #052e16; border-color: #166534; color: #86efac; }
+    .pp-modal-wrap {
+      position: fixed; inset: 0; z-index: 1100; display: flex; align-items: center; justify-content: center; padding: 24px;
+    }
+    .pp-modal-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    .pp-modal {
+      position: relative; width: min(440px, 100%); background: var(--card);
+      border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+    }
+    .pp-modal h2 { margin: 0 0 8px; font-size: 1.25rem; }
+    .pp-modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+    .hidden { display: none !important; }
+    .pp-note { font-size: 0.8rem; color: var(--muted); margin: 0 0 12px; }
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: var(--text-default); color: var(--text-invert); padding: 10px 16px;
+      border-radius: 8px; font-size: 0.88rem; z-index: 1200;
+    }
+  </style>
+</head>
+<body class="proto-page">
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts.</p></div></div>
+
+  <div class="pp-app">
+    <header class="pp-nav">
+      <div class="pp-nav-left">
+        <a href="../../walkthroughs/2026-08-28-fincore-1490.html" class="top-nav-brand" style="text-decoration:none">
+          <span class="top-nav-brand-text">impact.com</span>
+        </a>
+        <nav class="pp-nav-tabs" aria-label="Partner">
+          <span class="pp-tab">Discover</span>
+          <span class="pp-tab">Content</span>
+          <span class="pp-tab">Partners</span>
+          <span class="pp-tab is-on">Finance</span>
+        </nav>
+      </div>
+      <div class="pp-nav-right">
+        <span class="pp-balance" id="nav-balance">$4,136.00 available</span>
+        <span class="pp-avatar" aria-hidden="true">NL</span>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="pp-main">
+      <div class="pp-banner">
+        Pipeline test — FINCORE-1490 Option 1. Stay on <strong>one Partner account</strong>. Pay Impact fees from earnings.
+        <a href="../../walkthroughs/2026-08-28-fincore-1490.html">Back to walkthrough</a>
+        · <a href="?state=short" id="short-link">Try insufficient funds</a>
+        · <a href="?state=ok" id="ok-link">Reset happy path</a>
+      </div>
+
+      <div class="pp-title">
+        <h1 id="page-title">Balance</h1>
+        <div class="pp-title-actions">
+          <button type="button" class="pp-btn pp-btn-ghost" id="toggle-view">View invoices</button>
+          <button type="button" class="pp-btn pp-btn-pri" id="withdraw-btn">Withdraw</button>
+        </div>
+      </div>
+
+      <div id="view-balance">
+        <div class="pp-cards">
+          <div class="pp-card is-ok">
+            <span class="k">Available to withdraw</span>
+            <span class="v" id="avail-val">$4,136.00</span>
+            <span class="s">Cleared earnings minus reserved fees</span>
+          </div>
+          <div class="pp-card is-due">
+            <span class="k">Reserved for Impact fees</span>
+            <span class="v" id="reserved-val">$299.00</span>
+            <span class="s" id="reserved-sub">Invoice INV-8841 due 15 Sep</span>
+          </div>
+          <div class="pp-card">
+            <span class="k">Total in earnings account</span>
+            <span class="v" id="total-val">$4,435.00</span>
+            <span class="s">One Partner account — no billing advertiser</span>
+          </div>
+        </div>
+
+        <div class="pp-due" id="due-banner">
+          <span id="due-copy">Impact fee $299.00 is due. Pay from earnings without switching accounts.</span>
+          <button type="button" class="pp-link" id="banner-pay">Pay from earnings →</button>
+        </div>
+        <div class="pp-due hidden" id="short-banner">
+          <span>Impact fee $299.00 is due, but available earnings are only $80.00. Withdrawals stay frozen. Open the invoice to see why Pay is disabled.</span>
+          <button type="button" class="pp-link" id="banner-short">View invoice →</button>
+        </div>
+        <div class="pp-success hidden" id="paid-banner">Impact technology fee INV-8841 paid from earnings. Available to withdraw is unchanged; reserved is now $0.</div>
+
+        <div class="pp-table-wrap">
+          <table class="pp-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Method</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="tx-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="view-invoices" class="hidden">
+        <p class="pp-note">Same invoice listing brands already use — row opens a slide-out with download.</p>
+        <div class="pp-table-wrap">
+          <table class="pp-table">
+            <thead>
+              <tr>
+                <th>Invoice</th>
+                <th>Description</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-open="inv" tabindex="0">
+                <td>INV-8841</td>
+                <td>Impact technology fee · Publisher Pro</td>
+                <td>15 Sep 2026</td>
+                <td><span class="tag open" id="inv-status">Open</span></td>
+                <td class="amt-minus">$299.00</td>
+              </tr>
+              <tr>
+                <td>INV-8610</td>
+                <td>Impact technology fee · Publisher Pro</td>
+                <td>15 Aug 2026</td>
+                <td><span class="tag paid">Paid</span></td>
+                <td>$299.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="backdrop" class="pp-backdrop hidden"></div>
+  <aside id="slideout" class="pp-slideout hidden" role="dialog" aria-modal="true" aria-labelledby="inv-title">
+    <div class="pp-slide-top">
+      <span class="pp-note" style="margin:0">Invoice</span>
+      <button type="button" class="pp-icon-btn" id="close-slide" aria-label="Close invoice">×</button>
+    </div>
+    <div class="pp-scroll">
+      <p class="pp-note" style="color:var(--interactive-default);font-weight:600">INV-8841</p>
+      <h2 id="inv-title" style="margin:0 0 6px;font-size:1.4rem">Impact technology fee</h2>
+      <p class="pp-note">Due 15 Sep 2026 · Publisher Pro · one Partner account</p>
+      <p style="font-size:1.6rem;font-weight:700;margin:0 0 8px">$299.00</p>
+      <div class="pp-success hidden" id="slide-paid">Paid 28 Aug 2026 from earnings.</div>
+      <div class="pp-warn hidden" id="slide-short">Available earnings ($80.00) are less than this invoice. Withdrawals stay frozen until you earn enough or Billing collects another way. Option 2 (card / ACH wallet) is parked.</div>
+      <div class="pp-box" id="pay-box">
+        <h3>Pay from earnings</h3>
+        <div class="pp-split"><span>Available today</span><span id="slide-avail">$4,136.00</span></div>
+        <div class="pp-split"><span>This invoice</span><span class="amt-minus">−$299.00</span></div>
+        <div class="pp-split"><span>Left to withdraw</span><span class="amt-plus" id="slide-left">$3,837.00</span></div>
+      </div>
+      <p class="pp-note">No second account. Same invoice PDF brands already get.</p>
+      <button type="button" class="pp-btn pp-btn-pri" id="pay-btn" style="width:100%;margin-bottom:8px">Pay $299.00 from earnings</button>
+      <button type="button" class="pp-btn pp-btn-ghost" id="pdf-btn" style="width:100%">Download PDF</button>
+    </div>
+  </aside>
+
+  <div id="confirm" class="pp-modal-wrap hidden" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="pp-modal-bg" id="confirm-bg"></div>
+    <div class="pp-modal">
+      <h2 id="confirm-title">Pay from earnings?</h2>
+      <p class="pp-note">$299.00 will debit your earnings account. Available to withdraw stays $4,136.00. Reserved for fees becomes $0.</p>
+      <div class="pp-modal-actions">
+        <button type="button" class="pp-btn pp-btn-ghost" id="cancel-pay">Cancel</button>
+        <button type="button" class="pp-btn pp-btn-pri" id="confirm-pay">Confirm payment</button>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden" role="status">Invoice PDF downloaded (demo).</div>
+
+  <script src="../../shared/designops-theme.js"></script>
+  <script>
+    (function () {
+      var fee = 299;
+      var state = new URLSearchParams(location.search).get("state") === "short" ? "short" : "ok";
+      var paid = false;
+      var view = "balance";
+      var lastFocus = null;
+
+      function money(n) {
+        return n.toLocaleString("en-US", { style: "currency", currency: "USD" });
+      }
+      function available() {
+        if (state === "short") return 80;
+        return 4136;
+      }
+      function reserved() {
+        if (paid) return 0;
+        return fee;
+      }
+      function total() {
+        return available() + reserved();
+      }
+
+      function render() {
+        document.getElementById("avail-val").textContent = money(available());
+        document.getElementById("reserved-val").textContent = money(reserved());
+        document.getElementById("total-val").textContent = money(total());
+        document.getElementById("nav-balance").textContent = money(available()) + " available";
+        document.getElementById("slide-avail").textContent = money(available());
+        document.getElementById("slide-left").textContent = money(Math.max(0, available() - (paid ? 0 : fee)));
+        document.getElementById("due-banner").classList.toggle("hidden", paid || state === "short");
+        document.getElementById("short-banner").classList.toggle("hidden", paid || state !== "short");
+        document.getElementById("paid-banner").classList.toggle("hidden", !paid);
+        document.getElementById("slide-paid").classList.toggle("hidden", !paid);
+        document.getElementById("slide-short").classList.toggle("hidden", state !== "short" || paid);
+        document.getElementById("pay-box").classList.toggle("hidden", paid);
+        document.getElementById("pay-btn").disabled = paid || state === "short";
+        document.getElementById("pay-btn").textContent = paid ? "Paid" : "Pay $299.00 from earnings";
+        document.getElementById("inv-status").textContent = paid ? "Paid" : "Open";
+        document.getElementById("inv-status").className = "tag " + (paid ? "paid" : "open");
+        document.getElementById("reserved-sub").textContent = paid ? "No fees reserved" : "Invoice INV-8841 due 15 Sep";
+        document.getElementById("withdraw-btn").disabled = state === "short" && !paid;
+
+        var rows = [];
+        if (paid) {
+          rows.push(["28 Aug 2026", "Impact technology fee  ·  INV-8841", "Earnings debit", "−$299.00", "minus"]);
+        } else {
+          rows.push(["28 Aug 2026", "Impact technology fee  ·  INV-8841 (open)", state === "short" ? "Reserved · insufficient" : "Reserved", "−$299.00 pending", "minus"]);
+        }
+        rows.push(["27 Aug 2026", "Acme Outdoor  ·  Commission", "Cleared earnings", "+$1,240.00", "plus"]);
+        rows.push(["22 Aug 2026", "Withdrawal to Bank of America ···4512", "ACH", "−$800.00", "minus"]);
+        rows.push(["18 Aug 2026", "Northwind Media  ·  Commission", "Cleared earnings", "+$620.50", "plus"]);
+        document.getElementById("tx-body").innerHTML = rows.map(function (r, i) {
+          var open = r[1].indexOf("INV-8841") >= 0 ? " data-open=\"inv\" tabindex=\"0\"" : "";
+          var cls = r[4] === "plus" ? "amt-plus" : "amt-minus";
+          return "<tr" + open + "><td>" + r[0] + "</td><td>" + r[1] + "</td><td>" + r[2] + "</td><td class=\"" + cls + "\">" + r[3] + "</td></tr>";
+        }).join("");
+
+        document.getElementById("view-balance").classList.toggle("hidden", view !== "balance");
+        document.getElementById("view-invoices").classList.toggle("hidden", view !== "invoices");
+        document.getElementById("page-title").textContent = view === "invoices" ? "Invoices" : "Balance";
+        document.getElementById("toggle-view").textContent = view === "invoices" ? "View balance" : "View invoices";
+      }
+
+      function openSlide() {
+        lastFocus = document.activeElement;
+        document.getElementById("backdrop").classList.remove("hidden");
+        document.getElementById("slideout").classList.remove("hidden");
+        document.getElementById("close-slide").focus();
+        document.body.style.overflow = "hidden";
+      }
+      function closeSlide() {
+        document.getElementById("backdrop").classList.add("hidden");
+        document.getElementById("slideout").classList.add("hidden");
+        document.body.style.overflow = "";
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      function openConfirm() {
+        if (paid || state === "short") return;
+        document.getElementById("confirm").classList.remove("hidden");
+        document.getElementById("confirm-pay").focus();
+      }
+      function closeConfirm() {
+        document.getElementById("confirm").classList.add("hidden");
+        document.getElementById("pay-btn").focus();
+      }
+
+      document.getElementById("toggle-view").addEventListener("click", function () {
+        view = view === "balance" ? "invoices" : "balance";
+        render();
+      });
+      document.getElementById("banner-pay").addEventListener("click", openSlide);
+      document.getElementById("banner-short").addEventListener("click", openSlide);
+      document.getElementById("close-slide").addEventListener("click", closeSlide);
+      document.getElementById("backdrop").addEventListener("click", closeSlide);
+      document.getElementById("pay-btn").addEventListener("click", openConfirm);
+      document.getElementById("cancel-pay").addEventListener("click", closeConfirm);
+      document.getElementById("confirm-bg").addEventListener("click", closeConfirm);
+      document.getElementById("confirm-pay").addEventListener("click", function () {
+        paid = true;
+        closeConfirm();
+        closeSlide();
+        view = "balance";
+        render();
+      });
+      document.getElementById("pdf-btn").addEventListener("click", function () {
+        var t = document.getElementById("toast");
+        t.classList.remove("hidden");
+        setTimeout(function () { t.classList.add("hidden"); }, 1800);
+      });
+      document.getElementById("tx-body").addEventListener("click", function (e) {
+        if (e.target.closest("[data-open]")) openSlide();
+      });
+      document.getElementById("tx-body").addEventListener("keydown", function (e) {
+        if ((e.key === "Enter" || e.key === " ") && e.target.closest("[data-open]")) {
+          e.preventDefault();
+          openSlide();
+        }
+      });
+      document.querySelector("#view-invoices tbody").addEventListener("click", function (e) {
+        if (e.target.closest("[data-open]")) openSlide();
+      });
+      document.querySelector("#view-invoices tbody").addEventListener("keydown", function (e) {
+        if ((e.key === "Enter" || e.key === " ") && e.target.closest("[data-open]")) {
+          e.preventDefault();
+          openSlide();
+        }
+      });
+      window.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape") return;
+        if (!document.getElementById("confirm").classList.contains("hidden")) {
+          closeConfirm();
+          return;
+        }
+        if (!document.getElementById("slideout").classList.contains("hidden")) closeSlide();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
