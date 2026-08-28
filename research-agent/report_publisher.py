@@ -1476,10 +1476,10 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
             f'<a class="view-switch-link" href="{_esc(hrefs["affinity"])}">Open Affinity board →</a>'
             f'<a class="run-workflow-btn" href="{_esc(workflow_url)}" target="_blank" '
             f'rel="noopener noreferrer" '
-            f'title="Opens GitHub Actions — click Run workflow to refresh this report">'
+            f'title="Sign in to GitHub, then click Run workflow to refresh this report">'
             f"Run Workflow</a>"
             f"</p>"
-            f'<p class="run-workflow-hint muted">Manual override: opens GitHub Actions to run the Research Insight Agent (quarterly schedule otherwise).</p>'
+            f'<p class="run-workflow-hint muted">Manual override: sign in to GitHub (repo access required), then click <strong>Run workflow</strong> on the Research Insight Agent page.</p>'
         )
     else:
         page_actions_html = (

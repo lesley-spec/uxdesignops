@@ -439,6 +439,7 @@ def github_actions_workflow_url(
     workflow_file: str = "research-agent.yml",
     *,
     pages_url: str = "",
+    require_login: bool = True,
 ) -> str:
     """Link to GitHub Actions workflow page for manual workflow_dispatch runs."""
     base = (
@@ -449,8 +450,15 @@ def github_actions_workflow_url(
     match = re.match(r"https?://([^.]+)\.github\.io/([^/]+)", base)
     if match:
         owner, repo = match.group(1), match.group(2)
-        return f"https://github.com/{owner}/{repo}/actions/workflows/{workflow_file}"
-    return f"https://github.com/lesley-spec/uxdesignops/actions/workflows/{workflow_file}"
+        workflow_url = f"https://github.com/{owner}/{repo}/actions/workflows/{workflow_file}"
+    else:
+        workflow_url = f"https://github.com/lesley-spec/uxdesignops/actions/workflows/{workflow_file}"
+
+    if not require_login:
+        return workflow_url
+
+    from urllib.parse import quote
+    return f"https://github.com/login?return_to={quote(workflow_url, safe='')}"
 
 
 def report_nav_hrefs(week: str, *, at_root: bool = False) -> Dict[str, str]:
