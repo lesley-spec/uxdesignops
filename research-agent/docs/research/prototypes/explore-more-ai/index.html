@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>Explore more with AI — Brand prototype</title>
+  <link rel="stylesheet" href="../../shared/designops.css" />
+  <script src="../../shared/auth-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../../shared/designops-auth.js" defer></script>
+  <style>
+    body.proto-page { margin: 0; background: var(--background-subdued); }
+    .pp-app { min-height: 100vh; display: flex; flex-direction: column; }
+    .pp-nav {
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; background: var(--background-default); border-bottom: 1px solid var(--border);
+      flex-shrink: 0; gap: 16px;
+    }
+    .pp-nav-left, .pp-nav-right { display: flex; align-items: center; gap: 12px; }
+    .pp-nav-tabs { display: flex; gap: 4px; }
+    .pp-tab {
+      height: 40px; padding: 0 16px; border: 0; border-radius: 8px; background: transparent;
+      font: inherit; font-weight: 600; color: var(--text); cursor: default;
+    }
+    .pp-tab.is-on { background: var(--background-subdued); }
+    .pp-avatar {
+      width: 32px; height: 32px; border-radius: 50%; background: #0077db; color: #fff;
+      display: grid; place-items: center; font-weight: 600; font-size: 0.85rem;
+    }
+    .pp-main { flex: 1; padding: 32px; width: min(1180px, 94%); margin: 0 auto; }
+    .pp-banner {
+      margin: 12px 0 20px; padding: 12px 16px; border-radius: 8px;
+      border: 1px solid var(--pill-theme-border); background: var(--pill-theme-bg); font-size: 0.92rem;
+    }
+    .pp-banner a { font-weight: 600; }
+    .pp-title {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin: 0 0 8px;
+    }
+    .pp-title h1 { margin: 0; font-size: 1.5rem; }
+    .pp-meta { margin: 0 0 16px; color: var(--muted); font-size: 0.9rem; }
+    .pp-title-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+    .pp-btn {
+      height: 38px; padding: 0 16px; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer;
+    }
+    .pp-btn:focus-visible { outline: 2px solid var(--interactive-default); outline-offset: 2px; }
+    .pp-btn-ghost { background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .pp-btn-pri { background: var(--interactive-default); color: var(--text-invert); border: 0; }
+    .pp-btn-pri:hover { background: var(--interactive-hover); }
+    .pp-note { color: var(--pill-bug-text); font-size: 0.85rem; margin: 0 0 12px; }
+    .pp-table-wrap {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: auto;
+    }
+    .pp-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .pp-table th {
+      text-align: left; padding: 12px 16px; font-size: 0.72rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border);
+    }
+    .pp-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .pp-table tr:last-child td { border-bottom: 0; }
+    .pp-split { display: grid; grid-template-columns: 360px 1fr; gap: 16px; }
+    @media (max-width: 900px) { .pp-split { grid-template-columns: 1fr; } }
+    .pp-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px;
+    }
+    .pp-kicker { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .pp-prompt {
+      margin: 10px 0; padding: 12px; border-radius: 8px; background: var(--background-subdued);
+      font-size: 0.9rem; line-height: 1.45;
+    }
+    .pp-status { color: var(--interactive-default); font-weight: 600; margin: 12px 0 0; }
+    .pp-skel { height: 44px; border-radius: 8px; background: var(--background-hover); margin: 0 0 10px; display: flex; align-items: center; padding: 0 12px; color: var(--muted); font-size: 0.85rem; }
+    .pp-take {
+      background: #ecfdf3; border: 1px solid #86efac; color: #14532d; border-radius: 12px; padding: 16px; margin: 0 0 16px;
+    }
+    .dark .pp-take { background: #052e16; border-color: #166534; color: #bbf7d0; }
+    .pp-take .pp-kicker { color: #067647; }
+    .dark .pp-take .pp-kicker { color: #86efac; }
+    .pp-take h2 { margin: 4px 0 6px; font-size: 1.15rem; }
+    .pp-take p { margin: 0; font-size: 0.92rem; }
+    .pp-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 20px; }
+    @media (max-width: 800px) { .pp-cards { grid-template-columns: 1fr 1fr; } }
+    .pp-metric { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+    .pp-metric .v { display: block; font-size: 1.4rem; font-weight: 700; margin: 4px 0 2px; }
+    .pp-metric .s { font-size: 0.8rem; color: #067647; }
+    .dark .pp-metric .s { color: #4ade80; }
+    .pp-section { margin: 0 0 16px; }
+    .pp-section h3 { margin: 0 0 6px; font-size: 1rem; }
+    .pp-section p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+    .hidden { display: none !important; }
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: var(--text-default); color: var(--text-invert); padding: 10px 16px;
+      border-radius: 8px; font-size: 0.88rem; z-index: 1200;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+  </style>
+</head>
+<body class="proto-page">
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts.</p></div></div>
+
+  <div class="pp-app">
+    <header class="pp-nav">
+      <div class="pp-nav-left">
+        <a href="../../walkthroughs/2026-08-28-explore-more-ai.html" class="top-nav-brand" style="text-decoration:none">
+          <span class="top-nav-brand-text">impact.com</span>
+        </a>
+        <nav class="pp-nav-tabs" aria-label="Brand">
+          <span class="pp-tab">Home</span>
+          <span class="pp-tab is-on">Reports</span>
+          <span class="pp-tab">Partners</span>
+          <span class="pp-tab">Data Lab</span>
+        </nav>
+      </div>
+      <div class="pp-nav-right">
+        <span class="pp-avatar" aria-hidden="true">B</span>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="pp-main">
+      <div class="pp-banner">
+        Pipeline test — Explore more with AI (D1). Brand · DataViz. Stay on the published report, then continue the question as a story.
+        <a href="../../walkthroughs/2026-08-28-explore-more-ai.html">Back to walkthrough</a>
+      </div>
+
+      <div id="view-table">
+        <div class="pp-title">
+          <div>
+            <h1>Partner performance</h1>
+          </div>
+          <div class="pp-title-actions">
+            <button type="button" class="pp-btn pp-btn-ghost" tabindex="-1">Export</button>
+            <button type="button" class="pp-btn pp-btn-pri" id="explore-btn">Explore more with AI</button>
+          </div>
+        </div>
+        <p class="pp-meta">May 1–30, 2026 · All programs · Table only — no takeaway</p>
+        <p class="pp-note">No story. You would have to hunt More Reports or open Data Lab to keep asking.</p>
+        <div class="pp-table-wrap">
+          <table class="pp-table">
+            <thead>
+              <tr>
+                <th scope="col">Partner</th>
+                <th scope="col">Channel</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Revenue</th>
+                <th scope="col">Action cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Northwind Media</td><td>Affiliate</td><td>412</td><td>$128,400</td><td>$18,200</td></tr>
+              <tr><td>Cedar &amp; Co</td><td>Creator</td><td>88</td><td>$41,200</td><td>$9,800</td></tr>
+              <tr><td>Atlas Review</td><td>Content</td><td>204</td><td>$62,110</td><td>$11,400</td></tr>
+              <tr><td>Harbor Social</td><td>Social</td><td>156</td><td>$28,900</td><td>$7,650</td></tr>
+              <tr><td>Quiet Cart</td><td>Affiliate</td><td>31</td><td>$6,440</td><td>$4,200</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="view-generating" class="hidden">
+        <div class="pp-title">
+          <div>
+            <h1>ask impact</h1>
+            <p class="pp-meta" style="margin:4px 0 0">From Partner performance · May 1–30</p>
+          </div>
+          <div class="pp-title-actions">
+            <button type="button" class="pp-btn pp-btn-ghost" id="cancel-gen">Back to report</button>
+          </div>
+        </div>
+        <div class="pp-split">
+          <aside class="pp-card">
+            <div class="pp-kicker">Prompt (from this report)</div>
+            <p class="pp-prompt" id="prompt-text">Turn Partner performance for May 1–30 into a story I can share. Call out mix shift, efficiency, and who went dark. Do not rebuild the table.</p>
+            <p class="pp-meta" style="margin:0">Assumptions: USD · last 30 days · all programs</p>
+            <p class="pp-status" id="gen-status" aria-live="polite">Generating a story dashboard…</p>
+          </aside>
+          <section class="pp-card" aria-label="Story canvas">
+            <div class="pp-kicker">Story canvas</div>
+            <div class="pp-skel" style="margin-top:12px">Key takeaway…</div>
+            <div class="pp-skel">Section 1…</div>
+            <div class="pp-skel">Section 2…</div>
+            <div class="pp-skel">Section 3…</div>
+          </section>
+        </div>
+      </div>
+
+      <div id="view-story" class="hidden">
+        <div class="pp-title">
+          <div>
+            <h1>Program performance story</h1>
+          </div>
+          <div class="pp-title-actions">
+            <button type="button" class="pp-btn pp-btn-ghost" id="back-story">Back to report</button>
+            <button type="button" class="pp-btn pp-btn-ghost" id="save-story">Save</button>
+            <button type="button" class="pp-btn pp-btn-pri" id="share-story">Share</button>
+          </div>
+        </div>
+        <p class="pp-meta">May 1–30, 2026 · generated from Partner performance table</p>
+        <section class="pp-take">
+          <div class="pp-kicker">Key takeaway</div>
+          <h2>New partners drove 22% of revenue on 9% of spend — mix is shifting, not just more volume.</h2>
+          <p>Action cost held while revenue rose 8%. Three partners went dark. Two look worth recruiting next month.</p>
+        </section>
+        <div class="pp-cards">
+          <div class="pp-metric"><span class="pp-kicker">Active partners</span><span class="v">48</span><span class="s">+6 new</span></div>
+          <div class="pp-metric"><span class="pp-kicker">Revenue</span><span class="v">$266,150</span><span class="s">+8% vs prior</span></div>
+          <div class="pp-metric"><span class="pp-kicker">Action cost</span><span class="v">$51,250</span><span class="s">flat</span></div>
+          <div class="pp-metric"><span class="pp-kicker">Gone dark</span><span class="v">3</span><span class="s" style="color:var(--muted)">no clicks 30d</span></div>
+        </div>
+        <div class="pp-section">
+          <h3>01 Mix · New partners are punching above spend</h3>
+          <p>Cedar &amp; Co and Harbor Social (joined last 90 days) are 9% of spend and 22% of revenue. Legacy affiliate Northwind still leads dollars, but efficiency is elsewhere.</p>
+        </div>
+        <div class="pp-section">
+          <h3>02 Efficiency · Cost held while revenue climbed</h3>
+          <p>Action cost is flat at $51,250. Do not read the table as “buy more of the same.” The story is mix, not volume.</p>
+        </div>
+        <div class="pp-section">
+          <h3>03 Next · Three gone dark, two to recruit</h3>
+          <p>Quiet Cart, Pixel Grove, and Midland Ads have no clicks in 30 days. Keep Cedar-like creators on the recruit list. Ask Impact can refine this story — canvas edits stay in context.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <p class="sr-only" id="route-live" aria-live="polite"></p>
+
+  <script src="../../shared/designops-theme.js"></script>
+  <script>
+    (function () {
+      var table = document.getElementById("view-table");
+      var generating = document.getElementById("view-generating");
+      var story = document.getElementById("view-story");
+      var explore = document.getElementById("explore-btn");
+      var cancelGen = document.getElementById("cancel-gen");
+      var backStory = document.getElementById("back-story");
+      var toast = document.getElementById("toast");
+      var routeLive = document.getElementById("route-live");
+      var timer = null;
+      var view = "table";
+
+      function show(which) {
+        view = which;
+        table.classList.toggle("hidden", which !== "table");
+        generating.classList.toggle("hidden", which !== "generating");
+        story.classList.toggle("hidden", which !== "story");
+        if (which === "table") {
+          routeLive.textContent = "Partner performance table";
+          explore.focus();
+        } else if (which === "generating") {
+          routeLive.textContent = "Ask Impact is generating a story dashboard";
+          cancelGen.focus();
+        } else {
+          routeLive.textContent = "Program performance story";
+          backStory.focus();
+        }
+      }
+
+      function startGenerate() {
+        if (timer) clearTimeout(timer);
+        show("generating");
+        timer = setTimeout(function () {
+          show("story");
+        }, 1800);
+      }
+
+      function backToTable() {
+        if (timer) clearTimeout(timer);
+        show("table");
+      }
+
+      explore.addEventListener("click", startGenerate);
+      cancelGen.addEventListener("click", backToTable);
+      backStory.addEventListener("click", backToTable);
+
+      document.getElementById("save-story").addEventListener("click", function () {
+        toast.textContent = "Saved to your reports (pipeline demo — nothing persisted).";
+        toast.classList.remove("hidden");
+        setTimeout(function () { toast.classList.add("hidden"); }, 2200);
+      });
+      document.getElementById("share-story").addEventListener("click", function () {
+        toast.textContent = "Share link copied (pipeline demo).";
+        toast.classList.remove("hidden");
+        setTimeout(function () { toast.classList.add("hidden"); }, 2200);
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape") return;
+        if (view === "generating" || view === "story") {
+          e.preventDefault();
+          backToTable();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
