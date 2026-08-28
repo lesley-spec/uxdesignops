@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>UPS send proposal — Partner prototype</title>
+  <link rel="stylesheet" href="../../shared/designops.css" />
+  <script src="../../shared/auth-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../../shared/designops-auth.js" defer></script>
+  <style>
+    body.proto-page { margin: 0; background: var(--background-subdued); }
+    .pp-app { min-height: 100vh; display: flex; flex-direction: column; }
+    .pp-nav {
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; background: var(--background-default); border-bottom: 1px solid var(--border);
+      flex-shrink: 0; gap: 16px;
+    }
+    .pp-nav-left, .pp-nav-right { display: flex; align-items: center; gap: 12px; }
+    .pp-nav-tabs { display: flex; gap: 4px; }
+    .pp-tab {
+      height: 40px; padding: 0 16px; border: 0; border-radius: 8px; background: transparent;
+      font: inherit; font-weight: 600; color: var(--text); cursor: default;
+    }
+    .pp-tab.is-on { background: var(--background-subdued); }
+    .pp-balance { font-size: 0.9rem; font-weight: 600; }
+    .pp-avatar {
+      width: 32px; height: 32px; border-radius: 50%; background: #0077db; color: #fff;
+      display: grid; place-items: center; font-weight: 600; font-size: 0.85rem;
+    }
+    .pp-main { flex: 1; padding: 32px; width: min(1100px, 92%); margin: 0 auto; }
+    .pp-banner {
+      margin: 12px 0 20px; padding: 12px 16px; border-radius: 8px;
+      border: 1px solid var(--pill-theme-border); background: var(--pill-theme-bg); font-size: 0.92rem;
+    }
+    .pp-banner a { font-weight: 600; }
+    .pp-search {
+      display: flex; gap: 12px; margin: 16px 0;
+    }
+    .pp-search input, .pp-filter {
+      height: 40px; border: 1px solid var(--border); border-radius: 8px; background: var(--card);
+      font: inherit; color: var(--text);
+    }
+    .pp-search input { flex: 1; padding: 0 12px; }
+    .pp-filter { padding: 0 16px; cursor: default; }
+    .pp-cats { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+    .pp-cat {
+      height: 32px; padding: 0 16px; border: 0; border-radius: 999px; font: inherit; font-weight: 600;
+      background: var(--background-hover); color: var(--text); cursor: pointer;
+    }
+    .pp-cat.is-on { background: var(--text-default); color: var(--text-invert); }
+    .pp-layout { display: grid; grid-template-columns: 1fr 260px; gap: 24px; }
+    @media (max-width: 900px) { .pp-layout { grid-template-columns: 1fr; } }
+    .pp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 700px) { .pp-grid { grid-template-columns: 1fr; } }
+    .pp-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 20px; cursor: pointer; text-align: left; font: inherit; color: inherit;
+    }
+    .pp-card:hover { border-color: var(--border-accent); }
+    .pp-card:focus-visible { outline: 2px solid var(--interactive-default); outline-offset: 2px; }
+    .pp-card-top { display: flex; gap: 12px; margin-bottom: 12px; }
+    .pp-logo {
+      width: 48px; height: 48px; border-radius: 8px; background: var(--background-hover);
+      display: grid; place-items: center; font-weight: 600; flex-shrink: 0;
+    }
+    .pp-card h3 { margin: 0; font-size: 1rem; }
+    .pp-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+    .pp-card-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+    .pp-earn {
+      background: #b6ffc9; color: #275143; border-radius: 4px; padding: 2px 8px;
+      font-size: 0.8rem; font-weight: 600;
+    }
+    .dark .pp-earn { background: #143c28; color: #4ade80; }
+    .pp-apply { color: var(--interactive-default); font-weight: 600; background: none; border: 0; font: inherit; }
+    .pp-side { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; height: fit-content; }
+    .pp-side h3 { margin: 0 0 12px; font-size: 1rem; }
+    .pp-trend { display: flex; justify-content: space-between; gap: 8px; margin: 0 0 12px; font-size: 0.88rem; }
+    .pp-trend b { color: #067647; }
+    .pp-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000;
+    }
+    .pp-slideout {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(860px, 100%);
+      background: var(--card); z-index: 1001; display: flex; flex-direction: column;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+    }
+    .pp-slide-top {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 24px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .pp-icon-btn {
+      width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--card); cursor: pointer; font: inherit;
+    }
+    .pp-scroll { flex: 1; overflow: auto; padding: 24px; }
+    .pp-brand-name { font-size: 1.6rem; font-weight: 600; margin: 0 0 4px; }
+    .pp-actions { display: flex; gap: 10px; align-items: center; margin: 16px 0 20px; }
+    .pp-send {
+      margin-left: auto; height: 38px; padding: 0 16px; border: 0; border-radius: 8px;
+      background: var(--interactive-default); color: var(--text-invert); font: inherit; font-weight: 600; cursor: pointer;
+    }
+    .pp-send:hover { background: var(--interactive-hover); }
+    .pp-tabs {
+      display: flex; gap: 4px; background: var(--background-hover); border-radius: 999px; padding: 4px; margin: 0 0 16px;
+    }
+    .pp-tabs button {
+      flex: 1; height: 30px; border: 0; border-radius: 30px; background: transparent;
+      font: inherit; font-weight: 600; cursor: pointer; color: var(--text);
+    }
+    .pp-tabs button[aria-selected="true"] { background: var(--card); }
+    .pp-panel { border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+    .pp-panel h3 { margin: 0 0 12px; font-size: 1rem; }
+    .pp-row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 0.95rem; }
+    .pp-row span:first-child { color: var(--muted); }
+    .pp-foot {
+      flex-shrink: 0; display: flex; align-items: center; gap: 16px;
+      padding: 16px 24px; border-top: 1px solid var(--border);
+    }
+    .pp-foot p { margin: 0; }
+    .pp-modal-wrap {
+      position: fixed; inset: 0; z-index: 1100; display: flex; align-items: center; justify-content: center; padding: 24px;
+    }
+    .pp-modal-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+    .pp-modal {
+      position: relative; width: min(520px, 100%); background: var(--card);
+      border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+    }
+    .pp-modal h2 { margin: 0 0 4px; font-size: 1.35rem; }
+    .pp-modal label { display: block; font-weight: 600; margin: 12px 0 6px; }
+    .pp-modal textarea {
+      width: 100%; min-height: 120px; border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px; font: inherit; background: var(--card); color: var(--text); resize: vertical;
+    }
+    .pp-modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+    .pp-btn {
+      height: 38px; padding: 0 16px; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer;
+    }
+    .pp-btn-ghost { background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .hidden { display: none !important; }
+    .pp-note { font-size: 0.8rem; color: var(--muted); margin: 0 0 12px; }
+  </style>
+</head>
+<body class="proto-page">
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts.</p></div></div>
+
+  <div class="pp-app">
+    <header class="pp-nav">
+      <div class="pp-nav-left">
+        <a href="../../walkthroughs/2026-08-28-ups-step2.html" class="top-nav-brand" style="text-decoration:none">
+          <span class="top-nav-brand-text">impact.com</span>
+        </a>
+        <nav class="pp-nav-tabs" aria-label="Partner">
+          <span class="pp-tab">Home</span>
+          <span class="pp-tab is-on">Discover</span>
+          <span class="pp-tab">Reports</span>
+          <span class="pp-tab">Manage</span>
+          <span class="pp-tab">Links</span>
+        </nav>
+      </div>
+      <div class="pp-nav-right">
+        <span class="pp-balance">$4,435.00</span>
+        <span class="pp-avatar" aria-hidden="true">C</span>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="pp-main">
+      <h1 style="margin:0 0 4px;font-size:1.5rem">Discover Programs</h1>
+      <p class="muted" style="margin:0">Explore top affiliate programs and find new brands to partner with</p>
+      <div class="pp-banner">
+        Pipeline test — UPS send proposal (D1 + D2). Click <strong>Expedia</strong> to open Details with a persistent Send proposal CTA.
+        <a href="../../walkthroughs/2026-08-28-ups-step2.html">Back to walkthrough</a>
+      </div>
+      <div class="pp-search">
+        <input id="search" type="search" placeholder="Search brands, niches, or programs..." aria-label="Search programs" />
+        <button class="pp-filter" type="button">Filters</button>
+      </div>
+      <div class="pp-cats" id="cats"></div>
+      <div class="pp-layout">
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:12px">
+            <h2 style="margin:0;font-size:1.1rem">Featured Programs</h2>
+            <span class="muted" id="count"></span>
+          </div>
+          <div class="pp-grid" id="grid"></div>
+        </div>
+        <aside class="pp-side">
+          <h3>Trending Programs</h3>
+          <div class="pp-trend"><div>TikTok Shop Affiliates<br><span class="muted">Technology</span></div><b>+320%</b></div>
+          <div class="pp-trend"><div>Temu Partners<br><span class="muted">Fashion</span></div><b>+245%</b></div>
+          <div class="pp-trend"><div>Athletic Greens<br><span class="muted">Health &amp; Fitness</span></div><b>+180%</b></div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <div id="backdrop" class="pp-backdrop hidden"></div>
+  <aside id="slideout" class="pp-slideout hidden" role="dialog" aria-modal="true" aria-labelledby="brand-name">
+    <div class="pp-slide-top">
+      <button type="button" class="pp-icon-btn" id="close-slide" aria-label="Close">×</button>
+    </div>
+    <div class="pp-scroll">
+      <h2 class="pp-brand-name" id="brand-name">Expedia</h2>
+      <p class="muted" id="brand-meta">Travel · United States</p>
+      <div class="pp-actions">
+        <button type="button" class="pp-icon-btn" aria-label="Save program">♡</button>
+        <button type="button" class="pp-icon-btn" aria-label="Email brand">✉</button>
+        <button type="button" class="pp-send" data-open-proposal>Send proposal</button>
+      </div>
+      <div class="pp-tabs" role="tablist">
+        <button type="button" role="tab" data-tab="promote" aria-selected="false">Promote</button>
+        <button type="button" role="tab" data-tab="performance" aria-selected="false">Performance</button>
+        <button type="button" role="tab" data-tab="details" aria-selected="true">Details</button>
+      </div>
+      <div id="tab-promote" class="hidden">
+        <div class="pp-panel">
+          <h3>Promote and earn</h3>
+          <p class="pp-note">Tracking link and Get Link live here in production. Commission is also shown on Details in this prototype.</p>
+        </div>
+      </div>
+      <div id="tab-performance" class="hidden">
+        <div class="pp-panel"><h3>Performance</h3><p class="pp-note">Charts omitted in this hosted click-through.</p></div>
+      </div>
+      <div id="tab-details">
+        <div class="pp-panel">
+          <h3>Commission &amp; terms</h3>
+          <p class="pp-note">Visible on Details so you can decide without switching to Promote.</p>
+          <div class="pp-row"><span>Sale</span><strong id="sale-rate">6%</strong></div>
+          <div class="pp-row"><span>Referral window</span><strong>30 days</strong></div>
+        </div>
+        <div class="pp-panel">
+          <h3>Program Details</h3>
+          <div class="pp-row"><span>Program ID</span><strong>102940</strong></div>
+          <div class="pp-row"><span>Cookie Duration</span><strong>30 days</strong></div>
+          <div class="pp-row"><span>Program Type</span><strong>CPS</strong></div>
+          <div class="pp-row"><span>Deal runtime</span><strong>Ongoing · 30-day cookie</strong></div>
+          <div class="pp-row"><span>Status</span><strong>Active</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="pp-foot">
+      <div>
+        <p class="muted" style="font-size:0.8rem">Sale commission</p>
+        <p><strong id="foot-rate">6% · Ongoing · 30-day cookie</strong></p>
+      </div>
+      <button type="button" class="pp-send" data-open-proposal>Send proposal</button>
+    </div>
+  </aside>
+
+  <div id="modal" class="pp-modal-wrap hidden" role="presentation">
+    <div class="pp-modal-bg" id="modal-bg"></div>
+    <div class="pp-modal" role="dialog" aria-modal="true" aria-labelledby="proposal-title">
+      <div id="proposal-form">
+        <div style="display:flex;justify-content:space-between;gap:12px">
+          <div>
+            <h2 id="proposal-title">Send proposal</h2>
+            <p class="muted" id="proposal-meta">Expedia · Sale 6% · Ongoing · 30-day cookie</p>
+          </div>
+          <button type="button" class="pp-icon-btn" id="close-modal" aria-label="Close send proposal">×</button>
+        </div>
+        <label for="pitch">Pitch to the brand</label>
+        <textarea id="pitch" placeholder="How you will promote this program…"></textarea>
+        <div class="pp-modal-actions">
+          <button type="button" class="pp-btn pp-btn-ghost" id="cancel-modal">Cancel</button>
+          <button type="button" class="pp-btn pp-send" id="submit-proposal" style="margin:0">Submit proposal</button>
+        </div>
+      </div>
+      <div id="proposal-done" class="hidden">
+        <h2>Proposal sent</h2>
+        <p class="muted">This is a pipeline-test prototype — nothing is submitted to production.</p>
+        <div class="pp-modal-actions">
+          <button type="button" class="pp-btn pp-send" id="done-proposal" style="margin:0">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../shared/designops-theme.js"></script>
+  <script>
+    var brands = [
+      { name: "Adidas", category: "Fashion", commission: "5%", rating: "4.8", partners: "12.4K", description: "Global sportswear and athletic footwear brand with a strong affiliate program." },
+      { name: "Nike", category: "Fashion", commission: "8%", rating: "4.9", partners: "18.2K", description: "World-leading sports apparel brand offering competitive commissions for affiliates." },
+      { name: "Shopify", category: "Technology", commission: "$58 CPA", rating: "4.7", partners: "8.1K", description: "E-commerce platform powering millions of businesses. High CPA payouts available." },
+      { name: "Expedia", category: "Travel", commission: "6%", rating: "4.5", partners: "5.6K", description: "Leading travel booking platform with commissions on hotels, flights, and packages." },
+      { name: "Blue Apron", category: "Food & Drink", commission: "$15 CPA", rating: "4.3", partners: "3.2K", description: "Meal kit delivery service offering generous per-lead commissions to partners." },
+      { name: "Wayfair", category: "Home & Garden", commission: "7%", rating: "4.6", partners: "6.8K", description: "Online furniture and home décor retailer with high average order values." },
+      { name: "NordVPN", category: "Technology", commission: "40%", rating: "4.8", partners: "9.4K", description: "Leading VPN provider with one of the highest commission rates in tech." },
+      { name: "Peloton", category: "Health & Fitness", commission: "$100 CPA", rating: "4.4", partners: "4.1K", description: "Connected fitness brand offering flat-rate payouts for equipment referrals." }
+    ];
+    var cats = ["All", "Fashion", "Health & Fitness", "Technology", "Travel", "Home & Garden", "Finance", "Food & Drink"];
+    var activeCat = "All";
+    var search = "";
+    var current = null;
+    var tab = "details";
+
+    function initials(name) { return name.substring(0, 2).toUpperCase(); }
+
+    function renderCats() {
+      document.getElementById("cats").innerHTML = cats.map(function (c) {
+        return '<button type="button" class="pp-cat' + (c === activeCat ? " is-on" : "") + '" data-cat="' + c + '">' + c + "</button>";
+      }).join("");
+    }
+
+    function filtered() {
+      return brands.filter(function (b) {
+        var matchS = b.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+        var matchC = activeCat === "All" || b.category === activeCat;
+        return matchS && matchC;
+      });
+    }
+
+    function renderGrid() {
+      var list = filtered();
+      document.getElementById("count").textContent = list.length + " programs";
+      document.getElementById("grid").innerHTML = list.map(function (b) {
+        return '<button type="button" class="pp-card" data-brand="' + b.name + '">' +
+          '<div class="pp-card-top"><div class="pp-logo">' + initials(b.name) + '</div><div>' +
+          "<h3>" + b.name + " · ★ " + b.rating + "</h3>" +
+          '<p>' + b.category + " · " + b.partners + " partners</p></div></div>" +
+          "<p>" + b.description + "</p>" +
+          '<div class="pp-card-foot"><span class="pp-earn">Earn ' + b.commission + '</span><span class="pp-apply">Apply →</span></div>' +
+          "</button>";
+      }).join("");
+    }
+
+    function openBrand(name) {
+      current = brands.filter(function (b) { return b.name === name; })[0] || brands[3];
+      tab = "details";
+      document.getElementById("brand-name").textContent = current.name;
+      document.getElementById("brand-meta").textContent = current.category + " · United States";
+      document.getElementById("sale-rate").textContent = current.commission;
+      document.getElementById("foot-rate").textContent = current.commission + " · Ongoing · 30-day cookie";
+      document.getElementById("proposal-meta").textContent = current.name + " · Sale " + current.commission + " · Ongoing · 30-day cookie";
+      document.getElementById("backdrop").classList.remove("hidden");
+      document.getElementById("slideout").classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+      setTab("details");
+    }
+
+    function closeSlide() {
+      closeModal();
+      document.getElementById("backdrop").classList.add("hidden");
+      document.getElementById("slideout").classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    function setTab(id) {
+      tab = id;
+      document.querySelectorAll(".pp-tabs button").forEach(function (btn) {
+        btn.setAttribute("aria-selected", btn.getAttribute("data-tab") === id ? "true" : "false");
+      });
+      ["promote", "performance", "details"].forEach(function (t) {
+        document.getElementById("tab-" + t).classList.toggle("hidden", t !== id);
+      });
+    }
+
+    function openModal() {
+      document.getElementById("modal").classList.remove("hidden");
+      document.getElementById("proposal-form").classList.remove("hidden");
+      document.getElementById("proposal-done").classList.add("hidden");
+      document.getElementById("pitch").value = "";
+      document.getElementById("pitch").focus();
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.add("hidden");
+    }
+
+    document.getElementById("cats").addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-cat]");
+      if (!btn) return;
+      activeCat = btn.getAttribute("data-cat");
+      renderCats();
+      renderGrid();
+    });
+    document.getElementById("search").addEventListener("input", function (e) {
+      search = e.target.value;
+      renderGrid();
+    });
+    document.getElementById("grid").addEventListener("click", function (e) {
+      var card = e.target.closest("[data-brand]");
+      if (card) openBrand(card.getAttribute("data-brand"));
+    });
+    document.getElementById("close-slide").addEventListener("click", closeSlide);
+    document.getElementById("backdrop").addEventListener("click", closeSlide);
+    document.querySelector(".pp-tabs").addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-tab]");
+      if (btn) setTab(btn.getAttribute("data-tab"));
+    });
+    document.querySelectorAll("[data-open-proposal]").forEach(function (btn) {
+      btn.addEventListener("click", openModal);
+    });
+    document.getElementById("close-modal").addEventListener("click", closeModal);
+    document.getElementById("cancel-modal").addEventListener("click", closeModal);
+    document.getElementById("modal-bg").addEventListener("click", closeModal);
+    document.getElementById("submit-proposal").addEventListener("click", function () {
+      document.getElementById("proposal-form").classList.add("hidden");
+      document.getElementById("proposal-done").classList.remove("hidden");
+    });
+    document.getElementById("done-proposal").addEventListener("click", closeModal);
+    window.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      if (!document.getElementById("modal").classList.contains("hidden")) {
+        closeModal();
+        return;
+      }
+      if (!document.getElementById("slideout").classList.contains("hidden")) closeSlide();
+    });
+
+    renderCats();
+    renderGrid();
+    openBrand("Expedia");
+  </script>
+</body>
+</html>

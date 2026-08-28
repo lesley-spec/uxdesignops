@@ -224,10 +224,10 @@
         <strong>Mocks</strong>
         <span>Current vs D1+D2 vs send-proposal modal</span>
       </a>
-      <a class="wt-art" href="http://127.0.0.1:5173/discover?pipeline=ups" target="_blank" rel="noopener">
-        <span class="kicker">Prototype · local</span>
-        <strong>Partner UI shell</strong>
-        <span>http://127.0.0.1:5173/discover?pipeline=ups</span>
+      <a class="wt-art" href="../prototypes/ups-send-proposal/" target="_blank" rel="noopener">
+        <span class="kicker">Prototype · hosted</span>
+        <strong>Partner click-through</strong>
+        <span>Discover → Details → Send proposal (in this repo)</span>
       </a>
       <a class="wt-art" href="../research/" target="_blank" rel="noopener">
         <span class="kicker">Empathize · listing</span>
@@ -450,8 +450,8 @@
       <header class="wt-stage-head">
         <div class="wt-num" style="background:#10b981">4</div>
         <div>
-          <h2>Prototype — Partner shell, not Brand UI</h2>
-          <p><code>partner-prototype</code> clones the Partner UI shell, installs, and starts Vite. Then the chosen mocks are built into the brand profile slideout.</p>
+          <h2>Prototype — Partner click-through in this repo</h2>
+          <p><code>partner-prototype</code> is how designers spin up the full Partner UI shell locally. For this example, the UPS flow is checked into GitHub Pages so anyone can try it without Vite.</p>
         </div>
       </header>
       <div class="wt-stage-body">
@@ -463,9 +463,9 @@
           <div class="wt-box">
             <h3>What you get</h3>
             <ul>
-              <li>Path: <code>~/Documents/impact-prototypes/partner-ui</code></li>
-              <li>Dev URL: <a href="http://127.0.0.1:5173/discover?pipeline=ups">http://127.0.0.1:5173/discover?pipeline=ups</a></li>
-              <li>Opens Expedia (variation 1). Avoid Adidas / Nike / Shopify — those use other slideout variants.</li>
+              <li>Hosted prototype: <a href="../prototypes/ups-send-proposal/">/prototypes/ups-send-proposal/</a></li>
+              <li>Opens on Expedia Details with a persistent Send proposal CTA.</li>
+              <li>Same D1 + D2 behavior as the Partner shell: commission on Details, sticky send, modal.</li>
             </ul>
           </div>
           <div class="wt-box">
@@ -478,8 +478,10 @@
             </ul>
           </div>
         </div>
-        <p>Headless Chrome on the running app confirmed the banner, Send proposal, Commission, Deal runtime, and Program Details in the live DOM.</p>
-        <div class="wt-gate"><strong>Human gate</strong> You own fidelity after the shell is up. This is a click-through prototype — Submit does not hit production.</div>
+        <p>Try it below. Click Send proposal, write a pitch, Submit. Nothing hits production.</p>
+        <p><a href="../prototypes/ups-send-proposal/">Open the prototype in a new page</a></p>
+        <iframe class="wt-embed" style="height:640px" title="Hosted UPS send-proposal prototype" src="../prototypes/ups-send-proposal/"></iframe>
+        <div class="wt-gate"><strong>Human gate</strong> You own fidelity after a local shell is up. This hosted page is the shareable click-through for the pipeline example.</div>
       </div>
     </article>
 
