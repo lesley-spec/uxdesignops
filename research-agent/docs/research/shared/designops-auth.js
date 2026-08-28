@@ -149,11 +149,33 @@
     slot.hidden = false;
   }
 
+  function workflowAdminEmails() {
+    var list = config().workflowAdminEmails;
+    if (!Array.isArray(list) || !list.length) return ["lesley@impact.com"];
+    return list.map(function (email) {
+      return String(email || "").trim().toLowerCase();
+    }).filter(Boolean);
+  }
+
+  function canRunWorkflow(session) {
+    if (!session || !session.email) return false;
+    var email = String(session.email).trim().toLowerCase();
+    return workflowAdminEmails().indexOf(email) !== -1;
+  }
+
+  function updateWorkflowControls(session) {
+    var visible = canRunWorkflow(session);
+    document.querySelectorAll(".run-workflow-admin-only").forEach(function (el) {
+      el.hidden = !visible;
+    });
+  }
+
   function clearNavUser() {
     var slot = document.getElementById("designops-nav-user");
     if (!slot) return;
     slot.hidden = true;
     slot.innerHTML = "";
+    updateWorkflowControls(null);
   }
 
   function els() {
@@ -193,7 +215,9 @@
     setLocked(false);
     if (ui.gate) ui.gate.hidden = true;
     if (ui.denied) ui.denied.hidden = true;
-    renderNavUser(readSession());
+    var session = readSession();
+    renderNavUser(session);
+    updateWorkflowControls(session);
   }
 
   function showConfigError() {

@@ -31,6 +31,13 @@ def main() -> None:
         "allowedEmailDomain": os.environ.get("DESIGNOPS_AUTH_DOMAIN", "impact.com").strip()
         or "impact.com",
         "sessionHours": 24,
+        "workflowAdminEmails": [
+            email.strip().lower()
+            for email in os.environ.get(
+                "DESIGNOPS_WORKFLOW_ADMIN_EMAILS", "lesley@impact.com"
+            ).split(",")
+            if email.strip()
+        ],
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(
