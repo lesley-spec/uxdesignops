@@ -136,7 +136,7 @@ open docs/research/index.html
 
 **CI:** Actions → **Research Insight Agent** → **Run workflow**
 
-Runs automatically every **Monday 7:00 UTC**.
+Runs automatically **quarterly** (1 Jan, 1 Apr, 1 Jul, 1 Oct at 7:00 UTC), or trigger manually anytime from **Actions → Research Insight Agent → Run workflow**.
 
 ---
 

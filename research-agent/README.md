@@ -244,7 +244,8 @@ git push -u origin main
 ### 3. Verify Workflow
 - Go to Actions tab
 - Select "Research Insight Agent - Cloud"
-- You should see: "scheduled" with cron: `0 7 * * 1` (Monday 7 AM UTC)
+- You should see: "scheduled" with cron: `0 7 1 1,4,7,10 *` (quarterly: 1 Jan / Apr / Jul / Oct, 7 AM UTC)
+- Or run anytime: **Actions → Research Insight Agent → Run workflow**
 
 ### 4. Test Manually
 - Click "Run workflow" → "Run workflow"
@@ -321,10 +322,10 @@ print(response.status_code)
 
 ---
 
-## What Happens Every Monday
+## What Happens on Schedule (Quarterly)
 
 ```
-7:00 AM UTC (Monday)
+7:00 AM UTC on 1 Jan, 1 Apr, 1 Jul, 1 Oct
   ↓
 GitHub Actions workflow triggered
   ↓
@@ -339,7 +340,7 @@ GitHub Actions workflow triggered
   ↓
 Weekly report appears in Confluence
   ↓
-Team reviews findings on Monday morning
+Team reviews findings after each run (or trigger manually when needed)
 ```
 
 ---
@@ -351,7 +352,7 @@ Team reviews findings on Monday morning
 3. ✅ Add your API keys to `.env`
 4. ✅ Push to GitHub
 5. ✅ Add GitHub secrets
-6. ✅ Wait for Monday 7 AM first run
+6. ✅ Wait for next quarterly run, or use **Run workflow** in Actions
 7. ✅ Review findings in Confluence
 8. ✅ Iterate on funnels & analysis
 
