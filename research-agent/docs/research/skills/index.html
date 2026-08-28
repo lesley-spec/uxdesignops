@@ -7,9 +7,6 @@
   <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <title>UX DesignOps — Agent Skills</title>
   <link rel="stylesheet" href="../shared/designops.css" />
-  <style>
-    .skills-page .wrap { max-width: 52rem; }
-  </style>
 </head>
 <body class="skills-page">
   <header class="top-nav" role="banner">
@@ -32,8 +29,43 @@
   <main class="wrap">
     <header class="page-header">
       <h1>Agent Skills</h1>
-      <p class="sub muted">Portable skills for the <a href="https://www.figma.com/board/slhZ9uzMTmaekjmbEosyzb/UX-DesignOps">Design Thinking FigJam</a>. Canonical source: <a href="https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills">github.com/lesley-spec/uxdesignops/.agents/skills</a> (requires repo access).</p>
+      <p class="sub muted"><strong>17 portable skills</strong> for all five Design Thinking phases on the
+        <a href="https://www.figma.com/board/slhZ9uzMTmaekjmbEosyzb/UX-DesignOps">UX DesignOps FigJam</a>.
+        Download the full pack below — no repo clone required.</p>
     </header>
+
+    <section class="skills-download" id="install" aria-labelledby="install-heading">
+      <h2 id="install-heading">Download all skills</h2>
+      <div class="skills-download-grid">
+        <div class="skills-download-card">
+          <h3>Zip pack</h3>
+          <p class="muted">All 17 skills — Empathize through Test.</p>
+          <a class="skills-btn skills-btn-primary" href="./designops-skills.zip" download>Download designops-skills.zip</a>
+        </div>
+        <div class="skills-download-card">
+          <h3>One-command install</h3>
+          <p class="muted">Pick your harness; installs every skill into your project.</p>
+          <div class="skills-install-tabs" role="tablist" aria-label="Harness">
+            <button type="button" class="skills-tab is-active" data-harness="cursor" role="tab" aria-selected="true">Cursor</button>
+            <button type="button" class="skills-tab" data-harness="claude" role="tab" aria-selected="false">Claude</button>
+            <button type="button" class="skills-tab" data-harness="agents" role="tab" aria-selected="false">Copilot / Codex</button>
+          </div>
+          <pre class="skills-cmd" id="install-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .</pre>
+          <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-cmd">Copy command</button>
+        </div>
+      </div>
+      <table class="skills-table skills-harness-table">
+        <thead><tr><th>Harness</th><th>Install path</th><th>Skills installed</th></tr></thead>
+        <tbody>
+          <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code></td><td>17 (all phases)</td></tr>
+          <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td><td>17 (all phases)</td></tr>
+          <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>17 (all phases)</td></tr>
+        </tbody>
+      </table>
+      <p class="muted">Invoke by name in chat, e.g. <code>use write-spec</code>, <code>use ideate</code>, <code>use test-plan</code>.
+        Persona and design-system skills appear in multiple phases — install once, reuse everywhere.
+        <a href="./pack/README.md">Pack README</a> · <a href="./manifest.json">manifest.json</a></p>
+    </section>
 
     <div class="skills-jump">
       <strong>Jump:</strong>
@@ -45,77 +77,101 @@
       <a href="#test">Test</a>
     </div>
 
-    <h2 id="install">Install in any harness</h2>
-    <table class="skills-table">
-      <thead><tr><th>Harness</th><th>Path</th></tr></thead>
-      <tbody>
-        <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code> (symlink from <code>.agents/skills/</code>)</td></tr>
-        <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td></tr>
-        <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td></tr>
-      </tbody>
-    </table>
-    <pre>git clone https://github.com/lesley-spec/uxdesignops.git
-cd uxdesignops
-mkdir -p .cursor/skills
-ln -sfn ../../.agents/skills/write-spec .cursor/skills/write-spec</pre>
-    <p>Invoke by name in chat, e.g. <code>use write-spec</code>, <code>use brand-prototype</code>.</p>
-
     <h2 id="empathize">Empathize (stage 1)</h2>
     <table class="skills-table">
-      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
       <tbody>
-        <tr id="user-research"><td><code>user-research</code></td><td>Deep-dive a finding or design a study</td></tr>
-        <tr id="research-synthesis"><td><code>research-synthesis</code></td><td>Triangulate PostHog + Pendo + Dovetail</td></tr>
-        <tr id="synthesize-research"><td><code>synthesize-research</code></td><td>Affinity-map one corpus</td></tr>
-        <tr id="data-analyze"><td><code>data-analyze</code></td><td>Ad-hoc PostHog / Pendo questions</td></tr>
+        <tr id="user-research"><td><code>user-research</code></td><td>Deep-dive a finding, design a study, or post-session gate brief</td><td class="dl"><a href="./pack/user-research/">Browse</a> · <a href="./pack/user-research/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="research-synthesis"><td><code>research-synthesis</code></td><td>Triangulate PostHog + Pendo + Dovetail (+ Outset/Freshdesk)</td><td class="dl"><a href="./pack/research-synthesis/">Browse</a> · <a href="./pack/research-synthesis/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="synthesize-research"><td><code>synthesize-research</code></td><td>Affinity-map one corpus (Dovetail project, interview set, test export)</td><td class="dl"><a href="./pack/synthesize-research/">Browse</a> · <a href="./pack/synthesize-research/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="data-analyze"><td><code>data-analyze</code></td><td>Ad-hoc PostHog / Pendo quantitative questions</td><td class="dl"><a href="./pack/data-analyze/">Browse</a> · <a href="./pack/data-analyze/SKILL.md">SKILL.md</a></td></tr>
       </tbody>
     </table>
 
     <h2 id="define">Define (stage 2)</h2>
     <table class="skills-table">
-      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
       <tbody>
-        <tr id="write-spec"><td><code>write-spec</code></td><td>Confirmed research → one-pager + UX Epic</td></tr>
-        <tr id="anti-sycophancy"><td><code>anti-sycophancy</code></td><td>Pressure-test framing</td></tr>
-        <tr id="brand-operator-ux-persona"><td><code>brand-operator-ux-persona</code></td><td>Brand-side JTBD lens</td></tr>
-        <tr id="creator-affiliate-ux-persona"><td><code>creator-affiliate-ux-persona</code></td><td>Partner / creator-affiliate lens</td></tr>
-        <tr id="design-system"><td><code>design-system</code></td><td>Styleguide + component library</td></tr>
+        <tr id="write-spec"><td><code>write-spec</code></td><td>Confirmed research → one-pager + linked UX Epic / Confluence</td><td class="dl"><a href="./pack/write-spec/">Browse</a> · <a href="./pack/write-spec/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="anti-sycophancy"><td><code>anti-sycophancy</code></td><td>Pressure-test framing before Designer + PM review</td><td class="dl"><a href="./pack/anti-sycophancy/">Browse</a> · <a href="./pack/anti-sycophancy/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="brand-operator-ux-persona"><td><code>brand-operator-ux-persona</code></td><td>Brand-side JTBD / operator lens</td><td class="dl"><a href="./pack/brand-operator-ux-persona/">Browse</a> · <a href="./pack/brand-operator-ux-persona/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="creator-affiliate-ux-persona"><td><code>creator-affiliate-ux-persona</code></td><td>Partner / creator-affiliate lens</td><td class="dl"><a href="./pack/creator-affiliate-ux-persona/">Browse</a> · <a href="./pack/creator-affiliate-ux-persona/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="design-system"><td><code>design-system</code></td><td>Styleguide + component library constraints</td><td class="dl"><a href="./pack/design-system/">Browse</a> · <a href="./pack/design-system/SKILL.md">SKILL.md</a></td></tr>
       </tbody>
     </table>
 
     <h2 id="ideate">Ideate (stage 3)</h2>
     <table class="skills-table">
-      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
       <tbody>
-        <tr id="ideate"><td><code>ideate</code></td><td>Framing → ideation brief + tool routing</td></tr>
-        <tr id="ux-critique"><td><code>ux-critique</code></td><td>Coverage matrix: mocks vs spec</td></tr>
-        <tr id="prototype-handoff"><td><code>prototype-handoff</code></td><td>Exit pack after critique</td></tr>
+        <tr id="ideate"><td><code>ideate</code></td><td>Framing → ideation brief + tool routing + starter directions</td><td class="dl"><a href="./pack/ideate/">Browse</a> · <a href="./pack/ideate/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="ux-critique"><td><code>ux-critique</code></td><td>Coverage matrix: mocks/prototype vs spec (Ideate or Test pre-flight)</td><td class="dl"><a href="./pack/ux-critique/">Browse</a> · <a href="./pack/ux-critique/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="prototype-handoff"><td><code>prototype-handoff</code></td><td>Exit pack after critique — ready for Prototype</td><td class="dl"><a href="./pack/prototype-handoff/">Browse</a> · <a href="./pack/prototype-handoff/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>brand-operator-ux-persona</code></td><td>Brand-side JTBD / operator lens</td><td class="dl"><a href="./pack/brand-operator-ux-persona/">Browse</a> · <a href="./pack/brand-operator-ux-persona/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>creator-affiliate-ux-persona</code></td><td>Partner / creator-affiliate lens</td><td class="dl"><a href="./pack/creator-affiliate-ux-persona/">Browse</a> · <a href="./pack/creator-affiliate-ux-persona/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>design-system</code></td><td>Styleguide + component library constraints</td><td class="dl"><a href="./pack/design-system/">Browse</a> · <a href="./pack/design-system/SKILL.md">SKILL.md</a></td></tr>
       </tbody>
     </table>
 
     <h2 id="prototype">Prototype (stage 4)</h2>
     <table class="skills-table">
-      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
       <tbody>
-        <tr id="brand-prototype"><td><code>brand-prototype</code></td><td>One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)</td></tr>
-        <tr id="partner-prototype"><td><code>partner-prototype</code></td><td>One prompt → Partner UI shell (<code>localhost:5173/</code>)</td></tr>
+        <tr id="brand-prototype"><td><code>brand-prototype</code></td><td>One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)</td><td class="dl"><a href="./pack/brand-prototype/">Browse</a> · <a href="./pack/brand-prototype/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="partner-prototype"><td><code>partner-prototype</code></td><td>One prompt → Partner UI shell (<code>localhost:5173/</code>)</td><td class="dl"><a href="./pack/partner-prototype/">Browse</a> · <a href="./pack/partner-prototype/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>design-system</code></td><td>Styleguide + component library constraints</td><td class="dl"><a href="./pack/design-system/">Browse</a> · <a href="./pack/design-system/SKILL.md">SKILL.md</a></td></tr>
       </tbody>
     </table>
     <p class="muted">Prototype skills run <code>scripts/bootstrap.sh</code> — clone, <code>npm ci</code>, start Vite. Cursor preferred.</p>
 
     <h2 id="test">Test (stage 5)</h2>
     <table class="skills-table">
-      <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+      <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
       <tbody>
-        <tr id="test-plan"><td><code>test-plan</code></td><td>Pre-flight + Outset/Maze study draft (Test Plan Generator)</td></tr>
-        <tr id="accessibility-review"><td><code>accessibility-review</code></td><td>Synthetic a11y check before recruiting</td></tr>
-        <tr id="ux-critique-test"><td><code>ux-critique</code></td><td>Prototype vs spec before sessions</td></tr>
-        <tr id="test-loopback"><td><code>test-loopback</code></td><td>Publish Verified session findings → Empathize</td></tr>
-        <tr id="synthesize-research-test"><td><code>synthesize-research</code></td><td>Theme completed test corpus (feeds test-loopback)</td></tr>
+        <tr id="test-plan"><td><code>test-plan</code></td><td>Synthetic pre-flight + Outset/Maze study draft</td><td class="dl"><a href="./pack/test-plan/">Browse</a> · <a href="./pack/test-plan/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="accessibility-review"><td><code>accessibility-review</code></td><td>Synthetic a11y check before recruiting</td><td class="dl"><a href="./pack/accessibility-review/">Browse</a> · <a href="./pack/accessibility-review/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>ux-critique</code></td><td>Coverage matrix: mocks/prototype vs spec (Ideate or Test pre-flight)</td><td class="dl"><a href="./pack/ux-critique/">Browse</a> · <a href="./pack/ux-critique/SKILL.md">SKILL.md</a></td></tr>
+        <tr id="test-loopback"><td><code>test-loopback</code></td><td>Publish Verified session findings → Empathize input</td><td class="dl"><a href="./pack/test-loopback/">Browse</a> · <a href="./pack/test-loopback/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>user-research</code></td><td>Deep-dive a finding, design a study, or post-session gate brief</td><td class="dl"><a href="./pack/user-research/">Browse</a> · <a href="./pack/user-research/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>synthesize-research</code></td><td>Affinity-map one corpus (Dovetail project, interview set, test export)</td><td class="dl"><a href="./pack/synthesize-research/">Browse</a> · <a href="./pack/synthesize-research/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>brand-operator-ux-persona</code></td><td>Brand-side JTBD / operator lens</td><td class="dl"><a href="./pack/brand-operator-ux-persona/">Browse</a> · <a href="./pack/brand-operator-ux-persona/SKILL.md">SKILL.md</a></td></tr>
+        <tr><td><code>creator-affiliate-ux-persona</code></td><td>Partner / creator-affiliate lens</td><td class="dl"><a href="./pack/creator-affiliate-ux-persona/">Browse</a> · <a href="./pack/creator-affiliate-ux-persona/SKILL.md">SKILL.md</a></td></tr>
       </tbody>
     </table>
-    <p class="muted">Human gate: review AI drafts before stakeholders. Findings loop to Empathize.</p>
+    <p class="muted">Human gate: review AI drafts before stakeholders. Findings loop back to Empathize.</p>
+
   </main>
   <script src="../shared/designops-theme.js"></script>
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll(".skills-tab");
+      var cmd = document.getElementById("install-cmd");
+      var copyBtn = document.getElementById("copy-install-cmd");
+      var commands = {
+        cursor: "curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .",
+        claude: "curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- claude .",
+        agents: "curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- agents ."
+      };
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          tabs.forEach(function (t) {
+            t.classList.remove("is-active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("is-active");
+          tab.setAttribute("aria-selected", "true");
+          cmd.textContent = commands[tab.dataset.harness];
+        });
+      });
+      if (copyBtn && cmd) {
+        copyBtn.addEventListener("click", function () {
+          navigator.clipboard.writeText(cmd.textContent).then(function () {
+            copyBtn.textContent = "Copied!";
+            setTimeout(function () { copyBtn.textContent = "Copy command"; }, 1500);
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

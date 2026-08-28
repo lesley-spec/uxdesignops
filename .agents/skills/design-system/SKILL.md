@@ -1,9 +1,9 @@
 ---
 name: design-system
 description: >-
-  Points Define/Prototype work at impact.com UX styleguide and component library
-  constraints. Use when writing specs that mention UI, checking tokens/components,
-  or before Ideate/Prototype handoff.
+  Points Define/Ideate/Prototype work at impact.com UX styleguide and component
+  library constraints. Use when writing specs that mention UI, checking
+  tokens/components, before on-brand Ideate mocks, or Prototype handoff.
 license: Proprietary
 metadata:
   stage: define
@@ -11,7 +11,7 @@ metadata:
   author: impact.com-ux
 ---
 
-# Design system (Define)
+# Design system (Define / Ideate)
 
 Lightweight routing skill — does not invent a parallel system.
 
@@ -27,7 +27,7 @@ Lightweight routing skill — does not invent a parallel system.
 
 - One-pager mentions UI patterns, density, navigation, or components
 - Spec should call out reuse vs new pattern
-- Before Prototype scaffolder handoff
+- Before on-brand Ideate mocks (Figma Make / Cursor) or Prototype scaffolder handoff
 
 ## Workflow
 

@@ -7,7 +7,7 @@
 | UX initiative (roadmap) | **UX short form** (below) | Confluence space `ux`, often under [UX Roadmap](https://impact.atlassian.net/wiki/spaces/ux/pages/6436978692/UX+Roadmap) |
 | Cross-functional PM shaping | **Product Shaping** template | Copy structure from [Product Shaping One Pager Template](https://impact.atlassian.net/wiki/spaces/ITECH/pages/5044568069/Product+Shaping+One+Pager+Template); apply label `product-one-pager` |
 
-Canonical product template purpose: problem, goals, approach, success metrics — align business, UX, Eng, Marketing. Skip solution-heavy “Approach” until Principal framing is approved unless the user asks for a full PRD.
+Canonical product template purpose: problem, goals, approach, success metrics — align business, UX, Eng, Marketing. Skip solution-heavy “Approach” until the Designer is happy and has chatted with a PM unless the user asks for a full PRD.
 
 ## UX short form (preferred for write-spec)
 
@@ -16,7 +16,7 @@ Mirror existing UX one-pagers (e.g. Holistic Brand Experience Rethink):
 1. **Problem / opportunity** — pains only; rank by severity; VoC when Verified
 2. **Audience** — Brand / Partner / Shared + persona names when known
 3. **Jobs-to-be-done** — bullets
-4. **Success criteria** — measurable + Principal gate
+4. **Success criteria** — measurable + Designer sign-off, then PM chat
 5. **Scope** — In / Out
 6. **Design deliverables** — e.g. mocks, prototype (placeholder OK)
 7. **Research context** — links to Empathize sources / report

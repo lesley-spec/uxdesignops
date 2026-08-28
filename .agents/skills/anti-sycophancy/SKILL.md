@@ -28,7 +28,7 @@ Adversarial review for problem framing. Prefer hard questions over polished agre
 3. **Marketplace** — Brand and Partner both addressed, or explicit single-side caveat?
 4. **Disconfirming** — What would falsify this problem? Is that mentioned?
 5. **Scope honesty** — In/Out clear? Hidden solution baked into the problem statement?
-6. **Gate** — Ready for Principal, or send back to Empathize?
+6. **Gate** — Ready for Designer sign-off + PM chat, or send back to Empathize?
 
 ## Output
 
@@ -46,14 +46,14 @@ Adversarial review for problem framing. Prefer hard questions over polished agre
 - Problem statement: …
 
 ## Gate recommendation
-- [ ] Ready for Principal
+- [ ] Ready for Designer + PM chat
 - [ ] Revise framing
 - [ ] Back to Empathize (`user-research` / `research-synthesis`)
 ```
 
 ## Prompt examples (tested)
 
-1. `Use anti-sycophancy on this UPS Step 2 one-pager draft — what is too weak for Principal?`  
+1. `Use anti-sycophancy on this UPS Step 2 one-pager draft — what is too weak for Designer + PM review?`  
    → Keeps volume; rejects empty Dovetail / off-topic Outset as triangulation; fieldwork before Ideate.
 
 ## Anti-patterns

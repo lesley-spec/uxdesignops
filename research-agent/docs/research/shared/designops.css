@@ -350,6 +350,103 @@ table.skills-table tr:last-child td {
 
 .skills-jump a { margin-right: 0.25rem; }
 
+.skills-page .wrap { max-width: 52rem; }
+
+.skills-download {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+}
+
+.skills-download-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+@media (min-width: 640px) {
+  .skills-download-grid {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+
+.skills-download-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.skills-download-card p { margin: 0 0 0.75rem; }
+
+.skills-btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.skills-btn-primary {
+  background: var(--interactive-default);
+  color: #ffffff;
+}
+
+.skills-btn-primary:hover { background: var(--interactive-hover); }
+
+.skills-btn-secondary {
+  background: var(--background-subdued);
+  color: var(--text-default);
+  border-color: var(--border-default);
+}
+
+.skills-btn-secondary:hover { background: var(--background-hover); }
+
+.skills-install-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.65rem;
+}
+
+.skills-tab {
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-default);
+  background: var(--background-subdued);
+  color: var(--text-default);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.skills-tab.is-active {
+  background: var(--info-bg);
+  border-color: var(--border-accent);
+  color: var(--interactive-default);
+}
+
+.skills-cmd {
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.skills-harness-table { margin-top: 1rem; }
+
+.skills-table .dl {
+  white-space: nowrap;
+  font-size: 0.88rem;
+}
+
+.skills-table .dl a { margin-right: 0.15rem; }
+
 h2 {
   font-size: 1.125rem;
   margin-top: 2rem;

@@ -12,7 +12,7 @@
 | Field | Value |
 |---|---|
 | Space | `ux` (Impact UX) — spaceId `393347460` |
-| Status | Prefer `draft` until Principal review |
+| Status | Prefer `draft` until Designer sign-off + PM chat |
 | Parent | UX Roadmap page `6436978692` unless user names another parent |
 | Label | `product-one-pager` when using full Product Shaping shape |
 | Tool | `createConfluencePage` (markdown or html) |
@@ -46,7 +46,7 @@ Other UX types (use only when asked): Research, Analytics, Mocks, Other, Subtask
 - Empathize pack: …
 
 **Audience:** Brand | Partner | Shared
-**Status:** Framing draft — Principal approval before Ideate
+**Status:** Framing draft — Designer sign-off, then PM chat before Ideate
 ```
 
 ## Link both ways

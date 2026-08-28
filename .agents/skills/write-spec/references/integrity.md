@@ -3,7 +3,7 @@
 ## Gate
 
 - Empathize: designer confirmed problem worth solving (or documented override).
-- Define: Principal approves framing before Ideate. Skills draft; humans approve.
+- Define: Designer signs off when happy, then chats with a PM before Ideate. Skills draft; humans approve.
 
 ## Verified vs AI
 
@@ -20,4 +20,4 @@ Always state **Brand**, **Partner** (creator/affiliate/publisher), or **Shared**
 
 - Create Confluence/Jira only after designer confirms the draft.
 - Prefer aggregate counts and anonymized quotes; no emails/session IDs.
-- Mark new pages Document status **DRAFT** until Principal review.
+- Mark new pages Document status **DRAFT** until Designer sign-off and PM chat.

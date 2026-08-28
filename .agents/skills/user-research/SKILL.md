@@ -3,7 +3,8 @@ name: user-research
 description: >-
   Plans and deep-dives impact.com UX research before confirming a problem worth
   solving. Use when designing studies, interviewing, probing a Research Insight
-  Monitor finding, Outset/Maze prep, or Empathize-stage user research.
+  Monitor finding, Outset/Maze prep, Empathize-stage research, or Test loop-back
+  after sessions.
 license: Proprietary
 metadata:
   stage: empathize

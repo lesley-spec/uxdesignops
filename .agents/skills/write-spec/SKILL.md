@@ -17,7 +17,7 @@ metadata:
 
 On-demand Define skill. Implements the FigJam **Problem Definition Generator**:
 confirmed research → one-pager (+ optional PRD depth) → auto-linked Jira/Confluence.
-Does **not** approve framing — Principal gate before Ideate.
+Does **not** approve framing — Designer signs off when happy, then chats with a PM before Ideate.
 
 ## Integrity
 
@@ -57,7 +57,7 @@ Pull before drafting — do not rely on chat memory alone:
 5. **Draft one-pager** — Chat markdown using [references/one-pager.md](references/one-pager.md) (UX short form by default; expand to full Product Shaping sections when PM-facing).
 6. **Designer review** — Show draft + open questions. Do not publish yet.
 7. **Publish (on confirm)** — Confluence page in space `ux` (draft OK) + UX **Epic** with research context and one-pager link. See [references/publish.md](references/publish.md).
-8. **Stop** — Principal approves framing before Ideate. Do not invent solutions boards.
+8. **Stop** — When the Designer is happy with framing, they chat with a PM before Ideate (`ideate` skill). Do not invent solutions boards.
 
 ## Output template (chat draft)
 
@@ -85,7 +85,7 @@ Sources: [FigJam / chat ids / latest.json / Confluence links]
 ## Success criteria
 - Quant:
 - Qual:
-- Exit / Principal gate:
+- Exit / Designer + PM gate:
 
 ## Scope
 - In:
@@ -110,7 +110,7 @@ Sources: [FigJam / chat ids / latest.json / Confluence links]
 
 ## Anti-patterns
 
-- Jumping to Ideate / mocks inside the one-pager “Approach” without Principal framing approval
+- Jumping to Ideate / mocks inside the one-pager “Approach” before Designer sign-off and a PM chat
 - Creating Jira/Confluence without an explicit confirm
 - Collapsing Brand and Partner into one “users” statement
 - One-pagers with no Verified research links (violates “100% tickets with research context”)

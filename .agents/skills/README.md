@@ -62,7 +62,36 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 
 **Human gate:** Designer owns fidelity and interaction after the shell is running.
 
+## Test (stage 5)
+
+| Skill | Use when |
+|---|---|
+| `test-plan` | Prototype ready → synthetic pre-flight + Outset/Maze study draft (Test Plan Generator) |
+| `accessibility-review` | Synthetic a11y pre-test before unmoderated Maze or recruiting |
+| `ux-critique` | Re-check prototype coverage vs one-pager/PRD/epic before sessions (pre-test mode) |
+| `test-loopback` | After sessions → publish Verified findings to Confluence/Jira → Empathize input |
+| `user-research` | Study-plan depth, recruitment gaps, or post-session gate brief |
+| `synthesize-research` | Affinity / theme a completed test corpus (feeds `test-loopback`) |
+| `brand-operator-ux-persona` | Brand-side task realism in test scripts |
+| `creator-affiliate-ux-persona` | Partner-side task realism in test scripts |
+
+**Agent (on-demand):** Test Plan Generator (`test-plan`).
+
+**Tools:** Outset, Maze, Pendo, Confluence, Jira, Figma (prototype links).
+
+**Human gate:** Review AI study summaries before stakeholders. Findings loop back to Empathize — do not treat AI synthesis as verified research.
+
 ## Install in any harness
+
+**Download all 17 skills (all phases):** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
+
+One-command install (Cursor example — installs every skill):
+
+```bash
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .
+```
+
+Replace `cursor` with `claude` or `agents` for Claude Code or Copilot/Codex.
 
 | Harness | Typical path |
 |---|---|
@@ -72,12 +101,12 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 | Figma Agent | Project or org skills that point at the same `SKILL.md` folders |
 
 ```bash
-# Example: Claude Code
+# Example: Claude Code (single skill)
 mkdir -p .claude/skills
 ln -sfn ../../.agents/skills/write-spec .claude/skills/write-spec
 ```
 
-Invoke by name, e.g. “use `write-spec` on this confirmed finding” or “use `ideate` on UX-1234” or “run `ux-critique` before handoff” or “use `brand-prototype`” / “use `partner-prototype`”.
+Invoke by name, e.g. “use `write-spec` on this confirmed finding” or “use `ideate` on UX-1234” or “run `ux-critique` before handoff” or “use `brand-prototype`” / “use `partner-prototype`” or “use `test-plan` on [prototype link]”.
 
 ```bash
 # Prototype shells (also symlink for Cursor)

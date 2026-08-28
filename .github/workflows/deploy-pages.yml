@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - "research-agent/docs/research/**"
+      - "research-agent/publish_skills.py"
+      - ".agents/skills/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -27,6 +29,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Publish skills pack for GitHub Pages
+        run: python3 research-agent/publish_skills.py
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
