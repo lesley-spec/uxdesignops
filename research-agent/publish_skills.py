@@ -300,9 +300,9 @@ def write_pack_indexes() -> None:
       <div class="top-nav-actions">
         <nav class="report-nav" aria-label="Site sections">
           <a class="nav-link" href="{root}" data-nav="pipeline">Design Thinking Pipeline</a>
+          <a class="nav-link is-active" href="{skills_href}" data-nav="skills">Skills</a>
           <a class="nav-link" href="{root}research/" data-nav="listing">Research</a>
           <a class="nav-link" href="{root}reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
-          <a class="nav-link is-active" href="{skills_href}" data-nav="skills">Skills</a>
         </nav>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
@@ -461,9 +461,9 @@ def render_skills_index(manifest: dict) -> str:
       <div class="top-nav-actions">
         <nav class="report-nav" aria-label="Site sections">
           <a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a>
+          <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
           <a class="nav-link" href="../research/" data-nav="listing">Research</a>
           <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
-          <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
         </nav>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
