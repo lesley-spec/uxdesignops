@@ -209,9 +209,32 @@ def check_anti_auto_advance(errors: list[str]) -> None:
         "Honor the child’s stop",
         "Do not ask the designer to type",
         "Join anywhere",
+        "Prototype shells only",
+        "Exclusive shells",
     ):
         if phrase not in text:
             fail(errors, f"orchestrator missing integrity phrase: {phrase}")
+
+
+def check_prototype_exclusive(errors: list[str]) -> None:
+    phases = (SKILL_DIR / "references" / "phases.md").read_text(encoding="utf-8")
+    for needle in ("Exclusive", "`brand-prototype`", "`partner-prototype`", "npm create vite"):
+        if needle not in phases:
+            fail(errors, f"phases.md Prototype exclusive missing {needle!r}")
+    for name in ("brand-prototype", "partner-prototype"):
+        helper = AGENTS_SKILLS / name / "scripts" / "ensure-toolchain.sh"
+        boot = AGENTS_SKILLS / name / "scripts" / "bootstrap.sh"
+        if not helper.is_file():
+            fail(errors, f"{name}: missing scripts/ensure-toolchain.sh")
+        elif "impact_ensure_node" not in helper.read_text(encoding="utf-8"):
+            fail(errors, f"{name}/ensure-toolchain.sh missing impact_ensure_node")
+        if not boot.is_file():
+            continue
+        body = boot.read_text(encoding="utf-8")
+        if "ensure-toolchain.sh" not in body or "impact_ensure_node" not in body:
+            fail(errors, f"{name}/bootstrap.sh must source ensure-toolchain.sh")
+        if "impact_verify_vite" not in body:
+            fail(errors, f"{name}/bootstrap.sh must call impact_verify_vite")
 
 
 def main() -> int:
@@ -222,6 +245,7 @@ def main() -> int:
     check_landing_table(errors)
     check_ups_sequence(errors)
     check_anti_auto_advance(errors)
+    check_prototype_exclusive(errors)
 
     print("Design Thinking UX — pipeline validator")
     print(f"  master: {SKILL_DIR / 'SKILL.md'}")

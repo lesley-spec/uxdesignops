@@ -69,17 +69,23 @@ inside this phase unless they want another round of `ideate`.
 
 ## Prototype — which skill
 
-| Audience | Invoke |
+**Exclusive.** The pipeline prototype is the Brand UI shell or the Partner UI
+shell. Do not create a new Vite/Next/HTML app, do not `npm create vite`, do not
+use Figma Make / Claude artifacts as this phase’s deliverable.
+
+| Audience | Invoke (required) |
 |---|---|
 | Brand | `brand-prototype` |
 | Partner / creator-affiliate | `partner-prototype` |
 | Shared | Ask which shell first; can run the other later |
 | After shell READY, mapping mocks | `design-system` |
+| Already has a Brand/Partner localhost URL | Skip bootstrap; go to Test if they want |
 
 Harness: Cursor or Claude Code (shell). Figma Make cannot clone — follow the
-child skill’s harness fallback.
+child skill’s harness fallback; do not continue Prototype in Make.
 
-**Exit:** Designer has localhost / deployed prototype URL.
+**Exit:** Designer has localhost URL from `brand-prototype` or
+`partner-prototype`.
 
 ## Test — which skill
 

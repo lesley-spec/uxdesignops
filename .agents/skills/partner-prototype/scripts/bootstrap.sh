@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# partner-prototype bootstrap — clone Partner UI shell, install, optionally start Vite.
-# Designed so an agent runs ONE command; designers should not need to know git/npm.
+# partner-prototype bootstrap — clone Partner UI shell, install toolchain + deps, start Vite.
+# Agent runs ONE command. Designers should not need git/npm/Node knowledge.
+# Node 18+ is auto-provisioned via ensure-toolchain.sh when missing.
 set -euo pipefail
 
 REPO_URL="${PARTNER_PROTOTYPE_REPO:-https://github.com/lesley-spec/PartnerUI-shell.git}"
@@ -41,13 +42,11 @@ Install it, then re-run: use partner-prototype"
 }
 
 need_cmd git
-need_cmd node
-need_cmd npm
 
-NODE_MAJOR="$(node -p "process.versions.node.split('.')[0]")"
-if [[ "$NODE_MAJOR" -lt 18 ]]; then
-  die "Node.js 18+ required (found $(node -v)). Upgrade Node, then re-run."
-fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=ensure-toolchain.sh
+. "$SCRIPT_DIR/ensure-toolchain.sh"
+impact_ensure_node
 
 mkdir -p "$PARENT"
 
@@ -84,6 +83,7 @@ if [[ -f package.json ]]; then
     info "Installing dependencies (npm install)…"
     npm install
   fi
+  impact_verify_vite
 else
   die "No package.json in $PROJECT — template looks broken. Check $REPO_URL"
 fi

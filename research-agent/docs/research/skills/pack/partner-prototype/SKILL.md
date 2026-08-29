@@ -2,11 +2,12 @@
 name: partner-prototype
 description: >-
   Auto-sets up the impact.com Partner UI prototype shell on the designer's
-  machine: clones PartnerUI-shell, installs deps, starts Vite. Use when the
-  user says partner-prototype, Partner UI shell, Partner prototype, or wants a
-  running Partner / creator-affiliate prototype after Ideate mocks /
-  prototype-handoff. Primary harness: Cursor (also Claude Code with shell).
-  Figma Make cannot clone repos — skill routes Make to a clear fallback.
+  machine: clones PartnerUI-shell, installs Node if missing plus npm/Vite
+  deps, starts Vite. Use when the user says partner-prototype, Partner UI
+  shell, Partner prototype, or wants a running Partner / creator-affiliate
+  prototype after Ideate mocks / prototype-handoff. Primary harness: Cursor
+  (also Claude Code with shell). Figma Make cannot clone repos — skill
+  routes Make to a fallback.
 license: Proprietary
 metadata:
   stage: prototype
@@ -18,7 +19,7 @@ metadata:
 # Partner prototype (shell bootstrap)
 
 **One invocation → running Partner UI shell.** Do not ask the designer to clone,
-install, or configure anything unless a prerequisite is missing (git / Node).
+install Node, or run `npm install`. The bootstrap script does that.
 
 This skill **only** bootstraps the shell. Building mocks into screens is a
 follow-on step in the same Cursor chat after READY.
@@ -41,18 +42,26 @@ follow-on step in the same Cursor chat after READY.
 
 | Need | Why |
 |---|---|
-| Shell / terminal | Script runs locally |
-| `git`, `node` 18+, `npm` | Clone + install |
-| Network to GitHub | Public repo |
+| Shell / terminal | Script runs locally (Cursor or Claude Code) |
+| `git` | Clone the public template |
+| Network | GitHub + npm registry (+ Node download if missing) |
 
-If any are missing → stop with a plain-English fix (install Node / open in Cursor), not a partial setup.
+**Node 18+ and npm are auto-provisioned** when missing (local copy under
+`~/Documents/impact-prototypes/.toolchain`, no sudo). Only `git` is a
+hard machine prerequisite (Xcode CLT on macOS).
+
+If git is missing, or the harness has no shell (Figma Make / Claude chat) →
+stop with the harness fallback. Do not hand the designer a git/npm checklist.
 
 ## Workflow (Cursor / Claude Code)
 
 1. **Locate script** —  
    `.agents/skills/partner-prototype/scripts/bootstrap.sh`  
    (or `.cursor/skills/partner-prototype/scripts/bootstrap.sh` via symlink).
-2. **Run it** (request full permissions / network if the harness asks):
+2. **Run it with the sandbox off.** In Cursor Shell, pass
+   `required_permissions: ["all"]` (network + unsandboxed npm). Default
+   sandbox **cannot** `npm install` or start Vite — that is why other
+   designers see “packages missing.”
 
    ```bash
    bash "/absolute/path/to/partner-prototype/scripts/bootstrap.sh"
@@ -100,9 +109,11 @@ See [references/harnesses.md](references/harnesses.md).
 ## Anti-patterns
 
 - Manual git/npm recipes for the designer when the script exists
+- Asking the designer to install Node, Homebrew, or `npm install` themselves
 - Faking success in Figma Make
 - Editing UI before READY
 - Asking where to put the folder when the default is fine
+- Scaffolding a new Vite app instead of this Partner shell
 
 ## Success criteria
 

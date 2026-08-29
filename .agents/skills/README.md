@@ -64,7 +64,9 @@ Phase skills below still work on their own. The master skill is for “take me t
 
 **Agent (on-demand):** Prototype Scaffolder — `brand-prototype` / `partner-prototype`. The master skill `design-thinking-ux` invokes the matching shell after Ideate handoff.
 
-**How it works:** Each skill ships `scripts/bootstrap.sh`. The agent **runs the script** (does not hand the designer a git/npm checklist). Default folders: `~/Documents/impact-prototypes/brand-ui` and `…/partner-ui`.
+**How it works:** Each skill ships `scripts/bootstrap.sh`. The agent **runs the script** with sandbox off (does not hand the designer a git/npm checklist). The script clones the shell, **installs Node if missing**, runs `npm ci` (Vite + deps), and starts the dev server. Default folders: `~/Documents/impact-prototypes/brand-ui` and `…/partner-ui`.
+
+**Enforcement:** In the `design-thinking-ux` Prototype phase, only these two skills may set up a prototype. No from-scratch Vite/Next apps; Figma Make is Ideate-only.
 
 **Harness reality:** Full auto-setup needs a local shell → **Cursor** (best) or Claude Code. Figma Make cannot clone repos; skills route Make to Cursor or a labeled Make-only click-through (see each skill’s `references/harnesses.md`).
 

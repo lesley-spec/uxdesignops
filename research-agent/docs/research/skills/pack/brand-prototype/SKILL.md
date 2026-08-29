@@ -2,11 +2,11 @@
 name: brand-prototype
 description: >-
   Auto-sets up the impact.com Brand UI prototype shell on the designer's
-  machine: clones the public Brand template, installs deps, starts Vite.
-  Use when the user says brand-prototype, Brand UI shell, Brand prototype, or
-  wants a running Brand prototype after Ideate mocks / prototype-handoff.
-  Primary harness: Cursor (also Claude Code with shell). Figma Make cannot
-  clone repos — skill routes Make to a clear fallback.
+  machine: clones the public Brand template, installs Node if missing plus
+  npm/Vite deps, starts Vite. Use when the user says brand-prototype, Brand
+  UI shell, Brand prototype, or wants a running Brand prototype after Ideate
+  mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with
+  shell). Figma Make cannot clone repos — skill routes Make to a fallback.
 license: Proprietary
 metadata:
   stage: prototype
@@ -18,7 +18,7 @@ metadata:
 # Brand prototype (shell bootstrap)
 
 **One invocation → running Brand UI shell.** Do not ask the designer to clone,
-install, or configure anything unless a prerequisite is missing (git / Node).
+install Node, or run `npm install`. The bootstrap script does that.
 
 This skill **only** bootstraps the shell. Building mocks into screens is a
 follow-on step in the same Cursor chat after READY.
@@ -41,18 +41,26 @@ follow-on step in the same Cursor chat after READY.
 
 | Need | Why |
 |---|---|
-| Shell / terminal | Script runs locally |
-| `git`, `node` 18+, `npm` | Clone + install |
-| Network to GitHub | Public repo, no auth |
+| Shell / terminal | Script runs locally (Cursor or Claude Code) |
+| `git` | Clone the public template |
+| Network | GitHub + npm registry (+ Node download if missing) |
 
-If any are missing → stop with a plain-English fix (install Node / open in Cursor), not a partial setup.
+**Node 18+ and npm are auto-provisioned** when missing (local copy under
+`~/Documents/impact-prototypes/.toolchain`, no sudo). Only `git` is a
+hard machine prerequisite (Xcode CLT on macOS).
+
+If git is missing, or the harness has no shell (Figma Make / Claude chat) →
+stop with the harness fallback. Do not hand the designer a git/npm checklist.
 
 ## Workflow (Cursor / Claude Code)
 
 1. **Locate script** —  
    `.agents/skills/brand-prototype/scripts/bootstrap.sh`  
    (or `.cursor/skills/brand-prototype/scripts/bootstrap.sh` via symlink).
-2. **Run it** (request full permissions / network if the harness asks):
+2. **Run it with the sandbox off.** In Cursor Shell, pass
+   `required_permissions: ["all"]` (network + unsandboxed npm). Default
+   sandbox **cannot** `npm install` or start Vite — that is why other
+   designers see “packages missing.”
 
    ```bash
    bash "/absolute/path/to/brand-prototype/scripts/bootstrap.sh"
@@ -105,10 +113,12 @@ See [references/harnesses.md](references/harnesses.md).
 ## Anti-patterns
 
 - Pasting multi-step git/npm instructions for the designer to run manually when the script exists
+- Asking the designer to install Node, Homebrew, or `npm install` themselves
 - Describing a Next.js / `src/pages` layout that this template does not have
 - Claiming success in Figma Make without a running local shell
 - Editing product UI before bootstrap prints READY
 - Blocking on “where should I put the folder?” — use the default parent unless they specify
+- Scaffolding a new Vite app instead of this Brand shell
 
 ## Success criteria
 

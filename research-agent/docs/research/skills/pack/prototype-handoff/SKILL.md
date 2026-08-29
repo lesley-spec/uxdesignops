@@ -46,9 +46,10 @@ See [references/pack.md](references/pack.md).
 1. **Gate** — Confirm designer-named direction + `ux-critique` status.
 2. **Assemble pack** — Decision, rejected alternatives (1 line each), annotated mock links, coverage summary, open questions / deferred scope, DS reuse/gaps, framing links.
 3. **Designer review** — Show pack; adjust on feedback.
-4. **Stop** — On confirm, Ideate is done. Next: designer runs `brand-prototype` or
-   `partner-prototype` in Cursor (shell bootstrap). Do not auto-start that here
-   unless asked.
+4. **Stop** — On confirm, Ideate is done. Next: the pipeline invokes
+   `brand-prototype` or `partner-prototype` in Cursor (shell bootstrap). Do
+   not auto-start that here unless asked. Do not point them at a from-scratch
+   Vite app or Figma Make as the Prototype-phase shell.
 
 ## Output template
 

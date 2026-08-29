@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T18:59:28Z",
+  "generated_at": "2026-08-29T12:50:29Z",
   "count": 18,
   "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip",
   "install_script": "https://lesley-spec.github.io/uxdesignops/skills/install.sh",
@@ -124,7 +124,7 @@
     {
       "name": "brand-prototype",
       "stage": "prototype",
-      "description": "Auto-sets up the impact.com Brand UI prototype shell on the designer's machine: clones the public Brand template, installs deps, starts Vite. Use when the user says brand-prototype, Brand UI shell, Brand prototype, or wants a running Brand prototype after Ideate mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with shell). Figma Make cannot clone repos \u2014 skill routes Make to a clear fallback.",
+      "description": "Auto-sets up the impact.com Brand UI prototype shell on the designer's machine: clones the public Brand template, installs Node if missing plus npm/Vite deps, starts Vite. Use when the user says brand-prototype, Brand UI shell, Brand prototype, or wants a running Brand prototype after Ideate mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with shell). Figma Make cannot clone repos \u2014 skill routes Make to a fallback.",
       "figjam_agent": "Prototype Scaffolder",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-prototype/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-prototype/SKILL.md",
@@ -133,7 +133,7 @@
     {
       "name": "partner-prototype",
       "stage": "prototype",
-      "description": "Auto-sets up the impact.com Partner UI prototype shell on the designer's machine: clones PartnerUI-shell, installs deps, starts Vite. Use when the user says partner-prototype, Partner UI shell, Partner prototype, or wants a running Partner / creator-affiliate prototype after Ideate mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with shell). Figma Make cannot clone repos \u2014 skill routes Make to a clear fallback.",
+      "description": "Auto-sets up the impact.com Partner UI prototype shell on the designer's machine: clones PartnerUI-shell, installs Node if missing plus npm/Vite deps, starts Vite. Use when the user says partner-prototype, Partner UI shell, Partner prototype, or wants a running Partner / creator-affiliate prototype after Ideate mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with shell). Figma Make cannot clone repos \u2014 skill routes Make to a fallback.",
       "figjam_agent": "Prototype Scaffolder",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/partner-prototype/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/partner-prototype/SKILL.md",

@@ -103,7 +103,7 @@ USE_WHEN: dict[str, str] = {
 
 STAGE_NOTES: dict[str, str] = {
     "pipeline": "Invoke <code>design-thinking-ux</code> first for a full run. It asks intake questions and loads the phase skill — you do not type each child skill unless you want a single step.",
-    "prototype": "Prototype skills run <code>scripts/bootstrap.sh</code> — clone, <code>npm ci</code>, start Vite. Cursor preferred.",
+    "prototype": "Prototype phase uses <code>brand-prototype</code> or <code>partner-prototype</code> only. Bootstrap clones the shell, installs Node if missing, runs <code>npm ci</code>, and starts Vite. Cursor preferred.",
     "test": "Human gate: review AI drafts before stakeholders. Findings loop back to Empathize.",
 }
 
