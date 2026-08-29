@@ -11,36 +11,50 @@
   <script src="../../shared/designops-auth.js" defer></script>
   <style>
     body.proto { margin: 0; background: var(--background-subdued); font-family: var(--font-family); color: var(--text-default); }
-    .skip { position: absolute; left: -999px; top: 8px; background: var(--interactive-default); color: #fff; padding: 8px 12px; z-index: 2000; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--interactive-default); color: var(--text-invert); padding: 8px 12px; z-index: 2000; }
     .skip:focus { left: 8px; }
     .app { display: flex; flex-direction: column; min-height: 100vh; }
-    .top { height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; background: #edf1f9; border-bottom: 1px solid var(--border-default); gap: 16px; }
+    .top {
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px; background: var(--background-default); border-bottom: 1px solid var(--border-default); gap: 16px;
+    }
     .top a.brand { font-weight: 600; color: inherit; text-decoration: none; }
+    .top-right { display: flex; align-items: center; gap: 12px; }
     .tabs { display: flex; gap: 4px; }
     .tab { height: 40px; padding: 0 14px; border: 0; border-radius: 8px; background: transparent; font: inherit; font-weight: 600; color: var(--text-default); }
-    .tab[aria-current="page"] { background: #fff; }
+    .tab[aria-current="page"] { background: var(--background-hover); }
     .shell { display: flex; flex: 1; min-height: 0; }
-    .rail { width: 72px; background: #edf1f9; border-right: 1px solid var(--border-default); display: flex; flex-direction: column; align-items: center; padding: 16px 0; gap: 12px; }
+    .rail {
+      width: 72px; background: var(--background-default); border-right: 1px solid var(--border-default);
+      display: flex; flex-direction: column; align-items: center; padding: 16px 0; gap: 12px;
+    }
     .rail span { font-size: 0.68rem; font-weight: 600; color: var(--text-subdued); }
-    .rail .on { color: #1d66de; }
-    .side { width: 232px; background: #f9fbff; border-right: 1px solid var(--border-default); padding: 16px 10px; overflow: auto; }
+    .rail .on { color: var(--text-interactive); }
+    .side {
+      width: 232px; background: var(--background-default); border-right: 1px solid var(--border-default);
+      padding: 16px 10px; overflow: auto;
+    }
     .gl { font-size: 0.7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-subdued); margin: 14px 8px 6px; }
     .gl:first-child { margin-top: 0; }
     .nav-a { display: block; width: 100%; text-align: left; border: 0; background: transparent; border-radius: 8px; padding: 8px 10px; font: inherit; font-size: 0.88rem; color: var(--text-default); cursor: pointer; }
     .nav-a:hover, .nav-a:focus-visible { background: var(--background-hover); outline: 2px solid var(--interactive-default); outline-offset: 1px; }
-    .nav-a[aria-current="page"] { background: #d6ebff; color: #1d66de; font-weight: 600; }
-    .nav-muted { display: block; padding: 8px 10px; font-size: 0.88rem; color: var(--text-subdued); opacity: 0.7; }
-    .main { flex: 1; overflow: auto; padding: 24px 28px 48px; }
-    .banner { margin: 0 0 16px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--pill-theme-border); background: var(--pill-theme-bg); font-size: 0.88rem; }
-    h1 { margin: 0 0 4px; font-size: 1.45rem; }
+    .nav-a[aria-current="page"] { background: var(--info-bg); color: var(--text-interactive); font-weight: 600; }
+    .nav-muted { display: block; padding: 8px 10px; font-size: 0.88rem; color: var(--text-subdued); }
+    .main { flex: 1; overflow: auto; padding: 24px 28px 48px; background: var(--background-subdued); }
+    .banner {
+      margin: 0 0 16px; padding: 10px 14px; border-radius: 8px;
+      border: 1px solid var(--pill-theme-border); background: var(--pill-theme-bg); color: var(--pill-theme-text); font-size: 0.88rem;
+    }
+    .banner a { color: inherit; font-weight: 600; }
+    h1 { margin: 0 0 4px; font-size: 1.45rem; color: var(--text-default); }
     .sub { margin: 0 0 16px; color: var(--muted); font-size: 0.9rem; }
     .kpis { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin: 0 0 16px; }
     @media (max-width: 1100px) { .kpis { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 960px) { .shell { flex-direction: column; } .rail, .side { width: 100%; flex-direction: row; overflow: auto; } }
     .kpi { background: var(--card); border: 1px solid var(--border-default); border-radius: 8px; padding: 14px 16px; }
     .kpi .l { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--text-subdued); }
-    .kpi .v { display: block; font-size: 1.4rem; font-weight: 700; margin: 4px 0 2px; }
-    .kpi .n { font-size: 0.8rem; }
+    .kpi .v { display: block; font-size: 1.4rem; font-weight: 700; margin: 4px 0 2px; color: var(--text-default); }
+    .kpi .n { font-size: 0.8rem; color: var(--muted); }
     .card { background: var(--card); border: 1px solid var(--border-default); border-radius: 12px; padding: 16px; margin: 0 0 16px; overflow: auto; }
     .ct { font-weight: 600; margin: 0 0 4px; }
     .cs { color: var(--muted); font-size: 0.85rem; margin: 0 0 12px; }
@@ -48,29 +62,36 @@
     th { text-align: left; font-size: 0.7rem; color: var(--text-subdued); text-transform: uppercase; letter-spacing: .04em; padding: 8px 8px; border-bottom: 1px solid var(--border-default); }
     td { padding: 9px 8px; border-bottom: 1px solid var(--border-default); vertical-align: top; }
     .num { text-align: right; font-variant-numeric: tabular-nums; }
-    .chip { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
-    .obs { background: #ecfdf3; color: #067647; }
-    .inf { background: #fef3c7; color: #92400e; }
-    .vis { background: #eff8ff; color: #175cd3; }
-    .low { background: #fef3f2; color: #b42318; }
-    .ok { background: #ecfdf3; color: #067647; }
-    .row-btn { width: 100%; text-align: left; border: 0; background: transparent; font: inherit; color: var(--interactive-default); font-weight: 600; cursor: pointer; padding: 0; }
+    .chip { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; border: 1px solid transparent; }
+    .obs, .ok { background: var(--pill-product-bg); color: var(--pill-product-text); border-color: var(--pill-product-border); }
+    .inf { background: var(--warning-bg); color: var(--warning-text); border-color: var(--warning-border); }
+    .vis { background: var(--pill-audience-bg); color: var(--pill-audience-text); border-color: var(--pill-audience-border); }
+    .low { background: var(--pill-bug-bg); color: var(--pill-bug-text); border-color: var(--pill-bug-border); }
+    .row-btn { width: 100%; text-align: left; border: 0; background: transparent; font: inherit; color: var(--text-interactive); font-weight: 600; cursor: pointer; padding: 0; }
     .row-btn:focus-visible { outline: 2px solid var(--interactive-default); outline-offset: 2px; }
-    .note { color: var(--pill-bug-text); font-size: 0.85rem; }
+    .note {
+      margin-top: 12px; padding: 10px 12px; border-radius: 8px; font-size: 0.85rem;
+      background: var(--warning-bg); color: var(--warning-text); border: 1px solid var(--warning-border);
+    }
     .view { display: none; } .view.on { display: block; }
-    .take { background: #ecfdf3; border: 1px solid #86efac; border-radius: 10px; padding: 12px 14px; margin: 0 0 16px; }
-    .dark .take { background: #052e16; border-color: #166534; color: #bbf7d0; }
+    .take {
+      background: var(--pill-product-bg); border: 1px solid var(--pill-product-border); color: var(--pill-product-text);
+      border-radius: 10px; padding: 12px 14px; margin: 0 0 16px;
+    }
     .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media (max-width: 860px) { .g2 { grid-template-columns: 1fr; } }
     .meth { margin: 0 0 16px; }
     .meth summary { cursor: pointer; font-weight: 600; }
-    .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--interactive-default); font-weight: 600; cursor: pointer; }
+    .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--text-interactive); font-weight: 600; cursor: pointer; }
     .linkish:focus-visible { outline: 2px solid var(--interactive-default); }
     .bars { display: flex; flex-direction: column; gap: 8px; }
     .bar-row { display: grid; grid-template-columns: 110px 1fr 70px; gap: 8px; align-items: center; font-size: 0.85rem; }
     .track { height: 22px; background: var(--background-hover); border-radius: 4px; overflow: hidden; }
-    .fill { height: 100%; background: #1d66de; color: #fff; font-size: 0.72rem; font-weight: 600; display: flex; align-items: center; padding: 0 8px; min-width: 2rem; }
-    .fill.p { background: #d73184; }
+    .fill { height: 100%; background: var(--interactive-default); color: var(--text-invert); font-size: 0.72rem; font-weight: 600; display: flex; align-items: center; padding: 0 8px; min-width: 2rem; }
+    .fill.p { background: #d73184; color: #fff; }
+    .path { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; }
+    .path .step { background: var(--background-hover); border: 1px solid var(--border-default); border-radius: 8px; padding: 6px 10px; font-size: 0.85rem; font-weight: 600; }
+    .path .arrow { color: var(--text-subdued); }
   </style>
 </head>
 <body class="proto">
@@ -89,7 +110,13 @@
           <span class="tab">Data Lab</span>
         </nav>
       </div>
-      <a href="../../walkthroughs/2026-08-28-aim-measurement-signals.html">Back to walkthrough</a>
+      <div class="top-right">
+        <a href="../../walkthroughs/2026-08-28-aim-measurement-signals.html">Back to walkthrough</a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
     </header>
     <div class="shell">
       <aside class="rail" aria-label="Primary">
@@ -306,8 +333,14 @@
           <div class="card">
             <p class="ct">If path insertion were ready (preview only)</p>
             <p class="cs">Example the working group uses: “ChatGPT referral via Wired.” Last-click winner stays unless the brand selects a different policy.</p>
-            <p>Google Search → ChatGPT → retrieved wired.com review → sale. Wired would be an <em>inferred AI influence touchpoint</em>, not a replacement last-click winner.</p>
-            <p class="note" style="margin-top:12px">Do not ship this as a conversion-path report until Scoring Productionization injects synthetic referrals into live reporting.</p>
+            <p class="path" aria-label="Preview conversion path">
+              <span class="step">Google Search</span><span class="arrow">→</span>
+              <span class="step">ChatGPT</span><span class="arrow">→</span>
+              <span class="step">Retrieved wired.com</span><span class="arrow">→</span>
+              <span class="step">Sale</span>
+            </p>
+            <p class="cs">Wired would be an inferred AI influence touchpoint, not a replacement last-click winner.</p>
+            <p class="note">Not in first release. Do not treat this preview as a payable conversion-path report until scoring productionization injects synthetic referrals into live reporting.</p>
           </div>
         </section>
       </main>
