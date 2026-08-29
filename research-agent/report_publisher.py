@@ -1464,6 +1464,8 @@ def render_html_report(payload: Dict[str, Any], *, at_root: bool = False) -> str
         pipeline_href=hrefs["pipeline"],
         skills_href=hrefs["skills"],
         brand_href=hrefs["brand"],
+        usage_href=hrefs.get("usage", "../usage/"),
+        personas_href=hrefs.get("personas", "../personas/"),
     )
     report_path_hint = (
         "research-agent/docs/research/research/index.html"
@@ -1804,6 +1806,8 @@ def render_affinity_html_report(payload: Dict[str, Any]) -> str:
         pipeline_href=hrefs["pipeline"],
         skills_href=hrefs["skills"],
         brand_href=hrefs["brand"],
+        usage_href=hrefs.get("usage", "../usage/"),
+        personas_href=hrefs.get("personas", "../personas/"),
     )
     voice_cards = collect_user_report_cards(payload, limit=48)
     voice_html = _render_user_reports_section(voice_cards)

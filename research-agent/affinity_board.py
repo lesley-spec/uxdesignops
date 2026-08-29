@@ -473,14 +473,16 @@ def report_nav_html(
     pipeline_href: str = "",
     brand_href: str = "",
     usage_href: str = "",
+    personas_href: str = "",
 ) -> str:
-    """Top bar: Design Thinking Pipeline (home) | Skills | Research | Report | Affinity."""
+    """Top bar: Design Thinking Pipeline (home) | Skills | Research | Report | Personas | Affinity."""
     listing = listing_href or f"./{week}.html"
     affinity = affinity_href or f"./{week}-affinity.html"
     skills = skills_href or "../skills/"
     pipeline = pipeline_href or "../"
     brand = brand_href or pipeline
     usage = usage_href or "../usage/"
+    personas = personas_href or "../personas/"
     return (
         f'<header class="top-nav" role="banner">'
         f'<div class="top-nav-inner">'
@@ -495,6 +497,8 @@ def report_nav_html(
         f'href="{_esc(listing)}" data-nav="listing">Research</a>'
         f'<a class="nav-link{" is-active" if active == "report" else ""}" '
         f'href="{_esc(usage)}" data-nav="report">Report</a>'
+        f'<a class="nav-link{" is-active" if active == "personas" else ""}" '
+        f'href="{_esc(personas)}" data-nav="personas">Personas</a>'
         f'<a class="nav-link{" is-active" if active == "affinity" else ""}" '
         f'href="{_esc(affinity)}" data-nav="affinity">Affinity</a>'
         f"</nav>"
@@ -550,6 +554,8 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
             "affinity": f"./reports/{week}-affinity.html",
             "skills": "./skills/",
             "brand": "./",
+            "usage": "./usage/",
+            "personas": "./personas/",
         }
     if loc == "research":
         return {
@@ -558,6 +564,8 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
             "affinity": f"../reports/{week}-affinity.html",
             "skills": "../skills/",
             "brand": "../",
+            "usage": "../usage/",
+            "personas": "../personas/",
         }
     return {
         "pipeline": "../",
@@ -565,4 +573,6 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
         "affinity": f"./{week}-affinity.html",
         "skills": "../skills/",
         "brand": "../",
+        "usage": "../usage/",
+        "personas": "../personas/",
     }
