@@ -44,63 +44,17 @@
     <header class="page-header pipeline-lede">
       <div>
         <h1>Design Thinking Automation Pipeline</h1>
-        <p class="sub muted">impact.com UX DesignOps — First <a href="#install">install the skills in Cursor or Claude Code</a> (Claude.ai will not have them in its catalog yet). Then start with <code>design-thinking-ux</code>. It walks Empathize → Test and invokes every phase skill. Keep human judgment at decision gates.</p>
+        <p class="sub muted">impact.com UX DesignOps — start with <code>design-thinking-ux</code>. It walks Empathize → Test and invokes every phase skill. Keep human judgment at decision gates.</p>
       </div>
     </header>
 
-    <aside class="walkthrough-banner is-master">
-      <p><strong>First time:</strong> paste the install prompt in Cursor or Claude Code (Claude.ai will say the skill is missing — that is expected). <strong>Then every run:</strong> <code>use design-thinking-ux</code>.</p>
+    <aside class="walkthrough-banner is-master" id="install">
+      <p><strong>New machine?</strong> Install the pipeline skills once, then every run is <code>use design-thinking-ux</code>. How to install lives on the Skills page.</p>
       <div class="walkthrough-banner-actions">
-        <a href="#install">How to install</a>
-        <a class="is-secondary" href="./skills/#design-thinking-ux">Open design-thinking-ux</a>
+        <a href="./skills/#install">How to install</a>
+        <a class="is-secondary" href="./skills/">Skills</a>
       </div>
     </aside>
-
-    <section class="install-howto" id="install" aria-labelledby="install-heading">
-      <h2 id="install-heading">How to install the skills</h2>
-      <p class="muted">One time. Cursor or Claude Code can run the installer even when <code>ux-install-all-skills</code> is not in the catalog. Claude.ai in the browser cannot — use Cursor or Claude Code for the first install.</p>
-      <ol class="install-steps">
-        <li>
-          <h3>Paste this in Cursor or Claude Code (not Claude.ai)</h3>
-          <p class="muted">Do not type <code>use ux-install-all-skills</code> yet — Claude will not have it in the catalog. This prompt is the install.</p>
-          <figure class="pipe-prompt">
-            <div class="pipe-prompt-top">
-              <span class="pipe-prompt-skill">first-time install</span>
-              <button type="button" class="pipe-copy" data-copy="Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
-
-Run this with sandbox off / full permissions:
-
-curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
-
-When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.">Copy</button>
-            </div>
-            <pre>Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
-
-Run this with sandbox off / full permissions:
-
-curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
-
-When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.</pre>
-          </figure>
-        </li>
-        <li>
-          <h3>Or run this in the terminal</h3>
-          <pre class="skills-cmd" id="install-all-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash</pre>
-          <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-all-cmd">Copy command</button>
-        </li>
-        <li>
-          <h3>Then start a guided run</h3>
-          <figure class="pipe-prompt">
-            <div class="pipe-prompt-top">
-              <span class="pipe-prompt-skill">design-thinking-ux</span>
-              <button type="button" class="pipe-copy" data-copy="use design-thinking-ux">Copy</button>
-            </div>
-            <pre>use design-thinking-ux</pre>
-          </figure>
-          <p class="muted">After install, <code>use ux-install-all-skills</code> also works for re-runs. <a href="./skills/#install">Zip, Copilot/Codex, and harness paths</a></p>
-        </li>
-      </ol>
-    </section>
 
     <div class="examples-strip" aria-label="Worked examples">
       <span class="examples-strip-label">Examples</span>
@@ -120,7 +74,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
     </nav>
 
     <p class="pipeline-flow">
-      <strong>Install</strong> <span class="arrow">→</span>
+      <strong><a href="./skills/#install">Install</a></strong> <span class="arrow">→</span>
       <strong>design-thinking-ux</strong> <span class="arrow">→</span>
       <strong>1 Empathize</strong> <span class="arrow">→</span>
       <strong>2 Define</strong> <span class="arrow">→</span>
@@ -150,7 +104,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           <section>
             <h3>How to use it</h3>
             <ol>
-              <li><strong>Not installed yet?</strong> <a href="#install">Install all 19 skills</a> first, then “use Design Thinking UX”.</li>
+              <li><strong>Not installed yet?</strong> <a href="./skills/#install">Install the skills</a> first, then “use Design Thinking UX”.</li>
               <li><strong>Prefer the master skill:</strong> “use Design Thinking UX” — it asks if you have research and invokes Empathize skills for you.</li>
               <li>Open the <a href="./research/">latest research report</a>.</li>
               <li>Connect the same MCPs in your harness (PostHog, Pendo, Dovetail, Outset, Confluence/Jira) — then use the skills to ask questions in Cursor, Claude, Figma Agent, or any Agent Skills client.</li>
@@ -205,27 +159,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           </section>
           <section>
             <h3>Try these prompts (validated)</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Live-tested against PostHog and the research pack. Copy into Cursor or Claude after <a href="#install">installing skills</a>. Prefer the master skill for a full run.</p>
-            <figure class="pipe-prompt">
-              <div class="pipe-prompt-top">
-                <span class="pipe-prompt-skill">first-time install — Cursor or Claude Code</span>
-                <button type="button" class="pipe-copy" data-copy="Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
-
-Run this with sandbox off / full permissions:
-
-curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
-
-When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.">Copy</button>
-              </div>
-              <pre>Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
-
-Run this with sandbox off / full permissions:
-
-curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
-
-When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.</pre>
-              <p class="pipe-prompt-meta"><strong>Result:</strong> All 19 pipeline skills on this project and globally. <strong>Action:</strong> do not use this in Claude.ai — it has no catalog entry and no terminal.</p>
-            </figure>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Live-tested against PostHog and the research pack. Copy into Cursor or Claude after <a href="./skills/#install">installing skills</a>. Prefer the master skill for a full run.</p>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">design-thinking-ux — master</span>
@@ -277,7 +211,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
+            <p>First time on this machine: <a href="./skills/#install">install the skills</a>, then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -396,7 +330,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
+            <p>First time on this machine: <a href="./skills/#install">install the skills</a>, then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -515,7 +449,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
+            <p>First time on this machine: <a href="./skills/#install">install the skills</a>, then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -636,7 +570,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
+            <p>First time on this machine: <a href="./skills/#install">install the skills</a>, then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -769,7 +703,7 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
+            <p>First time on this machine: <a href="./skills/#install">install the skills</a>, then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -804,16 +738,6 @@ When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-think
           });
         });
       });
-      var allCmd = document.getElementById("install-all-cmd");
-      var copyAll = document.getElementById("copy-install-all-cmd");
-      if (copyAll && allCmd) {
-        copyAll.addEventListener("click", function () {
-          navigator.clipboard.writeText(allCmd.textContent).then(function () {
-            copyAll.textContent = "Copied!";
-            setTimeout(function () { copyAll.textContent = "Copy command"; }, 1500);
-          });
-        });
-      }
     })();
   </script>
 </body>

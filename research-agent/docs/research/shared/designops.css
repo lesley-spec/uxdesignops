@@ -959,6 +959,7 @@ html.dark .badge.badge-source {
 }
 
 .pipeline-flow strong { color: var(--text-default); font-weight: var(--font-weight-medium); }
+.pipeline-flow a { color: inherit; text-underline-offset: 2px; }
 .pipeline-flow .arrow { color: var(--text-subdued); }
 .pipeline-flow .loop { color: var(--pill-support-text); }
 
