@@ -91,7 +91,7 @@ Phase skills below still work on their own. The master skill is for “take me t
 
 **Tools:** Outset MCP (`https://api.outset.ai/mcp/`) to create draft studies · `OUTSET_API_KEY` to list studies · Maze · Pendo · Confluence · Jira · Figma.
 
-**Human gate:** Review AI study summaries before stakeholders. Findings loop back to Empathize — do not treat AI synthesis as verified research.
+**Human gate:** UX researcher reviews and publishes the test plan. After sessions, sit with the designer on where users got stuck and whether to iterate mocks. Findings loop back to Empathize — do not treat AI synthesis as verified research.
 
 ## Install in any harness
 
