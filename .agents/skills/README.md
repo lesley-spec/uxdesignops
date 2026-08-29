@@ -105,8 +105,8 @@ Replace `cursor` with `claude` or `agents` for Claude Code or Copilot/Codex.
 
 | Harness | Typical path |
 |---|---|
-| Cursor | `.cursor/skills/<name>/` (symlinked in this repo) |
-| Claude Code / Claude | `.claude/skills/<name>/` or `.agents/skills/<name>/` |
+| Cursor | `.cursor/skills/<name>/` (symlinked locally; `.cursor/` is gitignored) |
+| Claude Code / Claude | `.claude/skills/<name>/` (all 18 skills, tracked in this repo) |
 | Codex / VS Code Copilot | `.agents/skills/<name>/` |
 | Figma Agent | Project or org skills that point at the same `SKILL.md` folders |
 
