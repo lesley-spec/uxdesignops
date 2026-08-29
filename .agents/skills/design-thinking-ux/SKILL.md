@@ -35,8 +35,9 @@ Routing tables: [references/phases.md](references/phases.md).
    **this chat**. Do not ask the designer to type `use skill-name`.
 2. **One child skill at a time** unless that skill itself calls another
    (e.g. `test-plan` → `ux-critique` + `accessibility-review`).
-3. **Honor the child’s stop.** Publish / Jira / Confluence / Outset / Maze only
-   when that skill allows it — after designer confirm.
+3. **Honor the child’s stop.** Jira / Confluence / Outset drafts only
+   when that skill allows it — after designer confirm. Never launch Outset
+   recruitment or Maze unless the designer asks.
 4. **Label Verified vs AI interpretation.** Never invent metrics or quotes.
 5. **Join anywhere.** If artifacts already exist (research, one-pager, epic,
    mocks, prototype), start at that phase. Do not force Empathize from scratch.
@@ -188,7 +189,7 @@ Show the board at start, after each child skill, and at each gate.
 - Empathize → Define: “You confirmed this is worth solving. Define next — I’ll draft the one-pager and, if you confirm, create the Confluence page and UX epic. Ready?”
 - Define → Ideate: “Framing is signed off. After your PM chat, I can start Ideate (brief + directions). Say the word.”
 - Ideate → Prototype: “Direction is chosen and critique is clear. I can bootstrap the Brand or Partner prototype shell. Which surface?”
-- Prototype → Test: “Prototype is up. I can run a11y + coverage pre-flight and draft an Outset or Maze study. Go?”
+- Prototype → Test: “Prototype is up. I can run a11y + coverage pre-flight and draft an Outset or Maze study. If you confirm, I’ll create an Outset draft via MCP — not a live recruit. Go?”
 - Test complete: “Loopback is the end of this run. Findings can start a new Empathize cycle if the problem shifted.”
 
 ## Prompt examples
@@ -198,7 +199,7 @@ Show the board at start, after each child skill, and at each gate.
 2. `Use design-thinking-ux. We already have a one-pager and UX-1234. Jump to Ideate.`  
    → Skip Empathize/Define; invoke `ideate`.
 3. `Use Design Thinking UX. Prototype is at localhost:5173 — take me through Test.`  
-   → Invoke `test-plan` (pre-flight + study draft). Stop before recruit.
+   → Invoke `test-plan` (pre-flight + study draft). On confirm, create an Outset draft via MCP. Stop before recruit.
 
 ## Check the orchestrator
 
@@ -210,7 +211,7 @@ Confirms every child `SKILL.md` loads, markdown links resolve, and the UPS Step 
 
 - Reimplementing a child skill instead of reading its `SKILL.md`
 - Asking the designer to manually invoke the next skill
-- Auto-creating Jira/Confluence or publishing to Outset/Maze
+- Auto-creating Jira/Confluence without confirm, or launching Outset/Maze recruitment
 - Jumping to mocks before Empathize gate + Define sign-off (unless they joined mid-pipeline)
 - Running Empathize → Test in one turn with no gates
 - Treating synthetic pre-tests as session findings

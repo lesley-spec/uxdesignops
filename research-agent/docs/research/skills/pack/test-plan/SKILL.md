@@ -56,7 +56,21 @@ See [references/integrity.md](references/integrity.md).
 3. **Method pick** — Recommend Outset vs Maze (see [references/study-template.md](references/study-template.md)).
 4. **Draft study** — Goals, screener, tasks, success metrics, facilitator script, recruitment notes, PII handling.
 5. **Designer review** — Show full pack; adjust on feedback.
-6. **Stop** — On confirm, designer publishes to Outset/Maze manually (or asks agent to help in-tool). Next after sessions: `test-loopback` (or `synthesize-research` then `test-loopback`).
+6. **Stop** — On confirm, create an Outset **draft** study (do not publish, do not launch recruitment). Next after real sessions: `test-loopback` (or `synthesize-research` then `test-loopback`).
+
+## Outset connection
+
+| Path | What it can do |
+|---|---|
+| `OUTSET_API_KEY` (v1 REST) | List/read studies. **Cannot** create guides. |
+| Outset MCP `https://api.outset.ai/mcp/` (OAuth `studies:write`) | Create/edit draft studies, sections, questions. |
+
+When the designer asks to publish the test to Outset:
+
+1. Use MCP `create_project` / `create_study` / `create_section` / `create_question`.
+2. Label the study **PIPELINE TEST** if this is a pipeline demonstration.
+3. Leave the study **draft** (`validate_study` is OK). Do **not** call `publish_study`, `configure_recruitment`, or anything under the `studies:launch` scope unless the designer explicitly asks to recruit.
+4. Link the Outset URL on the Confluence plan and UX Research ticket.
 
 ## Output template
 

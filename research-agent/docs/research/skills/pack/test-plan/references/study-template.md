@@ -6,7 +6,7 @@
 - Complex marketplace workflows (Brand operator decisions, Partner campaign flows)
 - Study length > ~10 minutes or multi-step narrative
 
-**Setup notes:** Draft intro, consent, task list, and wrap-up in the test-plan output. Designer creates the study in Outset; use Outset MCP in Cursor when available for study context.
+**Setup notes:** Draft intro, consent, task list, and wrap-up in the test-plan output. On designer confirm, create an Outset **draft** via MCP (`create_study`). Do not publish or launch recruitment unless asked. `OUTSET_API_KEY` can list existing studies only.
 
 ## When to use Maze
 

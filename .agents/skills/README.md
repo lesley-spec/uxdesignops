@@ -89,7 +89,7 @@ Phase skills below still work on their own. The master skill is for “take me t
 
 **Agent (on-demand):** Test Plan Generator (`test-plan`).
 
-**Tools:** Outset, Maze, Pendo, Confluence, Jira, Figma (prototype links).
+**Tools:** Outset MCP (`https://api.outset.ai/mcp/`) to create draft studies · `OUTSET_API_KEY` to list studies · Maze · Pendo · Confluence · Jira · Figma.
 
 **Human gate:** Review AI study summaries before stakeholders. Findings loop back to Empathize — do not treat AI synthesis as verified research.
 

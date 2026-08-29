@@ -122,7 +122,7 @@ USE_WHEN: dict[str, str] = {
     "ux-prototyping": "Any harness → Brand or Partner live preview → optional GitHub Pages on the designer’s account",
     "brand-prototype": "One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)",
     "partner-prototype": "One prompt → Partner UI shell (<code>localhost:5173/</code>)",
-    "test-plan": "Synthetic pre-flight + Outset/Maze study draft",
+    "test-plan": "Synthetic pre-flight + Outset MCP / Maze study draft",
     "accessibility-review": "Synthetic a11y check before recruiting",
     "test-loopback": "Publish Verified session findings → Empathize input",
 }
@@ -130,7 +130,7 @@ USE_WHEN: dict[str, str] = {
 STAGE_NOTES: dict[str, str] = {
     "pipeline": "New machine? The skill is not in Claude’s catalog yet — paste the install prompt (or the curl) from <a href=\"#install\">How to install</a>. After that, <code>design-thinking-ux</code> for a full run.",
     "prototype": "Prototype starts with <code>ux-prototyping</code> in the current harness (Cursor, Claude, Figma Make). Brand or Partner shell only — localhost, Make preview, or Claude preview. GitHub Pages repos are created under the designer’s login.",
-    "test": "Human gate: review AI drafts before stakeholders. Findings loop back to Empathize.",
+    "test": "Human gate: review AI drafts before stakeholders. Connect Outset MCP (<code>https://api.outset.ai/mcp/</code>) to create a <em>draft</em> study — do not recruit unless asked. Findings loop back to Empathize.",
 }
 
 

@@ -599,21 +599,22 @@
         <div class="pipe-body">
           <section>
             <h3>What this is</h3>
-            <p>Test is stage 5: validate prototypes with users and synthetic pre-tests. Draft Outset or Maze studies from a prototype plus one-pager success criteria; run synthetic pre-flight before recruiting. After sessions, <code>test-loopback</code> publishes Verified findings back to Empathize.</p>
+            <p>Test is stage 5: validate prototypes with users and synthetic pre-tests. Draft Outset or Maze studies from a prototype plus one-pager success criteria; run synthetic pre-flight before recruiting. On designer confirm, <code>test-plan</code> creates an Outset <em>draft</em> via MCP — it does not launch recruitment. After sessions, <code>test-loopback</code> publishes Verified findings back to Empathize.</p>
           </section>
           <section>
             <h3>How to use it</h3>
             <ol>
               <li>After the Prototype gate (prototype URL ready) — or continue from <code>design-thinking-ux</code>.</li>
               <li>In Cursor/Claude: “use Design Thinking UX” (master) or “use test-plan on [prototype link]” — it runs synthetic pre-tests, then drafts an Outset/Maze study.</li>
-              <li>Designer publishes to Outset/Maze; review all AI output before stakeholders.</li>
+              <li>Connect Outset MCP at <code>https://api.outset.ai/mcp/</code> (OAuth). On confirm, the skill creates an Outset <em>draft</em>. Do not recruit unless you ask. The v1 API key only lists studies.</li>
+              <li>Review all AI output before stakeholders.</li>
               <li>After sessions: the master skill invokes <code>synthesize-research</code> then <code>test-loopback</code> — or call those skills directly.</li>
             </ol>
           </section>
           <section>
             <h3>Agent (on-demand)</h3>
             <p class="pipe-agent-name">Test Plan Generator</p>
-            <p>Invoked by the master skill <code>design-thinking-ux</code> after Prototype, or directly via the <code>test-plan</code> skill. Drafts studies after synthetic pre-tests. Requires designer review before publishing. Does not recruit or auto-share with stakeholders.</p>
+            <p>Invoked by the master skill <code>design-thinking-ux</code> after Prototype, or directly via the <code>test-plan</code> skill. Drafts studies after synthetic pre-tests. On confirm, creates an Outset draft via MCP. Does not recruit or auto-share with stakeholders.</p>
           </section>
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
@@ -626,7 +627,7 @@
             <div class="pipe-skill">
               <a href="./skills/#test-plan">test-plan</a>
               <a class="dl" href="./skills/pack/test-plan.zip" download="test-plan.zip">download</a>
-              <p>Synthetic pre-flight + Outset/Maze study draft.</p>
+              <p>Synthetic pre-flight + Outset MCP draft (not a live recruit).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#accessibility-review">accessibility-review</a>
@@ -670,16 +671,16 @@
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">design-thinking-ux — master</span>
-                <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX. Prototype is ready at [prototype link] — take me through Test. Run pre-flight and draft an Outset study; don’t publish until I review.">Copy</button>
+                <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX. Prototype is ready at [prototype link] — take me through Test. Run pre-flight and draft an Outset study. After I confirm, create an Outset draft via MCP; don’t recruit.">Copy</button>
               </div>
-              <pre>Use Design Thinking UX. Prototype is ready at [prototype link] — take me through Test. Run pre-flight and draft an Outset study; don’t publish until I review.</pre>
+              <pre>Use Design Thinking UX. Prototype is ready at [prototype link] — take me through Test. Run pre-flight and draft an Outset study. After I confirm, create an Outset draft via MCP; don’t recruit.</pre>
             </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">test-plan — try this</span>
-                <button type="button" class="pipe-copy" data-copy="Use test-plan on [prototype link] — Outset study for Partner UPS Step 2. Run synthetic pre-flight first; don’t publish until I review.">Copy</button>
+                <button type="button" class="pipe-copy" data-copy="Use test-plan on [prototype link] — Outset study for Partner UPS Step 2. Run synthetic pre-flight first. After I confirm, create an Outset draft via MCP; don’t recruit.">Copy</button>
               </div>
-              <pre>Use test-plan on [prototype link] — Outset study for Partner UPS Step 2. Run synthetic pre-flight first; don’t publish until I review.</pre>
+              <pre>Use test-plan on [prototype link] — Outset study for Partner UPS Step 2. Run synthetic pre-flight first. After I confirm, create an Outset draft via MCP; don’t recruit.</pre>
             </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
@@ -709,7 +710,7 @@
           </section>
           <section>
             <h3>Tools</h3>
-            <p>Outset · Maze · Pendo · Confluence · Jira · Figma (prototype links) · <a href="./skills/">Skills index</a></p>
+            <p>Outset MCP (<code>https://api.outset.ai/mcp/</code>) · <code>OUTSET_API_KEY</code> (list only) · Maze · Pendo · Confluence · Jira · Figma · <a href="./skills/">Skills index</a></p>
           </section>
           <section class="pipe-gate">
             <h3>Human gate</h3>
