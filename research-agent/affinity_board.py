@@ -474,8 +474,9 @@ def report_nav_html(
     brand_href: str = "",
     usage_href: str = "",
     personas_href: str = "",
+    walkthrough_href: str = "",
 ) -> str:
-    """Top bar: Design Thinking Pipeline (home) | Skills | Research | Report | Personas | Affinity."""
+    """Top bar: Pipeline | Skills | Research | Report | Personas | Affinity | Examples."""
     listing = listing_href or f"./{week}.html"
     affinity = affinity_href or f"./{week}-affinity.html"
     skills = skills_href or "../skills/"
@@ -483,6 +484,7 @@ def report_nav_html(
     brand = brand_href or pipeline
     usage = usage_href or "../usage/"
     personas = personas_href or "../personas/"
+    walkthrough = walkthrough_href or "../walkthroughs/"
     return (
         f'<header class="top-nav" role="banner">'
         f'<div class="top-nav-inner">'
@@ -501,6 +503,8 @@ def report_nav_html(
         f'href="{_esc(personas)}" data-nav="personas">Personas</a>'
         f'<a class="nav-link{" is-active" if active == "affinity" else ""}" '
         f'href="{_esc(affinity)}" data-nav="affinity">Affinity</a>'
+        f'<a class="nav-link{" is-active" if active == "walkthrough" else ""}" '
+        f'href="{_esc(walkthrough)}" data-nav="walkthrough">Examples</a>'
         f"</nav>"
         f"{theme_toggle_html()}"
         f"</div>"
@@ -556,6 +560,7 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
             "brand": "./",
             "usage": "./usage/",
             "personas": "./personas/",
+            "walkthrough": "./walkthroughs/",
         }
     if loc == "research":
         return {
@@ -566,6 +571,7 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
             "brand": "../",
             "usage": "../usage/",
             "personas": "../personas/",
+            "walkthrough": "../walkthroughs/",
         }
     return {
         "pipeline": "../",
@@ -575,4 +581,5 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
         "brand": "../",
         "usage": "../usage/",
         "personas": "../personas/",
+        "walkthrough": "../walkthroughs/",
     }
