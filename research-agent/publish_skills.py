@@ -13,7 +13,20 @@ from pathlib import Path
 
 AGENT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(AGENT_DIR))
-from affinity_board import designops_auth_gate_html, designops_auth_head_scripts, top_nav_brand_html
+from affinity_board import (
+    designops_assets_hrefs,
+    designops_auth_gate_html,
+    designops_auth_head_scripts,
+    top_nav_brand_html,
+)
+
+PACK_IGNORE = shutil.ignore_patterns(
+    ".tmp-toolchain-test",
+    "__pycache__",
+    ".DS_Store",
+    "*.pyc",
+)
+PACK_SKIP_DIRS = {".tmp-toolchain-test", "__pycache__"}
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_SRC = REPO_ROOT / ".agents" / "skills"
@@ -25,6 +38,15 @@ MANIFEST_PATH = SKILLS_SITE / "manifest.json"
 
 PAGES_BASE = "https://lesley-spec.github.io/uxdesignops/skills"
 GITHUB_TREE = "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills"
+
+# First-time prompt: works without the skill already in Cursor/Claude's catalog.
+INSTALL_BOOTSTRAP = """Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
+
+Run this with sandbox off / full permissions:
+
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+
+When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux."""
 
 STAGE_ORDER = ("pipeline", "empathize", "define", "ideate", "prototype", "test")
 
@@ -106,7 +128,7 @@ USE_WHEN: dict[str, str] = {
 }
 
 STAGE_NOTES: dict[str, str] = {
-    "pipeline": "New machine? Invoke <code>ux-install-all-skills</code> first (installs all 19). Then <code>design-thinking-ux</code> for a full run — it asks intake questions and loads the phase skill. You do not type each child skill unless you want a single step.",
+    "pipeline": "New machine? The skill is not in Claude’s catalog yet — paste the install prompt (or the curl) from <a href=\"#install\">How to install</a>. After that, <code>design-thinking-ux</code> for a full run.",
     "prototype": "Prototype starts with <code>ux-prototyping</code> in the current harness (Cursor, Claude, Figma Make). Brand or Partner shell only — localhost, Make preview, or Claude preview. GitHub Pages repos are created under the designer’s login.",
     "test": "Human gate: review AI drafts before stakeholders. Findings loop back to Empathize.",
 }
@@ -173,6 +195,11 @@ def skill_dirs() -> list[Path]:
     )
 
 
+def _pack_skip(path: Path, root: Path) -> bool:
+    rel = path.relative_to(root)
+    return any(part in PACK_SKIP_DIRS for part in rel.parts) or path.name == ".DS_Store"
+
+
 def copy_pack() -> None:
     if PACK_DIR.exists():
         shutil.rmtree(PACK_DIR)
@@ -181,7 +208,7 @@ def copy_pack() -> None:
     if readme.is_file():
         shutil.copy2(readme, PACK_DIR / "README.md")
     for skill in skill_dirs():
-        shutil.copytree(skill, PACK_DIR / skill.name)
+        shutil.copytree(skill, PACK_DIR / skill.name, ignore=PACK_IGNORE)
 
 
 def build_manifest() -> dict:
@@ -195,6 +222,7 @@ def build_manifest() -> dict:
                 "description": meta.get("description", ""),
                 "figjam_agent": meta.get("figjam_agent", ""),
                 "pack_url": f"{PAGES_BASE}/pack/{skill.name}/",
+                "download_zip": f"{PAGES_BASE}/pack/{skill.name}.zip",
                 "skill_md_url": f"{PAGES_BASE}/pack/{skill.name}/SKILL.md",
                 "github_url": f"{GITHUB_TREE}/{skill.name}",
             }
@@ -219,8 +247,88 @@ def build_zip() -> None:
             zf.write(readme, "README.md")
         for skill in skill_dirs():
             for path in skill.rglob("*"):
-                if path.is_file():
+                if path.is_file() and not _pack_skip(path, skill):
                     zf.write(path, f"{skill.name}/{path.relative_to(skill).as_posix()}")
+
+
+def build_skill_zips() -> None:
+    """One zip per skill so Download saves the folder, not a rendered SKILL.md."""
+    PACK_DIR.mkdir(parents=True, exist_ok=True)
+    for skill in skill_dirs():
+        zip_path = PACK_DIR / f"{skill.name}.zip"
+        with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+            for path in skill.rglob("*"):
+                if path.is_file() and not _pack_skip(path, skill):
+                    zf.write(path, f"{skill.name}/{path.relative_to(skill).as_posix()}")
+
+
+def write_pack_indexes() -> None:
+    """GitHub Pages has no directory listing — Browse needs an index.html."""
+    assets = designops_assets_hrefs(pack_page=True)
+    auth_head = designops_auth_head_scripts(pack_page=True)
+    auth_gate = designops_auth_gate_html()
+    root = "../../../"
+    skills_href = "../../"
+    for skill in skill_dirs():
+        dest_dir = PACK_DIR / skill.name
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        meta = parse_skill_frontmatter(skill / "SKILL.md")
+        desc = str(meta.get("description") or "").strip()
+        files = sorted(
+            p.relative_to(skill).as_posix()
+            for p in skill.rglob("*")
+            if p.is_file() and not _pack_skip(p, skill)
+        )
+        file_lis = "".join(f"<li><code>{_esc(f)}</code></li>" for f in files)
+        zip_name = f"{skill.name}.zip"
+        html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){{var k="ux-designops-theme",s=localStorage.getItem(k),d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");}})();</script>
+  <script>(function(){{try{{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}}catch(x){{}}}})();</script>
+  <title>{_esc(skill.name)} — impact UX DesignOps</title>
+  <link rel="stylesheet" href="{assets["css"]}" />
+  {auth_head}
+</head>
+<body class="skills-page">
+  {auth_gate}
+  <header class="top-nav" role="banner">
+    <div class="top-nav-inner">
+      {top_nav_brand_html(root)}
+      <div class="top-nav-actions">
+        <nav class="report-nav" aria-label="Site sections">
+          <a class="nav-link" href="{root}" data-nav="pipeline">Design Thinking Pipeline</a>
+          <a class="nav-link" href="{root}research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="{root}reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+          <a class="nav-link is-active" href="{skills_href}" data-nav="skills">Skills</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="lede"><a href="{skills_href}">← All skills</a></p>
+    <header class="page-header">
+      <h1><code>{_esc(skill.name)}</code></h1>
+      <p class="sub muted">{_esc(desc)}</p>
+    </header>
+    <p>
+      <a class="skills-btn skills-btn-primary" href="../{_esc(zip_name)}" download="{_esc(zip_name)}">Download {_esc(zip_name)}</a>
+    </p>
+    <p class="muted">Your browser will save the zip. Unzip into <code>.agents/skills/{_esc(skill.name)}/</code>, or use the one-shot installer on the skills page for the full pack.</p>
+    <h2>Files in this skill</h2>
+    <ul class="skill-file-list">{file_lis}</ul>
+  </main>
+  <script src="{assets["js"]}"></script>
+</body>
+</html>
+"""
+        (dest_dir / "index.html").write_text(html, encoding="utf-8")
 
 
 def write_install_script() -> None:
@@ -298,6 +406,7 @@ def render_skills_index(manifest: dict) -> str:
     count = manifest["count"]
     by_name = {s["name"]: s for s in manifest["skills"]}
     seen_ids: set[str] = set()
+    boot = _esc(INSTALL_BOOTSTRAP)
 
     def skill_row(name: str) -> str:
         skill = by_name[name]
@@ -310,8 +419,8 @@ def render_skills_index(manifest: dict) -> str:
             f"        <tr{row_id}>"
             f"<td><code>{_esc(name)}</code></td>"
             f"<td>{use_when}</td>"
-            f'<td class="dl"><a href="./pack/{_esc(name)}/">Browse</a> · '
-            f'<a href="./pack/{_esc(name)}/SKILL.md">SKILL.md</a></td>'
+        f'<td class="dl"><a href="./pack/{_esc(name)}/">Browse</a> · '
+        f'<a href="./pack/{_esc(name)}.zip" download="{_esc(name)}.zip">Download</a></td>'
             f"</tr>\n"
         )
 
@@ -326,7 +435,7 @@ def render_skills_index(manifest: dict) -> str:
         stage_blocks.append(
             f"""    <h2 id="{stage}">{label} ({sub})</h2>
     <table class="skills-table">
-      <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
+      <thead><tr><th>Skill</th><th>Use when</th><th>Get the skill</th></tr></thead>
       <tbody>
 {rows}      </tbody>
     </table>
@@ -367,13 +476,15 @@ def render_skills_index(manifest: dict) -> str:
   <main class="wrap">
     <header class="page-header">
       <h1>Agent Skills</h1>
-      <p class="sub muted"><strong>{count} portable skills</strong> — first
-        <code>use ux-install-all-skills</code> (how to install is below), then
-        <code>use design-thinking-ux</code> for Empathize through Test.</p>
+      <p class="sub muted"><strong>{count} portable skills</strong> — first-time
+        install does <em>not</em> require the skill in your catalog (paste the
+        prompt below). Then <code>use design-thinking-ux</code>.</p>
     </header>
 
     <aside class="walkthrough-banner is-master">
-      <p><strong>First time:</strong> install all 19 pipeline skills. <strong>Then every run:</strong> <code>use design-thinking-ux</code>.</p>
+      <p><strong>First time:</strong> paste the install prompt in Cursor or Claude Code
+        (Claude.ai will say the skill is missing — that is expected). <strong>Then every run:</strong>
+        <code>use design-thinking-ux</code>.</p>
       <div class="walkthrough-banner-actions">
         <a href="#install">How to install</a>
         <a class="is-secondary" href="#design-thinking-ux">See design-thinking-ux</a>
@@ -382,28 +493,29 @@ def render_skills_index(manifest: dict) -> str:
 
     <section class="install-howto" id="install" aria-labelledby="install-heading">
       <h2 id="install-heading">How to install</h2>
-      <p class="muted">One time. The installer puts all 19 Empathize → Test skills into this project
-        <em>and</em> globally, so the next project already has them.</p>
+      <p class="muted">One time. Cursor or Claude Code can run the installer even when
+        <code>ux-install-all-skills</code> is not in the catalog. Claude.ai in the browser
+        cannot — use Cursor or Claude Code for the first install.</p>
       <ol class="install-steps">
         <li>
-          <h3>In Cursor or Claude Code, say this</h3>
+          <h3>Paste this in Cursor or Claude Code (not Claude.ai)</h3>
+          <p class="muted">Do not type <code>use ux-install-all-skills</code> yet — Claude will not
+            have it in the catalog. This prompt is the install.</p>
           <figure class="pipe-prompt">
             <div class="pipe-prompt-top">
-              <span class="pipe-prompt-skill">ux-install-all-skills</span>
-              <button type="button" class="pipe-copy" data-copy="use ux-install-all-skills">Copy</button>
+              <span class="pipe-prompt-skill">first-time install</span>
+              <button type="button" class="pipe-copy" data-copy="{boot}">Copy</button>
             </div>
-            <pre>use ux-install-all-skills</pre>
+            <pre>{boot}</pre>
           </figure>
-          <p class="muted">The agent installs the full pack. Do not copy folders by hand.</p>
         </li>
         <li>
-          <h3>If chat does not know that skill yet (blank project)</h3>
-          <p class="muted">Paste this once in the terminal — that <em>is</em> the install. Then go to step 3.</p>
+          <h3>Or run this in the terminal</h3>
           <pre class="skills-cmd" id="install-all-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash</pre>
           <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-all-cmd">Copy command</button>
         </li>
         <li>
-          <h3>Start a guided run</h3>
+          <h3>Then start a guided run</h3>
           <figure class="pipe-prompt">
             <div class="pipe-prompt-top">
               <span class="pipe-prompt-skill">design-thinking-ux</span>
@@ -411,7 +523,7 @@ def render_skills_index(manifest: dict) -> str:
             </div>
             <pre>use design-thinking-ux</pre>
           </figure>
-          <p class="muted">Walks Empathize → Test and stops at each human gate.</p>
+          <p class="muted">After install, <code>use ux-install-all-skills</code> also works for re-runs.</p>
         </li>
       </ol>
       <details class="install-more">
@@ -444,9 +556,11 @@ def render_skills_index(manifest: dict) -> str:
         </table>
         <p class="muted">Persona and design-system skills appear in multiple phases — install once, reuse everywhere.
           <a href="./pack/README.md">Pack README</a> · <a href="./manifest.json">manifest.json</a> ·
-          <a href="./pack/ux-install-all-skills/SKILL.md">ux-install-all-skills</a></p>
+          <a href="./pack/ux-install-all-skills/">ux-install-all-skills</a></p>
       </details>
     </section>
+
+    <p class="muted">Browse opens a short page for that skill. Download saves a <code>.zip</code> of the whole skill folder (your browser will not just show the markdown).</p>
 
     <div class="skills-jump">
       <strong>Jump:</strong>
@@ -524,7 +638,10 @@ def render_skills_index(manifest: dict) -> str:
 
 def main() -> None:
     SKILLS_SITE.mkdir(parents=True, exist_ok=True)
+    (SKILLS_SITE.parent / ".nojekyll").write_text("", encoding="utf-8")
     copy_pack()
+    build_skill_zips()
+    write_pack_indexes()
     build_zip()
     write_install_script()
     install_all_src = SKILLS_SRC / "ux-install-all-skills" / "scripts" / "install-all.sh"
@@ -536,13 +653,31 @@ def main() -> None:
     MANIFEST_PATH.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     index_path = SKILLS_SITE / "index.html"
     index_path.write_text(render_skills_index(manifest), encoding="utf-8")
+    rewrite_homepage_downloads()
     print(f"  ✅ Skills pack: {PACK_DIR} ({manifest['count']} skills)")
+    print(f"  ✅ Per-skill zips: {PACK_DIR}/*.zip")
     print(f"  ✅ Zip: {ZIP_PATH}")
     print(f"  ✅ Install script: {INSTALL_SH}")
     if (SKILLS_SITE / "install-all.sh").is_file():
         print(f"  ✅ Install-all script: {SKILLS_SITE / 'install-all.sh'}")
     print(f"  ✅ Manifest: {MANIFEST_PATH}")
     print(f"  ✅ Skills page: {index_path}")
+
+
+def rewrite_homepage_downloads() -> None:
+    """Pipeline homepage 'download' links must save a zip, not open SKILL.md."""
+    home = SKILLS_SITE.parent / "index.html"
+    if not home.is_file():
+        return
+    text = home.read_text(encoding="utf-8")
+    updated = re.sub(
+        r'href="\./skills/pack/([a-z0-9-]+)/SKILL\.md"',
+        r'href="./skills/pack/\1.zip" download="\1.zip"',
+        text,
+    )
+    if updated != text:
+        home.write_text(updated, encoding="utf-8")
+        print(f"  ✅ Homepage download links → per-skill zips")
 
 
 if __name__ == "__main__":

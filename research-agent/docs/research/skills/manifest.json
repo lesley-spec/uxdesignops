@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-29T14:21:49Z",
+  "generated_at": "2026-08-29T14:46:12Z",
   "count": 20,
   "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip",
   "install_script": "https://lesley-spec.github.io/uxdesignops/skills/install.sh",
@@ -11,6 +11,7 @@
       "description": "Master orchestrator for the impact.com UX Design Thinking pipeline. Walks a designer Empathize \u2192 Define \u2192 Ideate \u2192 Prototype \u2192 Test: asks intake questions, invokes the phase skills (research, write-spec, tickets, ideate, prototype shells, test-plan), and stops at each human gate. Use when the user says Design Thinking UX, design-thinking-ux, start the pipeline, take me through design thinking, walk me through Empathize to Test, or wants a guided run from research through usability testing.",
       "figjam_agent": "Design Thinking Pipeline",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-thinking-ux/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-thinking-ux.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-thinking-ux/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/design-thinking-ux"
     },
@@ -20,6 +21,7 @@
       "description": "Installs all 19 impact.com UX Design Thinking pipeline skills (Empathize through Test) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-install-all-skills"
     },
@@ -29,6 +31,7 @@
       "description": "Runs ad-hoc PostHog and Pendo analysis for impact.com UX Empathize questions (funnels, drop-offs, trends, polls). Use when designers ask quantitative product questions in Cursor, Claude, or any MCP-enabled harness. Alias: data:analyze.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/data-analyze/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/data-analyze.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/data-analyze/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/data-analyze"
     },
@@ -38,6 +41,7 @@
       "description": "Triangulates impact.com UX signals across PostHog, Pendo, Dovetail, Outset, and Freshdesk into confidence-scored themes. Use for Empathize cross-source synthesis, Research Insight Monitor follow-ups, or when 2+ sources may agree.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-synthesis/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-synthesis.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-synthesis/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/research-synthesis"
     },
@@ -47,6 +51,7 @@
       "description": "Affinity-maps a single research corpus (one Dovetail project, interview set, or study export) into themes and insight cards. Use for Empathize single-source synthesis \u2014 not cross-tool triangulation (use research-synthesis for that).",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/synthesize-research/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/synthesize-research.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/synthesize-research/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/synthesize-research"
     },
@@ -56,6 +61,7 @@
       "description": "Plans and deep-dives impact.com UX research before confirming a problem worth solving. Use when designing studies, interviewing, probing a Research Insight Monitor finding, Outset/Maze prep, Empathize-stage research, or Test loop-back after sessions.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-research/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-research.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-research/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/user-research"
     },
@@ -65,6 +71,7 @@
       "description": "Challenges weak UX framing and agreeable drafts \u2014 flags thin evidence, feature- as-goal, and one-sided marketplace claims. Use in Define (write-spec review), critique of one-pagers, or when the user asks to pressure-test a problem statement.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/anti-sycophancy/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/anti-sycophancy.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/anti-sycophancy/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/anti-sycophancy"
     },
@@ -74,6 +81,7 @@
       "description": "Applies impact.com Brand-side UX persona and JTBD lenses (operators, ACMs, marketing directors) when framing problems or reviewing specs. Use in Define write-spec, Ideate critique, or Brand UI questions.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-operator-ux-persona/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-operator-ux-persona.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-operator-ux-persona/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/brand-operator-ux-persona"
     },
@@ -83,6 +91,7 @@
       "description": "Applies impact.com Partner / creator-affiliate UX persona lenses when framing problems or reviewing specs. Use in Define write-spec, Ideate critique, or Partner-side experience questions.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/creator-affiliate-ux-persona/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/creator-affiliate-ux-persona.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/creator-affiliate-ux-persona/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/creator-affiliate-ux-persona"
     },
@@ -92,6 +101,7 @@
       "description": "Points Define/Ideate/Prototype work at impact.com UX styleguide and component library constraints. Use when writing specs that mention UI, checking tokens/components, before on-brand Ideate mocks, or Prototype handoff.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-system/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-system.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-system/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/design-system"
     },
@@ -101,6 +111,7 @@
       "description": "Turns confirmed Empathize research into an impact.com UX one-pager and linked UX Jira epic (Confluence draft + research context). Use for Define-stage problem framing, write-spec, one-pager, PRD draft, or Problem Definition Generator handoffs after \u201cproblem worth solving.\u201d",
       "figjam_agent": "Problem Definition Generator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/write-spec/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/write-spec.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/write-spec/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/write-spec"
     },
@@ -110,6 +121,7 @@
       "description": "Starts Ideate from framing (one-pager/PRD preferred; epic, tickets, Granola, or notes OK): prompts for fidelity/tool, emits an ideation brief, and seeds wireframe or mock directions. Use for Ideate-stage divergence, solution brainstorming, wireframes, mock variations, or Solution Ideator handoffs.",
       "figjam_agent": "Solution Ideator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ideate/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ideate.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ideate/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ideate"
     },
@@ -119,6 +131,7 @@
       "description": "Packages a chosen Ideate direction into a Prototype handoff pack after ux-critique: decision, mock links, coverage report, open questions, DS notes, and epic/one-pager links. Use when the designer is happy with mocks and ready to leave Ideate for Prototype.",
       "figjam_agent": "Solution Ideator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/prototype-handoff/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/prototype-handoff.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/prototype-handoff/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/prototype-handoff"
     },
@@ -128,6 +141,7 @@
       "description": "Checks Ideate mocks and concepts against one-pager, PRD, epic, tickets, and notes \u2014 coverage matrix plus solution-quality critique. Use mid-Ideate or before prototype-handoff or Test pre-flight when the designer asks to critique, pressure-test concepts, or confirm framing issues are covered (UX Critique agent).",
       "figjam_agent": "UX Critique",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-critique/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-critique.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-critique/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-critique"
     },
@@ -137,6 +151,7 @@
       "description": "Auto-sets up the impact.com Brand UI prototype shell: clones the public Brand template, installs Node if missing plus npm/Vite deps, starts Vite. Use when the user says brand-prototype, Brand UI shell, or Brand prototype in Cursor / Claude Code / Copilot. In Figma Make or Claude chat, use ux-prototyping (those harnesses run a live preview without this script).",
       "figjam_agent": "Prototype Scaffolder",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-prototype/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-prototype.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/brand-prototype/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/brand-prototype"
     },
@@ -146,6 +161,7 @@
       "description": "Auto-sets up the impact.com Partner UI prototype shell: clones PartnerUI-shell, installs Node if missing plus npm/Vite deps, starts Vite. Use when the user says partner-prototype, Partner UI shell, or Partner prototype in Cursor / Claude Code / Copilot. In Figma Make or Claude chat, use ux-prototyping (those harnesses run a live preview without this script).",
       "figjam_agent": "Prototype Scaffolder",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/partner-prototype/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/partner-prototype.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/partner-prototype/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/partner-prototype"
     },
@@ -155,6 +171,7 @@
       "description": "Prototype-phase orchestrator for any harness (Cursor, Claude Code, Claude chat, Figma Make, Copilot/Codex): installs missing Brand/Partner tools when a shell exists, launches a live Brand or Partner preview (localhost, Make preview, or Claude preview), then offers to publish a new GitHub repo on the designer\u2019s account. Use when the user says ux-prototyping, start a prototype, Brand or Partner prototype, localhost, Figma Make prototype, or GitHub Pages.",
       "figjam_agent": "Prototype Scaffolder",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-prototyping/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-prototyping.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-prototyping/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-prototyping"
     },
@@ -164,6 +181,7 @@
       "description": "Synthetic accessibility pre-test on a prototype URL or Figma flow before Maze or Outset sessions \u2014 flags WCAG blockers, focus, labels, contrast, and keyboard paths. Use in Test stage pre-flight or when the designer asks for a11y review before usability testing.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/accessibility-review/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/accessibility-review.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/accessibility-review/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/accessibility-review"
     },
@@ -173,6 +191,7 @@
       "description": "Publishes Verified usability-test findings to Confluence and Jira as Empathize input after sessions complete. Use after Outset/Maze when the designer wants findings looped back to research context \u2014 not for synthetic pre-test output.",
       "figjam_agent": "Test Plan Generator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-loopback/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-loopback.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-loopback/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/test-loopback"
     },
@@ -182,6 +201,7 @@
       "description": "Drafts Outset or Maze usability studies from a prototype plus one-pager success criteria; orchestrates synthetic pre-tests before recruiting. Use in Test stage after Prototype is ready, or when the designer asks for a test plan, study script, or session guide (Test Plan Generator).",
       "figjam_agent": "Test Plan Generator",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-plan/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-plan.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/test-plan/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/test-plan"
     }

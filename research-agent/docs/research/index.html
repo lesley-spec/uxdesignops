@@ -44,12 +44,12 @@
     <header class="page-header pipeline-lede">
       <div>
         <h1>Design Thinking Automation Pipeline</h1>
-        <p class="sub muted">impact.com UX DesignOps — First <a href="#install">install all 19 skills</a> with <code>ux-install-all-skills</code>. Then start with <code>design-thinking-ux</code>. It walks Empathize → Test and invokes every phase skill. Keep human judgment at decision gates.</p>
+        <p class="sub muted">impact.com UX DesignOps — First <a href="#install">install the skills in Cursor or Claude Code</a> (Claude.ai will not have them in its catalog yet). Then start with <code>design-thinking-ux</code>. It walks Empathize → Test and invokes every phase skill. Keep human judgment at decision gates.</p>
       </div>
     </header>
 
     <aside class="walkthrough-banner is-master">
-      <p><strong>First time:</strong> install all 19 pipeline skills. <strong>Then every run:</strong> <code>use design-thinking-ux</code>.</p>
+      <p><strong>First time:</strong> paste the install prompt in Cursor or Claude Code (Claude.ai will say the skill is missing — that is expected). <strong>Then every run:</strong> <code>use design-thinking-ux</code>.</p>
       <div class="walkthrough-banner-actions">
         <a href="#install">How to install</a>
         <a class="is-secondary" href="./skills/#design-thinking-ux">Open design-thinking-ux</a>
@@ -58,27 +58,38 @@
 
     <section class="install-howto" id="install" aria-labelledby="install-heading">
       <h2 id="install-heading">How to install the skills</h2>
-      <p class="muted">One time. The installer puts all 19 Empathize → Test skills into this project <em>and</em> globally, so the next project already has them.</p>
+      <p class="muted">One time. Cursor or Claude Code can run the installer even when <code>ux-install-all-skills</code> is not in the catalog. Claude.ai in the browser cannot — use Cursor or Claude Code for the first install.</p>
       <ol class="install-steps">
         <li>
-          <h3>In Cursor or Claude Code, say this</h3>
+          <h3>Paste this in Cursor or Claude Code (not Claude.ai)</h3>
+          <p class="muted">Do not type <code>use ux-install-all-skills</code> yet — Claude will not have it in the catalog. This prompt is the install.</p>
           <figure class="pipe-prompt">
             <div class="pipe-prompt-top">
-              <span class="pipe-prompt-skill">ux-install-all-skills</span>
-              <button type="button" class="pipe-copy" data-copy="use ux-install-all-skills">Copy</button>
+              <span class="pipe-prompt-skill">first-time install</span>
+              <button type="button" class="pipe-copy" data-copy="Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
+
+Run this with sandbox off / full permissions:
+
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+
+When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.">Copy</button>
             </div>
-            <pre>use ux-install-all-skills</pre>
+            <pre>Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
+
+Run this with sandbox off / full permissions:
+
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+
+When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.</pre>
           </figure>
-          <p class="muted">The agent installs the full pack. Do not copy folders by hand.</p>
         </li>
         <li>
-          <h3>If chat does not know that skill yet (blank project)</h3>
-          <p class="muted">Paste this once in the terminal — that <em>is</em> the install. Then go to step 3.</p>
+          <h3>Or run this in the terminal</h3>
           <pre class="skills-cmd" id="install-all-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash</pre>
           <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-all-cmd">Copy command</button>
         </li>
         <li>
-          <h3>Start a guided run</h3>
+          <h3>Then start a guided run</h3>
           <figure class="pipe-prompt">
             <div class="pipe-prompt-top">
               <span class="pipe-prompt-skill">design-thinking-ux</span>
@@ -86,7 +97,7 @@
             </div>
             <pre>use design-thinking-ux</pre>
           </figure>
-          <p class="muted">Walks Empathize → Test and stops at each human gate. <a href="./skills/#install">Zip, Copilot/Codex, and harness paths</a></p>
+          <p class="muted">After install, <code>use ux-install-all-skills</code> also works for re-runs. <a href="./skills/#install">Zip, Copilot/Codex, and harness paths</a></p>
         </li>
       </ol>
     </section>
@@ -168,27 +179,27 @@
             <div class="pipe-skill is-master">
               <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
               <span class="pipe-master-label">Master</span>
-              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-thinking-ux.zip" download="design-thinking-ux.zip">download</a>
               <p>After install. Guided Empathize → Test — asks intake questions and invokes the skills in this stage.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#user-research">user-research</a>
-              <a class="dl" href="./skills/pack/user-research/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/user-research.zip" download="user-research.zip">download</a>
               <p>Deep-dive a finding, design a study, or prep the “worth solving?” decision.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#research-synthesis">research-synthesis</a>
-              <a class="dl" href="./skills/pack/research-synthesis/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/research-synthesis.zip" download="research-synthesis.zip">download</a>
               <p>Triangulate across PostHog + Pendo + Dovetail (+ Outset/Freshdesk).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#synthesize-research">synthesize-research</a>
-              <a class="dl" href="./skills/pack/synthesize-research/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/synthesize-research.zip" download="synthesize-research.zip">download</a>
               <p>Affinity-map one corpus (one Dovetail project or interview set).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#data-analyze">data-analyze</a>
-              <a class="dl" href="./skills/pack/data-analyze/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/data-analyze.zip" download="data-analyze.zip">download</a>
               <p>Ad-hoc PostHog or Pendo quantitative questions.</p>
             </div>
           </section>
@@ -197,11 +208,23 @@
             <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Live-tested against PostHog and the research pack. Copy into Cursor or Claude after <a href="#install">installing skills</a>. Prefer the master skill for a full run.</p>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
-                <span class="pipe-prompt-skill">ux-install-all-skills — first time</span>
-                <button type="button" class="pipe-copy" data-copy="use ux-install-all-skills">Copy</button>
+                <span class="pipe-prompt-skill">first-time install — Cursor or Claude Code</span>
+                <button type="button" class="pipe-copy" data-copy="Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
+
+Run this with sandbox off / full permissions:
+
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+
+When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.">Copy</button>
               </div>
-              <pre>use ux-install-all-skills</pre>
-              <p class="pipe-prompt-meta"><strong>Result:</strong> All 19 pipeline skills on this project and globally. <strong>Action:</strong> then start with design-thinking-ux.</p>
+              <pre>Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.
+
+Run this with sandbox off / full permissions:
+
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+
+When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.</pre>
+              <p class="pipe-prompt-meta"><strong>Result:</strong> All 19 pipeline skills on this project and globally. <strong>Action:</strong> do not use this in Claude.ai — it has no catalog entry and no terminal.</p>
             </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
@@ -303,32 +326,32 @@
             <div class="pipe-skill is-master">
               <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
               <span class="pipe-master-label">Master</span>
-              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-thinking-ux.zip" download="design-thinking-ux.zip">download</a>
               <p>Start here. After Empathize, it invokes write-spec, personas, and anti-sycophancy.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#write-spec">write-spec</a>
-              <a class="dl" href="./skills/pack/write-spec/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/write-spec.zip" download="write-spec.zip">download</a>
               <p>Confirmed research → one-pager + linked UX Epic / Confluence.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#anti-sycophancy">anti-sycophancy</a>
-              <a class="dl" href="./skills/pack/anti-sycophancy/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/anti-sycophancy.zip" download="anti-sycophancy.zip">download</a>
               <p>Pressure-test framing before Designer + PM review.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#brand-operator-ux-persona">brand-operator-ux-persona</a>
-              <a class="dl" href="./skills/pack/brand-operator-ux-persona/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/brand-operator-ux-persona.zip" download="brand-operator-ux-persona.zip">download</a>
               <p>Brand-side JTBD / operator lens.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#creator-affiliate-ux-persona">creator-affiliate-ux-persona</a>
-              <a class="dl" href="./skills/pack/creator-affiliate-ux-persona/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/creator-affiliate-ux-persona.zip" download="creator-affiliate-ux-persona.zip">download</a>
               <p>Partner / creator-affiliate lens.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#design-system">design-system</a>
-              <a class="dl" href="./skills/pack/design-system/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-system.zip" download="design-system.zip">download</a>
               <p>Point specs at styleguide + component library.</p>
             </div>
           </section>
@@ -424,37 +447,37 @@
             <div class="pipe-skill is-master">
               <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
               <span class="pipe-master-label">Master</span>
-              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-thinking-ux.zip" download="design-thinking-ux.zip">download</a>
               <p>Start here. Invokes ideate, ux-critique, then prototype-handoff.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#ideate">ideate</a>
-              <a class="dl" href="./skills/pack/ideate/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/ideate.zip" download="ideate.zip">download</a>
               <p>Framing → brief + tool routing + starter directions (Solution Ideator).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#ux-critique">ux-critique</a>
-              <a class="dl" href="./skills/pack/ux-critique/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/ux-critique.zip" download="ux-critique.zip">download</a>
               <p>Coverage matrix: mocks vs one-pager / PRD / epic / tickets / notes.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#prototype-handoff">prototype-handoff</a>
-              <a class="dl" href="./skills/pack/prototype-handoff/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/prototype-handoff.zip" download="prototype-handoff.zip">download</a>
               <p>Designer happy with mocks → Prototype pack (after ux-critique).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#brand-operator-ux-persona">brand-operator-ux-persona</a>
-              <a class="dl" href="./skills/pack/brand-operator-ux-persona/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/brand-operator-ux-persona.zip" download="brand-operator-ux-persona.zip">download</a>
               <p>Brand-side JTBD / operator lens on concepts.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#creator-affiliate-ux-persona">creator-affiliate-ux-persona</a>
-              <a class="dl" href="./skills/pack/creator-affiliate-ux-persona/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/creator-affiliate-ux-persona.zip" download="creator-affiliate-ux-persona.zip">download</a>
               <p>Partner / creator-affiliate lens on concepts.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#design-system">design-system</a>
-              <a class="dl" href="./skills/pack/design-system/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-system.zip" download="design-system.zip">download</a>
               <p>Before on-brand mocks (Figma Make / Cursor).</p>
             </div>
           </section>
@@ -541,27 +564,27 @@
             <div class="pipe-skill is-master">
               <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
               <span class="pipe-master-label">Master</span>
-              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-thinking-ux.zip" download="design-thinking-ux.zip">download</a>
               <p>Start here. Invokes ux-prototyping (Brand or Partner shell) from audience.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#ux-prototyping">ux-prototyping</a>
-              <a class="dl" href="./skills/pack/ux-prototyping/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/ux-prototyping.zip" download="ux-prototyping.zip">download</a>
               <p>Preferred Prototype entry — any harness: live Brand or Partner preview, then GitHub Pages on your account.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#brand-prototype">brand-prototype</a>
-              <a class="dl" href="./skills/pack/brand-prototype/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/brand-prototype.zip" download="brand-prototype.zip">download</a>
               <p>One prompt → Brand UI shell (clone + npm ci + Vite on :5174).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#partner-prototype">partner-prototype</a>
-              <a class="dl" href="./skills/pack/partner-prototype/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/partner-prototype.zip" download="partner-prototype.zip">download</a>
               <p>One prompt → Partner UI shell (clone + npm ci + Vite on :5173).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#design-system">design-system</a>
-              <a class="dl" href="./skills/pack/design-system/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-system.zip" download="design-system.zip">download</a>
               <p>Styleguide V2 + component library when mapping mocks into the shell.</p>
             </div>
           </section>
@@ -661,47 +684,47 @@
             <div class="pipe-skill is-master">
               <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
               <span class="pipe-master-label">Master</span>
-              <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/design-thinking-ux.zip" download="design-thinking-ux.zip">download</a>
               <p>Start here. Invokes test-plan (pre-flight) and, after sessions, test-loopback.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#test-plan">test-plan</a>
-              <a class="dl" href="./skills/pack/test-plan/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/test-plan.zip" download="test-plan.zip">download</a>
               <p>Synthetic pre-flight + Outset/Maze study draft.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#accessibility-review">accessibility-review</a>
-              <a class="dl" href="./skills/pack/accessibility-review/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/accessibility-review.zip" download="accessibility-review.zip">download</a>
               <p>Synthetic a11y pre-test before recruiting.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#ux-critique">ux-critique</a>
-              <a class="dl" href="./skills/pack/ux-critique/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/ux-critique.zip" download="ux-critique.zip">download</a>
               <p>Re-check prototype vs one-pager/PRD/epic before sessions.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#test-loopback">test-loopback</a>
-              <a class="dl" href="./skills/pack/test-loopback/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/test-loopback.zip" download="test-loopback.zip">download</a>
               <p>Publish Verified session findings → Empathize input.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#user-research">user-research</a>
-              <a class="dl" href="./skills/pack/user-research/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/user-research.zip" download="user-research.zip">download</a>
               <p>Study-plan depth, recruitment gaps, or post-session gate brief.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#synthesize-research">synthesize-research</a>
-              <a class="dl" href="./skills/pack/synthesize-research/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/synthesize-research.zip" download="synthesize-research.zip">download</a>
               <p>Affinity / theme a completed test corpus (feeds test-loopback).</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#brand-operator-ux-persona">brand-operator-ux-persona</a>
-              <a class="dl" href="./skills/pack/brand-operator-ux-persona/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/brand-operator-ux-persona.zip" download="brand-operator-ux-persona.zip">download</a>
               <p>Brand-side task realism in test scripts.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#creator-affiliate-ux-persona">creator-affiliate-ux-persona</a>
-              <a class="dl" href="./skills/pack/creator-affiliate-ux-persona/SKILL.md">download</a>
+              <a class="dl" href="./skills/pack/creator-affiliate-ux-persona.zip" download="creator-affiliate-ux-persona.zip">download</a>
               <p>Partner-side task realism in test scripts.</p>
             </div>
           </section>

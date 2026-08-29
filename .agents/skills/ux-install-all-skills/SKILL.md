@@ -75,23 +75,28 @@ Task Progress:
 - [ ] Tell them they’re set + offer design-thinking-ux
 ```
 
-1. **Locate script** —
-   `.agents/skills/ux-install-all-skills/scripts/install-all.sh`  
-   (or `.cursor/skills/…` / `.claude/skills/…`).
-2. **If the script is missing** (blank project), bootstrap:
+1. **If the skill is not in the catalog** (Claude.ai, or a blank Cursor/Claude Code
+   project) — do **not** wait for `use ux-install-all-skills`. Run the published
+   installer:
 
    ```bash
    curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
    ```
 
-   If that URL 404s, use the existing harness installer:
+   Claude.ai in the browser cannot run this. Tell the designer to paste the
+   same curl in **Cursor or Claude Code**.
+2. **If the script is already on disk** —
+   `.agents/skills/ux-install-all-skills/scripts/install-all.sh`  
+   (or `.cursor/skills/…` / `.claude/skills/…`).
+3. **If the script is missing** (blank project), bootstrap with the curl above.
+   If that URL 404s, use the harness installer:
 
    ```bash
    curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .
    ```
 
    Replace `cursor` with `claude` or `agents` when you know the harness.
-3. **Run with the sandbox off.** In Cursor Shell, pass
+4. **Run with the sandbox off.** In Cursor Shell, pass
    `required_permissions: ["all"]` (network + write to `~/.cursor` /
    `~/.claude`).
 
@@ -101,15 +106,15 @@ Task Progress:
 
    Optional: `--target /path/to/project` · `--project-only` ·
    `--global-only`.
-4. **Parse READY** — look for
+5. **Parse READY** — look for
    `IMPACT_SKILLS_READY pipeline=19 …`.
-5. **Confirm** — show how many skills landed, where, and this next line:
+6. **Confirm** — show how many skills landed, where, and this next line:
 
    > All 19 Design Thinking skills are installed. Start a guided run with
    > **use design-thinking-ux** — I’ll walk Empathize → Test and stop at
    > each human gate.
 
-6. **Stop.** Wait for yes (or a named phase skill).
+7. **Stop.** Wait for yes (or a named phase skill).
 
 ## Path — Figma Make / Claude chat (no shell)
 
