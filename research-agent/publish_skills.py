@@ -302,6 +302,7 @@ def write_pack_indexes() -> None:
           <a class="nav-link" href="{root}" data-nav="pipeline">Design Thinking Pipeline</a>
           <a class="nav-link is-active" href="{skills_href}" data-nav="skills">Skills</a>
           <a class="nav-link" href="{root}research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="{root}usage/" data-nav="report">Report</a>
           <a class="nav-link" href="{root}reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
         </nav>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -463,6 +464,7 @@ def render_skills_index(manifest: dict) -> str:
           <a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a>
           <a class="nav-link is-active" href="./" data-nav="skills">Skills</a>
           <a class="nav-link" href="../research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="../usage/" data-nav="report">Report</a>
           <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
         </nav>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
