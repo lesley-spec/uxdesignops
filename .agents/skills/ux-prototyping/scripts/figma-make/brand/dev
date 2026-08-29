@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+echo "Starting Vite on 5174"
+npm run dev -- --host 127.0.0.1 --port 5174

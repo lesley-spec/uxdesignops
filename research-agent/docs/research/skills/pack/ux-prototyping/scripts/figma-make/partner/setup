@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+echo "Checking Node…"
+if ! command -v node >/dev/null 2>&1; then
+  echo "Node not on PATH. In Make, click Fix / Run so it can provision Node."
+  exit 1
+fi
+echo "Node $(node -v) OK"

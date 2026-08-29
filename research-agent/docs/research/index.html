@@ -465,13 +465,13 @@
         <div class="pipe-body">
           <section>
             <h3>What this is</h3>
-            <p>Prototype is stage 4: turn a confirmed Ideate direction + mocks into a running impact.com UI shell on your machine. One prompt runs <code>brand-prototype</code> or <code>partner-prototype</code> — the agent executes <code>scripts/bootstrap.sh</code> (clone public template, npm install, start Vite). You paste Figma mocks and build on top with Styleguide V2. Cursor-first. Figma Make cannot clone repos — route to Cursor or a labeled Make click-through.</p>
+            <p>Prototype is stage 4: turn a confirmed Ideate direction + mocks into a running Brand or Partner UI shell <strong>in the harness you are in</strong> (Cursor, Claude, or Figma Make). One prompt runs <code>ux-prototyping</code> — live preview here (localhost, Make canvas, or Claude artifact), then you can publish a GitHub repo <strong>on your own account</strong> for Pages. Paste Figma mocks and build with Styleguide V2. Do not switch tools to finish Prototype.</p>
           </section>
           <section>
             <h3>How to use it</h3>
             <ol>
               <li>After <code>prototype-handoff</code> is confirmed — or continue from <code>design-thinking-ux</code>.</li>
-              <li>In Cursor: “use Design Thinking UX” (master picks Brand vs Partner shell) or “use brand-prototype” / “use partner-prototype”. Agent runs bootstrap automatically — no manual git/npm checklist.</li>
+              <li>In Cursor, Claude, or Figma Make: “use Design Thinking UX” or “use ux-prototyping”. The agent stays in this harness and gets Brand or Partner running — no “please open Cursor” detour.</li>
               <li>Default folders: <code>~/Documents/impact-prototypes/brand-ui</code> and <code>…/partner-ui</code>.</li>
               <li>Brand opens <code>http://localhost:5174/one-program-1/</code> · Partner <code>http://localhost:5173/</code>.</li>
               <li>Then paste mock links + ask AI to implement screens. Use <code>design-system</code> for Styleguide V2.</li>
@@ -480,7 +480,7 @@
           <section>
             <h3>Agent (on-demand)</h3>
             <p class="pipe-agent-name">Prototype Scaffolder</p>
-            <p>Invoked by the master skill <code>design-thinking-ux</code> after Ideate handoff, or directly via <code>brand-prototype</code> / <code>partner-prototype</code>. Agent runs one bootstrap script, moves Cursor workspace to the shell, prints <code>IMPACT_PROTOTYPE_READY</code>.</p>
+            <p>Invoked by <code>design-thinking-ux</code> after Ideate handoff, or directly via <code>ux-prototyping</code>. Works in Cursor (localhost), Claude Code (localhost), Claude chat (live preview), and Figma Make (Make preview). Then asks about GitHub Pages on <em>your</em> account.</p>
           </section>
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
@@ -488,7 +488,12 @@
               <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
               <span class="pipe-master-label">Master</span>
               <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
-              <p>Start here. Invokes brand-prototype or partner-prototype from audience.</p>
+              <p>Start here. Invokes ux-prototyping (Brand or Partner shell) from audience.</p>
+            </div>
+            <div class="pipe-skill">
+              <a href="./skills/#ux-prototyping">ux-prototyping</a>
+              <a class="dl" href="./skills/pack/ux-prototyping/SKILL.md">download</a>
+              <p>Preferred Prototype entry — any harness: live Brand or Partner preview, then GitHub Pages on your account.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#brand-prototype">brand-prototype</a>
@@ -508,13 +513,27 @@
           </section>
           <section>
             <h3>Try these prompts</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy into Cursor after prototype-handoff. Agent should run the script — not paste git commands. Prefer the master skill if you are already in a pipeline run.</p>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Copy into Cursor, Claude, or Figma Make after prototype-handoff. Prefer the master skill if you are already in a pipeline run. The agent should finish in <em>this</em> harness.</p>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">design-thinking-ux — master</span>
                 <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX. Handoff is confirmed for Partner UPS Step 2 — bootstrap the Partner prototype shell.">Copy</button>
               </div>
               <pre>Use Design Thinking UX. Handoff is confirmed for Partner UPS Step 2 — bootstrap the Partner prototype shell.</pre>
+            </figure>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">ux-prototyping</span>
+                <button type="button" class="pipe-copy" data-copy="Use ux-prototyping — set up the Partner shell for me and start localhost.">Copy</button>
+              </div>
+              <pre>Use ux-prototyping — set up the Partner shell for me and start localhost.</pre>
+            </figure>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">ux-prototyping — Figma Make / Claude</span>
+                <button type="button" class="pipe-copy" data-copy="Use ux-prototyping in this harness (Figma Make or Claude) — Brand shell, live preview here, then GitHub on my account.">Copy</button>
+              </div>
+              <pre>Use ux-prototyping in this harness (Figma Make or Claude) — Brand shell, live preview here, then GitHub on my account.</pre>
             </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
@@ -544,7 +563,7 @@
           </section>
           <section>
             <h3>Tools</h3>
-            <p>Cursor (primary) · Figma MCP design-to-code · Claude Code shell · Node 18+ · git · npm. Figma Make: click-through from selected frames only — cannot run <code>bootstrap.sh</code>.</p>
+            <p>Cursor · Claude Code · Claude chat · Figma Make · Figma MCP · Node 18+ · git · npm · GitHub Pages. <code>ux-prototyping</code> picks the path for the current harness.</p>
           </section>
           <section class="pipe-gate">
             <h3>Human gate</h3>

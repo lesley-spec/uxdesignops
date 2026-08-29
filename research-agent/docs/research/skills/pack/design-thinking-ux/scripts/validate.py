@@ -32,6 +32,7 @@ CHILD_SKILLS = [
     "ideate",
     "ux-critique",
     "prototype-handoff",
+    "ux-prototyping",
     "brand-prototype",
     "partner-prototype",
     "test-plan",
@@ -77,7 +78,7 @@ UPS_SEQUENCE = [
     ),
     (
         "Prototype",
-        ["partner-prototype", "design-system"],
+        ["ux-prototyping", "partner-prototype", "design-system"],
         "runnable URL",
         "Test",
     ),
@@ -218,9 +219,20 @@ def check_anti_auto_advance(errors: list[str]) -> None:
 
 def check_prototype_exclusive(errors: list[str]) -> None:
     phases = (SKILL_DIR / "references" / "phases.md").read_text(encoding="utf-8")
-    for needle in ("Exclusive", "`brand-prototype`", "`partner-prototype`", "npm create vite"):
+    for needle in ("Exclusive", "`ux-prototyping`", "`brand-prototype`", "`partner-prototype`", "npm create vite"):
         if needle not in phases:
             fail(errors, f"phases.md Prototype exclusive missing {needle!r}")
+    ux_boot = AGENTS_SKILLS / "ux-prototyping" / "scripts" / "ensure-harness.sh"
+    if not ux_boot.is_file():
+        fail(errors, "ux-prototyping: missing scripts/ensure-harness.sh")
+    elif "IMPACT_HARNESS_READY" not in ux_boot.read_text(encoding="utf-8"):
+        fail(errors, "ux-prototyping/ensure-harness.sh must print IMPACT_HARNESS_READY")
+    ux_skill = (AGENTS_SKILLS / "ux-prototyping" / "SKILL.md").read_text(encoding="utf-8")
+    for needle in ("Path B — Figma Make", "Path C — Claude chat", "Stay in this harness"):
+        if needle not in ux_skill:
+            fail(errors, f"ux-prototyping SKILL.md missing any-harness phrase: {needle!r}")
+    if not (AGENTS_SKILLS / "ux-prototyping" / "references" / "make.md").is_file():
+        fail(errors, "ux-prototyping: missing references/make.md")
     for name in ("brand-prototype", "partner-prototype"):
         helper = AGENTS_SKILLS / name / "scripts" / "ensure-toolchain.sh"
         boot = AGENTS_SKILLS / name / "scripts" / "bootstrap.sh"

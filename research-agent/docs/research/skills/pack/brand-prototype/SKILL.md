@@ -1,12 +1,11 @@
 ---
 name: brand-prototype
 description: >-
-  Auto-sets up the impact.com Brand UI prototype shell on the designer's
-  machine: clones the public Brand template, installs Node if missing plus
-  npm/Vite deps, starts Vite. Use when the user says brand-prototype, Brand
-  UI shell, Brand prototype, or wants a running Brand prototype after Ideate
-  mocks / prototype-handoff. Primary harness: Cursor (also Claude Code with
-  shell). Figma Make cannot clone repos — skill routes Make to a fallback.
+  Auto-sets up the impact.com Brand UI prototype shell: clones the public
+  Brand template, installs Node if missing plus npm/Vite deps, starts Vite.
+  Use when the user says brand-prototype, Brand UI shell, or Brand prototype
+  in Cursor / Claude Code / Copilot. In Figma Make or Claude chat, use
+  ux-prototyping (those harnesses run a live preview without this script).
 license: Proprietary
 metadata:
   stage: prototype
@@ -28,7 +27,8 @@ follow-on step in the same Cursor chat after READY.
 1. **Run the bootstrap script** — do not improvise `mkdir` / `git clone` / `npm`
    steps by hand unless the script is missing.
 2. Templates are **Vite + React** (Figma Make–origin bundles), **not** Next.js.
-3. Do **not** claim Figma Make can `git clone` or run this script. Be honest.
+3. In Figma Make or Claude chat (no shell), do **not** run this script —
+   invoke `ux-prototyping` instead (live preview in that harness).
 4. After READY, move the Cursor workspace to the project path when possible.
 
 ## When to use
@@ -49,8 +49,9 @@ follow-on step in the same Cursor chat after READY.
 `~/Documents/impact-prototypes/.toolchain`, no sudo). Only `git` is a
 hard machine prerequisite (Xcode CLT on macOS).
 
-If git is missing, or the harness has no shell (Figma Make / Claude chat) →
-stop with the harness fallback. Do not hand the designer a git/npm checklist.
+If git is missing on a **shell** harness → stop with a short git/Xcode note.
+If this is Figma Make or Claude chat → invoke `ux-prototyping` (Path B / C).
+Do not hand the designer a git/npm checklist.
 
 ## Workflow (Cursor / Claude Code)
 
@@ -88,10 +89,9 @@ See [references/harnesses.md](references/harnesses.md).
 
 | Harness | What to do |
 |---|---|
-| **Cursor** | Run script → `move_agent_to_root` → confirm URL. Preferred. |
-| **Claude Code** | Run script → tell user to open the path in the IDE → confirm URL. |
-| **Figma Make** | **Cannot** run bootstrap. Follow Make fallback in harnesses.md — do not fake a clone. |
-| **Claude chat (no shell)** | Tell user to open this repo in **Cursor** and say `use brand-prototype`. |
+| **Cursor** | Run script → `move_agent_to_root` → confirm URL. |
+| **Claude Code / Copilot** | Run script → open the path → confirm URL. |
+| **Figma Make / Claude chat** | Do not run this script. Use `ux-prototyping` (preview in that harness). |
 
 ## Template facts (do not invent)
 
@@ -115,7 +115,7 @@ See [references/harnesses.md](references/harnesses.md).
 - Pasting multi-step git/npm instructions for the designer to run manually when the script exists
 - Asking the designer to install Node, Homebrew, or `npm install` themselves
 - Describing a Next.js / `src/pages` layout that this template does not have
-- Claiming success in Figma Make without a running local shell
+- Claiming this bootstrap ran inside Figma Make or Claude chat (use `ux-prototyping`)
 - Editing product UI before bootstrap prints READY
 - Blocking on “where should I put the folder?” — use the default parent unless they specify
 - Scaffolding a new Vite app instead of this Brand shell
