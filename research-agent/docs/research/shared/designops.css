@@ -809,12 +809,6 @@ html.dark .badge.badge-source {
   margin-bottom: 8px;
 }
 
-.pipeline-lede .figjam-link {
-  font-size: 0.88rem;
-  font-weight: var(--font-weight-medium);
-  white-space: nowrap;
-}
-
 .pipeline-jump {
   display: flex;
   flex-wrap: wrap;
