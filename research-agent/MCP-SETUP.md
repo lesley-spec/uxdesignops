@@ -20,7 +20,7 @@ If MCPs work in Claude, you still need to **Connect each one again in Cursor**.
 | **pendo** | Connected | Ready to use |
 | **atlassian** | Connected | Via Cursor Atlassian plugin (Confluence/Jira) |
 | **dovetail** | Needs API token | Generate at Account Settings → add to `research-agent/.env` |
-| **outset** | API key in `.env` | Weekly agent uses `Authorization: Api-Key` REST API |
+| **outset** | OAuth MCP + API key in `.env` | MCP at `https://api.outset.ai/mcp/` creates draft studies (`studies:write`). v1 `OUTSET_API_KEY` lists studies only. Do not launch recruitment unless asked. |
 
 ## Dovetail in Cursor (not OAuth)
 

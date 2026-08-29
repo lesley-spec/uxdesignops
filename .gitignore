@@ -4,6 +4,8 @@
 *.pem
 *.key
 credentials.json
+research-agent/.outset-oauth.json
+research-agent/.outset-pipeline-studies.json
 
 # Python
 __pycache__/

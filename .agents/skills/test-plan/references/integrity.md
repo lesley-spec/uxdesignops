@@ -11,7 +11,7 @@ In FigJam / Confluence / Slack, distinguish AI content (magenta / dashed treatme
 
 ## Human gate
 
-Review AI study summaries and session guides **before stakeholders**. Do not auto-publish to Outset/Maze.
+Review AI study summaries and session guides **before stakeholders**. Creating an Outset **draft** after designer confirm is allowed. Do not auto-publish, launch recruitment, or treat draft interviews as Verified.
 
 ## Loop-back to Empathize
 
