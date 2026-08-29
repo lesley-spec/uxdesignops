@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>Live demo — install through Test in Cursor and Claude</title>
+  <link rel="stylesheet" href="../shared/designops.css" />
+  <script src="../shared/auth-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../shared/designops-auth.js" defer></script>
+  <style>
+    .wt-lede { margin-bottom: 8px; }
+    .wt-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+    .wt-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+      border: 1px solid var(--border); background: var(--card);
+    }
+    .wt-pill.ok { background: var(--pill-product-bg); border-color: var(--pill-product-border); color: var(--pill-product-text); }
+    .wt-pill.info { background: var(--pill-audience-bg); border-color: var(--pill-audience-border); color: var(--pill-audience-text); }
+    .wt-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 20px; }
+    .wt-jump a {
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+      border-radius: 999px; border: 1px solid var(--border); background: var(--card);
+      color: var(--text); text-decoration: none; font-size: 0.82rem; font-weight: 600;
+    }
+    .wt-jump a:hover { background: var(--background-hover); }
+    .wt-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .wt-gate {
+      border-left: 3px solid var(--warning-border);
+      background: var(--warning-bg); color: var(--warning-text);
+      border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 0.88rem;
+      margin-top: 10px;
+    }
+    .wt-gate strong { display: block; margin-bottom: 2px; }
+    .wt-art {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px;
+      background: var(--card); text-decoration: none; color: inherit;
+    }
+    .wt-art:hover { border-color: var(--border-accent); background: var(--background-hover); }
+    .wt-art .kicker { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .wt-artifacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 16px 0 8px; }
+
+    .demo-toolbar {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      margin: 0 0 12px;
+    }
+    .demo-toolbar .skills-install-tabs { margin: 0; }
+    .demo-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
+    .demo-btn {
+      font: inherit; font-size: 0.85rem; font-weight: 600;
+      padding: 6px 12px; border-radius: 8px; cursor: pointer;
+      border: 1px solid var(--border); background: var(--card); color: var(--text);
+    }
+    .demo-btn:hover { background: var(--background-hover); }
+    .demo-btn.primary {
+      background: var(--interactive-default); color: var(--text-invert);
+      border-color: transparent;
+    }
+    .demo-btn.primary:hover { filter: brightness(1.05); }
+    .demo-rail {
+      display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 6px; margin: 0 0 14px;
+    }
+    @media (max-width: 720px) { .demo-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .demo-rail button {
+      font: inherit; font-size: 0.75rem; font-weight: 600; text-align: left;
+      padding: 8px 10px; border-radius: 10px; cursor: pointer;
+      border: 1px solid var(--border); background: var(--card); color: var(--muted);
+    }
+    .demo-rail button.is-on {
+      color: var(--text); border-color: var(--border-accent); background: var(--background-hover);
+    }
+    .demo-rail button .n { display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+    .demo-app {
+      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      background: var(--card); min-height: 520px; display: flex; flex-direction: column;
+    }
+    .demo-app-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-bottom: 1px solid var(--border);
+      background: var(--background-subdued); font-size: 0.82rem; font-weight: 600;
+    }
+    .demo-app-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--pill-product-text);
+    }
+    .demo-app-bar .muted { font-weight: 500; }
+    .demo-chat {
+      flex: 1; padding: 16px 16px 20px; display: flex; flex-direction: column; gap: 14px;
+      max-height: 640px; overflow: auto;
+    }
+    .demo-msg { max-width: 92%; }
+    .demo-msg.you { align-self: flex-end; }
+    .demo-msg.agent { align-self: flex-start; }
+    .demo-who {
+      font-size: 0.72rem; font-weight: 600; color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .demo-bubble {
+      border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px;
+      font-size: 0.9rem; line-height: 1.45; white-space: pre-wrap;
+    }
+    .demo-msg.you .demo-bubble {
+      background: var(--interactive-default); color: var(--text-invert); border-color: transparent;
+    }
+    .demo-msg.agent .demo-bubble {
+      background: var(--background-subdued); white-space: normal;
+    }
+    .demo-msg.agent .demo-bubble p { margin: 0 0 8px; }
+    .demo-msg.agent .demo-bubble p:last-child { margin-bottom: 0; }
+    .demo-msg.agent .demo-bubble ul { margin: 0 0 8px; padding-left: 1.15rem; }
+    .demo-msg.agent .demo-bubble li { margin: 0 0 4px; }
+    .demo-msg.agent .demo-bubble code {
+      font-size: 0.82em;
+    }
+    .demo-copy {
+      margin-top: 6px; font: inherit; font-size: 0.72rem; font-weight: 600;
+      padding: 3px 8px; border-radius: 6px; cursor: pointer;
+      border: 1px solid var(--border); background: var(--card); color: var(--text);
+    }
+    .demo-board {
+      margin: 8px 0; font-size: 0.8rem; width: 100%; border-collapse: collapse;
+    }
+    .demo-board th, .demo-board td {
+      text-align: left; padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .demo-board th { color: var(--muted); font-size: 0.7rem; font-weight: 600; }
+    .demo-progress {
+      height: 3px; background: var(--background-hover);
+    }
+    .demo-progress > span {
+      display: block; height: 100%; width: 0;
+      background: var(--interactive-default); transition: width 0.25s linear;
+    }
+    .demo-hint { font-size: 0.85rem; margin: 12px 0 0; }
+  </style>
+</head>
+<body>
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
+
+  <header class="top-nav" role="banner">
+    <div class="top-nav-inner">
+      <a class="top-nav-brand" href="../">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 97 32" fill="none" class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M35.9475 14.2949C35.7217 14.2949 35.4825 14.3346 35.27 14.4273C35.0574 14.52 34.8581 14.6391 34.6987 14.8112C34.5393 14.9701 34.4065 15.1687 34.3135 15.3805C34.2205 15.5923 34.1806 15.8306 34.1939 16.0556C34.2338 16.4925 34.433 16.9161 34.7519 17.2074C35.084 17.5119 35.5091 17.6707 35.9475 17.6707C36.3859 17.6707 36.8243 17.4986 37.1432 17.2074C37.4753 16.9029 37.6745 16.4925 37.7011 16.0556C37.7011 15.8173 37.6613 15.5923 37.5816 15.3805C37.4886 15.1687 37.369 14.9701 37.1963 14.8112C37.0369 14.6524 36.8376 14.52 36.625 14.4273C36.4125 14.3346 36.1866 14.2949 35.9475 14.2949Z"/>
+          <path fill="currentColor" d="M37.2492 20.2522H34.6719V32.7493H37.2492V20.2522Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M49.392 22.1453C50.322 20.7817 51.8896 20.0139 53.8159 20.0139C56.9511 20.0139 59.0634 22.0394 59.0369 25.0578V32.7361H56.4197V25.7329C56.4197 23.6942 55.3437 22.5292 53.4439 22.5292C51.5442 22.5292 50.2157 23.8663 50.2157 25.7726V32.7361H47.5853V25.7329C47.5853 23.6942 46.5092 22.5292 44.6094 22.5292C42.7097 22.5292 41.3812 23.8663 41.3812 25.7726V32.7361H38.7773V20.2654H41.4078V21.351C42.6034 20.2125 44.1445 20.0272 45.0213 20.0272C46.9077 20.0139 48.4886 20.795 49.392 22.1453Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M67.1001 20.0139C65.5457 20.0139 64.2039 20.5037 63.181 21.404V20.2522H60.5771V37.6343H63.181V31.4917C64.1907 32.4184 65.5457 32.8949 67.1001 32.8949C70.6604 32.8949 73.344 30.1149 73.344 26.4478C73.344 22.794 70.6604 20.0139 67.1001 20.0139ZM66.8609 30.4458C64.6556 30.4458 63.0481 28.7645 63.0481 26.4743C63.0481 24.1973 64.6423 22.5027 66.8609 22.5027C69.0662 22.5027 70.6737 24.1708 70.6737 26.4743C70.6737 28.791 69.0795 30.4458 66.8609 30.4458Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M85.0085 20.2654V21.4436C83.9855 20.5169 82.657 20.0271 81.1027 20.0271C77.5423 20.0271 74.8721 22.8204 74.8721 26.514C74.8721 30.2075 77.5556 33.0008 81.1027 33.0008C82.657 33.0008 83.9855 32.511 85.0085 31.571V32.7493H87.6389V20.2654H85.0085ZM81.3418 30.4855C79.1365 30.4855 77.5158 28.791 77.5158 26.5007C77.5158 24.2105 79.11 22.5027 81.3418 22.5027C83.5737 22.5027 85.1413 24.1707 85.1413 26.5007C85.1413 28.8174 83.5471 30.4855 81.3418 30.4855Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M95.6235 22.5027C96.7527 22.5027 97.7225 22.9264 98.6126 23.7604L98.8252 23.9722L100.539 22.185L100.366 21.9864C99.2503 20.7156 97.5897 20.0139 95.6899 20.0139C91.9037 20.0139 89.167 22.7543 89.167 26.5008C89.167 30.2473 91.9037 32.9876 95.6899 32.9876C97.5631 32.9876 99.237 32.286 100.366 31.0283L100.539 30.843L98.8916 29.0161L98.679 29.2279C97.8155 30.0619 96.7394 30.512 95.6501 30.512C93.4713 30.512 91.8638 28.8175 91.8638 26.5272C91.8506 24.2238 93.4182 22.5027 95.6235 22.5027Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M109.161 30.4854C109.905 30.4854 110.728 30.1942 111.419 29.7308L111.658 29.5852L112.934 31.5975L112.721 31.7563C111.645 32.5639 110.33 32.9875 108.988 32.9875C106.158 32.9875 104.591 31.3062 104.591 28.2481V22.7012H102.04V20.2521H104.591V16.5056H107.221V20.2389H112.203V22.6747H107.221V28.1952C107.221 29.6647 107.912 30.4854 109.161 30.4854Z"/>
+          <path fill="#A9B4BD" d="M24.3899 23.2308C25.1471 23.2308 25.9044 23.4029 26.5819 23.7206C27.2727 24.0383 27.8838 24.5017 28.3754 25.0709C28.6278 24.4884 28.7739 23.8662 28.7739 23.244C28.7739 22.6748 28.6544 22.1055 28.4418 21.5892C28.216 21.0597 27.8971 20.5831 27.4853 20.1859C27.0734 19.7888 26.5952 19.4711 26.0638 19.246C25.5324 19.0342 24.9611 18.915 24.3899 18.915C23.8186 18.915 23.2474 19.0209 22.716 19.246C22.1846 19.4578 21.693 19.7888 21.2945 20.1859C20.8827 20.5831 20.5638 21.0597 20.338 21.5892C20.1121 22.1187 20.0059 22.6748 20.0059 23.244C20.0191 23.8795 20.152 24.5017 20.4044 25.0709C20.896 24.4884 21.5071 24.0383 22.1846 23.7206C22.8754 23.3896 23.6326 23.2175 24.3899 23.2308Z"/>
+          <path fill="currentColor" d="M28.7735 28.4072C28.7735 27.5467 28.5211 26.7126 28.0295 25.9978C27.5513 25.2829 26.8604 24.7269 26.0634 24.3959C25.2663 24.0649 24.3762 23.9855 23.5259 24.1444C22.6757 24.3165 21.8919 24.7269 21.2808 25.3358C20.6697 25.9448 20.2445 26.7126 20.0851 27.5599C19.9124 28.4072 20.0054 29.2677 20.3375 30.062C20.6697 30.8563 21.2276 31.5314 21.9583 32.008C22.6757 32.4846 23.5259 32.7361 24.4027 32.7361C25.5585 32.7229 26.6745 32.2728 27.4981 31.452C28.3218 30.6312 28.7735 29.5589 28.7735 28.4072Z"/>
+          <path fill="#F5333F" d="M28.7735 13.3417C28.7735 12.4812 28.5211 11.6472 28.0295 10.9323C27.5513 10.2175 26.8737 9.66144 26.0634 9.33048C25.2663 8.99952 24.3762 8.92009 23.5259 9.07895C22.6757 9.25105 21.8919 9.66144 21.2808 10.2704C20.6697 10.8794 20.2445 11.6472 20.0851 12.4945C19.9124 13.3417 20.0054 14.2022 20.3375 14.9965C20.6697 15.7909 21.2276 16.466 21.9583 16.9426C22.6757 17.4192 23.5259 17.6707 24.4027 17.6707C25.5718 17.6707 26.6877 17.2074 27.5114 16.3998C28.3085 15.5923 28.7735 14.4802 28.7735 13.3417Z"/>
+        </svg>
+        <span class="top-nav-brand-text">UX DesignOps</span>
+      </a>
+      <div class="top-nav-actions">
+        <nav class="report-nav" aria-label="Site sections">
+          <a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a>
+          <a class="nav-link" href="../skills/" data-nav="skills">Skills</a>
+          <a class="nav-link" href="../research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="../usage/" data-nav="report">Report</a>
+          <a class="nav-link" href="../personas/" data-nav="personas">Personas</a>
+          <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+          <a class="nav-link is-active" href="./" data-nav="walkthrough">Examples</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <header class="page-header wt-lede">
+      <h1>Watch a real run — install through Test</h1>
+      <p class="sub muted">Not a screen recording (Claude’s artifact panel cannot play hosted video). This is a replay of the actual prompts and the kind of reply the agent gives — including every human gate. Same path in Cursor, Claude Code, and Claude.ai.</p>
+      <div class="wt-meta">
+        <span class="wt-pill info">Replay · Partner UPS Step 2</span>
+        <span class="wt-pill ok">You still confirm every gate</span>
+        <span class="wt-pill">~1 minute on Play</span>
+      </div>
+    </header>
+
+    <nav class="wt-jump" aria-label="Jump">
+      <a href="#player"><span class="wt-dot" style="background:#0077db"></span>Replay</a>
+      <a href="../skills/#install"><span class="wt-dot" style="background:#25282f"></span>Install prompts</a>
+      <a href="./2026-08-28-ups-step2.html"><span class="wt-dot" style="background:#06b6d4"></span>Full UPS example</a>
+    </nav>
+
+    <section id="player">
+      <div class="demo-toolbar">
+        <div class="skills-install-tabs" role="tablist" aria-label="Tool">
+          <button type="button" class="skills-tab is-active" data-tool="cursor" role="tab" aria-selected="true">Cursor</button>
+          <button type="button" class="skills-tab" data-tool="claude-code" role="tab" aria-selected="false">Claude Code</button>
+          <button type="button" class="skills-tab" data-tool="claude-ai" role="tab" aria-selected="false">Claude.ai</button>
+        </div>
+        <div class="demo-controls">
+          <button type="button" class="demo-btn primary" id="demo-play" aria-pressed="false">Play</button>
+          <button type="button" class="demo-btn" id="demo-next">Next</button>
+          <button type="button" class="demo-btn" id="demo-reset">Replay from start</button>
+        </div>
+      </div>
+      <div class="demo-rail" id="demo-rail" aria-label="Pipeline position"></div>
+      <div class="demo-app">
+        <div class="demo-progress" aria-hidden="true"><span id="demo-bar"></span></div>
+        <div class="demo-app-bar">
+          <span class="demo-app-dot"></span>
+          <span id="demo-app-name">Cursor</span>
+          <span class="muted" id="demo-app-sub">Agent chat</span>
+        </div>
+        <div class="demo-chat" id="demo-chat" aria-live="polite"></div>
+      </div>
+      <p class="demo-hint muted">Copy any <strong>You</strong> message and paste it in your tool. The replies here are compressed from a real UPS Step 2 run — live PostHog numbers, then the agent stops and waits for you.</p>
+    </section>
+
+    <h2>After you watch</h2>
+    <div class="wt-artifacts">
+      <a class="wt-art" href="../skills/#install">
+        <span class="kicker">Do this first</span>
+        <strong>Install prompts</strong>
+        <span>First-time curl (Cursor / Claude Code) or zip (Claude.ai)</span>
+      </a>
+      <a class="wt-art" href="./2026-08-28-ups-step2.html">
+        <span class="kicker">Same story, full artifacts</span>
+        <strong>UPS Step 2 worked example</strong>
+        <span>One-pager, UX-642, hosted prototype, Outset draft</span>
+      </a>
+      <a class="wt-art" href="./">
+        <span class="kicker">More runs</span>
+        <strong>All worked examples</strong>
+        <span>Brand and Partner pipeline tests</span>
+      </a>
+    </div>
+  </main>
+  <script src="../shared/designops-theme.js"></script>
+  <script>
+    (function () {
+      var INSTALL = "Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.\n\nRun this with sandbox off / full permissions:\n\ncurl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash\n\nWhen you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.";
+      var START = "Use Design Thinking UX — Partner UPS Step 2. I don’t have research yet; pull live data and walk me Empathize through Test. Stop at each human gate.";
+      var PHASES = [
+        { id: "install", n: "0", label: "Install" },
+        { id: "empathize", n: "1", label: "Empathize" },
+        { id: "define", n: "2", label: "Define" },
+        { id: "ideate", n: "3", label: "Ideate" },
+        { id: "prototype", n: "4", label: "Prototype" },
+        { id: "test", n: "5", label: "Test" }
+      ];
+      var NAMES = {
+        cursor: "Cursor",
+        "claude-code": "Claude Code",
+        "claude-ai": "Claude"
+      };
+      var SUBS = {
+        cursor: "Agent chat",
+        "claude-code": "Terminal + chat",
+        "claude-ai": "claude.ai artifact chat"
+      };
+
+      function board(rows) {
+        var html = '<table class="demo-board"><thead><tr><th>Phase</th><th>Status</th><th>Gate</th></tr></thead><tbody>';
+        rows.forEach(function (r) {
+          html += "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td><td>" + r[2] + "</td></tr>";
+        });
+        return html + "</tbody></table>";
+      }
+
+      function stepsFor(tool) {
+        var installYou = tool === "claude-ai"
+          ? "I need the impact.com UX Design Thinking skills. I’m in Claude.ai — install what you can here, or tell me exactly what to paste in Cursor."
+          : INSTALL;
+        var installAgent = tool === "claude-ai"
+          ? "<p>Claude.ai cannot run the installer (no shell). That is expected.</p><p><strong>Do this once:</strong> paste the install prompt in <strong>Cursor or Claude Code</strong> (sandbox off). Or download <a href=\"../skills/designops-skills.zip\">designops-skills.zip</a> from the Skills page and add the pack to this project.</p><p>When you see <code>IMPACT_SKILLS_READY pipeline=19</code>, come back here and say <code>use design-thinking-ux</code>. I will not start Empathize until the pack is in.</p>"
+          : "<p>Running the published installer with full permissions (writes project + <code>~/.cursor/skills</code> + <code>~/.claude/skills</code>).</p><p><code>IMPACT_SKILLS_READY pipeline=19 dest=.agents/skills global_cursor=ok global_claude=ok</code></p><p>All 19 Design Thinking skills are installed. Start a guided run with <strong>use design-thinking-ux</strong> — I’ll walk Empathize → Test and stop at each human gate.</p>";
+        var protoAgent = tool === "claude-ai"
+          ? "<p>Invoked <code>ux-prototyping</code> → Partner shell <em>in this chat</em> (no bounce to Cursor).</p><p>Clickable preview is in the artifact panel: Discover → program details → Send proposal. Duplicate Send (in-page + sticky) is Direction 2.</p><p><code>IMPACT_PROTOTYPE_READY shell=partner harness=claude-chat</code></p><p>When you can click through, Test next — I can run a11y + coverage pre-flight and draft an Outset study. Go?</p>"
+          : "<p>Invoked <code>ux-prototyping</code> → <code>partner-prototype</code>. Node + Vite handled in this harness. Open:</p><p><code>http://localhost:5173/</code></p><p><code>IMPACT_PROTOTYPE_READY shell=partner harness=" + (tool === "cursor" ? "cursor" : "claude-code") + " url=http://localhost:5173/</code></p><p>When the preview works, Test next — I can run a11y + coverage pre-flight and draft an Outset study. Go?</p>";
+
+        return [
+          { phase: "install", role: "you", text: installYou },
+          { phase: "install", role: "agent", html: installAgent },
+          { phase: "empathize", role: "you", text: START },
+          {
+            phase: "empathize", role: "agent", gate: true, html:
+              "<p><strong>Design Thinking UX — UPS Step 2 send proposal</strong><br>Audience: Partner · Phase: Empathize · Status: GATE</p>" +
+              board([
+                ["Empathize", "doing", "problem worth solving?"],
+                ["Define", "todo", "Designer + PM?"],
+                ["Ideate", "todo", "chosen direction?"],
+                ["Prototype", "todo", "runnable URL?"],
+                ["Test", "todo", "study reviewed?"]
+              ]) +
+              "<p><strong>Invoked:</strong> <code>data-analyze</code> (funnel, 90d, test accounts filtered) · <code>research-synthesis</code> (PostHog + Dovetail; empty Outset discarded).</p>" +
+              "<ul><li><strong>Verified:</strong> 7,195 viewed details → 1,822 opened send → <strong>74.68% drop</strong>. Median time to send 16m 54s.</li><li>Dovetail: partners lose commission / runtime while composing.</li><li>Not picking PublisherPro 14→0 (tiny N / instrumentation).</li></ul>" +
+              "<div class=\"wt-gate\"><strong>Human gate</strong> Skills recommend; they do not decide. Is this a problem worth solving?</div>"
+          },
+          { phase: "empathize", role: "you", text: "Yes — this is a problem worth solving. Go to Define." },
+          {
+            phase: "define", role: "agent", gate: true, html:
+              "<p>You confirmed it’s worth solving. Invoked <code>write-spec</code> + <code>anti-sycophancy</code> + <code>creator-affiliate-ux-persona</code>.</p>" +
+              "<p><strong>Draft framing:</strong> Partners open UPS details, then stall before Send proposal. Job-to-be-done: decide “is this program worth proposing?” without losing the numbers they just saw.</p>" +
+              "<p>One-pager is a <em>draft</em>. I will not create Confluence or a UX epic until you say so.</p>" +
+              "<div class=\"wt-gate\"><strong>Human gate</strong> Happy with the framing? If yes, I’ll publish the Confluence page and UX epic. Then you chat with a PM before Ideate.</div>"
+          },
+          { phase: "define", role: "you", text: "Framing looks good. Publish the draft one-pager and UX epic. I already chatted with the PM — start Ideate after that." },
+          {
+            phase: "ideate", role: "agent", gate: true, html:
+              "<p>Published (labeled pipeline draft). PM chat noted. Invoked <code>ideate</code>.</p>" +
+              "<ul><li><strong>D1 — In-page send.</strong> No modal. Compose on the details page.</li><li><strong>D2 — Keep modal, pin the numbers.</strong> Commission + runtime stay visible; Send also on the page. <em>Recommended for a first test.</em></li><li><strong>D3 — Pre-flight checklist.</strong> Blocks send until they confirm they saw terms.</li></ul>" +
+              "<div class=\"wt-gate\"><strong>Human gate</strong> Name a direction. I’ll run <code>ux-critique</code> on it, then <code>prototype-handoff</code>.</div>"
+          },
+          { phase: "ideate", role: "you", text: "Let’s go with D2. Critique is clear — Partner prototype next." },
+          { phase: "prototype", role: "agent", gate: true, html: protoAgent },
+          { phase: "test", role: "you", text: "Preview works. Run Test pre-flight and draft the study. Do not recruit. Do not run test-loopback." },
+          {
+            phase: "test", role: "agent", gate: true, html:
+              "<p>Invoked <code>test-plan</code> (runs <code>ux-critique</code> + <code>accessibility-review</code>).</p>" +
+              "<ul><li>No WCAG blockers for a pipeline demo. Major: send modal has no focus trap (pre-existing).</li><li>Outset moderated, N = 5–8. Tasks: decide if the program is worth proposing; name commission without switching tabs; send.</li><li>Study stays <em>draft</em> — not published, do not recruit.</li></ul>" +
+              "<div class=\"wt-gate\"><strong>Human gate — and a hard stop</strong> <code>test-loopback</code> publishes Verified findings. It must not run on synthetic pre-tests. Review this study before anyone is invited. Pipeline ends here unless you later have real sessions.</div>"
+          }
+        ];
+      }
+
+      var tool = "cursor";
+      var steps = stepsFor(tool);
+      var shown = 0;
+      var playing = false;
+      var timer = null;
+      var chat = document.getElementById("demo-chat");
+      var bar = document.getElementById("demo-bar");
+      var playBtn = document.getElementById("demo-play");
+      var rail = document.getElementById("demo-rail");
+
+      PHASES.forEach(function (p) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.dataset.phase = p.id;
+        b.innerHTML = "<span class=\"n\">" + p.n + "</span>" + p.label;
+        b.addEventListener("click", function () {
+          jumpToPhase(p.id);
+        });
+        rail.appendChild(b);
+      });
+
+      function agentName() {
+        return NAMES[tool];
+      }
+
+      function stopPlay() {
+        playing = false;
+        playBtn.textContent = shown >= steps.length ? "Replay" : "Play";
+        playBtn.setAttribute("aria-pressed", "false");
+        if (timer) { clearTimeout(timer); timer = null; }
+      }
+
+      function currentPhase() {
+        if (shown === 0) return "install";
+        return steps[Math.min(shown, steps.length) - 1].phase;
+      }
+
+      function updateRail() {
+        var phase = currentPhase();
+        rail.querySelectorAll("button").forEach(function (b) {
+          b.classList.toggle("is-on", b.dataset.phase === phase);
+        });
+        bar.style.width = (shown / steps.length * 100) + "%";
+      }
+
+      function renderAll() {
+        chat.innerHTML = "";
+        if (shown === 0) {
+          var empty = document.createElement("p");
+          empty.className = "muted";
+          empty.style.cssText = "margin:auto;text-align:center;padding:64px 16px;max-width:28rem";
+          empty.textContent = "Hit Play to watch You → " + agentName() + " from install through Test. Copy any You message when you want to try it yourself.";
+          chat.appendChild(empty);
+        } else {
+          for (var i = 0; i < shown; i++) renderOne(steps[i], false);
+        }
+        chat.scrollTop = chat.scrollHeight;
+        updateRail();
+      }
+
+      function renderOne(step, animate) {
+        var wrap = document.createElement("article");
+        wrap.className = "demo-msg " + step.role;
+        var who = document.createElement("div");
+        who.className = "demo-who";
+        who.textContent = step.role === "you" ? "You" : agentName();
+        var bubble = document.createElement("div");
+        bubble.className = "demo-bubble";
+        wrap.appendChild(who);
+        wrap.appendChild(bubble);
+        if (step.role === "you") {
+          var copy = document.createElement("button");
+          copy.type = "button";
+          copy.className = "demo-copy";
+          copy.textContent = "Copy prompt";
+          copy.addEventListener("click", function () {
+            navigator.clipboard.writeText(step.text).then(function () {
+              copy.textContent = "Copied";
+              setTimeout(function () { copy.textContent = "Copy prompt"; }, 1400);
+            });
+          });
+          wrap.appendChild(copy);
+        }
+        chat.appendChild(wrap);
+        if (step.role === "you") {
+          if (animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            typeText(bubble, step.text, function () { chat.scrollTop = chat.scrollHeight; });
+          } else {
+            bubble.textContent = step.text;
+          }
+        } else {
+          bubble.innerHTML = step.html;
+        }
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      function typeText(el, text, done) {
+        var i = 0;
+        var tick = Math.min(18, Math.max(8, 900 / Math.max(text.length, 1)));
+        function step() {
+          i += 3;
+          el.textContent = text.slice(0, i);
+          chat.scrollTop = chat.scrollHeight;
+          if (i < text.length) setTimeout(step, tick);
+          else if (done) done();
+        }
+        step();
+      }
+
+      function showNext() {
+        if (shown >= steps.length) { stopPlay(); return; }
+        if (shown === 0) chat.innerHTML = "";
+        renderOne(steps[shown], true);
+        shown += 1;
+        updateRail();
+        if (shown >= steps.length) stopPlay();
+      }
+
+      function schedule() {
+        if (!playing) return;
+        if (shown >= steps.length) { stopPlay(); return; }
+        var last = shown === 0 ? null : steps[shown - 1];
+        var wait = last && last.role === "agent" ? 4200 : 2200;
+        if (shown === 0) wait = 400;
+        timer = setTimeout(function () {
+          showNext();
+          schedule();
+        }, wait);
+      }
+
+      function jumpToPhase(id) {
+        stopPlay();
+        var idx = 0;
+        for (var i = 0; i < steps.length; i++) {
+          if (steps[i].phase === id) idx = i + 1;
+        }
+        shown = idx;
+        renderAll();
+      }
+
+      function setTool(next) {
+        stopPlay();
+        tool = next;
+        steps = stepsFor(tool);
+        shown = 0;
+        document.getElementById("demo-app-name").textContent = NAMES[tool];
+        document.getElementById("demo-app-sub").textContent = SUBS[tool];
+        document.querySelectorAll(".skills-tab").forEach(function (t) {
+          var on = t.getAttribute("data-tool") === tool;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        renderAll();
+      }
+
+      document.querySelectorAll(".skills-tab").forEach(function (t) {
+        t.addEventListener("click", function () { setTool(t.getAttribute("data-tool")); });
+      });
+      playBtn.addEventListener("click", function () {
+        if (shown >= steps.length) {
+          shown = 0;
+          renderAll();
+        }
+        if (playing) { stopPlay(); return; }
+        playing = true;
+        playBtn.textContent = "Pause";
+        playBtn.setAttribute("aria-pressed", "true");
+        schedule();
+      });
+      document.getElementById("demo-next").addEventListener("click", function () {
+        stopPlay();
+        showNext();
+      });
+      document.getElementById("demo-reset").addEventListener("click", function () {
+        stopPlay();
+        shown = 0;
+        renderAll();
+      });
+      window.addEventListener("keydown", function (e) {
+        if (e.code !== "Space") return;
+        if (e.target && /input|textarea|button/i.test(e.target.tagName)) return;
+        e.preventDefault();
+        playBtn.click();
+      });
+
+      renderAll();
+    })();
+  </script>
+</body>
+</html>
