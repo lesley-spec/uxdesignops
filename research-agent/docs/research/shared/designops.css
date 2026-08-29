@@ -529,6 +529,112 @@ table.skills-table tr:last-child td {
 
 .skills-harness-table { margin-top: 1rem; }
 
+.install-howto {
+  margin: 0 0 20px;
+  padding: 1.25rem 1.35rem;
+  background: var(--card);
+  border: 1px solid var(--interactive-default);
+  border-radius: 12px;
+}
+
+.install-howto > h2 {
+  margin: 0 0 0.35rem;
+  border: none;
+  padding: 0;
+  font-size: 1.15rem;
+}
+
+.install-howto > .muted { margin: 0 0 0.5rem; }
+
+.install-steps {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: install-step;
+}
+
+.install-steps > li {
+  counter-increment: install-step;
+  position: relative;
+  padding: 0.9rem 0 0.9rem 2.55rem;
+  border-top: 1px solid var(--border-default);
+}
+
+.install-steps > li:first-child { border-top: none; }
+
+.install-steps > li::before {
+  content: counter(install-step);
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--interactive-default);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.install-steps h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.install-steps .pipe-prompt { margin: 0.45rem 0 0.5rem; }
+
+.install-steps .skills-cmd { margin-top: 0.45rem; }
+
+.install-more {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-default);
+}
+
+.install-more summary {
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  font-size: 0.92rem;
+}
+
+.install-more[open] summary { margin-bottom: 0.75rem; }
+
+.walkthrough-banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.walkthrough-banner-actions a.is-secondary {
+  background: transparent;
+  color: var(--interactive-default);
+  border: 1px solid var(--interactive-default);
+}
+
+.walkthrough-banner-actions a.is-secondary:hover {
+  background: var(--background-hover);
+  color: var(--text-interactive-hover);
+}
+
+.pipe-install-label {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--interactive-default);
+  border: 1px solid var(--interactive-default);
+  vertical-align: middle;
+}
+
 .skills-table .dl {
   white-space: nowrap;
   font-size: 0.88rem;

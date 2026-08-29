@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-08-29T13:47:15Z",
-  "count": 19,
+  "generated_at": "2026-08-29T14:21:49Z",
+  "count": 20,
   "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip",
   "install_script": "https://lesley-spec.github.io/uxdesignops/skills/install.sh",
+  "install_all_script": "https://lesley-spec.github.io/uxdesignops/skills/install-all.sh",
   "skills": [
     {
       "name": "design-thinking-ux",
@@ -12,6 +13,15 @@
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-thinking-ux/",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-thinking-ux/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/design-thinking-ux"
+    },
+    {
+      "name": "ux-install-all-skills",
+      "stage": "pipeline",
+      "description": "Installs all 19 impact.com UX Design Thinking pipeline skills (Empathize through Test) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-install-all-skills"
     },
     {
       "name": "data-analyze",

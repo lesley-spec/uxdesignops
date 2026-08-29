@@ -40,6 +40,7 @@ STAGE_LABELS = {
 # Skills listed under each pipeline phase (includes cross-phase reuse).
 STAGE_SKILLS: dict[str, list[str]] = {
     "pipeline": [
+        "ux-install-all-skills",
         "design-thinking-ux",
     ],
     "empathize": [
@@ -82,6 +83,7 @@ STAGE_SKILLS: dict[str, list[str]] = {
 }
 
 USE_WHEN: dict[str, str] = {
+    "ux-install-all-skills": "One prompt — install all 19 pipeline skills (project + Cursor/Claude global)",
     "design-thinking-ux": "Master skill — guided Empathize → Test; invokes phase skills",
     "user-research": "Deep-dive a finding, design a study, or post-session gate brief",
     "research-synthesis": "Triangulate PostHog + Pendo + Dovetail (+ Outset/Freshdesk)",
@@ -104,7 +106,7 @@ USE_WHEN: dict[str, str] = {
 }
 
 STAGE_NOTES: dict[str, str] = {
-    "pipeline": "Invoke <code>design-thinking-ux</code> first for a full run. It asks intake questions and loads the phase skill — you do not type each child skill unless you want a single step.",
+    "pipeline": "New machine? Invoke <code>ux-install-all-skills</code> first (installs all 19). Then <code>design-thinking-ux</code> for a full run — it asks intake questions and loads the phase skill. You do not type each child skill unless you want a single step.",
     "prototype": "Prototype starts with <code>ux-prototyping</code> in the current harness (Cursor, Claude, Figma Make). Brand or Partner shell only — localhost, Make preview, or Claude preview. GitHub Pages repos are created under the designer’s login.",
     "test": "Human gate: review AI drafts before stakeholders. Findings loop back to Empathize.",
 }
@@ -203,6 +205,7 @@ def build_manifest() -> dict:
         "count": len(skills),
         "download_zip": f"{PAGES_BASE}/designops-skills.zip",
         "install_script": f"{PAGES_BASE}/install.sh",
+        "install_all_script": f"{PAGES_BASE}/install-all.sh",
         "skills": skills,
     }
 
@@ -364,53 +367,90 @@ def render_skills_index(manifest: dict) -> str:
   <main class="wrap">
     <header class="page-header">
       <h1>Agent Skills</h1>
-      <p class="sub muted"><strong>{count} portable skills</strong> — start with the master skill
-        <code>design-thinking-ux</code>, which invokes Empathize through Test.
-        Download the full pack below — no repo clone required.</p>
+      <p class="sub muted"><strong>{count} portable skills</strong> — first
+        <code>use ux-install-all-skills</code> (how to install is below), then
+        <code>use design-thinking-ux</code> for Empathize through Test.</p>
     </header>
 
     <aside class="walkthrough-banner is-master">
-      <p><strong>Master skill.</strong> Start every full run with <code>use design-thinking-ux</code> (Design Thinking UX). It asks intake questions and invokes Empathize → Define → Ideate → Prototype → Test. Phase skills below still work on their own.</p>
-      <a href="#design-thinking-ux">See design-thinking-ux</a>
+      <p><strong>First time:</strong> install all 19 pipeline skills. <strong>Then every run:</strong> <code>use design-thinking-ux</code>.</p>
+      <div class="walkthrough-banner-actions">
+        <a href="#install">How to install</a>
+        <a class="is-secondary" href="#design-thinking-ux">See design-thinking-ux</a>
+      </div>
     </aside>
 
-    <section class="skills-download" id="install" aria-labelledby="install-heading">
-      <h2 id="install-heading">Download all skills</h2>
-      <div class="skills-download-grid">
-        <div class="skills-download-card">
-          <h3>Zip pack</h3>
-          <p class="muted">All {count} skills — Empathize through Test.</p>
-          <a class="skills-btn skills-btn-primary" href="./designops-skills.zip" download>Download designops-skills.zip</a>
-        </div>
-        <div class="skills-download-card">
-          <h3>One-command install</h3>
-          <p class="muted">Pick your harness; installs every skill into your project.</p>
-          <div class="skills-install-tabs" role="tablist" aria-label="Harness">
-            <button type="button" class="skills-tab is-active" data-harness="cursor" role="tab" aria-selected="true">Cursor</button>
-            <button type="button" class="skills-tab" data-harness="claude" role="tab" aria-selected="false">Claude</button>
-            <button type="button" class="skills-tab" data-harness="agents" role="tab" aria-selected="false">Copilot / Codex</button>
+    <section class="install-howto" id="install" aria-labelledby="install-heading">
+      <h2 id="install-heading">How to install</h2>
+      <p class="muted">One time. The installer puts all 19 Empathize → Test skills into this project
+        <em>and</em> globally, so the next project already has them.</p>
+      <ol class="install-steps">
+        <li>
+          <h3>In Cursor or Claude Code, say this</h3>
+          <figure class="pipe-prompt">
+            <div class="pipe-prompt-top">
+              <span class="pipe-prompt-skill">ux-install-all-skills</span>
+              <button type="button" class="pipe-copy" data-copy="use ux-install-all-skills">Copy</button>
+            </div>
+            <pre>use ux-install-all-skills</pre>
+          </figure>
+          <p class="muted">The agent installs the full pack. Do not copy folders by hand.</p>
+        </li>
+        <li>
+          <h3>If chat does not know that skill yet (blank project)</h3>
+          <p class="muted">Paste this once in the terminal — that <em>is</em> the install. Then go to step 3.</p>
+          <pre class="skills-cmd" id="install-all-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash</pre>
+          <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-all-cmd">Copy command</button>
+        </li>
+        <li>
+          <h3>Start a guided run</h3>
+          <figure class="pipe-prompt">
+            <div class="pipe-prompt-top">
+              <span class="pipe-prompt-skill">design-thinking-ux</span>
+              <button type="button" class="pipe-copy" data-copy="use design-thinking-ux">Copy</button>
+            </div>
+            <pre>use design-thinking-ux</pre>
+          </figure>
+          <p class="muted">Walks Empathize → Test and stops at each human gate.</p>
+        </li>
+      </ol>
+      <details class="install-more">
+        <summary>Zip pack or harness-only command</summary>
+        <div class="skills-download-grid">
+          <div class="skills-download-card">
+            <h3>Zip pack</h3>
+            <p class="muted">All {count} skills — Empathize through Test, plus the installer.</p>
+            <a class="skills-btn skills-btn-primary" href="./designops-skills.zip" download>Download designops-skills.zip</a>
           </div>
-          <pre class="skills-cmd" id="install-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .</pre>
-          <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-cmd">Copy command</button>
+          <div class="skills-download-card">
+            <h3>Harness-only (no global copy)</h3>
+            <p class="muted">Project folder only. Prefer the command in step 2 unless you need this.</p>
+            <div class="skills-install-tabs" role="tablist" aria-label="Harness">
+              <button type="button" class="skills-tab is-active" data-harness="cursor" role="tab" aria-selected="true">Cursor</button>
+              <button type="button" class="skills-tab" data-harness="claude" role="tab" aria-selected="false">Claude</button>
+              <button type="button" class="skills-tab" data-harness="agents" role="tab" aria-selected="false">Copilot / Codex</button>
+            </div>
+            <pre class="skills-cmd" id="install-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .</pre>
+            <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-cmd">Copy command</button>
+          </div>
         </div>
-      </div>
-      <table class="skills-table skills-harness-table">
-        <thead><tr><th>Harness</th><th>Install path</th><th>Skills installed</th></tr></thead>
-        <tbody>
-          <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code></td><td>{count} (all phases)</td></tr>
-          <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td><td>{count} (all phases)</td></tr>
-          <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>{count} (all phases)</td></tr>
-        </tbody>
-      </table>
-      <p class="muted">Start a full run with <code>use design-thinking-ux</code>, or invoke a phase skill
-        (<code>use write-spec</code>, <code>use ideate</code>, <code>use test-plan</code>).
-        Persona and design-system skills appear in multiple phases — install once, reuse everywhere.
-        <a href="./pack/README.md">Pack README</a> · <a href="./manifest.json">manifest.json</a></p>
+        <table class="skills-table skills-harness-table">
+          <thead><tr><th>Harness</th><th>Install path</th><th>Skills installed</th></tr></thead>
+          <tbody>
+            <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code></td><td>{count} (all phases)</td></tr>
+            <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td><td>{count} (all phases)</td></tr>
+            <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>{count} (all phases)</td></tr>
+          </tbody>
+        </table>
+        <p class="muted">Persona and design-system skills appear in multiple phases — install once, reuse everywhere.
+          <a href="./pack/README.md">Pack README</a> · <a href="./manifest.json">manifest.json</a> ·
+          <a href="./pack/ux-install-all-skills/SKILL.md">ux-install-all-skills</a></p>
+      </details>
     </section>
 
     <div class="skills-jump">
       <strong>Jump:</strong>
-      <a href="#install">Install</a> ·
+      <a href="#install">How to install</a> ·
       <a href="#pipeline">Start here</a> ·
       <a href="#empathize">Empathize</a> ·
       <a href="#define">Define</a> ·
@@ -424,6 +464,20 @@ def render_skills_index(manifest: dict) -> str:
   <script src="../shared/designops-theme.js"></script>
   <script>
     (function () {{
+      document.querySelectorAll(".pipe-copy").forEach(function (btn) {{
+        btn.addEventListener("click", function () {{
+          var text = btn.getAttribute("data-copy") || "";
+          navigator.clipboard.writeText(text).then(function () {{
+            var prev = btn.textContent;
+            btn.textContent = "Copied";
+            btn.classList.add("is-copied");
+            setTimeout(function () {{
+              btn.textContent = prev;
+              btn.classList.remove("is-copied");
+            }}, 1500);
+          }});
+        }});
+      }});
       var tabs = document.querySelectorAll(".skills-tab");
       var cmd = document.getElementById("install-cmd");
       var copyBtn = document.getElementById("copy-install-cmd");
@@ -451,6 +505,16 @@ def render_skills_index(manifest: dict) -> str:
           }});
         }});
       }}
+      var allCmd = document.getElementById("install-all-cmd");
+      var copyAll = document.getElementById("copy-install-all-cmd");
+      if (copyAll && allCmd) {{
+        copyAll.addEventListener("click", function () {{
+          navigator.clipboard.writeText(allCmd.textContent).then(function () {{
+            copyAll.textContent = "Copied!";
+            setTimeout(function () {{ copyAll.textContent = "Copy command"; }}, 1500);
+          }});
+        }});
+      }}
     }})();
   </script>
 </body>
@@ -463,6 +527,11 @@ def main() -> None:
     copy_pack()
     build_zip()
     write_install_script()
+    install_all_src = SKILLS_SRC / "ux-install-all-skills" / "scripts" / "install-all.sh"
+    if install_all_src.is_file():
+        dest = SKILLS_SITE / "install-all.sh"
+        shutil.copy2(install_all_src, dest)
+        dest.chmod(0o755)
     manifest = build_manifest()
     MANIFEST_PATH.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     index_path = SKILLS_SITE / "index.html"
@@ -470,6 +539,8 @@ def main() -> None:
     print(f"  ✅ Skills pack: {PACK_DIR} ({manifest['count']} skills)")
     print(f"  ✅ Zip: {ZIP_PATH}")
     print(f"  ✅ Install script: {INSTALL_SH}")
+    if (SKILLS_SITE / "install-all.sh").is_file():
+        print(f"  ✅ Install-all script: {SKILLS_SITE / 'install-all.sh'}")
     print(f"  ✅ Manifest: {MANIFEST_PATH}")
     print(f"  ✅ Skills page: {index_path}")
 

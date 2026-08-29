@@ -44,14 +44,52 @@
     <header class="page-header pipeline-lede">
       <div>
         <h1>Design Thinking Automation Pipeline</h1>
-        <p class="sub muted">impact.com UX DesignOps — Start with the master skill <code>design-thinking-ux</code>. It walks Empathize → Test and invokes every phase skill. Keep human judgment at decision gates.</p>
+        <p class="sub muted">impact.com UX DesignOps — First <a href="#install">install all 19 skills</a> with <code>ux-install-all-skills</code>. Then start with <code>design-thinking-ux</code>. It walks Empathize → Test and invokes every phase skill. Keep human judgment at decision gates.</p>
       </div>
     </header>
 
     <aside class="walkthrough-banner is-master">
-      <p><strong>Master skill — start here.</strong> In Cursor or Claude, say <code>use Design Thinking UX</code>. It asks intake questions (do you have research? which audience?) then invokes the skills for each phase — research, write-spec / tickets, ideate, prototype shells, test-plan. You do not type each child skill unless you want a single step.</p>
-      <a href="./skills/#design-thinking-ux">Open design-thinking-ux</a>
+      <p><strong>First time:</strong> install all 19 pipeline skills. <strong>Then every run:</strong> <code>use design-thinking-ux</code>.</p>
+      <div class="walkthrough-banner-actions">
+        <a href="#install">How to install</a>
+        <a class="is-secondary" href="./skills/#design-thinking-ux">Open design-thinking-ux</a>
+      </div>
     </aside>
+
+    <section class="install-howto" id="install" aria-labelledby="install-heading">
+      <h2 id="install-heading">How to install the skills</h2>
+      <p class="muted">One time. The installer puts all 19 Empathize → Test skills into this project <em>and</em> globally, so the next project already has them.</p>
+      <ol class="install-steps">
+        <li>
+          <h3>In Cursor or Claude Code, say this</h3>
+          <figure class="pipe-prompt">
+            <div class="pipe-prompt-top">
+              <span class="pipe-prompt-skill">ux-install-all-skills</span>
+              <button type="button" class="pipe-copy" data-copy="use ux-install-all-skills">Copy</button>
+            </div>
+            <pre>use ux-install-all-skills</pre>
+          </figure>
+          <p class="muted">The agent installs the full pack. Do not copy folders by hand.</p>
+        </li>
+        <li>
+          <h3>If chat does not know that skill yet (blank project)</h3>
+          <p class="muted">Paste this once in the terminal — that <em>is</em> the install. Then go to step 3.</p>
+          <pre class="skills-cmd" id="install-all-cmd">curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash</pre>
+          <button type="button" class="skills-btn skills-btn-secondary" id="copy-install-all-cmd">Copy command</button>
+        </li>
+        <li>
+          <h3>Start a guided run</h3>
+          <figure class="pipe-prompt">
+            <div class="pipe-prompt-top">
+              <span class="pipe-prompt-skill">design-thinking-ux</span>
+              <button type="button" class="pipe-copy" data-copy="use design-thinking-ux">Copy</button>
+            </div>
+            <pre>use design-thinking-ux</pre>
+          </figure>
+          <p class="muted">Walks Empathize → Test and stops at each human gate. <a href="./skills/#install">Zip, Copilot/Codex, and harness paths</a></p>
+        </li>
+      </ol>
+    </section>
 
     <div class="examples-strip" aria-label="Worked examples">
       <span class="examples-strip-label">Examples</span>
@@ -71,6 +109,7 @@
     </nav>
 
     <p class="pipeline-flow">
+      <strong>Install</strong> <span class="arrow">→</span>
       <strong>design-thinking-ux</strong> <span class="arrow">→</span>
       <strong>1 Empathize</strong> <span class="arrow">→</span>
       <strong>2 Define</strong> <span class="arrow">→</span>
@@ -100,6 +139,7 @@
           <section>
             <h3>How to use it</h3>
             <ol>
+              <li><strong>Not installed yet?</strong> <a href="#install">Install all 19 skills</a> first, then “use Design Thinking UX”.</li>
               <li><strong>Prefer the master skill:</strong> “use Design Thinking UX” — it asks if you have research and invokes Empathize skills for you.</li>
               <li>Open the <a href="./research/">latest research report</a>.</li>
               <li>Connect the same MCPs in your harness (PostHog, Pendo, Dovetail, Outset, Confluence/Jira) — then use the skills to ask questions in Cursor, Claude, Figma Agent, or any Agent Skills client.</li>
@@ -120,10 +160,16 @@
           <section>
             <h3>Skills (on-demand) — what each one is for</h3>
             <div class="pipe-skill is-master">
+              <a href="./skills/#ux-install-all-skills">ux-install-all-skills</a>
+              <span class="pipe-install-label">Install</span>
+              <a class="dl" href="./skills/#install">how to</a>
+              <p>First time on a machine: one prompt installs all 19 pipeline skills (project + global).</p>
+            </div>
+            <div class="pipe-skill is-master">
               <a href="./skills/#design-thinking-ux">design-thinking-ux</a>
               <span class="pipe-master-label">Master</span>
               <a class="dl" href="./skills/pack/design-thinking-ux/SKILL.md">download</a>
-              <p>Start here. Guided Empathize → Test — asks intake questions and invokes the skills in this stage.</p>
+              <p>After install. Guided Empathize → Test — asks intake questions and invokes the skills in this stage.</p>
             </div>
             <div class="pipe-skill">
               <a href="./skills/#user-research">user-research</a>
@@ -148,7 +194,15 @@
           </section>
           <section>
             <h3>Try these prompts (validated)</h3>
-            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Live-tested against PostHog and the research pack. Copy into Cursor or Claude after installing skills. Prefer the master skill for a full run.</p>
+            <p class="muted" style="margin-bottom:8px;font-size:0.8rem">Live-tested against PostHog and the research pack. Copy into Cursor or Claude after <a href="#install">installing skills</a>. Prefer the master skill for a full run.</p>
+            <figure class="pipe-prompt">
+              <div class="pipe-prompt-top">
+                <span class="pipe-prompt-skill">ux-install-all-skills — first time</span>
+                <button type="button" class="pipe-copy" data-copy="use ux-install-all-skills">Copy</button>
+              </div>
+              <pre>use ux-install-all-skills</pre>
+              <p class="pipe-prompt-meta"><strong>Result:</strong> All 19 pipeline skills on this project and globally. <strong>Action:</strong> then start with design-thinking-ux.</p>
+            </figure>
             <figure class="pipe-prompt">
               <div class="pipe-prompt-top">
                 <span class="pipe-prompt-skill">design-thinking-ux — master</span>
@@ -200,7 +254,7 @@
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>Skills live in <code>.agents/skills/</code> (open Agent Skills format). Symlink or copy into <code>.cursor/skills/</code>, <code>.claude/skills/</code>, or your Figma Agent skills path. Full install notes: <a href="./skills/pack/README.md">Pack README (install for any harness)</a></p>
+            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -319,7 +373,7 @@
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>Skills live in <code>.agents/skills/</code>. Symlink or copy into your harness skills path. Full install notes: <a href="./skills/pack/README.md">Pack README (install for any harness)</a></p>
+            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -438,7 +492,7 @@
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>Skills live in <code>.agents/skills/</code>. Symlink or copy into your harness skills path. Full install notes: <a href="./skills/pack/README.md">Pack README (install for any harness)</a></p>
+            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -559,7 +613,7 @@
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>Skills live in <code>.agents/skills/</code> (open Agent Skills format). Symlink or copy into <code>.cursor/skills/</code>, <code>.claude/skills/</code>, or install the .skill zip. Full install notes: <a href="./skills/pack/README.md">Pack README (install for any harness)</a></p>
+            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -692,7 +746,7 @@
           </section>
           <section>
             <h3>Install / download</h3>
-            <p>Skills live in <code>.agents/skills/</code>. Symlink or copy into your harness skills path. Full install notes: <a href="./skills/pack/README.md">Pack README (install for any harness)</a></p>
+            <p>First time on this machine: <a href="#install">install all 19 skills</a> with <code>use ux-install-all-skills</code>. Then run this stage from <code>design-thinking-ux</code>.</p>
           </section>
           <section>
             <h3>Tools</h3>
@@ -727,6 +781,16 @@
           });
         });
       });
+      var allCmd = document.getElementById("install-all-cmd");
+      var copyAll = document.getElementById("copy-install-all-cmd");
+      if (copyAll && allCmd) {
+        copyAll.addEventListener("click", function () {
+          navigator.clipboard.writeText(allCmd.textContent).then(function () {
+            copyAll.textContent = "Copied!";
+            setTimeout(function () { copyAll.textContent = "Copy command"; }, 1500);
+          });
+        });
+      }
     })();
   </script>
 </body>
