@@ -64,6 +64,7 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "design-system",
     ],
     "prototype": [
+        "ux-prototyping",
         "brand-prototype",
         "partner-prototype",
         "design-system",
@@ -94,6 +95,7 @@ USE_WHEN: dict[str, str] = {
     "ideate": "Framing → ideation brief + tool routing + starter directions",
     "ux-critique": "Coverage matrix: mocks/prototype vs spec (Ideate or Test pre-flight)",
     "prototype-handoff": "Exit pack after critique — ready for Prototype",
+    "ux-prototyping": "Any harness → Brand or Partner live preview → optional GitHub Pages on the designer’s account",
     "brand-prototype": "One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)",
     "partner-prototype": "One prompt → Partner UI shell (<code>localhost:5173/</code>)",
     "test-plan": "Synthetic pre-flight + Outset/Maze study draft",
@@ -103,7 +105,7 @@ USE_WHEN: dict[str, str] = {
 
 STAGE_NOTES: dict[str, str] = {
     "pipeline": "Invoke <code>design-thinking-ux</code> first for a full run. It asks intake questions and loads the phase skill — you do not type each child skill unless you want a single step.",
-    "prototype": "Prototype phase uses <code>brand-prototype</code> or <code>partner-prototype</code> only. Bootstrap clones the shell, installs Node if missing, runs <code>npm ci</code>, and starts Vite. Cursor preferred.",
+    "prototype": "Prototype starts with <code>ux-prototyping</code> in the current harness (Cursor, Claude, Figma Make). Brand or Partner shell only — localhost, Make preview, or Claude preview. GitHub Pages repos are created under the designer’s login.",
     "test": "Human gate: review AI drafts before stakeholders. Findings loop back to Empathize.",
 }
 

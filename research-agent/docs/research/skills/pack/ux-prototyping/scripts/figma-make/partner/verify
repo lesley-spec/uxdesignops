@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+URL="${FIGMA_MAKE_URL:-http://localhost:5173/}"
+MAX_WAIT=180
+INTERVAL=2
+ELAPSED=0
+echo "Waiting for Partner preview at $URL"
+while [ "$ELAPSED" -lt "$MAX_WAIT" ]; do
+  if command -v curl >/dev/null 2>&1 && curl -sf "$URL" >/dev/null 2>&1; then
+    echo "Dev server is up"
+    exit 0
+  fi
+  sleep "$INTERVAL"
+  ELAPSED=$((ELAPSED + INTERVAL))
+done
+echo "Error: Partner preview did not start within ${MAX_WAIT}s"
+exit 1

@@ -58,17 +58,18 @@ Phase skills below still work on their own. The master skill is for “take me t
 
 | Skill | Use when |
 |---|---|
+| `ux-prototyping` | Preferred Prototype entry — any harness (Cursor, Claude, Figma Make): live Brand or Partner preview, then GitHub Pages on the designer’s account |
 | `brand-prototype` | One prompt → clone Brand UI shell, `npm install`, start Vite (Cursor preferred) |
 | `partner-prototype` | One prompt → clone Partner UI shell, `npm install`, start Vite (Cursor preferred) |
 | `design-system` | After shell is up, when mapping mocks to Styleguide V2 |
 
-**Agent (on-demand):** Prototype Scaffolder — `brand-prototype` / `partner-prototype`. The master skill `design-thinking-ux` invokes the matching shell after Ideate handoff.
+**Agent (on-demand):** Prototype Scaffolder — `ux-prototyping` (wraps `brand-prototype` / `partner-prototype`). The master skill `design-thinking-ux` invokes `ux-prototyping` after Ideate handoff.
 
-**How it works:** Each skill ships `scripts/bootstrap.sh`. The agent **runs the script** with sandbox off (does not hand the designer a git/npm checklist). The script clones the shell, **installs Node if missing**, runs `npm ci` (Vite + deps), and starts the dev server. Default folders: `~/Documents/impact-prototypes/brand-ui` and `…/partner-ui`.
+**How it works:** `ux-prototyping` detects the harness and stays there. Cursor / Claude Code / Copilot: `ensure-harness.sh` then Brand/Partner `bootstrap.sh` (localhost). Figma Make: clone or Make-file preview. Claude chat: live artifact preview. GitHub Pages repos are created under **the designer’s GitHub login**, not the template account.
 
-**Enforcement:** In the `design-thinking-ux` Prototype phase, only these two skills may set up a prototype. No from-scratch Vite/Next apps; Figma Make is Ideate-only.
+**Enforcement:** In the `design-thinking-ux` Prototype phase, only `ux-prototyping` may set up a prototype (Brand or Partner shell). No from-scratch Vite/Next apps. Valid in Cursor, Claude, and Figma Make.
 
-**Harness reality:** Full auto-setup needs a local shell → **Cursor** (best) or Claude Code. Figma Make cannot clone repos; skills route Make to Cursor or a labeled Make-only click-through (see each skill’s `references/harnesses.md`).
+**Harness:** Finish Prototype in the current tool. Shell harnesses auto-install Node and start Vite. Make and Claude chat use that harness’s live preview — do not bounce designers to Cursor.
 
 **Human gate:** Designer owns fidelity and interaction after the shell is running.
 
@@ -93,7 +94,7 @@ Phase skills below still work on their own. The master skill is for “take me t
 
 ## Install in any harness
 
-**Download all 18 skills (master + all phases):** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
+**Download all 19 skills (master + all phases):** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
 
 One-command install (Cursor example — installs every skill):
 
@@ -105,8 +106,8 @@ Replace `cursor` with `claude` or `agents` for Claude Code or Copilot/Codex.
 
 | Harness | Typical path |
 |---|---|
-| Cursor | `.cursor/skills/<name>/` (symlinked in this repo) |
-| Claude Code / Claude | `.claude/skills/<name>/` or `.agents/skills/<name>/` |
+| Cursor | `.cursor/skills/<name>/` (symlinked locally; `.cursor/` is gitignored) |
+| Claude Code / Claude | `.claude/skills/<name>/` (all 19 skills, tracked in this repo) |
 | Codex / VS Code Copilot | `.agents/skills/<name>/` |
 | Figma Agent | Project or org skills that point at the same `SKILL.md` folders |
 
@@ -116,10 +117,11 @@ mkdir -p .claude/skills
 ln -sfn ../../.agents/skills/write-spec .claude/skills/write-spec
 ```
 
-Invoke by name, e.g. “use `design-thinking-ux`” for the full pipeline, or a phase skill: “use `write-spec` on this confirmed finding” / “use `ideate` on UX-1234” / “run `ux-critique` before handoff” / “use `brand-prototype`” / “use `partner-prototype`” / “use `test-plan` on [prototype link]”.
+Invoke by name, e.g. “use `design-thinking-ux`” for the full pipeline, or a phase skill: “use `write-spec` on this confirmed finding” / “use `ideate` on UX-1234” / “run `ux-critique` before handoff” / “use `ux-prototyping`” / “use `brand-prototype`” / “use `partner-prototype`” / “use `test-plan` on [prototype link]”.
 
 ```bash
 # Prototype shells (also symlink for Cursor)
+ln -sfn ../../.agents/skills/ux-prototyping .cursor/skills/ux-prototyping
 ln -sfn ../../.agents/skills/brand-prototype .cursor/skills/brand-prototype
 ln -sfn ../../.agents/skills/partner-prototype .cursor/skills/partner-prototype
 ```

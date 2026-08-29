@@ -88,6 +88,11 @@ else
   die "No package.json in $PROJECT — template looks broken. Check $REPO_URL"
 fi
 
+_UX_MAKE="$(cd "$SCRIPT_DIR/../../ux-prototyping/scripts" 2>/dev/null && pwd || true)"
+if [[ -n "${_UX_MAKE:-}" && -f "$_UX_MAKE/write-figma-make-config.sh" ]]; then
+  bash "$_UX_MAKE/write-figma-make-config.sh" --shell partner --project "$PROJECT" || true
+fi
+
 PORT="${PARTNER_PROTOTYPE_PORT:-5173}"
 DEV_URL="http://localhost:${PORT}/"
 if [[ "$START_DEV" -eq 1 ]]; then

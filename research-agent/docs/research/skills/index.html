@@ -43,7 +43,7 @@
   <main class="wrap">
     <header class="page-header">
       <h1>Agent Skills</h1>
-      <p class="sub muted"><strong>18 portable skills</strong> — start with the master skill
+      <p class="sub muted"><strong>19 portable skills</strong> — start with the master skill
         <code>design-thinking-ux</code>, which invokes Empathize through Test.
         Download the full pack below — no repo clone required.</p>
     </header>
@@ -58,7 +58,7 @@
       <div class="skills-download-grid">
         <div class="skills-download-card">
           <h3>Zip pack</h3>
-          <p class="muted">All 18 skills — Empathize through Test.</p>
+          <p class="muted">All 19 skills — Empathize through Test.</p>
           <a class="skills-btn skills-btn-primary" href="./designops-skills.zip" download>Download designops-skills.zip</a>
         </div>
         <div class="skills-download-card">
@@ -76,9 +76,9 @@
       <table class="skills-table skills-harness-table">
         <thead><tr><th>Harness</th><th>Install path</th><th>Skills installed</th></tr></thead>
         <tbody>
-          <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code></td><td>18 (all phases)</td></tr>
-          <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td><td>18 (all phases)</td></tr>
-          <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>18 (all phases)</td></tr>
+          <tr><td>Cursor</td><td><code>.cursor/skills/&lt;name&gt;/</code></td><td>19 (all phases)</td></tr>
+          <tr><td>Claude Code</td><td><code>.claude/skills/&lt;name&gt;/</code></td><td>19 (all phases)</td></tr>
+          <tr><td>Copilot / Codex</td><td><code>.agents/skills/&lt;name&gt;/</code></td><td>19 (all phases)</td></tr>
         </tbody>
       </table>
       <p class="muted">Start a full run with <code>use design-thinking-ux</code>, or invoke a phase skill
@@ -147,12 +147,13 @@
     <table class="skills-table">
       <thead><tr><th>Skill</th><th>Use when</th><th>Download</th></tr></thead>
       <tbody>
+        <tr id="ux-prototyping"><td><code>ux-prototyping</code></td><td>Any harness → Brand or Partner live preview → optional GitHub Pages on the designer’s account</td><td class="dl"><a href="./pack/ux-prototyping/">Browse</a> · <a href="./pack/ux-prototyping/SKILL.md">SKILL.md</a></td></tr>
         <tr id="brand-prototype"><td><code>brand-prototype</code></td><td>One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)</td><td class="dl"><a href="./pack/brand-prototype/">Browse</a> · <a href="./pack/brand-prototype/SKILL.md">SKILL.md</a></td></tr>
         <tr id="partner-prototype"><td><code>partner-prototype</code></td><td>One prompt → Partner UI shell (<code>localhost:5173/</code>)</td><td class="dl"><a href="./pack/partner-prototype/">Browse</a> · <a href="./pack/partner-prototype/SKILL.md">SKILL.md</a></td></tr>
         <tr><td><code>design-system</code></td><td>Styleguide + component library constraints</td><td class="dl"><a href="./pack/design-system/">Browse</a> · <a href="./pack/design-system/SKILL.md">SKILL.md</a></td></tr>
       </tbody>
     </table>
-    <p class="muted">Prototype phase uses <code>brand-prototype</code> or <code>partner-prototype</code> only. Bootstrap clones the shell, installs Node if missing, runs <code>npm ci</code>, and starts Vite. Cursor preferred.</p>
+    <p class="muted">Prototype starts with <code>ux-prototyping</code> in the current harness (Cursor, Claude, Figma Make). Brand or Partner shell only — localhost, Make preview, or Claude preview. GitHub Pages repos are created under the designer’s login.</p>
 
     <h2 id="test">Test (stage 5)</h2>
     <table class="skills-table">

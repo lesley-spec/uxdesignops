@@ -42,10 +42,11 @@ Routing tables: [references/phases.md](references/phases.md).
    mocks, prototype), start at that phase. Do not force Empathize from scratch.
 6. **Do not auto-advance.** After a phase gate, update the board, **entice**
    the next phase, and wait. “Keep going” still stops at the next gate.
-7. **Prototype shells only.** In Prototype, the only allowed setup skills are
-   `brand-prototype` (Brand) and `partner-prototype` (Partner). After READY,
-   `design-system` may map mocks. Never scaffold Vite/Next/HTML from scratch,
-   never treat Figma Make or a chat artifact as the pipeline prototype.
+7. **Prototype shells only.** In Prototype, invoke `ux-prototyping` in
+   **this** harness (Cursor, Claude, Figma Make, Copilot). Brand or Partner
+   shell only — live preview here (localhost, Make, or Claude). After READY,
+   `design-system` may map mocks. Never scaffold Vite/Next/HTML from scratch.
+   Never send the designer to another tool to finish Prototype.
 
 ## When to use
 
@@ -53,9 +54,9 @@ Routing tables: [references/phases.md](references/phases.md).
 - Designer wants a guided Empathize → Test run
 - Unclear which phase skill to start with
 
-If they name a **single** phase skill (`write-spec`, `ideate`, `test-plan`),
-run that skill — do not wrap it in this orchestrator unless they also asked
-for the full pipeline.
+If they name a **single** phase skill (`write-spec`, `ideate`, `ux-prototyping`,
+`test-plan`), run that skill — do not wrap it in this orchestrator unless they
+also asked for the full pipeline.
 
 ## Session start (always)
 
@@ -122,25 +123,24 @@ accepted residual risk). Entice Prototype: Brand vs Partner shell.
 
 ### Prototype
 
-**Exclusive shells.** Invoke `brand-prototype` or `partner-prototype` only —
-see [references/phases.md](references/phases.md). Route from intake Audience
+**Exclusive shells.** Invoke `ux-prototyping` first — it stays in this
+harness, then runs Brand or Partner only. See
+[references/phases.md](references/phases.md). Route from intake Audience
 (do not re-ask if already Brand or Partner):
 
-- Brand → `brand-prototype`
-- Partner / creator-affiliate → `partner-prototype`
+- Brand → `ux-prototyping` → Brand shell
+- Partner / creator-affiliate → `ux-prototyping` → Partner shell
 - Shared → ask which shell first; the other can run later
 
-If the harness has no local shell (Figma Make, Claude chat): stop and send
-them to Cursor. Do not fake a prototype.
+Shell harnesses: `ensure-harness.sh` + `bootstrap.sh` (sandbox off). Figma
+Make and Claude chat: live preview in that harness (do **not** bounce to
+Cursor). Do not ask the designer to install Node or run `npm install`.
 
-The bootstrap script installs Node (if missing) and npm/Vite packages.
-Run it with sandbox off (`required_permissions: ["all"]`). Do not ask the
-designer to install Node or run `npm install`.
+After READY, ask if they have a GitHub account (publish to **their** user,
+not the template account). Then `design-system` if mapping mocks to UI.
 
-After READY, `design-system` if mapping mocks to UI.
-
-**Gate:** Designer has a runnable URL from the Brand or Partner shell. Entice
-Test: pre-flight + Outset/Maze draft.
+**Gate:** Designer has a runnable preview (localhost, Make, or Claude) of
+the Brand or Partner shell. Entice Test: pre-flight + Outset/Maze draft.
 
 ### Test
 
@@ -212,5 +212,6 @@ Confirms every child `SKILL.md` loads, markdown links resolve, and the UPS Step 
 - Jumping to mocks before Empathize gate + Define sign-off (unless they joined mid-pipeline)
 - Running Empathize → Test in one turn with no gates
 - Treating synthetic pre-tests as session findings
-- Scaffolding a from-scratch Vite/Next app, or using Figma Make, as the
-  Prototype-phase deliverable instead of `brand-prototype` / `partner-prototype`
+- Scaffolding a from-scratch Vite/Next app instead of `ux-prototyping`
+  (Brand/Partner shell in **this** harness: Cursor, Claude, or Figma Make)
+- Sending a Make or Claude designer to Cursor to finish Prototype

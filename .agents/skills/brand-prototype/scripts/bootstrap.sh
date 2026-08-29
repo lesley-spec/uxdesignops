@@ -89,6 +89,11 @@ else
   die "No package.json in $PROJECT — template looks broken. Check $REPO_URL"
 fi
 
+_UX_MAKE="$(cd "$SCRIPT_DIR/../../ux-prototyping/scripts" 2>/dev/null && pwd || true)"
+if [[ -n "${_UX_MAKE:-}" && -f "$_UX_MAKE/write-figma-make-config.sh" ]]; then
+  bash "$_UX_MAKE/write-figma-make-config.sh" --shell brand --project "$PROJECT" || true
+fi
+
 # Brand uses 5174 so it can run beside partner-prototype (5173)
 PORT="${BRAND_PROTOTYPE_PORT:-5174}"
 
