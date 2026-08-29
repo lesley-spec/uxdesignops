@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>Worked example — Measurement &amp; Signals through the DesignOps pipeline</title>
+  <link rel="stylesheet" href="../shared/designops.css" />
+  <script src="../shared/auth-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../shared/designops-auth.js" defer></script>
+  <style>
+    .wt-lede { margin-bottom: 8px; }
+    .wt-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+    .wt-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+      border: 1px solid var(--border); background: var(--card);
+    }
+    .wt-pill.warn { background: var(--warning-bg); border-color: var(--warning-border); color: var(--warning-text); }
+    .wt-pill.ok { background: var(--pill-product-bg); border-color: var(--pill-product-border); color: var(--pill-product-text); }
+    .wt-pill.info { background: var(--pill-audience-bg); border-color: var(--pill-audience-border); color: var(--pill-audience-text); }
+    .wt-artifacts {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px; margin: 20px 0 28px;
+    }
+    .wt-art {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px;
+      background: var(--card); text-decoration: none; color: inherit;
+    }
+    .wt-art:hover { border-color: var(--border-accent); background: var(--background-hover); }
+    .wt-art .kicker { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .wt-art strong { font-size: 0.95rem; }
+    .wt-art span { font-size: 0.82rem; color: var(--muted); }
+    .wt-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 16px 0 8px; }
+    @media (max-width: 800px) { .wt-stats { grid-template-columns: 1fr 1fr; } }
+    .wt-stat {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .wt-stat b { display: block; font-size: 1.45rem; line-height: 1.2; }
+    .wt-stat.danger b { color: var(--pill-bug-text); }
+    .wt-stat small { color: var(--muted); font-size: 0.8rem; }
+    .wt-funnel { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
+    .wt-funnel-row { display: grid; grid-template-columns: 150px 1fr 90px; gap: 10px; align-items: center; font-size: 0.85rem; }
+    @media (max-width: 640px) { .wt-funnel-row { grid-template-columns: 1fr; } }
+    .wt-bar-track { height: 28px; background: var(--background-hover); border-radius: 6px; overflow: hidden; }
+    .wt-bar { height: 100%; background: var(--interactive-default); border-radius: 6px; display: flex; align-items: center; padding: 0 8px; color: var(--text-invert); font-size: 0.75rem; font-weight: 600; min-width: 2.5rem; }
+    .wt-bar.drop { background: var(--pill-bug-text); }
+    .wt-stage {
+      border: 1px solid var(--border); border-radius: 16px; background: var(--card);
+      margin: 0 0 20px; overflow: hidden;
+    }
+    .wt-stage-head {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 18px 20px 14px; border-bottom: 1px solid var(--border);
+    }
+    .wt-num {
+      width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 0.95rem;
+    }
+    .wt-stage-head h2 { margin: 0 0 4px; font-size: 1.2rem; }
+    .wt-stage-head p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .wt-stage-body { padding: 18px 20px 20px; display: grid; gap: 16px; }
+    .wt-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 860px) { .wt-split { grid-template-columns: 1fr; } }
+    .wt-box { background: var(--background-subdued); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+    .wt-box h3, .wt-stage-body h3 { margin: 0 0 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .wt-box ul, .wt-stage-body ul { margin: 0; padding-left: 1.15rem; }
+    .wt-box li, .wt-stage-body li { margin: 0 0 6px; font-size: 0.9rem; }
+    .wt-skills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .wt-skill {
+      font-size: 0.75rem; font-weight: 600; padding: 3px 8px; border-radius: 6px;
+      background: var(--pill-theme-bg); color: var(--pill-theme-text); border: 1px solid var(--pill-theme-border);
+      text-decoration: none;
+    }
+    .wt-skill:hover { color: var(--text-interactive-hover); }
+    .wt-gate {
+      border-left: 3px solid var(--warning-border);
+      background: var(--warning-bg); color: var(--warning-text);
+      border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 0.88rem;
+    }
+    .wt-gate strong { display: block; margin-bottom: 2px; }
+    .wt-embed {
+      width: 100%; height: 460px; border: 1px solid var(--border); border-radius: 12px;
+      background: var(--background-hover);
+    }
+    .wt-mocks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    @media (max-width: 980px) { .wt-mocks { grid-template-columns: 1fr; } }
+    .mock {
+      border: 1px solid var(--border); border-radius: 12px; background: var(--card);
+      overflow: hidden; font-size: 0.78rem;
+    }
+    .mock-label {
+      padding: 8px 12px; font-weight: 600; font-size: 0.75rem;
+      border-bottom: 1px solid var(--border); background: var(--background-subdued);
+    }
+    .mock-label.now { color: var(--pill-bug-text); }
+    .mock-label.chosen { color: var(--pill-product-text); }
+    .mock-screen { padding: 14px 14px 16px; min-height: 280px; display: flex; flex-direction: column; gap: 10px; }
+    .mock-top { display: flex; justify-content: space-between; align-items: center; }
+    .mock-x { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border); display: grid; place-items: center; font-size: 0.7rem; }
+    .mock-brand { font-size: 1.05rem; font-weight: 600; }
+    .mock-sub { color: var(--muted); }
+    .mock-cta {
+      margin-left: auto; background: var(--interactive-default); color: var(--text-invert);
+      border: 0; border-radius: 6px; padding: 6px 10px; font: inherit; font-weight: 600; font-size: 0.75rem;
+    }
+    .mock-tabs { display: flex; gap: 4px; background: var(--background-hover); border-radius: 999px; padding: 3px; }
+    .mock-tabs span { flex: 1; text-align: center; padding: 4px 0; border-radius: 999px; }
+    .mock-tabs .on { background: var(--card); font-weight: 600; }
+    .mock-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--border); }
+    .mock-row:last-child { border-bottom: 0; }
+    .mock-note { color: var(--pill-bug-text); font-size: 0.72rem; }
+    .mock-foot {
+      margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+      padding-top: 10px; border-top: 1px solid var(--border);
+    }
+    .mock-input { border: 1px solid var(--border); border-radius: 8px; padding: 10px; color: var(--muted); min-height: 72px; }
+    .mock-actions { display: flex; justify-content: flex-end; gap: 6px; }
+    .mock-btn { border: 1px solid var(--border); background: var(--card); border-radius: 6px; padding: 6px 10px; font: inherit; font-size: 0.75rem; }
+    .mock-btn.pri { background: var(--interactive-default); color: var(--text-invert); border-color: transparent; font-weight: 600; }
+    .wt-dirs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    @media (max-width: 860px) { .wt-dirs { grid-template-columns: 1fr; } }
+    .wt-dir { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--background-subdued); }
+    .wt-dir.chosen { border-color: var(--pill-product-border); background: var(--pill-product-bg); }
+    .wt-dir.parked { opacity: 0.85; }
+    .wt-dir h3 { margin: 0 0 6px; font-size: 0.95rem; text-transform: none; letter-spacing: 0; color: inherit; }
+    table.wt-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    table.wt-table th { text-align: left; font-size: 0.75rem; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    table.wt-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .wt-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
+    .wt-jump a {
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+      border-radius: 999px; border: 1px solid var(--border); background: var(--card);
+      color: var(--text); text-decoration: none; font-size: 0.82rem; font-weight: 600;
+    }
+    .wt-jump a:hover { background: var(--background-hover); }
+    .wt-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .mock-take { background: #ecfdf3; border-radius: 8px; padding: 10px; }
+    .dark .mock-take { background: #052e16; color: #bbf7d0; }
+    .mock-skel { height: 26px; background: var(--background-hover); border-radius: 6px; color: var(--muted); display: flex; align-items: center; padding: 0 8px; font-size: 0.72rem; }
+    .mock-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .mock-metric { background: var(--background-subdued); border-radius: 6px; padding: 8px; }
+    .mock-prompt { background: var(--background-subdued); border-radius: 8px; padding: 8px; font-size: 0.72rem; line-height: 1.35; }
+  </style>
+</head>
+<body>
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
+
+  <header class="top-nav" role="banner">
+    <div class="top-nav-inner">
+      <a class="top-nav-brand" href="../">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 97 32" fill="none" class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M35.9475 14.2949C35.7217 14.2949 35.4825 14.3346 35.27 14.4273C35.0574 14.52 34.8581 14.6391 34.6987 14.8112C34.5393 14.9701 34.4065 15.1687 34.3135 15.3805C34.2205 15.5923 34.1806 15.8306 34.1939 16.0556C34.2338 16.4925 34.433 16.9161 34.7519 17.2074C35.084 17.5119 35.5091 17.6707 35.9475 17.6707C36.3859 17.6707 36.8243 17.4986 37.1432 17.2074C37.4753 16.9029 37.6745 16.4925 37.7011 16.0556C37.7011 15.8173 37.6613 15.5923 37.5816 15.3805C37.4886 15.1687 37.369 14.9701 37.1963 14.8112C37.0369 14.6524 36.8376 14.52 36.625 14.4273C36.4125 14.3346 36.1866 14.2949 35.9475 14.2949Z"/>
+          <path fill="currentColor" d="M37.2492 20.2522H34.6719V32.7493H37.2492V20.2522Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M49.392 22.1453C50.322 20.7817 51.8896 20.0139 53.8159 20.0139C56.9511 20.0139 59.0634 22.0394 59.0369 25.0578V32.7361H56.4197V25.7329C56.4197 23.6942 55.3437 22.5292 53.4439 22.5292C51.5442 22.5292 50.2157 23.8663 50.2157 25.7726V32.7361H47.5853V25.7329C47.5853 23.6942 46.5092 22.5292 44.6094 22.5292C42.7097 22.5292 41.3812 23.8663 41.3812 25.7726V32.7361H38.7773V20.2654H41.4078V21.351C42.6034 20.2125 44.1445 20.0272 45.0213 20.0272C46.9077 20.0139 48.4886 20.795 49.392 22.1453Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M67.1001 20.0139C65.5457 20.0139 64.2039 20.5037 63.181 21.404V20.2522H60.5771V37.6343H63.181V31.4917C64.1907 32.4184 65.5457 32.8949 67.1001 32.8949C70.6604 32.8949 73.344 30.1149 73.344 26.4478C73.344 22.794 70.6604 20.0139 67.1001 20.0139ZM66.8609 30.4458C64.6556 30.4458 63.0481 28.7645 63.0481 26.4743C63.0481 24.1973 64.6423 22.5027 66.8609 22.5027C69.0662 22.5027 70.6737 24.1708 70.6737 26.4743C70.6737 28.791 69.0795 30.4458 66.8609 30.4458Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M85.0085 20.2654V21.4436C83.9855 20.5169 82.657 20.0271 81.1027 20.0271C77.5423 20.0271 74.8721 22.8204 74.8721 26.514C74.8721 30.2075 77.5556 33.0008 81.1027 33.0008C82.657 33.0008 83.9855 32.511 85.0085 31.571V32.7493H87.6389V20.2654H85.0085ZM81.3418 30.4855C79.1365 30.4855 77.5158 28.791 77.5158 26.5007C77.5158 24.2105 79.11 22.5027 81.3418 22.5027C83.5737 22.5027 85.1413 24.1707 85.1413 26.5007C85.1413 28.8174 83.5471 30.4855 81.3418 30.4855Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M95.6235 22.5027C96.7527 22.5027 97.7225 22.9264 98.6126 23.7604L98.8252 23.9722L100.539 22.185L100.366 21.9864C99.2503 20.7156 97.5897 20.0139 95.6899 20.0139C91.9037 20.0139 89.167 22.7543 89.167 26.5008C89.167 30.2473 91.9037 32.9876 95.6899 32.9876C97.5631 32.9876 99.237 32.286 100.366 31.0283L100.539 30.843L98.8916 29.0161L98.679 29.2279C97.8155 30.0619 96.7394 30.512 95.6501 30.512C93.4713 30.512 91.8638 28.8175 91.8638 26.5272C91.8506 24.2238 93.4182 22.5027 95.6235 22.5027Z"/>
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M109.161 30.4854C109.905 30.4854 110.728 30.1942 111.419 29.7308L111.658 29.5852L112.934 31.5975L112.721 31.7563C111.645 32.5639 110.33 32.9875 108.988 32.9875C106.158 32.9875 104.591 31.3062 104.591 28.2481V22.7012H102.04V20.2521H104.591V16.5056H107.221V20.2389H112.203V22.6747H107.221V28.1952C107.221 29.6647 107.912 30.4854 109.161 30.4854Z"/>
+          <path fill="#A9B4BD" d="M24.3899 23.2308C25.1471 23.2308 25.9044 23.4029 26.5819 23.7206C27.2727 24.0383 27.8838 24.5017 28.3754 25.0709C28.6278 24.4884 28.7739 23.8662 28.7739 23.244C28.7739 22.6748 28.6544 22.1055 28.4418 21.5892C28.216 21.0597 27.8971 20.5831 27.4853 20.1859C27.0734 19.7888 26.5952 19.4711 26.0638 19.246C25.5324 19.0342 24.9611 18.915 24.3899 18.915C23.8186 18.915 23.2474 19.0209 22.716 19.246C22.1846 19.4578 21.693 19.7888 21.2945 20.1859C20.8827 20.5831 20.5638 21.0597 20.338 21.5892C20.1121 22.1187 20.0059 22.6748 20.0059 23.244C20.0191 23.8795 20.152 24.5017 20.4044 25.0709C20.896 24.4884 21.5071 24.0383 22.1846 23.7206C22.8754 23.3896 23.6326 23.2175 24.3899 23.2308Z"/>
+          <path fill="currentColor" d="M28.7735 28.4072C28.7735 27.5467 28.5211 26.7126 28.0295 25.9978C27.5513 25.2829 26.8604 24.7269 26.0634 24.3959C25.2663 24.0649 24.3762 23.9855 23.5259 24.1444C22.6757 24.3165 21.8919 24.7269 21.2808 25.3358C20.6697 25.9448 20.2445 26.7126 20.0851 27.5599C19.9124 28.4072 20.0054 29.2677 20.3375 30.062C20.6697 30.8563 21.2276 31.5314 21.9583 32.008C22.6757 32.4846 23.5259 32.7361 24.4027 32.7361C25.5585 32.7229 26.6745 32.2728 27.4981 31.452C28.3218 30.6312 28.7735 29.5589 28.7735 28.4072Z"/>
+          <path fill="#F5333F" d="M28.7735 13.3417C28.7735 12.4812 28.5211 11.6472 28.0295 10.9323C27.5513 10.2175 26.8737 9.66144 26.0634 9.33048C25.2663 8.99952 24.3762 8.92009 23.5259 9.07895C22.6757 9.25105 21.8919 9.66144 21.2808 10.2704C20.6697 10.8794 20.2445 11.6472 20.0851 12.4945C19.9124 13.3417 20.0054 14.2022 20.3375 14.9965C20.6697 15.7909 21.2276 16.466 21.9583 16.9426C22.6757 17.4192 23.5259 17.6707 24.4027 17.6707C25.5718 17.6707 26.6877 17.2074 27.5114 16.3998C28.3085 15.5923 28.7735 14.4802 28.7735 13.3417Z"/>
+        </svg>
+        <span class="top-nav-brand-text">UX DesignOps</span>
+      </a>
+      <div class="top-nav-actions">
+        <nav class="report-nav" aria-label="Site sections">
+          <a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a>
+          <a class="nav-link" href="../research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+          <a class="nav-link" href="../skills/" data-nav="skills">Skills</a>
+          <a class="nav-link is-active" href="./" data-nav="walkthrough">Examples</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+        <main class="wrap">
+    <header class="page-header wt-lede">
+      <h1>Worked example: Empathize → Test</h1>
+      <p class="sub muted">A real run of the Design Thinking automation pipeline on Brand reporting. Today you can start the same path with the master skill <code>design-thinking-ux</code> — it invokes each stage skill so you do not have to.</p>
+      <div class="wt-meta">
+        <span class="wt-pill warn">PIPELINE TEST · 28 Aug 2026</span>
+        <span class="wt-pill info">Brand · DataViz / Reporting</span>
+        <span class="wt-pill">Confidence: medium (ops + ticket + Confluence)</span>
+        <span class="wt-pill ok">Not a production roadmap item</span>
+      </div>
+    </header>
+
+    <aside class="walkthrough-banner is-master">
+      <p><strong>Replay this run.</strong> In Cursor: <code>use Design Thinking UX</code> — the master skill invokes every stage skill from Empathize through Test.</p>
+      <a href="../skills/#design-thinking-ux">Open design-thinking-ux</a>
+    </aside>
+
+    <nav class="wt-jump" aria-label="Jump to stage">
+      <a href="#finding"><span class="wt-dot" style="background:#25282f"></span>Finding</a>
+      <a href="#empathize"><span class="wt-dot" style="background:#f59e0b"></span>1 Empathize</a>
+      <a href="#define"><span class="wt-dot" style="background:#8b5cf6"></span>2 Define</a>
+      <a href="#ideate"><span class="wt-dot" style="background:#ec4899"></span>3 Ideate</a>
+      <a href="#prototype"><span class="wt-dot" style="background:#10b981"></span>4 Prototype</a>
+      <a href="#test"><span class="wt-dot" style="background:#06b6d4"></span>5 Test</a>
+      <a href="#prompt"><span class="wt-dot" style="background:#0077db"></span>The prompt</a>
+      <a href="#how"><span class="wt-dot" style="background:#0077db"></span>How to run this</a>
+    </nav>
+
+    <p>Skills gather, draft, and build. <strong>You still own every human gate</strong> — is this a problem worth solving, is the framing honest, which idea to prototype, and whether to recruit. This page is labeled a pipeline test: artifacts are real so you can click them, not so they replace a PM chat.</p>
+    <p>This run started from TTPI-769, then was corrected with two local sources the Google Docs 401 had blocked: the <strong>AI Influence Measurement Working Group Initial Charter</strong> and the <strong>AI Crawler Telemetry shaping / API spec</strong>. Related Confluence (AI Search Visibility, Total Value) and designer mocks were viewed, not cloned. First product is the advertiser <strong>AI Influence Index</strong> plus a simulated periodic bonus — not path insertion.</p>
+
+    <section id="prompt">
+      <h2>The prompt used for this run</h2>
+      <p>Pasted into Cursor as-is — typos and all. That is the point: you do not need a polished brief. Attach the notes, ticket, and any existing mock, then tell it to walk Empathize → Test and write the walkthrough.</p>
+      <figure class="pipe-prompt">
+        <div class="pipe-prompt-top">
+          <span class="pipe-prompt-skill">Lesley · 28 Aug 2026 · copy this</span>
+          <button type="button" class="pipe-copy" data-copy="Measurements + Signals
+
+Go through the entire design thinking automation pipeline .
+
+Invoking skills, egents everything at every phase
+
+Use notes from meetings  as an example for the reasearch or issue you must solve
+
+https://docs.google.com/document/d/1_Fo5NmbFtrNMbgoJd-IN0auenB7O-t2sYIB1f04xbjc/edit?tab=t.du1k91fvaqb6#heading=h.i9mufnqonlyv
+
+https://docs.google.com/document/d/1C-mebz3fjUKwCwtAOeMCQ9n4j_1BjR8CFmcK1DwOHUw/edit?tab=t.9if0179ka7hg
+
+https://docs.google.com/document/d/1QDmoTLru1oqBgs2JZrM8zsb2wSWD9pd34fkufuDTnko/edit?tab=t.hdz728179mob#heading=h.83fr4noq7ps1
+
+Ticket : https://impact.atlassian.net/browse/TTPI-769
+
+Mocks by Antoni : https://claude.ai/design/p/ff723752-3f47-400d-b55d-33243f08b746?via=share&amp;file=AIInfluenceMeasurement.dc.html
+
+Mocks by me : /Users/lesleylinnett/Downloads/gap_reports_with_content.html
+
+Mocks: /Users/lesleylinnett/Downloads/AIInfluenceMeasurement-standalone.html
+
+My mock i have but I want you to just view it but do your own https://www.figma.com/design/i4A9HaitFCwAd1hx9cYdpm/DataViz---Reporting---2?node-id=9588-12926&amp;t=xB9LeiNjBPRvpfb3-4
+
+This is all the information you need to take this problem from start  to finish. If you can find research relating to this that would be a plus.
+
+Mock out all the reports needed in the correct styling with the StyleguideV2
+
+Your main thing is to take this issue through the entire pipeline same as you did with the previous but also just created draft prds etc
+
+Then summarize it into one screen the same as you did before.
+
+The page should then also be added as an example to the repo and site
+
+Go!">Copy</button>
+        </div>
+        <pre>Measurements + Signals
+
+Go through the entire design thinking automation pipeline .
+
+Invoking skills, egents everything at every phase
+
+Use notes from meetings  as an example for the reasearch or issue you must solve
+
+https://docs.google.com/document/d/1_Fo5NmbFtrNMbgoJd-IN0auenB7O-t2sYIB1f04xbjc/edit?tab=t.du1k91fvaqb6#heading=h.i9mufnqonlyv
+
+https://docs.google.com/document/d/1C-mebz3fjUKwCwtAOeMCQ9n4j_1BjR8CFmcK1DwOHUw/edit?tab=t.9if0179ka7hg
+
+https://docs.google.com/document/d/1QDmoTLru1oqBgs2JZrM8zsb2wSWD9pd34fkufuDTnko/edit?tab=t.hdz728179mob#heading=h.83fr4noq7ps1
+
+Ticket : https://impact.atlassian.net/browse/TTPI-769
+
+Mocks by Antoni : https://claude.ai/design/p/ff723752-3f47-400d-b55d-33243f08b746?via=share&amp;file=AIInfluenceMeasurement.dc.html
+
+Mocks by me : /Users/lesleylinnett/Downloads/gap_reports_with_content.html
+
+Mocks: /Users/lesleylinnett/Downloads/AIInfluenceMeasurement-standalone.html
+
+My mock i have but I want you to just view it but do your own https://www.figma.com/design/i4A9HaitFCwAd1hx9cYdpm/DataViz---Reporting---2?node-id=9588-12926&amp;t=xB9LeiNjBPRvpfb3-4
+
+This is all the information you need to take this problem from start  to finish. If you can find research relating to this that would be a plus.
+
+Mock out all the reports needed in the correct styling with the StyleguideV2
+
+Your main thing is to take this issue through the entire pipeline same as you did with the previous but also just created draft prds etc
+
+Then summarize it into one screen the same as you did before.
+
+The page should then also be added as an example to the repo and site
+
+Go!</pre>
+      </figure>
+    </section>
+
+    <h2>Open the artifacts from this run</h2>
+    <div class="wt-artifacts">
+      <a class="wt-art" href="https://impact.atlassian.net/wiki/spaces/ux/pages/edit-v2/6628442116?draftShareId=134c03a8-d14e-49bb-9e02-5da4ae33570f" target="_blank" rel="noopener">
+        <span class="kicker">Define · Confluence</span>
+        <strong>Draft one-pager</strong>
+        <span>Make AI-influenced partner value visible to Brand operators</span>
+      </a>
+      <a class="wt-art" href="https://impact.atlassian.net/browse/UX-645" target="_blank" rel="noopener">
+        <span class="kicker">Define · Jira</span>
+        <strong>UX-645</strong>
+        <span>Epic · Relates to TTPI-769 + UX-639 · PIPELINE TEST</span>
+      </a>
+      <a class="wt-art" href="https://www.figma.com/board/SHYTD4tSZayhIDXhJ7NkST" target="_blank" rel="noopener">
+        <span class="kicker">Ideate · FigJam</span>
+        <strong>Ideation board</strong>
+        <span>D1 Index + bonus chosen · path parked after charter</span>
+      </a>
+      <a class="wt-art" href="https://www.figma.com/design/4DrPkOmx03Y93cIIFsHoUs" target="_blank" rel="noopener">
+        <span class="kicker">Ideate · Figma</span>
+        <strong>Mocks</strong>
+        <span>Last-click → path after → AI Visibility (first pass; charter IA is now the hosted prototype)</span>
+      </a>
+      <a class="wt-art" href="../prototypes/aim-measurement-signals/" target="_blank" rel="noopener">
+        <span class="kicker">Prototype · hosted</span>
+        <strong>Brand report suite</strong>
+        <span>Styleguide V2 · Index + bonus · path labeled future</span>
+      </a>
+      <a class="wt-art" href="https://impact.atlassian.net/browse/TTPI-769" target="_blank" rel="noopener">
+        <span class="kicker">Related · shaping</span>
+        <strong>TTPI-769</strong>
+        <span>Zero-Click Measurement — not this UX epic</span>
+      </a>
+    </div>
+
+    <section id="finding">
+      <h2>The finding we picked</h2>
+      <p><strong>AI Influence Measurement — advertiser report + AI Influence Index.</strong> Brand · DataViz / Reporting. Working-group first product: which partners appear to influence AI-mediated commerce, with evidence the brand can trust, then a <em>simulated additive monthly bonus</em>. Event-level path insertion (“ChatGPT referral via Wired”) is a parallel holy-grail track — not v1.</p>
+      <div class="wt-stats">
+        <div class="wt-stat"><b>2.6x</b><small>Halo readout in DS (working group) — not the customer index</small></div>
+        <div class="wt-stat danger"><b>0.2–0.3</b><small>ScalePost retrieval-to-sales correlation — noisy, early</small></div>
+        <div class="wt-stat"><b>UX 🔴</b><small>Workstream: not started (direction only) until this run</small></div>
+        <div class="wt-stat"><b>Oct</b><small>Max: something to show advertisers — reporting fulfills IPX if crediting isn’t ready</small></div>
+      </div>
+      <p class="muted" style="font-size:0.85rem">Verified from the AIM charter and telemetry shaping doc (local files). PostHog Membersite 90d unique users remain context only, not Brand Optimize usage: Ask Impact 14,943 · DataLab save 937. Google Docs were 401; these markdown exports are the meeting substance. Telemetry v1: crawler scrapes only — no attribution, no customer reporting, no scoring.</p>
+      <div class="wt-funnel" aria-label="Product layers">
+        <div class="wt-funnel-row"><span>AI Search Visibility</span><div class="wt-bar-track"><div class="wt-bar" style="width:55%">Evertune · mentions</div></div><span>Supporting</span></div>
+        <div class="wt-funnel-row"><span>AI Influence Index</span><div class="wt-bar-track"><div class="wt-bar" style="width:100%">First product</div></div><span>This release</span></div>
+        <div class="wt-funnel-row"><span>Periodic bonus</span><div class="wt-bar-track"><div class="wt-bar" style="width:70%">Additive · simulated</div></div><span>First crediting</span></div>
+        <div class="wt-funnel-row"><span>Path insertion</span><div class="wt-bar-track"><div class="wt-bar drop" style="width:22%">Holy grail</div></div><span>Parallel / later</span></div>
+      </div>
+      <div class="wt-box">
+        <h3>What we did not pick — and why that is the framework working</h3>
+        <ul>
+          <li><strong>Conversion-path “today vs after” as the landing report</strong> — that was the first prototype. The charter parks it: DS Paths is early/conceptual; telemetry v1 forbids attribution claims.</li>
+          <li><strong>Treating Evertune mentions as compensation</strong> — visibility-only. Charter: Evertune alone should not initially qualify a partner for compensation.</li>
+          <li><strong>Calling retrievals citations</strong> — retrieval = bot fetched the page. Citation/mention = observed in an AI answer.</li>
+          <li><strong>Partner-facing reporting in v1</strong> — advertiser-first. Publishers get access later to negotiate.</li>
+          <li><strong>Data Lab as the primary surface</strong> — UI Build may later sit near Data Lab / Total Value; first UX is a published advertiser report.</li>
+          <li><strong>Cloning Lesley’s DataViz node 9588-12926</strong> — Partner Dashboard story, viewed not copied. Sample data now follows the charter (Adidas running), not Casper.</li>
+        </ul>
+      </div>
+    </section>
+
+    <article class="wt-stage" id="empathize">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#f59e0b">1</div>
+        <div>
+          <h2>Empathize — is this a problem worth solving?</h2>
+          <p>Gather evidence. Skills recommend. You decide whether to continue.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
+          <a class="wt-skill" href="../skills/#user-research">user-research</a>
+          <a class="wt-skill" href="../skills/#data-analyze">data-analyze</a>
+          <a class="wt-skill" href="../skills/#research-synthesis">research-synthesis</a>
+          <a class="wt-skill" href="../skills/#synthesize-research">synthesize-research</a>
+          <a class="wt-skill" href="../skills/#brand-operator-ux-persona">brand-operator-ux-persona</a>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>What ran</h3>
+            <ul>
+              <li>AIM Working Group Initial Charter (local markdown): first product = advertiser report + AI Influence Index; first crediting = periodic additive bonus; path insertion parallel.</li>
+              <li>AI Crawler Telemetry shaping + API spec v0.5: Cloudflare Worker → <code>botfetch</code> events. v1 non-goals: no attribution, no customer reporting, no scoring.</li>
+              <li>Workstreams: UX 🔴 not started; Telemetry 🟡; DS scoring 🟡 (recommended first build); DS Paths 🔴 holy grail.</li>
+              <li>Related: TTPI-769, Evertune / TTPI-667, Total Value, UX-639. Designer HTML + Figma + Antoni Claude mock viewed, not cloned.</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>What the quality filter did</h3>
+            <ul>
+              <li><strong>Kept:</strong> Charter UX principle (program observed / partner evidence-ranked), telemetry non-goals, DS 2.6x halo and 0.2–0.3 correlation as labeled experiments.</li>
+              <li><strong>Discarded:</strong> Invented Google Doc quotes. Treating path “today vs after” as the MVP. Calling retrievals citations. Presenting the Index as transaction attribution.</li>
+              <li><strong>Labeled:</strong> Qual still thin (UX-639 in progress). Confidence medium — ops charter is strong; interviews are not.</li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          <a href="https://impact.atlassian.net/browse/TTPI-769" target="_blank" rel="noopener">Open TTPI-769</a>
+          · <a href="https://impact.atlassian.net/wiki/spaces/RPT/pages/5476810779" target="_blank" rel="noopener">AI Search Visibility reports</a>
+          · <a href="https://impact.atlassian.net/wiki/spaces/RPT/pages/5918130178" target="_blank" rel="noopener">Total Value Reporting</a>
+          · <a href="https://impact.atlassian.net/browse/UX-639" target="_blank" rel="noopener">UX-639</a>
+          · <a href="https://www.figma.com/design/i4A9HaitFCwAd1hx9cYdpm/DataViz---Reporting---2?node-id=9588-12926" target="_blank" rel="noopener">Designer Figma (viewed)</a>
+        </p>
+        <div class="wt-gate"><strong>Human gate</strong> Charter + telemetry shaping + TTPI-769 is enough to treat as worth solving for a pipeline test. Yifei’s caution stands: rich reporting must precede pushing advertisers to crediting. Qual is still not enough for a real PM chat without fieldwork.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="define">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#8b5cf6">2</div>
+        <div>
+          <h2>Define — frame the problem, not the feature</h2>
+          <p>One-pager + UX epic, after anti-sycophancy and dual marketplace lenses.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
+          <a class="wt-skill" href="../skills/#write-spec">write-spec</a>
+          <a class="wt-skill" href="../skills/#anti-sycophancy">anti-sycophancy</a>
+          <a class="wt-skill" href="../skills/#brand-operator-ux-persona">brand-operator-ux-persona</a>
+          <a class="wt-skill" href="../skills/#creator-affiliate-ux-persona">creator-affiliate-ux-persona</a>
+          <a class="wt-skill" href="../skills/#design-system">design-system</a>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>Framing (labeled)</h3>
+            <ul>
+              <li><strong>Verified:</strong> Last-click hides AI-visible publishers (churn risk). Path store only has affiliate-click journeys. Telemetry v1 cannot claim attribution. Index ≠ transaction attribution. Compensation must be additive.</li>
+              <li><strong>AI interpretation:</strong> The job is a documented partner decision from an explainable index — optimize, bonus test, or measure more — not “see the Wired path.”</li>
+              <li><strong>Goal (not a feature):</strong> A Brand operator can name which partners have enough AI-influence evidence to act on, and can simulate an additive monthly bonus, without treating modeled conversions as attributed.</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>Pressure test</h3>
+            <ul>
+              <li>Shipping more reports is not the goal. Yifei: storytelling before crediting.</li>
+              <li>Partner payout UI / publisher report is later — advertiser is the decision-maker.</li>
+              <li>Path insertion as co-equal to the index would overclaim. Telemetry shaping forbids it in v1.</li>
+              <li>“Low influence” must not be used when the issue is missing data — use Insufficient evidence.</li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          <a href="https://impact.atlassian.net/wiki/spaces/ux/pages/edit-v2/6628442116?draftShareId=134c03a8-d14e-49bb-9e02-5da4ae33570f" target="_blank" rel="noopener">Open the draft one-pager</a>
+          · <a href="https://impact.atlassian.net/browse/UX-645" target="_blank" rel="noopener">Open UX-645</a>
+          · Relates to <a href="https://impact.atlassian.net/browse/TTPI-769" target="_blank" rel="noopener">TTPI-769</a>
+          · <a href="https://impact.atlassian.net/browse/UX-639" target="_blank" rel="noopener">UX-639</a>
+        </p>
+        <div class="wt-gate"><strong>Human gate</strong> In a real initiative you sign off, then chat with a PM (Antoni / Max) before Ideate. This run published labeled <em>PIPELINE TEST</em> drafts because the walkthrough was authorized to create real artifacts.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="ideate">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#ec4899">3</div>
+        <div>
+          <h2>Ideate — three directions, one chosen</h2>
+          <p>FigJam for divergence. Figma mocks from scratch. Then ux-critique before handoff.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
+          <a class="wt-skill" href="../skills/#ideate">ideate</a>
+          <a class="wt-skill" href="../skills/#ux-critique">ux-critique</a>
+          <a class="wt-skill" href="../skills/#prototype-handoff">prototype-handoff</a>
+          <a class="wt-skill" href="../skills/#design-system">design-system</a>
+        </div>
+        <div class="wt-dirs">
+          <div class="wt-dir chosen">
+            <h3>D1 — Advertiser Index + bonus planning</h3>
+            <p style="margin:0;font-size:0.88rem">Charter IA: Visibility (supporting) → Influence Index (first product) → partner evidence → simulated additive bonus. Path page labeled future. Adidas running sample from the charter.</p>
+            <p style="margin:8px 0 0;font-size:0.75rem;font-weight:600">Chosen after source correction</p>
+          </div>
+          <div class="wt-dir parked">
+            <h3>D2 — Path-first “today vs after”</h3>
+            <p style="margin:0;font-size:0.88rem">The first hosted prototype. Matches the holy-grail story, not the first release. Telemetry v1 cannot support it.</p>
+            <p style="margin:8px 0 0;font-size:0.75rem;font-weight:600">Parked — overclaimed</p>
+          </div>
+          <div class="wt-dir parked">
+            <h3>D3 — Data Lab / Total Value only</h3>
+            <p style="margin:0;font-size:0.88rem">UI Build may land near Data Lab later. Operators need a published advertiser report first.</p>
+            <p style="margin:8px 0 0;font-size:0.75rem;font-weight:600">Not prototyped</p>
+          </div>
+        </div>
+
+        <h3>What the mocks look like</h3>
+        <div class="wt-mocks">
+          <div class="mock">
+            <div class="mock-label now">01 Supporting — visibility ≠ pay</div>
+            <div class="mock-screen">
+              <div class="mock-top"><span class="mock-brand">AI Search Visibility</span></div>
+              <div class="mock-sub">Adidas running · Evertune mentions 239</div>
+              <div>
+                <div class="mock-row"><span>runnersworld.com</span><span>84 mentions</span></div>
+                <div class="mock-row"><span>wired.com</span><span>71 mentions</span></div>
+              </div>
+              <p class="mock-note">A mention is not a retrieval. Do not pay from this page.</p>
+            </div>
+          </div>
+          <div class="mock">
+            <div class="mock-label chosen">02 Chosen — Influence Index</div>
+            <div class="mock-screen">
+              <div class="mock-top"><span class="mock-brand">AI Influence Index 74</span></div>
+              <div class="mock-sub">Program AI-origin visits 42.8K · Observed</div>
+              <div class="mock-take"><strong>Runner’s World 89 · High evidence · bonus eligible.</strong></div>
+              <div class="mock-sub">CNN Underscored: mentions only → not eligible. Small pub: insufficient evidence, not “low influence.”</div>
+            </div>
+          </div>
+          <div class="mock">
+            <div class="mock-label">03 Bonus — simulated, additive</div>
+            <div class="mock-screen">
+              <div class="mock-top"><span class="mock-brand">Bonus planning</span><span class="chip" style="font-size:0.65rem;background:#fef3c7;color:#92400e;padding:2px 6px;border-radius:999px">Simulated</span></div>
+              <div class="mock-metrics">
+                <div class="mock-metric">Pool $54.5K</div>
+                <div class="mock-metric">Index ≥ 75</div>
+              </div>
+              <p class="mock-sub">Does not remove last-click credit. Path-credit is future.</p>
+            </div>
+          </div>
+        </div>
+
+        <p><a href="https://www.figma.com/design/4DrPkOmx03Y93cIIFsHoUs" target="_blank" rel="noopener">Open Figma mocks</a> · <a href="https://www.figma.com/board/SHYTD4tSZayhIDXhJ7NkST" target="_blank" rel="noopener">Open FigJam board</a> · Designer file viewed only: <a href="https://www.figma.com/design/i4A9HaitFCwAd1hx9cYdpm/DataViz---Reporting---2?node-id=9588-12926" target="_blank" rel="noopener">Datalab MCP — AI</a></p>
+        <iframe class="wt-embed" title="Measurement and Signals Ideate mocks in Figma" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F4DrPkOmx03Y93cIIFsHoUs" allowfullscreen></iframe>
+        <iframe class="wt-embed" style="height:380px" title="Measurement and Signals Ideate FigJam board" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fboard%2FSHYTD4tSZayhIDXhJ7NkST" allowfullscreen></iframe>
+
+        <h3>UX critique vs the one-pager</h3>
+        <table class="wt-table">
+          <thead><tr><th>Framing item</th><th>Status</th><th>Severity</th></tr></thead>
+          <tbody>
+            <tr><td>Which partners influence AI-mediated commerce?</td><td>Addressed — Index table with evidence level</td><td>—</td></tr>
+            <tr><td>Program observed vs partner inferred</td><td>Addressed — KPI chips + candidate conversions labeled Inferred</td><td>—</td></tr>
+            <tr><td>Retrieval ≠ mention ≠ attribution</td><td>Addressed — Visibility page and methodology panel</td><td>—</td></tr>
+            <tr><td>First crediting = additive periodic bonus</td><td>Addressed — Bonus planning, Simulated state</td><td>—</td></tr>
+            <tr><td>Insufficient data ≠ low influence</td><td>Addressed — Small Publisher A row</td><td>—</td></tr>
+            <tr><td>Path insertion as v1</td><td>Parked — Path page labeled not in first release</td><td>Corrected</td></tr>
+            <tr><td>Qual still thin (no interviews)</td><td>Labeled, not solved by UI</td><td>Major honesty</td></tr>
+          </tbody>
+        </table>
+        <div class="wt-gate"><strong>Human gate</strong> Residual: DS correlation is weak (0.2–0.3); do not over-sell candidate conversions. A real handoff waits on Antoni / Yifei for index methodology version and on UX-639 for qual.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="prototype">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#10b981">4</div>
+        <div>
+          <h2>Prototype — Brand report suite in this repo</h2>
+          <p><code>brand-prototype</code> is how designers spin up the full Brand UI shell locally. For this example, the AIM advertiser reports are checked into GitHub Pages. After the charter landed, the hosted suite was rebuilt: Index first, path last.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
+          <a class="wt-skill" href="../skills/#brand-prototype">brand-prototype</a>
+          <a class="wt-skill" href="../skills/#design-system">design-system</a>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>What you get</h3>
+            <ul>
+              <li>Hosted prototype: <a href="../prototypes/aim-measurement-signals/">/prototypes/aim-measurement-signals/</a></li>
+              <li>Brand Optimize chrome. Styleguide V2 tokens (Sarabun, #1D66DE / #D73184 / #ECB41A).</li>
+              <li>Adidas Performance / running shoes sample from the AIM Brand UX draft — not Casper, not the DataViz Partner Dashboard.</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>Reports in the suite</h3>
+            <ul>
+              <li>AI Influence Index (landing) with program observed KPIs and partner table</li>
+              <li>Partner evidence detail (Runner’s World / Wired)</li>
+              <li>AI Search Visibility (mentions only — do not pay)</li>
+              <li>Bonus planning (Simulated, additive)</li>
+              <li>Path &amp; attribution labeled <em>not in v1</em></li>
+            </ul>
+          </div>
+        </div>
+        <p>Try it below. Land on the Index, open Runner’s World, then Bonus planning. Path &amp; attribution should read as a future preview, not a payable report. Dummy Adidas program — nothing is production data.</p>
+        <p><a href="../prototypes/aim-measurement-signals/">Open the prototype in a new page</a></p>
+        <iframe class="wt-embed" style="height:640px" title="Hosted Measurement and Signals prototype" src="../prototypes/aim-measurement-signals/"></iframe>
+        <div class="wt-gate"><strong>Human gate</strong> You own fidelity after a local Brand shell is up. This hosted page is the shareable click-through for the pipeline example.</div>
+      </div>
+    </article>
+
+    <article class="wt-stage" id="test">
+      <header class="wt-stage-head">
+        <div class="wt-num" style="background:#06b6d4">5</div>
+        <div>
+          <h2>Test — draft a study, do not fake findings</h2>
+          <p>Synthetic pre-flight, then a Maze / Outset study draft. No recruiting. No loopback.</p>
+        </div>
+      </header>
+      <div class="wt-stage-body">
+        <div class="wt-skills">
+          <a class="wt-skill" href="../skills/#design-thinking-ux">design-thinking-ux (master)</a>
+          <a class="wt-skill" href="../skills/#accessibility-review">accessibility-review</a>
+          <a class="wt-skill" href="../skills/#ux-critique">ux-critique</a>
+          <a class="wt-skill" href="../skills/#test-plan">test-plan</a>
+          <span class="wt-skill" style="background:var(--pill-bug-bg);color:var(--pill-bug-text);border-color:var(--pill-bug-border)">test-loopback skipped</span>
+        </div>
+        <div class="wt-split">
+          <div class="wt-box">
+            <h3>Study draft (Maze unmoderated + optional Outset)</h3>
+            <ul>
+              <li>Recruit Brand ACMs / marketing directors (affiliate + emerging SEO-converging-with-affiliate persona). N = 5–8 Outset or 20–40 Maze — provisional until PM confirms.</li>
+              <li>Tasks: find program AI-origin visits and say if they are observed; name a bonus-eligible partner and why; find a partner that is <em>insufficient evidence</em> not low influence; say whether the bonus is payable today; do not treat Path as v1.</li>
+              <li>Success: can recommend including Runner’s World in a simulated bonus without calling 437 candidate conversions attributed.</li>
+            </ul>
+          </div>
+          <div class="wt-box">
+            <h3>A11y pre-flight (synthetic)</h3>
+            <ul>
+              <li>Secondary nav is buttons with <code>aria-current</code>. Partner names in the table are buttons.</li>
+              <li>Skip link to report. Focus-visible on nav and row buttons. Tables have headers.</li>
+              <li>Observed / Inferred / Insufficient are text chips, not color alone.</li>
+              <li>This is not a conformance audit. Remaining: methodology is a <code>details</code> disclosure (keyboard OK); Path page must not look like a live conversion report in Maze.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wt-gate"><strong>Human gate — and a hard stop</strong> <code>test-loopback</code> publishes Verified findings to Confluence and Jira. It must not run on synthetic pre-tests. This walkthrough correctly did not publish fake session findings.</div>
+      </div>
+    </article>
+
+    <section id="how">
+      <h2>How you would run this yourself</h2>
+      <p>In Cursor, with the UX DesignOps skills installed and PostHog / Pendo / Atlassian / Figma MCPs connected. Prefer the master skill — it invokes each stage skill so you do not have to:</p>
+      <figure class="pipe-prompt">
+        <div class="pipe-prompt-top">
+          <span class="pipe-prompt-skill">Master skill — copy this</span>
+          <button type="button" class="pipe-copy" data-copy="Use Design Thinking UX — walk me Empathize through Test. Start from meeting notes plus any Figma. View existing mocks but invent your own. Stop at each human gate. Create Figma and FigJam files, a draft one-pager and UX epic labeled PIPELINE TEST, and a Brand or Partner prototype. Stop before test-loopback unless we have real sessions.">Copy</button>
+        </div>
+        <pre>Use Design Thinking UX — walk me Empathize through Test. Start from meeting notes plus any Figma. View existing mocks but invent your own. Stop at each human gate. Create Figma and FigJam files, a draft one-pager and UX epic labeled PIPELINE TEST, and a Brand or Partner prototype. Stop before test-loopback unless we have real sessions.</pre>
+      </figure>
+      <p>Or run one stage at a time, e.g. <code>Use data-analyze on Data Lab save vs Ask Impact</code>, then <code>Use write-spec</code> only after you confirm it is worth solving. The master skill <code>design-thinking-ux</code> is the default for a full run.</p>
+    </section>
+
+    <section>
+      <h2>What the framework caught in this run</h2>
+      <table class="wt-table">
+        <thead><tr><th>Check</th><th>Worked as designed?</th></tr></thead>
+        <tbody>
+          <tr><td>Google Docs auth-walled — later filled by local charter + telemetry shaping</td><td>Yes — first pass used TTPI-769 only; this correction uses the two markdown exports</td></tr>
+          <tr><td>Designer mock viewed, not copied</td><td>Yes — Adidas sample from the charter Brand UX draft, not DataViz 9588-12926</td></tr>
+          <tr><td>Retrieval ≠ mention ≠ attributed conversion</td><td>Yes — labels enforced in prototype</td></tr>
+          <tr><td>Index not presented as transaction attribution</td><td>Yes</td></tr>
+          <tr><td>First crediting = additive bonus, path parked</td><td>Yes — after source correction (first prototype overclaimed paths)</td></tr>
+          <tr><td>Telemetry v1 non-goals respected in UX copy</td><td>Yes</td></tr>
+          <tr><td>Qual gap kept medium, not high</td><td>Yes</td></tr>
+          <tr><td>test-loopback not run</td><td>Yes — no real sessions</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="pipeline-loop" style="margin-top:28px"><strong>Findings would loop back to Empathize</strong> after real Maze / Outset sessions — via synthesize-research, then test-loopback. That step is still ahead of this example.</p>
+  </main>
+  <script src="../shared/designops-theme.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll(".pipe-copy").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var text = btn.getAttribute("data-copy") || "";
+          navigator.clipboard.writeText(text).then(function () {
+            var prev = btn.textContent;
+            btn.textContent = "Copied";
+            btn.classList.add("is-copied");
+            setTimeout(function () {
+              btn.textContent = prev;
+              btn.classList.remove("is-copied");
+            }, 1500);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

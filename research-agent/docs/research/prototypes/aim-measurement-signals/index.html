@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>AI Influence Measurement — Brand prototype</title>
+  <link rel="stylesheet" href="../../shared/designops.css" />
+  <script src="../../shared/auth-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../../shared/designops-auth.js" defer></script>
+  <style>
+    body.proto { margin: 0; background: var(--background-subdued); font-family: var(--font-family); color: var(--text-default); }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--interactive-default); color: #fff; padding: 8px 12px; z-index: 2000; }
+    .skip:focus { left: 8px; }
+    .app { display: flex; flex-direction: column; min-height: 100vh; }
+    .top { height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; background: #edf1f9; border-bottom: 1px solid var(--border-default); gap: 16px; }
+    .top a.brand { font-weight: 600; color: inherit; text-decoration: none; }
+    .tabs { display: flex; gap: 4px; }
+    .tab { height: 40px; padding: 0 14px; border: 0; border-radius: 8px; background: transparent; font: inherit; font-weight: 600; color: var(--text-default); }
+    .tab[aria-current="page"] { background: #fff; }
+    .shell { display: flex; flex: 1; min-height: 0; }
+    .rail { width: 72px; background: #edf1f9; border-right: 1px solid var(--border-default); display: flex; flex-direction: column; align-items: center; padding: 16px 0; gap: 12px; }
+    .rail span { font-size: 0.68rem; font-weight: 600; color: var(--text-subdued); }
+    .rail .on { color: #1d66de; }
+    .side { width: 232px; background: #f9fbff; border-right: 1px solid var(--border-default); padding: 16px 10px; overflow: auto; }
+    .gl { font-size: 0.7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-subdued); margin: 14px 8px 6px; }
+    .gl:first-child { margin-top: 0; }
+    .nav-a { display: block; width: 100%; text-align: left; border: 0; background: transparent; border-radius: 8px; padding: 8px 10px; font: inherit; font-size: 0.88rem; color: var(--text-default); cursor: pointer; }
+    .nav-a:hover, .nav-a:focus-visible { background: var(--background-hover); outline: 2px solid var(--interactive-default); outline-offset: 1px; }
+    .nav-a[aria-current="page"] { background: #d6ebff; color: #1d66de; font-weight: 600; }
+    .nav-muted { display: block; padding: 8px 10px; font-size: 0.88rem; color: var(--text-subdued); opacity: 0.7; }
+    .main { flex: 1; overflow: auto; padding: 24px 28px 48px; }
+    .banner { margin: 0 0 16px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--pill-theme-border); background: var(--pill-theme-bg); font-size: 0.88rem; }
+    h1 { margin: 0 0 4px; font-size: 1.45rem; }
+    .sub { margin: 0 0 16px; color: var(--muted); font-size: 0.9rem; }
+    .kpis { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin: 0 0 16px; }
+    @media (max-width: 1100px) { .kpis { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 960px) { .shell { flex-direction: column; } .rail, .side { width: 100%; flex-direction: row; overflow: auto; } }
+    .kpi { background: var(--card); border: 1px solid var(--border-default); border-radius: 8px; padding: 14px 16px; }
+    .kpi .l { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--text-subdued); }
+    .kpi .v { display: block; font-size: 1.4rem; font-weight: 700; margin: 4px 0 2px; }
+    .kpi .n { font-size: 0.8rem; }
+    .card { background: var(--card); border: 1px solid var(--border-default); border-radius: 12px; padding: 16px; margin: 0 0 16px; overflow: auto; }
+    .ct { font-weight: 600; margin: 0 0 4px; }
+    .cs { color: var(--muted); font-size: 0.85rem; margin: 0 0 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th { text-align: left; font-size: 0.7rem; color: var(--text-subdued); text-transform: uppercase; letter-spacing: .04em; padding: 8px 8px; border-bottom: 1px solid var(--border-default); }
+    td { padding: 9px 8px; border-bottom: 1px solid var(--border-default); vertical-align: top; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .chip { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+    .obs { background: #ecfdf3; color: #067647; }
+    .inf { background: #fef3c7; color: #92400e; }
+    .vis { background: #eff8ff; color: #175cd3; }
+    .low { background: #fef3f2; color: #b42318; }
+    .ok { background: #ecfdf3; color: #067647; }
+    .row-btn { width: 100%; text-align: left; border: 0; background: transparent; font: inherit; color: var(--interactive-default); font-weight: 600; cursor: pointer; padding: 0; }
+    .row-btn:focus-visible { outline: 2px solid var(--interactive-default); outline-offset: 2px; }
+    .note { color: var(--pill-bug-text); font-size: 0.85rem; }
+    .view { display: none; } .view.on { display: block; }
+    .take { background: #ecfdf3; border: 1px solid #86efac; border-radius: 10px; padding: 12px 14px; margin: 0 0 16px; }
+    .dark .take { background: #052e16; border-color: #166534; color: #bbf7d0; }
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 860px) { .g2 { grid-template-columns: 1fr; } }
+    .meth { margin: 0 0 16px; }
+    .meth summary { cursor: pointer; font-weight: 600; }
+    .linkish { background: none; border: 0; padding: 0; font: inherit; color: var(--interactive-default); font-weight: 600; cursor: pointer; }
+    .linkish:focus-visible { outline: 2px solid var(--interactive-default); }
+    .bars { display: flex; flex-direction: column; gap: 8px; }
+    .bar-row { display: grid; grid-template-columns: 110px 1fr 70px; gap: 8px; align-items: center; font-size: 0.85rem; }
+    .track { height: 22px; background: var(--background-hover); border-radius: 4px; overflow: hidden; }
+    .fill { height: 100%; background: #1d66de; color: #fff; font-size: 0.72rem; font-weight: 600; display: flex; align-items: center; padding: 0 8px; min-width: 2rem; }
+    .fill.p { background: #d73184; }
+  </style>
+</head>
+<body class="proto">
+  <a class="skip" href="#main">Skip to report</a>
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts.</p></div></div>
+
+  <div class="app">
+    <header class="top">
+      <div style="display:flex;align-items:center;gap:16px">
+        <a class="brand" href="../../walkthroughs/2026-08-28-aim-measurement-signals.html">impact.com</a>
+        <nav class="tabs" aria-label="Brand">
+          <span class="tab">Home</span>
+          <button class="tab" type="button" aria-current="page">Optimize</button>
+          <span class="tab">Partners</span>
+          <span class="tab">Data Lab</span>
+        </nav>
+      </div>
+      <a href="../../walkthroughs/2026-08-28-aim-measurement-signals.html">Back to walkthrough</a>
+    </header>
+    <div class="shell">
+      <aside class="rail" aria-label="Primary">
+        <span>Engage</span>
+        <span class="on">Optimize</span>
+        <span>Protect</span>
+        <span>Insights</span>
+      </aside>
+      <nav class="side" aria-label="AI Influence Measurement">
+        <div class="gl">AI Influence Measurement</div>
+        <button class="nav-a" type="button" data-v="index" aria-current="page">AI Influence Index</button>
+        <button class="nav-a" type="button" data-v="visibility">AI Search Visibility</button>
+        <button class="nav-a" type="button" data-v="bonus">Bonus planning</button>
+        <button class="nav-a" type="button" data-v="paths">Path &amp; attribution</button>
+        <div class="gl">Existing</div>
+        <span class="nav-muted">Total Value</span>
+        <span class="nav-muted">Data Lab Builder</span>
+      </nav>
+      <main class="main" id="main" tabindex="-1">
+        <p class="banner"><strong>Pipeline test.</strong> First release = advertiser report + index + simulated bonus. Dummy Adidas Performance program from the AIM charter — not production. <a href="https://impact.atlassian.net/browse/UX-645">UX-645</a></p>
+
+        <section class="view on" id="view-index">
+          <h1>AI Influence Index</h1>
+          <p class="sub">Adidas · Performance · Running shoes · January 2026 · Methodology AIM v0.1 · Bonus policy: simulated</p>
+          <p class="cs">Program-level AI-origin activity is <span class="chip obs">Observed</span>. Partner-level influence is evidence-ranked. Candidate conversions are not attributed unless a crediting policy is on.</p>
+          <div class="kpis">
+            <div class="kpi"><span class="l">AI-origin visits</span><span class="v">42.8K</span><span class="n"><span class="chip obs">Observed</span> advertiser-side</span></div>
+            <div class="kpi"><span class="l">AI-origin detail page views</span><span class="v">18.6K</span><span class="n"><span class="chip obs">Observed</span></span></div>
+            <div class="kpi"><span class="l">AI-origin conversions</span><span class="v">1,211</span><span class="n"><span class="chip obs">Observed / linked</span></span></div>
+            <div class="kpi"><span class="l">Mentions</span><span class="v">239</span><span class="n"><span class="chip vis">AI Search Visibility</span></span></div>
+            <div class="kpi"><span class="l">AI retrievals</span><span class="v">1.9M</span><span class="n"><span class="chip obs">Publisher-side</span> — not citations</span></div>
+            <div class="kpi"><span class="l">Evidence coverage</span><span class="v">68%</span><span class="n">Share with an approved AI source</span></div>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><span class="l">Program index</span><span class="v">74</span><span class="n">0–100 · not transaction attribution</span></div>
+            <div class="kpi"><span class="l">Bonus-eligible partners</span><span class="v">12</span><span class="n">Index ≥75 and evidence Medium+</span></div>
+            <div class="kpi"><span class="l">Proposed AI bonus</span><span class="v">$54.5K</span><span class="n"><span class="chip inf">Simulated</span> additive to last-click</span></div>
+          </div>
+          <details class="meth card">
+            <summary>How this report is calculated</summary>
+            <p class="cs" style="margin-top:10px">Combines AI Search Visibility mentions, observed publisher retrievals (ScalePost today; impact.com crawler telemetry in pilot), advertiser AI-origin visits, and commerce linkage. Retrieval ≠ mention. Evertune alone does not qualify a partner for compensation. Index is for ranking and bonus eligibility — not path credit.</p>
+            <p class="cs">Current limitations: retrieval-to-sales correlation in DS is early (0.2–0.3). Halo / AI Equity readout 2.6x is a DS experiment, not this index. Sparse partners show Insufficient evidence, not “low influence.”</p>
+          </details>
+          <div class="card">
+            <p class="ct">Partner AI influence</p>
+            <p class="cs">Click a partner for evidence. This table does not claim each partner caused a specific AI-origin visit.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Partner</th>
+                  <th class="num">Clicks</th>
+                  <th class="num">Click-attributed conv.</th>
+                  <th class="num">Candidate AI conv.</th>
+                  <th>Grounding</th>
+                  <th>Evidence</th>
+                  <th class="num">Index</th>
+                  <th>Bonus</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><button class="row-btn" type="button" data-partner="rw">Runner’s World</button></td>
+                  <td class="num">18,400</td><td class="num">612</td><td class="num">437 <span class="chip inf">Inferred</span></td>
+                  <td>Exact product — Ultraboost</td>
+                  <td><span class="chip ok">High</span> retrieval + mentions + commerce</td>
+                  <td class="num">89</td>
+                  <td><span class="chip ok">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td><button class="row-btn" type="button" data-partner="wired">Wired</button></td>
+                  <td class="num">14,200</td><td class="num">408</td><td class="num">390 <span class="chip inf">Inferred</span></td>
+                  <td>Product family — training gear</td>
+                  <td><span class="chip ok">High</span> retrieval + commerce</td>
+                  <td class="num">87</td>
+                  <td><span class="chip ok">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td>The Strategist</td>
+                  <td class="num">13,400</td><td class="num">408</td><td class="num">340 <span class="chip inf">Inferred</span></td>
+                  <td>Brand + category</td>
+                  <td><span class="chip inf">Medium</span></td>
+                  <td class="num">78</td>
+                  <td><span class="chip ok">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td>Complex</td>
+                  <td class="num">12,674</td><td class="num">356</td><td class="num">218 <span class="chip inf">Inferred</span></td>
+                  <td>Brand + category</td>
+                  <td><span class="chip inf">Medium</span></td>
+                  <td class="num">75</td>
+                  <td><span class="chip ok">Eligible</span></td>
+                </tr>
+                <tr>
+                  <td>Gear Patrol</td>
+                  <td class="num">9,600</td><td class="num">272</td><td class="num">218</td>
+                  <td>Category — trail shoes</td>
+                  <td><span class="chip inf">Medium</span> retrieval only</td>
+                  <td class="num">72</td>
+                  <td>Review</td>
+                </tr>
+                <tr>
+                  <td>CNN Underscored</td>
+                  <td class="num">9,600</td><td class="num">272</td><td class="num">122</td>
+                  <td>Brand-only</td>
+                  <td><span class="chip vis">Low</span> mentions only — no commerce linkage</td>
+                  <td class="num">54</td>
+                  <td><span class="chip low">Not eligible</span></td>
+                </tr>
+                <tr>
+                  <td>Small Publisher A</td>
+                  <td class="num">3,100</td><td class="num">44</td><td class="num">—</td>
+                  <td>Category only</td>
+                  <td><span class="chip low">Insufficient evidence</span></td>
+                  <td class="num">—</td>
+                  <td><span class="chip low">Not eligible</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="view-detail">
+          <p><button class="linkish" type="button" data-v="index">← Back to AI Influence Index</button></p>
+          <h1 id="detail-title">Runner’s World</h1>
+          <p class="sub">Partner evidence detail · Adidas running · January 2026</p>
+          <div class="take"><strong>Suggested action.</strong> Include in the January AI Influence Bonus pool. Path-credit is <em>not</em> active — this partner is not inserted into conversion paths.</div>
+          <div class="card">
+            <p class="ct">Evidence</p>
+            <table>
+              <thead><tr><th>Signal</th><th>Status</th><th>Type</th></tr></thead>
+              <tbody>
+                <tr><td>Observed retrievals</td><td>312K</td><td><span class="chip obs">Observed</span> publisher-side fetch — not a citation</td></tr>
+                <tr><td>Mentions</td><td>84</td><td><span class="chip vis">AI Search Visibility</span></td></tr>
+                <tr><td>Brand / product grounding</td><td>Adidas Ultraboost / running shoes</td><td>Exact product match</td></tr>
+                <tr><td>Standard clicks</td><td>18,400</td><td><span class="chip obs">Observed</span></td></tr>
+                <tr><td>Click-attributed conversions</td><td>612</td><td>Existing last-click — unchanged</td></tr>
+                <tr><td>Modeled associated DPVs</td><td>18,900</td><td><span class="chip inf">Inferred</span> detail view only</td></tr>
+                <tr><td>Modeled associated conversions</td><td>437</td><td><span class="chip inf">Candidate</span> — not attributed</td></tr>
+                <tr><td>AI Influence Ratio</td><td>0.83x</td><td>$0.83 candidate AI value per $1 click-attributed</td></tr>
+                <tr><td>Path-credit eligibility</td><td>Not active</td><td>Needs timestamps + path store — later</td></tr>
+                <tr><td>Bonus status</td><td>Eligible</td><td>Index 89 · High evidence</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="view-visibility">
+          <h1>AI Search Visibility</h1>
+          <p class="sub">How Adidas appears in AI answers. Evertune-powered. Supports GEO and publisher opportunity — not compensation by itself.</p>
+          <div class="kpis">
+            <div class="kpi"><span class="l">Mentions</span><span class="v">239</span><span class="n"><span class="chip vis">Monitored answers</span></span></div>
+            <div class="kpi"><span class="l">Visibility score</span><span class="v">68</span><span class="n">Not the Influence Index</span></div>
+            <div class="kpi"><span class="l">Share of voice</span><span class="v">34%</span><span class="n">Running-shoe prompts</span></div>
+          </div>
+          <div class="card">
+            <p class="ct">Source domains in answers</p>
+            <p class="cs">A mention is not a retrieval. Do not pay from this page.</p>
+            <div class="bars">
+              <div class="bar-row"><span>runnersworld.com</span><div class="track"><div class="fill" style="width:84%">84</div></div><span>84</span></div>
+              <div class="bar-row"><span>wired.com</span><div class="track"><div class="fill p" style="width:71%">71</div></div><span>71</span></div>
+              <div class="bar-row"><span>cnn.com</span><div class="track"><div class="fill" style="width:44%;background:#ecb41a;color:#25282f">44</div></div><span>44</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-bonus">
+          <h1>AI Bonus planning</h1>
+          <p class="sub">First crediting mechanism: periodic, additive bonus. The brand selects a policy. impact.com does not auto-pay from this screen.</p>
+          <div class="kpis">
+            <div class="kpi"><span class="l">Policy state</span><span class="v" style="font-size:1.05rem">Simulated</span><span class="n">Not payable until Active</span></div>
+            <div class="kpi"><span class="l">Bonus pool</span><span class="v">$54.5K</span><span class="n">Monthly · additive to last-click</span></div>
+            <div class="kpi"><span class="l">Eligibility</span><span class="v" style="font-size:1.05rem">Index ≥ 75</span><span class="n">Evidence Medium or High</span></div>
+          </div>
+          <div class="take"><strong>Working-group rule.</strong> Initial AI compensation is additive. It does not remove credit from the existing conversion winner.</div>
+          <div class="g2">
+            <div class="card">
+              <p class="ct">Reporting only</p>
+              <p class="cs">Show evidence. No bonus calculated.</p>
+            </div>
+            <div class="card">
+              <p class="ct">Simulated (this prototype)</p>
+              <p class="cs">Preview allocation without activating payout.</p>
+            </div>
+            <div class="card">
+              <p class="ct">Proposed</p>
+              <p class="cs">Ready for advertiser approval.</p>
+            </div>
+            <div class="card">
+              <p class="ct">Active</p>
+              <p class="cs">Enabled by the advertiser and payable.</p>
+            </div>
+          </div>
+          <div class="card">
+            <p class="ct">January allocation (simulated)</p>
+            <table>
+              <thead><tr><th>Partner</th><th>Evidence</th><th class="num">Index</th><th class="num">Proposed bonus</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Runner’s World</td><td><span class="chip ok">High</span></td><td class="num">89</td><td class="num">$5,640</td><td>Eligible</td></tr>
+                <tr><td>Wired</td><td><span class="chip ok">High</span></td><td class="num">87</td><td class="num">$4,940</td><td>Eligible</td></tr>
+                <tr><td>The Strategist</td><td><span class="chip inf">Medium</span></td><td class="num">78</td><td class="num">$3,530</td><td>Eligible</td></tr>
+                <tr><td>Complex</td><td><span class="chip inf">Medium</span></td><td class="num">75</td><td class="num">$3,390</td><td>Eligible</td></tr>
+                <tr><td>Gear Patrol</td><td><span class="chip inf">Medium</span></td><td class="num">72</td><td class="num">—</td><td>Review</td></tr>
+                <tr><td>CNN Underscored</td><td><span class="chip vis">Low</span></td><td class="num">54</td><td class="num">—</td><td>Not eligible — mentions only</td></tr>
+                <tr><td>Small Publisher A</td><td><span class="chip low">Insufficient</span></td><td class="num">—</td><td class="num">—</td><td>Not eligible — missing data, not “low influence”</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="view-paths">
+          <h1>Path &amp; attribution</h1>
+          <p class="sub">Parallel track — not first release. DS calls event-level insertion the “holy grail”: needs retrieval timestamps, content graph, product graph. 8-minute window raises reattribution questions.</p>
+          <div class="take"><strong>Not in v1.</strong> Crawler telemetry shaping explicitly: no attribution claims, no customer reporting, no scoring. This page is a preview so brands know the long-term path exists — it must not look payable.</div>
+          <div class="card">
+            <p class="ct">If path insertion were ready (preview only)</p>
+            <p class="cs">Example the working group uses: “ChatGPT referral via Wired.” Last-click winner stays unless the brand selects a different policy.</p>
+            <p>Google Search → ChatGPT → retrieved wired.com review → sale. Wired would be an <em>inferred AI influence touchpoint</em>, not a replacement last-click winner.</p>
+            <p class="note" style="margin-top:12px">Do not ship this as a conversion-path report until Scoring Productionization injects synthetic referrals into live reporting.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="../../shared/designops-theme.js"></script>
+  <script>
+    const views = ["index","visibility","bonus","paths","detail"];
+    function show(id) {
+      views.forEach(v => {
+        const el = document.getElementById("view-" + v);
+        if (el) el.classList.toggle("on", v === id);
+      });
+      document.querySelectorAll("button.nav-a").forEach(b => {
+        b.setAttribute("aria-current", b.dataset.v === id ? "page" : "false");
+      });
+      if (id === "detail") {
+        document.querySelectorAll("button.nav-a").forEach(b => b.setAttribute("aria-current", b.dataset.v === "index" ? "page" : "false"));
+      }
+      const main = document.getElementById("main");
+      main.focus({ preventScroll: true });
+      main.scrollTo(0, 0);
+    }
+    document.querySelectorAll("button.nav-a").forEach(b => b.addEventListener("click", () => show(b.dataset.v)));
+    document.querySelectorAll("[data-v='index']").forEach(b => {
+      if (b.classList.contains("linkish")) b.addEventListener("click", () => show("index"));
+    });
+    document.querySelectorAll(".row-btn").forEach(b => b.addEventListener("click", () => {
+      const names = { rw: "Runner’s World", wired: "Wired" };
+      document.getElementById("detail-title").textContent = names[b.dataset.partner] || "Partner";
+      show("detail");
+    }));
+  </script>
+</body>
+</html>
