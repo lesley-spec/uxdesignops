@@ -360,10 +360,14 @@ def render_affinity_board_html(rows: List[Dict[str, Any]]) -> str:
     return "\n".join(sections)
 
 
-def designops_assets_hrefs(*, at_root: bool = False, skills_page: bool = False) -> Dict[str, str]:
+def designops_assets_hrefs(
+    *, at_root: bool = False, skills_page: bool = False, pack_page: bool = False
+) -> Dict[str, str]:
     """Shared CSS/JS paths for GitHub Pages."""
     if at_root:
         prefix = "./shared"
+    elif pack_page:
+        prefix = "../../../shared"
     elif skills_page:
         prefix = "../shared"
     else:
@@ -376,8 +380,10 @@ def designops_assets_hrefs(*, at_root: bool = False, skills_page: bool = False) 
     }
 
 
-def designops_auth_head_scripts(*, at_root: bool = False, skills_page: bool = False) -> str:
-    assets = designops_assets_hrefs(at_root=at_root, skills_page=skills_page)
+def designops_auth_head_scripts(
+    *, at_root: bool = False, skills_page: bool = False, pack_page: bool = False
+) -> str:
+    assets = designops_assets_hrefs(at_root=at_root, skills_page=skills_page, pack_page=pack_page)
     return (
         f'<script src="{assets["auth_config"]}"></script>'
         f'<script src="https://accounts.google.com/gsi/client" async defer></script>'
