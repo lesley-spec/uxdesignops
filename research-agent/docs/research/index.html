@@ -113,7 +113,7 @@
               <li>Open the <a href="./research/">latest research report</a> or the monthly <a href="./usage/">Brand &amp; Partner usage snapshot</a>.</li>
               <li>Connect the same MCPs in your harness (PostHog, Pendo, Dovetail, Outset, Confluence/Jira) — then use the skills to ask questions in Cursor, Claude, Figma Agent, or any Agent Skills client.</li>
               <li>Or invoke a single Empathize skill by name — e.g. “use data-analyze: why is PublisherPro link gen dropping?”</li>
-              <li>At the human gate, confirm or reject “problem worth solving” before Define.</li>
+              <li>At the human gate, designer and UX researcher confirm or reject “problem worth solving” before Define.</li>
             </ol>
           </section>
           <section>
@@ -223,9 +223,9 @@
           </section>
           <section class="pipe-gate">
             <h3>Human gate</h3>
-            <p>Do not auto-advance to Define. After evidence is clear, the designer confirms whether this is a problem worth solving. Skills recommend; they do not decide.</p>
+            <p>Do not auto-advance to Define. After evidence is clear, the designer and UX researcher confirm whether this is a problem worth solving. Skills recommend; they do not decide.</p>
           </section>
-          <div class="pipe-sticky">Designer confirms problem worth solving</div>
+          <div class="pipe-sticky">Designer + UX researcher confirm problem worth solving</div>
         </div>
       </article>
 
@@ -609,7 +609,7 @@
               <li>After the Prototype gate (prototype URL ready) — or continue from <code>design-thinking-ux</code>.</li>
               <li>In Cursor/Claude: “use Design Thinking UX” (master) or “use test-plan on [prototype link]” — it runs synthetic pre-tests, then drafts an Outset/Maze study.</li>
               <li>Connect Outset MCP at <code>https://api.outset.ai/mcp/</code> (OAuth). On confirm, the skill creates an Outset <em>draft</em>. Do not recruit unless you ask. The v1 API key only lists studies.</li>
-              <li>Review all AI output before stakeholders.</li>
+              <li>Designer and UX researcher review all AI output before stakeholders.</li>
               <li>After sessions: the master skill invokes <code>synthesize-research</code> then <code>test-loopback</code> — or call those skills directly.</li>
             </ol>
           </section>
@@ -716,15 +716,15 @@
           </section>
           <section class="pipe-gate">
             <h3>Human gate</h3>
-            <p>Review AI study summaries and loopback posts before stakeholders. Findings loop back to Empathize — do not treat AI synthesis as verified research until reviewed.</p>
+            <p>Designer and UX researcher review AI study summaries and loopback posts before stakeholders. Findings loop back to Empathize — do not treat AI synthesis as verified research until reviewed.</p>
           </section>
-          <div class="pipe-sticky">Review AI summaries before stakeholders</div>
+          <div class="pipe-sticky">Designer + UX researcher review AI summaries before stakeholders</div>
         </div>
       </article>
 
     </div>
 
-    <p class="pipeline-loop"><strong>Findings loop back to Empathize.</strong> Test does not end the pipeline — Verified session findings become the next research cycle. Skills recommend; designers decide at every gate.</p>
+    <p class="pipeline-loop"><strong>Findings loop back to Empathize.</strong> Test does not end the pipeline — Verified session findings become the next research cycle. Skills recommend; designers decide at every gate. UX researchers join the Empathize and Test gates.</p>
   </main>
   <script src="./shared/designops-theme.js"></script>
   <script>
