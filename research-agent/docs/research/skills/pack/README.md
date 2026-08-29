@@ -8,7 +8,8 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 
 | Skill | Use when |
 |---|---|
-| `design-thinking-ux` | Guided run Empathize → Test: intake questions, then the orchestrator **invokes** the phase skills (research, write-spec / tickets, ideate, prototype shells, test-plan). First skill to load for a full pipeline. |
+| `ux-install-all-skills` | First time / new machine: one prompt installs all **19** pipeline skills into this project and globally (Cursor + Claude). Do this before a guided run. |
+| `design-thinking-ux` | Guided run Empathize → Test: intake questions, then the orchestrator **invokes** the phase skills (research, write-spec / tickets, ideate, prototype shells, test-plan). First skill to **run** for a full pipeline. |
 
 Phase skills below still work on their own. The master skill is for “take me through the process.”
 
@@ -94,9 +95,17 @@ Phase skills below still work on their own. The master skill is for “take me t
 
 ## Install in any harness
 
-**Download all 19 skills (master + all phases):** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
+**Easiest (Cursor / Claude Code):** say `use ux-install-all-skills`. The agent installs all 19 pipeline skills into this project **and** globally (`~/.cursor/skills`, `~/.claude/skills`) so the next project works too.
 
-One-command install (Cursor example — installs every skill):
+**Download the pack:** [designops-skills.zip](https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip) · [Skills page](https://lesley-spec.github.io/uxdesignops/skills/)
+
+One-command install (no chat required):
+
+```bash
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+```
+
+Harness-only (project folder, no global copy) — Cursor example:
 
 ```bash
 curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .
@@ -107,7 +116,7 @@ Replace `cursor` with `claude` or `agents` for Claude Code or Copilot/Codex.
 | Harness | Typical path |
 |---|---|
 | Cursor | `.cursor/skills/<name>/` (symlinked locally; `.cursor/` is gitignored) |
-| Claude Code / Claude | `.claude/skills/<name>/` (all 19 skills, tracked in this repo) |
+| Claude Code / Claude | `.claude/skills/<name>/` (pipeline skills, tracked in this repo) |
 | Codex / VS Code Copilot | `.agents/skills/<name>/` |
 | Figma Agent | Project or org skills that point at the same `SKILL.md` folders |
 
@@ -117,7 +126,7 @@ mkdir -p .claude/skills
 ln -sfn ../../.agents/skills/write-spec .claude/skills/write-spec
 ```
 
-Invoke by name, e.g. “use `design-thinking-ux`” for the full pipeline, or a phase skill: “use `write-spec` on this confirmed finding” / “use `ideate` on UX-1234” / “run `ux-critique` before handoff” / “use `ux-prototyping`” / “use `brand-prototype`” / “use `partner-prototype`” / “use `test-plan` on [prototype link]”.
+Invoke by name, e.g. “use `ux-install-all-skills`” to install the pack, “use `design-thinking-ux`” for the full pipeline, or a phase skill: “use `write-spec` on this confirmed finding” / “use `ideate` on UX-1234” / “run `ux-critique` before handoff” / “use `ux-prototyping`” / “use `brand-prototype`” / “use `partner-prototype`” / “use `test-plan` on [prototype link]”.
 
 ```bash
 # Prototype shells (also symlink for Cursor)

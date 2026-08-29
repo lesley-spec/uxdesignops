@@ -60,6 +60,8 @@ also asked for the full pipeline.
 
 ## Session start (always)
 
+0. If sibling skills are missing (`write-spec`, `ideate`, `ux-prototyping`,
+   `test-plan`), invoke `ux-install-all-skills` first, then continue.
 1. Show the **pipeline board** (template below). Fill what you already know.
 2. **Intake** — batch these (do not drip one-by-one):
 

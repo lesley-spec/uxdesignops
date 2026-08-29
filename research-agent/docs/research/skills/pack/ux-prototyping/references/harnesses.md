@@ -66,7 +66,14 @@ into `lesley-spec` templates.
 
 ## Skills install (any harness)
 
-If `ux-prototyping` / `brand-prototype` / `partner-prototype` are missing:
+Prefer `ux-install-all-skills` (all 19 pipeline skills, project + global).
+If that skill is missing:
+
+```bash
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+```
+
+Harness-only fallback:
 
 ```bash
 curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install.sh | bash -s -- cursor .
