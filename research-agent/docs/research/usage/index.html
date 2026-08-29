@@ -49,8 +49,33 @@
       background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 12px 4px;
     }
     .chart-caption { color: var(--muted); font-size: 0.78rem; margin: 8px 0 0; }
+    .chart-frame svg { overflow: visible; display: block; width: 100%; height: auto; }
+    .chart-tip {
+      position: fixed;
+      z-index: 1200;
+      pointer-events: none;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      min-width: 148px;
+      max-width: 280px;
+      box-shadow: var(--elevation-xs, 0 4px 12px rgba(0,0,0,.12));
+    }
+    .chart-tip[hidden] { display: none; }
+    .chart-tip .tip-title { font-weight: 600; margin-bottom: 4px; }
+    .chart-tip .tip-row { display: flex; justify-content: space-between; gap: 16px; }
+    .chart-tip .tip-label { color: var(--muted); }
+    .chart-tip .tip-val { font-variant-numeric: tabular-nums; font-weight: 600; }
     .bar-list { display: flex; flex-direction: column; gap: 8px; padding: 8px 4px 12px; }
-    .bar-row { display: grid; grid-template-columns: 120px 1fr 72px; gap: 10px; align-items: center; font-size: 0.85rem; }
+    .bar-row {
+      display: grid; grid-template-columns: 120px 1fr 72px; gap: 10px; align-items: center;
+      font-size: 0.85rem; padding: 4px 6px; border-radius: 6px; cursor: default;
+    }
+    .bar-row:hover { background: var(--background-hover); }
     .bar-track { height: 10px; background: var(--background-hover); border-radius: 999px; overflow: hidden; }
     .bar-fill { height: 100%; background: var(--interactive-default); border-radius: 999px; }
     .bar-val { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -323,6 +348,7 @@
 
     <p class="caveat">Source: Pendo subscription 5150941101162496, app Impact (−323232). Brand segment “Brands (no internal)”. Partner segment “Partners (no eBay, no internal)”. Identified users only. Account ≠ visitor. PES adoption is omitted (Pendo’s default core-event score is not useful here). Machine-readable snapshot: <a href="./2026-08.json">2026-08.json</a>. Next month: recapture the same queries. Google Analytics is not in this snapshot — it would add landing pages, device, geo, and session quality without relying on Pendo page tags.</p>
   </main>
+  <div class="chart-tip" id="chart-tip" hidden role="tooltip"></div>
   <script src="../shared/designops-theme.js"></script>
   <script>
     (function () {
@@ -334,8 +360,60 @@
       var partnerWeekV = [67538,63831,56685,56317,61743,58985,56771,57971,63661,70244,70917,72447,68253];
       var brandRet = [69.71,47.24,47.89,48.85,53.32,58.14,65.1];
       var partnerRet = [37.01,14.85,12.95,11.93,12.6,13.49,14.98];
-      var brandAreas = [{n:"Engage",v:6710},{n:"General",v:5479},{n:"Finance",v:4346},{n:"Discover",v:4155},{n:"Protect",v:885},{n:"Optimize",v:514}];
-      var partnerAreas = [{n:"Home",v:100112},{n:"Brands",v:93672},{n:"Discover",v:56867},{n:"Manage",v:48836},{n:"Reports",v:23975},{n:"Content",v:22407},{n:"Tools",v:2143}];
+      var brandAreas = [
+        {n:"Engage",v:6710,pct:"82.6%",time:"23m 41s"},
+        {n:"General",v:5479,pct:"67.5%",time:"6m 52s"},
+        {n:"Finance",v:4346,pct:"53.5%",time:"6m 10s"},
+        {n:"Discover",v:4155,pct:"51.2%",time:"1h 30m"},
+        {n:"Protect",v:885,pct:"10.9%",time:"10m 8s"},
+        {n:"Optimize",v:514,pct:"6.3%",time:"5m 34s"}
+      ];
+      var partnerAreas = [
+        {n:"Home",v:100112,pct:"46.4%",time:"4m 48s"},
+        {n:"Brands",v:93672,pct:"43.4%",time:"6m 23s"},
+        {n:"Discover",v:56867,pct:"26.4%",time:"22m 12s"},
+        {n:"Manage",v:48836,pct:"22.6%",time:"4m 12s"},
+        {n:"Reports",v:23975,pct:"11.1%",time:"6m 22s"},
+        {n:"Content",v:22407,pct:"10.4%",time:"5m 45s"},
+        {n:"Tools",v:2143,pct:"1.0%",time:"1m 28s"}
+      ];
+
+      var tip = document.getElementById("chart-tip");
+
+      function hideTip() {
+        if (tip) tip.hidden = true;
+      }
+
+      function placeTip(ev) {
+        if (!tip || tip.hidden) return;
+        var pad = 12;
+        var x = ev.clientX + pad;
+        var y = ev.clientY + pad;
+        tip.style.left = x + "px";
+        tip.style.top = y + "px";
+        var r = tip.getBoundingClientRect();
+        if (r.right > window.innerWidth - 8) tip.style.left = Math.max(8, ev.clientX - r.width - pad) + "px";
+        if (r.bottom > window.innerHeight - 8) tip.style.top = Math.max(8, ev.clientY - r.height - pad) + "px";
+      }
+
+      function showTip(html, ev) {
+        if (!tip) return;
+        tip.innerHTML = html;
+        tip.hidden = false;
+        placeTip(ev);
+      }
+
+      function tipRow(label, value) {
+        return '<div class="tip-row"><span class="tip-label">' + label + '</span><span class="tip-val">' + value + '</span></div>';
+      }
+
+      function fmtNum(n) {
+        return Math.round(n).toLocaleString();
+      }
+
+      function fmtPct(n) {
+        return (Math.round(n * 10) / 10).toFixed(1) + "%";
+      }
 
       function stroke() {
         var s = getComputedStyle(document.documentElement);
@@ -343,7 +421,8 @@
           line: s.getPropertyValue("--interactive-default").trim() || "#0077db",
           muted: s.getPropertyValue("--muted-foreground").trim() || "#606672",
           border: s.getPropertyValue("--border-default").trim() || "#e0e9f0",
-          text: s.getPropertyValue("--text-default").trim() || "#25282f"
+          text: s.getPropertyValue("--text-default").trim() || "#25282f",
+          card: s.getPropertyValue("--card").trim() || "#ffffff"
         };
       }
 
@@ -400,19 +479,86 @@
           t.textContent = s.name;
           svg.appendChild(t);
         });
+
+        var hoverG = document.createElementNS(ns, "g");
+        hoverG.setAttribute("pointer-events", "none");
+        hoverG.style.display = "none";
+        var vline = document.createElementNS(ns, "line");
+        vline.setAttribute("y1", pad.t);
+        vline.setAttribute("y2", pad.t + ih);
+        vline.setAttribute("stroke", c.muted);
+        vline.setAttribute("stroke-width", "1");
+        vline.setAttribute("stroke-dasharray", "3 3");
+        hoverG.appendChild(vline);
+        var dots = series.map(function (s, si) {
+          var dot = document.createElementNS(ns, "circle");
+          dot.setAttribute("r", "4");
+          dot.setAttribute("fill", si === 0 ? c.line : c.muted);
+          dot.setAttribute("stroke", c.card);
+          dot.setAttribute("stroke-width", "1.5");
+          hoverG.appendChild(dot);
+          return dot;
+        });
+        svg.appendChild(hoverG);
+
+        cats.forEach(function (label, i) {
+          var cx = x(i);
+          var left = i === 0 ? pad.l : (x(i - 1) + cx) / 2;
+          var right = i === cats.length - 1 ? w - pad.r : (cx + x(i + 1)) / 2;
+          var rect = document.createElementNS(ns, "rect");
+          rect.setAttribute("x", left);
+          rect.setAttribute("y", pad.t);
+          rect.setAttribute("width", Math.max(1, right - left));
+          rect.setAttribute("height", ih);
+          rect.setAttribute("fill", "transparent");
+          rect.style.cursor = "crosshair";
+          rect.addEventListener("mousemove", function (ev) {
+            vline.setAttribute("x1", cx);
+            vline.setAttribute("x2", cx);
+            series.forEach(function (s, si) {
+              dots[si].setAttribute("cx", cx);
+              dots[si].setAttribute("cy", y(s.data[i]));
+            });
+            hoverG.style.display = "";
+            var rows = series.map(function (s) {
+              return tipRow(s.name, s.pct ? fmtPct(s.data[i]) : fmtNum(s.data[i]));
+            }).join("");
+            showTip('<div class="tip-title">' + label + "</div>" + rows, ev);
+          });
+          rect.addEventListener("mouseleave", function () {
+            hoverG.style.display = "none";
+            hideTip();
+          });
+          svg.appendChild(rect);
+        });
       }
 
       function bars(id, rows) {
         var el = document.getElementById(id);
         if (!el) return;
         var max = Math.max.apply(null, rows.map(function (r) { return r.v; }));
-        el.innerHTML = rows.map(function (r) {
+        el.innerHTML = "";
+        rows.forEach(function (r) {
           var w = Math.max(2, (r.v / max) * 100);
-          return '<div class="bar-row"><span>' + r.n + '</span><div class="bar-track"><div class="bar-fill" style="width:' + w + '%"></div></div><span class="bar-val">' + r.v.toLocaleString() + '</span></div>';
-        }).join("");
+          var row = document.createElement("div");
+          row.className = "bar-row";
+          row.innerHTML = '<span>' + r.n + '</span><div class="bar-track"><div class="bar-fill" style="width:' + w + '%"></div></div><span class="bar-val">' + r.v.toLocaleString() + '</span>';
+          row.addEventListener("mousemove", function (ev) {
+            showTip(
+              '<div class="tip-title">' + r.n + "</div>" +
+              tipRow("Accounts", r.v.toLocaleString()) +
+              tipRow("% of actives", r.pct) +
+              tipRow("Avg daily time", r.time),
+              ev
+            );
+          });
+          row.addEventListener("mouseleave", hideTip);
+          el.appendChild(row);
+        });
       }
 
       function draw() {
+        hideTip();
         lineChart("brand-week", WEEKS, [
           { name: "Unique accounts", data: brandWeekA },
           { name: "Unique visitors", data: brandWeekV }
@@ -421,13 +567,14 @@
           { name: "Unique accounts", data: partnerWeekA },
           { name: "Unique visitors", data: partnerWeekV }
         ]);
-        lineChart("brand-ret", RET, [{ name: "Account retention %", data: brandRet }], 80);
-        lineChart("partner-ret", RET, [{ name: "Account retention %", data: partnerRet }], 80);
+        lineChart("brand-ret", RET, [{ name: "Account retention %", data: brandRet, pct: true }], 80);
+        lineChart("partner-ret", RET, [{ name: "Account retention %", data: partnerRet, pct: true }], 80);
         bars("brand-areas", brandAreas);
         bars("partner-areas", partnerAreas);
       }
 
       function show(tab) {
+        hideTip();
         var brand = tab !== "partner";
         document.getElementById("panel-brand").hidden = !brand;
         document.getElementById("panel-partner").hidden = brand;
