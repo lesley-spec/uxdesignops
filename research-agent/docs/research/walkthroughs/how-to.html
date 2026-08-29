@@ -180,7 +180,7 @@
   <main class="wrap">
     <header class="page-header wt-lede">
       <h1>Watch a real run — install through Test</h1>
-      <p class="sub muted">Not a screen recording (Claude’s artifact panel cannot play hosted video). This is a replay of the actual prompts and the kind of reply the agent gives — including every human gate. Same path in Cursor, Claude Code, and Claude.ai.</p>
+      <p class="sub muted">A replay of the actual prompts and the kind of reply the agent gives — including every human gate. Same path in Cursor and Claude Code. The browser app (claude.ai) cannot run the installer, so it is not a supported path.</p>
       <div class="wt-meta">
         <span class="wt-pill info">Replay · Partner UPS Step 2</span>
         <span class="wt-pill ok">You still confirm every gate</span>
@@ -199,7 +199,6 @@
         <div class="skills-install-tabs" role="tablist" aria-label="Tool">
           <button type="button" class="skills-tab is-active" data-tool="cursor" role="tab" aria-selected="true">Cursor</button>
           <button type="button" class="skills-tab" data-tool="claude-code" role="tab" aria-selected="false">Claude Code</button>
-          <button type="button" class="skills-tab" data-tool="claude-ai" role="tab" aria-selected="false">Claude.ai</button>
         </div>
         <div class="demo-controls">
           <button type="button" class="demo-btn primary" id="demo-play" aria-pressed="false">Play</button>
@@ -225,7 +224,7 @@
       <a class="wt-art" href="../skills/#install">
         <span class="kicker">Do this first</span>
         <strong>Install prompts</strong>
-        <span>First-time curl (Cursor / Claude Code) or zip (Claude.ai)</span>
+        <span>First-time curl in Cursor or Claude Code</span>
       </a>
       <a class="wt-art" href="./2026-08-28-ups-step2.html">
         <span class="kicker">Same story, full artifacts</span>
@@ -254,13 +253,11 @@
       ];
       var NAMES = {
         cursor: "Cursor",
-        "claude-code": "Claude Code",
-        "claude-ai": "Claude"
+        "claude-code": "Claude Code"
       };
       var SUBS = {
         cursor: "Agent chat",
-        "claude-code": "Terminal + chat",
-        "claude-ai": "claude.ai artifact chat"
+        "claude-code": "Terminal + chat"
       };
 
       function board(rows) {
@@ -272,15 +269,10 @@
       }
 
       function stepsFor(tool) {
-        var installYou = tool === "claude-ai"
-          ? "I need the impact.com UX Design Thinking skills. I’m in Claude.ai — install what you can here, or tell me exactly what to paste in Cursor."
-          : INSTALL;
-        var installAgent = tool === "claude-ai"
-          ? "<p>Claude.ai cannot run the installer (no shell). That is expected.</p><p><strong>Do this once:</strong> paste the install prompt in <strong>Cursor or Claude Code</strong> (sandbox off). Or download <a href=\"../skills/designops-skills.zip\">designops-skills.zip</a> from the Skills page and add the pack to this project.</p><p>When you see <code>IMPACT_SKILLS_READY pipeline=19</code>, come back here and say <code>use design-thinking-ux</code>. I will not start Empathize until the pack is in.</p>"
-          : "<p>Running the published installer with full permissions (writes project + <code>~/.cursor/skills</code> + <code>~/.claude/skills</code>).</p><p><code>IMPACT_SKILLS_READY pipeline=19 dest=.agents/skills global_cursor=ok global_claude=ok</code></p><p>All 19 Design Thinking skills are installed. Start a guided run with <strong>use design-thinking-ux</strong> — I’ll walk Empathize → Test and stop at each human gate.</p>";
-        var protoAgent = tool === "claude-ai"
-          ? "<p>Invoked <code>ux-prototyping</code> → Partner shell <em>in this chat</em> (no bounce to Cursor).</p><p>Clickable preview is in the artifact panel: Discover → program details → Send proposal. Duplicate Send (in-page + sticky) is Direction 2.</p><p><code>IMPACT_PROTOTYPE_READY shell=partner harness=claude-chat</code></p><p>When you can click through, Test next — I can run a11y + coverage pre-flight and draft an Outset study. Go?</p>"
-          : "<p>Invoked <code>ux-prototyping</code> → <code>partner-prototype</code>. Node + Vite handled in this harness. Open:</p><p><code>http://localhost:5173/</code></p><p><code>IMPACT_PROTOTYPE_READY shell=partner harness=" + (tool === "cursor" ? "cursor" : "claude-code") + " url=http://localhost:5173/</code></p><p>When the preview works, Test next — I can run a11y + coverage pre-flight and draft an Outset study. Go?</p>";
+        var harness = tool === "cursor" ? "cursor" : "claude-code";
+        var installYou = INSTALL;
+        var installAgent = "<p>Running the published installer with full permissions (writes project + <code>~/.cursor/skills</code> + <code>~/.claude/skills</code>).</p><p><code>IMPACT_SKILLS_READY pipeline=19 dest=.agents/skills global_cursor=ok global_claude=ok</code></p><p>All 19 Design Thinking skills are installed. Start a guided run with <strong>use design-thinking-ux</strong> — I’ll walk Empathize → Test and stop at each human gate.</p>";
+        var protoAgent = "<p>Invoked <code>ux-prototyping</code> → <code>partner-prototype</code>. Node + Vite handled in this harness. Open:</p><p><code>http://localhost:5173/</code></p><p><code>IMPACT_PROTOTYPE_READY shell=partner harness=" + harness + " url=http://localhost:5173/</code></p><p>When the preview works, Test next — I can run a11y + coverage pre-flight and draft an Outset study. Go?</p>";
 
         return [
           { phase: "install", role: "you", text: installYou },
