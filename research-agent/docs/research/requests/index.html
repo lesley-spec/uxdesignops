@@ -38,7 +38,7 @@
       margin: 0 0 12px;
     }
     .req-field label,
-    .req-toolbar label {
+    .req-toolbar-label {
       font-size: 0.78rem;
       font-weight: 600;
       color: var(--muted);
@@ -46,7 +46,6 @@
     .req-field input,
     .req-field textarea,
     .req-field select,
-    .req-toolbar select,
     .req-status {
       font: inherit;
       padding: 8px 10px;
@@ -72,10 +71,12 @@
     .req-submit:focus-visible,
     .req-priority:focus-visible,
     .req-status:focus-visible,
+    .req-admin-btn:focus-visible,
     .req-field input:focus-visible,
     .req-field textarea:focus-visible,
     .req-field select:focus-visible,
-    .req-toolbar select:focus-visible {
+    .req-multiselect-toggle:focus-visible,
+    .req-check input:focus-visible {
       outline: 2px solid var(--border-accent);
       outline-offset: 2px;
     }
@@ -95,7 +96,58 @@
       margin-bottom: 12px;
     }
     .req-toolbar { display: flex; align-items: end; gap: 10px; }
-    .req-count { font-size: 0.85rem; color: var(--muted); }
+    .req-toolbar-label { display: flex; flex-direction: column; gap: 4px; }
+    .req-multiselect { position: relative; min-width: 12.5rem; }
+    .req-multiselect-toggle {
+      font: inherit;
+      font-size: 0.9rem;
+      width: 100%;
+      text-align: left;
+      padding: 8px 28px 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: var(--text);
+      cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position: calc(100% - 14px) calc(50% - 2px), calc(100% - 9px) calc(50% - 2px);
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+    }
+    .req-multiselect-toggle[aria-expanded="true"] {
+      border-color: var(--border-accent);
+    }
+    .req-multiselect-panel {
+      position: absolute;
+      z-index: 20;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--elevation-xs);
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .req-multiselect-panel[hidden] { display: none; }
+    .req-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .req-check:hover { background: var(--background-hover); }
+    .req-check input { margin: 0; accent-color: var(--interactive-default); }
+    .req-count { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
     .req-items { display: flex; flex-direction: column; gap: 10px; }
     .req-item {
       display: grid;
@@ -170,6 +222,27 @@
       min-width: 9.5rem;
     }
     .req-status { width: 100%; }
+    .req-admin-btn {
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .req-admin-btn:hover { border-color: var(--border-accent); color: var(--interactive-default); }
+    .req-admin-btn.is-danger:hover {
+      border-color: var(--pill-bug-border);
+      color: var(--pill-bug-text);
+    }
+    .req-pill.is-archived {
+      background: var(--pill-theme-bg);
+      color: var(--pill-theme-text);
+      border-color: var(--pill-theme-border);
+    }
     .req-empty {
       background: var(--card);
       border: 1px dashed var(--border);
@@ -235,7 +308,7 @@
   <main class="wrap">
     <header class="page-header req-lede">
       <h1>Feature requests</h1>
-      <p class="sub muted">Ask for a DesignOps improvement, then track the backlog. Change status from the dropdown. Use <strong>Move up</strong> to raise priority — higher on the list ships sooner.</p>
+      <p class="sub muted">Ask for a DesignOps improvement, then track the backlog. Filter by one or more statuses. Use <strong>Move up</strong> to raise priority — higher on the list ships sooner.</p>
     </header>
 
     <div class="req-layout">
@@ -274,17 +347,13 @@
             <p class="muted">Priority is the list order. P1 is highest.</p>
           </div>
           <div class="req-toolbar">
-            <label for="status-filter">Status
-              <select id="status-filter">
-                <option value="all">All statuses</option>
-                <option value="requested">Requested</option>
-                <option value="review">Under review</option>
-                <option value="planned">Planned</option>
-                <option value="progress">In progress</option>
-                <option value="shipped">Shipped</option>
-                <option value="declined">Declined</option>
-              </select>
-            </label>
+            <div class="req-toolbar-label">
+              <span id="status-filter-label">Status</span>
+              <div class="req-multiselect" id="status-filter">
+                <button type="button" class="req-multiselect-toggle" id="status-filter-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="status-filter-panel" aria-labelledby="status-filter-label status-filter-toggle">All statuses</button>
+                <div class="req-multiselect-panel" id="status-filter-panel" hidden role="group" aria-labelledby="status-filter-label"></div>
+              </div>
+            </div>
             <p class="req-count" id="list-count"></p>
           </div>
         </div>
@@ -297,6 +366,7 @@
   <script>
     (function () {
       var STORAGE_KEY = "designops_feature_requests";
+      var MANAGER_EMAIL = "lesley@impact.com";
       var STATUSES = [
         { value: "requested", label: "Requested" },
         { value: "review", label: "Under review" },
@@ -355,33 +425,70 @@
       ];
 
       var items = [];
-      var statusFilter = "all";
+      var statusFilter = STATUSES.map(function (status) { return status.value; });
+      var showArchived = false;
 
       function statusLabel(value) {
         var found = STATUSES.filter(function (s) { return s.value === value; })[0];
         return found ? found.label : value;
       }
 
-      function signedInName() {
+      function readSession() {
+        if (window.DesignOpsAuth && typeof window.DesignOpsAuth.getSession === "function") {
+          return window.DesignOpsAuth.getSession();
+        }
         try {
           var raw = sessionStorage.getItem("designops_auth_session");
-          if (!raw) return "You";
-          var session = JSON.parse(raw);
-          return (session && (session.name || session.givenName || session.email)) || "You";
+          return raw ? JSON.parse(raw) : null;
         } catch (err) {
-          return "You";
+          return null;
         }
+      }
+
+      function signedInEmail() {
+        var session = readSession();
+        return session && session.email ? String(session.email).trim().toLowerCase() : "";
+      }
+
+      function signedInName() {
+        var session = readSession();
+        if (!session) return "You";
+        return session.name || session.givenName || session.email || "You";
+      }
+
+      function isLocalPreview() {
+        var host = String(window.location.hostname || "");
+        return host === "localhost" || host === "127.0.0.1" || host === "";
+      }
+
+      function canManageRequests() {
+        if (signedInEmail() === MANAGER_EMAIL) return true;
+        return isLocalPreview() && !signedInEmail();
+      }
+
+      function normalizeItem(item) {
+        if (!item || !item.id) return null;
+        return {
+          id: item.id,
+          title: item.title || "",
+          description: item.description || "",
+          area: item.area || "Site",
+          status: item.status || "requested",
+          requester: item.requester || "You",
+          createdAt: item.createdAt || new Date().toISOString(),
+          archived: !!item.archived
+        };
       }
 
       function load() {
         try {
           var raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return SEED.slice();
+          if (!raw) return SEED.map(normalizeItem);
           var parsed = JSON.parse(raw);
-          if (!Array.isArray(parsed) || !parsed.length) return SEED.slice();
-          return parsed;
+          if (!Array.isArray(parsed) || !parsed.length) return SEED.map(normalizeItem);
+          return parsed.map(normalizeItem).filter(Boolean);
         } catch (err) {
-          return SEED.slice();
+          return SEED.map(normalizeItem);
         }
       }
 
@@ -407,8 +514,28 @@
       }
 
       function visibleItems() {
-        if (statusFilter === "all") return items;
-        return items.filter(function (item) { return item.status === statusFilter; });
+        return items.filter(function (item) {
+          if (item.archived) return canManageRequests() && showArchived;
+          if (!statusFilter.length) return false;
+          return statusFilter.indexOf(item.status) !== -1;
+        });
+      }
+
+      function selectedStatuses() {
+        return STATUSES.filter(function (status) {
+          return statusFilter.indexOf(status.value) !== -1;
+        });
+      }
+
+      function filterToggleLabel() {
+        var selected = selectedStatuses();
+        if (!selected.length && !showArchived) return "No statuses";
+        if (selected.length === STATUSES.length && !showArchived) return "All statuses";
+        if (selected.length === STATUSES.length && showArchived) return "All + archived";
+        var labels = selected.map(function (status) { return status.label; });
+        if (showArchived) labels.push("Archived");
+        if (labels.length > 2) return labels.length + " selected";
+        return labels.join(", ");
       }
 
       function setStatus(id, status) {
@@ -418,6 +545,27 @@
         save();
         render();
         announce(item.title + " set to " + statusLabel(status) + ".");
+      }
+
+      function archiveRequest(id, archived) {
+        if (!canManageRequests()) return;
+        var item = items.filter(function (row) { return row.id === id; })[0];
+        if (!item) return;
+        item.archived = !!archived;
+        save();
+        render();
+        announce(item.title + (archived ? " archived." : " restored to the backlog."));
+      }
+
+      function deleteRequest(id) {
+        if (!canManageRequests()) return;
+        var item = items.filter(function (row) { return row.id === id; })[0];
+        if (!item) return;
+        if (!window.confirm("Delete “" + item.title + "”? This cannot be undone.")) return;
+        items = items.filter(function (row) { return row.id !== id; });
+        save();
+        render();
+        announce(item.title + " deleted.");
       }
 
       function moveUp(id) {
@@ -442,7 +590,8 @@
           area: area,
           status: "requested",
           requester: signedInName(),
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
+          archived: false
         });
         save();
         render();
@@ -465,26 +614,58 @@
         }).join("");
       }
 
-      function render() {
+      function renderFilter() {
+        var panel = document.getElementById("status-filter-panel");
+        var toggle = document.getElementById("status-filter-toggle");
+        if (!panel || !toggle) return;
+        var admin = canManageRequests();
+        var checks = STATUSES.map(function (status) {
+          return '<label class="req-check"><input type="checkbox" data-filter-status="' +
+            status.value + '"' + (statusFilter.indexOf(status.value) !== -1 ? " checked" : "") +
+            "> " + status.label + "</label>";
+        });
+        if (admin) {
+          checks.push(
+            '<label class="req-check"><input type="checkbox" data-filter-archived' +
+              (showArchived ? " checked" : "") + "> Archived</label>"
+          );
+        }
+        panel.innerHTML = checks.join("");
+        toggle.textContent = filterToggleLabel();
+      }
+
+      function renderList() {
         var list = document.getElementById("request-list");
         var count = document.getElementById("list-count");
         var visible = visibleItems();
+        var admin = canManageRequests();
         count.textContent = visible.length + " of " + items.length;
 
         if (!visible.length) {
-          list.innerHTML = '<p class="req-empty">No requests match this status. Submit one, or switch the status filter.</p>';
+          list.innerHTML = '<p class="req-empty">No requests match these statuses. Submit one, or change the status filter.</p>';
           return;
         }
 
         list.innerHTML = visible.map(function (item) {
           var rank = items.indexOf(item) + 1;
           var isTop = rank === 1;
+          var adminBtns = "";
+          if (admin) {
+            adminBtns =
+              '<button type="button" class="req-admin-btn" data-action="' +
+                (item.archived ? "restore" : "archive") +
+                '" aria-label="' + (item.archived ? "Restore " : "Archive ") +
+                escapeHtml(item.title) + '">' +
+                (item.archived ? "Restore" : "Archive") + "</button>" +
+              '<button type="button" class="req-admin-btn is-danger" data-action="delete" aria-label="Delete ' +
+                escapeHtml(item.title) + '">Delete</button>';
+          }
           return (
             '<article class="req-card req-item" data-id="' + escapeHtml(item.id) + '">' +
               '<div class="req-rank">' +
                 '<span class="req-rank-num" aria-label="Priority ' + rank + '">P' + rank + "</span>" +
                 '<button type="button" class="req-priority" data-action="up"' +
-                  (isTop ? " disabled" : "") +
+                  (isTop || item.archived ? " disabled" : "") +
                   ' aria-label="Move ' + escapeHtml(item.title) + ' up in priority">' +
                   "Move up</button>" +
               "</div>" +
@@ -493,6 +674,7 @@
                 "<p>" + escapeHtml(item.description) + "</p>" +
                 '<div class="req-meta">' +
                   '<span class="req-pill">' + escapeHtml(item.area) + "</span>" +
+                  (item.archived ? '<span class="req-pill is-archived">Archived</span>' : "") +
                   '<span class="req-when">Requested by ' + escapeHtml(item.requester) +
                     " · " + escapeHtml(formatDate(item.createdAt)) + "</span>" +
                 "</div>" +
@@ -502,25 +684,75 @@
                   escapeHtml(item.title) + "</label>" +
                 '<select class="req-status" id="status-' + escapeHtml(item.id) +
                   '" data-action="status">' + statusOptions(item.status) + "</select>" +
+                adminBtns +
               "</div>" +
             "</article>"
           );
         }).join("");
       }
 
+      function render() {
+        renderFilter();
+        renderList();
+      }
+
       items = load();
       render();
 
-      document.getElementById("status-filter").addEventListener("change", function (event) {
-        statusFilter = event.target.value;
-        render();
+      document.addEventListener("designops-auth-change", render);
+
+      var filterRoot = document.getElementById("status-filter");
+      var filterToggle = document.getElementById("status-filter-toggle");
+      var filterPanel = document.getElementById("status-filter-panel");
+
+      function setFilterOpen(open) {
+        filterToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        filterPanel.hidden = !open;
+      }
+
+      filterToggle.addEventListener("click", function () {
+        setFilterOpen(filterPanel.hidden);
+      });
+
+      filterPanel.addEventListener("change", function (event) {
+        var archived = event.target.closest("[data-filter-archived]");
+        if (archived) {
+          showArchived = archived.checked;
+          filterToggle.textContent = filterToggleLabel();
+          renderList();
+          return;
+        }
+        var box = event.target.closest("[data-filter-status]");
+        if (!box) return;
+        var value = box.getAttribute("data-filter-status");
+        if (box.checked) {
+          if (statusFilter.indexOf(value) === -1) statusFilter.push(value);
+        } else {
+          statusFilter = statusFilter.filter(function (status) { return status !== value; });
+        }
+        filterToggle.textContent = filterToggleLabel();
+        renderList();
+      });
+
+      document.addEventListener("click", function (event) {
+        if (!filterRoot.contains(event.target)) setFilterOpen(false);
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") setFilterOpen(false);
       });
 
       document.getElementById("request-list").addEventListener("click", function (event) {
-        var button = event.target.closest("[data-action='up']");
+        var button = event.target.closest("[data-action]");
         if (!button) return;
         var card = button.closest("[data-id]");
-        if (card) moveUp(card.getAttribute("data-id"));
+        if (!card) return;
+        var id = card.getAttribute("data-id");
+        var action = button.getAttribute("data-action");
+        if (action === "up") moveUp(id);
+        else if (action === "archive") archiveRequest(id, true);
+        else if (action === "restore") archiveRequest(id, false);
+        else if (action === "delete") deleteRequest(id);
       });
 
       document.getElementById("request-list").addEventListener("change", function (event) {

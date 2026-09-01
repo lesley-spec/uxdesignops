@@ -168,7 +168,15 @@
     document.querySelectorAll(".run-workflow-admin-only").forEach(function (el) {
       el.hidden = !visible;
     });
+    document.dispatchEvent(new CustomEvent("designops-auth-change", { detail: { session: session || null } }));
   }
+
+  window.DesignOpsAuth = {
+    getSession: readSession,
+    isAdmin: function () {
+      return canRunWorkflow(readSession());
+    },
+  };
 
   function clearNavUser() {
     var slot = document.getElementById("designops-nav-user");
