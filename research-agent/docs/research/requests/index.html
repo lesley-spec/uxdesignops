@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>Feature requests — UX DesignOps</title>
+  <link rel="stylesheet" href="../shared/designops.css" />
+  <script src="../shared/auth-config.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../shared/designops-auth.js" defer></script>
+  <style>
+    .req-lede { max-width: 46rem; }
+    .req-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 22rem) minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .req-layout { grid-template-columns: 1fr; }
+    }
+    .req-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .req-form h2,
+    .req-list-head h2 {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+    }
+    .req-form .muted,
+    .req-list-head .muted { margin: 0 0 14px; font-size: 0.88rem; }
+    .req-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 0 0 12px;
+    }
+    .req-field label,
+    .req-toolbar label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .req-field input,
+    .req-field textarea,
+    .req-field select,
+    .req-toolbar select,
+    .req-status {
+      font: inherit;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .req-field textarea { min-height: 96px; resize: vertical; }
+    .req-submit {
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 9px 14px;
+      border: none;
+      border-radius: 8px;
+      background: var(--interactive-default);
+      color: #fff;
+      cursor: pointer;
+    }
+    .req-submit:hover { background: var(--interactive-hover); }
+    .req-submit:focus-visible,
+    .req-priority:focus-visible,
+    .req-status:focus-visible,
+    .req-field input:focus-visible,
+    .req-field textarea:focus-visible,
+    .req-field select:focus-visible,
+    .req-toolbar select:focus-visible {
+      outline: 2px solid var(--border-accent);
+      outline-offset: 2px;
+    }
+    .req-form-status {
+      min-height: 1.25em;
+      margin: 10px 0 0;
+      font-size: 0.85rem;
+      color: var(--pill-product-text);
+    }
+    .req-form-status.is-error { color: var(--pill-bug-text); }
+    .req-list-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .req-toolbar { display: flex; align-items: end; gap: 10px; }
+    .req-count { font-size: 0.85rem; color: var(--muted); }
+    .req-items { display: flex; flex-direction: column; gap: 10px; }
+    .req-item {
+      display: grid;
+      grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+      gap: 12px 14px;
+      align-items: start;
+    }
+    .req-rank {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .req-rank-num {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: var(--info-bg);
+      color: var(--interactive-default);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .req-priority {
+      font: inherit;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 6px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .req-priority:hover:not(:disabled) {
+      border-color: var(--border-accent);
+      color: var(--interactive-default);
+    }
+    .req-priority:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .req-item h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.35; }
+    .req-item p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+    .req-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+      align-items: center;
+    }
+    .req-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--pill-audience-bg);
+      color: var(--pill-audience-text);
+      border-color: var(--pill-audience-border);
+    }
+    .req-when { font-size: 0.78rem; color: var(--muted); }
+    .req-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+      min-width: 9.5rem;
+    }
+    .req-status { width: 100%; }
+    .req-empty {
+      background: var(--card);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 28px 16px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    @media (max-width: 640px) {
+      .req-item { grid-template-columns: 3.25rem minmax(0, 1fr); }
+      .req-actions { grid-column: 2; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div>
+  <div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
+  <header class="top-nav" role="banner">
+    <div class="top-nav-inner">
+      <a class="top-nav-brand" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 97 32" fill="none" class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false">
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M35.9475 14.2949C35.7217 14.2949 35.4825 14.3346 35.27 14.4273C35.0574 14.52 34.8581 14.6391 34.6987 14.8112C34.5393 14.9701 34.4065 15.1687 34.3135 15.3805C34.2205 15.5923 34.1806 15.8306 34.1939 16.0556C34.2338 16.4925 34.433 16.9161 34.7519 17.2074C35.084 17.5119 35.5091 17.6707 35.9475 17.6707C36.3859 17.6707 36.8243 17.4986 37.1432 17.2074C37.4753 16.9029 37.6745 16.4925 37.7011 16.0556C37.7011 15.8173 37.6613 15.5923 37.5816 15.3805C37.4886 15.1687 37.369 14.9701 37.1963 14.8112C37.0369 14.6524 36.8376 14.52 36.625 14.4273C36.4125 14.3346 36.1866 14.2949 35.9475 14.2949Z"/>
+  <path fill="currentColor" d="M37.2492 20.2522H34.6719V32.7493H37.2492V20.2522Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M49.392 22.1453C50.322 20.7817 51.8896 20.0139 53.8159 20.0139C56.9511 20.0139 59.0634 22.0394 59.0369 25.0578V32.7361H56.4197V25.7329C56.4197 23.6942 55.3437 22.5292 53.4439 22.5292C51.5442 22.5292 50.2157 23.8663 50.2157 25.7726V32.7361H47.5853V25.7329C47.5853 23.6942 46.5092 22.5292 44.6094 22.5292C42.7097 22.5292 41.3812 23.8663 41.3812 25.7726V32.7361H38.7773V20.2654H41.4078V21.351C42.6034 20.2125 44.1445 20.0272 45.0213 20.0272C46.9077 20.0139 48.4886 20.795 49.392 22.1453Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M67.1001 20.0139C65.5457 20.0139 64.2039 20.5037 63.181 21.404V20.2522H60.5771V37.6343H63.181V31.4917C64.1907 32.4184 65.5457 32.8949 67.1001 32.8949C70.6604 32.8949 73.344 30.1149 73.344 26.4478C73.344 22.794 70.6604 20.0139 67.1001 20.0139ZM66.8609 30.4458C64.6556 30.4458 63.0481 28.7645 63.0481 26.4743C63.0481 24.1973 64.6423 22.5027 66.8609 22.5027C69.0662 22.5027 70.6737 24.1708 70.6737 26.4743C70.6737 28.791 69.0795 30.4458 66.8609 30.4458Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M85.0085 20.2654V21.4436C83.9855 20.5169 82.657 20.0271 81.1027 20.0271C77.5423 20.0271 74.8721 22.8204 74.8721 26.514C74.8721 30.2075 77.5556 33.0008 81.1027 33.0008C82.657 33.0008 83.9855 32.511 85.0085 31.571V32.7493H87.6389V20.2654H85.0085ZM81.3418 30.4855C79.1365 30.4855 77.5158 28.791 77.5158 26.5007C77.5158 24.2105 79.11 22.5027 81.3418 22.5027C83.5737 22.5027 85.1413 24.1707 85.1413 26.5007C85.1413 28.8174 83.5471 30.4855 81.3418 30.4855Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M95.6235 22.5027C96.7527 22.5027 97.7225 22.9264 98.6126 23.7604L98.8252 23.9722L100.539 22.185L100.366 21.9864C99.2503 20.7156 97.5897 20.0139 95.6899 20.0139C91.9037 20.0139 89.167 22.7543 89.167 26.5008C89.167 30.2473 91.9037 32.9876 95.6899 32.9876C97.5631 32.9876 99.237 32.286 100.366 31.0283L100.539 30.843L98.8916 29.0161L98.679 29.2279C97.8155 30.0619 96.7394 30.512 95.6501 30.512C93.4713 30.512 91.8638 28.8175 91.8638 26.5272C91.8506 24.2238 93.4182 22.5027 95.6235 22.5027Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M109.161 30.4854C109.905 30.4854 110.728 30.1942 111.419 29.7308L111.658 29.5852L112.934 31.5975L112.721 31.7563C111.645 32.5639 110.33 32.9875 108.988 32.9875C106.158 32.9875 104.591 31.3062 104.591 28.2481V22.7012H102.04V20.2521H104.591V16.5056H107.221V20.2389H112.203V22.6747H107.221V28.1952C107.221 29.6647 107.912 30.4854 109.161 30.4854Z"/>
+  <path fill="#A9B4BD" d="M24.3899 23.2308C25.1471 23.2308 25.9044 23.4029 26.5819 23.7206C27.2727 24.0383 27.8838 24.5017 28.3754 25.0709C28.6278 24.4884 28.7739 23.8662 28.7739 23.244C28.7739 22.6748 28.6544 22.1055 28.4418 21.5892C28.216 21.0597 27.8971 20.5831 27.4853 20.1859C27.0734 19.7888 26.5952 19.4711 26.0638 19.246C25.5324 19.0342 24.9611 18.915 24.3899 18.915C23.8186 18.915 23.2474 19.0209 22.716 19.246C22.1846 19.4578 21.693 19.7888 21.2945 20.1859C20.8827 20.5831 20.5638 21.0597 20.338 21.5892C20.1121 22.1187 20.0059 22.6748 20.0059 23.244C20.0191 23.8795 20.152 24.5017 20.4044 25.0709C20.896 24.4884 21.5071 24.0383 22.1846 23.7206C22.8754 23.3896 23.6326 23.2175 24.3899 23.2308Z"/>
+  <path fill="currentColor" d="M28.7735 28.4072C28.7735 27.5467 28.5211 26.7126 28.0295 25.9978C27.5513 25.2829 26.8604 24.7269 26.0634 24.3959C25.2663 24.0649 24.3762 23.9855 23.5259 24.1444C22.6757 24.3165 21.8919 24.7269 21.2808 25.3358C20.6697 25.9448 20.2445 26.7126 20.0851 27.5599C19.9124 28.4072 20.0054 29.2677 20.3375 30.062C20.6697 30.8563 21.2276 31.5314 21.9583 32.008C22.6757 32.4846 23.5259 32.7361 24.4027 32.7361C25.5585 32.7229 26.6745 32.2728 27.4981 31.452C28.3218 30.6312 28.7735 29.5589 28.7735 28.4072Z"/>
+  <path fill="#F5333F" d="M28.7735 13.3417C28.7735 12.4812 28.5211 11.6472 28.0295 10.9323C27.5513 10.2175 26.8737 9.66144 26.0634 9.33048C25.2663 8.99952 24.3762 8.92009 23.5259 9.07895C22.6757 9.25105 21.8919 9.66144 21.2808 10.2704C20.6697 10.8794 20.2445 11.6472 20.0851 12.4945C19.9124 13.3417 20.0054 14.2022 20.3375 14.9965C20.6697 15.7909 21.2276 16.466 21.9583 16.9426C22.6757 17.4192 23.5259 17.6707 24.4027 17.6707C25.5718 17.6707 26.6877 17.2074 27.5114 16.3998C28.3085 15.5923 28.7735 14.4802 28.7735 13.3417Z"/>
+</svg><span class="top-nav-brand-text">UX DesignOps</span></a>
+      <div class="top-nav-actions">
+        <nav class="report-nav" aria-label="Site sections">
+          <a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a>
+          <a class="nav-link" href="../skills/" data-nav="skills">Skills</a>
+          <a class="nav-link" href="../research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="../usage/" data-nav="report">Report</a>
+          <a class="nav-link" href="../personas/" data-nav="personas">Personas</a>
+          <a class="nav-link" href="../feed/" data-nav="feed">Competitors</a>
+          <a class="nav-link is-active" href="./" data-nav="requests">Requests</a>
+          <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+          <a class="nav-link" href="../walkthroughs/" data-nav="walkthrough">Examples</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <header class="page-header req-lede">
+      <h1>Feature requests</h1>
+      <p class="sub muted">Ask for a DesignOps improvement, then track the backlog. Change status from the dropdown. Use <strong>Move up</strong> to raise priority — higher on the list ships sooner.</p>
+    </header>
+
+    <div class="req-layout">
+      <section class="req-card req-form" aria-labelledby="request-form-title">
+        <h2 id="request-form-title">Request a feature</h2>
+        <p class="muted">New requests land at the bottom of the list. Move them up if they should jump the queue.</p>
+        <form id="request-form" novalidate>
+          <div class="req-field">
+            <label for="req-title">Title</label>
+            <input id="req-title" name="title" type="text" required maxlength="120" autocomplete="off" placeholder="What should we add or change?" />
+          </div>
+          <div class="req-field">
+            <label for="req-area">Area</label>
+            <select id="req-area" name="area">
+              <option value="Pipeline">Pipeline</option>
+              <option value="Skills">Skills</option>
+              <option value="Research">Research</option>
+              <option value="Prototype">Prototype</option>
+              <option value="Test">Test</option>
+              <option value="Site">Site</option>
+            </select>
+          </div>
+          <div class="req-field">
+            <label for="req-description">Why it matters</label>
+            <textarea id="req-description" name="description" required maxlength="600" placeholder="What problem does this solve, and for whom?"></textarea>
+          </div>
+          <button type="submit" class="req-submit">Submit request</button>
+          <p class="req-form-status" id="form-status" role="status"></p>
+        </form>
+      </section>
+
+      <section aria-labelledby="backlog-title">
+        <div class="req-list-head">
+          <div>
+            <h2 id="backlog-title">Requested features</h2>
+            <p class="muted">Priority is the list order. P1 is highest.</p>
+          </div>
+          <div class="req-toolbar">
+            <label for="status-filter">Status
+              <select id="status-filter">
+                <option value="all">All statuses</option>
+                <option value="requested">Requested</option>
+                <option value="review">Under review</option>
+                <option value="planned">Planned</option>
+                <option value="progress">In progress</option>
+                <option value="shipped">Shipped</option>
+                <option value="declined">Declined</option>
+              </select>
+            </label>
+            <p class="req-count" id="list-count"></p>
+          </div>
+        </div>
+        <div class="req-items" id="request-list"></div>
+        <p class="visually-hidden" id="list-live" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+  <script src="../shared/designops-theme.js"></script>
+  <script>
+    (function () {
+      var STORAGE_KEY = "designops_feature_requests";
+      var STATUSES = [
+        { value: "requested", label: "Requested" },
+        { value: "review", label: "Under review" },
+        { value: "planned", label: "Planned" },
+        { value: "progress", label: "In progress" },
+        { value: "shipped", label: "Shipped" },
+        { value: "declined", label: "Declined" }
+      ];
+
+      var SEED = [
+        {
+          id: "req-skill-usage",
+          title: "Live skill usage dashboard",
+          description: "Show which pipeline skills designers actually invoke, so we can retire unused ones and double down on the ones that stick.",
+          area: "Skills",
+          status: "progress",
+          requester: "Lesley",
+          createdAt: "2026-08-18T14:00:00.000Z"
+        },
+        {
+          id: "req-prototype-publish",
+          title: "One-click prototype publish to the designer’s GitHub",
+          description: "After a Brand or Partner shell is live, publish a new repo under the signed-in designer — not the template account.",
+          area: "Prototype",
+          status: "planned",
+          requester: "Marcus",
+          createdAt: "2026-08-21T16:30:00.000Z"
+        },
+        {
+          id: "req-slack-digest",
+          title: "Research Insight Monitor Slack digest",
+          description: "Monday digest of high-severity funnel drop-offs with links into the research pack, so PMs see the signal without opening Pages.",
+          area: "Research",
+          status: "review",
+          requester: "Priya",
+          createdAt: "2026-08-25T11:15:00.000Z"
+        },
+        {
+          id: "req-persona-critique",
+          title: "Persona-aware critique in ux-critique",
+          description: "When the one-pager names Brand or Partner, run the matching persona lens automatically instead of asking the designer to invoke it.",
+          area: "Skills",
+          status: "requested",
+          requester: "Aisha",
+          createdAt: "2026-08-28T09:40:00.000Z"
+        },
+        {
+          id: "req-outset-draft",
+          title: "Outset study draft from one-pager success criteria",
+          description: "test-plan should prefill tasks and success metrics from the Confluence one-pager so Test does not start from a blank study.",
+          area: "Test",
+          status: "requested",
+          requester: "Jordan",
+          createdAt: "2026-08-29T18:05:00.000Z"
+        }
+      ];
+
+      var items = [];
+      var statusFilter = "all";
+
+      function statusLabel(value) {
+        var found = STATUSES.filter(function (s) { return s.value === value; })[0];
+        return found ? found.label : value;
+      }
+
+      function signedInName() {
+        try {
+          var raw = sessionStorage.getItem("designops_auth_session");
+          if (!raw) return "You";
+          var session = JSON.parse(raw);
+          return (session && (session.name || session.givenName || session.email)) || "You";
+        } catch (err) {
+          return "You";
+        }
+      }
+
+      function load() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return SEED.slice();
+          var parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed) || !parsed.length) return SEED.slice();
+          return parsed;
+        } catch (err) {
+          return SEED.slice();
+        }
+      }
+
+      function save() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      }
+
+      function announce(message) {
+        var live = document.getElementById("list-live");
+        if (live) live.textContent = message;
+      }
+
+      function formatDate(iso) {
+        try {
+          return new Date(iso).toLocaleDateString(undefined, {
+            month: "short",
+            day: "numeric",
+            year: "numeric"
+          });
+        } catch (err) {
+          return "";
+        }
+      }
+
+      function visibleItems() {
+        if (statusFilter === "all") return items;
+        return items.filter(function (item) { return item.status === statusFilter; });
+      }
+
+      function setStatus(id, status) {
+        var item = items.filter(function (row) { return row.id === id; })[0];
+        if (!item) return;
+        item.status = status;
+        save();
+        render();
+        announce(item.title + " set to " + statusLabel(status) + ".");
+      }
+
+      function moveUp(id) {
+        var index = -1;
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].id === id) index = i;
+        }
+        if (index <= 0) return;
+        var swapped = items[index];
+        items[index] = items[index - 1];
+        items[index - 1] = swapped;
+        save();
+        render();
+        announce(swapped.title + " moved up to priority " + index + ".");
+      }
+
+      function addRequest(title, description, area) {
+        items.push({
+          id: "req-" + Date.now(),
+          title: title,
+          description: description,
+          area: area,
+          status: "requested",
+          requester: signedInName(),
+          createdAt: new Date().toISOString()
+        });
+        save();
+        render();
+        announce(title + " added at priority " + items.length + ".");
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function statusOptions(selected) {
+        return STATUSES.map(function (status) {
+          return '<option value="' + status.value + '"' +
+            (status.value === selected ? " selected" : "") + ">" +
+            status.label + "</option>";
+        }).join("");
+      }
+
+      function render() {
+        var list = document.getElementById("request-list");
+        var count = document.getElementById("list-count");
+        var visible = visibleItems();
+        count.textContent = visible.length + " of " + items.length;
+
+        if (!visible.length) {
+          list.innerHTML = '<p class="req-empty">No requests match this status. Submit one, or switch the status filter.</p>';
+          return;
+        }
+
+        list.innerHTML = visible.map(function (item) {
+          var rank = items.indexOf(item) + 1;
+          var isTop = rank === 1;
+          return (
+            '<article class="req-card req-item" data-id="' + escapeHtml(item.id) + '">' +
+              '<div class="req-rank">' +
+                '<span class="req-rank-num" aria-label="Priority ' + rank + '">P' + rank + "</span>" +
+                '<button type="button" class="req-priority" data-action="up"' +
+                  (isTop ? " disabled" : "") +
+                  ' aria-label="Move ' + escapeHtml(item.title) + ' up in priority">' +
+                  "Move up</button>" +
+              "</div>" +
+              "<div>" +
+                "<h3>" + escapeHtml(item.title) + "</h3>" +
+                "<p>" + escapeHtml(item.description) + "</p>" +
+                '<div class="req-meta">' +
+                  '<span class="req-pill">' + escapeHtml(item.area) + "</span>" +
+                  '<span class="req-when">Requested by ' + escapeHtml(item.requester) +
+                    " · " + escapeHtml(formatDate(item.createdAt)) + "</span>" +
+                "</div>" +
+              "</div>" +
+              '<div class="req-actions">' +
+                '<label class="visually-hidden" for="status-' + escapeHtml(item.id) + '">Status for ' +
+                  escapeHtml(item.title) + "</label>" +
+                '<select class="req-status" id="status-' + escapeHtml(item.id) +
+                  '" data-action="status">' + statusOptions(item.status) + "</select>" +
+              "</div>" +
+            "</article>"
+          );
+        }).join("");
+      }
+
+      items = load();
+      render();
+
+      document.getElementById("status-filter").addEventListener("change", function (event) {
+        statusFilter = event.target.value;
+        render();
+      });
+
+      document.getElementById("request-list").addEventListener("click", function (event) {
+        var button = event.target.closest("[data-action='up']");
+        if (!button) return;
+        var card = button.closest("[data-id]");
+        if (card) moveUp(card.getAttribute("data-id"));
+      });
+
+      document.getElementById("request-list").addEventListener("change", function (event) {
+        var select = event.target.closest("[data-action='status']");
+        if (!select) return;
+        var card = select.closest("[data-id]");
+        if (card) setStatus(card.getAttribute("data-id"), select.value);
+      });
+
+      document.getElementById("request-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var titleEl = document.getElementById("req-title");
+        var descEl = document.getElementById("req-description");
+        var areaEl = document.getElementById("req-area");
+        var statusEl = document.getElementById("form-status");
+        var title = titleEl.value.trim();
+        var description = descEl.value.trim();
+        statusEl.classList.remove("is-error");
+
+        if (!title || !description) {
+          statusEl.classList.add("is-error");
+          statusEl.textContent = "Add a title and why it matters.";
+          (title ? descEl : titleEl).focus();
+          return;
+        }
+
+        addRequest(title, description, areaEl.value);
+        event.target.reset();
+        titleEl.focus();
+        statusEl.textContent = "Request added to the bottom of the list.";
+      });
+    })();
+  </script>
+</body>
+</html>
