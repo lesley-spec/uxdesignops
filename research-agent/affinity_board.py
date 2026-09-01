@@ -475,8 +475,9 @@ def report_nav_html(
     usage_href: str = "",
     personas_href: str = "",
     walkthrough_href: str = "",
+    feed_href: str = "",
 ) -> str:
-    """Top bar: Pipeline | Skills | Research | Report | Personas | Affinity | Examples."""
+    """Top bar: Pipeline | Skills | Research | Report | Personas | Competitors | Affinity | Examples."""
     listing = listing_href or f"./{week}.html"
     affinity = affinity_href or f"./{week}-affinity.html"
     skills = skills_href or "../skills/"
@@ -485,6 +486,7 @@ def report_nav_html(
     usage = usage_href or "../usage/"
     personas = personas_href or "../personas/"
     walkthrough = walkthrough_href or "../walkthroughs/"
+    feed = feed_href or personas.replace("personas/", "feed/").replace("personas", "feed")
     return (
         f'<header class="top-nav" role="banner">'
         f'<div class="top-nav-inner">'
@@ -501,6 +503,8 @@ def report_nav_html(
         f'href="{_esc(usage)}" data-nav="report">Report</a>'
         f'<a class="nav-link{" is-active" if active == "personas" else ""}" '
         f'href="{_esc(personas)}" data-nav="personas">Personas</a>'
+        f'<a class="nav-link{" is-active" if active == "feed" else ""}" '
+        f'href="{_esc(feed)}" data-nav="feed">Competitors</a>'
         f'<a class="nav-link{" is-active" if active == "affinity" else ""}" '
         f'href="{_esc(affinity)}" data-nav="affinity">Affinity</a>'
         f'<a class="nav-link{" is-active" if active == "walkthrough" else ""}" '
@@ -560,6 +564,7 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
             "brand": "./",
             "usage": "./usage/",
             "personas": "./personas/",
+            "feed": "./feed/",
             "walkthrough": "./walkthroughs/",
         }
     if loc == "research":
@@ -571,6 +576,7 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
             "brand": "../",
             "usage": "../usage/",
             "personas": "../personas/",
+            "feed": "../feed/",
             "walkthrough": "../walkthroughs/",
         }
     return {
@@ -581,5 +587,6 @@ def report_nav_hrefs(week: str, *, at_root: bool = False, page: str = "") -> Dic
         "brand": "../",
         "usage": "../usage/",
         "personas": "../personas/",
+        "feed": "../feed/",
         "walkthrough": "../walkthroughs/",
     }

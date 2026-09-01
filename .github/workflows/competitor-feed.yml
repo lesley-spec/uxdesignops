@@ -1,0 +1,43 @@
+name: Competitor weekly feature feed
+
+on:
+  schedule:
+    # Mondays 08:00 UTC — refresh public competitor feature/news sources
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: competitor-feed
+  cancel-in-progress: false
+
+jobs:
+  refresh-feed:
+    name: Refresh competitor feed.json
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Pull competitor sources
+        run: python3 research-agent/competitor_feed.py
+
+      - name: Commit feed.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add research-agent/docs/research/feed/feed.json
+          if git diff --staged --quiet; then
+            echo "No feed changes to commit"
+          else
+            git commit -m "chore(feed): refresh competitor weekly features"
+            git push
+          fi

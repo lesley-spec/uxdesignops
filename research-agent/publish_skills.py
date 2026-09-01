@@ -304,6 +304,7 @@ def write_pack_indexes() -> None:
           <a class="nav-link" href="{root}research/" data-nav="listing">Research</a>
           <a class="nav-link" href="{root}usage/" data-nav="report">Report</a>
           <a class="nav-link" href="{root}personas/" data-nav="personas">Personas</a>
+          <a class="nav-link" href="{root}feed/" data-nav="feed">Competitors</a>
           <a class="nav-link" href="{root}reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
           <a class="nav-link" href="{root}walkthroughs/" data-nav="walkthrough">Examples</a>
         </nav>
@@ -468,6 +469,7 @@ def render_skills_index(manifest: dict) -> str:
           <a class="nav-link" href="../research/" data-nav="listing">Research</a>
           <a class="nav-link" href="../usage/" data-nav="report">Report</a>
           <a class="nav-link" href="../personas/" data-nav="personas">Personas</a>
+          <a class="nav-link" href="../feed/" data-nav="feed">Competitors</a>
           <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
           <a class="nav-link" href="../walkthroughs/" data-nav="walkthrough">Examples</a>
         </nav>
