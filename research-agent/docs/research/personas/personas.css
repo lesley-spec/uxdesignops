@@ -39,7 +39,7 @@ html { scroll-padding-top: 120px; }
 
 .persona-jump {
   position: sticky;
-  top: 57px;
+  top: var(--top-nav-height, 57px);
   z-index: 900;
   background: var(--card);
   border-bottom: 1px solid var(--border-default);
