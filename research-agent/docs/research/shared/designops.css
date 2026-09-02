@@ -1334,6 +1334,39 @@ html.dark .badge.badge-source {
   margin-bottom: 12px;
 }
 
+.walkthrough-banner.is-start {
+  background: #f5333f;
+  border: 2px solid #f5333f;
+}
+
+.walkthrough-banner.is-start p,
+.walkthrough-banner.is-start p strong {
+  color: #ffffff;
+}
+
+.walkthrough-banner.is-start p strong {
+  display: inline-block;
+  margin-right: 0.15em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.walkthrough-banner.is-start code {
+  background: rgba(0, 0, 0, 0.22);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+}
+
+.walkthrough-banner.is-start a {
+  background: #ffffff;
+  color: #9b1219;
+}
+
+.walkthrough-banner.is-start a:hover {
+  background: #ffe8ea;
+  color: #7a0e16;
+}
+
 .pipeline-overview {
   margin: 0 0 20px;
   max-width: 52rem;
