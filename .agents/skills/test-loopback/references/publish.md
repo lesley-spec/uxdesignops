@@ -2,6 +2,8 @@
 
 **Only after designer confirms the loopback pack.**
 
+Use the **Atlassian Rovo MCP** for every Jira/Confluence call. Fetch the framing epic with `getJiraIssue` yourself — do not wait for “the connector is on.” See [atlassian-rovo.md](atlassian-rovo.md).
+
 ## Atlassian site
 
 - Cloud: `https://impact.atlassian.net`

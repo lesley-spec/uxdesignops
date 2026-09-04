@@ -21,7 +21,7 @@ Lens for **Partner** side: creators, affiliates, publishers — not Brand operat
 1. [Partner Personas](https://impact.atlassian.net/wiki/spaces/ux/pages/1400766526/Partner+Personas) (Novice / Intermediate / Expert)
 2. Creator Affiliate product narrative / primers in Confluence (search Atlassian)
 3. Research Insight Monitor Partner themes (Link & Content Tools, proposals, finance)
-4. Fetch live pages via Atlassian MCP — do not invent quotes or maturity levels
+4. Fetch live pages via Atlassian Rovo MCP (`getConfluencePage` / `search`) yourself — do not invent quotes or maturity levels, and do not ask the designer to paste the page
 
 ## How to apply
 

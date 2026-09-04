@@ -18,6 +18,10 @@ lenses (`brand-operator-ux-persona`, `creator-affiliate-ux-persona`,
 If mixed artifacts, choose the **earliest incomplete gate**. Example: one-pager
 exists but they never confirmed “worth solving” → Empathize gate first.
 
+If they named a Jira key, fetch it via Atlassian Rovo MCP (`getJiraIssue`)
+before asking them to paste. A ticket alone still lands by the table above
+(usually Empathize unless they already confirmed worth solving).
+
 Thin framing at Ideate is allowed (`ideate` labels gaps). Thin evidence at
 Define is not — send back to Empathize unless they override in writing.
 
@@ -29,6 +33,7 @@ Define is not — send back to Empathize unless they override in writing.
 | 2+ sources or monitor `triangulated: true` | `research-synthesis` |
 | One Dovetail project, interview set, or study export | `synthesize-research` |
 | Need a study plan, gate recommendation, or evidence-gap map | `user-research` |
+| Jira key named (e.g. `TTPI-478`) | Fetch via Atlassian Rovo MCP first, then the row that matches what’s on the ticket |
 | Nothing yet | Ask: pull live data, paste a corpus, or plan fieldwork — then the row above |
 
 Typical sequence when starting from a hunch: `data-analyze` (if a metric

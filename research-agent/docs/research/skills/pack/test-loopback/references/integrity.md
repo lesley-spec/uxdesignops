@@ -17,7 +17,7 @@ Only **Verified** rows belong in published Confluence/Jira research context. AI 
 
 ## Human gate
 
-Designer confirms the loopback pack before publish. Stakeholder summaries must trace surprises to Verified evidence.
+Designer confirms the loopback pack before publish. Stakeholder summaries must trace surprises to Verified evidence. Fetch and update Jira via Atlassian Rovo MCP (`getJiraIssue`, `addCommentToJiraIssue`) — do not ask the designer to paste the ticket first.
 
 ## PII
 

@@ -26,8 +26,9 @@ Does **not** approve framing — Designer signs off when happy, then chats with 
 3. Pressure-test with dual marketplace lenses (`brand-operator-ux-persona`, `creator-affiliate-ux-persona`) + `anti-sycophancy`.
 4. Draft first; **create Confluence/Jira only after the designer confirms** the draft.
 5. Minimize PII in Confluence/Jira.
+6. **Atlassian Rovo MCP** — fetch existing tickets/pages with `getJiraIssue` / `search` yourself. Do not ask the designer to paste a Jira issue or run `/mcp` until a tool call fails.
 
-See [references/integrity.md](references/integrity.md), [references/one-pager.md](references/one-pager.md), [references/publish.md](references/publish.md).
+See [references/integrity.md](references/integrity.md), [references/one-pager.md](references/one-pager.md), [references/publish.md](references/publish.md), [references/atlassian-rovo.md](references/atlassian-rovo.md).
 
 ## When to use
 
@@ -46,7 +47,8 @@ Pull before drafting — do not rely on chat memory alone:
 | Research pack | `research-agent/docs/research/latest.json` + related HTML report |
 | Empathize outputs | Pasted synthesis, or re-run `research-synthesis` / `user-research` briefly if missing |
 | Personas | Load `brand-operator-ux-persona` and/or `creator-affiliate-ux-persona`; Confluence Brand UI Personas / Partner Personas |
-| Existing specs | Atlassian search in space `ux` + Product Shaping template |
+| Existing specs | Atlassian Rovo MCP `search` in space `ux` + Product Shaping template |
+| Named Jira key | `getJiraIssue` immediately — do not ask them to paste the issue |
 
 ## Workflow
 
@@ -112,5 +114,6 @@ Sources: [FigJam / chat ids / latest.json / Confluence links]
 
 - Jumping to Ideate / mocks inside the one-pager “Approach” before Designer sign-off and a PM chat
 - Creating Jira/Confluence without an explicit confirm
+- Asking the designer to paste a Jira issue or enable Atlassian Rovo before calling the MCP tools
 - Collapsing Brand and Partner into one “users” statement
 - One-pagers with no Verified research links (violates “100% tickets with research context”)

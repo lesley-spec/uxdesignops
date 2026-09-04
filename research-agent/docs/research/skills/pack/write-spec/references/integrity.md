@@ -19,5 +19,6 @@ Always state **Brand**, **Partner** (creator/affiliate/publisher), or **Shared**
 ## Publish safety
 
 - Create Confluence/Jira only after designer confirms the draft.
+- Use Atlassian Rovo MCP (`getJiraIssue`, `search`, `createJiraIssue`, `createConfluencePage`). Do not ask the designer to paste an issue first.
 - Prefer aggregate counts and anonymized quotes; no emails/session IDs.
 - Mark new pages Document status **DRAFT** until Designer sign-off and PM chat.

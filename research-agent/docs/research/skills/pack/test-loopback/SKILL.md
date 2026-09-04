@@ -25,8 +25,9 @@ never on AI-drafted study plans or synthetic pre-tests alone.
 3. Label every finding **Verified** (quote/metric from session) vs **AI interpretation**.
 4. Do **not** promote AI synthesis to the research pack without designer confirm.
 5. **Only publish after designer confirms** the loopback summary.
+6. **Atlassian Rovo MCP** — fetch the framing epic with `getJiraIssue` / `search` yourself. Do not ask the designer to paste the ticket or run `/mcp` until a tool call fails.
 
-See [references/publish.md](references/publish.md) and [references/integrity.md](references/integrity.md).
+See [references/publish.md](references/publish.md), [references/integrity.md](references/integrity.md), and [references/atlassian-rovo.md](references/atlassian-rovo.md).
 
 ## When to use
 
@@ -39,7 +40,7 @@ See [references/publish.md](references/publish.md) and [references/integrity.md]
 | Source | How |
 |---|---|
 | Session corpus | Outset/Maze export, Dovetail project, pasted notes/transcripts |
-| Framing | Original one-pager, epic, `test-plan` draft link |
+| Framing | Original one-pager, epic (`getJiraIssue` if they named a key), `test-plan` draft link |
 | Prototype | URL tested + decision under review |
 | Prior synthesis | `synthesize-research` output if already run |
 
@@ -103,4 +104,5 @@ Audience: Brand | Partner | Shared
 - Publishing synthetic `accessibility-review` or pre-test critique as session findings
 - Looping back without tying to original success criteria
 - Auto-updating UX Roadmap or creating duplicate epics
+- Asking the designer to paste a Jira issue or enable Atlassian Rovo before calling the MCP tools
 - Pasting participant PII into Confluence/Jira

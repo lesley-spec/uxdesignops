@@ -21,7 +21,7 @@ Lens for **Brand** advertisers and operators — not Partners.
 1. [Brand UI Personas (JTBD)](https://impact.atlassian.net/wiki/spaces/ux/pages/6439338009/Brand+UI+Personas+Jobs-to-be-Done)
 2. [UX Design & Research](https://impact.atlassian.net/wiki/spaces/ux/overview) hub
 3. Research Insight Monitor / Dovetail Brand themes
-4. Fetch Confluence with Atlassian MCP when details needed — do not invent persona names
+4. Fetch Confluence with Atlassian Rovo MCP (`getConfluencePage` / `search`) yourself — do not invent persona names, and do not ask the designer to paste the page
 
 ## How to apply
 

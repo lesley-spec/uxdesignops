@@ -206,6 +206,7 @@ def check_ups_sequence(errors: list[str]) -> None:
 def check_anti_auto_advance(errors: list[str]) -> None:
     text = (SKILL_DIR / "SKILL.md").read_text(encoding="utf-8")
     for phrase in (
+        "Atlassian Rovo MCP",
         "Do not auto-advance",
         "Honor the child’s stop",
         "Do not ask the designer to type",
@@ -215,6 +216,17 @@ def check_anti_auto_advance(errors: list[str]) -> None:
     ):
         if phrase not in text:
             fail(errors, f"orchestrator missing integrity phrase: {phrase}")
+    for phrase in (
+        "Atlassian Rovo MCP",
+        "getJiraIssue",
+        "Do not wait for the designer to say the connector is on",
+    ):
+        rovo = SKILL_DIR / "references" / "atlassian-rovo.md"
+        if not rovo.is_file():
+            fail(errors, "references/atlassian-rovo.md missing")
+            break
+        if phrase not in rovo.read_text(encoding="utf-8") and phrase not in text:
+            fail(errors, f"Atlassian Rovo guidance missing phrase: {phrase}")
 
 
 def check_prototype_exclusive(errors: list[str]) -> None:

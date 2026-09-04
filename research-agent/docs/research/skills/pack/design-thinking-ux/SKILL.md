@@ -48,6 +48,11 @@ Routing tables: [references/phases.md](references/phases.md).
    shell only — live preview here (localhost, Make, or Claude). After READY,
    `design-system` may map mocks. Never scaffold Vite/Next/HTML from scratch.
    Never send the designer to another tool to finish Prototype.
+8. **Atlassian Rovo MCP.** Fetch and publish Jira/Confluence with the
+   Atlassian Rovo connector yourself (`getJiraIssue`, `search`,
+   `createJiraIssue`, …). Do not wait for the designer to say it is on,
+   and do not ask them to paste a ticket or run `/mcp` until a tool call
+   fails. See [references/atlassian-rovo.md](references/atlassian-rovo.md).
 
 ## When to use
 
@@ -71,6 +76,10 @@ also asked for the full pipeline.
    - Where are you in the pipeline? (start at Empathize, or jump)
    - What do you already have? Research, one-pager/PRD, epic, mocks, prototype, test results — paste or link
    - If Empathize: do you have research, or should I pull / synthesize / plan a study?
+
+   If they named a Jira key, **fetch it now** via Atlassian Rovo MCP
+   (`getJiraIssue`) before asking them to paste title/description. Fill
+   the board from the issue. See [references/atlassian-rovo.md](references/atlassian-rovo.md).
 
 3. Locate the phase using [references/phases.md](references/phases.md).
 4. Confirm the landing phase in one sentence, then run that phase.
@@ -212,6 +221,7 @@ Confirms every child `SKILL.md` loads, markdown links resolve, and the UPS Step 
 - Reimplementing a child skill instead of reading its `SKILL.md`
 - Asking the designer to manually invoke the next skill
 - Auto-creating Jira/Confluence without confirm, or launching Outset/Maze recruitment
+- Asking the designer to paste a Jira issue, run `/mcp`, or turn on Atlassian Rovo before you call the MCP tools yourself
 - Jumping to mocks before Empathize gate + Define sign-off (unless they joined mid-pipeline)
 - Running Empathize → Test in one turn with no gates
 - Treating synthetic pre-tests as session findings
