@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T13:58:55.288713+00:00",
+  "generated_at": "2026-09-14T14:43:56.295871+00:00",
   "lookback_days": 120,
   "competitors": [
     {
@@ -64,7 +64,7 @@
       "kind": "rss",
       "status": "ok",
       "error": "",
-      "items": 8
+      "items": 6
     },
     {
       "competitor": "partnerize",
@@ -100,7 +100,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 9
+      "items": 7
     },
     {
       "competitor": "cj",
@@ -118,7 +118,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 3
+      "items": 4
     },
     {
       "competitor": "partnerize",
@@ -127,7 +127,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 0
+      "items": 2
     },
     {
       "competitor": "shareasale",
@@ -154,23 +154,37 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 5
+      "items": 4
     }
   ],
   "items": [
     {
-      "id": "3a26d8ad8b3cb806",
-      "competitor": "awin",
-      "title": "The Dawn of Triangulation: Awin ThinkTank Spells Out Affiliate Opportunity in the AI Era - Hello Partner",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOYWZuMVdocnlJV1I0VDdJekVXc0pFQkE4WndUZmk1alNuS1ViQTFsZ0wzcjRBbDdKeDlXcGU5Z2xrdHlFQzI0Q1pOdERELXRrOERlVXhHeVU1ZjUzUGNlRm9KNnFvNGpLVlVCWUkzOVVBSkNTaEZRNlF5YXRBenhyQi1ZX3lHdG90Vzhzb3FCSGNtZ0Rxci0wRTNtb0xIX3Z2WVROeWdmOFJGdlY5Q2NnMlBFVQ?oc=5",
+      "id": "cda3b3da21efe33c",
+      "competitor": "partnerize",
+      "title": "Beyond the Blind Spot: Defending Your Partner Program Spend in the Zero-Click Era",
+      "url": "https://partnerize.com/resources/blog/beyond-the-blind-spot-defending-your-partner-program-spend-in-the-zero-click-era",
+      "published": "2026-09-09",
+      "published_at": "2026-09-09T13:18:25+00:00",
+      "week": "2026-W37",
+      "week_label": "Sep 7–13, 2026",
+      "excerpt": "As digital commerce migrates into machine-mediated channels like Google AI Overviews, traditional link-based tracking is eroding. The post Beyond the Blind Spot: Defending Your Partner Program Spend in the Zero-Click Era appeared first on Partnerize.",
+      "kind": "feature",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
+    {
+      "id": "653b91cac1d4982f",
+      "competitor": "partnerize",
+      "title": "AI Rewrote How People Shop for Clothes. Your Click-Based Measurement Model Didn’t Notice",
+      "url": "https://partnerize.com/resources/blog/ai-rewrote-how-people-shop-for-clothes-your-click-based-measurement-model-didnt-notice",
       "published": "2026-09-04",
-      "published_at": "2026-09-04T14:46:40+00:00",
+      "published_at": "2026-09-04T18:12:59+00:00",
       "week": "2026-W36",
       "week_label": "Aug 31 – Sep 6, 2026",
-      "excerpt": "The Dawn of Triangulation: Awin ThinkTank Spells Out Affiliate Opportunity in the AI Era Hello Partner",
+      "excerpt": "The apparel shopper's journey has already changed. The only question is whether your measurement model reflects the market as it is, or the one that existed before AI-powered search started answering the questions. The post AI Rewrote How People Shop for Clothes. Your…",
       "kind": "feature",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
     },
     {
       "id": "6d7253038c9580fd",
@@ -355,6 +369,20 @@
       "source_kind": "news"
     },
     {
+      "id": "99721a7405c8eaf7",
+      "competitor": "rakuten",
+      "title": "Rakuten Sees Earnings Growth From AI 08/10/2026 - MediaPost",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOVllpMHg4dDFmNDdINlpZVGZhNGZsd2hrNFFheV9WSk53RDQtSzB3VjVTUHh3TzVOMklwZTV2ZXhlQ2kxNzdnRjdseWlrRUNRcWl5akFMMmExdkJqZG00NnZ3Mmk4OXk4VnUwcml6ZTlwNUpJdnNiU2dOdkljd1B5WV9DZVNucTJDbVlhQUJUSjZaUXI3WlFvNWhTbw?oc=5",
+      "published": "2026-08-10",
+      "published_at": "2026-08-10T07:00:00+00:00",
+      "week": "2026-W33",
+      "week_label": "Aug 10–16, 2026",
+      "excerpt": "Rakuten Sees Earnings Growth From AI 08/10/2026 MediaPost",
+      "kind": "feature",
+      "source_label": "Rakuten Advertising in the news",
+      "source_kind": "news"
+    },
+    {
       "id": "f5ce5014bfc14641",
       "competitor": "partnerize",
       "title": "The Evolution of Luxury Affiliate Marketing: Why Brand and Performance No Longer Compete",
@@ -425,20 +453,6 @@
       "source_kind": "rss"
     },
     {
-      "id": "874ef1fc543d502d",
-      "competitor": "partnerize",
-      "title": "In Luxury Fashion, Clicks Only Tell a Tenth of the Story",
-      "url": "https://partnerize.com/resources/blog/in-luxury-fashion-clicks-only-tell-a-tenth-of-the-story",
-      "published": "2026-07-29",
-      "published_at": "2026-07-29T20:00:16+00:00",
-      "week": "2026-W31",
-      "week_label": "Jul 27 – Aug 2, 2026",
-      "excerpt": "Luxury shoppers have always researched differently. They don't open ten browser tabs and hunt for a promo code. Instead, they read from trusted sources, form a point of view, and buy with conviction. That behavior hasn't changed in the AI era. What's changed is who's doing the…",
-      "kind": "feature",
-      "source_label": "Partnerize Feed",
-      "source_kind": "rss"
-    },
-    {
       "id": "b78d26627f3a7eb9",
       "competitor": "refersion",
       "title": "My Affiliate Program Isn’t Profitable – 6 Essential Checks",
@@ -478,20 +492,6 @@
       "excerpt": "Shopify apps enable stores of all sizes to navigate various lifecycle stages. If your DTC brand is driving less than $1M per year, you’re probably hitting a very familiar wall.... The post Top 5 Shopify Apps for Store Growth, Conversion Rates, and Retention appeared first on…",
       "kind": "news",
       "source_label": "Refersion Blog",
-      "source_kind": "rss"
-    },
-    {
-      "id": "634ae09abcc0cd02",
-      "competitor": "partnerize",
-      "title": "Navigating the Blind Spot: How AI Discovery is Rewriting the Rules of Performance Attribution",
-      "url": "https://partnerize.com/resources/blog/navigating-the-blind-spot-how-ai-discovery-is-rewriting-the-rules-of-performance-attribution",
-      "published": "2026-07-20",
-      "published_at": "2026-07-20T13:39:02+00:00",
-      "week": "2026-W30",
-      "week_label": "Jul 20–26, 2026",
-      "excerpt": "For decades, the affiliate marketing ecosystem functioned on a black-and-white rule: if an action could be clicked, it could be tracked, and if it was tracked, it could be rewarded. But as consumer journeys increasingly migrate into machine-mediated experiences—driven by Large…",
-      "kind": "feature",
-      "source_label": "Partnerize Feed",
       "source_kind": "rss"
     },
     {
@@ -551,15 +551,15 @@
       "source_kind": "news"
     },
     {
-      "id": "8ecd58af09e11a86",
+      "id": "f6edeab4110fdc8c",
       "competitor": "rakuten",
-      "title": "Phoebe Gates’ Phia, Backed by Celebrity Investors, Faces an Affiliate-Tracking Scandal Behind Its “Never Overpay Again” Promise - retailboss.substack.com",
+      "title": "Phoebe Gates’ Phia, Backed by Celebrity Investors, Faces an Affiliate-Tracking Scandal Behind Its “Never Overpay Again” Promise - RETAILBOSS | Substack",
       "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5NSHBlYWJ2b3hzdmMwSWFtUDB5RDl0bmpBdmw2aEJBUEFMY2pkODdZOEx1UEw4VklFZ0hCRHRZZDFjandmLXZROXVMVTFDOFJwSTJqUWFtaUJaT0twODVpbXlrdXprWHg2TEZEUmJxNHV1MVBLLU5YSDhYUQ?oc=5",
       "published": "2026-07-13",
       "published_at": "2026-07-13T07:00:00+00:00",
       "week": "2026-W29",
       "week_label": "Jul 13–19, 2026",
-      "excerpt": "Phoebe Gates’ Phia, Backed by Celebrity Investors, Faces an Affiliate-Tracking Scandal Behind Its “Never Overpay Again” Promise retailboss.substack.com",
+      "excerpt": "Phoebe Gates’ Phia, Backed by Celebrity Investors, Faces an Affiliate-Tracking Scandal Behind Its “Never Overpay Again” Promise RETAILBOSS | Substack",
       "kind": "feature",
       "source_label": "Rakuten Advertising in the news",
       "source_kind": "news"
@@ -607,10 +607,10 @@
       "source_kind": "rss"
     },
     {
-      "id": "3e11f1adaf44f65c",
+      "id": "fd6eae486ae168ed",
       "competitor": "awin",
       "title": "Awin expands discovery intelligence as AI reshapes how consumers find brands - GlobeNewswire",
-      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPamRiaFpsTmxXTnNJZnAwNXU0SWYyQjBDWmdCLVpQN0JqS2NoS1BBdk1WNTVsbG9WaHZBb01IaDJKR1NDcV90M3NaVmlWVDZtNU1UZlVXdXpvRG9rT21ESWpsODhSMEdFZng3U1pNTUp6MHpjdWJuTWtkSE8tV0ZvTjBXc0xnYzlwUGRONGFraDNSaXdtTXBJeC1QSGtpODVTLVdudWI5bFdUeks2UU91V0hmOFVNRzUyOGVvTktZbzl4SDZtQXI5bFo3aDVtYXVic1ZadWYtVTQ4TmtrUVlPRUdB?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOSHJpQi1BUzU4b0JXSHZVcUthcG05cnZNYlFLdkFpQjVrLXkwWF91eFhmTWZHMDItNEpybmpWOWdnU1VnWWtoX1J0V1hXb2pLMlUxSGNScXJmbWNSNy1ESTVaRzV1NXY4bE1XSGNtajRqLVJOV0NPckFVN0M1WnZWaUhwLXg3MWxySEJBZTFLTlgxNllxRjJiSlVRM05uZE41eVhXRFJmLVVUbXpfN2N2RVpfZUd1eE0xdnpSNFZEazM4aXA2OG1rNHRqUW54RXh1OU94cmN0T2s3bEVjX0VyWF9B?oc=5",
       "published": "2026-06-30",
       "published_at": "2026-06-30T07:00:00+00:00",
       "week": "2026-W27",
@@ -621,15 +621,15 @@
       "source_kind": "news"
     },
     {
-      "id": "aa06ebb5cf430de0",
+      "id": "ce6b77053e309651",
       "competitor": "awin",
-      "title": "On The Border closes all restaurants - Chain Store Age",
+      "title": "News Briefs - Chain Store Age",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9zalZGVXVUNlBPVnZpUTZudUdwNmRYTjVXZHBUa0d6NGpWWTZsWHQ3TWk5bHRsdG0tY2FubDcyd3VMNlhUZkJNTUdKODVtSU5RLWQ2c21oT3pFTnNz?oc=5",
       "published": "2026-06-22",
       "published_at": "2026-06-22T07:00:00+00:00",
       "week": "2026-W26",
       "week_label": "Jun 22–28, 2026",
-      "excerpt": "On The Border closes all restaurants Chain Store Age",
+      "excerpt": "News Briefs Chain Store Age",
       "kind": "news",
       "source_label": "Awin in the news",
       "source_kind": "news"
@@ -1041,6 +1041,20 @@
       "source_kind": "news"
     },
     {
+      "id": "d4261c88e1667094",
+      "competitor": "partnerize",
+      "title": "Writing Content For The Robots; Amazon’s Alarming Affiliate Adjustments - AdExchanger",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPNEhGQm1oUFNucUwxXzV5MTVUVHE5bVNUYU5Ya2VzdW1uV1J4TmQ3d1BCdlBYN0puWmNzLUhrN1FaY3k5SU80bnl4c3hxb3k4aVJ6MGhuQ1lBaEZVNDJ6cEctWExRdkR6T2xzVW5qclgtUTV2Nkh6YXN5NWxqZV9sZ095aE0xRkVja3E2UlYwRVBkc1FEdDE4M1ZaaU9VZTMxdUVDdVV2ODJSRDhfd1hwZFFOTzRMMVBu?oc=5",
+      "published": "2026-05-19",
+      "published_at": "2026-05-19T07:00:00+00:00",
+      "week": "2026-W21",
+      "week_label": "May 18–24, 2026",
+      "excerpt": "Writing Content For The Robots; Amazon’s Alarming Affiliate Adjustments AdExchanger",
+      "kind": "news",
+      "source_label": "Partnerize in the news",
+      "source_kind": "news"
+    },
+    {
       "id": "e5f3e508b45f55ab",
       "competitor": "rakuten",
       "title": "Rakuten Advertising & impact.com: A New Era for Your Partnership Program",
@@ -1055,59 +1069,17 @@
       "source_kind": "rss"
     },
     {
-      "id": "656d0442f43854f8",
-      "competitor": "rakuten",
-      "title": "Affiliate Marketing News: Decoding Economic Shifts and the Rise of the Hybrid FinServ Consumer",
-      "url": "https://blog.rakutenadvertising.com/insights/affiliate-marketing-news-economic-shifts-bnpl/",
-      "published": "2026-05-14",
-      "published_at": "2026-05-14T18:05:00+00:00",
-      "week": "2026-W20",
-      "week_label": "May 11–17, 2026",
-      "excerpt": "Macroeconomic pressures have created a permanent \"value-seeking\" consumer. This has fueled the rise of Buy Now, Pay Later (BNPL), not as a replacement for credit cards, but as a complementary tool. The result is a new, highly valuable 'hybrid consumer' who strategically uses…",
+      "id": "48e34cd447235144",
+      "competitor": "partnerize",
+      "title": "Partnerize Hires David Dowd to Expand VantagePoint Enterprise Sales - citybiz",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNVDkyeDNsR19xMjRYQ3V6cmVmdGlQN05JQXV3cmdCeUp3UWduTVl3VWsxVE1xejhzMlZObzRvRFRTNXJpdDI1Z21DVjV6WGRZQ1VsS25yQjdzdUJwdXNZUVlaRDRORzlob2VsZUdFWEVvVWxMTHR2RlR0bnhzRjFGWm9ENU9ZRnI1SDZGb3QxLWNxdDA2Xy1pMjNLVmtmV2M2OVlSTFJBc3pSUQ?oc=5",
+      "published": "2026-05-18",
+      "published_at": "2026-05-18T07:00:00+00:00",
+      "week": "2026-W21",
+      "week_label": "May 18–24, 2026",
+      "excerpt": "Partnerize Hires David Dowd to Expand VantagePoint Enterprise Sales citybiz",
       "kind": "news",
-      "source_label": "Rakuten Advertising Blog",
-      "source_kind": "rss"
-    },
-    {
-      "id": "e7586f58f564bacc",
-      "competitor": "rakuten",
-      "title": "Rakuten Optimism 2026: Official Event Highlights",
-      "url": "https://blog.rakutenadvertising.com/events/rakuten-optimism-2026-official-event-highlights/",
-      "published": "2026-05-14",
-      "published_at": "2026-05-14T15:48:13+00:00",
-      "week": "2026-W20",
-      "week_label": "May 11–17, 2026",
-      "excerpt": "Rakuten Optimism 2026 brought together more than 1,000 global advertisers, publishers, agencies, and industry leaders in Phoenix for two days of insights, innovation, and connection. From headline sessions and expert panels to the Golden Link Awards Gala and the debut of Mirai…",
-      "kind": "feature",
-      "source_label": "Rakuten Advertising Blog",
-      "source_kind": "rss"
-    },
-    {
-      "id": "aec03f2cabf4dd19",
-      "competitor": "awin",
-      "title": "Awin, One of the World’s Largest Affiliate Marketing Networks, Accelerates Multilingual Content Translation 57% with Acclaro and Lokalise - Business Wire",
-      "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxNbmRfem8yaGF3Z3pDMlA5cGg3NzNkclpZWkdpOHdQZk1uWmFWLXAtLVctcVE5akRYZnZZZGJMU3ZFUmM2UmdUcE1wczVpSEtfVjdxT2RxS09lNnZ1UFprZ1FiVEt2aVd0d1Q5U2lXa1BVZHR3WUF5d2FRNjkta05UMnNYbzUyTTlPQWZ0UFlsbGlFbDBQeHNLUElLMXJiRng0OExoUGRMX1RNUTJ4Z0FwNVdfUWEzbjFldlR0VGlGVTRwOU85SjE3Q05iaTZPeXRQVmJnenN5TU51VWJIRlJfXzNIZGJXSzNzQW9PSnV0TnpDMEo2QWQ4TVg1bjlZUjNyclJiNzQwSnBzRTE2Ty1kdGRUX1l4a1Q2MlE?oc=5",
-      "published": "2026-05-13",
-      "published_at": "2026-05-13T07:00:00+00:00",
-      "week": "2026-W20",
-      "week_label": "May 11–17, 2026",
-      "excerpt": "Awin, One of the World’s Largest Affiliate Marketing Networks, Accelerates Multilingual Content Translation 57% with Acclaro and Lokalise Business Wire",
-      "kind": "news",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "a6386b26023c9db1",
-      "competitor": "refersion",
-      "title": "16 of the Best Affiliate Marketing Websites for 2026 - Influencer Marketing Hub",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9YODBZamJwUmVBaTN6aWJ5dC1INGxXRU8wRExibTZkY3RUeVJKTUxOT2l5X252eG5laGZucTctYVRRQlY0Y2tobmNKaWVYdHNyQ1p0N00zZzlVVWJOdzhncUpyaktySEdEQWJpdFdUUV90Zw?oc=5",
-      "published": "2026-05-13",
-      "published_at": "2026-05-13T07:00:00+00:00",
-      "week": "2026-W20",
-      "week_label": "May 11–17, 2026",
-      "excerpt": "16 of the Best Affiliate Marketing Websites for 2026 Influencer Marketing Hub",
-      "kind": "news",
-      "source_label": "Refersion in the news",
+      "source_label": "Partnerize in the news",
       "source_kind": "news"
     },
     {
@@ -1196,9 +1168,9 @@
     }
   ],
   "counts": {
-    "items": 74,
-    "features": 44,
-    "news": 30,
+    "items": 72,
+    "features": 43,
+    "news": 29,
     "ok_sources": 13,
     "error_sources": 0
   }
