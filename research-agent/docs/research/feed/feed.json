@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T14:43:56.295871+00:00",
+  "generated_at": "2026-09-21T14:50:40.307152+00:00",
   "lookback_days": 120,
   "competitors": [
     {
@@ -64,7 +64,7 @@
       "kind": "rss",
       "status": "ok",
       "error": "",
-      "items": 6
+      "items": 4
     },
     {
       "competitor": "partnerize",
@@ -100,7 +100,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 7
+      "items": 8
     },
     {
       "competitor": "cj",
@@ -109,7 +109,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 2
+      "items": 4
     },
     {
       "competitor": "rakuten",
@@ -118,7 +118,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 4
+      "items": 2
     },
     {
       "competitor": "partnerize",
@@ -127,7 +127,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 2
+      "items": 0
     },
     {
       "competitor": "shareasale",
@@ -136,7 +136,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 2
+      "items": 1
     },
     {
       "competitor": "pepperjam",
@@ -159,6 +159,34 @@
   ],
   "items": [
     {
+      "id": "a80ed24f15706852",
+      "competitor": "awin",
+      "title": "Best affiliate programs UK: networks & platforms - Skint Dad",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9mUWZfN2h3UE5ySFA5TDc0OVcxODZ4YWltYTBYVFVSLWxZeWtSejJXRjBEdU9iZG94MDFBMjZ2b1UzRkd3R0VhRmpMallnMUM4dTYzejBMaVI?oc=5",
+      "published": "2026-09-15",
+      "published_at": "2026-09-15T07:00:00+00:00",
+      "week": "2026-W38",
+      "week_label": "Sep 14–20, 2026",
+      "excerpt": "Best affiliate programs UK: networks & platforms Skint Dad",
+      "kind": "news",
+      "source_label": "Awin in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "fb25e69e95c756d9",
+      "competitor": "partnerize",
+      "title": "[Download] Persistent Tracking, Maximum Yield: The Partnerize Revenue Protection Playbook",
+      "url": "https://partnerize.com/resources/blog/persistent-tracking-maximum-yield-the-partnerize-revenue-protection-playbook",
+      "published": "2026-09-14",
+      "published_at": "2026-09-14T17:28:19+00:00",
+      "week": "2026-W38",
+      "week_label": "Sep 14–20, 2026",
+      "excerpt": "While advertisers are eager to lean into performance marketing, reliable tracking infrastructure is paramount for revenue protection and proves a strong ROI against growing spend allocation. Failure to implement revenue protection infrastructure leaves advertisers with:",
+      "kind": "feature",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
+    {
       "id": "cda3b3da21efe33c",
       "competitor": "partnerize",
       "title": "Beyond the Blind Spot: Defending Your Partner Program Spend in the Zero-Click Era",
@@ -167,7 +195,7 @@
       "published_at": "2026-09-09T13:18:25+00:00",
       "week": "2026-W37",
       "week_label": "Sep 7–13, 2026",
-      "excerpt": "As digital commerce migrates into machine-mediated channels like Google AI Overviews, traditional link-based tracking is eroding. The post Beyond the Blind Spot: Defending Your Partner Program Spend in the Zero-Click Era appeared first on Partnerize.",
+      "excerpt": "As digital commerce migrates into machine-mediated channels like Google AI Overviews, traditional link-based tracking is eroding.",
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
@@ -181,7 +209,7 @@
       "published_at": "2026-09-04T18:12:59+00:00",
       "week": "2026-W36",
       "week_label": "Aug 31 – Sep 6, 2026",
-      "excerpt": "The apparel shopper's journey has already changed. The only question is whether your measurement model reflects the market as it is, or the one that existed before AI-powered search started answering the questions. The post AI Rewrote How People Shop for Clothes. Your…",
+      "excerpt": "The apparel shopper's journey has already changed. The only question is whether your measurement model reflects the market as it is, or the one that existed before AI-powered search started answering the questions.",
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
@@ -307,7 +335,7 @@
       "published_at": "2026-08-17T19:04:33+00:00",
       "week": "2026-W34",
       "week_label": "Aug 17–23, 2026",
-      "excerpt": "Wearables shoppers are some of the most deliberate, research-driven buyers in consumer tech. The publishers earning their trust deserve a measurement and reward system built for how that trust is actually formed. The post Smart Watches, Smart Rings, and the Comparison Content…",
+      "excerpt": "Wearables shoppers are some of the most deliberate, research-driven buyers in consumer tech. The publishers earning their trust deserve a measurement and reward system built for how that trust is actually formed.",
       "kind": "news",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
@@ -321,7 +349,7 @@
       "published_at": "2026-08-13T13:39:50+00:00",
       "week": "2026-W33",
       "week_label": "Aug 10–16, 2026",
-      "excerpt": "The AI era isn't creating a visibility problem. It's exposing a value problem. The post Visibility Isn’t Value: The Missing Layer in AI Commerce appeared first on Partnerize.",
+      "excerpt": "The AI era isn't creating a visibility problem. It's exposing a value problem.",
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
@@ -349,36 +377,22 @@
       "published_at": "2026-08-12T19:25:53+00:00",
       "week": "2026-W33",
       "week_label": "Aug 10–16, 2026",
-      "excerpt": "The future of affiliate marketing isn't about adding more partners; it's about building smarter partnerships. The post The Future of Affiliate Marketing: Why Strategic Partnerships are Replacing Scale appeared first on Partnerize.",
+      "excerpt": "The future of affiliate marketing isn't about adding more partners; it's about building smarter partnerships.",
       "kind": "news",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
     },
     {
-      "id": "3478f014e0d33428",
+      "id": "dd4866aad94617de",
       "competitor": "rakuten",
-      "title": "Rakuten Advertising Revenue 2025: $95.6M Est. ARR - GetLatka",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5fLU1OM3I1UjFHZmZycDh2dE1zVThKLTdpakkyS3hsOGFud1YtUm5TdWlueWVXM3NFcG1GQTg2MU1QT3N2VzRLeVQtMFlGV016dE9tQ1VrQmh2azNLTzRzSm5UOA?oc=5",
-      "published": "2026-08-10",
-      "published_at": "2026-08-10T07:00:00+00:00",
-      "week": "2026-W33",
-      "week_label": "Aug 10–16, 2026",
-      "excerpt": "Rakuten Advertising Revenue 2025: $95.6M Est. ARR GetLatka",
+      "title": "2026 MarTech Breakthrough Awards Recognize the World’s Most - GlobeNewswire",
+      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxOSWtsb3dIelM3dF9mempZTG42b2R5aElZdWNocWI3Y2VmNnVJRWFBTVhUemp0Sll3Yl9ndHNjZm9YOXgtU09nN1RFR1lUSHZodnlzOUtuOEVISndHcWMyWVdjVnpET19UbWRoSldscnlHdGZXU01iRHlVUXhNN25ZMnZTdXFodUQyOVNHLURFVEMtX0c5eEZRZkJPTmJ0Q184RXBIc042SFdyTVV1bXNmTWNZSE04SDR5ZDZGblJnMjZ0SjVQc3ZERnBZZjhlNXZ3eWhuQUlYcDZ2QzVwSDdlc21ZalRvVFpCSUJfMG5FRkd4UGhVVEVHODdJMDlIdHVTOEJhalYwN1hwNmF4eTg0U1hUSm0yUklJS09fdnNITWQ?oc=5",
+      "published": "2026-08-06",
+      "published_at": "2026-08-06T07:00:00+00:00",
+      "week": "2026-W32",
+      "week_label": "Aug 3–9, 2026",
+      "excerpt": "2026 MarTech Breakthrough Awards Recognize the World’s Most GlobeNewswire",
       "kind": "news",
-      "source_label": "Rakuten Advertising in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "99721a7405c8eaf7",
-      "competitor": "rakuten",
-      "title": "Rakuten Sees Earnings Growth From AI 08/10/2026 - MediaPost",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOVllpMHg4dDFmNDdINlpZVGZhNGZsd2hrNFFheV9WSk53RDQtSzB3VjVTUHh3TzVOMklwZTV2ZXhlQ2kxNzdnRjdseWlrRUNRcWl5akFMMmExdkJqZG00NnZ3Mmk4OXk4VnUwcml6ZTlwNUpJdnNiU2dOdkljd1B5WV9DZVNucTJDbVlhQUJUSjZaUXI3WlFvNWhTbw?oc=5",
-      "published": "2026-08-10",
-      "published_at": "2026-08-10T07:00:00+00:00",
-      "week": "2026-W33",
-      "week_label": "Aug 10–16, 2026",
-      "excerpt": "Rakuten Sees Earnings Growth From AI 08/10/2026 MediaPost",
-      "kind": "feature",
       "source_label": "Rakuten Advertising in the news",
       "source_kind": "news"
     },
@@ -391,7 +405,7 @@
       "published_at": "2026-08-05T21:25:22+00:00",
       "week": "2026-W32",
       "week_label": "Aug 3–9, 2026",
-      "excerpt": "The luxury leaders of tomorrow aren't choosing between brand building and performance marketing — they are using strategic partnerships to achieve both. The post The Evolution of Luxury Affiliate Marketing: Why Brand and Performance No Longer Compete appeared first on Partnerize.",
+      "excerpt": "The luxury leaders of tomorrow aren't choosing between brand building and performance marketing — they are using strategic partnerships to achieve both.",
       "kind": "news",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
@@ -419,7 +433,7 @@
       "published_at": "2026-08-04T16:42:23+00:00",
       "week": "2026-W32",
       "week_label": "Aug 3–9, 2026",
-      "excerpt": "Brands cannot solve a structural market shift with fragmented click-tracking tools. Moving past diagnostic paralysis requires a unified, auditable governance framework. The post [Download] From Clicks to Value: The Executive Guide to Zero-Click Commerce appeared first on…",
+      "excerpt": "Brands cannot solve a structural market shift with fragmented click-tracking tools. Moving past diagnostic paralysis requires a unified, auditable governance framework.",
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
@@ -439,18 +453,18 @@
       "source_kind": "rss"
     },
     {
-      "id": "6e9ccf62f45e0f60",
-      "competitor": "partnerize",
-      "title": "Seeing AI Influence Isn’t the Same as Rewarding It",
-      "url": "https://partnerize.com/resources/blog/seeing-ai-influence-isnt-the-same-as-rewarding-it",
-      "published": "2026-07-30",
-      "published_at": "2026-07-30T17:26:36+00:00",
+      "id": "6d3350091dcbae4e",
+      "competitor": "awin",
+      "title": "YouTube Shopping Affiliate Programme coming to the UK - Performance Marketing World",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOa2JPSkowY0l5blRHRHVPSDZaYzZySzVrZmNYMHVjX3IwbXE4aWNpelMtMm92NEZHWkxKdmc1bzlXaXFUNW56RUJoRTFuSVNycUFpSmZ5Slo0c0QydWpOWV9fRGZTZlZONWlZS05MOXlCd085aFZuSy1EaUxmMUphUS0zV2lYenlLTzBlZGZHcHRrUTl6aV9IS0s0NnEtcnVKbmRrbVRfYw?oc=5",
+      "published": "2026-07-27",
+      "published_at": "2026-07-27T07:00:00+00:00",
       "week": "2026-W31",
       "week_label": "Jul 27 – Aug 2, 2026",
-      "excerpt": "So the requirement is clear. To reward influence, the market needs a verified connection between what a partner influenced and what a business actually earned — one credible enough to govern decisions and enforce payment against. The post Seeing AI Influence Isn’t the Same as…",
-      "kind": "feature",
-      "source_label": "Partnerize Feed",
-      "source_kind": "rss"
+      "excerpt": "YouTube Shopping Affiliate Programme coming to the UK Performance Marketing World",
+      "kind": "news",
+      "source_label": "Awin in the news",
+      "source_kind": "news"
     },
     {
       "id": "b78d26627f3a7eb9",
@@ -507,6 +521,20 @@
       "kind": "news",
       "source_label": "Rakuten Advertising Blog",
       "source_kind": "rss"
+    },
+    {
+      "id": "3a6d3c9c3691d4ce",
+      "competitor": "cj",
+      "title": "Bill Gates' daughter Phoebe Gates' shopping app accused of taking credit for sales it didn't drive, company responds ‘we were…’ - The Times of India",
+      "url": "https://news.google.com/rss/articles/CBMiqwJBVV95cUxNR1VmV2tpWC05bnpGaGl6dXJWTDlQUmFJZ1pLT1psaGg5VndrOWNOdC1YQ0JieVNZaHVhYXBuaFZHWmxkNVlkRjZUcElKY0FmbVVSbmhnNjM4X3FrbGFoM2ZDakR5VDl6b0RMOXVXNzdFRU5PNGFMZWlzRWNxS3Brek1JOTVkTlBkRWItdHc4UEZ6eUpzUHdxcjNxM2ltZnhyUXl2eHhJZ2lQNnFUaThSa1dRa3FGc2wwMkR0aWpCUzV0T3Y4NVNMY0xsd0U3NnBwYk5XYVhSSGRHZHZ3Ymc1cncyRm9qR19MTTNsUWNFQUVVdDhsc1prTFhWSF94Umphb2tMZDVzVUJGS0p5MFZHdVNPUHZkb29KX3hYNU1vNHJoVGw3YmcwT1phTQ?oc=5",
+      "published": "2026-07-15",
+      "published_at": "2026-07-15T07:00:00+00:00",
+      "week": "2026-W29",
+      "week_label": "Jul 13–19, 2026",
+      "excerpt": "Bill Gates' daughter Phoebe Gates' shopping app accused of taking credit for sales it didn't drive, company responds ‘we were…’ The Times of India",
+      "kind": "news",
+      "source_label": "CJ Affiliate in the news",
+      "source_kind": "news"
     },
     {
       "id": "dea9ec0520663a76",
@@ -579,15 +607,15 @@
       "source_kind": "rss"
     },
     {
-      "id": "dc43d0e418c42b0e",
+      "id": "3a41ebdb404c04ed",
       "competitor": "awin",
-      "title": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 - G2 Learn Hub",
+      "title": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 - G2 Learning Hub",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBPTjRsQnZGLThtM3h5amJOOTVzczluVEVIZEZqV1dNSWFhUVVpMlpJQ0V1MW9qaUxDeXllbHF6U0lMa2RVeFlFOTdVMi13TGRTc3FiclRrLVhqMnd6OVNvNmhYMzHSAXRBVV95cUxObmU2NUlfZTZ1MHJpYWNSM01BOENGQXF5MFpHMGo3TXdxTExYal9wcWJiZDI5VEFPZFlZb2Fva0RyMlB6UTZHcWVIaWV4VFE0S2JqeUVIaTJ6bnVubFNOU0JkbHFSdUgyRjJiVjB0TjJ3Tl8ybg?oc=5",
       "published": "2026-07-08",
       "published_at": "2026-07-08T07:00:00+00:00",
       "week": "2026-W28",
       "week_label": "Jul 6–12, 2026",
-      "excerpt": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 G2 Learn Hub",
+      "excerpt": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 G2 Learning Hub",
       "kind": "news",
       "source_label": "Awin in the news",
       "source_kind": "news"
@@ -605,6 +633,20 @@
       "kind": "news",
       "source_label": "Refersion Blog",
       "source_kind": "rss"
+    },
+    {
+      "id": "0fd9e1f2215b4afc",
+      "competitor": "awin",
+      "title": "Affiliate API Use Cases for Ecommerce and Tools To Try (2026) - Shopify",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBVUzV5THladDRnbFhtTFVEbXRnZGVaUzFONlpKU1pCX3owQS1pUGNtaXBmcERKS0p6THQ3QTBMSGhjeTMwWlZ6ZnZTUmdhTUhKMGxBOA?oc=5",
+      "published": "2026-07-02",
+      "published_at": "2026-07-02T07:00:00+00:00",
+      "week": "2026-W27",
+      "week_label": "Jun 29 – Jul 5, 2026",
+      "excerpt": "Affiliate API Use Cases for Ecommerce and Tools To Try (2026) Shopify",
+      "kind": "news",
+      "source_label": "Awin in the news",
+      "source_kind": "news"
     },
     {
       "id": "fd6eae486ae168ed",
@@ -635,59 +677,17 @@
       "source_kind": "news"
     },
     {
-      "id": "a4c67630e984e4d3",
-      "competitor": "shareasale",
-      "title": "Affiliate Marketing 2.0: Performance Partnerships That Scale - MarkHub24",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPT1MySjJOZTBFRHZiMTdOdlpReUV3M1pacXB2QnlyRlZsUjBXLVUwazNRcnVDT0h0TF9uQkdQMTFqWHA3cXEwZlo0azA4STl1UTRMdmx5a3VWd0RWQzk2MW9BdE5pelMtVWFsWmwxLURoVTc3UkE0dWpsbUFEVmlJYXZCc3JLNnZZdC0xam1VZkVzMzVM?oc=5",
-      "published": "2026-06-20",
-      "published_at": "2026-06-20T07:00:00+00:00",
-      "week": "2026-W25",
-      "week_label": "Jun 15–21, 2026",
-      "excerpt": "Affiliate Marketing 2.0: Performance Partnerships That Scale MarkHub24",
-      "kind": "news",
-      "source_label": "ShareASale in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "09f21a01e85eedcd",
+      "id": "64f182dd1aaefea5",
       "competitor": "awin",
-      "title": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market - Retail Technology Innovation Hub",
+      "title": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market - retailtechinnovationhub.com",
       "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOaEQzMndPejFlSVdiMEZjcGg0eVlvVndDa1RLWU5nYnktTHN5aEUtaUR2TjBLR1Mwd0w4cXIxM3NHYURRMkliSFMxSV92bVRUa2F4RHhGbXZHREpoWndObUFYWW91SGNLVFE3YU5ycHBlc19FTFRyN1VJRl9rZlJ6R1dZTnZ1cG4wMzVQRENGVWkwNDVCYzNKOXFmYnZoU3dTVUxVczJjOENRNU1JUWhlUXpvOHg4TEcwRm1MLVlWcFVNVm1SYXV5VVQyOUZ6S1ktZGFPVlZKamg0UQ?oc=5",
       "published": "2026-06-19",
       "published_at": "2026-06-19T07:00:00+00:00",
       "week": "2026-W25",
       "week_label": "Jun 15–21, 2026",
-      "excerpt": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market Retail Technology Innovation Hub",
+      "excerpt": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market retailtechinnovationhub.com",
       "kind": "feature",
       "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "a442feda55fc424f",
-      "competitor": "awin",
-      "title": "Clarks Taps Awin to Power U.S. Growth and Brand Discovery - GlobeNewswire",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQenhyMjI1WlRQMkdTNEs3V1g4dEx0Rk1IQ2hkcFp0V2c4UlRQcl8xRmZabzRJT2o2T0xpNmhFaG03T3oxeEhsU1EwcU5mS090bmJCSUJpLUZNcHpXcUxxajYyRDVkUGo5VURTTkFmUU50Q1BFeUg4VVFnZzRtVWFmZ3VZd2wwZS03d2R0VVdfRHFoMzFSSlBkN3IxaGs3dEVIMTZOa252ckNoNGs4eU5KZUhOS1ZyYUp1U3JFby14M3ZqMk5zRWdn?oc=5",
-      "published": "2026-06-18",
-      "published_at": "2026-06-18T07:00:00+00:00",
-      "week": "2026-W25",
-      "week_label": "Jun 15–21, 2026",
-      "excerpt": "Clarks Taps Awin to Power U.S. Growth and Brand Discovery GlobeNewswire",
-      "kind": "news",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "98cb7b21ff8272fe",
-      "competitor": "shareasale",
-      "title": "Affiliate Networks: 11 Best Options for 2026 - Shopify",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE56bFNHcWkxSVdNcWRSOHdkQ2dfSnBCU0dVdHRycWh5djM5QnRRYWRnMW1ZQ0d6aS1QNHpubUQ2SG44ZlVOdkV6YW1UZ0hvYnNzb0xFUUl0bTlKaFZiNmlr?oc=5",
-      "published": "2026-06-17",
-      "published_at": "2026-06-17T07:00:00+00:00",
-      "week": "2026-W25",
-      "week_label": "Jun 15–21, 2026",
-      "excerpt": "Affiliate Networks: 11 Best Options for 2026 Shopify",
-      "kind": "news",
-      "source_label": "ShareASale in the news",
       "source_kind": "news"
     },
     {
@@ -999,90 +999,6 @@
       "source_kind": "news"
     },
     {
-      "id": "93e3d39eb8fd93aa",
-      "competitor": "rakuten",
-      "title": "New Research: The Reality of AI Shopping and its Impact on Partner Marketing",
-      "url": "https://blog.rakutenadvertising.com/insights/new-research-the-reality-of-ai-shopping-and-its-impact-on-partner-marketing/",
-      "published": "2026-05-22",
-      "published_at": "2026-05-22T13:17:35+00:00",
-      "week": "2026-W21",
-      "week_label": "May 18–24, 2026",
-      "excerpt": "The separation gap in AI shopping is changing the role of performance marketing in surprising ways. Our new report is an indispensable AI intelligence guide for partner marketing leaders, revealing an unexpected most valuable audience, and proving why trust is the new value…",
-      "kind": "feature",
-      "source_label": "Rakuten Advertising Blog",
-      "source_kind": "rss"
-    },
-    {
-      "id": "6304e921e92b335b",
-      "competitor": "awin",
-      "title": "Partner up: How affiliate marketing drives results in the AI era - Marketing Brew",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQMmJUUnl6d29NWjFrczd4SmxBa0hNaEs5OWV5dzkxVlB1TnNhdm9FMUxsZHpRSHRtSTJtMUtid0pkekxYTFZjeXptcDNLTkNxOXNwYm1OUTFRQXAxYlI0Mkp3MENpQ1ZXZGZDSHFXeUtDanNPVU5Bc1haVWxGWk5BWXB3?oc=5",
-      "published": "2026-05-20",
-      "published_at": "2026-05-20T07:00:00+00:00",
-      "week": "2026-W21",
-      "week_label": "May 18–24, 2026",
-      "excerpt": "Partner up: How affiliate marketing drives results in the AI era Marketing Brew",
-      "kind": "feature",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "38a64876aac73f7a",
-      "competitor": "rakuten",
-      "title": "impact.com Accelerates Q1 Momentum with Platform Innovation, Rakuten Alliance, and Partnership Economy Expansion - Business Wire",
-      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxNUDF0dHFXc3JMaUVaczNUMllES01Kc0NXb0t4ejc2Skp0UllJbXlFdkt0a0N1LUxHdHFtcnVMR2xHTGh2TXNXS2VFVUhMVGpFU1FCUW9XYkNDLWIzQjkzbmpISnA3SkVwOFZpekl6eHNSeEhid194aGZ4THdQVXFtZ3FaQUthMWJaVzRqcDhGX3Q2T1pFWUtONjhwTDFKdkRXdjVqd0ZTUEx1Q1R5WkpfUjlSaEhFUHNyODFMWGtVdGNaVFlDSmVHdFJrQkI5amR5cGFrMC14aERUeDc5eHhFTWdMRzNJSDMxR2hXYU8tSldSU2xRS3ZDR09faw?oc=5",
-      "published": "2026-05-19",
-      "published_at": "2026-05-19T07:00:00+00:00",
-      "week": "2026-W21",
-      "week_label": "May 18–24, 2026",
-      "excerpt": "impact.com Accelerates Q1 Momentum with Platform Innovation, Rakuten Alliance, and Partnership Economy Expansion Business Wire",
-      "kind": "news",
-      "source_label": "Rakuten Advertising in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "d4261c88e1667094",
-      "competitor": "partnerize",
-      "title": "Writing Content For The Robots; Amazon’s Alarming Affiliate Adjustments - AdExchanger",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPNEhGQm1oUFNucUwxXzV5MTVUVHE5bVNUYU5Ya2VzdW1uV1J4TmQ3d1BCdlBYN0puWmNzLUhrN1FaY3k5SU80bnl4c3hxb3k4aVJ6MGhuQ1lBaEZVNDJ6cEctWExRdkR6T2xzVW5qclgtUTV2Nkh6YXN5NWxqZV9sZ095aE0xRkVja3E2UlYwRVBkc1FEdDE4M1ZaaU9VZTMxdUVDdVV2ODJSRDhfd1hwZFFOTzRMMVBu?oc=5",
-      "published": "2026-05-19",
-      "published_at": "2026-05-19T07:00:00+00:00",
-      "week": "2026-W21",
-      "week_label": "May 18–24, 2026",
-      "excerpt": "Writing Content For The Robots; Amazon’s Alarming Affiliate Adjustments AdExchanger",
-      "kind": "news",
-      "source_label": "Partnerize in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "e5f3e508b45f55ab",
-      "competitor": "rakuten",
-      "title": "Rakuten Advertising & impact.com: A New Era for Your Partnership Program",
-      "url": "https://blog.rakutenadvertising.com/news/strategic-partnership-impact-and-rakuten-advertising/",
-      "published": "2026-05-18",
-      "published_at": "2026-05-18T15:25:09+00:00",
-      "week": "2026-W21",
-      "week_label": "May 18–24, 2026",
-      "excerpt": "Rakuten Advertising’s strategic partnership with impact.com marks a major step forward in partnership marketing, giving advertisers, publishers, and partners access to stronger technology, smoother transitions, and expanded growth opportunities.",
-      "kind": "news",
-      "source_label": "Rakuten Advertising Blog",
-      "source_kind": "rss"
-    },
-    {
-      "id": "48e34cd447235144",
-      "competitor": "partnerize",
-      "title": "Partnerize Hires David Dowd to Expand VantagePoint Enterprise Sales - citybiz",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNVDkyeDNsR19xMjRYQ3V6cmVmdGlQN05JQXV3cmdCeUp3UWduTVl3VWsxVE1xejhzMlZObzRvRFRTNXJpdDI1Z21DVjV6WGRZQ1VsS25yQjdzdUJwdXNZUVlaRDRORzlob2VsZUdFWEVvVWxMTHR2RlR0bnhzRjFGWm9ENU9ZRnI1SDZGb3QxLWNxdDA2Xy1pMjNLVmtmV2M2OVlSTFJBc3pSUQ?oc=5",
-      "published": "2026-05-18",
-      "published_at": "2026-05-18T07:00:00+00:00",
-      "week": "2026-W21",
-      "week_label": "May 18–24, 2026",
-      "excerpt": "Partnerize Hires David Dowd to Expand VantagePoint Enterprise Sales citybiz",
-      "kind": "news",
-      "source_label": "Partnerize in the news",
-      "source_kind": "news"
-    },
-    {
       "id": "609f141124ffd08b",
       "competitor": "awin",
       "title": "Transaction management",
@@ -1168,9 +1084,9 @@
     }
   ],
   "counts": {
-    "items": 72,
-    "features": 43,
-    "news": 29,
+    "items": 66,
+    "features": 40,
+    "news": 26,
     "ok_sources": 13,
     "error_sources": 0
   }
