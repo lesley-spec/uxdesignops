@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T14:50:40.307152+00:00",
+  "generated_at": "2026-09-28T16:27:21.557453+00:00",
   "lookback_days": 120,
   "competitors": [
     {
@@ -118,7 +118,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 2
+      "items": 1
     },
     {
       "competitor": "partnerize",
@@ -145,7 +145,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 0
+      "items": 1
     },
     {
       "competitor": "refersion",
@@ -159,8 +159,22 @@
   ],
   "items": [
     {
-      "id": "a80ed24f15706852",
-      "competitor": "awin",
+      "id": "593486bfe57a7bcf",
+      "competitor": "partnerize",
+      "title": "We’ve Seen This Movie Before. The AI Citation Is the New Facebook Like.",
+      "url": "https://partnerize.com/resources/blog/weve-seen-this-movie-before-the-ai-citation-is-the-new-facebook-like",
+      "published": "2026-09-22",
+      "published_at": "2026-09-22T15:24:31+00:00",
+      "week": "2026-W39",
+      "week_label": "Sep 21–27, 2026",
+      "excerpt": "The Facebook Like didn't disappear because marketers stopped caring about audiences. The market simply matured. The questions became harder. Engagement mattered more than audience size. Conversion mattered more than engagement. Incrementality mattered more than conversion. And…",
+      "kind": "feature",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
+    {
+      "id": "95ed00aecfc771e4",
+      "competitor": "cj",
       "title": "Best affiliate programs UK: networks & platforms - Skint Dad",
       "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9mUWZfN2h3UE5ySFA5TDc0OVcxODZ4YWltYTBYVFVSLWxZeWtSejJXRjBEdU9iZG94MDFBMjZ2b1UzRkd3R0VhRmpMallnMUM4dTYzejBMaVI?oc=5",
       "published": "2026-09-15",
@@ -169,7 +183,7 @@
       "week_label": "Sep 14–20, 2026",
       "excerpt": "Best affiliate programs UK: networks & platforms Skint Dad",
       "kind": "news",
-      "source_label": "Awin in the news",
+      "source_label": "CJ Affiliate in the news",
       "source_kind": "news"
     },
     {
@@ -185,6 +199,20 @@
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
+    },
+    {
+      "id": "56f166c030b633aa",
+      "competitor": "pepperjam",
+      "title": "Pepperjam and RevLifter Partner to Deliver the Affiliate Industry’s Only Turnkey Content Personalization Solution - ACCESS Newswire",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQdWhCUFhWSEtzelctNWY5cVRMTjkxbmQxb2NreExoelliVVk5dnBHaUtkdjJxZXBLVmpsYmNZS1gwcFpHc0Y1WlgxOEJPTkZCN3RXRWhRQzdueUdVbWlYbzR3Q3FGOFNub1YxeGEwX2o3NDdvaEJRbXlLSmxkX2ZuQTVWanN1ZGhRY0RvNlB5M0RrWUJGZ1I4UnhCdmdBd2VVYU5TRFJjRTh5MVE5VHBkejRCZFU1SWp5VVl3TU1aZE11M2lteHRONmRJUWhkWHdwRWRLQ3FpSUc0NllhN1JCQWIzWQ?oc=5",
+      "published": "2026-09-12",
+      "published_at": "2026-09-12T21:01:35+00:00",
+      "week": "2026-W37",
+      "week_label": "Sep 7–13, 2026",
+      "excerpt": "Pepperjam and RevLifter Partner to Deliver the Affiliate Industry’s Only Turnkey Content Personalization Solution ACCESS Newswire",
+      "kind": "news",
+      "source_label": "Pepperjam in the news",
+      "source_kind": "news"
     },
     {
       "id": "cda3b3da21efe33c",
@@ -213,20 +241,6 @@
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
-    },
-    {
-      "id": "6d7253038c9580fd",
-      "competitor": "refersion",
-      "title": "Top US Influencer Marketing Platforms That Influencers and Brands Around the World Should Know - Influencer Marketing Hub",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBYZFFJeHhJd0ZaNnJ4ZDM4alNTSTVGYk1zNmNkMDNXQTB2OHU2VnBwMk1pU0t6Nzh2cEM0THRoNlpRZWtmZjNELUdROEFjU2FoMUJCNks1Yjg2YzYycENXVEd4QVpvYi1SV1JNTk02S1dIMlR5c3NVNzl3?oc=5",
-      "published": "2026-09-03",
-      "published_at": "2026-09-03T07:00:00+00:00",
-      "week": "2026-W36",
-      "week_label": "Aug 31 – Sep 6, 2026",
-      "excerpt": "Top US Influencer Marketing Platforms That Influencers and Brands Around the World Should Know Influencer Marketing Hub",
-      "kind": "news",
-      "source_label": "Refersion in the news",
-      "source_kind": "news"
     },
     {
       "id": "bd88b5df6ce4a19f",
@@ -383,20 +397,6 @@
       "source_kind": "rss"
     },
     {
-      "id": "dd4866aad94617de",
-      "competitor": "rakuten",
-      "title": "2026 MarTech Breakthrough Awards Recognize the World’s Most - GlobeNewswire",
-      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxOSWtsb3dIelM3dF9mempZTG42b2R5aElZdWNocWI3Y2VmNnVJRWFBTVhUemp0Sll3Yl9ndHNjZm9YOXgtU09nN1RFR1lUSHZodnlzOUtuOEVISndHcWMyWVdjVnpET19UbWRoSldscnlHdGZXU01iRHlVUXhNN25ZMnZTdXFodUQyOVNHLURFVEMtX0c5eEZRZkJPTmJ0Q184RXBIc042SFdyTVV1bXNmTWNZSE04SDR5ZDZGblJnMjZ0SjVQc3ZERnBZZjhlNXZ3eWhuQUlYcDZ2QzVwSDdlc21ZalRvVFpCSUJfMG5FRkd4UGhVVEVHODdJMDlIdHVTOEJhalYwN1hwNmF4eTg0U1hUSm0yUklJS09fdnNITWQ?oc=5",
-      "published": "2026-08-06",
-      "published_at": "2026-08-06T07:00:00+00:00",
-      "week": "2026-W32",
-      "week_label": "Aug 3–9, 2026",
-      "excerpt": "2026 MarTech Breakthrough Awards Recognize the World’s Most GlobeNewswire",
-      "kind": "news",
-      "source_label": "Rakuten Advertising in the news",
-      "source_kind": "news"
-    },
-    {
       "id": "f5ce5014bfc14641",
       "competitor": "partnerize",
       "title": "The Evolution of Luxury Affiliate Marketing: Why Brand and Performance No Longer Compete",
@@ -411,6 +411,20 @@
       "source_kind": "rss"
     },
     {
+      "id": "e80bb63d62f84acc",
+      "competitor": "awin",
+      "title": "Clarks Steps Up Influencer Marketing In Affiliate Program Overhaul - Chief Marketer",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMV9mRzZDaW1tWDZNNTJkM1drb1BkaEJPZGRGQVVuSm1uN2VZb3JVbDRoYVhYdUp4TjctcGZtSFZmNzMzbURwSWVDWUxBNkxOWWdDcGlNRjNaVDNnS0RycUxFbW45TThEWk5fNVNfVHYxamI0ZFRPZG1iY2RnV2VWVUQycWpIXzRpYy1YN3luVW9CMFFHc1FwQlAwVDNKUQ?oc=5",
+      "published": "2026-08-05",
+      "published_at": "2026-08-05T07:00:00+00:00",
+      "week": "2026-W32",
+      "week_label": "Aug 3–9, 2026",
+      "excerpt": "Clarks Steps Up Influencer Marketing In Affiliate Program Overhaul Chief Marketer",
+      "kind": "feature",
+      "source_label": "Awin in the news",
+      "source_kind": "news"
+    },
+    {
       "id": "38fa989df4c99117",
       "competitor": "rakuten",
       "title": "2026 Travel Trends: Why Partnership Marketing Matters from Summer to Fall",
@@ -422,20 +436,6 @@
       "excerpt": "2026 travel trends show resilient demand, fragmented booking behavior, and growing interest in experiences, value, and AI planning. See why partnership marketing is essential for capturing demand from summer through fall.",
       "kind": "feature",
       "source_label": "Rakuten Advertising Blog",
-      "source_kind": "rss"
-    },
-    {
-      "id": "98347cd0d4727506",
-      "competitor": "partnerize",
-      "title": "[Download] From Clicks to Value: The Executive Guide to Zero-Click Commerce",
-      "url": "https://partnerize.com/resources/blog/download-from-clicks-to-value-the-executive-guide-to-zero-click-commerce",
-      "published": "2026-08-04",
-      "published_at": "2026-08-04T16:42:23+00:00",
-      "week": "2026-W32",
-      "week_label": "Aug 3–9, 2026",
-      "excerpt": "Brands cannot solve a structural market shift with fragmented click-tracking tools. Moving past diagnostic paralysis requires a unified, auditable governance framework.",
-      "kind": "feature",
-      "source_label": "Partnerize Feed",
       "source_kind": "rss"
     },
     {
@@ -507,6 +507,20 @@
       "kind": "news",
       "source_label": "Refersion Blog",
       "source_kind": "rss"
+    },
+    {
+      "id": "3381a4197aa8cea4",
+      "competitor": "refersion",
+      "title": "How to Launch a Creator Affiliate Program That Actually Drives Sales (+ Free Checklist) - Influencer Marketing Hub",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNM2FPUHoyQXhSa0JwaF9acHd5dFBDUUNmM0ZuZ2VuVE8xSlR6RWZrUU5nbktsSWt2ZzIwSFFodTFFQ3hzX3pMa2hnSmVYWW4xV2pNcDR4U0NVNEtMMjRmazVLblVwb2pLekJaUUstWmg5c1RMVjVteWYzbm5oYlEzMnI1WDhUME0?oc=5",
+      "published": "2026-07-20",
+      "published_at": "2026-07-20T07:00:00+00:00",
+      "week": "2026-W30",
+      "week_label": "Jul 20–26, 2026",
+      "excerpt": "How to Launch a Creator Affiliate Program That Actually Drives Sales (+ Free Checklist) Influencer Marketing Hub",
+      "kind": "feature",
+      "source_label": "Refersion in the news",
+      "source_kind": "news"
     },
     {
       "id": "21a9ca1c334d97c3",
@@ -607,15 +621,15 @@
       "source_kind": "rss"
     },
     {
-      "id": "3a41ebdb404c04ed",
+      "id": "377be34583f0b492",
       "competitor": "awin",
-      "title": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 - G2 Learning Hub",
+      "title": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 - learn.g2.com",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBPTjRsQnZGLThtM3h5amJOOTVzczluVEVIZEZqV1dNSWFhUVVpMlpJQ0V1MW9qaUxDeXllbHF6U0lMa2RVeFlFOTdVMi13TGRTc3FiclRrLVhqMnd6OVNvNmhYMzHSAXRBVV95cUxObmU2NUlfZTZ1MHJpYWNSM01BOENGQXF5MFpHMGo3TXdxTExYal9wcWJiZDI5VEFPZFlZb2Fva0RyMlB6UTZHcWVIaWV4VFE0S2JqeUVIaTJ6bnVubFNOU0JkbHFSdUgyRjJiVjB0TjJ3Tl8ybg?oc=5",
       "published": "2026-07-08",
       "published_at": "2026-07-08T07:00:00+00:00",
       "week": "2026-W28",
       "week_label": "Jul 6–12, 2026",
-      "excerpt": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 G2 Learning Hub",
+      "excerpt": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 learn.g2.com",
       "kind": "news",
       "source_label": "Awin in the news",
       "source_kind": "news"
@@ -649,20 +663,6 @@
       "source_kind": "news"
     },
     {
-      "id": "fd6eae486ae168ed",
-      "competitor": "awin",
-      "title": "Awin expands discovery intelligence as AI reshapes how consumers find brands - GlobeNewswire",
-      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOSHJpQi1BUzU4b0JXSHZVcUthcG05cnZNYlFLdkFpQjVrLXkwWF91eFhmTWZHMDItNEpybmpWOWdnU1VnWWtoX1J0V1hXb2pLMlUxSGNScXJmbWNSNy1ESTVaRzV1NXY4bE1XSGNtajRqLVJOV0NPckFVN0M1WnZWaUhwLXg3MWxySEJBZTFLTlgxNllxRjJiSlVRM05uZE41eVhXRFJmLVVUbXpfN2N2RVpfZUd1eE0xdnpSNFZEazM4aXA2OG1rNHRqUW54RXh1OU94cmN0T2s3bEVjX0VyWF9B?oc=5",
-      "published": "2026-06-30",
-      "published_at": "2026-06-30T07:00:00+00:00",
-      "week": "2026-W27",
-      "week_label": "Jun 29 – Jul 5, 2026",
-      "excerpt": "Awin expands discovery intelligence as AI reshapes how consumers find brands GlobeNewswire",
-      "kind": "feature",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
       "id": "ce6b77053e309651",
       "competitor": "awin",
       "title": "News Briefs - Chain Store Age",
@@ -677,16 +677,30 @@
       "source_kind": "news"
     },
     {
-      "id": "64f182dd1aaefea5",
+      "id": "09f21a01e85eedcd",
       "competitor": "awin",
-      "title": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market - retailtechinnovationhub.com",
+      "title": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market - Retail Technology Innovation Hub",
       "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOaEQzMndPejFlSVdiMEZjcGg0eVlvVndDa1RLWU5nYnktTHN5aEUtaUR2TjBLR1Mwd0w4cXIxM3NHYURRMkliSFMxSV92bVRUa2F4RHhGbXZHREpoWndObUFYWW91SGNLVFE3YU5ycHBlc19FTFRyN1VJRl9rZlJ6R1dZTnZ1cG4wMzVQRENGVWkwNDVCYzNKOXFmYnZoU3dTVUxVczJjOENRNU1JUWhlUXpvOHg4TEcwRm1MLVlWcFVNVm1SYXV5VVQyOUZ6S1ktZGFPVlZKamg0UQ?oc=5",
       "published": "2026-06-19",
       "published_at": "2026-06-19T07:00:00+00:00",
       "week": "2026-W25",
       "week_label": "Jun 15–21, 2026",
-      "excerpt": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market retailtechinnovationhub.com",
+      "excerpt": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market Retail Technology Innovation Hub",
       "kind": "feature",
+      "source_label": "Awin in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "a442feda55fc424f",
+      "competitor": "awin",
+      "title": "Clarks Taps Awin to Power U.S. Growth and Brand Discovery - GlobeNewswire",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQenhyMjI1WlRQMkdTNEs3V1g4dEx0Rk1IQ2hkcFp0V2c4UlRQcl8xRmZabzRJT2o2T0xpNmhFaG03T3oxeEhsU1EwcU5mS090bmJCSUJpLUZNcHpXcUxxajYyRDVkUGo5VURTTkFmUU50Q1BFeUg4VVFnZzRtVWFmZ3VZd2wwZS03d2R0VVdfRHFoMzFSSlBkN3IxaGs3dEVIMTZOa252ckNoNGs4eU5KZUhOS1ZyYUp1U3JFby14M3ZqMk5zRWdn?oc=5",
+      "published": "2026-06-18",
+      "published_at": "2026-06-18T07:00:00+00:00",
+      "week": "2026-W25",
+      "week_label": "Jun 15–21, 2026",
+      "excerpt": "Clarks Taps Awin to Power U.S. Growth and Brand Discovery GlobeNewswire",
+      "kind": "news",
       "source_label": "Awin in the news",
       "source_kind": "news"
     },
@@ -1084,8 +1098,8 @@
     }
   ],
   "counts": {
-    "items": 66,
-    "features": 40,
+    "items": 67,
+    "features": 41,
     "news": 26,
     "ok_sources": 13,
     "error_sources": 0
