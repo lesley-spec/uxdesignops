@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T16:27:21.557453+00:00",
+  "generated_at": "2026-10-05T16:47:48.938567+00:00",
   "lookback_days": 120,
   "competitors": [
     {
@@ -64,7 +64,7 @@
       "kind": "rss",
       "status": "ok",
       "error": "",
-      "items": 4
+      "items": 6
     },
     {
       "competitor": "partnerize",
@@ -91,7 +91,7 @@
       "kind": "rss",
       "status": "ok",
       "error": "",
-      "items": 11
+      "items": 12
     },
     {
       "competitor": "awin",
@@ -100,7 +100,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 8
+      "items": 9
     },
     {
       "competitor": "cj",
@@ -109,7 +109,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 4
+      "items": 2
     },
     {
       "competitor": "rakuten",
@@ -118,7 +118,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 1
+      "items": 2
     },
     {
       "competitor": "partnerize",
@@ -136,7 +136,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 1
+      "items": 2
     },
     {
       "competitor": "pepperjam",
@@ -145,7 +145,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 1
+      "items": 0
     },
     {
       "competitor": "refersion",
@@ -154,10 +154,122 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 4
+      "items": 5
     }
   ],
   "items": [
+    {
+      "id": "172c86d887ef7456",
+      "competitor": "refersion",
+      "title": "Got Affiliate Marketing Attribution Woes?",
+      "url": "https://www.refersion.com/blog/got-affiliate-marketing-attribution-woes/",
+      "published": "2026-10-02",
+      "published_at": "2026-10-02T18:45:25+00:00",
+      "week": "2026-W40",
+      "week_label": "Sep 28 – Oct 4, 2026",
+      "excerpt": "Affiliate marketing attribution is 2026 is hard. And if you feel like it is only getting harder, you aren’t alone. Affiliate marketing attribution directly impacts how you are measuring your... The post Got Affiliate Marketing Attribution Woes? appeared first on Refersion .",
+      "kind": "feature",
+      "source_label": "Refersion Blog",
+      "source_kind": "rss"
+    },
+    {
+      "id": "c6c8af376e830b8e",
+      "competitor": "rakuten",
+      "title": "DealMaker Canada 2026 Recap: Partner Marketing Events Highlights",
+      "url": "https://blog.rakutenadvertising.com/events/partner-marketing-events-dealmaker-canada-2026-recap/",
+      "published": "2026-10-01",
+      "published_at": "2026-10-01T17:41:45+00:00",
+      "week": "2026-W40",
+      "week_label": "Sep 28 – Oct 4, 2026",
+      "excerpt": "DealMaker Canada 2026 brought together top advertisers, publishers, and industry partners for a day of networking, strategy, and innovation in Toronto. Read the recap to explore key sessions, publisher spotlights, and standout moments from Canada’s leading partner marketing event",
+      "kind": "news",
+      "source_label": "Rakuten Advertising Blog",
+      "source_kind": "rss"
+    },
+    {
+      "id": "bd88b5df6ce4a19f",
+      "competitor": "refersion",
+      "title": "Best Influencer Marketing Software For 2026 [Updated] - Influencer Marketing Hub",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE05N1Z6WjhNU1E0RGE3eElPOGo0TUo4SG56V3lUTEJHR2h1OGd3WVd3dlcwOXRrWmt6OHdBTzlDUm5JWkNCVjJSX1NVaG40TUVPTjh2RGdBMm1pZTktbDFKY2VkOEk4cTNYSDZCdmE3RlQteG8?oc=5",
+      "published": "2026-09-30",
+      "published_at": "2026-09-30T07:00:00+00:00",
+      "week": "2026-W40",
+      "week_label": "Sep 28 – Oct 4, 2026",
+      "excerpt": "Best Influencer Marketing Software For 2026 [Updated] Influencer Marketing Hub",
+      "kind": "news",
+      "source_label": "Refersion in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "f3e214c0fa3cf1c6",
+      "competitor": "rakuten",
+      "title": "AI in Affiliate & Partner Marketing: Why We Built Mirai for the Most Complex Performance Channel",
+      "url": "https://blog.rakutenadvertising.com/insights/ai-affiliate-marketing-mirai/",
+      "published": "2026-09-30",
+      "published_at": "2026-09-30T12:00:20+00:00",
+      "week": "2026-W40",
+      "week_label": "Sep 28 – Oct 4, 2026",
+      "excerpt": "Rakuten Advertising is advancing the affiliate & performance marketing channel with Mirai. The first agentic AI for affiliate, Mirai was built for the complexity of performance marketing. Discover more in our latest blog.",
+      "kind": "feature",
+      "source_label": "Rakuten Advertising Blog",
+      "source_kind": "rss"
+    },
+    {
+      "id": "6be6b46cc109e9b2",
+      "competitor": "partnerize",
+      "title": "I Watched Search Become a Measurement Discipline. AI Is Next.",
+      "url": "https://partnerize.com/resources/blog/i-watched-search-become-a-measurement-discipline-ai-is-next",
+      "published": "2026-09-29",
+      "published_at": "2026-09-29T13:59:26+00:00",
+      "week": "2026-W40",
+      "week_label": "Sep 28 – Oct 4, 2026",
+      "excerpt": "AI is Rebuilding the Measurement Stack. The historical progression of SEO looked roughly like this: Visibility → Traffic → Conversion → Revenue → Capital Allocation. The click helped connect those layers. The emerging AI measurement system looks different: Visibility →…",
+      "kind": "feature",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
+    {
+      "id": "67d46c6bc269405b",
+      "competitor": "partnerize",
+      "title": "How a Pan-European Travel Leader Doubled Revenue and Grew Market Share by 25% Amid Industry Contraction",
+      "url": "https://partnerize.com/resources/blog/how-a-pan-european-travel-leader-doubled-revenue-and-grew-market-share-by-25-amid-industry-contraction",
+      "published": "2026-09-28",
+      "published_at": "2026-09-28T17:56:47+00:00",
+      "week": "2026-W40",
+      "week_label": "Sep 28 – Oct 4, 2026",
+      "excerpt": "Market volatility doesn't have to mean margin compression or stagnant growth. By leveraging Partnerize's dynamic commissioning, closed-network targeting, and advanced tracking integrations, enterprise brands can turn partnership automation into an agile growth engine—even in…",
+      "kind": "feature",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
+    {
+      "id": "71a140fe68649f57",
+      "competitor": "refersion",
+      "title": "Refersion Review: - Influencer Marketing Hub",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9nUFREcHJXNW50TnZBc3J2R2wxSGczZ2lwNnJ6TVRHLUFpTEx1am1ucC1FTXpWeXgtaHdrWl9nVHhNLUNMbjhNY2NvRzVzUlNXNjByT1J2WWI?oc=5",
+      "published": "2026-09-25",
+      "published_at": "2026-09-25T07:00:00+00:00",
+      "week": "2026-W39",
+      "week_label": "Sep 21–27, 2026",
+      "excerpt": "Refersion Review: Influencer Marketing Hub",
+      "kind": "news",
+      "source_label": "Refersion in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "3a808b98ed23e2d6",
+      "competitor": "refersion",
+      "title": "Reaching Lost Shoppers to Grow Your Affiliate Revenue this Q4 with Minty",
+      "url": "https://www.refersion.com/blog/reaching-lost-shoppers-to-grow-your-affiliate-revenue-this-q4-with-minty/",
+      "published": "2026-09-23",
+      "published_at": "2026-09-23T18:48:20+00:00",
+      "week": "2026-W39",
+      "week_label": "Sep 21–27, 2026",
+      "excerpt": "During the Q4 holiday surge, e-commerce brands spend more money than at any other point in the year to drive high-intent traffic to their digital storefronts. However, a harsh mathematical... The post Reaching Lost Shoppers to Grow Your Affiliate Revenue this Q4 with Minty…",
+      "kind": "news",
+      "source_label": "Refersion Blog",
+      "source_kind": "rss"
+    },
     {
       "id": "593486bfe57a7bcf",
       "competitor": "partnerize",
@@ -173,15 +285,29 @@
       "source_kind": "rss"
     },
     {
-      "id": "95ed00aecfc771e4",
+      "id": "e85b24de02f275d1",
+      "competitor": "refersion",
+      "title": "Branded Links: Affiliate Links on Your Own Store Domain",
+      "url": "https://www.refersion.com/blog/branded-links-affiliate-links-on-your-own-store-domain/",
+      "published": "2026-09-21",
+      "published_at": "2026-09-21T17:49:47+00:00",
+      "week": "2026-W39",
+      "week_label": "Sep 21–27, 2026",
+      "excerpt": "Your affiliates already send shoppers to your store. Branded Links give them a friendlier way to do it: short, readable links on your store domain, like yourstore.com/jane-doe, with the affiliate’s... The post Branded Links: Affiliate Links on Your Own Store Domain appeared…",
+      "kind": "news",
+      "source_label": "Refersion Blog",
+      "source_kind": "rss"
+    },
+    {
+      "id": "c95c4ca2d183fecd",
       "competitor": "cj",
-      "title": "Best affiliate programs UK: networks & platforms - Skint Dad",
+      "title": "Best affiliate programs UK: networks & platforms - skintdad.co.uk",
       "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9mUWZfN2h3UE5ySFA5TDc0OVcxODZ4YWltYTBYVFVSLWxZeWtSejJXRjBEdU9iZG94MDFBMjZ2b1UzRkd3R0VhRmpMallnMUM4dTYzejBMaVI?oc=5",
       "published": "2026-09-15",
       "published_at": "2026-09-15T07:00:00+00:00",
       "week": "2026-W38",
       "week_label": "Sep 14–20, 2026",
-      "excerpt": "Best affiliate programs UK: networks & platforms Skint Dad",
+      "excerpt": "Best affiliate programs UK: networks & platforms skintdad.co.uk",
       "kind": "news",
       "source_label": "CJ Affiliate in the news",
       "source_kind": "news"
@@ -199,20 +325,6 @@
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
-    },
-    {
-      "id": "56f166c030b633aa",
-      "competitor": "pepperjam",
-      "title": "Pepperjam and RevLifter Partner to Deliver the Affiliate Industry’s Only Turnkey Content Personalization Solution - ACCESS Newswire",
-      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQdWhCUFhWSEtzelctNWY5cVRMTjkxbmQxb2NreExoelliVVk5dnBHaUtkdjJxZXBLVmpsYmNZS1gwcFpHc0Y1WlgxOEJPTkZCN3RXRWhRQzdueUdVbWlYbzR3Q3FGOFNub1YxeGEwX2o3NDdvaEJRbXlLSmxkX2ZuQTVWanN1ZGhRY0RvNlB5M0RrWUJGZ1I4UnhCdmdBd2VVYU5TRFJjRTh5MVE5VHBkejRCZFU1SWp5VVl3TU1aZE11M2lteHRONmRJUWhkWHdwRWRLQ3FpSUc0NllhN1JCQWIzWQ?oc=5",
-      "published": "2026-09-12",
-      "published_at": "2026-09-12T21:01:35+00:00",
-      "week": "2026-W37",
-      "week_label": "Sep 7–13, 2026",
-      "excerpt": "Pepperjam and RevLifter Partner to Deliver the Affiliate Industry’s Only Turnkey Content Personalization Solution ACCESS Newswire",
-      "kind": "news",
-      "source_label": "Pepperjam in the news",
-      "source_kind": "news"
     },
     {
       "id": "cda3b3da21efe33c",
@@ -241,20 +353,6 @@
       "kind": "feature",
       "source_label": "Partnerize Feed",
       "source_kind": "rss"
-    },
-    {
-      "id": "bd88b5df6ce4a19f",
-      "competitor": "refersion",
-      "title": "Best Influencer Marketing Software For 2026 [Updated] - Influencer Marketing Hub",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE05N1Z6WjhNU1E0RGE3eElPOGo0TUo4SG56V3lUTEJHR2h1OGd3WVd3dlcwOXRrWmt6OHdBTzlDUm5JWkNCVjJSX1NVaG40TUVPTjh2RGdBMm1pZTktbDFKY2VkOEk4cTNYSDZCdmE3RlQteG8?oc=5",
-      "published": "2026-09-03",
-      "published_at": "2026-09-03T07:00:00+00:00",
-      "week": "2026-W36",
-      "week_label": "Aug 31 – Sep 6, 2026",
-      "excerpt": "Best Influencer Marketing Software For 2026 [Updated] Influencer Marketing Hub",
-      "kind": "news",
-      "source_label": "Refersion in the news",
-      "source_kind": "news"
     },
     {
       "id": "0bbcff23ad28c6e3",
@@ -383,32 +481,18 @@
       "source_kind": "news"
     },
     {
-      "id": "8a017f825c57bb9b",
-      "competitor": "partnerize",
-      "title": "The Future of Affiliate Marketing: Why Strategic Partnerships are Replacing Scale",
-      "url": "https://partnerize.com/resources/blog/the-future-of-affiliate-marketing-why-strategic-partnerships-are-replacing-scale",
-      "published": "2026-08-12",
-      "published_at": "2026-08-12T19:25:53+00:00",
-      "week": "2026-W33",
-      "week_label": "Aug 10–16, 2026",
-      "excerpt": "The future of affiliate marketing isn't about adding more partners; it's about building smarter partnerships.",
-      "kind": "news",
-      "source_label": "Partnerize Feed",
-      "source_kind": "rss"
-    },
-    {
-      "id": "f5ce5014bfc14641",
-      "competitor": "partnerize",
-      "title": "The Evolution of Luxury Affiliate Marketing: Why Brand and Performance No Longer Compete",
-      "url": "https://partnerize.com/resources/blog/the-evolution-of-luxury-affiliate-marketing-why-brand-and-performance-no-longer-compete",
-      "published": "2026-08-05",
-      "published_at": "2026-08-05T21:25:22+00:00",
+      "id": "dd4866aad94617de",
+      "competitor": "rakuten",
+      "title": "2026 MarTech Breakthrough Awards Recognize the World’s Most - GlobeNewswire",
+      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxOSWtsb3dIelM3dF9mempZTG42b2R5aElZdWNocWI3Y2VmNnVJRWFBTVhUemp0Sll3Yl9ndHNjZm9YOXgtU09nN1RFR1lUSHZodnlzOUtuOEVISndHcWMyWVdjVnpET19UbWRoSldscnlHdGZXU01iRHlVUXhNN25ZMnZTdXFodUQyOVNHLURFVEMtX0c5eEZRZkJPTmJ0Q184RXBIc042SFdyTVV1bXNmTWNZSE04SDR5ZDZGblJnMjZ0SjVQc3ZERnBZZjhlNXZ3eWhuQUlYcDZ2QzVwSDdlc21ZalRvVFpCSUJfMG5FRkd4UGhVVEVHODdJMDlIdHVTOEJhalYwN1hwNmF4eTg0U1hUSm0yUklJS09fdnNITWQ?oc=5",
+      "published": "2026-08-06",
+      "published_at": "2026-08-06T07:00:00+00:00",
       "week": "2026-W32",
       "week_label": "Aug 3–9, 2026",
-      "excerpt": "The luxury leaders of tomorrow aren't choosing between brand building and performance marketing — they are using strategic partnerships to achieve both.",
+      "excerpt": "2026 MarTech Breakthrough Awards Recognize the World’s Most GlobeNewswire",
       "kind": "news",
-      "source_label": "Partnerize Feed",
-      "source_kind": "rss"
+      "source_label": "Rakuten Advertising in the news",
+      "source_kind": "news"
     },
     {
       "id": "e80bb63d62f84acc",
@@ -537,20 +621,6 @@
       "source_kind": "rss"
     },
     {
-      "id": "3a6d3c9c3691d4ce",
-      "competitor": "cj",
-      "title": "Bill Gates' daughter Phoebe Gates' shopping app accused of taking credit for sales it didn't drive, company responds ‘we were…’ - The Times of India",
-      "url": "https://news.google.com/rss/articles/CBMiqwJBVV95cUxNR1VmV2tpWC05bnpGaGl6dXJWTDlQUmFJZ1pLT1psaGg5VndrOWNOdC1YQ0JieVNZaHVhYXBuaFZHWmxkNVlkRjZUcElKY0FmbVVSbmhnNjM4X3FrbGFoM2ZDakR5VDl6b0RMOXVXNzdFRU5PNGFMZWlzRWNxS3Brek1JOTVkTlBkRWItdHc4UEZ6eUpzUHdxcjNxM2ltZnhyUXl2eHhJZ2lQNnFUaThSa1dRa3FGc2wwMkR0aWpCUzV0T3Y4NVNMY0xsd0U3NnBwYk5XYVhSSGRHZHZ3Ymc1cncyRm9qR19MTTNsUWNFQUVVdDhsc1prTFhWSF94Umphb2tMZDVzVUJGS0p5MFZHdVNPUHZkb29KX3hYNU1vNHJoVGw3YmcwT1phTQ?oc=5",
-      "published": "2026-07-15",
-      "published_at": "2026-07-15T07:00:00+00:00",
-      "week": "2026-W29",
-      "week_label": "Jul 13–19, 2026",
-      "excerpt": "Bill Gates' daughter Phoebe Gates' shopping app accused of taking credit for sales it didn't drive, company responds ‘we were…’ The Times of India",
-      "kind": "news",
-      "source_label": "CJ Affiliate in the news",
-      "source_kind": "news"
-    },
-    {
       "id": "dea9ec0520663a76",
       "competitor": "refersion",
       "title": "Affiliate Tracking Essentials: Methods, Mechanics, and Real-World Examples",
@@ -621,17 +691,31 @@
       "source_kind": "rss"
     },
     {
-      "id": "377be34583f0b492",
+      "id": "3a41ebdb404c04ed",
       "competitor": "awin",
-      "title": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 - learn.g2.com",
+      "title": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 - G2 Learning Hub",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBPTjRsQnZGLThtM3h5amJOOTVzczluVEVIZEZqV1dNSWFhUVVpMlpJQ0V1MW9qaUxDeXllbHF6U0lMa2RVeFlFOTdVMi13TGRTc3FiclRrLVhqMnd6OVNvNmhYMzHSAXRBVV95cUxObmU2NUlfZTZ1MHJpYWNSM01BOENGQXF5MFpHMGo3TXdxTExYal9wcWJiZDI5VEFPZFlZb2Fva0RyMlB6UTZHcWVIaWV4VFE0S2JqeUVIaTJ6bnVubFNOU0JkbHFSdUgyRjJiVjB0TjJ3Tl8ybg?oc=5",
       "published": "2026-07-08",
       "published_at": "2026-07-08T07:00:00+00:00",
       "week": "2026-W28",
       "week_label": "Jul 6–12, 2026",
-      "excerpt": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 learn.g2.com",
+      "excerpt": "My Evaluation of the 7 Best Affiliate Marketing Software in 2026 G2 Learning Hub",
       "kind": "news",
       "source_label": "Awin in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "c8311250708e6be4",
+      "competitor": "shareasale",
+      "title": "Pinterest Affiliate Marketing: Complete Guide (2026) - Shopify",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9qbkhmQkQzTXg4TE1lRWtsV1NRSUswSXRJLTlpcV9VaGlTQzRxMTdTZjFwdFFWTzlhMUFIVHg5YXpCVnRfMGhPTmNaZUM1aGg1anZLMmxBdGIxazVrVmlmanBjbFI1UWoxTFNxaXVB?oc=5",
+      "published": "2026-07-07",
+      "published_at": "2026-07-07T07:00:00+00:00",
+      "week": "2026-W28",
+      "week_label": "Jul 6–12, 2026",
+      "excerpt": "Pinterest Affiliate Marketing: Complete Guide (2026) Shopify",
+      "kind": "news",
+      "source_label": "ShareASale in the news",
       "source_kind": "news"
     },
     {
@@ -649,16 +733,16 @@
       "source_kind": "rss"
     },
     {
-      "id": "0fd9e1f2215b4afc",
+      "id": "3e11f1adaf44f65c",
       "competitor": "awin",
-      "title": "Affiliate API Use Cases for Ecommerce and Tools To Try (2026) - Shopify",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBVUzV5THladDRnbFhtTFVEbXRnZGVaUzFONlpKU1pCX3owQS1pUGNtaXBmcERKS0p6THQ3QTBMSGhjeTMwWlZ6ZnZTUmdhTUhKMGxBOA?oc=5",
-      "published": "2026-07-02",
-      "published_at": "2026-07-02T07:00:00+00:00",
+      "title": "Awin expands discovery intelligence as AI reshapes how consumers find brands - GlobeNewswire",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPamRiaFpsTmxXTnNJZnAwNXU0SWYyQjBDWmdCLVpQN0JqS2NoS1BBdk1WNTVsbG9WaHZBb01IaDJKR1NDcV90M3NaVmlWVDZtNU1UZlVXdXpvRG9rT21ESWpsODhSMEdFZng3U1pNTUp6MHpjdWJuTWtkSE8tV0ZvTjBXc0xnYzlwUGRONGFraDNSaXdtTXBJeC1QSGtpODVTLVdudWI5bFdUeks2UU91V0hmOFVNRzUyOGVvTktZbzl4SDZtQXI5bFo3aDVtYXVic1ZadWYtVTQ4TmtrUVlPRUdB?oc=5",
+      "published": "2026-06-30",
+      "published_at": "2026-06-30T07:00:00+00:00",
       "week": "2026-W27",
       "week_label": "Jun 29 – Jul 5, 2026",
-      "excerpt": "Affiliate API Use Cases for Ecommerce and Tools To Try (2026) Shopify",
-      "kind": "news",
+      "excerpt": "Awin expands discovery intelligence as AI reshapes how consumers find brands GlobeNewswire",
+      "kind": "feature",
       "source_label": "Awin in the news",
       "source_kind": "news"
     },
@@ -705,18 +789,18 @@
       "source_kind": "news"
     },
     {
-      "id": "02150e536071115a",
-      "competitor": "refersion",
-      "title": "Refersion streamlines Complex Multi-Level Affiliate Management",
-      "url": "https://www.refersion.com/blog/refersion-streamlines-complex-multi-level-affiliate-management/",
-      "published": "2026-06-16",
-      "published_at": "2026-06-16T15:46:22+00:00",
+      "id": "9c0340a4e90e0f07",
+      "competitor": "awin",
+      "title": "Affiliate Networks: 11 Best Options for 2026 - Shopify",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFB0eXNkblNDWExnazhnU2g0R2lMZUxqcF9qVlNQeWgyWGlCRVZGQ01taldIM0luOVp2NHRzTFBjR3JtU0VsSW1BS25WYi1sTWFpNDFscklJOTN1RlY3ZERB?oc=5",
+      "published": "2026-06-17",
+      "published_at": "2026-06-17T07:00:00+00:00",
       "week": "2026-W25",
       "week_label": "Jun 15–21, 2026",
-      "excerpt": "Comparing Affiliate Marketing and Multi-Level Affiliate Management When folks hear [or read] about multi-level marketing [MLM], they fall into one of two buckets. Regardless of your stance, it isn’t disputed... The post Refersion streamlines Complex Multi-Level Affiliate…",
+      "excerpt": "Affiliate Networks: 11 Best Options for 2026 Shopify",
       "kind": "news",
-      "source_label": "Refersion Blog",
-      "source_kind": "rss"
+      "source_label": "Awin in the news",
+      "source_kind": "news"
     },
     {
       "id": "bd7136db63e7f98f",
@@ -985,34 +1069,6 @@
       "source_kind": "rss"
     },
     {
-      "id": "153b223dba89dc19",
-      "competitor": "refersion",
-      "title": "The Seasonality Blueprint: Capturing Peak Traffic & Diverse Attribution in 2026",
-      "url": "https://www.refersion.com/blog/the-seasonality-blueprint-capturing-peak-traffic-diverse-attribution-in-2026/",
-      "published": "2026-06-04",
-      "published_at": "2026-06-04T20:05:28+00:00",
-      "week": "2026-W23",
-      "week_label": "Jun 1–7, 2026",
-      "excerpt": "In an e-commerce market oversaturated with digital storefronts and algorithmic shifts, managing an affiliate program requires far more than handing out discount links. Succeeding in today’s landscape demands a strategic... The post The Seasonality Blueprint: Capturing Peak…",
-      "kind": "feature",
-      "source_label": "Refersion Blog",
-      "source_kind": "rss"
-    },
-    {
-      "id": "c8cd911883dc2fa8",
-      "competitor": "cj",
-      "title": "vivo Turned Hyderabad’s Night Sky Into a Giant Billboard For Its New Smartphones - rvcj.com",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQdTF4a1dtUjhfSmkyWG94Zk5xMUpHRlMzQTNSV1NHUVZJNFIxVWtFUlhNRHJaUkx3dk5ORGJRUk1IbFNKLWV6MkxNcTdiZkZZV2NsT0xsOWp5R3U5YWtKSUh4TmpuRWpQdEtJS2pPTUtEVTdWN0prZzhfVzlUMWNWQzdMN1hTSldKeHRDdFpoQzRZQVBnMS1xUFEwSDFvYWtsc0U0?oc=5",
-      "published": "2026-06-01",
-      "published_at": "2026-06-01T07:00:00+00:00",
-      "week": "2026-W23",
-      "week_label": "Jun 1–7, 2026",
-      "excerpt": "vivo Turned Hyderabad’s Night Sky Into a Giant Billboard For Its New Smartphones rvcj.com",
-      "kind": "news",
-      "source_label": "CJ Affiliate in the news",
-      "source_kind": "news"
-    },
-    {
       "id": "609f141124ffd08b",
       "competitor": "awin",
       "title": "Transaction management",
@@ -1098,8 +1154,8 @@
     }
   ],
   "counts": {
-    "items": 67,
-    "features": 41,
+    "items": 71,
+    "features": 45,
     "news": 26,
     "ok_sources": 13,
     "error_sources": 0
