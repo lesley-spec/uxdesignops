@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T16:47:48.938567+00:00",
+  "generated_at": "2026-10-12T17:21:49.084659+00:00",
   "lookback_days": 120,
   "competitors": [
     {
@@ -64,7 +64,7 @@
       "kind": "rss",
       "status": "ok",
       "error": "",
-      "items": 6
+      "items": 5
     },
     {
       "competitor": "partnerize",
@@ -100,7 +100,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 9
+      "items": 8
     },
     {
       "competitor": "cj",
@@ -109,7 +109,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 2
+      "items": 3
     },
     {
       "competitor": "rakuten",
@@ -158,6 +158,20 @@
     }
   ],
   "items": [
+    {
+      "id": "3018fe319de8892d",
+      "competitor": "partnerize",
+      "title": "Beyond Program Noise: How a Global Luxury Retailer Streamlined 1,400+ Partners and Drove 38% Q4 Growth",
+      "url": "https://partnerize.com/resources/blog/beyond-program-noise-how-a-global-luxury-retailer-streamlined-1400-partners-and-drove-38-q4-growth",
+      "published": "2026-10-05",
+      "published_at": "2026-10-05T18:46:26+00:00",
+      "week": "2026-W41",
+      "week_label": "Oct 5–11, 2026",
+      "excerpt": "Managing a global partnership program across multiple markets often leads to an unexpected challenge: program noise. Over time, inactive or low-yield accounts accumulate, creating bloated databases that obscure top performers and inflate operational friction.",
+      "kind": "news",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
     {
       "id": "172c86d887ef7456",
       "competitor": "refersion",
@@ -299,15 +313,15 @@
       "source_kind": "rss"
     },
     {
-      "id": "c95c4ca2d183fecd",
+      "id": "95ed00aecfc771e4",
       "competitor": "cj",
-      "title": "Best affiliate programs UK: networks & platforms - skintdad.co.uk",
+      "title": "Best affiliate programs UK: networks & platforms - Skint Dad",
       "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9mUWZfN2h3UE5ySFA5TDc0OVcxODZ4YWltYTBYVFVSLWxZeWtSejJXRjBEdU9iZG94MDFBMjZ2b1UzRkd3R0VhRmpMallnMUM4dTYzejBMaVI?oc=5",
       "published": "2026-09-15",
       "published_at": "2026-09-15T07:00:00+00:00",
       "week": "2026-W38",
       "week_label": "Sep 14–20, 2026",
-      "excerpt": "Best affiliate programs UK: networks & platforms skintdad.co.uk",
+      "excerpt": "Best affiliate programs UK: networks & platforms Skint Dad",
       "kind": "news",
       "source_label": "CJ Affiliate in the news",
       "source_kind": "news"
@@ -453,20 +467,6 @@
       "source_kind": "rss"
     },
     {
-      "id": "dcb8382d4362d698",
-      "competitor": "partnerize",
-      "title": "Visibility Isn’t Value: The Missing Layer in AI Commerce",
-      "url": "https://partnerize.com/resources/blog/visibility-isnt-value-the-missing-layer-in-ai-commerce",
-      "published": "2026-08-13",
-      "published_at": "2026-08-13T13:39:50+00:00",
-      "week": "2026-W33",
-      "week_label": "Aug 10–16, 2026",
-      "excerpt": "The AI era isn't creating a visibility problem. It's exposing a value problem.",
-      "kind": "feature",
-      "source_label": "Partnerize Feed",
-      "source_kind": "rss"
-    },
-    {
       "id": "a7e41d638b9ac614",
       "competitor": "refersion",
       "title": "Top Influencer Affiliate Marketing Networks for 2026 - Influencer Marketing Hub",
@@ -478,20 +478,6 @@
       "excerpt": "Top Influencer Affiliate Marketing Networks for 2026 Influencer Marketing Hub",
       "kind": "news",
       "source_label": "Refersion in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "dd4866aad94617de",
-      "competitor": "rakuten",
-      "title": "2026 MarTech Breakthrough Awards Recognize the World’s Most - GlobeNewswire",
-      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxOSWtsb3dIelM3dF9mempZTG42b2R5aElZdWNocWI3Y2VmNnVJRWFBTVhUemp0Sll3Yl9ndHNjZm9YOXgtU09nN1RFR1lUSHZodnlzOUtuOEVISndHcWMyWVdjVnpET19UbWRoSldscnlHdGZXU01iRHlVUXhNN25ZMnZTdXFodUQyOVNHLURFVEMtX0c5eEZRZkJPTmJ0Q184RXBIc042SFdyTVV1bXNmTWNZSE04SDR5ZDZGblJnMjZ0SjVQc3ZERnBZZjhlNXZ3eWhuQUlYcDZ2QzVwSDdlc21ZalRvVFpCSUJfMG5FRkd4UGhVVEVHODdJMDlIdHVTOEJhalYwN1hwNmF4eTg0U1hUSm0yUklJS09fdnNITWQ?oc=5",
-      "published": "2026-08-06",
-      "published_at": "2026-08-06T07:00:00+00:00",
-      "week": "2026-W32",
-      "week_label": "Aug 3–9, 2026",
-      "excerpt": "2026 MarTech Breakthrough Awards Recognize the World’s Most GlobeNewswire",
-      "kind": "news",
-      "source_label": "Rakuten Advertising in the news",
       "source_kind": "news"
     },
     {
@@ -705,20 +691,6 @@
       "source_kind": "news"
     },
     {
-      "id": "c8311250708e6be4",
-      "competitor": "shareasale",
-      "title": "Pinterest Affiliate Marketing: Complete Guide (2026) - Shopify",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9qbkhmQkQzTXg4TE1lRWtsV1NRSUswSXRJLTlpcV9VaGlTQzRxMTdTZjFwdFFWTzlhMUFIVHg5YXpCVnRfMGhPTmNaZUM1aGg1anZLMmxBdGIxazVrVmlmanBjbFI1UWoxTFNxaXVB?oc=5",
-      "published": "2026-07-07",
-      "published_at": "2026-07-07T07:00:00+00:00",
-      "week": "2026-W28",
-      "week_label": "Jul 6–12, 2026",
-      "excerpt": "Pinterest Affiliate Marketing: Complete Guide (2026) Shopify",
-      "kind": "news",
-      "source_label": "ShareASale in the news",
-      "source_kind": "news"
-    },
-    {
       "id": "2bffe2510479a494",
       "competitor": "refersion",
       "title": "How to Turn Your Affiliate Traffic Into More Revenue",
@@ -733,10 +705,10 @@
       "source_kind": "rss"
     },
     {
-      "id": "3e11f1adaf44f65c",
+      "id": "fd6eae486ae168ed",
       "competitor": "awin",
       "title": "Awin expands discovery intelligence as AI reshapes how consumers find brands - GlobeNewswire",
-      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPamRiaFpsTmxXTnNJZnAwNXU0SWYyQjBDWmdCLVpQN0JqS2NoS1BBdk1WNTVsbG9WaHZBb01IaDJKR1NDcV90M3NaVmlWVDZtNU1UZlVXdXpvRG9rT21ESWpsODhSMEdFZng3U1pNTUp6MHpjdWJuTWtkSE8tV0ZvTjBXc0xnYzlwUGRONGFraDNSaXdtTXBJeC1QSGtpODVTLVdudWI5bFdUeks2UU91V0hmOFVNRzUyOGVvTktZbzl4SDZtQXI5bFo3aDVtYXVic1ZadWYtVTQ4TmtrUVlPRUdB?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOSHJpQi1BUzU4b0JXSHZVcUthcG05cnZNYlFLdkFpQjVrLXkwWF91eFhmTWZHMDItNEpybmpWOWdnU1VnWWtoX1J0V1hXb2pLMlUxSGNScXJmbWNSNy1ESTVaRzV1NXY4bE1XSGNtajRqLVJOV0NPckFVN0M1WnZWaUhwLXg3MWxySEJBZTFLTlgxNllxRjJiSlVRM05uZE41eVhXRFJmLVVUbXpfN2N2RVpfZUd1eE0xdnpSNFZEazM4aXA2OG1rNHRqUW54RXh1OU94cmN0T2s3bEVjX0VyWF9B?oc=5",
       "published": "2026-06-30",
       "published_at": "2026-06-30T07:00:00+00:00",
       "week": "2026-W27",
@@ -761,20 +733,6 @@
       "source_kind": "news"
     },
     {
-      "id": "09f21a01e85eedcd",
-      "competitor": "awin",
-      "title": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market - Retail Technology Innovation Hub",
-      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOaEQzMndPejFlSVdiMEZjcGg0eVlvVndDa1RLWU5nYnktTHN5aEUtaUR2TjBLR1Mwd0w4cXIxM3NHYURRMkliSFMxSV92bVRUa2F4RHhGbXZHREpoWndObUFYWW91SGNLVFE3YU5ycHBlc19FTFRyN1VJRl9rZlJ6R1dZTnZ1cG4wMzVQRENGVWkwNDVCYzNKOXFmYnZoU3dTVUxVczJjOENRNU1JUWhlUXpvOHg4TEcwRm1MLVlWcFVNVm1SYXV5VVQyOUZ6S1ktZGFPVlZKamg0UQ?oc=5",
-      "published": "2026-06-19",
-      "published_at": "2026-06-19T07:00:00+00:00",
-      "week": "2026-W25",
-      "week_label": "Jun 15–21, 2026",
-      "excerpt": "Awin announces expansion of its UK partnership with footwear retailer Clarks into the US market Retail Technology Innovation Hub",
-      "kind": "feature",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
       "id": "a442feda55fc424f",
       "competitor": "awin",
       "title": "Clarks Taps Awin to Power U.S. Growth and Brand Discovery - GlobeNewswire",
@@ -789,10 +747,10 @@
       "source_kind": "news"
     },
     {
-      "id": "9c0340a4e90e0f07",
+      "id": "f48ec8f398bc9f1d",
       "competitor": "awin",
       "title": "Affiliate Networks: 11 Best Options for 2026 - Shopify",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFB0eXNkblNDWExnazhnU2g0R2lMZUxqcF9qVlNQeWgyWGlCRVZGQ01taldIM0luOVp2NHRzTFBjR3JtU0VsSW1BS25WYi1sTWFpNDFscklJOTN1RlY3ZERB?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFAwQUVuWXJLRHFpemtHa3NKZVFXNUdMTEdWMGRMZkZqV3MxR0ZTV2dJTEMxU1NsYmJhaFpIaTF6akxNMUN0eEtpZl9vb2YzVjREY3VYZUp1X18xMVk?oc=5",
       "published": "2026-06-17",
       "published_at": "2026-06-17T07:00:00+00:00",
       "week": "2026-W25",
@@ -1055,20 +1013,6 @@
       "source_kind": "html_features"
     },
     {
-      "id": "e1df3f9df6fd7124",
-      "competitor": "rakuten",
-      "title": "Prime Day 2026: Partnership Marketing Strategy to Capture the Halo Effect",
-      "url": "https://blog.rakutenadvertising.com/marketing-strategies/prime-day-2026-affiliate-strategy/",
-      "published": "2026-06-11",
-      "published_at": "2026-06-11T18:26:47+00:00",
-      "week": "2026-W24",
-      "week_label": "Jun 8–14, 2026",
-      "excerpt": "Prime Day 2026 may start on Amazon, but its impact reaches across the retail web. Using Prime Day 2025 data, this article shows affiliate and partner marketers how the halo effect shapes traffic, conversions, category performance, and publisher strategy, and where to focus…",
-      "kind": "news",
-      "source_label": "Rakuten Advertising Blog",
-      "source_kind": "rss"
-    },
-    {
       "id": "609f141124ffd08b",
       "competitor": "awin",
       "title": "Transaction management",
@@ -1154,9 +1098,9 @@
     }
   ],
   "counts": {
-    "items": 71,
-    "features": 45,
-    "news": 26,
+    "items": 67,
+    "features": 43,
+    "news": 24,
     "ok_sources": 13,
     "error_sources": 0
   }
