@@ -245,7 +245,7 @@ td.kq{font-family:var(--display);font-style:italic;font-size:.95rem;line-height:
 .confcard .cv{font-size:1.25rem;font-weight:600;font-variant-numeric:tabular-nums}
 .confcard .cl{font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--fg-3);font-weight:600}
 
-.chip{display:grid;gap:3px;text-align:left}
+.dec .chip,.cva .chip,.opt.chip{display:grid;gap:3px;text-align:left}
 .chip .ck{font-family:var(--ui);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;color:var(--fg-3);font-weight:700}
 .toolnote{font-family:var(--ui);font-size:.7rem;color:var(--fg-3);margin-bottom:10px;display:flex;flex-wrap:wrap;gap:4px 10px}
 .toolnote b{font-weight:600;color:var(--fg-2)}
@@ -477,6 +477,11 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
 
   
 .ask{display:block!important}
+.ask .chip{display:inline-block!important;font-family:var(--ui);font-size:.75rem;background:var(--surface);border:1px solid var(--line-2);color:var(--fg-2);padding:6px 11px;border-radius:15px;cursor:pointer;text-align:left;max-width:100%}
+.ask .chip:hover{border-color:var(--fg-3);color:var(--fg)}
+.ask{scroll-margin-top:96px}
+.ask .log{display:grid;gap:8px;justify-items:stretch;margin:0 0 12px}
+
 .ask .toolnote{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px;font-size:.78rem;color:var(--fg-2)}
 .ask .toolnote .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
 .ask .toolnote .dot.on{background:#2f7d4f}
@@ -593,6 +598,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <h1>User Personas at impact.com</h1>
   <p class="lede">Three partners, three brands. Built from 267 interviews, 158 G2 reviews and 90 days of product behaviour. Scan the matrix to find who you are arguing about, then open their card.</p>
 </div></header>
+<p class="note" style="margin:0 0 8px">Each of the six personas has an <b>Ask</b> box under its workflow — same layout as the Claude artifact.</p>
 <nav class="pills" aria-label="Jump to a persona">
   <div class="wrap pillrow">
     <a href="#matrix" class="pill nav-all">All six</a>
@@ -732,6 +738,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <div class="ask" data-persona="marlo">
     <span class="lbl">Ask Nia</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Nia will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
+    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="Walk me through the moment you nearly gave up.">Walk me through the moment you nearly gave up.</button><button type="button" class="chip" data-q="I'm redesigning the profile step — what would make you finish it?">I'm redesigning the profile step — what would make you finish it?</button><button type="button" class="chip" data-q="If we fixed one thing for you this quarter, what should it be?">If we fixed one thing for you this quarter, what should it be?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Nia something…" aria-label="Ask Nia a question" autocomplete="off"><button type="submit">Ask</button></form>
@@ -835,6 +842,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <div class="ask" data-persona="quinn">
     <span class="lbl">Ask Danny</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Danny will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
+    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What does a bad week actually feel like?">What does a bad week actually feel like?</button><button type="button" class="chip" data-q="Would a predicted EPC on the offer card change what you click?">Would a predicted EPC on the offer card change what you click?</button><button type="button" class="chip" data-q="Rank mobile sharing, offer signal and payout speed for me.">Rank mobile sharing, offer signal and payout speed for me.</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Danny something…" aria-label="Ask Danny a question" autocomplete="off"><button type="submit">Ask</button></form>
@@ -938,6 +946,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <div class="ask" data-persona="nour">
     <span class="lbl">Ask Priya</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Priya will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
+    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What made you stop counting applications as pipeline?">What made you stop counting applications as pipeline?</button><button type="button" class="chip" data-q="If the cost-model filter came back, where should it live?">If the cost-model filter came back, where should it live?</button><button type="button" class="chip" data-q="Is API depth a retention issue for you, or a nice-to-have?">Is API depth a retention issue for you, or a nice-to-have?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Priya something…" aria-label="Ask Priya a question" autocomplete="off"><button type="submit">Ask</button></form>
@@ -1049,6 +1058,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <div class="ask" data-persona="pax">
     <span class="lbl">Ask Sophie</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Sophie will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
+    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What went through your mind the first time you logged in?">What went through your mind the first time you logged in?</button><button type="button" class="chip" data-q="I'm designing an applicant quality score — what would you need to see?">I'm designing an applicant quality score — what would you need to see?</button><button type="button" class="chip" data-q="Is the price or the learning curve the bigger risk to you renewing?">Is the price or the learning curve the bigger risk to you renewing?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Sophie something…" aria-label="Ask Sophie a question" autocomplete="off"><button type="submit">Ask</button></form>
@@ -1138,6 +1148,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <div class="ask" data-persona="rowan">
     <span class="lbl">Ask Maya</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Maya will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
+    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What was the worst moment with a partner this quarter?">What was the worst moment with a partner this quarter?</button><button type="button" class="chip" data-q="I'm adding partner recommendations — what would make you trust them?">I'm adding partner recommendations — what would make you trust them?</button><button type="button" class="chip" data-q="What would actually make you leave for another platform?">What would actually make you leave for another platform?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Maya something…" aria-label="Ask Maya a question" autocomplete="off"><button type="submit">Ask</button></form>
@@ -1235,6 +1246,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <div class="ask" data-persona="kit">
     <span class="lbl">Ask James</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. James will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
+    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="How did it feel to find the dashboard had changed?">How did it feel to find the dashboard had changed?</button><button type="button" class="chip" data-q="We're redesigning the partner-side link flow — why should you care?">We're redesigning the partner-side link flow — why should you care?</button><button type="button" class="chip" data-q="What would justify consolidating onto one platform to your CMO?">What would justify consolidating onto one platform to your CMO?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask James something…" aria-label="Ask James a question" autocomplete="off"><button type="submit">Ask</button></form>
@@ -1840,18 +1852,24 @@ function extractiveAnswer(name, pack, q){
 function wireExtractive(panel){
   var pid=panel.getAttribute('data-persona'), name=NAMES[pid];
   if(!PACKS[pid]) return;
+  if(panel.getAttribute('data-ask-wired')==='1'){ panel.hidden=false; return; }
+  panel.setAttribute('data-ask-wired','1');
   var pack=PACKS[pid];
   var log=panel.querySelector('.log'), form=panel.querySelector('.askform');
+  if(!form||!log){ panel.hidden=false; return; }
   var input=form.querySelector('input'), btn=form.querySelector('button');
   var busy=false;
-  var note=document.createElement('div'); note.className='toolnote';
-  note.innerHTML='<span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Keyword match on DesignOps</span><span>Model Ask needs the Claude artifact</span>';
-  var chips=panel.querySelector('.chips');
-  if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, panel.querySelector('.log'));
+  var note=panel.querySelector('.toolnote');
+  if(!note){
+    note=document.createElement('div'); note.className='toolnote';
+    var chips=panel.querySelector('.chips');
+    if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, log);
+  }
+  note.innerHTML='<span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span>';
   panel.hidden=false;
   var asknote=panel.querySelector('.asknote');
   if(asknote){
-    asknote.textContent='Answers from the same evidence brief as the Claude artifact. On DesignOps this is extractive (quotes and facts from the brief). For live model Ask with Outset/PostHog lookups, open the Claude persona artifact.';
+    asknote.textContent='A research instrument, not a user — it only recombines evidence we collected. On DesignOps this matches the brief; open the Claude artifact for live model Ask with connectors.';
   }
 
   function bubble(cls,text){
@@ -1912,16 +1930,22 @@ function buildTools(mcp){
 function wire(panel,sample,tools,canTools){
   var pid=panel.getAttribute('data-persona'), name=NAMES[pid];
   if(!PACKS[pid]) return;
+  if(panel.getAttribute('data-ask-wired')==='1'){ panel.hidden=false; return; }
+  panel.setAttribute('data-ask-wired','1');
   var brief=RULES.replace('NAME_HERE',name)+PACKS[pid];
   var log=panel.querySelector('.log'), form=panel.querySelector('.askform');
+  if(!form||!log){ panel.hidden=false; return; }
   var input=form.querySelector('input'), btn=form.querySelector('button');
   var turns=[], ctl=null, busy=false, useTools=!!tools;
-  var note=document.createElement('div'); note.className='toolnote';
+  var note=panel.querySelector('.toolnote')||document.createElement('div');
+  note.className='toolnote';
   note.innerHTML = canTools
     ? '<span><i class="dot on"></i><b>Live lookups on</b></span><span>Outset research</span><span>PostHog analytics</span><span>G2 reviews embedded</span><span>Dovetail not connected</span>'
     : '<span><i class="dot off"></i><b>Answering from the embedded evidence only</b></span><span>Live connector lookups unavailable in this view</span>';
-  var chips=panel.querySelector('.chips');
-  if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, panel.querySelector('.log'));
+  if(!note.parentNode){
+    var chips=panel.querySelector('.chips');
+    if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, log);
+  }
   panel.hidden=false;
 
   function bubble(cls,text){var d=document.createElement('div');d.className='msg '+cls;d.textContent=text;log.appendChild(d);return d;}
