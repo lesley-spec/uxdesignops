@@ -475,7 +475,23 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
 /* Keep Nihal page layout under DesignOps chrome */
 .personas-nihal-root{max-width:100%}
 
-  </style>
+  
+.ask{display:block!important}
+.ask .toolnote{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px;font-size:.78rem;color:var(--fg-2)}
+.ask .toolnote .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.ask .toolnote .dot.on{background:#2f7d4f}
+.ask .toolnote .dot.off{background:var(--fg-3)}
+.ask .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.ask .chip{font:inherit;font-size:.82rem;padding:8px 12px;border-radius:9999px;border:1px solid var(--line-2);background:var(--surface);color:var(--fg);cursor:pointer;text-align:left}
+.ask .chip:hover{border-color:var(--s1)}
+.ask .log{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
+.ask .msg{padding:10px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-size:.9rem;line-height:1.45;white-space:pre-wrap}
+.ask .msg.u{align-self:flex-end;background:var(--partner-bg, #e9f0fd);border-color:transparent}
+.ask .msg.a{align-self:stretch}
+.ask .msg.think{color:var(--fg-3);font-style:italic}
+.ask .msg.err{color:var(--neg,#c0392f)}
+
+</style>
   <script src="../shared/auth-config.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../shared/designops-auth.js" defer></script>
 </head>
 <body class="personas-page">
@@ -713,7 +729,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The workflow, stage by stage</span><p class="jmi">What they actually do, in order. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,25 252,51 420,38 588,64 756,64 924,25 1092,51" class="jline"/><circle cx="84" cy="25" r="5.5" class="jdot f2"/><circle cx="252" cy="51" r="5.5" class="jdot f4"/><circle cx="420" cy="38" r="5.5" class="jdot f3"/><circle cx="588" cy="64" r="5.5" class="jdot f5"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="25" r="5.5" class="jdot f2"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Sign up</b><span class="jd">Completes signup on a phone in a few minutes.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">02</span><b>Build the profile</b><span class="jd">Writes a real bio &mdash; 121,539 partners write 250+ characters.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">03</span><b>Find brands</b><span class="jd">Checks notifications, opens the pre-approved list, browses eligible brands.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">04</span><b>Apply and wait</b><span class="jd">Applies to several brands in one sitting.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">05</span><b>Get the link</b><span class="jd">Goes to find the tracking link for a brand they were approved for.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Publish</b><span class="jd">Puts the link into a post or a video description.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Check earnings</b><span class="jd">Opens the spreadsheet they have kept in parallel since January.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="marlo" hidden>
+  <div class="ask" data-persona="marlo">
     <span class="lbl">Ask Nia</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Nia will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
     <div class="chips"><button type="button" class="chip" data-q="Walk me through the moment you nearly gave up.">Walk me through the moment you nearly gave up.</button><button type="button" class="chip" data-q="I'm redesigning the profile step — what would make you finish it?">I'm redesigning the profile step — what would make you finish it?</button><button type="button" class="chip" data-q="If we fixed one thing for you this quarter, what should it be?">If we fixed one thing for you this quarter, what should it be?</button></div>
@@ -816,7 +832,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The workflow, stage by stage</span><p class="jmi">What they actually do, in order. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,25 252,64 420,38 588,12 756,64 924,38 1092,51" class="jline"/><circle cx="84" cy="25" r="5.5" class="jdot f2"/><circle cx="252" cy="64" r="5.5" class="jdot f5"/><circle cx="420" cy="38" r="5.5" class="jdot f3"/><circle cx="588" cy="12" r="5.5" class="jdot f1"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="38" r="5.5" class="jdot f3"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Review performance</b><span class="jd">Opens reports first out of habit &mdash; overview, revenue by day, clicks by site.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">02</span><b>Choose offers</b><span class="jd">Decides which products are worth building content around.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">03</span><b>Generate links</b><span class="jd">Six links, brand by brand, before the edit can finish.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">04</span><b>Publish</b><span class="jd">Drops the links into the video description.</span><span class="jf f1">Smooth</span></div><div class="jc"><span class="jn">05</span><b>Answer the audience</b><span class="jd">A follower DMs asking where to buy something from last week.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Track what converted</b><span class="jd">Checks clicks against sales.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">07</span><b>Get paid</b><span class="jd">Waits for the payout to land.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="quinn" hidden>
+  <div class="ask" data-persona="quinn">
     <span class="lbl">Ask Danny</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Danny will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
     <div class="chips"><button type="button" class="chip" data-q="What does a bad week actually feel like?">What does a bad week actually feel like?</button><button type="button" class="chip" data-q="Would a predicted EPC on the offer card change what you click?">Would a predicted EPC on the offer card change what you click?</button><button type="button" class="chip" data-q="Rank mobile sharing, offer signal and payout speed for me.">Rank mobile sharing, offer signal and payout speed for me.</button></div>
@@ -919,7 +935,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The workflow, stage by stage</span><p class="jmi">What they actually do, in order. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,25 252,64 420,64 588,51 756,64 924,38 1092,51" class="jline"/><circle cx="84" cy="25" r="5.5" class="jdot f2"/><circle cx="252" cy="64" r="5.5" class="jdot f5"/><circle cx="420" cy="64" r="5.5" class="jdot f5"/><circle cx="588" cy="51" r="5.5" class="jdot f4"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="38" r="5.5" class="jdot f3"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Pull the morning report</b><span class="jd">Goes straight to reports, not the marketplace.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">02</span><b>Slice to sub-ID</b><span class="jd">Looks for which sub IDs moved and which landing pages they came from.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">03</span><b>Filter offers</b><span class="jd">Wants to see only cost-per-lead or cost-per-sale campaigns.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">04</span><b>Apply at volume</b><span class="jd">Sends applications across many programmes with a team of two.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">05</span><b>Chase decisions</b><span class="jd">Reviews last month's forty applications.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Optimise</b><span class="jd">Tests creatives, landing pages and geographies against each other.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">07</span><b>Escalate</b><span class="jd">Raises something with support.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="nour" hidden>
+  <div class="ask" data-persona="nour">
     <span class="lbl">Ask Priya</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Priya will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
     <div class="chips"><button type="button" class="chip" data-q="What made you stop counting applications as pipeline?">What made you stop counting applications as pipeline?</button><button type="button" class="chip" data-q="If the cost-model filter came back, where should it live?">If the cost-model filter came back, where should it live?</button><button type="button" class="chip" data-q="Is API depth a retention issue for you, or a nice-to-have?">Is API depth a retention issue for you, or a nice-to-have?</button></div>
@@ -1030,7 +1046,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The brand loop, stage by stage</span><p class="jmi">Brands do not pass through &mdash; they stay inside this loop. Set up, recruit, contract, activate, measure, pay, protect. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,64 252,51 420,38 588,38 756,51 924,12 1092,64" class="jline"/><circle cx="84" cy="64" r="5.5" class="jdot f5"/><circle cx="252" cy="51" r="5.5" class="jdot f4"/><circle cx="420" cy="38" r="5.5" class="jdot f3"/><circle cx="588" cy="38" r="5.5" class="jdot f3"/><circle cx="756" cy="51" r="5.5" class="jdot f4"/><circle cx="924" cy="12" r="5.5" class="jdot f1"/><circle cx="1092" cy="64" r="5.5" class="jdot f5"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Set up</b><span class="jd">Gets tracking live alongside four other jobs.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">02</span><b>Recruit</b><span class="jd">Looks for a first few partners worth having.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">03</span><b>Contract</b><span class="jd">Sets terms for the first time.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">04</span><b>Activate</b><span class="jd">Gets assets and promo codes out.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">05</span><b>Measure</b><span class="jd">Checks whether the channel paid back.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">06</span><b>Pay</b><span class="jd">Commission, invoicing and tax run themselves.</span><span class="jf f1">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Protect</b><span class="jd">Tries to keep spam applicants out.</span><span class="jf f5">Blocked</span></div></div></div></div></div>
-  <div class="ask" data-persona="pax" hidden>
+  <div class="ask" data-persona="pax">
     <span class="lbl">Ask Sophie</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Sophie will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
     <div class="chips"><button type="button" class="chip" data-q="What went through your mind the first time you logged in?">What went through your mind the first time you logged in?</button><button type="button" class="chip" data-q="I'm designing an applicant quality score — what would you need to see?">I'm designing an applicant quality score — what would you need to see?</button><button type="button" class="chip" data-q="Is the price or the learning curve the bigger risk to you renewing?">Is the price or the learning curve the bigger risk to you renewing?</button></div>
@@ -1119,7 +1135,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The brand loop, stage by stage</span><p class="jmi">Brands do not pass through &mdash; they stay inside this loop. Set up, recruit, contract, activate, measure, pay, protect. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,38 252,64 420,64 588,51 756,51 924,12 1092,64" class="jline"/><circle cx="84" cy="38" r="5.5" class="jdot f3"/><circle cx="252" cy="64" r="5.5" class="jdot f5"/><circle cx="420" cy="64" r="5.5" class="jdot f5"/><circle cx="588" cy="51" r="5.5" class="jdot f4"/><circle cx="756" cy="51" r="5.5" class="jdot f4"/><circle cx="924" cy="12" r="5.5" class="jdot f1"/><circle cx="1092" cy="64" r="5.5" class="jdot f5"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Set up</b><span class="jd">Integrates with Shopify or HubSpot.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">02</span><b>Recruit</b><span class="jd">Searches the marketplace for partners beyond coupon sites.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">03</span><b>Contract</b><span class="jd">Needs to change terms on a contract already running.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">04</span><b>Activate</b><span class="jd">Pushes promos and assets so partners actually find them.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">05</span><b>Measure</b><span class="jd">Builds the custom report finance asked for.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">06</span><b>Pay</b><span class="jd">Commission, invoicing and tax run themselves.</span><span class="jf f1">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Protect</b><span class="jd">Filters out misrepresented profiles and rule-breakers.</span><span class="jf f5">Blocked</span></div></div></div></div></div>
-  <div class="ask" data-persona="rowan" hidden>
+  <div class="ask" data-persona="rowan">
     <span class="lbl">Ask Maya</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Maya will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
     <div class="chips"><button type="button" class="chip" data-q="What was the worst moment with a partner this quarter?">What was the worst moment with a partner this quarter?</button><button type="button" class="chip" data-q="I'm adding partner recommendations — what would make you trust them?">I'm adding partner recommendations — what would make you trust them?</button><button type="button" class="chip" data-q="What would actually make you leave for another platform?">What would actually make you leave for another platform?</button></div>
@@ -1216,7 +1232,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The brand loop, stage by stage</span><p class="jmi">Brands do not pass through &mdash; they stay inside this loop. Set up, recruit, contract, activate, measure, pay, protect. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,64 252,51 420,64 588,38 756,64 924,25 1092,51" class="jline"/><circle cx="84" cy="64" r="5.5" class="jdot f5"/><circle cx="252" cy="51" r="5.5" class="jdot f4"/><circle cx="420" cy="64" r="5.5" class="jdot f5"/><circle cx="588" cy="38" r="5.5" class="jdot f3"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="25" r="5.5" class="jdot f2"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Set up</b><span class="jd">Custom integration into the enterprise stack.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">02</span><b>Recruit</b><span class="jd">Sources across regions and brands.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">03</span><b>Contract</b><span class="jd">Wants concurrent contracts and scheduled rate changes.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">04</span><b>Activate</b><span class="jd">Co-ordinates comms across a team of eleven.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">05</span><b>Measure</b><span class="jd">Needs one global view across four regions.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Pay</b><span class="jd">Multi-currency, multi-region, compliant.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Protect</b><span class="jd">Brand safety and compliance at scale.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="kit" hidden>
+  <div class="ask" data-persona="kit">
     <span class="lbl">Ask James</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. James will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
     <div class="chips"><button type="button" class="chip" data-q="How did it feel to find the dashboard had changed?">How did it feel to find the dashboard had changed?</button><button type="button" class="chip" data-q="We're redesigning the partner-side link flow — why should you care?">We're redesigning the partner-side link flow — why should you care?</button><button type="button" class="chip" data-q="What would justify consolidating onto one platform to your CMO?">What would justify consolidating onto one platform to your CMO?</button></div>
@@ -1945,22 +1961,34 @@ function wire(panel,sample,tools,canTools){
   panel.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){if(!busy)ask(c.getAttribute('data-q'));});});
 }
 
-function bootAsk(){
-  var hasClaude=window.claude&&typeof window.claude.use==="function";
-  if(!hasClaude){
-    document.querySelectorAll('.ask').forEach(wireExtractive);
-    return;
-  }
-  Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
-    var sample=r[0], mcp=r[1];
-    if(sample) initAsk(sample,mcp);
-    else document.querySelectorAll('.ask').forEach(wireExtractive);
-  }).catch(function(){
-    document.querySelectorAll('.ask').forEach(wireExtractive);
+function showAskPanels(){
+  document.querySelectorAll('.ask').forEach(function(panel){
+    try{
+      if(typeof wireExtractive==="function") wireExtractive(panel);
+      else panel.hidden=false;
+    }catch(err){
+      panel.hidden=false;
+      console.warn("persona ask init failed", panel.getAttribute("data-persona"), err);
+    }
   });
 }
 
-bootAsk();
+function bootAsk(){
+  // Always reveal Ask UI first — never leave panels stuck on hidden.
+  document.querySelectorAll('.ask').forEach(function(p){ p.hidden=false; });
+  var hasClaude=window.claude&&typeof window.claude.use==="function";
+  if(!hasClaude){ showAskPanels(); return; }
+  Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
+    var sample=r[0], mcp=r[1];
+    if(sample){
+      try{ initAsk(sample,mcp); }
+      catch(err){ console.warn(err); showAskPanels(); }
+    } else showAskPanels();
+  }).catch(function(){ showAskPanels(); });
+}
+
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", bootAsk);
+else bootAsk();
 
 })();
 </script>
