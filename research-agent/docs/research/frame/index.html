@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
-  <title>The Frame — UX DesignOps Research</title>
+  <title>The Frame — UX DesignOps</title>
   <link rel="stylesheet" href="../shared/designops.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
   <style>
+
 /* Layout: ask first, then coverage as the scan, the claims ledger, and the needs journey.
    One filter model drives the matrix and the ledger together. */
 :root{
@@ -255,20 +257,16 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 
-.research-subnav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:10px 0;border-bottom:1px solid var(--line)}
-.research-subnav a{font-size:.88rem;font-weight:600;text-decoration:none;padding:7px 12px;border-radius:9999px;border:1px solid var(--line);color:var(--fg-2);background:var(--surface)}
-.research-subnav a.is-active{background:var(--s1);border-color:var(--s1);color:#fff}
-.research-subnav a.external{font-weight:500}
+.research-subnav{display:none!important}
 .frame-page .top-nav{position:sticky;top:0;z-index:50}
+.frame-page .wrap{padding-top:8px}
 
   </style>
   <script src="../shared/auth-config.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../shared/designops-auth.js" defer></script>
 </head>
 <body class="frame-page">
   <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div><div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
-  <header class="top-nav" role="banner">
-    <div class="top-nav-inner">
-      <a class="top-nav-brand" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 97 32" fill="none" class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false">
+  <header class="top-nav" role="banner"><div class="top-nav-inner"><a class="top-nav-brand" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 97 32" fill="none" class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false">
   <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M35.9475 14.2949C35.7217 14.2949 35.4825 14.3346 35.27 14.4273C35.0574 14.52 34.8581 14.6391 34.6987 14.8112C34.5393 14.9701 34.4065 15.1687 34.3135 15.3805C34.2205 15.5923 34.1806 15.8306 34.1939 16.0556C34.2338 16.4925 34.433 16.9161 34.7519 17.2074C35.084 17.5119 35.5091 17.6707 35.9475 17.6707C36.3859 17.6707 36.8243 17.4986 37.1432 17.2074C37.4753 16.9029 37.6745 16.4925 37.7011 16.0556C37.7011 15.8173 37.6613 15.5923 37.5816 15.3805C37.4886 15.1687 37.369 14.9701 37.1963 14.8112C37.0369 14.6524 36.8376 14.52 36.625 14.4273C36.4125 14.3346 36.1866 14.2949 35.9475 14.2949Z"/>
   <path fill="currentColor" d="M37.2492 20.2522H34.6719V32.7493H37.2492V20.2522Z"/>
   <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M49.392 22.1453C50.322 20.7817 51.8896 20.0139 53.8159 20.0139C56.9511 20.0139 59.0634 22.0394 59.0369 25.0578V32.7361H56.4197V25.7329C56.4197 23.6942 55.3437 22.5292 53.4439 22.5292C51.5442 22.5292 50.2157 23.8663 50.2157 25.7726V32.7361H47.5853V25.7329C47.5853 23.6942 46.5092 22.5292 44.6094 22.5292C42.7097 22.5292 41.3812 23.8663 41.3812 25.7726V32.7361H38.7773V20.2654H41.4078V21.351C42.6034 20.2125 44.1445 20.0272 45.0213 20.0272C46.9077 20.0139 48.4886 20.795 49.392 22.1453Z"/>
@@ -279,35 +277,8 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
   <path fill="#A9B4BD" d="M24.3899 23.2308C25.1471 23.2308 25.9044 23.4029 26.5819 23.7206C27.2727 24.0383 27.8838 24.5017 28.3754 25.0709C28.6278 24.4884 28.7739 23.8662 28.7739 23.244C28.7739 22.6748 28.6544 22.1055 28.4418 21.5892C28.216 21.0597 27.8971 20.5831 27.4853 20.1859C27.0734 19.7888 26.5952 19.4711 26.0638 19.246C25.5324 19.0342 24.9611 18.915 24.3899 18.915C23.8186 18.915 23.2474 19.0209 22.716 19.246C22.1846 19.4578 21.693 19.7888 21.2945 20.1859C20.8827 20.5831 20.5638 21.0597 20.338 21.5892C20.1121 22.1187 20.0059 22.6748 20.0059 23.244C20.0191 23.8795 20.152 24.5017 20.4044 25.0709C20.896 24.4884 21.5071 24.0383 22.1846 23.7206C22.8754 23.3896 23.6326 23.2175 24.3899 23.2308Z"/>
   <path fill="currentColor" d="M28.7735 28.4072C28.7735 27.5467 28.5211 26.7126 28.0295 25.9978C27.5513 25.2829 26.8604 24.7269 26.0634 24.3959C25.2663 24.0649 24.3762 23.9855 23.5259 24.1444C22.6757 24.3165 21.8919 24.7269 21.2808 25.3358C20.6697 25.9448 20.2445 26.7126 20.0851 27.5599C19.9124 28.4072 20.0054 29.2677 20.3375 30.062C20.6697 30.8563 21.2276 31.5314 21.9583 32.008C22.6757 32.4846 23.5259 32.7361 24.4027 32.7361C25.5585 32.7229 26.6745 32.2728 27.4981 31.452C28.3218 30.6312 28.7735 29.5589 28.7735 28.4072Z"/>
   <path fill="#F5333F" d="M28.7735 13.3417C28.7735 12.4812 28.5211 11.6472 28.0295 10.9323C27.5513 10.2175 26.8737 9.66144 26.0634 9.33048C25.2663 8.99952 24.3762 8.92009 23.5259 9.07895C22.6757 9.25105 21.8919 9.66144 21.2808 10.2704C20.6697 10.8794 20.2445 11.6472 20.0851 12.4945C19.9124 13.3417 20.0054 14.2022 20.3375 14.9965C20.6697 15.7909 21.2276 16.466 21.9583 16.9426C22.6757 17.4192 23.5259 17.6707 24.4027 17.6707C25.5718 17.6707 26.6877 17.2074 27.5114 16.3998C28.3085 15.5923 28.7735 14.4802 28.7735 13.3417Z"/>
-</svg><span class="top-nav-brand-text">UX DesignOps</span></a>
-      <div class="top-nav-actions">
-        <nav class="report-nav" aria-label="Site sections">
-          <a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a>
-          <a class="nav-link" href="../skills/" data-nav="skills">Skills</a>
-          <a class="nav-link is-active" href="../research/" data-nav="listing">Research</a>
-          <a class="nav-link" href="../usage/" data-nav="report">Report</a>
-          <a class="nav-link" href="../personas/" data-nav="personas">Personas</a>
-          <a class="nav-link" href="../feed/" data-nav="feed">Competitors</a>
-          <a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
-          <a class="nav-link" href="../walkthroughs/" data-nav="walkthrough">Examples</a>
-        </nav>
-        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+</svg><span class="top-nav-brand-text">UX DesignOps</span></a><div class="top-nav-actions"><nav class="report-nav" aria-label="Site sections"><a class="nav-link" href="../" data-nav="pipeline">Design Thinking Pipeline</a><a class="nav-link" href="../skills/" data-nav="skills">Skills</a><a class="nav-link is-active" href="../research/" data-nav="listing">Research</a><a class="nav-link" href="../usage/" data-nav="report">Report</a><a class="nav-link" href="../personas/" data-nav="personas">Personas</a><a class="nav-link" href="../feed/" data-nav="feed">Competitors</a><a class="nav-link" href="../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a><a class="nav-link" href="../walkthroughs/" data-nav="walkthrough">Examples</a></nav><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button></div></div></header>
 <div class="wrap">
-<nav class="research-subnav" aria-label="Research sections">
-  <a class="external is-active" href="https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw" target="_blank" rel="noopener">The Frame</a>
-  <a class="external" href="https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ" target="_blank" rel="noopener">Personas V2</a>
-  <a href="../research/">Insight Monitor</a>
-  <a href="../personas/">Personas (V1)</a>
-  <a href="../reports/2026-08-24-affinity.html">Affinity</a>
-  <a href="../feed/">Competitor News</a>
-</nav>
-
   <header>
     <div>
       <h1>The Frame</h1>
@@ -377,8 +348,8 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
     Every claim carries its denominator. Nothing above Medium should carry an irreversible decision alone, and a contested claim should not close a research request on its own.
   </footer>
 </div>
-<script>
 
+<script>
 (function(){
   "use strict";
   var ORDER={HIGH:4,MEDIUM:3,LOW:2,UNVALIDATED:1,GAP:0};
@@ -782,19 +753,6 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
       (ev?'<div class="used"><span class="lbl">from</span>'+ev+'</div>':'')+'</div>';
   }
 
-  function applyClaims(list){
-    claims=(list||[]).filter(function(c){return c&&c.statement});
-    if(!claims.length){
-      $("stamp").textContent="Empty";
-      $("strip").innerHTML=""; renderMatrix();
-      renderEmpty({t:"The Frame is empty",b:"No claims recorded yet. They arrive from user-context in record mode."});
-      return;
-    }
-    var latest=claims.map(function(c){return c.verified||""}).sort().pop();
-    $("stamp").textContent="Last verified "+(latest||"—")+(window.__frameSnapshot?" · snapshot":"");
-    renderAll();
-  }
-
   function extractiveAsk(q, used){
     if(!used.length){
       return {gap:true, text:"THE FRAME DOES NOT COVER THIS. No claims matched this question. Run research-intake or user-context to fill the gap."};
@@ -812,7 +770,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
   async function ask(q){
     if(asking) return;
     asking=true; $("asksend").disabled=true;
-    $("askout").innerHTML='<div class="answer"><p class="thinking">Reading the Frame…</p></div>';
+    $("askout").innerHTML='<div class="answer"><p class="thinking">Reading the Frame\u2026</p></div>';
     var used=pickClaims(q);
     if(sampleFn){
       var prompt=
@@ -840,7 +798,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
         renderAnswer(out.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""), cited.length?cited:(gap?[]:used.slice(0,5)), gap);
       }catch(e){
         var code=(e&&e.code)||"";
-        var msg=code==="rate_limited"?"Too many questions just now — try again in a moment."
+        var msg=code==="rate_limited"?"Too many questions just now \u2014 try again in a moment."
               :code==="not_granted"?"Asking is not available in this view."
               :"Could not reach Claude. Try again.";
         $("askout").innerHTML='<div class="answer gap"><p>'+esc(msg)+'</p></div>';
@@ -853,55 +811,22 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
     asking=false; $("asksend").disabled=false;
   }
 
-  // Replace original ask binding already registered — redefine ask above before submit.
-  // (submit listener already points at ask by name via closure — we overwrite ask on the scope.)
+  $("askform").addEventListener("submit",function(e){
+    e.preventDefault();
+    var q=$("askq").value.trim();
+    if(q) ask(q);
+  });
 
   (async function(){
     try{ sampleFn=await (window.claude&&window.claude.use?window.claude.use("sample"):null) }catch(e){}
-    $("asksec").hidden=false;
-    $("askstamp").textContent=sampleFn?"grounded in the claims below":"snapshot match — open Claude artifact for model Ask";
-    renderPills();
+    if(sampleFn){ $("asksec").hidden=false; $("askstamp").textContent="grounded in the claims below"; renderPills() }
+    else if(window.__frameSnapshot){ $("asksec").hidden=false; $("askstamp").textContent="snapshot match — keyword Ask from claims"; renderPills && renderPills() }
   })();
 
   (async function(){
     var db=null;
     try{ db=await (window.claude&&window.claude.use?window.claude.use("db"):null) }catch(e){}
-    if(db){
-      function apply(snap){
-        applyClaims(bodies(snap));
-      }
-      try{
-        var pcol=db.collection("prompts");
-        if(pcol.onSnapshot){
-          pcol.onSnapshot(function(snap){
-            prompts=bodies(snap).filter(function(x){return x&&x.question});
-            renderStarters();
-          }, function(){});
-        } else {
-          prompts=bodies(await pcol.get()).filter(function(x){return x&&x.question});
-          renderStarters();
-        }
-        var ncol=db.collection("needs");
-        if(ncol.onSnapshot){
-          ncol.onSnapshot(function(snap){
-            needs=bodies(snap).filter(function(n){return n&&n.need});
-            renderTabs(); renderJourney();
-          }, function(){});
-        } else {
-          needs=bodies(await ncol.get()).filter(function(n){return n&&n.need});
-          renderTabs(); renderJourney();
-        }
-      }catch(e){}
-      try{
-        var col=db.collection("claims");
-        if(col.onSnapshot){ col.onSnapshot(apply, function(){ $("stamp").textContent="Store error" }) }
-        else { apply(await col.get()) }
-      }catch(e){
-        $("stamp").textContent="Store error";
-        renderEmpty({t:"Could not load claims",b:"The store did not answer. Reload, or check access."});
-      }
-      return;
-    }
+    if(!db){
 
     // Static snapshot fallback for GitHub Pages / local DesignOps
     window.__frameSnapshot=true;
@@ -915,10 +840,59 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
       prompts=(pj||[]).filter(function(x){return x&&x.question});
       needs=(nj||[]).filter(function(n){return n&&n.need});
       renderStarters(); renderTabs(); renderJourney();
-      applyClaims(cj||[]);
+      apply({docs:(cj||[]).map(function(c){return {data:function(){return c}}})});
+      $("asksec").hidden=false;
+      $("askstamp").textContent="snapshot match — keyword Ask from claims";
     }catch(e){
       $("stamp").textContent="Snapshot missing";
       renderEmpty({t:"Cannot load Frame snapshot",b:"Expected ./data/claims.json, needs.json, and prompts.json next to this page."});
+    }
+
+      return;
+    }
+    function apply(snap){
+      claims=bodies(snap).filter(function(c){return c&&c.statement});
+      if(!claims.length){
+        $("stamp").textContent="Empty";
+        $("strip").innerHTML=""; renderMatrix();
+        renderEmpty({t:"The Frame is empty",b:"No claims recorded yet. They arrive from user-context in record mode."});
+        return;
+      }
+      var latest=claims.map(function(c){return c.verified||""}).sort().pop();
+      $("stamp").textContent="Last verified "+(latest||"—")+(window.__frameSnapshot?" · snapshot":"");
+      renderAll();
+    }
+    try{
+      var pcol=db.collection("prompts");
+      if(pcol.onSnapshot){
+        pcol.onSnapshot(function(snap){
+          prompts=bodies(snap).filter(function(x){return x&&x.question});
+          renderStarters();
+        }, function(){});
+      } else {
+        prompts=bodies(await pcol.get()).filter(function(x){return x&&x.question});
+        renderStarters();
+      }
+
+      var ncol=db.collection("needs");
+      if(ncol.onSnapshot){
+        ncol.onSnapshot(function(snap){
+          needs=bodies(snap).filter(function(n){return n&&n.need});
+          renderTabs(); renderJourney();
+        }, function(){});
+      } else {
+        needs=bodies(await ncol.get()).filter(function(n){return n&&n.need});
+        renderTabs(); renderJourney();
+      }
+    }catch(e){}
+
+    try{
+      var col=db.collection("claims");
+      if(col.onSnapshot){ col.onSnapshot(apply, function(){ $("stamp").textContent="Store error" }) }
+      else { apply(await col.get()) }
+    }catch(e){
+      $("stamp").textContent="Store error";
+      renderEmpty({t:"Could not load claims",b:"The store did not answer. Reload, or check access."});
     }
   })();
 })();

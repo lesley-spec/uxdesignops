@@ -3,7 +3,9 @@
 What impact.com currently believes about its users, how confident we are in each
 belief, and where we are blind. Claims, not reports.
 
-**Live:** https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw — ask for access.
+**Live on DesignOps:** https://lesley-spec.github.io/uxdesignops/frame/
+
+Claude artifact (source of truth for live DB writes): https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw — ask for access.
 
 ## What's here
 
@@ -144,3 +146,8 @@ rediscovered and re-believed next year.
 
 **All-keep is the failure mode.** A review that retires nothing is a review that
 didn't happen.
+
+
+## DesignOps / GitHub Pages
+
+This site serves a **static snapshot** from `data/*.json` (aggregated from `data/claims|needs|prompts/`). Ask / Coverage / Claims / Unmet needs work without the Claude artifact DB. Model-grounded Ask still needs the Claude artifact.

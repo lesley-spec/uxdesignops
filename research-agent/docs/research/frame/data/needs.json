@@ -6,13 +6,12 @@
       "b09"
     ],
     "evidence": "MEDIUM",
-    "need": "Proof the channel works before a 12-month commitment \u2014 a trial, a downgrade, or a benchmark.",
+    "need": "Proof the channel works before a 12-month commitment — a trial, a downgrade, or a benchmark.",
     "segments": [
       "brand:getting-started"
     ],
     "severity": "blocking",
-    "stage": "Commit",
-    "id": "bn01"
+    "stage": "Commit"
   },
   {
     "audience": "Brand",
@@ -25,8 +24,7 @@
       "brand:getting-started"
     ],
     "severity": "major",
-    "stage": "Commit",
-    "id": "bn02"
+    "stage": "Commit"
   },
   {
     "audience": "Brand",
@@ -40,8 +38,7 @@
       "brand:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Integrate & configure",
-    "id": "bn03"
+    "stage": "Integrate & configure"
   },
   {
     "audience": "Brand",
@@ -49,13 +46,12 @@
       "b05"
     ],
     "evidence": "MEDIUM",
-    "need": "Set commissions correctly the first time \u2014 fixing them later is convoluted.",
+    "need": "Set commissions correctly the first time — fixing them later is convoluted.",
     "segments": [
       "brand:getting-started"
     ],
     "severity": "major",
-    "stage": "Integrate & configure",
-    "id": "bn04"
+    "stage": "Integrate & configure"
   },
   {
     "audience": "Brand",
@@ -70,8 +66,7 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Integrate & configure",
-    "id": "bn05"
+    "stage": "Integrate & configure"
   },
   {
     "audience": "Brand",
@@ -81,15 +76,14 @@
       "b14"
     ],
     "evidence": "HIGH",
-    "need": "Find partners worth having \u2014 relevance, not volume.",
+    "need": "Find partners worth having — relevance, not volume.",
     "segments": [
       "brand:getting-started",
       "brand:scaling-up",
       "brand:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Recruit",
-    "id": "bn06"
+    "stage": "Recruit"
   },
   {
     "audience": "Brand",
@@ -105,8 +99,7 @@
       "brand:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Recruit",
-    "id": "bn07"
+    "stage": "Recruit"
   },
   {
     "audience": "Brand",
@@ -119,8 +112,7 @@
       "brand:scaling-up"
     ],
     "severity": "major",
-    "stage": "Recruit",
-    "id": "bn08"
+    "stage": "Recruit"
   },
   {
     "audience": "Brand",
@@ -134,8 +126,7 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Recruit",
-    "id": "bn09"
+    "stage": "Recruit"
   },
   {
     "audience": "Brand",
@@ -148,8 +139,7 @@
       "brand:scaling-up"
     ],
     "severity": "major",
-    "stage": "Activate",
-    "id": "bn10"
+    "stage": "Activate"
   },
   {
     "audience": "Brand",
@@ -163,8 +153,7 @@
       "brand:scaling-up"
     ],
     "severity": "watch",
-    "stage": "Activate",
-    "id": "bn11"
+    "stage": "Activate"
   },
   {
     "audience": "Brand",
@@ -173,13 +162,12 @@
       "x01"
     ],
     "evidence": "MEDIUM",
-    "need": "Know whether early numbers are normal \u2014 benchmarks exist but the tier needing them cannot find them.",
+    "need": "Know whether early numbers are normal — benchmarks exist but the tier needing them cannot find them.",
     "segments": [
       "brand:getting-started"
     ],
     "severity": "blocking",
-    "stage": "Measure",
-    "id": "bn12"
+    "stage": "Measure"
   },
   {
     "audience": "Brand",
@@ -187,13 +175,12 @@
       "b20"
     ],
     "evidence": "LOW",
-    "need": "Attribution that survives past discount codes \u2014 codes leak to people who were never recruited.",
+    "need": "Attribution that survives past discount codes — codes leak to people who were never recruited.",
     "segments": [
       "brand:scaling-up"
     ],
     "severity": "major",
-    "stage": "Measure",
-    "id": "bn13"
+    "stage": "Measure"
   },
   {
     "audience": "Brand",
@@ -207,8 +194,7 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Measure",
-    "id": "bn14"
+    "stage": "Measure"
   },
   {
     "audience": "Brand",
@@ -221,8 +207,7 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Measure",
-    "id": "bn15"
+    "stage": "Measure"
   },
   {
     "audience": "Brand",
@@ -231,13 +216,12 @@
       "b07"
     ],
     "evidence": "MEDIUM",
-    "need": "Pay partners across regions \u2014 multi-currency, tax forms, compliance \u2014 without touching it.",
+    "need": "Pay partners across regions — multi-currency, tax forms, compliance — without touching it.",
     "segments": [
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Pay",
-    "id": "bn16"
+    "stage": "Pay"
   },
   {
     "audience": "Brand",
@@ -251,8 +235,7 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Protect",
-    "id": "bn17"
+    "stage": "Protect"
   },
   {
     "audience": "Brand",
@@ -260,15 +243,14 @@
       "b06"
     ],
     "evidence": "MEDIUM",
-    "need": "Stop losing state \u2014 re-login 3-6 times a day, reports resetting on section change.",
+    "need": "Stop losing state — re-login 3-6 times a day, reports resetting on section change.",
     "segments": [
       "brand:getting-started",
       "brand:scaling-up",
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Protect",
-    "id": "bn18"
+    "stage": "Protect"
   },
   {
     "audience": "Brand",
@@ -281,8 +263,7 @@
       "brand:strategic-growth"
     ],
     "severity": "watch",
-    "stage": "Protect",
-    "id": "bn19"
+    "stage": "Protect"
   },
   {
     "audience": "Partner",
@@ -290,13 +271,12 @@
       "p05"
     ],
     "evidence": "MEDIUM",
-    "need": "Know what good looks like before starting \u2014 link placement, disclosure, what a normal first month is.",
+    "need": "Know what good looks like before starting — link placement, disclosure, what a normal first month is.",
     "segments": [
       "partner:getting-started"
     ],
     "severity": "major",
-    "stage": "Join & set up",
-    "id": "pn01"
+    "stage": "Join & set up"
   },
   {
     "audience": "Partner",
@@ -312,8 +292,7 @@
       "partner:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Discover brands",
-    "id": "pn02"
+    "stage": "Discover brands"
   },
   {
     "audience": "Partner",
@@ -322,14 +301,13 @@
       "b14"
     ],
     "evidence": "HIGH",
-    "need": "Enough brand supply to choose from \u2014 in some regions this is supply, not discovery.",
+    "need": "Enough brand supply to choose from — in some regions this is supply, not discovery.",
     "segments": [
       "partner:scaling-up",
       "partner:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Discover brands",
-    "id": "pn03"
+    "stage": "Discover brands"
   },
   {
     "audience": "Partner",
@@ -344,8 +322,7 @@
       "partner:scaling-up"
     ],
     "severity": "major",
-    "stage": "Discover brands",
-    "id": "pn04"
+    "stage": "Discover brands"
   },
   {
     "audience": "Partner",
@@ -360,8 +337,7 @@
       "partner:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Apply & get approved",
-    "id": "pn05"
+    "stage": "Apply & get approved"
   },
   {
     "audience": "Partner",
@@ -375,8 +351,7 @@
       "partner:scaling-up"
     ],
     "severity": "major",
-    "stage": "Generate links",
-    "id": "pn06"
+    "stage": "Generate links"
   },
   {
     "audience": "Partner",
@@ -390,8 +365,7 @@
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Generate links",
-    "id": "pn07"
+    "stage": "Generate links"
   },
   {
     "audience": "Partner",
@@ -404,8 +378,7 @@
       "partner:scaling-up"
     ],
     "severity": "major",
-    "stage": "Generate links",
-    "id": "pn08"
+    "stage": "Generate links"
   },
   {
     "audience": "Partner",
@@ -414,13 +387,12 @@
       "p11"
     ],
     "evidence": "HIGH",
-    "need": "Share a link away from the desk \u2014 generate on a phone, responding to an audience in the moment.",
+    "need": "Share a link away from the desk — generate on a phone, responding to an audience in the moment.",
     "segments": [
       "partner:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Promote",
-    "id": "pn09"
+    "stage": "Promote"
   },
   {
     "audience": "Partner",
@@ -429,14 +401,13 @@
       "p10"
     ],
     "evidence": "HIGH",
-    "need": "Do advanced work on mobile \u2014 deep links, vanity links, assets \u2014 without bouncing to desktop.",
+    "need": "Do advanced work on mobile — deep links, vanity links, assets — without bouncing to desktop.",
     "segments": [
       "partner:scaling-up",
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Promote",
-    "id": "pn10"
+    "stage": "Promote"
   },
   {
     "audience": "Partner",
@@ -451,8 +422,7 @@
       "partner:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Track performance",
-    "id": "pn11"
+    "stage": "Track performance"
   },
   {
     "audience": "Partner",
@@ -462,14 +432,13 @@
       "x01"
     ],
     "evidence": "HIGH",
-    "need": "Know whether what I am seeing is normal \u2014 a first click, not a dashboard.",
+    "need": "Know whether what I am seeing is normal — a first click, not a dashboard.",
     "segments": [
       "partner:getting-started",
       "partner:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Track performance",
-    "id": "pn12"
+    "stage": "Track performance"
   },
   {
     "audience": "Partner",
@@ -483,8 +452,7 @@
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Track performance",
-    "id": "pn13"
+    "stage": "Track performance"
   },
   {
     "audience": "Partner",
@@ -492,13 +460,12 @@
       "p14"
     ],
     "evidence": "LOW",
-    "need": "Find the reports that already answer this \u2014 they exist and are not discoverable.",
+    "need": "Find the reports that already answer this — they exist and are not discoverable.",
     "segments": [
       "partner:scaling-up"
     ],
     "severity": "watch",
-    "stage": "Track performance",
-    "id": "pn14"
+    "stage": "Track performance"
   },
   {
     "audience": "Partner",
@@ -512,7 +479,6 @@
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Get paid",
-    "id": "pn15"
+    "stage": "Get paid"
   }
 ]

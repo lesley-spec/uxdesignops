@@ -1,18 +1,10 @@
 (function () {
   var STORAGE_KEY = "theme";
   var SUBNAV_ITEMS = [
-    {
-      key: "frame",
-      label: "The Frame",
-      external: "https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw",
-    },
-    {
-      key: "personas-v2",
-      label: "Personas V2",
-      external: "https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ",
-    },
+    { key: "frame", label: "The Frame", path: "frame/" },
+    { key: "personas", label: "Personas", path: "personas/" },
     { key: "listing", label: "Insight Monitor", path: "research/" },
-    { key: "personas", label: "Personas (V1)", path: "personas/" },
+    { key: "personas-v1", label: "Personas (archive)", path: "personas-v1/" },
     { key: "affinity", label: "Affinity", path: "reports/2026-08-24-affinity.html" },
     { key: "feed", label: "Competitor News", path: "feed/" },
   ];
@@ -40,6 +32,7 @@
 
   function researchSection() {
     var path = currentPath();
+    if (/\/personas-v1(\/|$)/.test(path) || path.slice(-11) === "personas-v1") return "personas-v1";
     if (/\/personas(\/|$)/.test(path) || path.slice(-8) === "personas") return "personas";
     if (/\/frame(\/|$)/.test(path) || path.slice(-5) === "frame") return "frame";
     if (/\/feed(\/|$)/.test(path) || path.slice(-4) === "feed") return "feed";

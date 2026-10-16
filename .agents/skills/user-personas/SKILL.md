@@ -23,12 +23,12 @@ the maintained set and says how to use and refresh it.
 
 | Resource | Link |
 |---|---|
-| Persona set (live artifact) | https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ |
-| Markdown copy (in this skill) | [references/personas.md](references/personas.md) |
 | DesignOps personas page | https://lesley-spec.github.io/uxdesignops/personas/ |
 | Frame (claims) | https://lesley-spec.github.io/uxdesignops/frame/ |
+| Markdown copy (in this skill) | [references/personas.md](references/personas.md) |
+| Claude artifact (Ask + live connectors) | https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ |
 
-The artifact is private. Ask the UX Research team for access before sharing the link.
+The DesignOps pages are the day-to-day view. The Claude artifact is private (Ask / live PostHog) — ask UX Research for access.
 
 ## The set
 
