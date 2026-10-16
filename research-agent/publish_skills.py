@@ -152,6 +152,30 @@ STAGE_NOTES: dict[str, str] = {
     "test": "Human gate: review AI drafts before stakeholders. Connect Outset MCP (<code>https://api.outset.ai/mcp/</code>) to create a <em>draft</em> study — do not recruit unless asked. Findings loop back to Empathize.",
 }
 
+# Cross-phase: invoke via `ux-research` (or directly) at any Design Thinking stage.
+UX_RESEARCH_ANY_PHASE: list[str] = [
+    "ux-research",
+    "research-intake",
+    "user-context",
+    "user-personas",
+    "research-planner",
+    "research-builder",
+    "frame-maintenance",
+    "user-research",
+    "research-synthesis",
+    "synthesize-research",
+    "data-analyze",
+    "persona-check",
+    "adoption-check",
+]
+
+UX_RESEARCH_ANY_PHASE_NOTE = (
+    "Us anytime — Empathize through Test — when you need research triage, the Frame, "
+    "personas, study planning, or evidence skills. Start with <code>use ux-research</code> "
+    "or invoke a child skill directly. Same folders as above; listed here so they are easy "
+    "to find outside a single phase."
+)
+
 
 def parse_skill_frontmatter(skill_md: Path) -> dict:
     text = skill_md.read_text(encoding="utf-8")
@@ -465,6 +489,20 @@ def render_skills_index(manifest: dict) -> str:
 {note_html}"""
         )
 
+    any_phase_rows = "".join(
+        skill_row(n) for n in UX_RESEARCH_ANY_PHASE if n in by_name
+    )
+    stage_blocks.append(
+        f"""    <h2 id="ux-research-any-phase">UX Research (any phase)</h2>
+    <p class="muted">{UX_RESEARCH_ANY_PHASE_NOTE}</p>
+    <table class="skills-table">
+      <thead><tr><th>Skill</th><th>Use when</th><th>Get the skill</th></tr></thead>
+      <tbody>
+{any_phase_rows}      </tbody>
+    </table>
+"""
+    )
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -597,7 +635,8 @@ def render_skills_index(manifest: dict) -> str:
       <a href="#define">Define</a> ·
       <a href="#ideate">Ideate</a> ·
       <a href="#prototype">Prototype</a> ·
-      <a href="#test">Test</a>
+      <a href="#test">Test</a> ·
+      <a href="#ux-research-any-phase">UX Research (any phase)</a>
     </div>
 
 {chr(10).join(stage_blocks)}
