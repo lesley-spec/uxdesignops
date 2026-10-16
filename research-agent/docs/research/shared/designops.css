@@ -396,7 +396,7 @@ a:hover { color: var(--text-interactive-hover); }
   z-index: 1300;
   top: calc(100% + 6px);
   left: 0;
-  min-width: 13rem;
+  min-width: 15rem;
   margin: 0;
   padding: 6px;
   border-radius: var(--radius);

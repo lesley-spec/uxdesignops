@@ -1,0 +1,14 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p15"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Bulk-generate links with custom parameters across many programmes.",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Generate links"
+}

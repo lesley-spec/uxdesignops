@@ -1,0 +1,17 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b01",
+    "b03",
+    "b14"
+  ],
+  "evidence": "HIGH",
+  "need": "Find partners worth having — relevance, not volume.",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "severity": "blocking",
+  "stage": "Recruit"
+}

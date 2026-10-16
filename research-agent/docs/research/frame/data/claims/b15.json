@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "caveat": "The other four of ten are about manual work, which is the job the platform already does well. The risk objection is the one that remains unanswered after signing: no trial, no mid-cycle downgrade.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Signup & Onboarding",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "10 Gong calls",
+  "scope": "Pre-sale conversations, Getting Started tier",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+  "statement": "Six of ten pre-sale brand objections are about risk, not product: cost, the 12-month commitment, and no guarantee of partners.",
+  "verified": "2026-09-21"
+}

@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "caveat": "Second most requested improvement platform-wide, but the cost is not evenly distributed. One small F&B brand rates 2.5 stars citing spam applicants.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "10 Gong calls + 158 G2 reviews",
+  "scope": "Getting Started brands",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+  "statement": "Spam and low-quality applicants cost solo brand operators disproportionately: vetting falls hardest on the tier with least capacity.",
+  "verified": "2026-09-21"
+}

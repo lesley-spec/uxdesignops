@@ -1,0 +1,11 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b12",
+    "b14",
+    "b17"
+  ],
+  "label": "Small brands approve almost nobody",
+  "order": 2,
+  "question": "Small brands turn down nearly every applicant while large ones approve almost half. What would help a founder decide whether someone is worth saying yes to?"
+}

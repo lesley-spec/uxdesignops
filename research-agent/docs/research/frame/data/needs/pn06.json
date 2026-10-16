@@ -1,0 +1,14 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p09",
+    "p20"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Generate and format a link fast, without 500 keypresses.",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "severity": "major",
+  "stage": "Generate links"
+}

@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b11"
+  ],
+  "evidence": "LOW",
+  "need": "Stop fielding partner platform questions personally.",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up"
+  ],
+  "severity": "watch",
+  "stage": "Activate"
+}

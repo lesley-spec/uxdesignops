@@ -1,0 +1,18 @@
+{
+  "audience": "Partner",
+  "caveat": "Quoted as a percentage with no denominator given. Sibling figures from the same study turned out to be 4 and 6 people. Needs its n before it is repeated.",
+  "confidence": "LOW",
+  "contested": true,
+  "domain": "Login & Access",
+  "link": "https://impact.dovetail.com/data/4uoFsqQQnKmz1QpEy5cyL9",
+  "n": "denominator unstated",
+  "posthog": "https://us.posthog.com/project/186875/insights/Upk29eOv",
+  "posthog_label": "Rage clicks by page — measurable friction, if you want a denominator",
+  "scope": "Scaling Up creators",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "source": "Partner Personas / Day in the Life, Oct 2026",
+  "statement": "33% of Scaling Up creators cite broken UI as their number one pain.",
+  "verified": "2026-10-13"
+}

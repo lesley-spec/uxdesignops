@@ -1,0 +1,15 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "b08",
+    "b14"
+  ],
+  "evidence": "HIGH",
+  "need": "Enough brand supply to choose from — in some regions this is supply, not discovery.",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "severity": "blocking",
+  "stage": "Discover brands"
+}

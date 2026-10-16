@@ -1,0 +1,18 @@
+{
+  "audience": "Partner",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (platform data via the Partner Value Stream). Large n is not independence.",
+  "domain": "Links & tracking",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "867,402 partnerships",
+  "scope": "All partnerships formed",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Nine in ten partnerships never earn anything — 10.1% of 867,402 formed ever did.",
+  "verified": "2026-09-16"
+}

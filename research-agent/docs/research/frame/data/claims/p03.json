@@ -1,0 +1,17 @@
+{
+  "audience": "Partner",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (Partner Value Stream). Earnings distribution is checkable in PostHog — that would make it HIGH.",
+  "domain": "Payments and Finance",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "platform-wide",
+  "scope": "Partners with any earnings",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "The median monthly earner makes $33; a quarter make under $8.",
+  "verified": "2026-09-16"
+}

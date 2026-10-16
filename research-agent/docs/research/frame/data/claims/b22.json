@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "caveat": "A single named target repeated as a tier benchmark. Treat as one brand's goal until more sources state a figure.",
+  "confidence": "LOW",
+  "contested": false,
+  "domain": "Reporting",
+  "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+  "n": "1-2 accounts",
+  "scope": "Strategic Growth brands",
+  "segments": [
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Persona — Gong (Coravin)",
+  "statement": "Enterprise brands need to show partnerships reaching 10-12% of total revenue to justify a multi-year commitment.",
+  "verified": "2026-10-13"
+}

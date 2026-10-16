@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b18"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Get tracking live without developer time the team does not have.",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up"
+  ],
+  "severity": "blocking",
+  "stage": "Integrate & configure"
+}

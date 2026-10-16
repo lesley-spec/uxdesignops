@@ -1,12 +1,12 @@
 ---
 name: ux-install-all-skills
 description: >-
-  Installs all 19 impact.com UX Design Thinking pipeline skills (Empathize
-  through Test) into the current project and globally for Cursor and Claude
-  Code. Use when the user says ux-install-all-skills, install all skills,
-  install the design thinking skills, set up the UX pipeline, get started
-  with Design Thinking UX, or a designer needs the full skill pack before
-  using the framework.
+  Installs all 28 impact.com UX Design Thinking + UX Research pipeline skills
+  (Empathize through Test, plus Frame research skills) into the current project
+  and globally for Cursor and Claude Code. Use when the user says
+  ux-install-all-skills, install all skills, install the design thinking
+  skills, set up the UX pipeline, get started with Design Thinking UX, or a
+  designer needs the full skill pack before using the framework.
 license: Proprietary
 metadata:
   stage: pipeline
@@ -16,11 +16,11 @@ metadata:
 
 # UX install all skills (bootstrap)
 
-**One invocation → all 19 pipeline skills installed.** Do not ask the
+**One invocation → all 28 pipeline skills installed.** Do not ask the
 designer to curl, pick a harness, or copy folders. The script does that.
 
 This skill does **not** start Empathize → Test. After READY, offer
-`design-thinking-ux` and wait.
+`design-thinking-ux` or `ux-research` and wait.
 
 Catalog: [references/catalog.md](references/catalog.md).
 
@@ -45,9 +45,9 @@ Catalog: [references/catalog.md](references/catalog.md).
 
 ## What gets installed
 
-**19 pipeline skills** (master + Empathize → Test). This installer is
-copied too so they can re-run later. Names:
-[references/catalog.md](references/catalog.md).
+**28 pipeline skills** (masters + Empathize/Research → Test, including
+Nihal’s Frame pack). This installer is copied too so they can re-run later.
+Names: [references/catalog.md](references/catalog.md).
 
 **Where (defaults — do not ask):**
 
@@ -107,7 +107,7 @@ Task Progress:
    Optional: `--target /path/to/project` · `--project-only` ·
    `--global-only`.
 5. **Parse READY** — look for
-   `IMPACT_SKILLS_READY pipeline=19 …`.
+   `IMPACT_SKILLS_READY pipeline=28 …`.
 6. **Confirm** — show how many skills landed, where, and this next line:
 
    > All 19 Design Thinking skills are installed. Start a guided run with

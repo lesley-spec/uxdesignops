@@ -1,0 +1,15 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p11",
+    "p10"
+  ],
+  "evidence": "HIGH",
+  "need": "Do advanced work on mobile — deep links, vanity links, assets — without bouncing to desktop.",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Promote"
+}

@@ -1,0 +1,518 @@
+[
+  {
+    "audience": "Brand",
+    "claims": [
+      "b15",
+      "b09"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Proof the channel works before a 12-month commitment \u2014 a trial, a downgrade, or a benchmark.",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "severity": "blocking",
+    "stage": "Commit",
+    "id": "bn01"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b15"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Clear tiers and pricing at signing, without upgrade-only mid-cycle surprises.",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "severity": "major",
+    "stage": "Commit",
+    "id": "bn02"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b18"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Get tracking live without developer time the team does not have.",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up"
+    ],
+    "severity": "blocking",
+    "stage": "Integrate & configure",
+    "id": "bn03"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b05"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Set commissions correctly the first time \u2014 fixing them later is convoluted.",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "severity": "major",
+    "stage": "Integrate & configure",
+    "id": "bn04"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b05"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Learn the platform's depth without the density becoming the obstacle.",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Integrate & configure",
+    "id": "bn05"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b01",
+      "b03",
+      "b14"
+    ],
+    "evidence": "HIGH",
+    "need": "Find partners worth having \u2014 relevance, not volume.",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "severity": "blocking",
+    "stage": "Recruit",
+    "id": "bn06"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b02",
+      "b17",
+      "g05"
+    ],
+    "evidence": "HIGH",
+    "need": "Filter out spam and misrepresented applicants before they consume a week.",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up"
+    ],
+    "severity": "blocking",
+    "stage": "Recruit",
+    "id": "bn07"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b19"
+    ],
+    "evidence": "LOW",
+    "need": "Vet an influencer in minutes, not eight hours.",
+    "segments": [
+      "brand:scaling-up"
+    ],
+    "severity": "major",
+    "stage": "Recruit",
+    "id": "bn08"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b19"
+    ],
+    "evidence": "LOW",
+    "need": "Approve in bulk rather than one partner at a time.",
+    "segments": [
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Recruit",
+    "id": "bn09"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b01"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Get assets and promos in front of partners so they are actually found and used.",
+    "segments": [
+      "brand:scaling-up"
+    ],
+    "severity": "major",
+    "stage": "Activate",
+    "id": "bn10"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b11"
+    ],
+    "evidence": "LOW",
+    "need": "Stop fielding partner platform questions personally.",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up"
+    ],
+    "severity": "watch",
+    "stage": "Activate",
+    "id": "bn11"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b16",
+      "x01"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Know whether early numbers are normal \u2014 benchmarks exist but the tier needing them cannot find them.",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "severity": "blocking",
+    "stage": "Measure",
+    "id": "bn12"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b20"
+    ],
+    "evidence": "LOW",
+    "need": "Attribution that survives past discount codes \u2014 codes leak to people who were never recruited.",
+    "segments": [
+      "brand:scaling-up"
+    ],
+    "severity": "major",
+    "stage": "Measure",
+    "id": "bn13"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b06"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Build a custom report without clicking around, and export it without being stuck in the platform.",
+    "segments": [
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Measure",
+    "id": "bn14"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b22"
+    ],
+    "evidence": "LOW",
+    "need": "Prove the channel reaches a defensible share of total revenue, in a dashboard the CFO will open.",
+    "segments": [
+      "brand:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Measure",
+    "id": "bn15"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b21",
+      "b07"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Pay partners across regions \u2014 multi-currency, tax forms, compliance \u2014 without touching it.",
+    "segments": [
+      "brand:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Pay",
+    "id": "bn16"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b04"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Change a contract that is already running, and schedule rate changes ahead.",
+    "segments": [
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Protect",
+    "id": "bn17"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b06"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Stop losing state \u2014 re-login 3-6 times a day, reports resetting on section change.",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Protect",
+    "id": "bn18"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b21"
+    ],
+    "evidence": "LOW",
+    "need": "Keep partner relationships when consolidating or switching networks.",
+    "segments": [
+      "brand:strategic-growth"
+    ],
+    "severity": "watch",
+    "stage": "Protect",
+    "id": "bn19"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p05"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Know what good looks like before starting \u2014 link placement, disclosure, what a normal first month is.",
+    "segments": [
+      "partner:getting-started"
+    ],
+    "severity": "major",
+    "stage": "Join & set up",
+    "id": "pn01"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p06",
+      "p07",
+      "b12"
+    ],
+    "evidence": "HIGH",
+    "need": "Find brands that will actually approve me, not just brands that exist.",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up"
+    ],
+    "severity": "blocking",
+    "stage": "Discover brands",
+    "id": "pn02"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "b08",
+      "b14"
+    ],
+    "evidence": "HIGH",
+    "need": "Enough brand supply to choose from \u2014 in some regions this is supply, not discovery.",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "severity": "blocking",
+    "stage": "Discover brands",
+    "id": "pn03"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p08",
+      "p13",
+      "p19"
+    ],
+    "evidence": "LOW",
+    "need": "Proactive recommendations instead of waiting for email invites.",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "severity": "major",
+    "stage": "Discover brands",
+    "id": "pn04"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p18",
+      "p07"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Know where an application stands and why it was declined.",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "severity": "blocking",
+    "stage": "Apply & get approved",
+    "id": "pn05"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p09",
+      "p20"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Generate and format a link fast, without 500 keypresses.",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "severity": "major",
+    "stage": "Generate links",
+    "id": "pn06"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p15"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Bulk-generate links with custom parameters across many programmes.",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Generate links",
+    "id": "pn07"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p15"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Save and organise links into folders instead of re-finding them for every piece of content.",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "severity": "major",
+    "stage": "Generate links",
+    "id": "pn08"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p10",
+      "p11"
+    ],
+    "evidence": "HIGH",
+    "need": "Share a link away from the desk \u2014 generate on a phone, responding to an audience in the moment.",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "severity": "blocking",
+    "stage": "Promote",
+    "id": "pn09"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p11",
+      "p10"
+    ],
+    "evidence": "HIGH",
+    "need": "Do advanced work on mobile \u2014 deep links, vanity links, assets \u2014 without bouncing to desktop.",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Promote",
+    "id": "pn10"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p16",
+      "p02"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Know whether an offer will pay back BEFORE investing days of content in it.",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "severity": "blocking",
+    "stage": "Track performance",
+    "id": "pn11"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p01",
+      "p03",
+      "x01"
+    ],
+    "evidence": "HIGH",
+    "need": "Know whether what I am seeing is normal \u2014 a first click, not a dashboard.",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up"
+    ],
+    "severity": "blocking",
+    "stage": "Track performance",
+    "id": "pn12"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p15"
+    ],
+    "evidence": "MEDIUM",
+    "need": "See which products actually sold, not just a total.",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Track performance",
+    "id": "pn13"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p14"
+    ],
+    "evidence": "LOW",
+    "need": "Find the reports that already answer this \u2014 they exist and are not discoverable.",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "severity": "watch",
+    "stage": "Track performance",
+    "id": "pn14"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p03"
+    ],
+    "evidence": "MEDIUM",
+    "need": "Faster payouts and transparent fees.",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "severity": "major",
+    "stage": "Get paid",
+    "id": "pn15"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "audience": "Partner",
+  "caveat": "Two independent sources agree. 46% open the app at least once a day.",
+  "confidence": "HIGH",
+  "contested": false,
+  "domain": "Reporting",
+  "link": "https://impact.dovetail.com/data/6mtRrcPCKDkSbDtaY4tWgH",
+  "n": "119 interviews + 106 responses",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1609086",
+  "posthog_label": "Partner dashboard behaviour",
+  "scope": "Mobile app users",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Outset Mobile App Exp (119 interviews, 2,235 responses); Dovetail June 2025 Mobile Study (106)",
+  "statement": "Mobile use is monitoring-led: roughly two-thirds open the app for performance tracking and link creation.",
+  "verified": "2026-02-09"
+}

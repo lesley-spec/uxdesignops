@@ -1,0 +1,14 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p03"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Faster payouts and transparent fees.",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Get paid"
+}

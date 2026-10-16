@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b06"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Build a custom report without clicking around, and export it without being stuck in the platform.",
+  "segments": [
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Measure"
+}

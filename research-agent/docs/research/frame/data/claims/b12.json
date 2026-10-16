@@ -1,0 +1,19 @@
+{
+  "audience": "Brand",
+  "caveat": "78.1% of brands with no live partnerships approve under 5% of applicants; 72.4% of 1-9 partner brands do the same. The partner-side complaint about rejection is concentrated in applications to the smallest brands.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (platform approval data via the First 90 Days doc). Re-running it live would make it HIGH.",
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "9,164 brands",
+  "scope": "Brands by partner-count tier",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+  "statement": "Small brands turn down nearly every applicant while large ones approve almost half — 9.9% lifetime at 1–9 partners against 42.7% at 1,000+.",
+  "verified": "2026-09-21"
+}

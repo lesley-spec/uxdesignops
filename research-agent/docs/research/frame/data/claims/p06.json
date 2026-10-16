@@ -1,0 +1,20 @@
+{
+  "audience": "Partner",
+  "caveat": "A feed surfacing more marketplace listings optimises throughput into the pipe that works least well. The branded-signup path produces 4-6x better.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (Partner Value Stream). The conversion comparison is the strongest single number in the Frame and deserves a live re-run.",
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "platform-wide",
+  "posthog": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+  "posthog_label": "Marketplace → apply conversion",
+  "scope": "Partnership origin",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Marketplace-originated partnerships convert at 3.6-4.9% against 17.6-23.1% for a branded signup.",
+  "verified": "2026-09-16"
+}

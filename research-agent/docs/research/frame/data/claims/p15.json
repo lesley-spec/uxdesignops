@@ -1,0 +1,19 @@
+{
+  "audience": "Partner",
+  "caveat": "They can see amounts but not which products sold, which makes optimisation impossible. One built their own tool to fill the gap.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Links & tracking",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "12-15",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/2058522",
+  "posthog_label": "Affiliate link generation: volume and link types",
+  "scope": "Creator-affiliate hybrids",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Hybrid creator-affiliates manage 40-60+ links per content piece across 5-50+ programmes.",
+  "verified": "2026-09-16"
+}

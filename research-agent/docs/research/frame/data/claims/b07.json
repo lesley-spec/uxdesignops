@@ -1,0 +1,18 @@
+{
+  "audience": "Brand",
+  "caveat": "The pattern is corpus-wide; the five-hour figure is a single reviewer and should not be quoted as a rate.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Payments and Finance",
+  "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+  "n": "158 reviews, the five-hour figure from 1",
+  "scope": "Brands reviewing on G2",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+  "statement": "Automated tracking, payment and tax work is the strongest reason brands stay; one reports five hours returned per week.",
+  "verified": "2026-09-21"
+}

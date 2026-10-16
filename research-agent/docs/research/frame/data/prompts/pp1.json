@@ -1,0 +1,12 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "ph04",
+    "p06",
+    "p08",
+    "p12"
+  ],
+  "label": "Partners browse but rarely apply",
+  "order": 1,
+  "question": "Partners tell us they cannot find brands worth applying to, and the behaviour agrees — browsing the marketplace almost never leads anywhere. Is this a discovery problem, or something about what happens when they arrive?"
+}

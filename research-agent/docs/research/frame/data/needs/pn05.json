@@ -1,0 +1,15 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p18",
+    "p07"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Know where an application stands and why it was declined.",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "severity": "blocking",
+  "stage": "Apply & get approved"
+}

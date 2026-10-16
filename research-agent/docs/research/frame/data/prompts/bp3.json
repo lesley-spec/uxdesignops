@@ -1,0 +1,11 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b15",
+    "b16",
+    "b09"
+  ],
+  "label": "Risk worries them more than features",
+  "order": 3,
+  "question": "New brands worry about commitment and risk far more than about what the product does. What would let someone prove this channel works before they have to commit to it?"
+}

@@ -1,0 +1,20 @@
+{
+  "audience": "Partner",
+  "caveat": "0-30d: 14,692 (96.6% sign-in, 2.80% earning). 31-180d: 51,570 (21.0%, 4.44%). 181-365d: 72,137 (8.7%, 2.74%). 365d+: 287,162 (6.4%, 2.65%).",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (Partner Value Stream cohort table). Re-running the cohorts live would make it HIGH.",
+  "domain": "Signup & Onboarding",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "425,561 across 4 cohorts",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+  "posthog_label": "Cohort / persona: lifecycle tiers",
+  "scope": "Creator cohorts by tenure",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Earning rate peaks at 31-180 days tenure (4.44%), not at signup.",
+  "verified": "2026-09-16"
+}

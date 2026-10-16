@@ -27,18 +27,26 @@ Define is not — send back to Empathize unless they override in writing.
 
 ## Empathize — which skill
 
+Prefer **`ux-research`** when the designer wants a guided research run (intake
+→ Frame → plan → Empathize pack). Otherwise pick one primary child:
+
 | Situation | Invoke |
 |---|---|
+| Research request / triage / “should we study this?” | `research-intake` (or `ux-research`) |
+| “What do we already know?” / Frame | `user-context` |
+| Who / persona set | `user-personas` |
+| Routed study design | `research-planner` (+ `research-builder`) |
 | Quant question, funnel, drop-off, volume | `data-analyze` |
 | 2+ sources or monitor `triangulated: true` | `research-synthesis` |
 | One Dovetail project, interview set, or study export | `synthesize-research` |
 | Need a study plan, gate recommendation, or evidence-gap map | `user-research` |
 | Jira key named (e.g. `TTPI-478`) | Fetch via Atlassian Rovo MCP first, then the row that matches what’s on the ticket |
-| Nothing yet | Ask: pull live data, paste a corpus, or plan fieldwork — then the row above |
+| Nothing yet | Ask: Frame check, pull live data, paste a corpus, or plan fieldwork — then the row above |
 
-Typical sequence when starting from a hunch: `data-analyze` (if a metric
-exists) → `research-synthesis` or `synthesize-research` → `user-research`
-gate brief. Skip steps that are already done.
+Typical sequence when starting from a hunch: `research-intake` or
+`user-context` → `data-analyze` (if a metric exists) → `research-synthesis`
+or `synthesize-research` → `user-research` gate brief. Skip steps that are
+already done.
 
 **Exit:** Designer confirms problem worth solving, **or** monitor-only /
 fieldwork-first (do not entice Define).

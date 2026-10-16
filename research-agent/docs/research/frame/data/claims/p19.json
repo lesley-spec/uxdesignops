@@ -1,0 +1,16 @@
+{
+  "audience": "Partner",
+  "caveat": "Observed behaviour rather than self-report, which makes it stronger than the stated-preference discovery figures. Brand-side replays show 402s average on the same task.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Marketplace & Discovery",
+  "link": "https://us.posthog.com/project/186875/cohorts/355433",
+  "n": "10 session replays",
+  "scope": "Partners browsing the marketplace",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "source": "PostHog session replays, partner cohort 355433",
+  "statement": "Partner discovery takes 8-13 minutes of manual marketplace browsing with no smart recommendations.",
+  "verified": "2026-10-13"
+}

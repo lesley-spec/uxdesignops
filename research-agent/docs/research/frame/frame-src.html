@@ -1,0 +1,832 @@
+<title>The Frame</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* Layout: ask first, then coverage as the scan, the claims ledger, and the needs journey.
+   One filter model drives the matrix and the ledger together. */
+:root{
+  /* impact.com design system — iui3, vnext-light theme. Token names match
+     @impactinc/frontend-theme-tokens so the package can be dropped in. */
+  --iui3-color-text-text-default:#25282f;
+  --iui3-color-text-text-subdued:#606672;
+  --iui3-color-text-text-disabled:#a7a7a7;
+  --iui3-color-background-background-default:#ffffff;
+  --iui3-color-background-background-dimmed:#f0f1f3;
+  --iui3-color-border-border-default:#e0e9f0;
+  --iui3-color-primary-button-primary-background-default:#1d66de;
+  --iui3-color-brand-v2-impact-red:#f5333f;
+  --iui3-typography-font-family-font-family:Sarabun,"Helvetica Neue",helvetica,sans-serif;
+  --iui3-typography-font-size-display-title:40px;
+  --iui3-typography-font-size-header:24px;
+  --iui3-typography-font-size-field-label:16px;
+  --iui3-typography-font-size-regular-text:14px;
+  --iui3-typography-font-size-help-text:12px;
+  --iui3-typography-font-size-metric:26px;
+  --iui3-space-radius-input-radius:8px;
+  --iui3-space-radius-pill-radius:9999px;
+
+  /* page aliases */
+  --bg:var(--iui3-color-background-background-default);
+  --surface:var(--iui3-color-background-background-default);
+  --surface-2:var(--iui3-color-background-background-dimmed);
+  --fg:var(--iui3-color-text-text-default);
+  --fg-2:var(--iui3-color-text-text-subdued);
+  --fg-3:var(--iui3-color-text-text-disabled);
+  --line:var(--iui3-color-border-border-default);
+  --line-2:var(--iui3-color-text-text-disabled);
+  --s1:var(--iui3-color-primary-button-primary-background-default);
+  --partner:#1d66de; --brand:var(--iui3-color-brand-v2-impact-red);
+  --ok:#2f7d4f; --warn:#8a6d1f; --neg:#c0392f;
+  --ok-bg:#e7f2ec; --warn-bg:#f7efd9; --neg-bg:#fdeaea; --neu-bg:#eef0f3;
+  --partner-bg:#e9f0fd; --brand-bg:#fdeaea;
+  --r:var(--iui3-space-radius-input-radius);
+  --rp:var(--iui3-space-radius-pill-radius);
+  --body:var(--iui3-typography-font-family-font-family);
+  --ui:var(--iui3-typography-font-family-font-family);
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --iui3-color-text-text-default:#e4e5e8; --iui3-color-text-text-subdued:#a7a7a7;
+  --iui3-color-text-text-disabled:#606672;
+  --iui3-color-background-background-default:#18191d;
+  --iui3-color-background-background-dimmed:#2f3138;
+  --iui3-color-border-border-default:#323742;
+  --iui3-color-primary-button-primary-background-default:#276fe5;
+  --surface:#2f3138; --surface-2:#323742;
+  --line-2:#606672; --s1:#276fe5; --partner:#276fe5;
+  --ok:#8bd738; --warn:#eeba00; --neg:#ff6b6b;
+  --ok-bg:#1b3321; --warn-bg:#352c11; --neg-bg:#3b1e1f; --neu-bg:#323742;
+  --partner-bg:#1a2941; --brand-bg:#3b1e1f;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --iui3-color-text-text-default:#e4e5e8; --iui3-color-text-text-subdued:#a7a7a7;
+  --iui3-color-text-text-disabled:#606672;
+  --iui3-color-background-background-default:#18191d;
+  --iui3-color-background-background-dimmed:#2f3138;
+  --iui3-color-border-border-default:#323742;
+  --iui3-color-primary-button-primary-background-default:#276fe5;
+  --surface:#2f3138; --surface-2:#323742;
+  --line-2:#606672; --s1:#276fe5; --partner:#276fe5;
+  --ok:#8bd738; --warn:#eeba00; --neg:#ff6b6b;
+  --ok-bg:#1b3321; --warn-bg:#352c11; --neg-bg:#3b1e1f; --neu-bg:#323742;
+  --partner-bg:#1a2941; --brand-bg:#3b1e1f;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);margin:0;
+  font-size:var(--iui3-typography-font-size-field-label);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px;padding-block:32px 72px}
+h1,h2,h3{text-wrap:balance;margin:0}
+a{color:var(--s1)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+header{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end;justify-content:space-between;
+  border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:26px}
+h1{font-size:clamp(28px,6vw,var(--iui3-typography-font-size-display-title));line-height:1.15;
+  font-weight:800;letter-spacing:-.01em}
+.sub{color:var(--fg-2);max-width:62ch;margin-top:10px;font-size:1rem}
+.stamp{font-family:var(--ui);font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg-3);font-weight:600}
+
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:12px;margin-bottom:12px}
+.cell{background:var(--surface-2);border-radius:var(--r);padding:14px 16px;min-width:0}
+.cell b{display:block;font-family:var(--ui);font-size:var(--iui3-typography-font-size-metric);
+  font-weight:700;line-height:1.25;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.cell span{display:block;font-size:.67rem;color:var(--fg-3);text-transform:uppercase;
+  letter-spacing:.14em;font-weight:600;margin-top:4px}
+
+.srcbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+.src{display:inline-flex;align-items:baseline;gap:7px;font-size:.8rem;padding:5px 12px;
+  border:1px solid var(--line-2);background:var(--surface);border-radius:var(--rp);color:var(--fg-2)}
+.src b{font-variant-numeric:tabular-nums;font-weight:700;color:var(--fg)}
+.src.zero{opacity:.5}
+
+section{margin-bottom:40px}
+.shead{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin-bottom:8px}
+h2{font-size:clamp(1.3rem,3vw,var(--iui3-typography-font-size-header));font-weight:700;letter-spacing:-.01em}
+.note{color:var(--fg-2);font-size:.95rem;max-width:68ch;margin:0 0 18px}
+
+/* ask */
+.askbar{display:flex;gap:10px;margin-bottom:14px}
+.askbar input{flex:1 1 auto;min-width:0;font:inherit;padding:11px 14px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--fg);border-radius:var(--r)}
+.askbar input::placeholder{color:var(--fg-3)}
+.askbar button{font:inherit;font-weight:600;padding:11px 24px;border:1px solid var(--s1);
+  background:var(--s1);color:#fff;border-radius:var(--r);cursor:pointer}
+.askbar button[disabled]{opacity:.5;cursor:default}
+.sside{display:flex;gap:7px;margin-bottom:9px}
+.sside button{font:inherit;font-size:.78rem;font-weight:600;padding:5px 14px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--fg-2);border-radius:var(--rp);cursor:pointer}
+.sside button[aria-selected="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
+.starters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.starter{font:inherit;font-size:.8rem;padding:6px 13px;border:1px solid var(--line-2);background:var(--surface);
+  color:var(--fg-2);border-radius:var(--rp);cursor:pointer;text-align:left}
+.starter:hover{border-color:var(--s1);color:var(--fg)}
+.starter:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
+.starter b{font-weight:700;color:var(--fg)}
+.answer{background:var(--surface-2);border-radius:var(--r);border-left:4px solid var(--s1);padding:16px 18px;min-width:0}
+.answer p{margin:0 0 .8em;line-height:1.6}
+.answer p:last-child{margin-bottom:0}
+.answer.gap{border-left-color:var(--brand)}
+.answer .thinking{color:var(--fg-3)}
+.used{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 7px;margin-top:14px;padding-top:11px;
+  border-top:1px solid var(--line)}
+.used .lbl,.ev .lbl{font-size:.67rem;color:var(--fg-3);text-transform:uppercase;letter-spacing:.14em;font-weight:600}
+.used a{font-size:.75rem;padding:3px 10px;border-radius:var(--rp);text-decoration:none;
+  background:var(--surface);color:var(--s1);border:1px solid var(--line-2)}
+.used a:hover{border-color:var(--s1)}
+
+/* coverage */
+.mscroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table.matrix{border-collapse:collapse;width:100%;min-width:640px}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:0}
+table.matrix thead th{background:var(--surface-2);font-size:.67rem;font-weight:600;color:var(--fg-3);
+  text-transform:uppercase;letter-spacing:.1em;padding:10px 8px;text-align:center;vertical-align:bottom}
+table.matrix tbody th{background:var(--surface-2);text-align:left;padding:10px 13px;font-size:.88rem;
+  font-weight:600;white-space:nowrap}
+table.matrix tbody th small{display:block;font-size:.67rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--fg-3)}
+.mc{width:100%;height:48px;border:0;background:transparent;cursor:pointer;font-family:var(--ui);
+  font-size:.8rem;color:inherit;display:flex;align-items:center;justify-content:center;gap:6px}
+.mc:focus-visible{outline:2px solid var(--s1);outline-offset:-2px}
+.dot{width:9px;height:9px;border-radius:var(--rp);flex:none}
+.m-high{background:var(--ok-bg)} .m-high .dot{background:var(--ok)}
+.m-med{background:var(--warn-bg)} .m-med .dot{background:var(--warn)}
+.m-low{background:var(--neg-bg)} .m-low .dot{background:var(--neg)}
+.m-none{background:transparent;color:var(--fg-3)} .m-none .dot{background:var(--line)}
+.note.scale{font-size:.85rem;margin-bottom:14px}
+.note.scale b{color:var(--fg);font-weight:700}
+.badge[title],.chip[title],.flag[title],.mc[title]{cursor:help}
+.legend,.needkey{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-size:.8rem;color:var(--fg-2)}
+.legend i,.needkey i{display:inline-flex;align-items:center;gap:7px;font-style:normal}
+.swatch{width:4px;height:15px;flex:none;border-radius:2px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+select,input[type=search]{font:inherit;font-size:.9rem;padding:8px 12px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--fg);border-radius:var(--r);min-width:0}
+input[type=search]{flex:1 1 210px}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
+.toggle{font:inherit;font-size:.85rem;padding:8px 14px;border:1px solid var(--line-2);background:var(--surface);
+  color:var(--fg-2);border-radius:var(--rp);cursor:pointer}
+.toggle[aria-pressed="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
+
+/* claims */
+.claims{display:flex;flex-direction:column;gap:10px}
+article{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px 17px;
+  display:grid;grid-template-columns:96px 1fr;gap:5px 17px;min-width:0}
+article>.badge{grid-row:1/3}
+.badge{font-size:.67rem;font-weight:700;letter-spacing:.1em;padding:5px 0;text-align:center;
+  border-radius:var(--rp);height:fit-content}
+.b-HIGH{background:var(--ok-bg);color:var(--ok)}
+.b-MEDIUM{background:var(--warn-bg);color:var(--warn)}
+.b-LOW{background:var(--neg-bg);color:var(--neg)}
+.b-UNVALIDATED{background:var(--neu-bg);color:var(--fg-2)}
+.b-GAP{background:var(--brand-bg);color:var(--brand)}
+.stmt{font-size:1rem;margin:0;min-width:0;line-height:1.5}
+.stmt em{font-style:normal;background:var(--partner-bg);border-radius:3px;padding:0 3px}
+.meta{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.8rem;color:var(--fg-2);min-width:0}
+.meta .k{color:var(--fg-3);text-transform:uppercase;letter-spacing:.1em;font-size:.67rem;font-weight:600}
+.meta a{color:var(--s1);text-decoration:none;border-bottom:1px solid transparent}
+.meta a:hover,.meta a:focus-visible{border-bottom-color:var(--s1)}
+.meta a.ph::before{content:"\25A0";font-size:.6em;vertical-align:middle;margin-right:4px}
+.unlinked{font-size:.7rem;padding:2px 8px;border-radius:var(--rp);background:var(--neu-bg);color:var(--fg-3)}
+.flag{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;color:var(--brand);
+  background:var(--brand-bg);padding:3px 10px;border-radius:var(--rp);margin-top:6px;width:fit-content}
+.caveat{grid-column:2;font-size:.88rem;color:var(--fg-2);border-left:2px solid var(--line);
+  padding-left:12px;margin-top:4px;line-height:1.55}
+.calib{grid-column:2;font-size:.82rem;color:var(--fg-2);margin-top:7px;display:flex;gap:8px;align-items:baseline}
+.calib .tag{font-size:.67rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;
+  border-radius:var(--rp);background:var(--neu-bg);color:var(--fg-3);flex:none}
+
+/* needs journey */
+.jtabs{display:flex;gap:8px;margin-bottom:16px}
+.jtab{font:inherit;font-size:.9rem;font-weight:600;padding:9px 18px;border:1px solid var(--line-2);
+  background:var(--surface);color:var(--fg-2);border-radius:var(--rp);cursor:pointer}
+.jtab[aria-selected="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
+.jscroll{overflow-x:auto;padding-bottom:6px}
+.journey{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(198px,1fr);gap:10px;min-width:min-content}
+.stage{display:flex;flex-direction:column;min-width:0}
+.stage>h3{font-size:.67rem;font-weight:600;color:var(--fg-3);text-transform:uppercase;letter-spacing:.14em;
+  padding:0 2px 10px;display:flex;align-items:center;gap:8px;min-height:44px}
+.stage>h3 .step{font-variant-numeric:tabular-nums;color:var(--fg-3);flex:none}
+.needs{display:flex;flex-direction:column;gap:8px;flex:1}
+.need{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--line);
+  border-radius:var(--r);padding:12px 13px;min-width:0}
+.need.sev-blocking{border-left-color:var(--brand)}
+.need.sev-major{border-left-color:var(--warn)}
+.need.sev-watch{border-left-color:var(--fg-3)}
+.need p{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-size:.7rem;padding:3px 9px;border-radius:var(--rp);background:var(--surface-2);color:var(--fg-2)}
+.chip.sev{font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.chip.sev-blocking{background:var(--brand-bg);color:var(--brand)}
+.chip.sev-major{background:var(--warn-bg);color:var(--warn)}
+.chip.sev-watch{background:var(--neu-bg);color:var(--fg-2)}
+.chip.ev-HIGH{background:var(--ok-bg);color:var(--ok)}
+.chip.ev-MEDIUM{background:var(--warn-bg);color:var(--warn)}
+.chip.ev-LOW{background:var(--neg-bg);color:var(--neg)}
+.needact{margin-top:10px}
+.stage .none{background:var(--surface-2);border-radius:var(--r);flex:1;display:flex;align-items:center;
+  justify-content:center;color:var(--fg-3);font-size:.8rem;padding:18px 12px;text-align:center}
+.ev{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 7px;margin-top:10px;padding-top:9px;
+  border-top:1px solid var(--line)}
+.ev a{font-size:.7rem;padding:3px 9px;border-radius:var(--rp);text-decoration:none;
+  background:var(--surface-2);color:var(--s1);border:1px solid transparent}
+.ev a:hover,.ev a:focus-visible{border-color:var(--s1)}
+.ev a.phchip{background:var(--partner-bg);color:var(--s1)}
+.ev .missing{font-size:.7rem;padding:3px 9px;border-radius:var(--rp);background:var(--neu-bg);color:var(--fg-3)}
+
+.empty{background:var(--surface-2);border-radius:var(--r);padding:36px 22px;text-align:center;color:var(--fg-2)}
+.empty b{display:block;color:var(--fg);font-size:1.1rem;font-weight:700;margin-bottom:6px}
+footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-size:.85rem;max-width:72ch}
+@media (max-width:560px){
+  article{grid-template-columns:1fr;gap:9px}
+  article>.badge{grid-row:auto;width:104px}
+  .caveat,.calib{grid-column:1}
+  .askbar{flex-wrap:wrap}
+  .askbar button{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>The Frame</h1>
+      <p class="sub">What we currently believe about impact.com's users, how confident we are in each belief, and where we are blind. Claims, not reports.</p>
+    </div>
+    <div class="stamp" id="stamp">Loading…</div>
+  </header>
+
+  <section id="asksec" hidden>
+    <div class="shead"><h2>Ask</h2><span class="stamp" id="askstamp"></span></div>
+    <p class="note">Answers come only from the claims below. When the Frame does not cover something it says so and names what would answer it — a refusal is a research gap, not a failure.</p>
+    <form class="askbar" id="askform">
+      <input type="text" id="askq" autocomplete="off" placeholder="What do we know about mobile? Why do partners stall after signup?" aria-label="Ask the Frame">
+      <button type="submit" id="asksend">Ask</button>
+    </form>
+    <div class="sside" id="sside" role="tablist"></div>
+    <div class="starters" id="starters"></div>
+    <div id="askout"></div>
+  </section>
+
+  <div class="strip" id="strip"></div>
+  <div class="srcbar" id="srcbar"></div>
+
+  <section>
+    <div class="shead"><h2>Coverage</h2></div>
+    <p class="note">Best available confidence per segment and domain, computed from the claims below. Empty cells are not gaps we have chosen — they are areas nobody has looked at. Select a cell to filter the ledger.</p>
+    <div class="mscroll"><table class="matrix" id="matrix"></table></div>
+    <div class="legend">
+      <i><span class="dot" style="background:var(--high)"></span> High</i>
+      <i><span class="dot" style="background:var(--med)"></span> Medium</i>
+      <i><span class="dot" style="background:var(--low)"></span> Low or unvalidated</i>
+      <i><span class="dot" style="background:var(--rule)"></span> Nothing — blind</i>
+    </div>
+  </section>
+
+  <section>
+    <div class="shead"><h2>Claims</h2><span class="stamp" id="count"></span></div>
+    <p class="note scale">Confidence is about independence, not sample size: <b>HIGH</b> needs two
+      sources that agree, <b>MEDIUM</b> is one good source however large its n, <b>LOW</b> is
+      anecdotal or ageing. Hover any badge for the full bar.</p>
+    <div class="filters">
+      <input type="search" id="q" placeholder="Search claims, sources, scopes…" aria-label="Search claims">
+      <select id="aud" aria-label="Audience"><option value="">All audiences</option></select>
+      <select id="seg" aria-label="Segment"><option value="">All segments</option></select>
+      <select id="dom" aria-label="Domain"><option value="">All domains</option></select>
+      <select id="conf" aria-label="Confidence"><option value="">All confidence</option></select>
+      <button class="toggle" id="conTog" aria-pressed="false">Contested only</button>
+      <button class="toggle" id="clear">Clear</button>
+    </div>
+    <div class="claims" id="claims"></div>
+  </section>
+
+  <section>
+    <div class="shead"><h2>Unmet needs</h2><span class="stamp" id="needcount"></span></div>
+    <p class="note">What people need and do not have, placed where it bites in their journey. Severity is how much it hurts; evidence is how well we know. The two come apart often, and the gap between them is the useful part: high severity on thin evidence is a research job, not a design job. Each need links
+    to the claims it rests on \u2014 follow one to the Dovetail study or PostHog funnel behind it.</p>
+    <div class="jtabs" role="tablist" id="jtabs"></div>
+    <div class="jscroll"><div class="journey" id="journey"></div></div>
+    <div class="needkey">
+      <i><span class="swatch" style="background:var(--gap)"></span> Blocking — people stop or leave</i>
+      <i><span class="swatch" style="background:var(--med)"></span> Major — costs real time every week</i>
+      <i><span class="swatch" style="background:var(--unval)"></span> Watch — named, not yet sized</i>
+    </div>
+  </section>
+
+  <footer id="foot">
+    Every claim carries its denominator. Nothing above Medium should carry an irreversible decision alone, and a contested claim should not close a research request on its own.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var ORDER={HIGH:4,MEDIUM:3,LOW:2,UNVALIDATED:1,GAP:0};
+  var CONF_DEF={
+    HIGH:"HIGH — two or more genuinely independent sources agree, n stated, under 6 months old. Only HIGH should carry an irreversible decision.",
+    MEDIUM:"MEDIUM — one primary source, n stated. Single source is MEDIUM however large the n: a million rows from one instrument is still one instrument.",
+    LOW:"LOW — anecdotal, conflicting, a very small n, or over 12 months old. Directional only.",
+    UNVALIDATED:"UNVALIDATED — asserted but not evidenced. A hypothesis, not a finding.",
+    GAP:"GAP — nothing found. Recorded so it stops being rediscovered."
+  };
+  var SEV_DEF={
+    blocking:"Blocking — people stop, leave, or do it somewhere else.",
+    major:"Major — they finish, but it costs them real time every week.",
+    watch:"Watch — named by someone, not yet sized. Do not spend a session on it."
+  };
+  var EV_DEF={
+    HIGH:"Evidence HIGH — two or more independent sources agree.",
+    MEDIUM:"Evidence MEDIUM — one primary source.",
+    LOW:"Evidence LOW — anecdotal, conflicting, or very small n. High severity on low evidence is a research job, not a design job."
+  };
+  var SEGS=[
+    {k:"partner:getting-started",a:"Partner",s:"Getting Started"},
+    {k:"partner:scaling-up",a:"Partner",s:"Scaling Up"},
+    {k:"partner:strategic-growth",a:"Partner",s:"Strategic Growth"},
+    {k:"brand:getting-started",a:"Brand",s:"Getting Started"},
+    {k:"brand:scaling-up",a:"Brand",s:"Scaling Up"},
+    {k:"brand:strategic-growth",a:"Brand",s:"Strategic Growth"}
+  ];
+  var DOMS=["Signup & Onboarding","Marketplace & Discovery","Approval & vetting","Links & tracking","Reporting","Payments and Finance","Login & Access"];
+  // Which system each claim's evidence actually came from, read off its link.
+  var SOURCES=[
+    {k:"Dovetail", test:function(l){ return /dovetail\./i.test(l||"") }},
+    {k:"PostHog",  test:function(l){ return /posthog\./i.test(l||"") }},
+    {k:"G2",       test:function(l,c){ return /\bG2\b/.test((c&&c.source)||"") }},
+    {k:"Gong",     test:function(l,c){ return /gong/i.test((c&&c.source)||"") }}
+  ];
+  var JOURNEY={
+    Partner:["Join & set up","Discover brands","Apply & get approved","Generate links","Promote","Track performance","Get paid"],
+    Brand:["Commit","Integrate & configure","Recruit","Activate","Measure","Pay","Protect"]
+  };
+
+  var claims=[], needs=[], prompts=[], jaud="Partner", sideAud="Partner", state={q:"",aud:"",seg:"",dom:"",conf:"",contested:false};
+  var $=function(id){return document.getElementById(id)};
+
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+  // A DocumentSnapshot carries its body behind data() and its id separately.
+  function body(d){
+    if(!d) return null;
+    var o = (typeof d.data==="function") ? d.data() : d.data;
+    if(!o) return null;
+    var out={}; for(var k in o){ if(Object.prototype.hasOwnProperty.call(o,k)) out[k]=o[k] }
+    if(d.id!=null) out.id=d.id;
+    return out;
+  }
+  function bodies(snap){
+    var list = (snap && snap.docs) ? snap.docs : (snap||[]);
+    return Array.prototype.map.call(list, body).filter(Boolean);
+  }
+
+  function mark(text,q){
+    var t=esc(text);
+    if(!q) return t;
+    try{ return t.replace(new RegExp("("+q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<em>$1</em>") }
+    catch(e){ return t }
+  }
+
+  function renderEmpty(msg){
+    $("claims").innerHTML='<div class="empty"><b>'+esc(msg.t)+'</b>'+esc(msg.b)+'</div>';
+  }
+
+  function stats(){
+    var hi=0,con=0;
+    claims.forEach(function(c){ if(c.confidence==="HIGH")hi++; if(c.contested)con++ });
+    var blind=0,cov=coverage();
+    SEGS.forEach(function(s){ DOMS.forEach(function(d){ if(!cov[s.k+"|"+d]) blind++ }) });
+    $("strip").innerHTML=[
+      ["Claims",claims.length],
+      ["High confidence",hi],
+      ["Contested",con],
+      ["Blind cells",blind+" / "+(SEGS.length*DOMS.length)]
+    ].map(function(p){return '<div class="cell"><b class="num">'+esc(p[1])+'</b><span>'+esc(p[0])+'</span></div>'}).join("");
+  }
+
+  function renderSources(){
+    var counts={},multi=0;
+    SOURCES.forEach(function(s){counts[s.k]=0});
+    claims.forEach(function(c){
+      var hits=SOURCES.filter(function(s){ return s.test(c.link,c) });
+      hits.forEach(function(s){ counts[s.k]++ });
+      if(hits.length>1) multi++;
+    });
+    var html=SOURCES.map(function(s){
+      return '<span class="src'+(counts[s.k]?'':' zero')+'"><b>'+counts[s.k]+'</b> '+esc(s.k)+'</span>';
+    }).join("");
+    if(multi) html+='<span class="src"><b>'+multi+'</b> claims with two or more</span>';
+    $("srcbar").innerHTML=html;
+  }
+
+  function coverage(){
+    var m={};
+    claims.forEach(function(c){
+      if(c.confidence==="GAP") return;
+      (c.segments||[]).forEach(function(sk){
+        var key=sk+"|"+c.domain, cur=m[key];
+        if(!cur||ORDER[c.confidence]>ORDER[cur]) m[key]=c.confidence;
+      });
+    });
+    return m;
+  }
+
+  function renderMatrix(){
+    var cov=coverage(), h="<thead><tr><th></th>";
+    DOMS.forEach(function(d){ h+="<th>"+esc(d)+"</th>" });
+    h+="</tr></thead><tbody>";
+    SEGS.forEach(function(s){
+      h+='<tr><th>'+esc(s.s)+'<small>'+esc(s.a)+'</small></th>';
+      DOMS.forEach(function(d){
+        var v=cov[s.k+"|"+d],
+            cls=v==="HIGH"?"m-high":v==="MEDIUM"?"m-med":v?"m-low":"m-none",
+            lbl=v?v.charAt(0)+v.slice(1).toLowerCase():"—",
+            on=state.seg===s.k&&state.dom===d;
+        h+='<td><button class="mc '+cls+'" data-s="'+esc(s.k)+'" data-d="'+esc(d)+'"'+
+           ' aria-pressed="'+(on?"true":"false")+'"'+
+           ' title="'+esc(s.a+" \u00b7 "+s.s+" \u00b7 "+d+"\n\n"+
+             (v?CONF_DEF[v]:"Nothing found. Not a gap anyone chose — an area nobody has looked at yet.")+
+             "\n\nBest available confidence, computed from the claims. Select to filter.")+'">'+
+           '<span class="dot"></span>'+(on?"<strong>"+esc(lbl)+"</strong>":esc(lbl))+'</button></td>';
+      });
+      h+="</tr>";
+    });
+    $("matrix").innerHTML=h+"</tbody>";
+    Array.prototype.forEach.call($("matrix").querySelectorAll(".mc"),function(b){
+      b.addEventListener("click",function(){
+        var s=b.getAttribute("data-s"),d=b.getAttribute("data-d"),
+            off=(state.seg===s&&state.dom===d);
+        state.seg=off?"":s;
+        state.dom=off?"":d;
+        state.aud=off?"":segAudience(s);
+        fills(); syncSelects(); renderMatrix(); renderClaims(); renderStarters();
+      });
+    });
+  }
+
+  function fills(){
+    var doms={},confs={},auds={};
+    claims.forEach(function(c){ doms[c.domain]=1; confs[c.confidence]=1; auds[c.audience]=1 });
+    function fill(el,vals,label){
+      var cur=el.value;
+      el.innerHTML='<option value="">'+label+'</option>'+vals.map(function(v){
+        return '<option value="'+esc(v)+'">'+esc(v)+'</option>'}).join("");
+      el.value=cur;
+    }
+    fill($("dom"),DOMS.filter(function(d){return doms[d]}),"All domains");
+    fill($("conf"),["HIGH","MEDIUM","LOW","UNVALIDATED","GAP"].filter(function(c){return confs[c]}),"All confidence");
+    fill($("aud"),Object.keys(auds).filter(function(a){return a!=="Both"}).sort(),"All audiences");
+
+    var segSel=$("seg"), avail=SEGS.filter(function(s){ return !state.aud||state.aud==="Both"||s.a===state.aud });
+    segSel.innerHTML='<option value="">All segments</option>'+avail.map(function(s){
+      return '<option value="'+esc(s.k)+'">'+esc(s.a+" \u00b7 "+s.s)+'</option>' }).join("");
+    segSel.value = avail.some(function(s){return s.k===state.seg}) ? state.seg : (state.seg="");
+  }
+
+  function matches(c){
+    if(state.aud && c.audience!==state.aud && c.audience!=="Both") return false;
+    if(state.seg && (c.segments||[]).indexOf(state.seg)<0) return false;
+    if(state.dom && c.domain!==state.dom) return false;
+    if(state.conf && c.confidence!==state.conf) return false;
+    if(state.contested && !c.contested) return false;
+    if(state.q){
+      var hay=[c.statement,c.source,c.scope,c.caveat,c.domain].join(" ").toLowerCase();
+      if(hay.indexOf(state.q.toLowerCase())<0) return false;
+    }
+    return true;
+  }
+
+  function renderClaims(){
+    var rows=claims.filter(matches).sort(function(a,b){
+      return (ORDER[b.confidence]-ORDER[a.confidence]) || String(a.domain).localeCompare(b.domain);
+    });
+    $("count").textContent=rows.length+" of "+claims.length+" shown";
+    if(!rows.length){ renderEmpty({t:"Nothing matches",b:"Widen the filters, or press Clear to reset them."}); return }
+    $("claims").innerHTML=rows.map(function(c){
+      var meta=[];
+      if(c.n) meta.push('<span><span class="k">n</span> <span class="num">'+esc(c.n)+'</span></span>');
+      if(c.scope) meta.push('<span><span class="k">scope</span> '+esc(c.scope)+'</span>');
+      if(c.source){
+        meta.push('<span><span class="k">source</span> '+(c.link
+          ? '<a href="'+esc(c.link)+'" target="_blank" rel="noopener">'+esc(c.source)+'</a>'
+          : esc(c.source)+' <span class="unlinked" title="No source link recorded">unlinked</span>')+'</span>');
+      }
+      if(c.posthog) meta.push('<span><span class="k">behaviour</span> <a class="ph" href="'+esc(c.posthog)+
+        '" target="_blank" rel="noopener">'+esc(c.posthog_label||"PostHog")+'</a></span>');
+      if(c.verified) meta.push('<span><span class="k">verified</span> <span class="num">'+esc(c.verified)+'</span></span>');
+      return '<article>'+
+        '<div class="badge b-'+esc(c.confidence)+'" title="'+esc(CONF_DEF[c.confidence]||c.confidence)+'">'+
+          esc(c.confidence)+'</div>'+
+        '<p class="stmt">'+mark(c.statement,state.q)+
+          (c.contested?'<br><span class="flag" title="Another claim disagrees with this one. Both are kept; the domain routes to a human rather than auto-closing a research request.">Contested — do not close a request on this</span>':'')+
+        '</p>'+
+        '<div class="meta">'+meta.join("")+'</div>'+
+        (c.caveat?'<p class="caveat">'+esc(c.caveat)+'</p>':'')+
+        (c.demoted?'<p class="calib"><span class="tag">recalibrated</span>'+esc(c.demoted)+'</p>':'')+
+      '</article>';
+    }).join("");
+  }
+
+  function segLabel(k){
+    var s=null;
+    SEGS.forEach(function(x){ if(x.k===k) s=x });
+    return s?s.s:k;
+  }
+
+  function renderTabs(){
+    $("jtabs").innerHTML=["Partner","Brand"].map(function(a){
+      return '<button class="jtab" role="tab" data-a="'+a+'" aria-selected="'+(jaud===a?"true":"false")+'">'+a+' journey</button>';
+    }).join("");
+    Array.prototype.forEach.call($("jtabs").querySelectorAll(".jtab"),function(b){
+      b.addEventListener("click",function(){ jaud=b.getAttribute("data-a"); renderTabs(); renderJourney() });
+    });
+  }
+
+  function renderJourney(){
+    var byId={};
+    claims.forEach(function(c){ if(c.id) byId[c.id]=c });
+    var stages=JOURNEY[jaud]||[],
+        mine=needs.filter(function(n){ return n.audience===jaud||n.audience==="Both" });
+    $("needcount").textContent=mine.length?mine.length+" on this journey":"";
+    if(!needs.length){
+      $("journey").innerHTML='<div class="stage"><div class="none">No needs recorded yet. They are written alongside the claims that evidence them.</div></div>';
+      return;
+    }
+    $("journey").innerHTML=stages.map(function(st,i){
+      var here=mine.filter(function(n){ return n.stage===st })
+                   .sort(function(a,b){
+                     var r={blocking:0,major:1,watch:2};
+                     return (r[a.severity]||3)-(r[b.severity]||3);
+                   });
+      var body=here.length
+        ? '<div class="needs">'+here.map(function(n){
+            var chips=[];
+            chips.push('<span class="chip sev sev-'+esc(n.severity)+'" title="'+
+              esc(SEV_DEF[n.severity]||n.severity)+'">'+esc(n.severity)+'</span>');
+            if(n.evidence) chips.push('<span class="chip ev-'+esc(n.evidence)+'" title="'+
+              esc(EV_DEF[n.evidence]||n.evidence)+'">evidence '+esc(n.evidence.toLowerCase())+'</span>');
+            (n.segments||[]).forEach(function(s){ chips.push('<span class="chip">'+esc(segLabel(s))+'</span>') });
+            var ev=(n.claims||[]).map(function(cid){
+              var c=byId[cid];
+              if(!c) return '<span class="missing" title="Claim '+esc(cid)+' is no longer in the Frame">'+esc(cid)+'</span>';
+              var label=esc(cid), tip=esc(c.statement)+(c.n?"  \u00b7  n "+esc(c.n):"");
+              var out = c.link
+                ? '<a href="'+esc(c.link)+'" target="_blank" rel="noopener" title="'+tip+'">'+label+' \u2197</a>'
+                : '<span class="missing" title="'+tip+'">'+label+'</span>';
+              if(c.posthog) out += '<a class="phchip" href="'+esc(c.posthog)+'" target="_blank" rel="noopener"'+
+                ' title="'+esc(c.posthog_label||"PostHog")+'">PH \u2197</a>';
+              return out;
+            }).join("");
+            return '<div class="need sev-'+esc(n.severity)+'"><p>'+esc(n.need)+'</p>'+
+                   '<div class="chips">'+chips.join("")+'</div>'+
+                   (ev?'<div class="ev"><span class="lbl">evidence</span>'+ev+'</div>':'')+
+                   '<div class="needact"><button class="act" type="button" data-need="'+esc(n.id||"")+'">Take this further \u2197</button></div>'+
+                   '</div>';
+          }).join("")+'</div>'
+        : '<div class="none">Nothing recorded here</div>';
+      return '<div class="stage"><h3><span class="step num">'+(i+1)+'</span>'+esc(st)+'</h3>'+body+'</div>';
+    }).join("");
+
+    Array.prototype.forEach.call($("journey").querySelectorAll("[data-need]"),function(b){
+      b.addEventListener("click",function(){
+        var n=null; mine.forEach(function(x){ if(x.id===b.getAttribute("data-need")) n=x });
+        if(!n) return;
+        var segs=(n.segments||[]).map(segLabel).join(", ");
+        copyPrompt(
+          'use research-intake \u2014 unmet need from the Frame: "'+n.need+'" ('+n.audience+
+          ', '+n.stage+(segs?'; hits '+segs:'')+'). Severity '+n.severity+
+          ', evidence '+(n.evidence||"unstated")+
+          (n.claims&&n.claims.length?'. Frame claims: '+n.claims.join(", "):'')+
+          '. Route it: is this already answered, is it research at all, and if so what shape?',
+          b,"run it through intake");
+      });
+    });
+  }
+
+  function renderAll(){ stats(); renderSources(); fills(); renderMatrix(); renderClaims(); renderTabs(); renderJourney(); renderStarters(); renderPills() }
+
+  function segAudience(k){
+    var a="";
+    SEGS.forEach(function(s){ if(s.k===k) a=s.a });
+    return a;
+  }
+  function syncSelects(){
+    $("aud").value=state.aud; $("seg").value=state.seg;
+    $("dom").value=state.dom; $("conf").value=state.conf;
+  }
+
+  $("q").addEventListener("input",function(e){state.q=e.target.value;renderClaims()});
+  ["aud","seg","dom","conf"].forEach(function(id){
+    $(id).addEventListener("change",function(e){
+      state[id]=e.target.value;
+      // Picking a segment implies its audience; changing audience drops a segment from the other one.
+      if(id==="seg" && state.seg) state.aud=segAudience(state.seg);
+      fills(); syncSelects(); renderMatrix(); renderClaims();
+    });
+  });
+  $("conTog").addEventListener("click",function(){
+    state.contested=!state.contested;
+    $("conTog").setAttribute("aria-pressed",String(state.contested));
+    renderClaims();
+  });
+  $("clear").addEventListener("click",function(){
+    state={q:"",aud:"",seg:"",dom:"",conf:"",contested:false};
+    $("q").value="";
+    $("conTog").setAttribute("aria-pressed","false");
+    fills(); syncSelects(); renderMatrix(); renderClaims();
+  });
+
+  renderEmpty({t:"The Frame is empty",b:"No claims have been recorded yet. They arrive from user-context in record mode, one claim per finding, each with its source and denominator."});
+  $("strip").innerHTML="";
+  renderMatrix(); renderTabs(); renderJourney(); renderPills();
+
+  // ---- Ask ---------------------------------------------------------------
+  var sampleFn=null, asking=false;
+  var STOP={the:1,a:1,an:1,is:1,are:1,do:1,does:1,we:1,our:1,us:1,of:1,to:1,in:1,on:1,for:1,
+            what:1,why:1,how:1,and:1,or:1,about:1,with:1,know:1,it:1,this:1,that:1,be:1,can:1};
+
+  function pickClaims(q){
+    var words=String(q).toLowerCase().split(/[^a-z0-9]+/).filter(function(w){return w.length>2&&!STOP[w]});
+    if(!words.length) return claims.slice(0,18);
+    var scored=claims.map(function(c){
+      var hay=[c.statement,c.domain,c.scope,c.caveat,c.source,c.audience].join(" ").toLowerCase();
+      var s=0; words.forEach(function(w){ if(hay.indexOf(w)>=0) s++ });
+      return {c:c,s:s};
+    }).filter(function(x){return x.s>0}).sort(function(a,b){return b.s-a.s});
+    var top=scored.slice(0,18).map(function(x){return x.c});
+    return top.length?top:claims.slice(0,18);
+  }
+
+  function claimLine(c){
+    return [c.id, c.confidence, "n="+(c.n||"?"), c.domain, c.audience,
+            c.contested?"CONTESTED":"", c.statement,
+            c.caveat?("Caveat: "+c.caveat):""].filter(Boolean).join(" | ");
+  }
+
+  function derivedOpeners(){
+    // Fallback only: used while the prompts collection is empty or unreachable.
+    var out=[];
+    if(state.seg&&state.dom) out.push({label:"This cell",
+      question:"What do we know about "+segLabel(state.seg)+" and "+state.dom+"?"});
+    var con=claims.filter(function(c){return c.contested}).length;
+    if(con) out.push({label:con+" contested",
+      question:"Which claims are contested, and what are the two readings?"});
+    var cov=coverage(),blind=0;
+    SEGS.forEach(function(s){ DOMS.forEach(function(d){ if(!cov[s.k+"|"+d]) blind++ }) });
+    if(blind) out.push({label:blind+" blind cells",
+      question:"Where are we blind, and which of those gaps matters most?"});
+    return out;
+  }
+
+  function renderStarters(){
+    var box=$("starters"), side=$("sside");
+    if(!box) return;
+    var mine=prompts.filter(function(p){return p.audience===sideAud})
+                    .sort(function(a,b){return (a.order||99)-(b.order||99)});
+
+    if(prompts.length){
+      side.innerHTML=["Partner","Brand"].map(function(a){
+        return '<button type="button" role="tab" data-a="'+a+'" aria-selected="'+
+               (sideAud===a?"true":"false")+'">'+a+'</button>';
+      }).join("");
+      Array.prototype.forEach.call(side.querySelectorAll("button"),function(b){
+        b.addEventListener("click",function(){ sideAud=b.getAttribute("data-a"); renderStarters() });
+      });
+    } else { side.innerHTML=""; mine=derivedOpeners() }
+
+    if(state.seg&&state.dom&&prompts.length){
+      mine=mine.concat([{label:"This cell",
+        question:"What do we know about "+segLabel(state.seg)+" and "+state.dom+"?"}]);
+    }
+
+    box.innerHTML=mine.map(function(s,i){
+      return '<button class="starter" type="button" data-i="'+i+'">'+esc(s.label)+'</button>';
+    }).join("");
+    Array.prototype.forEach.call(box.querySelectorAll(".starter"),function(b){
+      var s=mine[+b.getAttribute("data-i")];
+      b.title=s.question;
+      b.addEventListener("click",function(){ $("askq").value=s.question; ask(s.question) });
+    });
+  }
+
+  function renderAnswer(text,used,isGap){
+    var html=esc(text)
+      .replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>")
+      .split(/\n{2,}/).map(function(par){ return "<p>"+par.replace(/\n/g,"<br>")+"</p>" }).join("");
+    var ev=(used||[]).map(function(c){
+      var tip=esc(c.statement)+(c.n?"  \u00b7  n "+esc(c.n):"");
+      return c.link?'<a href="'+esc(c.link)+'" target="_blank" rel="noopener" title="'+tip+'">'+esc(c.id)+' \u2197</a>'
+                   :'<a title="'+tip+'">'+esc(c.id)+'</a>';
+    }).join("");
+    $("askout").innerHTML='<div class="answer'+(isGap?" gap":"")+'">'+html+
+      (ev?'<div class="used"><span class="lbl">from</span>'+ev+'</div>':'')+'</div>';
+  }
+
+  async function ask(q){
+    if(asking||!sampleFn) return;
+    asking=true; $("asksend").disabled=true;
+    $("askout").innerHTML='<div class="answer"><p class="thinking">Reading the Frame\u2026</p></div>';
+    var used=pickClaims(q);
+    var prompt=
+      "You answer questions using ONLY the claims below, which are impact.com's Frame: what the "+
+      "organisation currently believes about its users, how confident it is, and where it is blind.\n\n"+
+      "RULES\n"+
+      "- Use only these claims. Never add a number, percentage or finding that is not here.\n"+
+      "- Give the confidence and n whenever you state something, e.g. (MEDIUM, n=119).\n"+
+      "- Cite claim ids in brackets like [p10].\n"+
+      "- A claim marked CONTESTED must be reported as disputed, never as settled.\n"+
+      "- Single source is MEDIUM however large the n. Only HIGH carries an irreversible decision.\n"+
+      "- If the claims do not answer the question, begin your reply with exactly: THE FRAME DOES NOT COVER THIS.\n"+
+      "  Then say what is missing and what research would answer it. Do not guess.\n"+
+      "- Be direct and brief. No preamble. Plain prose, 2-4 short paragraphs.\n\n"+
+      "CLAIMS\n"+used.map(claimLine).join("\n")+"\n\nQUESTION\n"+q;
+    try{
+      var res=await sampleFn(prompt,{modelTier:"default",onText:function(ev){
+        var txt=ev.text||"";
+        renderAnswer(txt.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""),null,
+                     /^THE FRAME DOES NOT COVER THIS/i.test(txt));
+      }});
+      var out=(res&&res.text)||"";
+      var gap=/^THE FRAME DOES NOT COVER THIS/i.test(out);
+      var cited=used.filter(function(c){ return out.indexOf("["+c.id+"]")>=0 });
+      renderAnswer(out.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""), cited.length?cited:(gap?[]:used.slice(0,5)), gap);
+    }catch(e){
+      var code=(e&&e.code)||"";
+      var msg=code==="rate_limited"?"Too many questions just now \u2014 try again in a moment."
+            :code==="not_granted"?"Asking is not available in this view."
+            :"Could not reach Claude. Try again.";
+      $("askout").innerHTML='<div class="answer gap"><p>'+esc(msg)+'</p></div>';
+    }
+    asking=false; $("asksend").disabled=false;
+  }
+
+  $("askform").addEventListener("submit",function(e){
+    e.preventDefault();
+    var q=$("askq").value.trim();
+    if(q) ask(q);
+  });
+
+  (async function(){
+    try{ sampleFn=await (window.claude&&window.claude.use?window.claude.use("sample"):null) }catch(e){}
+    if(sampleFn){ $("asksec").hidden=false; $("askstamp").textContent="grounded in the claims below"; renderPills() }
+  })();
+
+  (async function(){
+    var db=null;
+    try{ db=await (window.claude&&window.claude.use?window.claude.use("db"):null) }catch(e){}
+    if(!db){
+      $("stamp").textContent="Store unavailable";
+      renderEmpty({t:"Cannot reach the claims store",b:"Sign in to view the Frame. The page itself holds no data."});
+      return;
+    }
+    function apply(snap){
+      claims=bodies(snap).filter(function(c){return c&&c.statement});
+      if(!claims.length){
+        $("stamp").textContent="Empty";
+        $("strip").innerHTML=""; renderMatrix();
+        renderEmpty({t:"The Frame is empty",b:"No claims recorded yet. They arrive from user-context in record mode."});
+        return;
+      }
+      var latest=claims.map(function(c){return c.verified||""}).sort().pop();
+      $("stamp").textContent="Last verified "+(latest||"—");
+      renderAll();
+    }
+    try{
+      var pcol=db.collection("prompts");
+      if(pcol.onSnapshot){
+        pcol.onSnapshot(function(snap){
+          prompts=bodies(snap).filter(function(x){return x&&x.question});
+          renderStarters();
+        }, function(){});
+      } else {
+        prompts=bodies(await pcol.get()).filter(function(x){return x&&x.question});
+        renderStarters();
+      }
+
+      var ncol=db.collection("needs");
+      if(ncol.onSnapshot){
+        ncol.onSnapshot(function(snap){
+          needs=bodies(snap).filter(function(n){return n&&n.need});
+          renderTabs(); renderJourney();
+        }, function(){});
+      } else {
+        needs=bodies(await ncol.get()).filter(function(n){return n&&n.need});
+        renderTabs(); renderJourney();
+      }
+    }catch(e){}
+
+    try{
+      var col=db.collection("claims");
+      if(col.onSnapshot){ col.onSnapshot(apply, function(){ $("stamp").textContent="Store error" }) }
+      else { apply(await col.get()) }
+    }catch(e){
+      $("stamp").textContent="Store error";
+      renderEmpty({t:"Could not load claims",b:"The store did not answer. Reload, or check access."});
+    }
+  })();
+})();
+</script>

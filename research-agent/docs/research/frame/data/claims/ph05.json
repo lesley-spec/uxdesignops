@@ -1,0 +1,18 @@
+{
+  "audience": "Partner",
+  "caveat": "Partners raised mobile unprompted in desktop-only studies (p10, p11); this is the traffic behind it. 278,218 of 836,586 sessions, and understated — Chrome on Android reports as Chrome, so it sits inside the 448,323 desktop-looking figure. Mobile Safari alone is second only to Chrome overall.",
+  "confidence": "HIGH",
+  "contested": false,
+  "domain": "Links & tracking",
+  "link": "https://us.posthog.com/project/186875/insights/GufE4pG5",
+  "n": "836,586 sessions, 30 days",
+  "scope": "All sessions by browser, 8 Sep - 8 Oct 2026",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "PostHog: browser breakdown, read live 2026-10-13 — backing the mobile findings from interviews",
+  "statement": "Partners work from their phones far more than the platform assumes — at least a third of sessions come from a mobile browser.",
+  "verified": "2026-10-13"
+}

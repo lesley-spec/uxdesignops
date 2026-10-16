@@ -1,0 +1,125 @@
+[
+  {
+    "audience": "Brand",
+    "claims": [
+      "b01",
+      "b02",
+      "b03",
+      "g05"
+    ],
+    "label": "One broken marketplace, or two?",
+    "order": 1,
+    "question": "Brands say they cannot find partners worth having; partners say they cannot find brands that will approve them. Are we looking at one marketplace failing in both directions, or two separate problems?",
+    "id": "bp1"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b12",
+      "b14",
+      "b17"
+    ],
+    "label": "Small brands approve almost nobody",
+    "order": 2,
+    "question": "Small brands turn down nearly every applicant while large ones approve almost half. What would help a founder decide whether someone is worth saying yes to?",
+    "id": "bp2"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b15",
+      "b16",
+      "b09"
+    ],
+    "label": "Risk worries them more than features",
+    "order": 3,
+    "question": "New brands worry about commitment and risk far more than about what the product does. What would let someone prove this channel works before they have to commit to it?",
+    "id": "bp3"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "b13",
+      "b14",
+      "b09"
+    ],
+    "label": "Brands that never get started",
+    "order": 4,
+    "question": "A large group of brand accounts never gets a single partnership live, and most of them have a CSM. Where do they get stuck, and what do we actually know about them?",
+    "id": "bp4"
+  },
+  {
+    "audience": "Brand",
+    "claims": [
+      "ph01",
+      "b18",
+      "b15"
+    ],
+    "label": "Brands drop out during setup",
+    "order": 5,
+    "question": "Brands describe setup as dense and hard to get right, and most never finish signing up. What is happening at the point they give up?",
+    "id": "bp5"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "ph04",
+      "p06",
+      "p08",
+      "p12"
+    ],
+    "label": "Partners browse but rarely apply",
+    "order": 1,
+    "question": "Partners tell us they cannot find brands worth applying to, and the behaviour agrees \u2014 browsing the marketplace almost never leads anywhere. Is this a discovery problem, or something about what happens when they arrive?",
+    "id": "pp1"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p01",
+      "p02",
+      "p03",
+      "p16"
+    ],
+    "label": "Most creators never see a click",
+    "order": 2,
+    "question": "Most creators have done the work and have nothing to show for it. What does the platform owe someone whose links have never been clicked, and what do we know about what they actually need?",
+    "id": "pp2"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "ph05",
+      "p11",
+      "p10"
+    ],
+    "label": "Partners work from their phones",
+    "order": 3,
+    "question": "Partners describe working from their phones between other commitments, and a large share of sessions are mobile. What does the desktop-only platform cost them, and where does it bite first?",
+    "id": "pp3"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "p07",
+      "p18",
+      "b12"
+    ],
+    "label": "Rejection feels worse than it is",
+    "order": 4,
+    "question": "Partners believe they are rejected far more often than they actually are, and describe months of silence. What is creating that impression, and what would change it?",
+    "id": "pp4"
+  },
+  {
+    "audience": "Partner",
+    "claims": [
+      "ph02",
+      "ph03",
+      "p05"
+    ],
+    "label": "They sign up, then stall",
+    "order": 5,
+    "question": "Partners get through signup and then stop. What happens in that first week that we are not seeing, and how much of it can we even measure today?",
+    "id": "pp5"
+  }
+]

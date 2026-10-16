@@ -1,0 +1,20 @@
+{
+  "audience": "Partner",
+  "caveat": "Richer analytics for this group would show an emptier room. The job is the first click, not the dashboard.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (platform data via the Partner Value Stream). HIGH needs two independent sources agreeing — a behavioural corroboration in PostHog would lift it.",
+  "domain": "Links & tracking",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "platform-wide",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/2065762",
+  "posthog_label": "Links tracked KPI baseline",
+  "scope": "All creators on platform",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026 (BigQuery)",
+  "statement": "Most creators never get a single click on their links — 69% have never driven one.",
+  "verified": "2026-09-16"
+}

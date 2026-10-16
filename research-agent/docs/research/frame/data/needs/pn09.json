@@ -1,0 +1,14 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p10",
+    "p11"
+  ],
+  "evidence": "HIGH",
+  "need": "Share a link away from the desk — generate on a phone, responding to an audience in the moment.",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "severity": "blocking",
+  "stage": "Promote"
+}

@@ -1,0 +1,16 @@
+{
+  "audience": "Partner",
+  "caveat": "A single session, quoted widely as if it were a rate. It is a vivid illustration of the link-workflow friction, not a measure of it.",
+  "confidence": "LOW",
+  "contested": false,
+  "domain": "Links & tracking",
+  "link": "https://us.posthog.com/project/186875/cohorts/355433",
+  "n": "1 session replay",
+  "scope": "One observed session",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "source": "PostHog session replay, partner cohort 355433",
+  "statement": "Generating and formatting a link took one partner 500+ keypresses in 41 seconds.",
+  "verified": "2026-10-13"
+}

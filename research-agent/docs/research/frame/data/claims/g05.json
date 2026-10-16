@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "caveat": "Discovery and vetting are the top two requests and are probably one problem, but no measurement separates search failure from approval failure.",
+  "confidence": "GAP",
+  "contested": false,
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "0",
+  "scope": "Brand marketplace search",
+  "segments": [
+    "brand:scaling-up"
+  ],
+  "source": "Derived from b01 and b02",
+  "statement": "Nothing measures whether brands can find partners they would actually approve, as distinct from finding partners at all.",
+  "verified": "2026-09-21"
+}

@@ -1,0 +1,13 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b21"
+  ],
+  "evidence": "LOW",
+  "need": "Keep partner relationships when consolidating or switching networks.",
+  "segments": [
+    "brand:strategic-growth"
+  ],
+  "severity": "watch",
+  "stage": "Protect"
+}

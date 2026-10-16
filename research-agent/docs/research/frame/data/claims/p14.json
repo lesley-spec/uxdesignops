@@ -1,0 +1,19 @@
+{
+  "audience": "Partner",
+  "caveat": "n=5, directional only. A bimodal shape is a different problem from a low score: the nav works for one usage mode and breaks another. Detractors named Promo Codes, Ad Tools, Deals, Surveys and Dashboard.",
+  "confidence": "LOW",
+  "contested": false,
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "5",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1609086",
+  "posthog_label": "Partner dashboard: navigation and exit paths",
+  "scope": "Partners who answered the in-product poll",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Pendo in-product guide, Sept 2026",
+  "statement": "Reaction to the new navigation is bimodal, not simply negative: 60% rated it 1, 40% rated 4-5, nothing in between.",
+  "verified": "2026-09-16"
+}

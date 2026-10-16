@@ -1,0 +1,13 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b22"
+  ],
+  "evidence": "LOW",
+  "need": "Prove the channel reaches a defensible share of total revenue, in a dashboard the CFO will open.",
+  "segments": [
+    "brand:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Measure"
+}

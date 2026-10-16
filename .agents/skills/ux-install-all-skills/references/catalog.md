@@ -1,4 +1,4 @@
-# Pipeline skill catalog (19)
+# Pipeline skill catalog (28)
 
 The installer **must** land every name below. Personas and `design-system`
 are listed once; they are reused in later phases.
@@ -8,11 +8,18 @@ are listed once; they are reused in later phases.
 | Skill | Use when |
 |---|---|
 | `design-thinking-ux` | Guided Empathize → Test; invokes the phase skills |
+| `ux-research` | Guided research run; invokes research + Frame skills |
 
-## Empathize
+## Empathize / Research
 
 | Skill | Use when |
 |---|---|
+| `research-intake` | Triage a research request (MICRO / SPRINT / DEEP) |
+| `user-context` | Ask / critique / record against the Frame |
+| `user-personas` | Partner + Brand persona set |
+| `research-planner` | Design a routed study |
+| `research-builder` | Pendo / interview / PostHog / audience instruments |
+| `frame-maintenance` | Quarterly Frame staleness check |
 | `user-research` | Study plan, deep-dive, or “problem worth solving” gate |
 | `research-synthesis` | Triangulate PostHog + Pendo + Dovetail (+ Outset/Freshdesk) |
 | `synthesize-research` | Affinity-map one corpus |
@@ -43,6 +50,7 @@ are listed once; they are reused in later phases.
 | `ux-prototyping` | Any harness → Brand or Partner live preview |
 | `brand-prototype` | Brand UI shell on localhost |
 | `partner-prototype` | Partner UI shell on localhost |
+| `persona-check` | Synthetic persona walk-through before recruiting |
 
 ## Test
 
@@ -51,5 +59,7 @@ are listed once; they are reused in later phases.
 | `test-plan` | Synthetic pre-flight + Outset/Maze draft |
 | `accessibility-review` | Synthetic a11y before recruiting |
 | `test-loopback` | Verified session findings → Empathize |
+| `adoption-check` | Post-ship: did the research hold? |
 
-After install, the first skill to **run** is `design-thinking-ux`.
+After install, start with `design-thinking-ux` for the full pipeline, or
+`ux-research` for research-only.

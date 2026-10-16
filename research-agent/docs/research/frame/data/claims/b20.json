@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "caveat": "Single account. Corroborated in spirit by the partner-side hybrid finding on code spread, but not independently measured.",
+  "confidence": "LOW",
+  "contested": false,
+  "domain": "Links & tracking",
+  "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+  "n": "1 account",
+  "scope": "Brands using code-based attribution",
+  "segments": [
+    "brand:scaling-up"
+  ],
+  "source": "Brand Persona — Gong (johnnie O)",
+  "statement": "Discount codes leak: codes issued to recruited partners are used by others, breaking attribution.",
+  "verified": "2026-10-13"
+}

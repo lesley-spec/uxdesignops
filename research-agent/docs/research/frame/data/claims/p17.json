@@ -1,0 +1,17 @@
+{
+  "audience": "Partner",
+  "caveat": "Getting Started 26 (~12%), Scaling Up 162 (75%), Strategic Growth 25 (~12%). This is the research sample, not the platform distribution.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source, and it describes the research sample rather than the platform — easy to misread as a population split.",
+  "domain": "Reporting",
+  "link": "https://impact.dovetail.com/data/4uoFsqQQnKmz1QpEy5cyL9",
+  "n": "213",
+  "scope": "Researched partner base, not platform population",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Scaling Up is 75% of the researched partner base (162 of 213 users).",
+  "verified": "2026-09-16"
+}

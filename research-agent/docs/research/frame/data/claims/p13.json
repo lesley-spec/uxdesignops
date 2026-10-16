@@ -1,0 +1,18 @@
+{
+  "audience": "Partner",
+  "caveat": "A prompted multi-select with 'personalised recommendations' listed first. Stated preference, not observed behaviour. 3 of 11 said none of it would help. The sample had 6 of 11 signing in daily against 0.4% platform-wide.",
+  "confidence": "LOW",
+  "contested": true,
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "11",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1928649",
+  "posthog_label": "Personalised feed — instrumentation QA, pre-launch",
+  "scope": "Feeds MVP sample",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "source": "July Feeds MVP study; audited by the Saga deep dive",
+  "statement": "73% of creators want personalised recommendations.",
+  "verified": "2026-09-16"
+}

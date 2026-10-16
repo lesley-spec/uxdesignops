@@ -1,0 +1,13 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p05"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Know what good looks like before starting — link placement, disclosure, what a normal first month is.",
+  "segments": [
+    "partner:getting-started"
+  ],
+  "severity": "major",
+  "stage": "Join & set up"
+}

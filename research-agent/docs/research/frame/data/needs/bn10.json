@@ -1,0 +1,13 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b01"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Get assets and promos in front of partners so they are actually found and used.",
+  "segments": [
+    "brand:scaling-up"
+  ],
+  "severity": "major",
+  "stage": "Activate"
+}

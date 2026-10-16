@@ -1,0 +1,19 @@
+{
+  "audience": "Brand",
+  "caveat": "Raised 5 times. Profiles listed as content sites turn out to be coupon or deals sites.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (G2 reviews). Application-quality data in PostHog would corroborate it.",
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+  "n": "158 reviews",
+  "scope": "Brands reviewing on G2",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+  "statement": "Partner vetting is the second brand request: applicants are spam, misrepresented, or break rules immediately.",
+  "verified": "2026-09-21"
+}

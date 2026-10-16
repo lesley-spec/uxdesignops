@@ -46,13 +46,13 @@ Run this with sandbox off / full permissions:
 
 curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
 
-When you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux."""
+When you see IMPACT_SKILLS_READY pipeline=28, stop. Next I will use design-thinking-ux or ux-research."""
 
 STAGE_ORDER = ("pipeline", "empathize", "define", "ideate", "prototype", "test")
 
 STAGE_LABELS = {
     "pipeline": ("Start here", "master"),
-    "empathize": ("Empathize", "stage 1"),
+    "empathize": ("Empathize / Research", "stage 1"),
     "define": ("Define", "stage 2"),
     "ideate": ("Ideate", "stage 3"),
     "prototype": ("Prototype", "stage 4"),
@@ -64,8 +64,15 @@ STAGE_SKILLS: dict[str, list[str]] = {
     "pipeline": [
         "ux-install-all-skills",
         "design-thinking-ux",
+        "ux-research",
     ],
     "empathize": [
+        "research-intake",
+        "user-context",
+        "user-personas",
+        "research-planner",
+        "research-builder",
+        "frame-maintenance",
         "user-research",
         "research-synthesis",
         "synthesize-research",
@@ -76,6 +83,7 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "anti-sycophancy",
         "brand-operator-ux-persona",
         "creator-affiliate-ux-persona",
+        "user-personas",
         "design-system",
     ],
     "ideate": [
@@ -90,6 +98,7 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "ux-prototyping",
         "brand-prototype",
         "partner-prototype",
+        "persona-check",
         "design-system",
     ],
     "test": [
@@ -97,6 +106,7 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "accessibility-review",
         "ux-critique",
         "test-loopback",
+        "adoption-check",
         "user-research",
         "synthesize-research",
         "brand-operator-ux-persona",
@@ -105,8 +115,15 @@ STAGE_SKILLS: dict[str, list[str]] = {
 }
 
 USE_WHEN: dict[str, str] = {
-    "ux-install-all-skills": "One prompt — install all 19 pipeline skills (project + Cursor/Claude global)",
+    "ux-install-all-skills": "One prompt — install all 28 pipeline skills (project + Cursor/Claude global)",
     "design-thinking-ux": "Master skill — guided Empathize → Test; invokes phase skills",
+    "ux-research": "Master research skill — intake, Frame, plan, Empathize pack",
+    "research-intake": "Triage a research request (MICRO / SPRINT / DEEP)",
+    "user-context": "Ask / critique / record against the Frame",
+    "user-personas": "Partner + Brand persona set (Nihal Frame pack)",
+    "research-planner": "Design a routed study after intake",
+    "research-builder": "Pendo guide, interview guide, PostHog dash, audience",
+    "frame-maintenance": "Quarterly Frame staleness / rebuild plan",
     "user-research": "Deep-dive a finding, design a study, or post-session gate brief",
     "research-synthesis": "Triangulate PostHog + Pendo + Dovetail (+ Outset/Freshdesk)",
     "synthesize-research": "Affinity-map one corpus (Dovetail project, interview set, test export)",
@@ -122,9 +139,11 @@ USE_WHEN: dict[str, str] = {
     "ux-prototyping": "Any harness → Brand or Partner live preview → optional GitHub Pages on the designer’s account",
     "brand-prototype": "One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)",
     "partner-prototype": "One prompt → Partner UI shell (<code>localhost:5173/</code>)",
+    "persona-check": "Synthetic persona walk-through before recruiting",
     "test-plan": "Synthetic pre-flight + Outset MCP / Maze study draft",
     "accessibility-review": "Synthetic a11y check before recruiting",
     "test-loopback": "Publish Verified session findings → Empathize input",
+    "adoption-check": "Post-ship: did the research hold? Write back to the Frame",
 }
 
 STAGE_NOTES: dict[str, str] = {

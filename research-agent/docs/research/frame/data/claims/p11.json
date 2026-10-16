@@ -1,0 +1,20 @@
+{
+  "audience": "Partner",
+  "caveat": "About a third of users named missing desktop-only features as their main friction; advanced actions are the abandonment hotspot.",
+  "confidence": "HIGH",
+  "contested": false,
+  "demoted": "Promoted from MEDIUM. Now two independent sources: Outset and Dovetail qual on the feature gaps, plus PostHog showing at least a third of sessions are mobile (ph05). The gap and the traffic are both measured.",
+  "domain": "Links & tracking",
+  "link": "https://impact.dovetail.com/data/6mtRrcPCKDkSbDtaY4tWgH",
+  "n": "119 interviews",
+  "posthog": "https://us.posthog.com/project/186875/insights/GufE4pG5",
+  "posthog_label": "Browser split — mobile share of sessions",
+  "scope": "Mobile app users",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Outset Mobile App Exp; NPS written responses",
+  "statement": "Deep links, vanity links and asset downloads all redirect from mobile to desktop.",
+  "verified": "2026-02-09"
+}

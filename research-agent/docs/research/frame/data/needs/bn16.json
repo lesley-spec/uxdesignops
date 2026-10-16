@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b21",
+    "b07"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Pay partners across regions — multi-currency, tax forms, compliance — without touching it.",
+  "segments": [
+    "brand:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Pay"
+}

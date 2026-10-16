@@ -1,0 +1,17 @@
+{
+  "audience": "Brand",
+  "caveat": "Done inconsistently rather than badly: one brand describes onboarding as flawless, another needed several calls plus developer API work.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Signup & Onboarding",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "10 Gong calls + G2 reviews",
+  "scope": "Brands integrating in first 30 days",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up"
+  ],
+  "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+  "statement": "Integration delays launch for non-technical brand staff; BigCommerce, Shopify and HubSpot are all named.",
+  "verified": "2026-09-21"
+}

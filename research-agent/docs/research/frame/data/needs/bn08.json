@@ -1,0 +1,13 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b19"
+  ],
+  "evidence": "LOW",
+  "need": "Vet an influencer in minutes, not eight hours.",
+  "segments": [
+    "brand:scaling-up"
+  ],
+  "severity": "major",
+  "stage": "Recruit"
+}

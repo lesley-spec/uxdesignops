@@ -1,0 +1,15 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b05"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Learn the platform's depth without the density becoming the obstacle.",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Integrate & configure"
+}

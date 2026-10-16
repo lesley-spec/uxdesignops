@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b16",
+    "x01"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Know whether early numbers are normal — benchmarks exist but the tier needing them cannot find them.",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "severity": "blocking",
+  "stage": "Measure"
+}

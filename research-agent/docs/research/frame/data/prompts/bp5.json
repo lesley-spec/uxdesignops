@@ -1,0 +1,11 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "ph01",
+    "b18",
+    "b15"
+  ],
+  "label": "Brands drop out during setup",
+  "order": 5,
+  "question": "Brands describe setup as dense and hard to get right, and most never finish signing up. What is happening at the point they give up?"
+}

@@ -1,0 +1,17 @@
+{
+  "audience": "Both",
+  "caveat": "Inferred from the two corpora rather than measured. Partners need speed; brands need depth and control. Nearly every partner friction is speed being taxed; nearly every brand friction is depth or control withheld.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+  "n": "158 reviews + 37 Gong calls + 12 contextual inquiries",
+  "scope": "Cross-audience synthesis",
+  "segments": [
+    "partner:scaling-up",
+    "brand:scaling-up"
+  ],
+  "source": "Brand Value Stream Founding Research, Sept 2026",
+  "statement": "For partners impact.com is a waypoint; for brands it is a workspace.",
+  "verified": "2026-09-21"
+}

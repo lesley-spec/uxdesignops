@@ -1,0 +1,11 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p07",
+    "p18",
+    "b12"
+  ],
+  "label": "Rejection feels worse than it is",
+  "order": 4,
+  "question": "Partners believe they are rejected far more often than they actually are, and describe months of silence. What is creating that impression, and what would change it?"
+}

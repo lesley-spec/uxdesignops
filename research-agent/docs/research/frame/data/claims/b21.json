@@ -1,0 +1,18 @@
+{
+  "audience": "Brand",
+  "caveat": "Retention risk is framed by brands as vendor lock-in: the partner relationships, not the tooling, are what they fear losing.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Payments and Finance",
+  "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+  "n": "16 Gong sources",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1988298",
+  "posthog_label": "Anytime withdrawals: payout funnel and failures",
+  "scope": "Strategic Growth brands",
+  "segments": [
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Persona — Gong (Axi EMEA, ButcherBox, Sonos)",
+  "statement": "Enterprise brands cite integration complexity, multi-region payment and tax compliance, and fear of losing partner relationships when switching networks.",
+  "verified": "2026-10-13"
+}

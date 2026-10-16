@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b02",
+    "b17",
+    "g05"
+  ],
+  "evidence": "HIGH",
+  "need": "Filter out spam and misrepresented applicants before they consume a week.",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up"
+  ],
+  "severity": "blocking",
+  "stage": "Recruit"
+}

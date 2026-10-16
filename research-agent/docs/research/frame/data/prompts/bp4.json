@@ -1,0 +1,11 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b13",
+    "b14",
+    "b09"
+  ],
+  "label": "Brands that never get started",
+  "order": 4,
+  "question": "A large group of brand accounts never gets a single partnership live, and most of them have a CSM. Where do they get stuck, and what do we actually know about them?"
+}

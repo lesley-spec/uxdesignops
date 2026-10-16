@@ -1,0 +1,16 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p06",
+    "p07",
+    "b12"
+  ],
+  "evidence": "HIGH",
+  "need": "Find brands that will actually approve me, not just brands that exist.",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up"
+  ],
+  "severity": "blocking",
+  "stage": "Discover brands"
+}

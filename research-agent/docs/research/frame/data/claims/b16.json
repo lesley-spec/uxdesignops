@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "caveat": "One brand asks for benchmarking metrics while another, the same quarter, praises the built-in benchmarks. A discoverability failure on a working feature, not a missing capability.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Reporting",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "10 Gong calls + G2 reviews",
+  "scope": "Brands in first 90 days",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+  "statement": "\"Is this normal?\" is the biggest unserved job for new brands: benchmarks exist in the product but the tier that needs them cannot find them.",
+  "verified": "2026-09-21"
+}

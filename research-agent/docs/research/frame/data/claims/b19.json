@@ -1,0 +1,16 @@
+{
+  "audience": "Brand",
+  "caveat": "Two separate figures from two accounts: 15 hrs/week on ops, 8+ hrs per influencer vetted. Neither is a segment rate.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+  "n": "11 Gong sources",
+  "scope": "Scaling Up brands",
+  "segments": [
+    "brand:scaling-up"
+  ],
+  "source": "Brand Persona — Gong (Geoship, Skylight)",
+  "statement": "Scaling Up brands spend 8-15 hours per week on manual payments, approvals, reporting and influencer vetting.",
+  "verified": "2026-10-13"
+}

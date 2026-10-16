@@ -1,0 +1,20 @@
+{
+  "audience": "Both",
+  "caveat": "LATAM is the extreme: 35.8 partners per brand against 8.8 in NAM. The loudest partner complaint - not enough brands to choose from - is a supply problem in some regions, visible in our own DAU data.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (PostHog cohorts), read through a document rather than live.",
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+  "n": "~13,700 brand DAU, ~146,400 partner DAU",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+  "posthog_label": "Cohort / persona: geography",
+  "scope": "Daily actives by region",
+  "segments": [
+    "brand:scaling-up",
+    "partner:scaling-up"
+  ],
+  "source": "PostHog brand and partner cohorts, Jan-Jun 2026",
+  "statement": "Brands are materially more NAM-concentrated than partners: 60% of brand DAU against 49% of partner DAU.",
+  "verified": "2026-09-21"
+}

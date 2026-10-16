@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-04T20:13:33Z",
-  "count": 20,
+  "generated_at": "2026-10-16T10:54:42Z",
+  "count": 29,
   "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip",
   "install_script": "https://lesley-spec.github.io/uxdesignops/skills/install.sh",
   "install_all_script": "https://lesley-spec.github.io/uxdesignops/skills/install-all.sh",
@@ -18,12 +18,22 @@
     {
       "name": "ux-install-all-skills",
       "stage": "pipeline",
-      "description": "Installs all 19 impact.com UX Design Thinking pipeline skills (Empathize through Test) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
+      "description": "Installs all 28 impact.com UX Design Thinking + UX Research pipeline skills (Empathize through Test, plus Frame research skills) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/",
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-install-all-skills"
+    },
+    {
+      "name": "ux-research",
+      "stage": "pipeline",
+      "description": "Master UX research orchestrator for impact.com. Routes research requests through intake, the Frame (user-context), personas, planning/builder skills, and the Empathize pack (user-research, research-synthesis, synthesize-research, data-analyze). Use when the user says ux-research, /ux-research, start research, research request, what do we know, triage this study, or wants the full research skill set rather than a single phase skill.",
+      "figjam_agent": "UX Research",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-research"
     },
     {
       "name": "data-analyze",
@@ -34,6 +44,36 @@
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/data-analyze.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/data-analyze/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/data-analyze"
+    },
+    {
+      "name": "frame-maintenance",
+      "stage": "empathize",
+      "description": "Staleness check and rebuild plan for the Frame. Re-reads every claim against Dovetail and PostHog, says what to retire, what to refresh, and what to research next, ranked by what a decision currently rests on. Run it quarterly, or when someone asks whether the Frame can still be trusted. Use when the user says frame maintenance, staleness check, what should we retire, is the Frame stale, what should we research next, or rebuild the Frame.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/frame-maintenance/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/frame-maintenance.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/frame-maintenance/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/frame-maintenance"
+    },
+    {
+      "name": "research-intake",
+      "stage": "empathize",
+      "description": "Research request front door for impact.com UX. Four questions, two checks, one route: is there a decision, do we already know the answer, and if not \u2014 MICRO (48 hours), SPRINT (1\u20132 weeks), or DEEP (4+ weeks), run by research or by the team that asked. Use when someone files or asks for research, or says research request, research intake, triage this, route this study, scope this research, is this micro sprint or deep, or asks UX Research to look into something.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-intake/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-intake.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-intake/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/research-intake"
+    },
+    {
+      "name": "research-planner",
+      "stage": "empathize",
+      "description": "Turns a routed research request into a study that is actually worth running. Applies question hygiene, sets go/no-go thresholds, designs prompts that test the thing rather than the idea, picks a sample and its diversity, builds the study, runs the 3-participant rigor pass before the rest launches, and updates the UX ticket as it goes. Use after research-intake routes a request, or when someone says plan a study, design the research, write the discussion guide, set up the Outset study, or draft a screener.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-planner/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-planner.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-planner/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/research-planner"
     },
     {
       "name": "research-synthesis",
@@ -54,6 +94,16 @@
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/synthesize-research.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/synthesize-research/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/synthesize-research"
+    },
+    {
+      "name": "user-context",
+      "stage": "empathize",
+      "description": "What impact.com knows about its users, and how confident it is. Ask a question about any user, surface, workflow, cohort or hypothesis and it sweeps Dovetail, PostHog (including session replay), Outset, Pendo and support tickets, grades what it finds, and names the gaps \u2014 then pressure-tests a design or a roadmap call against that evidence. Also records new findings back into the Frame. Use for \"what do we know about X\", \"has this been researched\", \"is this hypothesis supported\", \"where are our blindspots\", \"what does the evidence say about this mock\", \"which of these should we build first\", or to log a finding.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-context/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-context.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-context/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/user-context"
     },
     {
       "name": "user-research",
@@ -104,6 +154,26 @@
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-system.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/design-system/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/design-system"
+    },
+    {
+      "name": "research-builder",
+      "stage": "define",
+      "description": "Builds the instruments a study needs that are not the Outset study itself: a Pendo in-product guide, a human interview guide, the PostHog dashboard that will measure the outcome, and the audience \u2014 who to test with, drawn from real feature usage rather than a guess. Use when someone says build the dashboard, write the interview guide, set up a Pendo survey, who should we test with, find me partners who use this feature, or build the measurement before we run.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-builder/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-builder.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-builder/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/research-builder"
+    },
+    {
+      "name": "user-personas",
+      "stage": "define",
+      "description": "Points work at the impact.com user persona set \u2014 three partner and three brand personas with jobs-to-be-done, workflow maps and per-claim confidence. Use in Empathize to check what is already known, in Define to frame a problem against a named persona, and in Ideate or Test to decide who a concept must satisfy first.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-personas/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-personas.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-personas/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/user-personas"
     },
     {
       "name": "write-spec",
@@ -166,6 +236,16 @@
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/partner-prototype"
     },
     {
+      "name": "persona-check",
+      "stage": "prototype",
+      "description": "Walks a design, flow or piece of copy through a persona as a task \u2014 where they hesitate, what they look for and cannot find, what they do instead \u2014 before it reaches real participants. A synthetic pre-test, not a verdict. Everything it produces is a hypothesis to test, never a finding. Use when someone says run this past a persona, synthetic user check, pre-test this prototype, how would a Scaling Up creator handle this, or check this before we recruit.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/persona-check/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/persona-check.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/persona-check/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/persona-check"
+    },
+    {
       "name": "ux-prototyping",
       "stage": "prototype",
       "description": "Prototype-phase orchestrator for any harness (Cursor, Claude Code, Claude chat, Figma Make, Copilot/Codex): installs missing Brand/Partner tools when a shell exists, launches a live Brand or Partner preview (localhost, Make preview, or Claude preview), then offers to publish a new GitHub repo on the designer\u2019s account. Use when the user says ux-prototyping, start a prototype, Brand or Partner prototype, localhost, Figma Make prototype, or GitHub Pages.",
@@ -184,6 +264,16 @@
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/accessibility-review.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/accessibility-review/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/accessibility-review"
+    },
+    {
+      "name": "adoption-check",
+      "stage": "test",
+      "description": "Checks what actually happened after something shipped. Reads the baseline from the Frame, re-runs the measure in PostHog, says whether the research held, and writes the outcome back as a claim. Closes the loop from research to decision to result. Use when someone says did it work, check adoption, what happened after we shipped, did the research hold up, or post-launch check.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/adoption-check/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/adoption-check.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/adoption-check/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/adoption-check"
     },
     {
       "name": "test-loopback",

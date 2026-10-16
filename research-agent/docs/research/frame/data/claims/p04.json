@@ -1,0 +1,20 @@
+{
+  "audience": "Partner",
+  "caveat": "Any in-product surface only reaches the minority who log in. Of 35,075 who could apply to the marketplace and never have, 2,304 signed in this month.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (Partner Value Stream). A live PostHog sign-in query would corroborate it directly.",
+  "domain": "Login & Access",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "platform-wide",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+  "posthog_label": "Cohort / persona: MAU, retention, stickiness",
+  "scope": "Creator cohort",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Most creators stop coming back — 79% have not signed in within 90 days.",
+  "verified": "2026-09-16"
+}

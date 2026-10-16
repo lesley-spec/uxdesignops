@@ -1,0 +1,13 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p15"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Save and organise links into folders instead of re-finding them for every piece of content.",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "severity": "major",
+  "stage": "Generate links"
+}

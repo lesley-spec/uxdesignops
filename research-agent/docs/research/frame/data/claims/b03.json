@@ -1,0 +1,19 @@
+{
+  "audience": "Both",
+  "caveat": "The resulting relationships convert at roughly a fifth of the direct path. Treating these as two problems has produced two partial fixes.",
+  "confidence": "HIGH",
+  "contested": false,
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+  "n": "158 reviews + 1.86M applications + conversion data",
+  "posthog": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+  "posthog_label": "Marketplace → apply conversion",
+  "scope": "Marketplace, both sides",
+  "segments": [
+    "partner:scaling-up",
+    "brand:scaling-up"
+  ],
+  "source": "Brand Value Stream Sept 2026, synthesised against Partner Value Stream",
+  "statement": "The marketplace fails both sides at once: brands cannot find partners worth approving, partners cannot find brands that will approve them.",
+  "verified": "2026-09-21"
+}

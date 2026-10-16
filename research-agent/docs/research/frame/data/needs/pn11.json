@@ -1,0 +1,15 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p16",
+    "p02"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Know whether an offer will pay back BEFORE investing days of content in it.",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "severity": "blocking",
+  "stage": "Track performance"
+}

@@ -1,0 +1,20 @@
+{
+  "audience": "Partner",
+  "caveat": "Platform-wide, not mobile-specific. Cannot currently be split by surface.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (the marketplace NPS corpus). Written NPS is self-report; no behavioural source corroborates it.",
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/data/4Ua6b2oCmgVqx357iQvPxX",
+  "n": "111 written responses",
+  "posthog": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+  "posthog_label": "Marketplace → apply conversion",
+  "scope": "Publishers; not split by surface",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Dovetail: Qualitative Study, Marketplace Partner Exp (Aug 2025 - Jul 2026)",
+  "statement": "Marketplace NPS is -59 across 111 written responses, with 74% detractors.",
+  "verified": "2026-10-06"
+}

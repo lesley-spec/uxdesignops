@@ -1,0 +1,17 @@
+{
+  "audience": "Brand",
+  "caveat": "The brands most in need of partners are the least visible to them. Only 4.9% took an application in 90 days.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (platform account data via the First 90 Days doc).",
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "12,005 brand accounts",
+  "scope": "Brand marketplace presence by tier",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+  "statement": "The brands that most need partners are the least visible to them — 18.6% of brands with no live partnerships are in the marketplace, against 98.3% of the largest.",
+  "verified": "2026-09-21"
+}

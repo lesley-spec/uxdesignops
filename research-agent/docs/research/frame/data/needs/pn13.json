@@ -1,0 +1,14 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p15"
+  ],
+  "evidence": "MEDIUM",
+  "need": "See which products actually sold, not just a total.",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Track performance"
+}

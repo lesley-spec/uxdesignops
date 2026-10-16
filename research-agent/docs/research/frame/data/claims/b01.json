@@ -1,0 +1,21 @@
+{
+  "audience": "Brand",
+  "caveat": "Acute in Scaling Up. Brands describe the Creator Marketplace specifically as not yet delivering creators consistently.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (G2 reviews). Frequency within one corpus is not independence.",
+  "domain": "Marketplace & Discovery",
+  "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+  "n": "158 reviews",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1071396",
+  "posthog_label": "Brand Discover metrics",
+  "scope": "Brands reviewing on G2, early 2025 - mid 2026",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+  "statement": "Partner discovery is the top brand improvement request, raised 6 times across 158 G2 reviews.",
+  "verified": "2026-09-21"
+}

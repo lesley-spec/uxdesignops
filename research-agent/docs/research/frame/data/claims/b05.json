@@ -1,0 +1,18 @@
+{
+  "audience": "Brand",
+  "caveat": "Named at enterprise as well as at Getting Started, so it is not only a first-run problem.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Signup & Onboarding",
+  "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+  "n": "158 reviews",
+  "scope": "Brands reviewing on G2",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+  "statement": "\"Steep learning curve\" is the single most repeated phrase in the brand review corpus.",
+  "verified": "2026-09-21"
+}

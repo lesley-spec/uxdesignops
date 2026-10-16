@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b15",
+    "b09"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Proof the channel works before a 12-month commitment — a trial, a downgrade, or a benchmark.",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "severity": "blocking",
+  "stage": "Commit"
+}

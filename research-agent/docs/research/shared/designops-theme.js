@@ -1,8 +1,19 @@
 (function () {
   var STORAGE_KEY = "theme";
   var SUBNAV_ITEMS = [
-    { key: "listing", label: "Research", path: "research/" },
+    { key: "listing", label: "Insight Monitor", path: "research/" },
+    { key: "frame", label: "The Frame", path: "frame/" },
     { key: "personas", label: "Personas", path: "personas/" },
+    {
+      key: "claude-frame",
+      label: "Claude Frame ↗",
+      external: "https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw",
+    },
+    {
+      key: "claude-personas",
+      label: "Claude Personas ↗",
+      external: "https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ",
+    },
     { key: "affinity", label: "Affinity", path: "reports/2026-08-24-affinity.html" },
     { key: "feed", label: "Competitors", path: "feed/" },
   ];
@@ -31,6 +42,7 @@
   function researchSection() {
     var path = currentPath();
     if (/\/personas(\/|$)/.test(path) || path.slice(-8) === "personas") return "personas";
+    if (/\/frame(\/|$)/.test(path) || path.slice(-5) === "frame") return "frame";
     if (/\/feed(\/|$)/.test(path) || path.slice(-4) === "feed") return "feed";
     if (/affinity\.html$/.test(path)) return "affinity";
     if (/\/research(\/|$)/.test(path) && path.indexOf("/skills/") === -1) return "listing";
@@ -113,6 +125,7 @@
   }
 
   function hrefFor(nav, item) {
+    if (item.external) return item.external;
     var listing = nav.querySelector("a[data-nav='listing']");
     var listingHref =
       (listing && listing.getAttribute("href")) ||
@@ -121,6 +134,23 @@
     var root = siteRootFromListing(nav);
     if (item.key === "listing") return listingHref || root + item.path;
     return root + item.path;
+  }
+
+  function fillResearchPanel(panel, nav) {
+    panel.innerHTML = "";
+    SUBNAV_ITEMS.forEach(function (item) {
+      var link = document.createElement("a");
+      link.className = "nav-dropdown-item";
+      link.setAttribute("data-subnav", item.key);
+      link.setAttribute("role", "menuitem");
+      link.href = hrefFor(nav, item);
+      link.textContent = item.label;
+      if (item.external) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+      panel.appendChild(link);
+    });
   }
 
   function setDropdownOpen(dropdown, open) {
@@ -166,15 +196,7 @@
       panel.setAttribute("role", "menu");
       panel.setAttribute("aria-labelledby", "research-dropdown-toggle");
 
-      SUBNAV_ITEMS.forEach(function (item) {
-        var link = document.createElement("a");
-        link.className = "nav-dropdown-item";
-        link.setAttribute("data-subnav", item.key);
-        link.setAttribute("role", "menuitem");
-        link.href = hrefFor(nav, item);
-        link.textContent = item.label;
-        panel.appendChild(link);
-      });
+      fillResearchPanel(panel, nav);
 
       existing.appendChild(toggle);
       existing.appendChild(panel);
@@ -193,12 +215,8 @@
         if (event.key === "Escape") setDropdownOpen(existing, false);
       });
     } else {
-      existing.querySelectorAll("[data-subnav]").forEach(function (link) {
-        var item = SUBNAV_ITEMS.filter(function (row) {
-          return row.key === link.getAttribute("data-subnav");
-        })[0];
-        if (item) link.href = hrefFor(nav, item);
-      });
+      var panel = existing.querySelector(".nav-dropdown-panel");
+      if (panel) fillResearchPanel(panel, nav);
     }
 
     var toggle = existing.querySelector(".nav-dropdown-toggle");
@@ -223,7 +241,7 @@
     style.id = "designops-nav-dropdown-css";
     style.textContent =
       ".report-nav .nav-dropdown{position:relative;display:inline-flex;}" +
-      ".report-nav .nav-dropdown-panel{position:absolute;z-index:1300;top:calc(100% + 6px);left:0;min-width:13rem;margin:0;padding:6px;border-radius:8px;border:1px solid var(--border-default);background:var(--card);box-shadow:var(--fab-shadow);display:flex;flex-direction:column;gap:2px;}" +
+      ".report-nav .nav-dropdown-panel{position:absolute;z-index:1300;top:calc(100% + 6px);left:0;min-width:15rem;margin:0;padding:6px;border-radius:8px;border:1px solid var(--border-default);background:var(--card);box-shadow:var(--fab-shadow);display:flex;flex-direction:column;gap:2px;}" +
       ".report-nav .nav-dropdown-panel[hidden]{display:none!important;}" +
       ".report-nav .nav-dropdown-item{display:block;width:100%;box-sizing:border-box;padding:8px 12px;border-radius:6px;text-decoration:none!important;white-space:nowrap;font-size:.88rem;font-weight:600;color:var(--text-default);background:transparent;}" +
       ".report-nav .nav-dropdown-item:hover{background:var(--background-hover);color:var(--text-default);}" +

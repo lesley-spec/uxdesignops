@@ -1,0 +1,17 @@
+{
+  "audience": "Brand",
+  "caveat": "Brands describe setup as feature-dense and easy to get wrong (b05, b18); this is where that shows up in behaviour. Email to user account holds at 58%, company account at 39%, then 2FA takes 93% of whoever is left — median 7m53s to pass it, average over 11 hours, which is people leaving and coming back. Seven-day window: a rate, not a total.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (a single PostHog funnel), and a seven-day window. Verified live, which is why it is not lower — but one instrument is one instrument.",
+  "domain": "Signup & Onboarding",
+  "link": "https://us.posthog.com/project/186875/insights/aZ8uDC2k",
+  "n": "704 people, 7 days",
+  "scope": "Brand signup, 6-13 Oct 2026",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "source": "PostHog saved funnel: Brand Signup Funnel, read live 2026-10-13 — backing the brand accounts of dense, hard-to-get-right setup",
+  "statement": "Brands abandon signup at the security step, not at the form — the 2FA screen takes nine in ten of those still going, and only 1.28% of 704 finish.",
+  "verified": "2026-10-13"
+}

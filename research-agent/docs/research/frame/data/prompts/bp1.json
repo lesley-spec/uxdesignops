@@ -1,0 +1,12 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b01",
+    "b02",
+    "b03",
+    "g05"
+  ],
+  "label": "One broken marketplace, or two?",
+  "order": 1,
+  "question": "Brands say they cannot find partners worth having; partners say they cannot find brands that will approve them. Are we looking at one marketplace failing in both directions, or two separate problems?"
+}

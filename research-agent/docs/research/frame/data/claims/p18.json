@@ -1,0 +1,17 @@
+{
+  "audience": "Partner",
+  "caveat": "A brand independently criticised the rejection email for giving no actionable detail, so both sides name the same failure.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "12 contextual inquiries",
+  "scope": "Partners applying to programmes",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Partners report multi-month silences on applications, with no status and no reason given.",
+  "verified": "2026-09-16"
+}

@@ -1,0 +1,18 @@
+{
+  "audience": "Partner",
+  "caveat": "This is the behavioural corroboration for what partners and brands both describe: partners say they cannot find brands worth applying to (p08, p12), brands say they cannot find partners worth approving (b01, b03). Browsing converting at well under one percent is what that looks like in the data. Median 18 hours from browse to apply — applying is considered, not impulsive. It reframes the problem: perhaps less that partners cannot find brands than that browsing does not lead anywhere.",
+  "confidence": "HIGH",
+  "contested": false,
+  "domain": "Marketplace & Discovery",
+  "link": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+  "n": "72,239 people, 30 days",
+  "scope": "All partner marketplace browsing, 13 Sep - 13 Oct 2026",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "PostHog: Marketplace → apply conversion, read live 2026-10-13 — backing the partner and brand discovery findings",
+  "statement": "Partners browse the marketplace without applying — 72,239 browsed over 30 days and 497 started an application.",
+  "verified": "2026-10-13"
+}

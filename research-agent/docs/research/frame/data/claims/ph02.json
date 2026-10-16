@@ -1,0 +1,17 @@
+{
+  "audience": "Partner",
+  "caveat": "Steady attrition rather than a cliff: 79% submit email, 71% account details, 63% business model, each step under a minute. Partners describe the problems starting after they are in (p14, p16), and this is consistent with that — the loss is downstream, not at the door.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (a single PostHog funnel), and a seven-day window. Qual on why partners stall after signup would lift it.",
+  "domain": "Signup & Onboarding",
+  "link": "https://us.posthog.com/project/186875/insights/x1D0fwOs",
+  "n": "28,184 people, 7 days",
+  "scope": "Partner branded signup, 6-13 Oct 2026",
+  "segments": [
+    "partner:getting-started"
+  ],
+  "source": "PostHog saved funnel: Branded signup funnel prod, read live 2026-10-13",
+  "statement": "Signup is not where partners are lost — 63% of 28,184 get through it to the business model step.",
+  "verified": "2026-10-13"
+}

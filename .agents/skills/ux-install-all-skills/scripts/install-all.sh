@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install all 19 UX Design Thinking pipeline skills into a project + globally.
+# Install all 28 UX Design Thinking + UX Research pipeline skills into a project + globally.
 # Usage:
 #   bash install-all.sh
 #   bash install-all.sh --target ~/my-project
@@ -12,6 +12,13 @@ ZIP_URL="${DESIGNOPS_SKILLS_ZIP:-https://lesley-spec.github.io/uxdesignops/skill
 
 PIPELINE_SKILLS=(
   design-thinking-ux
+  ux-research
+  research-intake
+  user-context
+  user-personas
+  research-planner
+  research-builder
+  frame-maintenance
   user-research
   research-synthesis
   synthesize-research
@@ -27,9 +34,11 @@ PIPELINE_SKILLS=(
   ux-prototyping
   brand-prototype
   partner-prototype
+  persona-check
   test-plan
   accessibility-review
   test-loopback
+  adoption-check
 )
 
 TARGET="."
@@ -122,7 +131,7 @@ _link_skill() {
   ln -sfn "$rel/$name" "$dest_dir/$name"
 }
 
-# Every skill folder in the pack (19 pipeline + this installer + any extras).
+# Every skill folder in the pack (28 pipeline + this installer + any extras).
 ALL_NAMES=()
 for skill_dir in "$SOURCE_PARENT"/*/; do
   [[ -d "$skill_dir" ]] || continue
@@ -196,15 +205,15 @@ cat <<EOF
 ═══════════════════════════════════════════════════════════
  UX DESIGN THINKING SKILLS READY
 ═══════════════════════════════════════════════════════════
- pipeline skills:  19 / 19
+ pipeline skills:  28 / 28
  pack folders:     ${skill_n}
  project:          ${project_line}
  Cursor global:    ${cursor_global_ok}  (${cursor_global})
  Claude global:    ${claude_global_ok}  (${claude_global})
 
  Next: in chat, say  use design-thinking-ux
- That walks Empathize → Test and stops at each human gate.
+ or  use ux-research  for research + Frame skills.
 
-IMPACT_SKILLS_READY pipeline=19 dest=${project_line} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
+IMPACT_SKILLS_READY pipeline=28 dest=${project_line} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
 ═══════════════════════════════════════════════════════════
 EOF

@@ -1,0 +1,11 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "ph02",
+    "ph03",
+    "p05"
+  ],
+  "label": "They sign up, then stall",
+  "order": 5,
+  "question": "Partners get through signup and then stop. What happens in that first week that we are not seeing, and how much of it can we even measure today?"
+}

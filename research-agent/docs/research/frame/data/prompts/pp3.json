@@ -1,0 +1,11 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "ph05",
+    "p11",
+    "p10"
+  ],
+  "label": "Partners work from their phones",
+  "order": 3,
+  "question": "Partners describe working from their phones between other commitments, and a large share of sessions are mobile. What does the desktop-only platform cost them, and where does it bite first?"
+}

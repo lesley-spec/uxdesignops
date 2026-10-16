@@ -1,0 +1,18 @@
+{
+  "audience": "Brand",
+  "caveat": "20% of brands have no live partnerships at all, and 74.4% of those have a CSM. Attention is being spent where nothing is happening.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (platform account data via the First 90 Days doc).",
+  "domain": "Payments and Finance",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "12,005 brand accounts",
+  "scope": "Real brand accounts",
+  "segments": [
+    "brand:getting-started",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+  "statement": "Brand value is concentrated in a few large programmes — 861 brands with 1,000+ partners produce $252.6M of 30-day commission, while 2,451 with none produce nothing.",
+  "verified": "2026-09-21"
+}

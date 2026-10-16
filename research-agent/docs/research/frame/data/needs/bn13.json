@@ -1,0 +1,13 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b20"
+  ],
+  "evidence": "LOW",
+  "need": "Attribution that survives past discount codes — codes leak to people who were never recruited.",
+  "segments": [
+    "brand:scaling-up"
+  ],
+  "severity": "major",
+  "stage": "Measure"
+}

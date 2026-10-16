@@ -1,0 +1,16 @@
+{
+  "audience": "Partner",
+  "caveat": "Sample, cohort and daily actives are three different numbers and are routinely mixed. 849,267 is the live all-partners cohort (782,577 is a stale snapshot still circulating), ~150,300 is average DAU, 425,561 is the creator cohort, and researched personas are 26-162 people each. Any claim quoting one as another is wrong.",
+  "confidence": "MEDIUM",
+  "contested": true,
+  "domain": "Reporting",
+  "link": "https://impact.dovetail.com/data/4uoFsqQQnKmz1QpEy5cyL9",
+  "n": "849,267 in cohort",
+  "scope": "Population definitions",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "source": "PostHog cohort 355433, read live 2026-10-12",
+  "statement": "The partner cohort is 849,267 as of 12 Oct 2026; briefs still quote 782,577, and average daily active partners is roughly 150,300.",
+  "verified": "2026-10-12"
+}

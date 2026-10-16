@@ -1,0 +1,17 @@
+{
+  "audience": "Partner",
+  "caveat": "Named as the #1 day-to-day worry. Every analytics feature shipped so far is retrospective; pre-commitment signal is a different product.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Reporting",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "12 contextual inquiries",
+  "scope": "Scaling Up and hybrid partners",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Partner Value Stream Founding Research, Sept 2026",
+  "statement": "Partners want to know whether an offer will pay back before investing days in it, not after.",
+  "verified": "2026-09-16"
+}

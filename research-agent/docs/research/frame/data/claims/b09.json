@@ -1,0 +1,19 @@
+{
+  "audience": "Brand",
+  "caveat": "Engaged ~6,400, Power ~780.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "demoted": "Was HIGH. One source (PostHog cohorts), read through a document rather than live.",
+  "domain": "Signup & Onboarding",
+  "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+  "n": "~13,700 avg brand DAU",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+  "posthog_label": "Cohort / persona: engagement tiers",
+  "scope": "Brand daily actives",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "source": "PostHog brand cohorts, Jan-Jun 2026",
+  "statement": "Lightly Active is the largest brand tier (~9,700 of ~13,700 DAU), suggesting many brands never become habitual users.",
+  "verified": "2026-09-21"
+}

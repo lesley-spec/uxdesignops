@@ -1,0 +1,17 @@
+{
+  "audience": "Brand",
+  "caveat": "Third most requested, raised 4 times. Produced the angriest review in the corpus.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+  "n": "158 reviews",
+  "scope": "Mid-market and enterprise brands",
+  "segments": [
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+  "statement": "Contracts cannot be amended while running, and rate changes cannot be scheduled.",
+  "verified": "2026-09-21"
+}

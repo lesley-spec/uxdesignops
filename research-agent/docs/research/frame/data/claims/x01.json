@@ -1,0 +1,17 @@
+{
+  "audience": "Both",
+  "caveat": "Inferred by placing the two corpora side by side rather than measured. Neither side is told whether what they are seeing is normal, and both quietly disengage.",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Reporting",
+  "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+  "n": "cross-corpus synthesis",
+  "scope": "Both sides, first 90 days",
+  "segments": [
+    "partner:getting-started",
+    "brand:getting-started"
+  ],
+  "source": "Partner and Brand Value Stream Founding Research, Sept 2026",
+  "statement": "Both sides of the marketplace get silence at the same moment: a creator with no clicks sees an empty table, a new brand at day 45 with two partners sees the same.",
+  "verified": "2026-09-21"
+}

@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b19"
+  ],
+  "evidence": "LOW",
+  "need": "Approve in bulk rather than one partner at a time.",
+  "segments": [
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Recruit"
+}

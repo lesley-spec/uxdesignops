@@ -1,0 +1,13 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p14"
+  ],
+  "evidence": "LOW",
+  "need": "Find the reports that already answer this — they exist and are not discoverable.",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "severity": "watch",
+  "stage": "Track performance"
+}

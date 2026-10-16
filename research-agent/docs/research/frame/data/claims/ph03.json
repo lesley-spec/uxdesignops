@@ -1,0 +1,16 @@
+{
+  "audience": "Partner",
+  "caveat": "A 99.3% step drop is not a behaviour, it is almost certainly a measurement problem: the CHECKLIST events are likely partly instrumented, renamed, or firing only on a path most partners never take. Confirm the event definitions before anyone treats this as a finding — an uninstrumented step returns zero, which reads identically to nobody completing it. No qual supports a cliff here.",
+  "confidence": "LOW",
+  "contested": false,
+  "domain": "Signup & Onboarding",
+  "link": "https://us.posthog.com/project/186875/insights/x1D0fwOs",
+  "n": "17,695 people, 7 days",
+  "scope": "Partner onboarding checklist, 6-13 Oct 2026",
+  "segments": [
+    "partner:getting-started"
+  ],
+  "source": "PostHog saved funnel: Branded signup funnel prod, read live 2026-10-13",
+  "statement": "The onboarding checklist looks like it loses almost everyone, but the drop is too steep to believe — 17,695 submit the business model step and 125 the next one.",
+  "verified": "2026-10-13"
+}

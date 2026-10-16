@@ -104,8 +104,10 @@ Ask:
 
 - Existing research? (PostHog, Pendo, Dovetail, Outset, Freshdesk, pack, paste)
 - If yes: links / paste — synthesize; don’t redo fieldwork unless gaps remain
-- If no: pull live quant (`data-analyze`)? triangulate (`research-synthesis`)?
-  affinity-map one corpus (`synthesize-research`)? plan a study (`user-research`)?
+- If no: Frame check (`user-context` / `ux-research`)? pull live quant
+  (`data-analyze`)? triangulate (`research-synthesis`)? affinity-map one
+  corpus (`synthesize-research`)? plan a study (`user-research` /
+  `research-planner`)?
 - What decision must this unlock?
 
 **Gate:** Designer confirms **problem worth solving** (or explicit override /

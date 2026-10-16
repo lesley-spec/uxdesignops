@@ -1,0 +1,19 @@
+{
+  "audience": "Brand",
+  "confidence": "MEDIUM",
+  "contested": false,
+  "domain": "Login & Access",
+  "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+  "n": "158 reviews",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1435983",
+  "posthog_label": "Session population: login outcomes and latency",
+  "scope": "All brand tiers",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+  "statement": "Brands are forced to re-login 3-6 times per day, and reports reset on section change.",
+  "verified": "2026-09-21"
+}

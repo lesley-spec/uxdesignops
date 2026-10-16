@@ -1,0 +1,15 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b06"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Stop losing state — re-login 3-6 times a day, reports resetting on section change.",
+  "segments": [
+    "brand:getting-started",
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Protect"
+}

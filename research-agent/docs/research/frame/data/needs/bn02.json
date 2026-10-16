@@ -1,0 +1,13 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b15"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Clear tiers and pricing at signing, without upgrade-only mid-cycle surprises.",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "severity": "major",
+  "stage": "Commit"
+}

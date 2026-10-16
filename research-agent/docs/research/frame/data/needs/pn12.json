@@ -1,0 +1,16 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p01",
+    "p03",
+    "x01"
+  ],
+  "evidence": "HIGH",
+  "need": "Know whether what I am seeing is normal — a first click, not a dashboard.",
+  "segments": [
+    "partner:getting-started",
+    "partner:scaling-up"
+  ],
+  "severity": "blocking",
+  "stage": "Track performance"
+}

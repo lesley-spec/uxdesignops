@@ -1,0 +1,12 @@
+{
+  "audience": "Partner",
+  "claims": [
+    "p01",
+    "p02",
+    "p03",
+    "p16"
+  ],
+  "label": "Most creators never see a click",
+  "order": 2,
+  "question": "Most creators have done the work and have nothing to show for it. What does the platform owe someone whose links have never been clicked, and what do we know about what they actually need?"
+}

@@ -240,7 +240,7 @@
   <script src="../shared/designops-theme.js"></script>
   <script>
     (function () {
-      var INSTALL = "Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.\n\nRun this with sandbox off / full permissions:\n\ncurl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash\n\nWhen you see IMPACT_SKILLS_READY pipeline=19, stop. Next I will use design-thinking-ux.";
+      var INSTALL = "Install the impact.com UX Design Thinking pack. Do not look it up in the skills catalog.\n\nRun this with sandbox off / full permissions:\n\ncurl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash\n\nWhen you see IMPACT_SKILLS_READY pipeline=28, stop. Next I will use design-thinking-ux or ux-research.";
       var START = "Use Design Thinking UX — Partner UPS Step 2. I don’t have research yet; pull live data and walk me Empathize through Test. Stop at each human gate.";
       var PHASES = [
         { id: "install", n: "0", label: "Install" },
@@ -270,7 +270,7 @@
       function stepsFor(tool) {
         var harness = tool === "cursor" ? "cursor" : "claude-code";
         var installYou = INSTALL;
-        var installAgent = "<p>Running the published installer with full permissions (writes project + <code>~/.cursor/skills</code> + <code>~/.claude/skills</code>).</p><p><code>IMPACT_SKILLS_READY pipeline=19 dest=.agents/skills global_cursor=ok global_claude=ok</code></p><p>All 19 Design Thinking skills are installed. Start a guided run with <strong>use design-thinking-ux</strong> — I’ll walk Empathize → Test and stop at each human gate.</p>";
+        var installAgent = "<p>Running the published installer with full permissions (writes project + <code>~/.cursor/skills</code> + <code>~/.claude/skills</code>).</p><p><code>IMPACT_SKILLS_READY pipeline=28 dest=.agents/skills global_cursor=ok global_claude=ok</code></p><p>All 28 Design Thinking + UX Research skills are installed. Start with <strong>use design-thinking-ux</strong> or <strong>use ux-research</strong>.</p>";
         var protoAgent = "<p>Invoked <code>ux-prototyping</code> → <code>partner-prototype</code>. Node + Vite handled in this harness. Open:</p><p><code>http://localhost:5173/</code></p><p><code>IMPACT_PROTOTYPE_READY shell=partner harness=" + harness + " url=http://localhost:5173/</code></p><p>When the preview works, Test next — I can run a11y + coverage pre-flight and draft an Outset study. Go?</p>";
 
         return [

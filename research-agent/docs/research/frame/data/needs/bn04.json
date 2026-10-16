@@ -1,0 +1,13 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b05"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Set commissions correctly the first time — fixing them later is convoluted.",
+  "segments": [
+    "brand:getting-started"
+  ],
+  "severity": "major",
+  "stage": "Integrate & configure"
+}

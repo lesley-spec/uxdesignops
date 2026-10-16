@@ -1,0 +1,17 @@
+{
+  "audience": "Partner",
+  "caveat": "The ~90% figure was one participant's own experience, repeated as a segment rate. Perceived rejection and measured rejection are different claims; multi-month silences may explain the gap.",
+  "confidence": "MEDIUM",
+  "contested": true,
+  "domain": "Approval & vetting",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "1.86M applications vs interview reports",
+  "scope": "Partner applications",
+  "segments": [
+    "partner:scaling-up",
+    "partner:strategic-growth"
+  ],
+  "source": "Partner Value Stream Sept 2026; persona set corrections Oct 2026",
+  "statement": "Partners report roughly 90% application rejection; the measured rate is 42.5% of 1.86M applications.",
+  "verified": "2026-10-08"
+}

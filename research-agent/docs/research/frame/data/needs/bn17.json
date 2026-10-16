@@ -1,0 +1,14 @@
+{
+  "audience": "Brand",
+  "claims": [
+    "b04"
+  ],
+  "evidence": "MEDIUM",
+  "need": "Change a contract that is already running, and schedule rate changes ahead.",
+  "segments": [
+    "brand:scaling-up",
+    "brand:strategic-growth"
+  ],
+  "severity": "major",
+  "stage": "Protect"
+}

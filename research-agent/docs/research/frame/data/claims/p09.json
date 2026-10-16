@@ -1,0 +1,18 @@
+{
+  "audience": "Partner",
+  "caveat": "Circulated as a segment-wide rate. It is 4 of 11.",
+  "confidence": "LOW",
+  "contested": true,
+  "domain": "Links & tracking",
+  "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+  "n": "4 people",
+  "posthog": "https://us.posthog.com/project/186875/dashboard/1610349",
+  "posthog_label": "LinkGen slideout: conversion friction",
+  "scope": "Scaling Up creators",
+  "segments": [
+    "partner:scaling-up"
+  ],
+  "source": "Partner Value Stream Sept 2026; denominator corrected Oct 2026",
+  "statement": "40% of the core partner segment struggle with the link workflow.",
+  "verified": "2026-10-08"
+}

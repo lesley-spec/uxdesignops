@@ -1,0 +1,961 @@
+[
+  {
+    "audience": "Brand",
+    "caveat": "Acute in Scaling Up. Brands describe the Creator Marketplace specifically as not yet delivering creators consistently.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (G2 reviews). Frequency within one corpus is not independence.",
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+    "n": "158 reviews",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1071396",
+    "posthog_label": "Brand Discover metrics",
+    "scope": "Brands reviewing on G2, early 2025 - mid 2026",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+    "statement": "Partner discovery is the top brand improvement request, raised 6 times across 158 G2 reviews.",
+    "verified": "2026-09-21",
+    "id": "b01"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Raised 5 times. Profiles listed as content sites turn out to be coupon or deals sites.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (G2 reviews). Application-quality data in PostHog would corroborate it.",
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+    "n": "158 reviews",
+    "scope": "Brands reviewing on G2",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+    "statement": "Partner vetting is the second brand request: applicants are spam, misrepresented, or break rules immediately.",
+    "verified": "2026-09-21",
+    "id": "b02"
+  },
+  {
+    "audience": "Both",
+    "caveat": "The resulting relationships convert at roughly a fifth of the direct path. Treating these as two problems has produced two partial fixes.",
+    "confidence": "HIGH",
+    "contested": false,
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+    "n": "158 reviews + 1.86M applications + conversion data",
+    "posthog": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+    "posthog_label": "Marketplace \u2192 apply conversion",
+    "scope": "Marketplace, both sides",
+    "segments": [
+      "partner:scaling-up",
+      "brand:scaling-up"
+    ],
+    "source": "Brand Value Stream Sept 2026, synthesised against Partner Value Stream",
+    "statement": "The marketplace fails both sides at once: brands cannot find partners worth approving, partners cannot find brands that will approve them.",
+    "verified": "2026-09-21",
+    "id": "b03"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Third most requested, raised 4 times. Produced the angriest review in the corpus.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+    "n": "158 reviews",
+    "scope": "Mid-market and enterprise brands",
+    "segments": [
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+    "statement": "Contracts cannot be amended while running, and rate changes cannot be scheduled.",
+    "verified": "2026-09-21",
+    "id": "b04"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Named at enterprise as well as at Getting Started, so it is not only a first-run problem.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Signup & Onboarding",
+    "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+    "n": "158 reviews",
+    "scope": "Brands reviewing on G2",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+    "statement": "\"Steep learning curve\" is the single most repeated phrase in the brand review corpus.",
+    "verified": "2026-09-21",
+    "id": "b05"
+  },
+  {
+    "audience": "Brand",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Login & Access",
+    "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+    "n": "158 reviews",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1435983",
+    "posthog_label": "Session population: login outcomes and latency",
+    "scope": "All brand tiers",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+    "statement": "Brands are forced to re-login 3-6 times per day, and reports reset on section change.",
+    "verified": "2026-09-21",
+    "id": "b06"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "The pattern is corpus-wide; the five-hour figure is a single reviewer and should not be quoted as a rate.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Payments and Finance",
+    "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+    "n": "158 reviews, the five-hour figure from 1",
+    "scope": "Brands reviewing on G2",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+    "statement": "Automated tracking, payment and tax work is the strongest reason brands stay; one reports five hours returned per week.",
+    "verified": "2026-09-21",
+    "id": "b07"
+  },
+  {
+    "audience": "Both",
+    "caveat": "LATAM is the extreme: 35.8 partners per brand against 8.8 in NAM. The loudest partner complaint - not enough brands to choose from - is a supply problem in some regions, visible in our own DAU data.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (PostHog cohorts), read through a document rather than live.",
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+    "n": "~13,700 brand DAU, ~146,400 partner DAU",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+    "posthog_label": "Cohort / persona: geography",
+    "scope": "Daily actives by region",
+    "segments": [
+      "brand:scaling-up",
+      "partner:scaling-up"
+    ],
+    "source": "PostHog brand and partner cohorts, Jan-Jun 2026",
+    "statement": "Brands are materially more NAM-concentrated than partners: 60% of brand DAU against 49% of partner DAU.",
+    "verified": "2026-09-21",
+    "id": "b08"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Engaged ~6,400, Power ~780.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (PostHog cohorts), read through a document rather than live.",
+    "domain": "Signup & Onboarding",
+    "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+    "n": "~13,700 avg brand DAU",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+    "posthog_label": "Cohort / persona: engagement tiers",
+    "scope": "Brand daily actives",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "source": "PostHog brand cohorts, Jan-Jun 2026",
+    "statement": "Lightly Active is the largest brand tier (~9,700 of ~13,700 DAU), suggesting many brands never become habitual users.",
+    "verified": "2026-09-21",
+    "id": "b09"
+  },
+  {
+    "audience": "Both",
+    "caveat": "Inferred from the two corpora rather than measured. Partners need speed; brands need depth and control. Nearly every partner friction is speed being taxed; nearly every brand friction is depth or control withheld.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/3ou91MsxLsBENNxp0c9puP",
+    "n": "158 reviews + 37 Gong calls + 12 contextual inquiries",
+    "scope": "Cross-audience synthesis",
+    "segments": [
+      "partner:scaling-up",
+      "brand:scaling-up"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026",
+    "statement": "For partners impact.com is a waypoint; for brands it is a workspace.",
+    "verified": "2026-09-21",
+    "id": "b10"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Named but unquantified. Worth a dedicated question before it carries a decision.",
+    "confidence": "LOW",
+    "contested": false,
+    "domain": "Signup & Onboarding",
+    "link": "https://impact.dovetail.com/docs/58jBwSNJg0NZGfFZFvQxN2",
+    "n": "158 reviews",
+    "scope": "Brands reviewing on G2",
+    "segments": [
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream Founding Research, Sept 2026 (G2)",
+    "statement": "Brands spend significant time teaching partners to use the platform.",
+    "verified": "2026-09-21",
+    "id": "b11"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "78.1% of brands with no live partnerships approve under 5% of applicants; 72.4% of 1-9 partner brands do the same. The partner-side complaint about rejection is concentrated in applications to the smallest brands.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (platform approval data via the First 90 Days doc). Re-running it live would make it HIGH.",
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "9,164 brands",
+    "scope": "Brands by partner-count tier",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+    "statement": "Small brands turn down nearly every applicant while large ones approve almost half \u2014 9.9% lifetime at 1\u20139 partners against 42.7% at 1,000+.",
+    "verified": "2026-09-21",
+    "id": "b12"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "20% of brands have no live partnerships at all, and 74.4% of those have a CSM. Attention is being spent where nothing is happening.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (platform account data via the First 90 Days doc).",
+    "domain": "Payments and Finance",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "12,005 brand accounts",
+    "scope": "Real brand accounts",
+    "segments": [
+      "brand:getting-started",
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+    "statement": "Brand value is concentrated in a few large programmes \u2014 861 brands with 1,000+ partners produce $252.6M of 30-day commission, while 2,451 with none produce nothing.",
+    "verified": "2026-09-21",
+    "id": "b13"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "The brands most in need of partners are the least visible to them. Only 4.9% took an application in 90 days.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (platform account data via the First 90 Days doc).",
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "12,005 brand accounts",
+    "scope": "Brand marketplace presence by tier",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+    "statement": "The brands that most need partners are the least visible to them \u2014 18.6% of brands with no live partnerships are in the marketplace, against 98.3% of the largest.",
+    "verified": "2026-09-21",
+    "id": "b14"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "The other four of ten are about manual work, which is the job the platform already does well. The risk objection is the one that remains unanswered after signing: no trial, no mid-cycle downgrade.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Signup & Onboarding",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "10 Gong calls",
+    "scope": "Pre-sale conversations, Getting Started tier",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+    "statement": "Six of ten pre-sale brand objections are about risk, not product: cost, the 12-month commitment, and no guarantee of partners.",
+    "verified": "2026-09-21",
+    "id": "b15"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "One brand asks for benchmarking metrics while another, the same quarter, praises the built-in benchmarks. A discoverability failure on a working feature, not a missing capability.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Reporting",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "10 Gong calls + G2 reviews",
+    "scope": "Brands in first 90 days",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+    "statement": "\"Is this normal?\" is the biggest unserved job for new brands: benchmarks exist in the product but the tier that needs them cannot find them.",
+    "verified": "2026-09-21",
+    "id": "b16"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Second most requested improvement platform-wide, but the cost is not evenly distributed. One small F&B brand rates 2.5 stars citing spam applicants.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "10 Gong calls + 158 G2 reviews",
+    "scope": "Getting Started brands",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+    "statement": "Spam and low-quality applicants cost solo brand operators disproportionately: vetting falls hardest on the tier with least capacity.",
+    "verified": "2026-09-21",
+    "id": "b17"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Done inconsistently rather than badly: one brand describes onboarding as flawless, another needed several calls plus developer API work.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Signup & Onboarding",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "10 Gong calls + G2 reviews",
+    "scope": "Brands integrating in first 30 days",
+    "segments": [
+      "brand:getting-started",
+      "brand:scaling-up"
+    ],
+    "source": "Brand Value Stream: Getting Started, First 90 Days (Sept 2026)",
+    "statement": "Integration delays launch for non-technical brand staff; BigCommerce, Shopify and HubSpot are all named.",
+    "verified": "2026-09-21",
+    "id": "b18"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Two separate figures from two accounts: 15 hrs/week on ops, 8+ hrs per influencer vetted. Neither is a segment rate.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+    "n": "11 Gong sources",
+    "scope": "Scaling Up brands",
+    "segments": [
+      "brand:scaling-up"
+    ],
+    "source": "Brand Persona \u2014 Gong (Geoship, Skylight)",
+    "statement": "Scaling Up brands spend 8-15 hours per week on manual payments, approvals, reporting and influencer vetting.",
+    "verified": "2026-10-13",
+    "id": "b19"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Single account. Corroborated in spirit by the partner-side hybrid finding on code spread, but not independently measured.",
+    "confidence": "LOW",
+    "contested": false,
+    "domain": "Links & tracking",
+    "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+    "n": "1 account",
+    "scope": "Brands using code-based attribution",
+    "segments": [
+      "brand:scaling-up"
+    ],
+    "source": "Brand Persona \u2014 Gong (johnnie O)",
+    "statement": "Discount codes leak: codes issued to recruited partners are used by others, breaking attribution.",
+    "verified": "2026-10-13",
+    "id": "b20"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Retention risk is framed by brands as vendor lock-in: the partner relationships, not the tooling, are what they fear losing.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Payments and Finance",
+    "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+    "n": "16 Gong sources",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1988298",
+    "posthog_label": "Anytime withdrawals: payout funnel and failures",
+    "scope": "Strategic Growth brands",
+    "segments": [
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Persona \u2014 Gong (Axi EMEA, ButcherBox, Sonos)",
+    "statement": "Enterprise brands cite integration complexity, multi-region payment and tax compliance, and fear of losing partner relationships when switching networks.",
+    "verified": "2026-10-13",
+    "id": "b21"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "A single named target repeated as a tier benchmark. Treat as one brand's goal until more sources state a figure.",
+    "confidence": "LOW",
+    "contested": false,
+    "domain": "Reporting",
+    "link": "https://impact.dovetail.com/data/5zA0moYXa2EzqZrX2QfTVM",
+    "n": "1-2 accounts",
+    "scope": "Strategic Growth brands",
+    "segments": [
+      "brand:strategic-growth"
+    ],
+    "source": "Brand Persona \u2014 Gong (Coravin)",
+    "statement": "Enterprise brands need to show partnerships reaching 10-12% of total revenue to justify a multi-year commitment.",
+    "verified": "2026-10-13",
+    "id": "b22"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Sample, cohort and daily actives are three different numbers and are routinely mixed. 849,267 is the live all-partners cohort (782,577 is a stale snapshot still circulating), ~150,300 is average DAU, 425,561 is the creator cohort, and researched personas are 26-162 people each. Any claim quoting one as another is wrong.",
+    "confidence": "MEDIUM",
+    "contested": true,
+    "domain": "Reporting",
+    "link": "https://impact.dovetail.com/data/4uoFsqQQnKmz1QpEy5cyL9",
+    "n": "849,267 in cohort",
+    "scope": "Population definitions",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "PostHog cohort 355433, read live 2026-10-12",
+    "statement": "The partner cohort is 849,267 as of 12 Oct 2026; briefs still quote 782,577, and average daily active partners is roughly 150,300.",
+    "verified": "2026-10-12",
+    "id": "c01"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Quoted as a percentage with no denominator given. Sibling figures from the same study turned out to be 4 and 6 people. Needs its n before it is repeated.",
+    "confidence": "LOW",
+    "contested": true,
+    "domain": "Login & Access",
+    "link": "https://impact.dovetail.com/data/4uoFsqQQnKmz1QpEy5cyL9",
+    "n": "denominator unstated",
+    "posthog": "https://us.posthog.com/project/186875/insights/Upk29eOv",
+    "posthog_label": "Rage clicks by page \u2014 measurable friction, if you want a denominator",
+    "scope": "Scaling Up creators",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "Partner Personas / Day in the Life, Oct 2026",
+    "statement": "33% of Scaling Up creators cite broken UI as their number one pain.",
+    "verified": "2026-10-13",
+    "id": "c03"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Discovery and vetting are the top two requests and are probably one problem, but no measurement separates search failure from approval failure.",
+    "confidence": "GAP",
+    "contested": false,
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "0",
+    "scope": "Brand marketplace search",
+    "segments": [
+      "brand:scaling-up"
+    ],
+    "source": "Derived from b01 and b02",
+    "statement": "Nothing measures whether brands can find partners they would actually approve, as distinct from finding partners at all.",
+    "verified": "2026-09-21",
+    "id": "g05"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Richer analytics for this group would show an emptier room. The job is the first click, not the dashboard.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (platform data via the Partner Value Stream). HIGH needs two independent sources agreeing \u2014 a behavioural corroboration in PostHog would lift it.",
+    "domain": "Links & tracking",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "platform-wide",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/2065762",
+    "posthog_label": "Links tracked KPI baseline",
+    "scope": "All creators on platform",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026 (BigQuery)",
+    "statement": "Most creators never get a single click on their links \u2014 69% have never driven one.",
+    "verified": "2026-09-16",
+    "id": "p01"
+  },
+  {
+    "audience": "Partner",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (platform data via the Partner Value Stream). Large n is not independence.",
+    "domain": "Links & tracking",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "867,402 partnerships",
+    "scope": "All partnerships formed",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Nine in ten partnerships never earn anything \u2014 10.1% of 867,402 formed ever did.",
+    "verified": "2026-09-16",
+    "id": "p02"
+  },
+  {
+    "audience": "Partner",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (Partner Value Stream). Earnings distribution is checkable in PostHog \u2014 that would make it HIGH.",
+    "domain": "Payments and Finance",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "platform-wide",
+    "scope": "Partners with any earnings",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "The median monthly earner makes $33; a quarter make under $8.",
+    "verified": "2026-09-16",
+    "id": "p03"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Any in-product surface only reaches the minority who log in. Of 35,075 who could apply to the marketplace and never have, 2,304 signed in this month.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (Partner Value Stream). A live PostHog sign-in query would corroborate it directly.",
+    "domain": "Login & Access",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "platform-wide",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+    "posthog_label": "Cohort / persona: MAU, retention, stickiness",
+    "scope": "Creator cohort",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Most creators stop coming back \u2014 79% have not signed in within 90 days.",
+    "verified": "2026-09-16",
+    "id": "p04"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "0-30d: 14,692 (96.6% sign-in, 2.80% earning). 31-180d: 51,570 (21.0%, 4.44%). 181-365d: 72,137 (8.7%, 2.74%). 365d+: 287,162 (6.4%, 2.65%).",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (Partner Value Stream cohort table). Re-running the cohorts live would make it HIGH.",
+    "domain": "Signup & Onboarding",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "425,561 across 4 cohorts",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1734952",
+    "posthog_label": "Cohort / persona: lifecycle tiers",
+    "scope": "Creator cohorts by tenure",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Earning rate peaks at 31-180 days tenure (4.44%), not at signup.",
+    "verified": "2026-09-16",
+    "id": "p05"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "A feed surfacing more marketplace listings optimises throughput into the pipe that works least well. The branded-signup path produces 4-6x better.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (Partner Value Stream). The conversion comparison is the strongest single number in the Frame and deserves a live re-run.",
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "platform-wide",
+    "posthog": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+    "posthog_label": "Marketplace \u2192 apply conversion",
+    "scope": "Partnership origin",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Marketplace-originated partnerships convert at 3.6-4.9% against 17.6-23.1% for a branded signup.",
+    "verified": "2026-09-16",
+    "id": "p06"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "The ~90% figure was one participant's own experience, repeated as a segment rate. Perceived rejection and measured rejection are different claims; multi-month silences may explain the gap.",
+    "confidence": "MEDIUM",
+    "contested": true,
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "1.86M applications vs interview reports",
+    "scope": "Partner applications",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Partner Value Stream Sept 2026; persona set corrections Oct 2026",
+    "statement": "Partners report roughly 90% application rejection; the measured rate is 42.5% of 1.86M applications.",
+    "verified": "2026-10-08",
+    "id": "p07"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Circulated as a segment-wide rate. It is 6 of 11. Directional only.",
+    "confidence": "LOW",
+    "contested": true,
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "6 people",
+    "posthog": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+    "posthog_label": "Marketplace \u2192 apply conversion \u2014 the behavioural counterpart",
+    "scope": "Scaling Up creators",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "Partner Value Stream Sept 2026; denominator corrected Oct 2026",
+    "statement": "55% of the core partner segment cannot discover new campaigns.",
+    "verified": "2026-10-08",
+    "id": "p08"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Circulated as a segment-wide rate. It is 4 of 11.",
+    "confidence": "LOW",
+    "contested": true,
+    "domain": "Links & tracking",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "4 people",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1610349",
+    "posthog_label": "LinkGen slideout: conversion friction",
+    "scope": "Scaling Up creators",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "Partner Value Stream Sept 2026; denominator corrected Oct 2026",
+    "statement": "40% of the core partner segment struggle with the link workflow.",
+    "verified": "2026-10-08",
+    "id": "p09"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Two independent sources agree. 46% open the app at least once a day.",
+    "confidence": "HIGH",
+    "contested": false,
+    "domain": "Reporting",
+    "link": "https://impact.dovetail.com/data/6mtRrcPCKDkSbDtaY4tWgH",
+    "n": "119 interviews + 106 responses",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1609086",
+    "posthog_label": "Partner dashboard behaviour",
+    "scope": "Mobile app users",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Outset Mobile App Exp (119 interviews, 2,235 responses); Dovetail June 2025 Mobile Study (106)",
+    "statement": "Mobile use is monitoring-led: roughly two-thirds open the app for performance tracking and link creation.",
+    "verified": "2026-02-09",
+    "id": "p10"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "About a third of users named missing desktop-only features as their main friction; advanced actions are the abandonment hotspot.",
+    "confidence": "HIGH",
+    "contested": false,
+    "demoted": "Promoted from MEDIUM. Now two independent sources: Outset and Dovetail qual on the feature gaps, plus PostHog showing at least a third of sessions are mobile (ph05). The gap and the traffic are both measured.",
+    "domain": "Links & tracking",
+    "link": "https://impact.dovetail.com/data/6mtRrcPCKDkSbDtaY4tWgH",
+    "n": "119 interviews",
+    "posthog": "https://us.posthog.com/project/186875/insights/GufE4pG5",
+    "posthog_label": "Browser split \u2014 mobile share of sessions",
+    "scope": "Mobile app users",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Outset Mobile App Exp; NPS written responses",
+    "statement": "Deep links, vanity links and asset downloads all redirect from mobile to desktop.",
+    "verified": "2026-02-09",
+    "id": "p11"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Platform-wide, not mobile-specific. Cannot currently be split by surface.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (the marketplace NPS corpus). Written NPS is self-report; no behavioural source corroborates it.",
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/data/4Ua6b2oCmgVqx357iQvPxX",
+    "n": "111 written responses",
+    "posthog": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+    "posthog_label": "Marketplace \u2192 apply conversion",
+    "scope": "Publishers; not split by surface",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Dovetail: Qualitative Study, Marketplace Partner Exp (Aug 2025 - Jul 2026)",
+    "statement": "Marketplace NPS is -59 across 111 written responses, with 74% detractors.",
+    "verified": "2026-10-06",
+    "id": "p12"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "A prompted multi-select with 'personalised recommendations' listed first. Stated preference, not observed behaviour. 3 of 11 said none of it would help. The sample had 6 of 11 signing in daily against 0.4% platform-wide.",
+    "confidence": "LOW",
+    "contested": true,
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "11",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1928649",
+    "posthog_label": "Personalised feed \u2014 instrumentation QA, pre-launch",
+    "scope": "Feeds MVP sample",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "July Feeds MVP study; audited by the Saga deep dive",
+    "statement": "73% of creators want personalised recommendations.",
+    "verified": "2026-09-16",
+    "id": "p13"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "n=5, directional only. A bimodal shape is a different problem from a low score: the nav works for one usage mode and breaks another. Detractors named Promo Codes, Ad Tools, Deals, Surveys and Dashboard.",
+    "confidence": "LOW",
+    "contested": false,
+    "domain": "Marketplace & Discovery",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "5",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/1609086",
+    "posthog_label": "Partner dashboard: navigation and exit paths",
+    "scope": "Partners who answered the in-product poll",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Pendo in-product guide, Sept 2026",
+    "statement": "Reaction to the new navigation is bimodal, not simply negative: 60% rated it 1, 40% rated 4-5, nothing in between.",
+    "verified": "2026-09-16",
+    "id": "p14"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "They can see amounts but not which products sold, which makes optimisation impossible. One built their own tool to fill the gap.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Links & tracking",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "12-15",
+    "posthog": "https://us.posthog.com/project/186875/dashboard/2058522",
+    "posthog_label": "Affiliate link generation: volume and link types",
+    "scope": "Creator-affiliate hybrids",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Hybrid creator-affiliates manage 40-60+ links per content piece across 5-50+ programmes.",
+    "verified": "2026-09-16",
+    "id": "p15"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Named as the #1 day-to-day worry. Every analytics feature shipped so far is retrospective; pre-commitment signal is a different product.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Reporting",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "12 contextual inquiries",
+    "scope": "Scaling Up and hybrid partners",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Partners want to know whether an offer will pay back before investing days in it, not after.",
+    "verified": "2026-09-16",
+    "id": "p16"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Getting Started 26 (~12%), Scaling Up 162 (75%), Strategic Growth 25 (~12%). This is the research sample, not the platform distribution.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source, and it describes the research sample rather than the platform \u2014 easy to misread as a population split.",
+    "domain": "Reporting",
+    "link": "https://impact.dovetail.com/data/4uoFsqQQnKmz1QpEy5cyL9",
+    "n": "213",
+    "scope": "Researched partner base, not platform population",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Scaling Up is 75% of the researched partner base (162 of 213 users).",
+    "verified": "2026-09-16",
+    "id": "p17"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "A brand independently criticised the rejection email for giving no actionable detail, so both sides name the same failure.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Approval & vetting",
+    "link": "https://impact.dovetail.com/docs/5OGJMfjT9DQE2DeMMM7iSK",
+    "n": "12 contextual inquiries",
+    "scope": "Partners applying to programmes",
+    "segments": [
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "Partner Value Stream Founding Research, Sept 2026",
+    "statement": "Partners report multi-month silences on applications, with no status and no reason given.",
+    "verified": "2026-09-16",
+    "id": "p18"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Observed behaviour rather than self-report, which makes it stronger than the stated-preference discovery figures. Brand-side replays show 402s average on the same task.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Marketplace & Discovery",
+    "link": "https://us.posthog.com/project/186875/cohorts/355433",
+    "n": "10 session replays",
+    "scope": "Partners browsing the marketplace",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "PostHog session replays, partner cohort 355433",
+    "statement": "Partner discovery takes 8-13 minutes of manual marketplace browsing with no smart recommendations.",
+    "verified": "2026-10-13",
+    "id": "p19"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "A single session, quoted widely as if it were a rate. It is a vivid illustration of the link-workflow friction, not a measure of it.",
+    "confidence": "LOW",
+    "contested": false,
+    "domain": "Links & tracking",
+    "link": "https://us.posthog.com/project/186875/cohorts/355433",
+    "n": "1 session replay",
+    "scope": "One observed session",
+    "segments": [
+      "partner:scaling-up"
+    ],
+    "source": "PostHog session replay, partner cohort 355433",
+    "statement": "Generating and formatting a link took one partner 500+ keypresses in 41 seconds.",
+    "verified": "2026-10-13",
+    "id": "p20"
+  },
+  {
+    "audience": "Brand",
+    "caveat": "Brands describe setup as feature-dense and easy to get wrong (b05, b18); this is where that shows up in behaviour. Email to user account holds at 58%, company account at 39%, then 2FA takes 93% of whoever is left \u2014 median 7m53s to pass it, average over 11 hours, which is people leaving and coming back. Seven-day window: a rate, not a total.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (a single PostHog funnel), and a seven-day window. Verified live, which is why it is not lower \u2014 but one instrument is one instrument.",
+    "domain": "Signup & Onboarding",
+    "link": "https://us.posthog.com/project/186875/insights/aZ8uDC2k",
+    "n": "704 people, 7 days",
+    "scope": "Brand signup, 6-13 Oct 2026",
+    "segments": [
+      "brand:getting-started"
+    ],
+    "source": "PostHog saved funnel: Brand Signup Funnel, read live 2026-10-13 \u2014 backing the brand accounts of dense, hard-to-get-right setup",
+    "statement": "Brands abandon signup at the security step, not at the form \u2014 the 2FA screen takes nine in ten of those still going, and only 1.28% of 704 finish.",
+    "verified": "2026-10-13",
+    "id": "ph01"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Steady attrition rather than a cliff: 79% submit email, 71% account details, 63% business model, each step under a minute. Partners describe the problems starting after they are in (p14, p16), and this is consistent with that \u2014 the loss is downstream, not at the door.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "demoted": "Was HIGH. One source (a single PostHog funnel), and a seven-day window. Qual on why partners stall after signup would lift it.",
+    "domain": "Signup & Onboarding",
+    "link": "https://us.posthog.com/project/186875/insights/x1D0fwOs",
+    "n": "28,184 people, 7 days",
+    "scope": "Partner branded signup, 6-13 Oct 2026",
+    "segments": [
+      "partner:getting-started"
+    ],
+    "source": "PostHog saved funnel: Branded signup funnel prod, read live 2026-10-13",
+    "statement": "Signup is not where partners are lost \u2014 63% of 28,184 get through it to the business model step.",
+    "verified": "2026-10-13",
+    "id": "ph02"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "A 99.3% step drop is not a behaviour, it is almost certainly a measurement problem: the CHECKLIST events are likely partly instrumented, renamed, or firing only on a path most partners never take. Confirm the event definitions before anyone treats this as a finding \u2014 an uninstrumented step returns zero, which reads identically to nobody completing it. No qual supports a cliff here.",
+    "confidence": "LOW",
+    "contested": false,
+    "domain": "Signup & Onboarding",
+    "link": "https://us.posthog.com/project/186875/insights/x1D0fwOs",
+    "n": "17,695 people, 7 days",
+    "scope": "Partner onboarding checklist, 6-13 Oct 2026",
+    "segments": [
+      "partner:getting-started"
+    ],
+    "source": "PostHog saved funnel: Branded signup funnel prod, read live 2026-10-13",
+    "statement": "The onboarding checklist looks like it loses almost everyone, but the drop is too steep to believe \u2014 17,695 submit the business model step and 125 the next one.",
+    "verified": "2026-10-13",
+    "id": "ph03"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "This is the behavioural corroboration for what partners and brands both describe: partners say they cannot find brands worth applying to (p08, p12), brands say they cannot find partners worth approving (b01, b03). Browsing converting at well under one percent is what that looks like in the data. Median 18 hours from browse to apply \u2014 applying is considered, not impulsive. It reframes the problem: perhaps less that partners cannot find brands than that browsing does not lead anywhere.",
+    "confidence": "HIGH",
+    "contested": false,
+    "domain": "Marketplace & Discovery",
+    "link": "https://us.posthog.com/project/186875/insights/8Eojy5dl",
+    "n": "72,239 people, 30 days",
+    "scope": "All partner marketplace browsing, 13 Sep - 13 Oct 2026",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "PostHog: Marketplace \u2192 apply conversion, read live 2026-10-13 \u2014 backing the partner and brand discovery findings",
+    "statement": "Partners browse the marketplace without applying \u2014 72,239 browsed over 30 days and 497 started an application.",
+    "verified": "2026-10-13",
+    "id": "ph04"
+  },
+  {
+    "audience": "Partner",
+    "caveat": "Partners raised mobile unprompted in desktop-only studies (p10, p11); this is the traffic behind it. 278,218 of 836,586 sessions, and understated \u2014 Chrome on Android reports as Chrome, so it sits inside the 448,323 desktop-looking figure. Mobile Safari alone is second only to Chrome overall.",
+    "confidence": "HIGH",
+    "contested": false,
+    "domain": "Links & tracking",
+    "link": "https://us.posthog.com/project/186875/insights/GufE4pG5",
+    "n": "836,586 sessions, 30 days",
+    "scope": "All sessions by browser, 8 Sep - 8 Oct 2026",
+    "segments": [
+      "partner:getting-started",
+      "partner:scaling-up",
+      "partner:strategic-growth"
+    ],
+    "source": "PostHog: browser breakdown, read live 2026-10-13 \u2014 backing the mobile findings from interviews",
+    "statement": "Partners work from their phones far more than the platform assumes \u2014 at least a third of sessions come from a mobile browser.",
+    "verified": "2026-10-13",
+    "id": "ph05"
+  },
+  {
+    "audience": "Both",
+    "caveat": "Inferred by placing the two corpora side by side rather than measured. Neither side is told whether what they are seeing is normal, and both quietly disengage.",
+    "confidence": "MEDIUM",
+    "contested": false,
+    "domain": "Reporting",
+    "link": "https://impact.dovetail.com/docs/2wCEygwthb2o45oDJV1ND9",
+    "n": "cross-corpus synthesis",
+    "scope": "Both sides, first 90 days",
+    "segments": [
+      "partner:getting-started",
+      "brand:getting-started"
+    ],
+    "source": "Partner and Brand Value Stream Founding Research, Sept 2026",
+    "statement": "Both sides of the marketplace get silence at the same moment: a creator with no clicks sees an empty table, a new brand at day 45 with two partners sees the same.",
+    "verified": "2026-09-21",
+    "id": "x01"
+  }
+]
