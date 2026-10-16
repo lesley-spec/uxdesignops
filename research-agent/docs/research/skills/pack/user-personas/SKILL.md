@@ -24,8 +24,9 @@ the maintained set and says how to use and refresh it.
 | Resource | Link |
 |---|---|
 | Persona set (live artifact) | https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ |
-| Markdown copy | `personas/personas.md` |
-| Page source | `personas/index.html` |
+| Markdown copy (in this skill) | [references/personas.md](references/personas.md) |
+| DesignOps personas page | https://lesley-spec.github.io/uxdesignops/personas/ |
+| Frame (claims) | https://lesley-spec.github.io/uxdesignops/frame/ |
 
 The artifact is private. Ask the UX Research team for access before sharing the link.
 
