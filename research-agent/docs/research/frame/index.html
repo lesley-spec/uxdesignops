@@ -6,7 +6,9 @@
   <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <title>The Frame — UX DesignOps</title>
   <link rel="stylesheet" href="../shared/designops.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
   <style>
 
 /* Layout: ask first, then coverage as the scan, the claims ledger, and the needs journey.
@@ -302,7 +304,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
   <div class="strip" id="strip"></div>
   <div class="srcbar" id="srcbar"></div>
 
-  <section id="covsec">
+  <section>
     <div class="shead"><h2>Coverage</h2></div>
     <p class="note">Best available confidence per segment and domain, computed from the claims below. Empty cells are not gaps we have chosen — they are areas nobody has looked at. Select a cell to filter the ledger.</p>
     <div class="mscroll"><table class="matrix" id="matrix"></table></div>
@@ -314,7 +316,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
     </div>
   </section>
 
-  <section id="claimssec">
+  <section>
     <div class="shead"><h2>Claims</h2><span class="stamp" id="count"></span></div>
     <p class="note scale">Confidence is about independence, not sample size: <b>HIGH</b> needs two
       sources that agree, <b>MEDIUM</b> is one good source however large its n, <b>LOW</b> is
@@ -331,7 +333,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
     <div class="claims" id="claims"></div>
   </section>
 
-  <section id="needssec">
+  <section>
     <div class="shead"><h2>Unmet needs</h2><span class="stamp" id="needcount"></span></div>
     <p class="note">What people need and do not have, placed where it bites in their journey. Severity is how much it hurts; evidence is how well we know. The two come apart often, and the gap between them is the useful part: high severity on thin evidence is a research job, not a design job. Each need links
     to the claims it rests on \u2014 follow one to the Dovetail study or PostHog funnel behind it.</p>
@@ -634,38 +636,6 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
     });
   }
 
-
-  // Section jump pills (Ask / Coverage / Claims / Needs). Safe no-op if #pills is absent.
-  function renderPills(){
-    var host=$("pills");
-    if(!host) return;
-    var askOn=!$("asksec")||!$("asksec").hidden;
-    var items=[
-      askOn?{href:"#asksec",label:"Ask",count:null}:null,
-      {href:"#covsec",label:"Coverage",count:null},
-      {href:"#claimssec",label:"Claims",count:claims.length||null},
-      {href:"#needssec",label:"Unmet needs",count:needs.length||null}
-    ].filter(Boolean);
-    host.innerHTML=items.map(function(it){
-      return '<a class="pill" href="'+it.href+'">'+it.label+
-        (it.count!=null?' <b>'+it.count+'</b>':'')+'</a>';
-    }).join("");
-  }
-
-
-  function applyClaims(list){
-    claims=(list||[]).filter(function(c){return c&&c.statement});
-    if(!claims.length){
-      $("stamp").textContent="Empty";
-      $("strip").innerHTML=""; renderMatrix();
-      renderEmpty({t:"The Frame is empty",b:"No claims recorded yet. They arrive from user-context in record mode."});
-      return;
-    }
-    var latest=claims.map(function(c){return c.verified||""}).sort().pop();
-    $("stamp").textContent="Last verified "+(latest||"—")+(window.__frameSnapshot?" · snapshot":"");
-    renderAll();
-  }
-
   function renderAll(){ stats(); renderSources(); fills(); renderMatrix(); renderClaims(); renderTabs(); renderJourney(); renderStarters(); renderPills() }
 
   function segAudience(k){
@@ -701,8 +671,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
 
   renderEmpty({t:"The Frame is empty",b:"No claims have been recorded yet. They arrive from user-context in record mode, one claim per finding, each with its source and denominator."});
   $("strip").innerHTML="";
-  renderMatrix(); renderTabs(); renderJourney();
-  try{ renderPills(); }catch(e){}
+  renderMatrix(); renderTabs(); renderJourney(); renderPills();
 
   // ---- Ask ---------------------------------------------------------------
   var sampleFn=null, asking=false;
@@ -786,60 +755,40 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
       (ev?'<div class="used"><span class="lbl">from</span>'+ev+'</div>':'')+'</div>';
   }
 
-  function extractiveAsk(q, used){
-    if(!used.length){
-      return {gap:true, text:"THE FRAME DOES NOT COVER THIS. No claims matched this question. Run research-intake or user-context to fill the gap."};
-    }
-    var lines=["From the Frame (snapshot — claim text only, no model synthesis):"];
-    used.slice(0,8).forEach(function(c){
-      lines.push("");
-      lines.push("**["+c.id+"]** ("+(c.confidence||"?")+(c.n?", n="+c.n:"")+(c.contested?", CONTESTED":"")+") — "+c.statement);
-      if(c.caveat) lines.push("Caveat: "+c.caveat);
-    });
-    if(used.length>8) lines.push("","…and "+(used.length-8)+" more matching claims.");
-    return {gap:false, text:lines.join("\n")};
-  }
-
   async function ask(q){
-    if(asking) return;
+    if(asking||!sampleFn) return;
     asking=true; $("asksend").disabled=true;
     $("askout").innerHTML='<div class="answer"><p class="thinking">Reading the Frame\u2026</p></div>';
     var used=pickClaims(q);
-    if(sampleFn){
-      var prompt=
-        "You answer questions using ONLY the claims below, which are impact.com's Frame: what the "+
-        "organisation currently believes about its users, how confident it is, and where it is blind.\n\n"+
-        "RULES\n"+
-        "- Use only these claims. Never add a number, percentage or finding that is not here.\n"+
-        "- Give the confidence and n whenever you state something, e.g. (MEDIUM, n=119).\n"+
-        "- Cite claim ids in brackets like [p10].\n"+
-        "- A claim marked CONTESTED must be reported as disputed, never as settled.\n"+
-        "- Single source is MEDIUM however large the n. Only HIGH carries an irreversible decision.\n"+
-        "- If the claims do not answer the question, begin your reply with exactly: THE FRAME DOES NOT COVER THIS.\n"+
-        "  Then say what is missing and what research would answer it. Do not guess.\n"+
-        "- Be direct and brief. No preamble. Plain prose, 2-4 short paragraphs.\n\n"+
-        "CLAIMS\n"+used.map(claimLine).join("\n")+"\n\nQUESTION\n"+q;
-      try{
-        var res=await sampleFn(prompt,{modelTier:"default",onText:function(ev){
-          var txt=ev.text||"";
-          renderAnswer(txt.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""),null,
-                       /^THE FRAME DOES NOT COVER THIS/i.test(txt));
-        }});
-        var out=(res&&res.text)||"";
-        var gap=/^THE FRAME DOES NOT COVER THIS/i.test(out);
-        var cited=used.filter(function(c){ return out.indexOf("["+c.id+"]")>=0 });
-        renderAnswer(out.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""), cited.length?cited:(gap?[]:used.slice(0,5)), gap);
-      }catch(e){
-        var code=(e&&e.code)||"";
-        var msg=code==="rate_limited"?"Too many questions just now \u2014 try again in a moment."
-              :code==="not_granted"?"Asking is not available in this view."
-              :"Could not reach Claude. Try again.";
-        $("askout").innerHTML='<div class="answer gap"><p>'+esc(msg)+'</p></div>';
-      }
-    } else {
-      var r=extractiveAsk(q, used);
-      var cited=used.slice(0,5);
-      renderAnswer(r.text.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""), r.gap?[]:cited, r.gap);
+    var prompt=
+      "You answer questions using ONLY the claims below, which are impact.com's Frame: what the "+
+      "organisation currently believes about its users, how confident it is, and where it is blind.\n\n"+
+      "RULES\n"+
+      "- Use only these claims. Never add a number, percentage or finding that is not here.\n"+
+      "- Give the confidence and n whenever you state something, e.g. (MEDIUM, n=119).\n"+
+      "- Cite claim ids in brackets like [p10].\n"+
+      "- A claim marked CONTESTED must be reported as disputed, never as settled.\n"+
+      "- Single source is MEDIUM however large the n. Only HIGH carries an irreversible decision.\n"+
+      "- If the claims do not answer the question, begin your reply with exactly: THE FRAME DOES NOT COVER THIS.\n"+
+      "  Then say what is missing and what research would answer it. Do not guess.\n"+
+      "- Be direct and brief. No preamble. Plain prose, 2-4 short paragraphs.\n\n"+
+      "CLAIMS\n"+used.map(claimLine).join("\n")+"\n\nQUESTION\n"+q;
+    try{
+      var res=await sampleFn(prompt,{modelTier:"default",onText:function(ev){
+        var txt=ev.text||"";
+        renderAnswer(txt.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""),null,
+                     /^THE FRAME DOES NOT COVER THIS/i.test(txt));
+      }});
+      var out=(res&&res.text)||"";
+      var gap=/^THE FRAME DOES NOT COVER THIS/i.test(out);
+      var cited=used.filter(function(c){ return out.indexOf("["+c.id+"]")>=0 });
+      renderAnswer(out.replace(/^THE FRAME DOES NOT COVER THIS\.?\s*/i,""), cited.length?cited:(gap?[]:used.slice(0,5)), gap);
+    }catch(e){
+      var code=(e&&e.code)||"";
+      var msg=code==="rate_limited"?"Too many questions just now \u2014 try again in a moment."
+            :code==="not_granted"?"Asking is not available in this view."
+            :"Could not reach Claude. Try again.";
+      $("askout").innerHTML='<div class="answer gap"><p>'+esc(msg)+'</p></div>';
     }
     asking=false; $("asksend").disabled=false;
   }
@@ -853,7 +802,6 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
   (async function(){
     try{ sampleFn=await (window.claude&&window.claude.use?window.claude.use("sample"):null) }catch(e){}
     if(sampleFn){ $("asksec").hidden=false; $("askstamp").textContent="grounded in the claims below"; renderPills() }
-    else if(window.__frameSnapshot){ $("asksec").hidden=false; $("askstamp").textContent="snapshot match — keyword Ask from claims"; renderPills && renderPills() }
   })();
 
   (async function(){
@@ -873,7 +821,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
       prompts=(pj||[]).filter(function(x){return x&&x.question});
       needs=(nj||[]).filter(function(n){return n&&n.need});
       renderStarters(); renderTabs(); renderJourney();
-      applyClaims(cj||[]);
+      apply({docs:(cj||[]).map(function(c){return {data:function(){return c}}})});
       $("asksec").hidden=false;
       $("askstamp").textContent="snapshot match — keyword Ask from claims";
     }catch(e){
@@ -884,7 +832,16 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--fg-3);font-
       return;
     }
     function apply(snap){
-      applyClaims(bodies(snap));
+      claims=bodies(snap).filter(function(c){return c&&c.statement});
+      if(!claims.length){
+        $("stamp").textContent="Empty";
+        $("strip").innerHTML=""; renderMatrix();
+        renderEmpty({t:"The Frame is empty",b:"No claims recorded yet. They arrive from user-context in record mode."});
+        return;
+      }
+      var latest=claims.map(function(c){return c.verified||""}).sort().pop();
+      $("stamp").textContent="Last verified "+(latest||"—");
+      renderAll();
     }
     try{
       var pcol=db.collection("prompts");

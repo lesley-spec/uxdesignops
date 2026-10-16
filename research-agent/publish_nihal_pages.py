@@ -36,7 +36,195 @@ FRAME_EXTRA_CSS = """
 
 PERSONAS_EXTRA_CSS = """
 .personas-page .top-nav{position:sticky;top:0;z-index:50}
+/* Ask chips must stay inline-flex — do not inherit decision-grid .chip rules */
+.ask .chips{display:flex;flex-wrap:wrap;gap:8px}
+.ask .chip{display:inline-flex;align-items:center;flex:0 0 auto;white-space:normal;
+  font-family:var(--ui);font-size:.75rem;background:var(--surface);border:1px solid var(--line-2);
+  color:var(--fg-2);padding:6px 11px;border-radius:var(--rp,9999px);cursor:pointer;text-align:left;max-width:100%}
+.ask .chip .ck{display:none}
 """
+
+# REBUILD-PROMPT.md display names (ids stay legacy)
+PERSONA_NAME_FIXES = [
+    ("<h2>Nia Obi</h2>", "<h2>Nia Bennett</h2>"),
+    ("<h2>Danny Reyes</h2>", "<h2>Danny Alvarez</h2>"),
+    ("<h2>Priya Raghunathan</h2>", "<h2>Priya Shah</h2>"),
+    ("<h2>Sophie Liang</h2>", "<h2>Sophie Carter</h2>"),
+    ("<h2>Maya Delgado</h2>", "<h2>Maya Thompson</h2>"),
+    ("<h2>James Brandt</h2>", "<h2>James Whitfield</h2>"),
+]
+
+# Scope grid chips so Ask chips are not crushed (REBUILD trap #3 adjacent)
+CHIP_GRID_FIX = (
+    ".chip{display:grid;gap:3px;text-align:left}",
+    ".dec .chip,.cva .chip,.opt.chip{display:grid;gap:3px;text-align:left}",
+)
+
+# Blob download export — REBUILD-PROMPT Part 2 (no window.claude.downloads)
+BLOB_EXPORT_BOOT = r"""
+function saveBlob(filename, blob){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1200);
+  return Promise.resolve();
+}
+
+document.querySelectorAll('.exp').forEach(function(box){
+  var pid=box.getAttribute('data-exp');
+  if(!document.getElementById(pid)) return;
+  box.hidden=false;
+  box.querySelectorAll('button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var fmt=btn.getAttribute('data-fmt'), orig=btn.textContent;
+      btn.disabled=true; btn.textContent='…';
+      var svg=poster(pid);
+      if(!svg){btn.textContent='Failed';setTimeout(function(){btn.textContent=orig;btn.disabled=false;},1600);return;}
+      var nm=(read(pid)||{}).name||pid;
+      var slug=nm.toLowerCase().replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'');
+      var job = fmt==='svg'
+        ? saveBlob('persona-'+slug+'.svg', new Blob([svg],{type:'image/svg+xml'}))
+        : toPng(svg).then(function(b){return saveBlob('persona-'+slug+'.png', b);});
+      job.then(function(){btn.textContent='Saved';})
+         .catch(function(){btn.textContent='Failed';})
+         .then(function(){setTimeout(function(){btn.textContent=orig;btn.disabled=false;},1600);});
+    });
+  });
+});
+"""
+
+# Ask boot: Claude artifact OR DESIGNOPS_PERSONA_ASK_URL; else hide (REBUILD-PROMPT)
+ASK_BOOT_OLD = """if(!window.claude||typeof window.claude.use!=="function") return;
+
+Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
+  var sample=r[0], mcp=r[1];
+  if(sample) initAsk(sample,mcp);
+});"""
+
+ASK_BOOT_NEW = r"""function hideAskPanels(){
+  document.querySelectorAll('.ask').forEach(function(p){ p.hidden=true; });
+}
+
+function askBaseUrl(){
+  var u=(window.DESIGNOPS_PERSONA_ASK_URL||"").trim().replace(/\/$/,"");
+  return u;
+}
+
+function renderSourceStatus(note, sources){
+  if(!note) return;
+  note.innerHTML="";
+  var order=["pack","g2","dovetail","posthog","outset","pendo","atlassian","gong"];
+  order.forEach(function(k){
+    var s=(sources&&sources[k])||null;
+    var live=s?!!s.live:(k==="pack"||k==="g2");
+    var label=s&&s.label?s.label:(k==="g2"?"G2 (embedded snapshot)":k.charAt(0).toUpperCase()+k.slice(1));
+    var span=document.createElement("span");
+    span.innerHTML='<i class="dot '+(live?"on":"off")+'"></i><b></b>';
+    span.querySelector("b").textContent=label+(live?"":" — unavailable");
+    note.appendChild(span);
+  });
+}
+
+function wireBackend(panel, base, sources){
+  var pid=panel.getAttribute("data-persona"), name=NAMES[pid];
+  if(!PACKS[pid]) return;
+  panel.hidden=false;
+  var log=panel.querySelector(".log"), form=panel.querySelector(".askform");
+  if(!form||!log) return;
+  var input=form.querySelector("input"), btn=form.querySelector("button");
+  var busy=false, ctl=null, turns=[];
+  var note=panel.querySelector(".toolnote");
+  if(!note){
+    note=document.createElement("div"); note.className="toolnote";
+    var chips=panel.querySelector(".chips");
+    if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, log);
+  }
+  renderSourceStatus(note, sources);
+
+  function bubble(cls,text){
+    var d=document.createElement("div"); d.className="msg "+cls;
+    d.style.whiteSpace="pre-wrap";
+    d.textContent=text; log.appendChild(d); return d;
+  }
+  function ask(q){
+    if(!q||busy) return;
+    busy=true; btn.textContent="Stop"; btn.classList.add("stop");
+    input.value=""; bubble("user",q);
+    turns.push({role:"user",content:q});
+    var out=bubble("bot think","…");
+    ctl=new AbortController();
+    fetch(base+"/ask",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      signal:ctl.signal,
+      body:JSON.stringify({persona_id:pid, name:name, messages:turns.slice(-8)})
+    }).then(function(r){
+      if(!r.ok) throw new Error("Ask back end HTTP "+r.status);
+      var reader=r.body.getReader(), dec=new TextDecoder(), buf="", full="";
+      out.classList.remove("think"); out.textContent="";
+      function pump(){
+        return reader.read().then(function(res){
+          if(res.done){
+            if(!full){ out.remove(); bubble("err",COPY.empty_completion); turns.pop(); }
+            else turns.push({role:"assistant",content:full});
+            done(); return;
+          }
+          buf+=dec.decode(res.value,{stream:true});
+          var parts=buf.split("\n\n"); buf=parts.pop();
+          for(var i=0;i<parts.length;i++){
+            var lines=parts[i].split("\n");
+            for(var j=0;j<lines.length;j++){
+              var line=lines[j];
+              if(line.indexOf("data: ")!==0) continue;
+              var evt=JSON.parse(line.slice(6));
+              if(evt.error) throw new Error(evt.error);
+              if(evt.text){ full+=evt.text; out.textContent=full; }
+            }
+          }
+          return pump();
+        });
+      }
+      return pump();
+    }).catch(function(e){
+      if(e&&e.name==="AbortError"){ out.remove(); turns.pop(); done(); return; }
+      out.remove();
+      bubble("err",(e&&e.message)||COPY.upstream_error);
+      turns.pop(); done();
+    });
+  }
+  function done(){busy=false;ctl=null;btn.textContent="Ask";btn.classList.remove("stop");}
+  form.addEventListener("submit",function(e){e.preventDefault(); if(busy){if(ctl)ctl.abort();return;} ask(input.value.trim());});
+  panel.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){if(!busy)ask(c.getAttribute("data-q"));});});
+}
+
+function initBackendAsk(base, health){
+  var sources=(health&&health.sources)||null;
+  document.querySelectorAll(".ask").forEach(function(panel){ wireBackend(panel, base, sources); });
+}
+
+if(window.claude&&typeof window.claude.use==="function"){
+  Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
+    var sample=r[0], mcp=r[1];
+    if(sample) initAsk(sample,mcp);
+    else tryBackendAsk();
+  }).catch(tryBackendAsk);
+} else {
+  tryBackendAsk();
+}
+
+function tryBackendAsk(){
+  var base=askBaseUrl();
+  if(!base){ hideAskPanels(); return; }
+  fetch(base+"/health",{method:"GET"}).then(function(r){
+    if(!r.ok) throw new Error("health "+r.status);
+    return r.json();
+  }).then(function(h){
+    if(!h||!h.ok) throw new Error("health not ok");
+    initBackendAsk(base, h);
+  }).catch(function(){ hideAskPanels(); });
+}"""
 
 FRAME_SNAPSHOT_PATCH = r"""
     // Static snapshot fallback for GitHub Pages / local DesignOps
@@ -168,6 +356,52 @@ def rebuild_frame(nihal: Path) -> None:
     print(f"  wrote {FRAME_DIR / 'index.html'}")
 
 
+def verify_packs(body: str, src: str) -> None:
+    """RULES + PACKS must stay byte-identical to Nihal (REBUILD-PROMPT Layer 1)."""
+    for label, pat in [
+        ("RULES", r"var RULES = `([\s\S]*?)`;"),
+        *[
+            (f"PACKS.{pid}", rf"PACKS\.{pid}=`([\s\S]*?)`;")
+            for pid in ("marlo", "quinn", "nour", "pax", "rowan", "kit")
+        ],
+    ]:
+        a = re.search(pat, src)
+        b = re.search(pat, body)
+        if not a or not b:
+            raise SystemExit(f"Missing {label} during personas rebuild")
+        if a.group(1) != b.group(1):
+            raise SystemExit(f"{label} drifted from Nihal — aborting (never regenerate packs)")
+        print(f"  {label} OK ({len(a.group(1))} chars)")
+
+
+def patch_personas_body(body: str) -> str:
+    """Apply REBUILD-PROMPT fixes that DesignOps needs outside claude.ai."""
+    for old, new in PERSONA_NAME_FIXES:
+        if old in body:
+            body = body.replace(old, new, 1)
+    # Card export: ordinary <a download> blob (Part 2)
+    export_anchor = (
+        'if(!window.claude||typeof window.claude.use!=="function") return;\n'
+        'claude.use("downloads").then(function(dl){'
+    )
+    if export_anchor in body:
+        start = body.find(export_anchor)
+        close = body.find("}).catch(function(){});", start)
+        if start < 0 or close < 0:
+            raise SystemExit("Personas export patch anchor not found")
+        close_end = close + len("}).catch(function(){});")
+        body = body[:start] + BLOB_EXPORT_BOOT.strip() + "\n" + body[close_end:]
+    elif "function saveBlob(filename, blob)" not in body:
+        raise SystemExit("Personas export neither Claude nor blob — unexpected")
+
+    if ASK_BOOT_OLD in body:
+        body = body.replace(ASK_BOOT_OLD, ASK_BOOT_NEW.strip() + "\n", 1)
+    elif "function tryBackendAsk()" not in body:
+        raise SystemExit("Personas Ask boot patch anchor not found")
+
+    return body
+
+
 def rebuild_personas(nihal: Path) -> None:
     if PERSONAS_DIR.exists() and not PERSONAS_V1_DIR.exists():
         cur = (PERSONAS_DIR / "index.html").read_text(encoding="utf-8")
@@ -179,12 +413,20 @@ def rebuild_personas(nihal: Path) -> None:
     PERSONAS_DIR.mkdir(parents=True, exist_ok=True)
     (PERSONAS_DIR / "personas-src.html").write_text(src, encoding="utf-8")
     shutil.copy2(nihal / "personas" / "personas.md", PERSONAS_DIR / "personas.md")
-    shutil.copy2(nihal / "personas" / "README.md", PERSONAS_DIR / "README.md")
+    # Keep DesignOps README (Ask back end, Pages URL) — do not overwrite with Nihal's.
+    rebuild_prompt = nihal / "personas" / "REBUILD-PROMPT.md"
+    if rebuild_prompt.exists():
+        shutil.copy2(rebuild_prompt, PERSONAS_DIR / "REBUILD-PROMPT.md")
+        print("  copied REBUILD-PROMPT.md")
     skill_ref = REPO / ".agents" / "skills" / "user-personas" / "references" / "personas.md"
     if skill_ref.parent.exists():
         shutil.copy2(nihal / "personas" / "personas.md", skill_ref)
 
     _title, style, body = extract_nihal_parts(src)
+    if CHIP_GRID_FIX[0] in style:
+        style = style.replace(CHIP_GRID_FIX[0], CHIP_GRID_FIX[1], 1)
+    body = patch_personas_body(body)
+    verify_packs(body, src)
     out = wrap_page(
         title="User Personas",
         style=style,
@@ -232,7 +474,9 @@ def main() -> None:
     rebuild_personas(nihal)
     print("→ Nav")
     update_theme_nav()
-    print("Done. Re-apply extractive Ask patch in frame/index.html if regenerating from scratch.")
+    print("Done.")
+    print("  Personas Ask: set DESIGNOPS_PERSONA_ASK_URL + run persona_ask_server.py")
+    print("  (Ask panels hide when the back end is unreachable — REBUILD-PROMPT.md)")
 
 
 if __name__ == "__main__":

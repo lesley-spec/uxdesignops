@@ -6,7 +6,9 @@
   <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <title>User Personas — UX DesignOps</title>
   <link rel="stylesheet" href="../shared/designops.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
   <style>
 
 /* Layout: a comparison matrix for scanning the whole set, then one full card per persona.
@@ -471,32 +473,14 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
 
 
 .personas-page .top-nav{position:sticky;top:0;z-index:50}
-.personas-page body, .personas-page{margin:0}
-/* Keep Nihal page layout under DesignOps chrome */
-.personas-nihal-root{max-width:100%}
+/* Ask chips must stay inline-flex — do not inherit decision-grid .chip rules */
+.ask .chips{display:flex;flex-wrap:wrap;gap:8px}
+.ask .chip{display:inline-flex;align-items:center;flex:0 0 auto;white-space:normal;
+  font-family:var(--ui);font-size:.75rem;background:var(--surface);border:1px solid var(--line-2);
+  color:var(--fg-2);padding:6px 11px;border-radius:var(--rp,9999px);cursor:pointer;text-align:left;max-width:100%}
+.ask .chip .ck{display:none}
 
-  
-.ask{display:block!important}
-.ask .chip{display:inline-block!important;font-family:var(--ui);font-size:.75rem;background:var(--surface);border:1px solid var(--line-2);color:var(--fg-2);padding:6px 11px;border-radius:15px;cursor:pointer;text-align:left;max-width:100%}
-.ask .chip:hover{border-color:var(--fg-3);color:var(--fg)}
-.ask{scroll-margin-top:96px}
-.ask .log{display:grid;gap:8px;justify-items:stretch;margin:0 0 12px}
-
-.ask .toolnote{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0 0 12px;font-size:.78rem;color:var(--fg-2)}
-.ask .toolnote .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
-.ask .toolnote .dot.on{background:#2f7d4f}
-.ask .toolnote .dot.off{background:var(--fg-3)}
-.ask .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
-.ask .chip{font:inherit;font-size:.82rem;padding:8px 12px;border-radius:9999px;border:1px solid var(--line-2);background:var(--surface);color:var(--fg);cursor:pointer;text-align:left}
-.ask .chip:hover{border-color:var(--s1)}
-.ask .log{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
-.ask .msg{padding:10px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-size:.9rem;line-height:1.45;white-space:pre-wrap}
-.ask .msg.u{align-self:flex-end;background:var(--partner-bg, #e9f0fd);border-color:transparent}
-.ask .msg.a{align-self:stretch}
-.ask .msg.think{color:var(--fg-3);font-style:italic}
-.ask .msg.err{color:var(--neg,#c0392f)}
-
-</style>
+  </style>
   <script src="../shared/auth-config.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../shared/designops-auth.js" defer></script>
 </head>
 <body class="personas-page">
@@ -598,7 +582,6 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   <h1>User Personas at impact.com</h1>
   <p class="lede">Three partners, three brands. Built from 267 interviews, 158 G2 reviews and 90 days of product behaviour. Scan the matrix to find who you are arguing about, then open their card.</p>
 </div></header>
-<p class="note" style="margin:0 0 8px">Each of the six personas has an <b>Ask</b> box under its workflow — same layout as the Claude artifact.</p>
 <nav class="pills" aria-label="Jump to a persona">
   <div class="wrap pillrow">
     <a href="#matrix" class="pill nav-all">All six</a>
@@ -643,7 +626,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
     <svg class="pt" width="92" height="92"><use href="#av-marlo"/></svg>
     <div class="pname">
       <span class="side p">Partner &middot; Getting started</span>
-      <h2>Nia Obi</h2>
+      <h2>Nia Bennett</h2>
       <div class="prole">The New Signup &mdash; lifestyle creator, 4,200 followers, three months in</div>
       <div class="pmeta"><span>1&ndash;3 programmes</span><span>Under $500/mo</span><span>Mobile-first</span><span>Moderate tech comfort</span><span>Solo</span></div>
     </div>
@@ -735,14 +718,13 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The workflow, stage by stage</span><p class="jmi">What they actually do, in order. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,25 252,51 420,38 588,64 756,64 924,25 1092,51" class="jline"/><circle cx="84" cy="25" r="5.5" class="jdot f2"/><circle cx="252" cy="51" r="5.5" class="jdot f4"/><circle cx="420" cy="38" r="5.5" class="jdot f3"/><circle cx="588" cy="64" r="5.5" class="jdot f5"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="25" r="5.5" class="jdot f2"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Sign up</b><span class="jd">Completes signup on a phone in a few minutes.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">02</span><b>Build the profile</b><span class="jd">Writes a real bio &mdash; 121,539 partners write 250+ characters.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">03</span><b>Find brands</b><span class="jd">Checks notifications, opens the pre-approved list, browses eligible brands.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">04</span><b>Apply and wait</b><span class="jd">Applies to several brands in one sitting.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">05</span><b>Get the link</b><span class="jd">Goes to find the tracking link for a brand they were approved for.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Publish</b><span class="jd">Puts the link into a post or a video description.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Check earnings</b><span class="jd">Opens the spreadsheet they have kept in parallel since January.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="marlo">
+  <div class="ask" data-persona="marlo" hidden>
     <span class="lbl">Ask Nia</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Nia will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
-    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="Walk me through the moment you nearly gave up.">Walk me through the moment you nearly gave up.</button><button type="button" class="chip" data-q="I'm redesigning the profile step — what would make you finish it?">I'm redesigning the profile step — what would make you finish it?</button><button type="button" class="chip" data-q="If we fixed one thing for you this quarter, what should it be?">If we fixed one thing for you this quarter, what should it be?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Nia something…" aria-label="Ask Nia a question" autocomplete="off"><button type="submit">Ask</button></form>
-    <p class="asknote">Ask from the evidence brief behind this persona. On DesignOps this returns matching quotes and facts from the brief; the Claude artifact also offers live model Ask with connectors.</p>
+    <p class="asknote">Runs on your own Claude account and asks permission the first time. A research instrument, not a user — it can only recombine evidence we actually collected.</p>
   </div>
   <div class="totop"><a href="#top">&uarr; Back to the top</a><a href="#matrix">All six personas</a></div>
 </article>
@@ -752,7 +734,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
     <svg class="pt" width="92" height="92"><use href="#av-quinn"/></svg>
     <div class="pname">
       <span class="side p">Partner &middot; Scaling up</span>
-      <h2>Danny Reyes</h2>
+      <h2>Danny Alvarez</h2>
       <div class="prole">The Working Partner &mdash; reviews and tutorials, 86,000 subscribers, nine months in</div>
       <div class="pmeta"><span>5&ndash;10 brands</span><span>$500&ndash;$5k/mo</span><span>Mobile to capture, desktop to manage</span><span>High tech comfort</span><span>Daily</span></div>
     </div>
@@ -839,14 +821,13 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The workflow, stage by stage</span><p class="jmi">What they actually do, in order. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,25 252,64 420,38 588,12 756,64 924,38 1092,51" class="jline"/><circle cx="84" cy="25" r="5.5" class="jdot f2"/><circle cx="252" cy="64" r="5.5" class="jdot f5"/><circle cx="420" cy="38" r="5.5" class="jdot f3"/><circle cx="588" cy="12" r="5.5" class="jdot f1"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="38" r="5.5" class="jdot f3"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Review performance</b><span class="jd">Opens reports first out of habit &mdash; overview, revenue by day, clicks by site.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">02</span><b>Choose offers</b><span class="jd">Decides which products are worth building content around.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">03</span><b>Generate links</b><span class="jd">Six links, brand by brand, before the edit can finish.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">04</span><b>Publish</b><span class="jd">Drops the links into the video description.</span><span class="jf f1">Smooth</span></div><div class="jc"><span class="jn">05</span><b>Answer the audience</b><span class="jd">A follower DMs asking where to buy something from last week.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Track what converted</b><span class="jd">Checks clicks against sales.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">07</span><b>Get paid</b><span class="jd">Waits for the payout to land.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="quinn">
+  <div class="ask" data-persona="quinn" hidden>
     <span class="lbl">Ask Danny</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Danny will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
-    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What does a bad week actually feel like?">What does a bad week actually feel like?</button><button type="button" class="chip" data-q="Would a predicted EPC on the offer card change what you click?">Would a predicted EPC on the offer card change what you click?</button><button type="button" class="chip" data-q="Rank mobile sharing, offer signal and payout speed for me.">Rank mobile sharing, offer signal and payout speed for me.</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Danny something…" aria-label="Ask Danny a question" autocomplete="off"><button type="submit">Ask</button></form>
-    <p class="asknote">Ask from the evidence brief behind this persona. On DesignOps this returns matching quotes and facts from the brief; the Claude artifact also offers live model Ask with connectors.</p>
+    <p class="asknote">Runs on your own Claude account and asks permission the first time. A research instrument, not a user — it can only recombine evidence we actually collected.</p>
   </div>
   <div class="totop"><a href="#top">&uarr; Back to the top</a><a href="#matrix">All six personas</a></div>
 </article>
@@ -856,7 +837,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
     <svg class="pt" width="92" height="92"><use href="#av-nour"/></svg>
     <div class="pname">
       <span class="side p">Partner &middot; Strategic growth</span>
-      <h2>Priya Raghunathan</h2>
+      <h2>Priya Shah</h2>
       <div class="prole">The Operator &mdash; runs a small publisher network with two staff, four years in</div>
       <div class="pmeta"><span>15+ programmes</span><span>$5k+/mo</span><span>Desktop</span><span>Expert &mdash; writes their own queries</span><span>Trades across regions</span></div>
     </div>
@@ -943,14 +924,13 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The workflow, stage by stage</span><p class="jmi">What they actually do, in order. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,25 252,64 420,64 588,51 756,64 924,38 1092,51" class="jline"/><circle cx="84" cy="25" r="5.5" class="jdot f2"/><circle cx="252" cy="64" r="5.5" class="jdot f5"/><circle cx="420" cy="64" r="5.5" class="jdot f5"/><circle cx="588" cy="51" r="5.5" class="jdot f4"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="38" r="5.5" class="jdot f3"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Pull the morning report</b><span class="jd">Goes straight to reports, not the marketplace.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">02</span><b>Slice to sub-ID</b><span class="jd">Looks for which sub IDs moved and which landing pages they came from.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">03</span><b>Filter offers</b><span class="jd">Wants to see only cost-per-lead or cost-per-sale campaigns.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">04</span><b>Apply at volume</b><span class="jd">Sends applications across many programmes with a team of two.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">05</span><b>Chase decisions</b><span class="jd">Reviews last month's forty applications.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Optimise</b><span class="jd">Tests creatives, landing pages and geographies against each other.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">07</span><b>Escalate</b><span class="jd">Raises something with support.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="nour">
+  <div class="ask" data-persona="nour" hidden>
     <span class="lbl">Ask Priya</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Priya will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
-    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What made you stop counting applications as pipeline?">What made you stop counting applications as pipeline?</button><button type="button" class="chip" data-q="If the cost-model filter came back, where should it live?">If the cost-model filter came back, where should it live?</button><button type="button" class="chip" data-q="Is API depth a retention issue for you, or a nice-to-have?">Is API depth a retention issue for you, or a nice-to-have?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Priya something…" aria-label="Ask Priya a question" autocomplete="off"><button type="submit">Ask</button></form>
-    <p class="asknote">Ask from the evidence brief behind this persona. On DesignOps this returns matching quotes and facts from the brief; the Claude artifact also offers live model Ask with connectors.</p>
+    <p class="asknote">Runs on your own Claude account and asks permission the first time. A research instrument, not a user — it can only recombine evidence we actually collected.</p>
   </div>
   <div class="totop"><a href="#top">&uarr; Back to the top</a><a href="#matrix">All six personas</a></div>
 </article>
@@ -971,7 +951,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
     <svg class="pt" width="92" height="92"><use href="#av-pax"/></svg>
     <div class="pname">
       <span class="side b">Brand &middot; Founder-operator</span>
-      <h2>Sophie Liang</h2>
+      <h2>Sophie Carter</h2>
       <div class="prole">The Founder-Operator &mdash; partnerships is one of five things they own, and the newest</div>
       <div class="pmeta"><span>Under 20 partners</span><span>$5k&ndash;$50k annual budget</span><span>Team of two</span><span>Affiliate is one of five jobs</span><span>Logs in twice a week</span></div>
     </div>
@@ -1055,14 +1035,13 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The brand loop, stage by stage</span><p class="jmi">Brands do not pass through &mdash; they stay inside this loop. Set up, recruit, contract, activate, measure, pay, protect. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,64 252,51 420,38 588,38 756,51 924,12 1092,64" class="jline"/><circle cx="84" cy="64" r="5.5" class="jdot f5"/><circle cx="252" cy="51" r="5.5" class="jdot f4"/><circle cx="420" cy="38" r="5.5" class="jdot f3"/><circle cx="588" cy="38" r="5.5" class="jdot f3"/><circle cx="756" cy="51" r="5.5" class="jdot f4"/><circle cx="924" cy="12" r="5.5" class="jdot f1"/><circle cx="1092" cy="64" r="5.5" class="jdot f5"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Set up</b><span class="jd">Gets tracking live alongside four other jobs.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">02</span><b>Recruit</b><span class="jd">Looks for a first few partners worth having.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">03</span><b>Contract</b><span class="jd">Sets terms for the first time.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">04</span><b>Activate</b><span class="jd">Gets assets and promo codes out.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">05</span><b>Measure</b><span class="jd">Checks whether the channel paid back.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">06</span><b>Pay</b><span class="jd">Commission, invoicing and tax run themselves.</span><span class="jf f1">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Protect</b><span class="jd">Tries to keep spam applicants out.</span><span class="jf f5">Blocked</span></div></div></div></div></div>
-  <div class="ask" data-persona="pax">
+  <div class="ask" data-persona="pax" hidden>
     <span class="lbl">Ask Sophie</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Sophie will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
-    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What went through your mind the first time you logged in?">What went through your mind the first time you logged in?</button><button type="button" class="chip" data-q="I'm designing an applicant quality score — what would you need to see?">I'm designing an applicant quality score — what would you need to see?</button><button type="button" class="chip" data-q="Is the price or the learning curve the bigger risk to you renewing?">Is the price or the learning curve the bigger risk to you renewing?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Sophie something…" aria-label="Ask Sophie a question" autocomplete="off"><button type="submit">Ask</button></form>
-    <p class="asknote">Ask from the evidence brief behind this persona. On DesignOps this returns matching quotes and facts from the brief; the Claude artifact also offers live model Ask with connectors.</p>
+    <p class="asknote">Runs on your own Claude account and asks permission the first time. A research instrument, not a user — it can only recombine evidence we actually collected.</p>
   </div>
   <div class="totop"><a href="#top">&uarr; Back to the top</a><a href="#matrix">All six personas</a></div>
 </article>
@@ -1072,7 +1051,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
     <svg class="pt" width="92" height="92"><use href="#av-rowan"/></svg>
     <div class="pname">
       <span class="side b">Brand &middot; Programme manager</span>
-      <h2>Maya Delgado</h2>
+      <h2>Maya Thompson</h2>
       <div class="prole">The Programme Manager &mdash; running four programmes is the whole job, and the target is theirs</div>
       <div class="pmeta"><span>30&ndash;200 partners</span><span>$50k&ndash;$500k budget</span><span>Team of three</span><span>Owns a revenue target</span><span>In the product daily</span></div>
     </div>
@@ -1145,14 +1124,13 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The brand loop, stage by stage</span><p class="jmi">Brands do not pass through &mdash; they stay inside this loop. Set up, recruit, contract, activate, measure, pay, protect. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,38 252,64 420,64 588,51 756,51 924,12 1092,64" class="jline"/><circle cx="84" cy="38" r="5.5" class="jdot f3"/><circle cx="252" cy="64" r="5.5" class="jdot f5"/><circle cx="420" cy="64" r="5.5" class="jdot f5"/><circle cx="588" cy="51" r="5.5" class="jdot f4"/><circle cx="756" cy="51" r="5.5" class="jdot f4"/><circle cx="924" cy="12" r="5.5" class="jdot f1"/><circle cx="1092" cy="64" r="5.5" class="jdot f5"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Set up</b><span class="jd">Integrates with Shopify or HubSpot.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">02</span><b>Recruit</b><span class="jd">Searches the marketplace for partners beyond coupon sites.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">03</span><b>Contract</b><span class="jd">Needs to change terms on a contract already running.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">04</span><b>Activate</b><span class="jd">Pushes promos and assets so partners actually find them.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">05</span><b>Measure</b><span class="jd">Builds the custom report finance asked for.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">06</span><b>Pay</b><span class="jd">Commission, invoicing and tax run themselves.</span><span class="jf f1">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Protect</b><span class="jd">Filters out misrepresented profiles and rule-breakers.</span><span class="jf f5">Blocked</span></div></div></div></div></div>
-  <div class="ask" data-persona="rowan">
+  <div class="ask" data-persona="rowan" hidden>
     <span class="lbl">Ask Maya</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. Maya will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
-    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="What was the worst moment with a partner this quarter?">What was the worst moment with a partner this quarter?</button><button type="button" class="chip" data-q="I'm adding partner recommendations — what would make you trust them?">I'm adding partner recommendations — what would make you trust them?</button><button type="button" class="chip" data-q="What would actually make you leave for another platform?">What would actually make you leave for another platform?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask Maya something…" aria-label="Ask Maya a question" autocomplete="off"><button type="submit">Ask</button></form>
-    <p class="asknote">Ask from the evidence brief behind this persona. On DesignOps this returns matching quotes and facts from the brief; the Claude artifact also offers live model Ask with connectors.</p>
+    <p class="asknote">Runs on your own Claude account and asks permission the first time. A research instrument, not a user — it can only recombine evidence we actually collected.</p>
   </div>
   <div class="totop"><a href="#top">&uarr; Back to the top</a><a href="#matrix">All six personas</a></div>
 </article>
@@ -1162,7 +1140,7 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
     <svg class="pt" width="92" height="92"><use href="#av-kit"/></svg>
     <div class="pname">
       <span class="side b">Brand &middot; Partnerships lead</span>
-      <h2>James Brandt</h2>
+      <h2>James Whitfield</h2>
       <div class="prole">The Partnerships Lead &mdash; owns the channel number, has a team to run it, rarely in the product daily</div>
       <div class="pmeta"><span>200+ partners</span><span>$500k&ndash;$10M budget</span><span>Team of eleven</span><span>Reports to the CMO</span><span>Multi-region, multi-brand</span></div>
     </div>
@@ -1243,14 +1221,13 @@ table.cvat td.hyp{background:color-mix(in srgb,var(--warn) 7%,transparent)}
   </div></div>
 
   <div class="jm"><span class="lbl">The brand loop, stage by stage</span><p class="jmi">Brands do not pass through &mdash; they stay inside this loop. Set up, recruit, contract, activate, measure, pay, protect. The line tracks friction &mdash; higher is harder.</p><div class="jmscroll"><div class="jminner" style="min-width:1176px"><svg class="jsvg" viewBox="0 0 1176 78" preserveAspectRatio="none" aria-hidden="true" style="min-width:1176px"><line x1="0" y1="12" x2="1176" y2="12" class="jgrid"/><line x1="0" y1="64" x2="1176" y2="64" class="jgrid"/><polyline points="84,64 252,51 420,64 588,38 756,64 924,25 1092,51" class="jline"/><circle cx="84" cy="64" r="5.5" class="jdot f5"/><circle cx="252" cy="51" r="5.5" class="jdot f4"/><circle cx="420" cy="64" r="5.5" class="jdot f5"/><circle cx="588" cy="38" r="5.5" class="jdot f3"/><circle cx="756" cy="64" r="5.5" class="jdot f5"/><circle cx="924" cy="25" r="5.5" class="jdot f2"/><circle cx="1092" cy="51" r="5.5" class="jdot f4"/></svg><div class="jcols"><div class="jc"><span class="jn">01</span><b>Set up</b><span class="jd">Custom integration into the enterprise stack.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">02</span><b>Recruit</b><span class="jd">Sources across regions and brands.</span><span class="jf f4">High friction</span></div><div class="jc"><span class="jn">03</span><b>Contract</b><span class="jd">Wants concurrent contracts and scheduled rate changes.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">04</span><b>Activate</b><span class="jd">Co-ordinates comms across a team of eleven.</span><span class="jf f3">Some friction</span></div><div class="jc"><span class="jn">05</span><b>Measure</b><span class="jd">Needs one global view across four regions.</span><span class="jf f5">Blocked</span></div><div class="jc"><span class="jn">06</span><b>Pay</b><span class="jd">Multi-currency, multi-region, compliant.</span><span class="jf f2">Smooth</span></div><div class="jc"><span class="jn">07</span><b>Protect</b><span class="jd">Brand safety and compliance at scale.</span><span class="jf f4">High friction</span></div></div></div></div></div>
-  <div class="ask" data-persona="kit">
+  <div class="ask" data-persona="kit" hidden>
     <span class="lbl">Ask James</span>
     <p class="ad">Answers are generated live from the evidence behind this card and nothing else. James will tell you when a question falls outside what the research covers rather than inventing an answer.</p>
-    <div class="toolnote" data-static="1"><span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span></div>
     <div class="chips"><button type="button" class="chip" data-q="How did it feel to find the dashboard had changed?">How did it feel to find the dashboard had changed?</button><button type="button" class="chip" data-q="We're redesigning the partner-side link flow — why should you care?">We're redesigning the partner-side link flow — why should you care?</button><button type="button" class="chip" data-q="What would justify consolidating onto one platform to your CMO?">What would justify consolidating onto one platform to your CMO?</button></div>
     <div class="log" aria-live="polite"></div>
     <form class="askform"><input type="text" placeholder="Ask James something…" aria-label="Ask James a question" autocomplete="off"><button type="submit">Ask</button></form>
-    <p class="asknote">Ask from the evidence brief behind this persona. On DesignOps this returns matching quotes and facts from the brief; the Claude artifact also offers live model Ask with connectors.</p>
+    <p class="asknote">Runs on your own Claude account and asks permission the first time. A research instrument, not a user — it can only recombine evidence we actually collected.</p>
   </div>
   <div class="totop"><a href="#top">&uarr; Back to the top</a><a href="#matrix">All six personas</a></div>
 </article>
@@ -1785,114 +1762,129 @@ var COPY={not_granted:"You declined Claude access for this page, so the persona 
  invalid_request:"The page asked incorrectly — that's a bug here.",tools_unavailable:"",cancelled:""};
 var HIDE={not_granted:1,sampling_disabled:1,not_declared:1,capability_disabled:1,capability_removed:1};
 
-var STOP={the:1,a:1,an:1,is:1,are:1,do:1,does:1,we:1,our:1,us:1,of:1,to:1,in:1,on:1,for:1,
-  what:1,why:1,how:1,and:1,or:1,about:1,with:1,know:1,it:1,this:1,that:1,be:1,can:1,
-  you:1,your:1,me:1,my:1,i:1,they:1,them:1,their:1,from:1,would:1,could:1,should:1};
-
-function tokens(q){
-  return String(q).toLowerCase().split(/[^a-z0-9]+/).filter(function(w){return w.length>2&&!STOP[w];});
+function hideAskPanels(){
+  document.querySelectorAll('.ask').forEach(function(p){ p.hidden=true; });
 }
 
-function chunkBrief(pack){
-  var parts=String(pack||"").split(/\n+/).map(function(l){return l.trim();}).filter(Boolean);
-  var chunks=[], cur=[];
-  parts.forEach(function(line){
-    if(/^(WHO:|BIGGEST UNMET NEED:|WHAT |BEHAVIOURAL|KNOWN GAPS|ON |SENTIMENT|SWITCHING:)/i.test(line) && cur.length){
-      chunks.push(cur.join(" ")); cur=[line];
-    } else { cur.push(line); }
-  });
-  if(cur.length) chunks.push(cur.join(" "));
-  return chunks;
+function askBaseUrl(){
+  var u=(window.DESIGNOPS_PERSONA_ASK_URL||"").trim().replace(/\/$/,"");
+  return u;
 }
 
-function extractiveAnswer(name, pack, q){
-  var words=tokens(q);
-  var chunks=chunkBrief(pack);
-  var gaps=chunks.filter(function(c){return /KNOWN GAP/i.test(c);});
-  var scored=chunks.map(function(c){
-    var low=c.toLowerCase(), score=0;
-    words.forEach(function(w){ if(low.indexOf(w)>=0) score+=1; });
-    if(/"[^"]{12,}"/.test(c)) score+=0.4;
-    if(/^BEHAVIOURAL/i.test(c) || /PostHog/i.test(c)) score+=0.2;
-    return {c:c,score:score};
-  }).filter(function(x){return x.score>0;})
-    .sort(function(a,b){return b.score-a.score;});
-
-  if(!scored.length){
-    var gapBit=gaps.length?(" "+gaps[0].replace(/^KNOWN GAPS[^:]*:\s*/i,"").split(/\. /)[0]+"."):"";
-    return "The research behind "+name+" does not cover that."+gapBit+" I will not invent an answer — that gap is the useful signal.";
-  }
-
-  var top=scored.slice(0,3).map(function(x){return x.c;});
-  var quotes=[];
-  top.forEach(function(c){
-    var m=c.match(/"([^"]{20,220})"/g);
-    if(m) m.slice(0,2).forEach(function(qq){ quotes.push(qq); });
+function renderSourceStatus(note, sources){
+  if(!note) return;
+  note.innerHTML="";
+  var order=["pack","g2","dovetail","posthog","outset","pendo","atlassian","gong"];
+  order.forEach(function(k){
+    var s=(sources&&sources[k])||null;
+    var live=s?!!s.live:(k==="pack"||k==="g2");
+    var label=s&&s.label?s.label:(k==="g2"?"G2 (embedded snapshot)":k.charAt(0).toUpperCase()+k.slice(1));
+    var span=document.createElement("span");
+    span.innerHTML='<i class="dot '+(live?"on":"off")+'"></i><b></b>';
+    span.querySelector("b").textContent=label+(live?"":" — unavailable");
+    note.appendChild(span);
   });
-
-  var lines=[];
-  lines.push("From the evidence behind "+name+" (DesignOps snapshot — brief text only, no model synthesis):");
-  top.forEach(function(c){
-    var bit=c.length>420?c.slice(0,420)+"…":c;
-    lines.push("• "+bit);
-  });
-  if(quotes.length){
-    lines.push("In their words: "+quotes.slice(0,2).join(" / "));
-  }
-  var gapHit=gaps.filter(function(g){
-    var low=g.toLowerCase();
-    return words.some(function(w){return low.indexOf(w)>=0;});
-  });
-  if(gapHit.length){
-    lines.push("Also flagged as a gap: "+gapHit[0].replace(/^KNOWN GAPS[^:]*:\s*/i,"").slice(0,280));
-  }
-  return lines.join("\n");
 }
 
-function wireExtractive(panel){
-  var pid=panel.getAttribute('data-persona'), name=NAMES[pid];
+function wireBackend(panel, base, sources){
+  var pid=panel.getAttribute("data-persona"), name=NAMES[pid];
   if(!PACKS[pid]) return;
-  if(panel.getAttribute('data-ask-wired')==='1'){ panel.hidden=false; return; }
-  panel.setAttribute('data-ask-wired','1');
-  var pack=PACKS[pid];
-  var log=panel.querySelector('.log'), form=panel.querySelector('.askform');
-  if(!form||!log){ panel.hidden=false; return; }
-  var input=form.querySelector('input'), btn=form.querySelector('button');
-  var busy=false;
-  var note=panel.querySelector('.toolnote');
+  panel.hidden=false;
+  var log=panel.querySelector(".log"), form=panel.querySelector(".askform");
+  if(!form||!log) return;
+  var input=form.querySelector("input"), btn=form.querySelector("button");
+  var busy=false, ctl=null, turns=[];
+  var note=panel.querySelector(".toolnote");
   if(!note){
-    note=document.createElement('div'); note.className='toolnote';
-    var chips=panel.querySelector('.chips');
+    note=document.createElement("div"); note.className="toolnote";
+    var chips=panel.querySelector(".chips");
     if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, log);
   }
-  note.innerHTML='<span><i class="dot off"></i><b>Answering from the embedded evidence brief</b></span><span>Outset + PostHog + G2 in brief</span><span>Live connector Ask on Claude artifact</span>';
-  panel.hidden=false;
-  var asknote=panel.querySelector('.asknote');
-  if(asknote){
-    asknote.textContent='A research instrument, not a user — it only recombines evidence we collected. On DesignOps this matches the brief; open the Claude artifact for live model Ask with connectors.';
-  }
+  renderSourceStatus(note, sources);
 
   function bubble(cls,text){
-    var d=document.createElement('div'); d.className='msg '+cls;
-    d.style.whiteSpace='pre-wrap';
+    var d=document.createElement("div"); d.className="msg "+cls;
+    d.style.whiteSpace="pre-wrap";
     d.textContent=text; log.appendChild(d); return d;
   }
   function ask(q){
-    if(busy||!q) return; busy=true;
-    bubble('u',q); input.value='';
-    var out=bubble('a think','Reading the evidence brief…');
-    btn.disabled=true;
-    setTimeout(function(){
-      out.classList.remove('think');
-      out.textContent=extractiveAnswer(name, pack, q);
-      busy=false; btn.disabled=false; btn.textContent='Ask';
-    }, 40);
+    if(!q||busy) return;
+    busy=true; btn.textContent="Stop"; btn.classList.add("stop");
+    input.value=""; bubble("user",q);
+    turns.push({role:"user",content:q});
+    var out=bubble("bot think","…");
+    ctl=new AbortController();
+    fetch(base+"/ask",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      signal:ctl.signal,
+      body:JSON.stringify({persona_id:pid, name:name, messages:turns.slice(-8)})
+    }).then(function(r){
+      if(!r.ok) throw new Error("Ask back end HTTP "+r.status);
+      var reader=r.body.getReader(), dec=new TextDecoder(), buf="", full="";
+      out.classList.remove("think"); out.textContent="";
+      function pump(){
+        return reader.read().then(function(res){
+          if(res.done){
+            if(!full){ out.remove(); bubble("err",COPY.empty_completion); turns.pop(); }
+            else turns.push({role:"assistant",content:full});
+            done(); return;
+          }
+          buf+=dec.decode(res.value,{stream:true});
+          var parts=buf.split("\n\n"); buf=parts.pop();
+          for(var i=0;i<parts.length;i++){
+            var lines=parts[i].split("\n");
+            for(var j=0;j<lines.length;j++){
+              var line=lines[j];
+              if(line.indexOf("data: ")!==0) continue;
+              var evt=JSON.parse(line.slice(6));
+              if(evt.error) throw new Error(evt.error);
+              if(evt.text){ full+=evt.text; out.textContent=full; }
+            }
+          }
+          return pump();
+        });
+      }
+      return pump();
+    }).catch(function(e){
+      if(e&&e.name==="AbortError"){ out.remove(); turns.pop(); done(); return; }
+      out.remove();
+      bubble("err",(e&&e.message)||COPY.upstream_error);
+      turns.pop(); done();
+    });
   }
-  form.addEventListener('submit',function(e){e.preventDefault(); ask(input.value.trim());});
-  panel.querySelectorAll('.chip').forEach(function(c){
-    c.addEventListener('click',function(){ if(!busy) ask(c.getAttribute('data-q')); });
-  });
+  function done(){busy=false;ctl=null;btn.textContent="Ask";btn.classList.remove("stop");}
+  form.addEventListener("submit",function(e){e.preventDefault(); if(busy){if(ctl)ctl.abort();return;} ask(input.value.trim());});
+  panel.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){if(!busy)ask(c.getAttribute("data-q"));});});
 }
+
+function initBackendAsk(base, health){
+  var sources=(health&&health.sources)||null;
+  document.querySelectorAll(".ask").forEach(function(panel){ wireBackend(panel, base, sources); });
+}
+
+if(window.claude&&typeof window.claude.use==="function"){
+  Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
+    var sample=r[0], mcp=r[1];
+    if(sample) initAsk(sample,mcp);
+    else tryBackendAsk();
+  }).catch(tryBackendAsk);
+} else {
+  tryBackendAsk();
+}
+
+function tryBackendAsk(){
+  var base=askBaseUrl();
+  if(!base){ hideAskPanels(); return; }
+  fetch(base+"/health",{method:"GET"}).then(function(r){
+    if(!r.ok) throw new Error("health "+r.status);
+    return r.json();
+  }).then(function(h){
+    if(!h||!h.ok) throw new Error("health not ok");
+    initBackendAsk(base, h);
+  }).catch(function(){ hideAskPanels(); });
+}
+
 
 function initAsk(sample,mcp){
   sample.limits().catch(function(){return null;}).then(function(lim){
@@ -1930,22 +1922,15 @@ function buildTools(mcp){
 function wire(panel,sample,tools,canTools){
   var pid=panel.getAttribute('data-persona'), name=NAMES[pid];
   if(!PACKS[pid]) return;
-  if(panel.getAttribute('data-ask-wired')==='1'){ panel.hidden=false; return; }
-  panel.setAttribute('data-ask-wired','1');
   var brief=RULES.replace('NAME_HERE',name)+PACKS[pid];
   var log=panel.querySelector('.log'), form=panel.querySelector('.askform');
-  if(!form||!log){ panel.hidden=false; return; }
   var input=form.querySelector('input'), btn=form.querySelector('button');
   var turns=[], ctl=null, busy=false, useTools=!!tools;
-  var note=panel.querySelector('.toolnote')||document.createElement('div');
-  note.className='toolnote';
+  var note=document.createElement('div'); note.className='toolnote';
   note.innerHTML = canTools
     ? '<span><i class="dot on"></i><b>Live lookups on</b></span><span>Outset research</span><span>PostHog analytics</span><span>G2 reviews embedded</span><span>Dovetail not connected</span>'
     : '<span><i class="dot off"></i><b>Answering from the embedded evidence only</b></span><span>Live connector lookups unavailable in this view</span>';
-  if(!note.parentNode){
-    var chips=panel.querySelector('.chips');
-    if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, log);
-  }
+  panel.insertBefore(note, panel.querySelector('.chips'));
   panel.hidden=false;
 
   function bubble(cls,text){var d=document.createElement('div');d.className='msg '+cls;d.textContent=text;log.appendChild(d);return d;}
@@ -1984,35 +1969,6 @@ function wire(panel,sample,tools,canTools){
   form.addEventListener('submit',function(e){e.preventDefault(); if(busy){if(ctl)ctl.abort();return;} ask(input.value.trim());});
   panel.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){if(!busy)ask(c.getAttribute('data-q'));});});
 }
-
-function showAskPanels(){
-  document.querySelectorAll('.ask').forEach(function(panel){
-    try{
-      if(typeof wireExtractive==="function") wireExtractive(panel);
-      else panel.hidden=false;
-    }catch(err){
-      panel.hidden=false;
-      console.warn("persona ask init failed", panel.getAttribute("data-persona"), err);
-    }
-  });
-}
-
-function bootAsk(){
-  // Always reveal Ask UI first — never leave panels stuck on hidden.
-  document.querySelectorAll('.ask').forEach(function(p){ p.hidden=false; });
-  var hasClaude=window.claude&&typeof window.claude.use==="function";
-  if(!hasClaude){ showAskPanels(); return; }
-  Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
-    var sample=r[0], mcp=r[1];
-    if(sample){
-      try{ initAsk(sample,mcp); }
-      catch(err){ console.warn(err); showAskPanels(); }
-    } else showAskPanels();
-  }).catch(function(){ showAskPanels(); });
-}
-
-if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", bootAsk);
-else bootAsk();
 
 })();
 </script>
@@ -2232,31 +2188,38 @@ function toPng(svg){
   });
 }
 
-if(!window.claude||typeof window.claude.use!=="function") return;
-claude.use("downloads").then(function(dl){
-  if(!dl) return;
-  document.querySelectorAll('.exp').forEach(function(box){
-    var pid=box.getAttribute('data-exp');
-    if(!document.getElementById(pid)) return;
-    box.hidden=false;
-    box.querySelectorAll('button').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        var fmt=btn.getAttribute('data-fmt'), orig=btn.textContent;
-        btn.disabled=true; btn.textContent='…';
-        var svg=poster(pid);
-        if(!svg){btn.textContent='Failed';setTimeout(function(){btn.textContent=orig;btn.disabled=false;},1600);return;}
-        var nm=(read(pid)||{}).name||pid;
-        var slug=nm.toLowerCase().replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'');
-        var job = fmt==='svg'
-          ? dl.save({filename:'persona-'+slug+'.svg', data:new Blob([svg],{type:'image/svg+xml'})})
-          : toPng(svg).then(function(b){return dl.save({filename:'persona-'+slug+'.png', data:b});});
-        job.then(function(){btn.textContent='Saved';})
-           .catch(function(){btn.textContent='Failed';})
-           .then(function(){setTimeout(function(){btn.textContent=orig;btn.disabled=false;},1600);});
-      });
+function saveBlob(filename, blob){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=filename;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1200);
+  return Promise.resolve();
+}
+
+document.querySelectorAll('.exp').forEach(function(box){
+  var pid=box.getAttribute('data-exp');
+  if(!document.getElementById(pid)) return;
+  box.hidden=false;
+  box.querySelectorAll('button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var fmt=btn.getAttribute('data-fmt'), orig=btn.textContent;
+      btn.disabled=true; btn.textContent='…';
+      var svg=poster(pid);
+      if(!svg){btn.textContent='Failed';setTimeout(function(){btn.textContent=orig;btn.disabled=false;},1600);return;}
+      var nm=(read(pid)||{}).name||pid;
+      var slug=nm.toLowerCase().replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'');
+      var job = fmt==='svg'
+        ? saveBlob('persona-'+slug+'.svg', new Blob([svg],{type:'image/svg+xml'}))
+        : toPng(svg).then(function(b){return saveBlob('persona-'+slug+'.png', b);});
+      job.then(function(){btn.textContent='Saved';})
+         .catch(function(){btn.textContent='Failed';})
+         .then(function(){setTimeout(function(){btn.textContent=orig;btn.disabled=false;},1600);});
     });
   });
-}).catch(function(){});
+});
+
 })();
 </script>
 <script>

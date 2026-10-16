@@ -6,16 +6,53 @@ confidence score.
 
 **Live on DesignOps:** https://lesley-spec.github.io/uxdesignops/personas/
 
-Claude artifact (Ask + live PostHog connectors): https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ — ask for access.
-UX Research team for access)
+Claude artifact (optional, live connectors on claude.ai):
+https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ — ask UX Research for access.
+
+**Definitive how-it-should-work spec:** [`REBUILD-PROMPT.md`](./REBUILD-PROMPT.md)
 
 ## Contents
 
 | File | What it is |
 |---|---|
-| `SKILL.md` | The agent skill. Routes work to the persona set and says how to use it. |
-| `personas.md` | Full markdown copy — every persona, workflow table and source note. |
-| `index.html` | Source of the live artifact. Publish to update the page. |
+| `index.html` | The page — packs, cards, Ask client, card export |
+| `personas.md` | Full markdown copy of every persona |
+| `REBUILD-PROMPT.md` | Architecture for Ask, packs, export, design system |
+| `personas-src.html` | Unwrapped Nihal source snapshot used for rebuilds |
+
+## Ask feature
+
+Ask is grounded in byte-identical `RULES` + `PACKS` from the reference HTML. It needs a
+server that calls Anthropic with those as the system prompt (keys stay server-side).
+
+On DesignOps Pages:
+
+1. Run `python3 research-agent/persona_ask_server.py` with `ANTHROPIC_API_KEY` set
+2. In the browser console on the personas page:
+   `window.DESIGNOPS_PERSONA_ASK_URL = "http://127.0.0.1:8787"` then reload
+
+If the back end is unreachable, Ask panels stay hidden — the rest of the page works.
+G2 is an embedded snapshot inside the packs; live Dovetail / PostHog / Outset / Pendo /
+Atlassian / Gong are named as unavailable in the status line until wired.
+
+**Refusal test:** ask Nia *"what do you think of our pricing page?"* and James *"how does
+procurement work at your company?"* — both must decline and name the gap.
+
+## Card export
+
+Each card exports PNG and SVG via an ordinary `<a download>` blob (no Claude downloads
+API). Always light theme; measures against Helvetica Neue for SVG→canvas.
+
+## Rebuild from Nihal
+
+```bash
+gh repo clone nihal-somers-impact/ux-research /tmp/ux-research-nihal -- --depth 1
+python3 research-agent/publish_nihal_pages.py /tmp/ux-research-nihal
+```
+
+That copies `REBUILD-PROMPT.md`, verifies packs with a diff, unifies display names,
+scopes chip CSS, swaps export to blob download, and wires the Ask client to
+`DESIGNOPS_PERSONA_ASK_URL`.
 
 ## What makes this set different
 
@@ -23,47 +60,14 @@ UX Research team for access)
 segment-wide rates turned out to be six or four people. Those are marked, not quietly
 dropped.
 
-**Confidence is scored and visible**, 41–81 out of 100, so a reader knows which cards
-carry weight. Brand personas scored lower until the Dovetail Brand Value Stream research
-was folded in.
+**Confidence is scored and visible**, so a reader knows which cards carry weight.
 
 **Gaps are stated as prominently as findings.** There is no affiliate persona because the
-research screener excluded them; that absence is on the page rather than hidden behind a
-plausible-sounding card.
+research screener excluded them; that absence is on the page.
 
-**The charts are live.** Partner funnel, device split, approval decisions, region spread
-and the new-brand cohort all pull from PostHog on load, with a snapshot fallback and a
-status badge when a connector is unavailable.
-
-**You can question a persona.** Each card has an Ask panel grounded in the evidence
-behind it. It declines when a question falls outside what the research covers — a
-refusal is a research gap, not a failure.
-
-## Corrections this work produced
-
-- The "~90% application rejection" figure was one participant's own experience. The real
-  number is **42.5% of 1.86M applications**.
-- "55% can't discover campaigns" and "40% struggle with links" are **6 and 4 people**.
-- Marketplace-originated partnerships convert at **3.6–4.9%** against **17.6–23.1%** for a
-  branded signup — so discovery and vetting are one problem, not two.
-
-## Design system
-
-Styled with the iui3 **vnext** theme — tokens read from the public component-library
-Storybook, declared under their real `--iui3-*` names so
-`@impactinc/frontend-theme-tokens` can be dropped in. Chart palettes validated for
-colour-vision deficiency and contrast in both themes.
-
-Known DS gap: vNext publishes no semantic success or warning **text** colour, only
-`reporting-success`, which is unreadable as text on white. The friction chips use a
-derived pair in light mode and the real tokens in dark.
-
-## Maintaining it
-
-1. Edit `index.html`.
-2. Publish it to the artifact URL above (keeps the link stable).
-3. Keep `personas.md` in step.
-4. Re-score confidence when a gap closes and note what moved.
+**You can question a persona** when Ask is live. Declining outside the evidence is the
+feature — if the build answers everything, the packs were regenerated and the page is
+not trustworthy.
 
 ## Feedback
 
