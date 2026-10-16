@@ -62,7 +62,14 @@ FRAME_SNAPSHOT_PATCH = r"""
 
 
 def load_collection(folder: Path) -> list:
-    return [json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))]
+    rows = []
+    for p in sorted(folder.glob("*.json")):
+        obj = json.loads(p.read_text(encoding="utf-8"))
+        # Artifact DB stores id on the document; per-file exports use the filename.
+        if not obj.get("id"):
+            obj["id"] = p.stem
+        rows.append(obj)
+    return rows
 
 
 def extract_nihal_parts(src_html: str) -> tuple[str, str, str]:

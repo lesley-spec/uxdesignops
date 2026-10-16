@@ -11,7 +11,8 @@
       "brand:getting-started"
     ],
     "severity": "blocking",
-    "stage": "Commit"
+    "stage": "Commit",
+    "id": "bn01"
   },
   {
     "audience": "Brand",
@@ -24,7 +25,8 @@
       "brand:getting-started"
     ],
     "severity": "major",
-    "stage": "Commit"
+    "stage": "Commit",
+    "id": "bn02"
   },
   {
     "audience": "Brand",
@@ -38,7 +40,8 @@
       "brand:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Integrate & configure"
+    "stage": "Integrate & configure",
+    "id": "bn03"
   },
   {
     "audience": "Brand",
@@ -51,7 +54,8 @@
       "brand:getting-started"
     ],
     "severity": "major",
-    "stage": "Integrate & configure"
+    "stage": "Integrate & configure",
+    "id": "bn04"
   },
   {
     "audience": "Brand",
@@ -66,7 +70,8 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Integrate & configure"
+    "stage": "Integrate & configure",
+    "id": "bn05"
   },
   {
     "audience": "Brand",
@@ -83,7 +88,8 @@
       "brand:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Recruit"
+    "stage": "Recruit",
+    "id": "bn06"
   },
   {
     "audience": "Brand",
@@ -99,7 +105,8 @@
       "brand:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Recruit"
+    "stage": "Recruit",
+    "id": "bn07"
   },
   {
     "audience": "Brand",
@@ -112,7 +119,8 @@
       "brand:scaling-up"
     ],
     "severity": "major",
-    "stage": "Recruit"
+    "stage": "Recruit",
+    "id": "bn08"
   },
   {
     "audience": "Brand",
@@ -126,7 +134,8 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Recruit"
+    "stage": "Recruit",
+    "id": "bn09"
   },
   {
     "audience": "Brand",
@@ -139,7 +148,8 @@
       "brand:scaling-up"
     ],
     "severity": "major",
-    "stage": "Activate"
+    "stage": "Activate",
+    "id": "bn10"
   },
   {
     "audience": "Brand",
@@ -153,7 +163,8 @@
       "brand:scaling-up"
     ],
     "severity": "watch",
-    "stage": "Activate"
+    "stage": "Activate",
+    "id": "bn11"
   },
   {
     "audience": "Brand",
@@ -167,7 +178,8 @@
       "brand:getting-started"
     ],
     "severity": "blocking",
-    "stage": "Measure"
+    "stage": "Measure",
+    "id": "bn12"
   },
   {
     "audience": "Brand",
@@ -180,7 +192,8 @@
       "brand:scaling-up"
     ],
     "severity": "major",
-    "stage": "Measure"
+    "stage": "Measure",
+    "id": "bn13"
   },
   {
     "audience": "Brand",
@@ -194,7 +207,8 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Measure"
+    "stage": "Measure",
+    "id": "bn14"
   },
   {
     "audience": "Brand",
@@ -207,7 +221,8 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Measure"
+    "stage": "Measure",
+    "id": "bn15"
   },
   {
     "audience": "Brand",
@@ -221,7 +236,8 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Pay"
+    "stage": "Pay",
+    "id": "bn16"
   },
   {
     "audience": "Brand",
@@ -235,7 +251,8 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Protect"
+    "stage": "Protect",
+    "id": "bn17"
   },
   {
     "audience": "Brand",
@@ -250,7 +267,8 @@
       "brand:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Protect"
+    "stage": "Protect",
+    "id": "bn18"
   },
   {
     "audience": "Brand",
@@ -263,7 +281,8 @@
       "brand:strategic-growth"
     ],
     "severity": "watch",
-    "stage": "Protect"
+    "stage": "Protect",
+    "id": "bn19"
   },
   {
     "audience": "Partner",
@@ -276,7 +295,8 @@
       "partner:getting-started"
     ],
     "severity": "major",
-    "stage": "Join & set up"
+    "stage": "Join & set up",
+    "id": "pn01"
   },
   {
     "audience": "Partner",
@@ -292,7 +312,8 @@
       "partner:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Discover brands"
+    "stage": "Discover brands",
+    "id": "pn02"
   },
   {
     "audience": "Partner",
@@ -307,7 +328,8 @@
       "partner:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Discover brands"
+    "stage": "Discover brands",
+    "id": "pn03"
   },
   {
     "audience": "Partner",
@@ -322,7 +344,8 @@
       "partner:scaling-up"
     ],
     "severity": "major",
-    "stage": "Discover brands"
+    "stage": "Discover brands",
+    "id": "pn04"
   },
   {
     "audience": "Partner",
@@ -337,7 +360,8 @@
       "partner:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Apply & get approved"
+    "stage": "Apply & get approved",
+    "id": "pn05"
   },
   {
     "audience": "Partner",
@@ -351,7 +375,8 @@
       "partner:scaling-up"
     ],
     "severity": "major",
-    "stage": "Generate links"
+    "stage": "Generate links",
+    "id": "pn06"
   },
   {
     "audience": "Partner",
@@ -365,7 +390,8 @@
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Generate links"
+    "stage": "Generate links",
+    "id": "pn07"
   },
   {
     "audience": "Partner",
@@ -378,7 +404,8 @@
       "partner:scaling-up"
     ],
     "severity": "major",
-    "stage": "Generate links"
+    "stage": "Generate links",
+    "id": "pn08"
   },
   {
     "audience": "Partner",
@@ -392,7 +419,8 @@
       "partner:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Promote"
+    "stage": "Promote",
+    "id": "pn09"
   },
   {
     "audience": "Partner",
@@ -407,7 +435,8 @@
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Promote"
+    "stage": "Promote",
+    "id": "pn10"
   },
   {
     "audience": "Partner",
@@ -422,7 +451,8 @@
       "partner:strategic-growth"
     ],
     "severity": "blocking",
-    "stage": "Track performance"
+    "stage": "Track performance",
+    "id": "pn11"
   },
   {
     "audience": "Partner",
@@ -438,7 +468,8 @@
       "partner:scaling-up"
     ],
     "severity": "blocking",
-    "stage": "Track performance"
+    "stage": "Track performance",
+    "id": "pn12"
   },
   {
     "audience": "Partner",
@@ -452,7 +483,8 @@
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Track performance"
+    "stage": "Track performance",
+    "id": "pn13"
   },
   {
     "audience": "Partner",
@@ -465,7 +497,8 @@
       "partner:scaling-up"
     ],
     "severity": "watch",
-    "stage": "Track performance"
+    "stage": "Track performance",
+    "id": "pn14"
   },
   {
     "audience": "Partner",
@@ -479,6 +512,7 @@
       "partner:strategic-growth"
     ],
     "severity": "major",
-    "stage": "Get paid"
+    "stage": "Get paid",
+    "id": "pn15"
   }
 ]
