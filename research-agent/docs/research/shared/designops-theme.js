@@ -91,23 +91,33 @@
     }
   }
 
-  function placeExamplesAfterPipeline(nav) {
+  function orderPrimaryNav(nav) {
     if (!nav) return;
     var pipeline = nav.querySelector('[data-nav="pipeline"]');
-    var examples = nav.querySelector('[data-nav="walkthrough"]');
-    if (!pipeline || !examples) return;
-    if (pipeline.nextElementSibling === examples) return;
-    if (pipeline.nextSibling) {
-      nav.insertBefore(examples, pipeline.nextSibling);
-    } else {
-      nav.appendChild(examples);
-    }
+    if (!pipeline) return;
+
+    var skills = nav.querySelector('a[data-nav="skills"]');
+    var listing = nav.querySelector(
+      '[data-nav="listing"], .nav-dropdown[data-nav="listing"]'
+    );
+    var examples = nav.querySelector('a[data-nav="walkthrough"]');
+
+    var insertAfter = pipeline;
+    [skills, listing, examples].forEach(function (el) {
+      if (!el) return;
+      if (insertAfter.nextSibling) {
+        nav.insertBefore(el, insertAfter.nextSibling);
+      } else {
+        nav.appendChild(el);
+      }
+      insertAfter = el;
+    });
   }
 
   function normalizeTopNav() {
     var nav = document.querySelector(".report-nav");
     if (!nav) return null;
-    placeExamplesAfterPipeline(nav);
+    orderPrimaryNav(nav);
 
     ["personas", "feed", "affinity"].forEach(function (key) {
       nav.querySelectorAll('a[data-nav="' + key + '"]').forEach(function (el) {
@@ -115,6 +125,7 @@
       });
     });
 
+    orderPrimaryNav(nav);
     return nav;
   }
 
@@ -257,6 +268,7 @@
     ensureRequestsNav();
     removeSecondaryBar();
     ensureResearchDropdown(nav);
+    orderPrimaryNav(nav);
     syncStickyOffset();
     window.addEventListener("resize", syncStickyOffset);
 
