@@ -1,21 +1,20 @@
 (function () {
   var STORAGE_KEY = "theme";
   var SUBNAV_ITEMS = [
-    { key: "listing", label: "Insight Monitor", path: "research/" },
-    { key: "frame", label: "The Frame", path: "frame/" },
-    { key: "personas", label: "Personas", path: "personas/" },
     {
-      key: "claude-frame",
-      label: "Claude Frame ↗",
+      key: "frame",
+      label: "The Frame",
       external: "https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw",
     },
     {
-      key: "claude-personas",
-      label: "Claude Personas ↗",
+      key: "personas-v2",
+      label: "Personas V2",
       external: "https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ",
     },
+    { key: "listing", label: "Insight Monitor", path: "research/" },
+    { key: "personas", label: "Personas (V1)", path: "personas/" },
     { key: "affinity", label: "Affinity", path: "reports/2026-08-24-affinity.html" },
-    { key: "feed", label: "Competitors", path: "feed/" },
+    { key: "feed", label: "Competitor News", path: "feed/" },
   ];
 
   function systemPrefersDark() {
@@ -148,6 +147,7 @@
       if (item.external) {
         link.target = "_blank";
         link.rel = "noopener noreferrer";
+        link.setAttribute("data-external", "true");
       }
       panel.appendChild(link);
     });
@@ -245,7 +245,8 @@
       ".report-nav .nav-dropdown-panel[hidden]{display:none!important;}" +
       ".report-nav .nav-dropdown-item{display:block;width:100%;box-sizing:border-box;padding:8px 12px;border-radius:6px;text-decoration:none!important;white-space:nowrap;font-size:.88rem;font-weight:600;color:var(--text-default);background:transparent;}" +
       ".report-nav .nav-dropdown-item:hover{background:var(--background-hover);color:var(--text-default);}" +
-      ".report-nav .nav-dropdown-item.is-active{color:var(--interactive-default);background:var(--info-bg);}";
+      ".report-nav .nav-dropdown-item.is-active{color:var(--interactive-default);background:var(--info-bg);}" +
+      ".report-nav .nav-dropdown-item[data-external='true']::after{content:' \\2197';font-size:.85em;opacity:.75;}";
     document.head.appendChild(style);
   }
 
