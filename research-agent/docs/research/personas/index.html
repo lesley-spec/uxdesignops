@@ -1768,7 +1768,9 @@ function hideAskPanels(){
 
 function askBaseUrl(){
   var u=(window.DESIGNOPS_PERSONA_ASK_URL||"").trim().replace(/\/$/,"");
-  return u;
+  if(u) return u;
+  // Local Ask server default — probed; panels stay hidden if unreachable
+  return "http://127.0.0.1:8787";
 }
 
 function renderSourceStatus(note, sources){

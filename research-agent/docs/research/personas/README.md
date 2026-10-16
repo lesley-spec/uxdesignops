@@ -25,13 +25,16 @@ https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ — ask UX Research for access
 Ask is grounded in byte-identical `RULES` + `PACKS` from the reference HTML. It needs a
 server that calls Anthropic with those as the system prompt (keys stay server-side).
 
-On DesignOps Pages:
+On DesignOps Pages the Ask client probes `http://127.0.0.1:8787` automatically.
+Start the local server and reload — no console step:
 
-1. Run `python3 research-agent/persona_ask_server.py` with `ANTHROPIC_API_KEY` set
-2. In the browser console on the personas page:
-   `window.DESIGNOPS_PERSONA_ASK_URL = "http://127.0.0.1:8787"` then reload
+```bash
+export ANTHROPIC_API_KEY=sk-...
+python3 research-agent/persona_ask_server.py
+```
 
 If the back end is unreachable, Ask panels stay hidden — the rest of the page works.
+Override the URL anytime with `window.DESIGNOPS_PERSONA_ASK_URL`.
 G2 is an embedded snapshot inside the packs; live Dovetail / PostHog / Outset / Pendo /
 Atlassian / Gong are named as unavailable in the status line until wired.
 
