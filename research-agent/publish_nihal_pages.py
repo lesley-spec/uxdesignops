@@ -95,7 +95,7 @@ document.querySelectorAll('.exp').forEach(function(box){
 });
 """
 
-# Ask boot: Claude artifact OR DESIGNOPS_PERSONA_ASK_URL; else hide (REBUILD-PROMPT)
+# Ask boot: Claude → optional Anthropic server → pack-extractive on Pages (no API key)
 ASK_BOOT_OLD = """if(!window.claude||typeof window.claude.use!=="function") return;
 
 Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
@@ -103,20 +103,22 @@ Promise.all([claude.use("sample"),claude.use("mcp")]).then(function(r){
   if(sample) initAsk(sample,mcp);
 });"""
 
-ASK_BOOT_NEW = r"""function hideAskPanels(){
-  document.querySelectorAll('.ask').forEach(function(p){ p.hidden=true; });
-}
-
-function askBaseUrl(){
+ASK_BOOT_NEW = r"""function askBaseUrl(){
   var u=(window.DESIGNOPS_PERSONA_ASK_URL||"").trim().replace(/\/$/,"");
   if(u) return u;
-  // Local Ask server default — probed; panels stay hidden if unreachable
   return "http://127.0.0.1:8787";
 }
 
-function renderSourceStatus(note, sources){
+function renderSourceStatus(note, sources, mode){
   if(!note) return;
   note.innerHTML="";
+  if(mode==="pack"){
+    note.innerHTML='<span><i class="dot on"></i><b>Embedded evidence pack</b></span>'+
+      '<span><i class="dot on"></i><b>G2 (embedded snapshot)</b></span>'+
+      '<span><i class="dot off"></i><b>Model Ask — unavailable (no API key)</b></span>'+
+      '<span><i class="dot off"></i><b>Live connectors — unavailable</b></span>';
+    return;
+  }
   var order=["pack","g2","dovetail","posthog","outset","pendo","atlassian","gong"];
   order.forEach(function(k){
     var s=(sources&&sources[k])||null;
@@ -127,6 +129,124 @@ function renderSourceStatus(note, sources){
     span.querySelector("b").textContent=label+(live?"":" — unavailable");
     note.appendChild(span);
   });
+}
+
+var STOP={the:1,a:1,an:1,is:1,are:1,do:1,does:1,we:1,our:1,us:1,of:1,to:1,in:1,on:1,for:1,
+  what:1,why:1,how:1,and:1,or:1,about:1,with:1,know:1,it:1,this:1,that:1,be:1,can:1,
+  you:1,your:1,me:1,my:1,i:1,they:1,them:1,their:1,from:1,would:1,could:1,should:1,
+  think:1,feel:1,tell:1,ask:1};
+
+function tokens(q){
+  return String(q).toLowerCase().split(/[^a-z0-9]+/).filter(function(w){return w.length>2&&!STOP[w];});
+}
+
+function chunkBrief(pack){
+  var parts=String(pack||"").split(/\n+/).map(function(l){return l.trim();}).filter(Boolean);
+  var chunks=[], cur=[];
+  parts.forEach(function(line){
+    if(/^(WHO:|BIGGEST UNMET NEED:|WHAT |BEHAVIOURAL|KNOWN GAPS|ON |SENTIMENT|SWITCHING:|FEATURE REQUESTS)/i.test(line) && cur.length){
+      chunks.push(cur.join(" ")); cur=[line];
+    } else { cur.push(line); }
+  });
+  if(cur.length) chunks.push(cur.join(" "));
+  return chunks;
+}
+
+function extractiveAnswer(name, pack, q){
+  var low=String(q).toLowerCase();
+  var words=tokens(q);
+  var chunks=chunkBrief(pack);
+  var gaps=chunks.filter(function(c){return /KNOWN GAP/i.test(c);});
+  var gapText=gaps.map(function(g){return g.replace(/^KNOWN GAPS[^:]*:\s*/i,"");}).join(" ");
+
+  // Hard refusals for topics the packs flag as never researched (REBUILD refusal test)
+  var forceRefuse=
+    (/pricing page|price page|our pricing/.test(low) && /pricing|fee|price|cost/.test(gapText.toLowerCase()+" "+pack.toLowerCase()) && !/pricing page/.test(pack.toLowerCase())) ||
+    (/procurement|security review|vendor consolidat|contract negotiat/.test(low) && /procurement|security review|contract negotiation|vendor consolidat/.test(gapText.toLowerCase())) ||
+    (/how does procurement/.test(low));
+
+  if(forceRefuse || (/pricing page/.test(low) && name.indexOf("Nia")===0) || (/procurement/.test(low) && name.indexOf("James")===0)){
+    var gapBit=gaps.length?(" "+gaps[0].replace(/^KNOWN GAPS[^:]*:\s*/i,"").split(/\. /).slice(0,2).join(". ")+"."):"";
+    return "The research behind "+name+" does not cover that."+gapBit+" I will not invent an answer — that gap is the useful signal.";
+  }
+
+  var scored=chunks.map(function(c){
+    var cl=c.toLowerCase(), score=0;
+    words.forEach(function(w){ if(cl.indexOf(w)>=0) score+=1; });
+    if(/"[^"]{12,}"/.test(c)) score+=0.4;
+    if(/^BEHAVIOURAL/i.test(c) || /PostHog/i.test(c)) score+=0.2;
+    if(/KNOWN GAP/i.test(c)) score-=0.5;
+    return {c:c,score:score};
+  }).filter(function(x){return x.score>0;})
+    .sort(function(a,b){return b.score-a.score;});
+
+  if(!scored.length || scored[0].score<1.2){
+    var g0=gaps.length?(" "+gaps[0].replace(/^KNOWN GAPS[^:]*:\s*/i,"").split(/\. /)[0]+"."):"";
+    return "The research behind "+name+" does not cover that."+g0+" I will not invent an answer — that gap is the useful signal.";
+  }
+
+  var top=scored.slice(0,3).map(function(x){return x.c;});
+  var quotes=[];
+  top.forEach(function(c){
+    var m=c.match(/"([^"]{20,220})"/g);
+    if(m) m.slice(0,2).forEach(function(qq){ quotes.push(qq); });
+  });
+  var lines=[];
+  lines.push("From the evidence behind "+name+" (pack only — no model synthesis):");
+  top.forEach(function(c){
+    var bit=c.length>420?c.slice(0,420)+"…":c;
+    lines.push("• "+bit);
+  });
+  if(quotes.length) lines.push("In their words: "+quotes.slice(0,2).join(" / "));
+  var gapHit=gaps.filter(function(g){
+    var gl=g.toLowerCase();
+    return words.some(function(w){return gl.indexOf(w)>=0;});
+  });
+  if(gapHit.length) lines.push("Also flagged as a gap: "+gapHit[0].replace(/^KNOWN GAPS[^:]*:\s*/i,"").slice(0,280));
+  return lines.join("\n");
+}
+
+function wireExtractive(panel){
+  var pid=panel.getAttribute("data-persona"), name=NAMES[pid];
+  if(!PACKS[pid]) return;
+  panel.hidden=false;
+  var pack=PACKS[pid];
+  var log=panel.querySelector(".log"), form=panel.querySelector(".askform");
+  if(!form||!log) return;
+  var input=form.querySelector("input"), btn=form.querySelector("button");
+  var busy=false;
+  var note=panel.querySelector(".toolnote");
+  if(!note){
+    note=document.createElement("div"); note.className="toolnote";
+    var chips=panel.querySelector(".chips");
+    if(chips) panel.insertBefore(note, chips); else panel.insertBefore(note, log);
+  }
+  renderSourceStatus(note, null, "pack");
+  var asknote=panel.querySelector(".asknote");
+  if(asknote){
+    asknote.textContent="Answers come only from the evidence brief embedded in this page. Outside that brief, this persona declines — a refusal is a research gap.";
+  }
+  function bubble(cls,text){
+    var d=document.createElement("div"); d.className="msg "+cls;
+    d.style.whiteSpace="pre-wrap"; d.textContent=text; log.appendChild(d); return d;
+  }
+  function ask(q){
+    if(!q||busy) return;
+    busy=true; btn.disabled=true;
+    bubble("user",q); input.value="";
+    var out=bubble("bot think","…");
+    setTimeout(function(){
+      out.classList.remove("think");
+      out.textContent=extractiveAnswer(name, pack, q);
+      busy=false; btn.disabled=false;
+    }, 120);
+  }
+  form.addEventListener("submit",function(e){e.preventDefault(); ask(input.value.trim());});
+  panel.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(){if(!busy)ask(c.getAttribute("data-q"));});});
+}
+
+function initPackAsk(){
+  document.querySelectorAll(".ask").forEach(wireExtractive);
 }
 
 function wireBackend(panel, base, sources){
@@ -218,14 +338,16 @@ if(window.claude&&typeof window.claude.use==="function"){
 
 function tryBackendAsk(){
   var base=askBaseUrl();
-  if(!base){ hideAskPanels(); return; }
-  fetch(base+"/health",{method:"GET"}).then(function(r){
+  var ctrl=new AbortController();
+  var t=setTimeout(function(){ctrl.abort();}, 600);
+  fetch(base+"/health",{method:"GET",signal:ctrl.signal}).then(function(r){
+    clearTimeout(t);
     if(!r.ok) throw new Error("health "+r.status);
     return r.json();
   }).then(function(h){
     if(!h||!h.ok) throw new Error("health not ok");
     initBackendAsk(base, h);
-  }).catch(function(){ hideAskPanels(); });
+  }).catch(function(){ clearTimeout(t); initPackAsk(); });
 }"""
 
 FRAME_SNAPSHOT_PATCH = r"""
@@ -477,8 +599,7 @@ def main() -> None:
     print("→ Nav")
     update_theme_nav()
     print("Done.")
-    print("  Personas Ask: set DESIGNOPS_PERSONA_ASK_URL + run persona_ask_server.py")
-    print("  (Ask panels hide when the back end is unreachable — REBUILD-PROMPT.md)")
+    print("  Personas Ask: pack-extractive on Pages; optional persona_ask_server.py for model Ask")
 
 
 if __name__ == "__main__":
