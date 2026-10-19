@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T17:21:49.084659+00:00",
+  "generated_at": "2026-10-19T15:16:46.625587+00:00",
   "lookback_days": 120,
   "competitors": [
     {
@@ -64,7 +64,7 @@
       "kind": "rss",
       "status": "ok",
       "error": "",
-      "items": 5
+      "items": 7
     },
     {
       "competitor": "partnerize",
@@ -100,7 +100,7 @@
       "kind": "news",
       "status": "ok",
       "error": "",
-      "items": 8
+      "items": 7
     },
     {
       "competitor": "cj",
@@ -159,6 +159,132 @@
   ],
   "items": [
     {
+      "id": "b06bb648c0adb6d4",
+      "competitor": "rakuten",
+      "title": "Through the Lens with David Gill: Consumer insights on beauty, oral care, live sports, and fringe (yes, we’re diving into fashion trends)",
+      "url": "https://blog.rakutenadvertising.com/insights/consumer-insights-david-gill-beauty-oral-care-live-sports/",
+      "published": "2026-10-19",
+      "published_at": "2026-10-19T13:22:27+00:00",
+      "week": "2026-W43",
+      "week_label": "Oct 19–25, 2026",
+      "excerpt": "David Gill, VP of Consumer Insights at Rakuten Advertising, shares consumer insights on the Target and Ulta breakup, Dyson's leap into oral care, the demand for live sports pulling into adjacent categories, and why fringe is headed mainstream this holiday.",
+      "kind": "news",
+      "source_label": "Rakuten Advertising Blog",
+      "source_kind": "rss"
+    },
+    {
+      "id": "47908561b37385fa",
+      "competitor": "refersion",
+      "title": "Launching an Affiliate Program in 2026?",
+      "url": "https://www.refersion.com/blog/launching-an-affiliate-program-in-2026/",
+      "published": "2026-10-16",
+      "published_at": "2026-10-16T20:08:39+00:00",
+      "week": "2026-W42",
+      "week_label": "Oct 12–18, 2026",
+      "excerpt": "New brands and merchants are launching everyday. That means the same goes for affiliate and influencer marketing programs. This is especially true because new brands find the easiest way to... The post Launching an Affiliate Program in 2026? appeared first on Refersion .",
+      "kind": "feature",
+      "source_label": "Refersion Blog",
+      "source_kind": "rss"
+    },
+    {
+      "id": "47b1a2b5b26b90bc",
+      "competitor": "rakuten",
+      "title": "What North American Financial Services Leaders Told Us About AI, Attribution, and the Future of Partner Marketing News",
+      "url": "https://blog.rakutenadvertising.com/insights/partner-marketing-news-finserv-ai-attribution/",
+      "published": "2026-10-15",
+      "published_at": "2026-10-15T20:28:59+00:00",
+      "week": "2026-W42",
+      "week_label": "Oct 12–18, 2026",
+      "excerpt": "North American financial services leaders are rethinking attribution, content strategy, and channel investment as AI-driven discovery reshapes the customer journey. Here is what that means for affiliate marketing industry in 2026 and 2027.",
+      "kind": "feature",
+      "source_label": "Rakuten Advertising Blog",
+      "source_kind": "rss"
+    },
+    {
+      "id": "82b26f8baa706f93",
+      "competitor": "awin",
+      "title": "10 best affiliate networks for marketers in 2026 - Hostinger",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1GaktJRlJMU1RRMkIxd3ZzdWpUSG5GX2tBelpqYjJlT2ladkxyMUZ1eS0tZldEbFQ5WXQ1bGxGclRaN1p6OGF2bkNkYnlOcjN2M1JCczFLT214RC1KdFU0a2gyMnZLRkJPNVBZQg?oc=5",
+      "published": "2026-10-14",
+      "published_at": "2026-10-14T07:00:00+00:00",
+      "week": "2026-W42",
+      "week_label": "Oct 12–18, 2026",
+      "excerpt": "10 best affiliate networks for marketers in 2026 Hostinger",
+      "kind": "news",
+      "source_label": "Awin in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "ca684a8dad2ee838",
+      "competitor": "shareasale",
+      "title": "10 best affiliate networks for marketers in 2026 - Hostinger",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBWaUpSMDJ3MWJCQ2h6ajBXaGxIUFpTM09tbXFVdWt1SmhzOVlEY0xwNjQyRFpMa1hPOUliRTlHRldLalRBTTIza180V2gyZUExMldSVElGLThZTFNHX1pyeEFyc3RIRjdDc01JU09oZXk?oc=5",
+      "published": "2026-10-14",
+      "published_at": "2026-10-14T07:00:00+00:00",
+      "week": "2026-W42",
+      "week_label": "Oct 12–18, 2026",
+      "excerpt": "10 best affiliate networks for marketers in 2026 Hostinger",
+      "kind": "news",
+      "source_label": "ShareASale in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "9b62069f78a80d10",
+      "competitor": "cj",
+      "title": "Upcoming 18+ Web Series 2026: November, December Release Check - RVCJ Media",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5wcURfUTBBSjRxMlRTS0pFT1FVbUtRSVYtaGRFVVA2ckNlN2xQZHc5cjN3UUY4YVFNTVctNzd0MEI5cHZhbEx6SDQxb3RjYllMcTNwc0E1blg1aDZodURnR0NhU0k?oc=5",
+      "published": "2026-10-13",
+      "published_at": "2026-10-13T09:10:15+00:00",
+      "week": "2026-W42",
+      "week_label": "Oct 12–18, 2026",
+      "excerpt": "Upcoming 18+ Web Series 2026: November, December Release Check RVCJ Media",
+      "kind": "feature",
+      "source_label": "CJ Affiliate in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "1264c87218dda228",
+      "competitor": "partnerize",
+      "title": "Digital Advertising Built a Verification Layer Before It Trusted the Impression. AI Will Too.",
+      "url": "https://partnerize.com/resources/blog/digital-advertising-built-a-verification-layer-before-it-trusted-the-impression-ai-will-too",
+      "published": "2026-10-13",
+      "published_at": "2026-10-13T13:10:20+00:00",
+      "week": "2026-W42",
+      "week_label": "Oct 12–18, 2026",
+      "excerpt": "VantagePoint™ is built to move beyond visibility, testing AI-influenced journeys against a defined verification standard and connecting credible influence to economic action through compensation, capital allocation, or both.",
+      "kind": "feature",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
+    {
+      "id": "bd88b5df6ce4a19f",
+      "competitor": "refersion",
+      "title": "Best Influencer Marketing Software For 2026 [Updated] - Influencer Marketing Hub",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE05N1Z6WjhNU1E0RGE3eElPOGo0TUo4SG56V3lUTEJHR2h1OGd3WVd3dlcwOXRrWmt6OHdBTzlDUm5JWkNCVjJSX1NVaG40TUVPTjh2RGdBMm1pZTktbDFKY2VkOEk4cTNYSDZCdmE3RlQteG8?oc=5",
+      "published": "2026-10-12",
+      "published_at": "2026-10-12T07:00:00+00:00",
+      "week": "2026-W42",
+      "week_label": "Oct 12–18, 2026",
+      "excerpt": "Best Influencer Marketing Software For 2026 [Updated] Influencer Marketing Hub",
+      "kind": "news",
+      "source_label": "Refersion in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "7dabf57afec27ae3",
+      "competitor": "partnerize",
+      "title": "Mobile Needed a New Trust Layer. AI Will Too.",
+      "url": "https://partnerize.com/resources/blog/mobile-needed-a-new-trust-layer-ai-will-too",
+      "published": "2026-10-06",
+      "published_at": "2026-10-06T13:46:15+00:00",
+      "week": "2026-W41",
+      "week_label": "Oct 5–11, 2026",
+      "excerpt": "Search taught us that a discovery channel becomes much more economically useful when visibility can be connected to downstream outcomes and, ultimately, investment decisions. But there is another precedent that may be even more relevant to what is happening with AI. Mobile…",
+      "kind": "feature",
+      "source_label": "Partnerize Feed",
+      "source_kind": "rss"
+    },
+    {
       "id": "3018fe319de8892d",
       "competitor": "partnerize",
       "title": "Beyond Program Noise: How a Global Luxury Retailer Streamlined 1,400+ Partners and Drove 38% Q4 Growth",
@@ -199,20 +325,6 @@
       "kind": "news",
       "source_label": "Rakuten Advertising Blog",
       "source_kind": "rss"
-    },
-    {
-      "id": "bd88b5df6ce4a19f",
-      "competitor": "refersion",
-      "title": "Best Influencer Marketing Software For 2026 [Updated] - Influencer Marketing Hub",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE05N1Z6WjhNU1E0RGE3eElPOGo0TUo4SG56V3lUTEJHR2h1OGd3WVd3dlcwOXRrWmt6OHdBTzlDUm5JWkNCVjJSX1NVaG40TUVPTjh2RGdBMm1pZTktbDFKY2VkOEk4cTNYSDZCdmE3RlQteG8?oc=5",
-      "published": "2026-09-30",
-      "published_at": "2026-09-30T07:00:00+00:00",
-      "week": "2026-W40",
-      "week_label": "Sep 28 – Oct 4, 2026",
-      "excerpt": "Best Influencer Marketing Software For 2026 [Updated] Influencer Marketing Hub",
-      "kind": "news",
-      "source_label": "Refersion in the news",
-      "source_kind": "news"
     },
     {
       "id": "f3e214c0fa3cf1c6",
@@ -355,6 +467,20 @@
       "source_kind": "rss"
     },
     {
+      "id": "3a26d8ad8b3cb806",
+      "competitor": "awin",
+      "title": "The Dawn of Triangulation: Awin ThinkTank Spells Out Affiliate Opportunity in the AI Era - Hello Partner",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOYWZuMVdocnlJV1I0VDdJekVXc0pFQkE4WndUZmk1alNuS1ViQTFsZ0wzcjRBbDdKeDlXcGU5Z2xrdHlFQzI0Q1pOdERELXRrOERlVXhHeVU1ZjUzUGNlRm9KNnFvNGpLVlVCWUkzOVVBSkNTaEZRNlF5YXRBenhyQi1ZX3lHdG90Vzhzb3FCSGNtZ0Rxci0wRTNtb0xIX3Z2WVROeWdmOFJGdlY5Q2NnMlBFVQ?oc=5",
+      "published": "2026-09-04",
+      "published_at": "2026-09-04T07:00:00+00:00",
+      "week": "2026-W36",
+      "week_label": "Aug 31 – Sep 6, 2026",
+      "excerpt": "The Dawn of Triangulation: Awin ThinkTank Spells Out Affiliate Opportunity in the AI Era Hello Partner",
+      "kind": "feature",
+      "source_label": "Awin in the news",
+      "source_kind": "news"
+    },
+    {
       "id": "653b91cac1d4982f",
       "competitor": "partnerize",
       "title": "AI Rewrote How People Shop for Clothes. Your Click-Based Measurement Model Didn’t Notice",
@@ -411,20 +537,6 @@
       "source_kind": "rss"
     },
     {
-      "id": "8009f0200e6daa3b",
-      "competitor": "partnerize",
-      "title": "GEO Tools vs. Commercial Measurement: Why AEO Visibility Isn’t Verified Influence",
-      "url": "https://partnerize.com/resources/blog/geo-tools-vs-commercial-measurement-why-aeo-visibility-isnt-verified-influence",
-      "published": "2026-08-26",
-      "published_at": "2026-08-26T20:25:47+00:00",
-      "week": "2026-W35",
-      "week_label": "Aug 24–30, 2026",
-      "excerpt": "A growing number of GEO and AEO tools can tell you whether your brand appears in an AI-generated answer. What they cannot tell you is whether that appearance drove a purchase. That gap, between visibility and verified commercial influence, is where marketing budgets are quietly…",
-      "kind": "feature",
-      "source_label": "Partnerize Feed",
-      "source_kind": "rss"
-    },
-    {
       "id": "caea47a84c251e22",
       "competitor": "refersion",
       "title": "Creator Storefronts: The Conversion Layer for Your Refersion Affiliate Program",
@@ -453,20 +565,6 @@
       "source_kind": "rss"
     },
     {
-      "id": "ef7a686a7028218d",
-      "competitor": "partnerize",
-      "title": "Smart Watches, Smart Rings, and the Comparison Content that Influences the Sale",
-      "url": "https://partnerize.com/resources/blog/smart-watches-smart-rings-and-the-comparison-content-that-influences-the-sale",
-      "published": "2026-08-17",
-      "published_at": "2026-08-17T19:04:33+00:00",
-      "week": "2026-W34",
-      "week_label": "Aug 17–23, 2026",
-      "excerpt": "Wearables shoppers are some of the most deliberate, research-driven buyers in consumer tech. The publishers earning their trust deserve a measurement and reward system built for how that trust is actually formed.",
-      "kind": "news",
-      "source_label": "Partnerize Feed",
-      "source_kind": "rss"
-    },
-    {
       "id": "a7e41d638b9ac614",
       "competitor": "refersion",
       "title": "Top Influencer Affiliate Marketing Networks for 2026 - Influencer Marketing Hub",
@@ -478,6 +576,20 @@
       "excerpt": "Top Influencer Affiliate Marketing Networks for 2026 Influencer Marketing Hub",
       "kind": "news",
       "source_label": "Refersion in the news",
+      "source_kind": "news"
+    },
+    {
+      "id": "dd4866aad94617de",
+      "competitor": "rakuten",
+      "title": "2026 MarTech Breakthrough Awards Recognize the World’s Most - GlobeNewswire",
+      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxOSWtsb3dIelM3dF9mempZTG42b2R5aElZdWNocWI3Y2VmNnVJRWFBTVhUemp0Sll3Yl9ndHNjZm9YOXgtU09nN1RFR1lUSHZodnlzOUtuOEVISndHcWMyWVdjVnpET19UbWRoSldscnlHdGZXU01iRHlVUXhNN25ZMnZTdXFodUQyOVNHLURFVEMtX0c5eEZRZkJPTmJ0Q184RXBIc042SFdyTVV1bXNmTWNZSE04SDR5ZDZGblJnMjZ0SjVQc3ZERnBZZjhlNXZ3eWhuQUlYcDZ2QzVwSDdlc21ZalRvVFpCSUJfMG5FRkd4UGhVVEVHODdJMDlIdHVTOEJhalYwN1hwNmF4eTg0U1hUSm0yUklJS09fdnNITWQ?oc=5",
+      "published": "2026-08-06",
+      "published_at": "2026-08-06T07:00:00+00:00",
+      "week": "2026-W32",
+      "week_label": "Aug 3–9, 2026",
+      "excerpt": "2026 MarTech Breakthrough Awards Recognize the World’s Most GlobeNewswire",
+      "kind": "news",
+      "source_label": "Rakuten Advertising in the news",
       "source_kind": "news"
     },
     {
@@ -691,20 +803,6 @@
       "source_kind": "news"
     },
     {
-      "id": "2bffe2510479a494",
-      "competitor": "refersion",
-      "title": "How to Turn Your Affiliate Traffic Into More Revenue",
-      "url": "https://www.refersion.com/blog/how-to-turn-your-affiliate-traffic-into-more-revenue/",
-      "published": "2026-07-07",
-      "published_at": "2026-07-07T14:20:57+00:00",
-      "week": "2026-W28",
-      "week_label": "Jul 6–12, 2026",
-      "excerpt": "Many direct-to-consumer (DTC) brands suffer from a hidden efficiency drain: channel isolation. Marketing departments frequently operate in separate silos, evaluating individual metrics (such as clicks, traffic, or raw impressions) without... The post How to Turn Your Affiliate…",
-      "kind": "news",
-      "source_label": "Refersion Blog",
-      "source_kind": "rss"
-    },
-    {
       "id": "fd6eae486ae168ed",
       "competitor": "awin",
       "title": "Awin expands discovery intelligence as AI reshapes how consumers find brands - GlobeNewswire",
@@ -715,48 +813,6 @@
       "week_label": "Jun 29 – Jul 5, 2026",
       "excerpt": "Awin expands discovery intelligence as AI reshapes how consumers find brands GlobeNewswire",
       "kind": "feature",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "ce6b77053e309651",
-      "competitor": "awin",
-      "title": "News Briefs - Chain Store Age",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9zalZGVXVUNlBPVnZpUTZudUdwNmRYTjVXZHBUa0d6NGpWWTZsWHQ3TWk5bHRsdG0tY2FubDcyd3VMNlhUZkJNTUdKODVtSU5RLWQ2c21oT3pFTnNz?oc=5",
-      "published": "2026-06-22",
-      "published_at": "2026-06-22T07:00:00+00:00",
-      "week": "2026-W26",
-      "week_label": "Jun 22–28, 2026",
-      "excerpt": "News Briefs Chain Store Age",
-      "kind": "news",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "a442feda55fc424f",
-      "competitor": "awin",
-      "title": "Clarks Taps Awin to Power U.S. Growth and Brand Discovery - GlobeNewswire",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQenhyMjI1WlRQMkdTNEs3V1g4dEx0Rk1IQ2hkcFp0V2c4UlRQcl8xRmZabzRJT2o2T0xpNmhFaG03T3oxeEhsU1EwcU5mS090bmJCSUJpLUZNcHpXcUxxajYyRDVkUGo5VURTTkFmUU50Q1BFeUg4VVFnZzRtVWFmZ3VZd2wwZS03d2R0VVdfRHFoMzFSSlBkN3IxaGs3dEVIMTZOa252ckNoNGs4eU5KZUhOS1ZyYUp1U3JFby14M3ZqMk5zRWdn?oc=5",
-      "published": "2026-06-18",
-      "published_at": "2026-06-18T07:00:00+00:00",
-      "week": "2026-W25",
-      "week_label": "Jun 15–21, 2026",
-      "excerpt": "Clarks Taps Awin to Power U.S. Growth and Brand Discovery GlobeNewswire",
-      "kind": "news",
-      "source_label": "Awin in the news",
-      "source_kind": "news"
-    },
-    {
-      "id": "f48ec8f398bc9f1d",
-      "competitor": "awin",
-      "title": "Affiliate Networks: 11 Best Options for 2026 - Shopify",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFAwQUVuWXJLRHFpemtHa3NKZVFXNUdMTEdWMGRMZkZqV3MxR0ZTV2dJTEMxU1NsYmJhaFpIaTF6akxNMUN0eEtpZl9vb2YzVjREY3VYZUp1X18xMVk?oc=5",
-      "published": "2026-06-17",
-      "published_at": "2026-06-17T07:00:00+00:00",
-      "week": "2026-W25",
-      "week_label": "Jun 15–21, 2026",
-      "excerpt": "Affiliate Networks: 11 Best Options for 2026 Shopify",
-      "kind": "news",
       "source_label": "Awin in the news",
       "source_kind": "news"
     },
@@ -1098,9 +1154,9 @@
     }
   ],
   "counts": {
-    "items": 67,
-    "features": 43,
-    "news": 24,
+    "items": 71,
+    "features": 48,
+    "news": 23,
     "ok_sources": 13,
     "error_sources": 0
   }
