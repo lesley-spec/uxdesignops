@@ -1,12 +1,14 @@
 ---
-description: "The persona set, and which persona owns this problem"
-argument-hint: "[problem]"
+description: "Who am I designing for, and what are they trying to get done?"
+argument-hint: "<problem / flow>"
 ---
 
-Walk me through the persona set, then tell me which persona owns
-**$ARGUMENTS** — their jobs to be done, their workflow around this, and how
-confident each claim is. If it spans two personas, say which one it must
-satisfy first and why.
+Who am I designing for in **$ARGUMENTS**, and what are they trying to get
+done?
+
+Walk me through the personas in play, their jobs to be done, their workflow
+around this, and how confident each claim is. If it spans two personas, say
+which one it must satisfy first and why.
 
 ## How to run this
 
@@ -21,3 +23,5 @@ quote or participant · Jira, Confluence, Outset and Pendo stay draft-only
 until a human confirms · never launch recruitment or publish a guide to live
 traffic · if a connector this needs is not authorised, say which, say what
 the answer loses, and run the rest.
+
+<!-- managed by ux-research-master -->

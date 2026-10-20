@@ -1,4 +1,4 @@
-# Pipeline skill catalog (29)
+# Pipeline skill catalog (30)
 
 The installer **must** land every name below. Personas and `design-system`
 are listed once; they are reused in later phases.
@@ -42,6 +42,7 @@ are listed once; they are reused in later phases.
 |---|---|
 | `ideate` | Ideation brief + starter directions |
 | `ux-critique` | Coverage matrix vs one-pager / PRD / epic |
+| `heuristic-review` | Expert usability pass: ten classic heuristics + the marketplace five |
 | `prototype-handoff` | Chosen direction → Prototype pack |
 
 ## Prototype

@@ -72,7 +72,14 @@ request that skips intake usually skips the "do we already know" check.
 |---|---|---|
 | "ideas for", "how might we", "wireframe directions", "concepts" | `ideate` | `design-system` |
 | "critique these mocks", "does this cover the spec", "coverage matrix" | `ux-critique` | `anti-sycophancy` |
+| "heuristic review", "expert review", "usability review", "what's wrong with this screen", "give this a once-over" | `heuristic-review` | `ux-critique` |
 | "we picked a direction", "ready for prototype", "hand this off" | `prototype-handoff` | `ux-critique` |
+
+**The four pre-test skills, kept apart.** `ux-critique` asks whether it solves
+the right problem. `heuristic-review` asks whether it breaks known usability
+principles. `persona-check` asks where one named person gets stuck.
+`accessibility-review` asks about WCAG. A request that names a screen and no
+spec is usually `heuristic-review`; one that names a spec is `ux-critique`.
 
 ## Prototype
 
@@ -105,8 +112,8 @@ request that skips intake usually skips the "do we already know" check.
 3. **Single corpus vs many sources.** One Dovetail project → `synthesize-research`.
    Two or more tools → `research-synthesis`.
 4. **Artifact in hand?** A mock, prototype or URL in the message pushes toward
-   `ux-critique`, `persona-check`, `accessibility-review` over anything that
-   starts from scratch.
+   `ux-critique`, `heuristic-review`, `persona-check` or `accessibility-review`
+   over anything that starts from scratch. No spec attached → `heuristic-review`.
 5. **Shipped already?** Past tense ("we launched", "since the release") →
    `adoption-check`, not a new study.
 6. **Still nothing.** Ask exactly one question: *what decision does this

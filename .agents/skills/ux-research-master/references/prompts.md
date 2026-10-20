@@ -1,179 +1,120 @@
 # Starter prompts
 
-Fifteen ways in. Print the **menu** once per session; expand a prompt only
-when they pick it. Each prompt is also a slash command in Cursor and Claude
-Code, project and global.
+Eight ways in, in the words a designer or PM would use. Print the **menu**
+once, after install or when someone asks what this can do. Expand a prompt
+only when they pick it.
+
+Each one is also a slash command in Cursor and Claude Code, project and
+global.
 
 ## The menu (print this)
 
 ```
-UX pack ready. Pick a number, type a /ux- command, or just say what you're working on.
+How can UX research help you today?
 
-  EVIDENCE
-   1  /ux-frame          What's in the Frame, how confident, what's gone stale
-   2  /ux-context        What do we know about <area / cohort / flow>?
-   3  /ux-evidence       Is this hypothesis supported? Where are the blindspots?
-   4  /ux-personas       Who are our users, and which one owns this problem?
+ 1  "What do we already know about this?"
+ 2  "Who am I designing for, and what are they trying to get done?"
+ 3  "Give me a few directions to explore for this problem."
+ 4  "Do these mocks actually solve the problem we wrote down?"
+ 5  "Run a heuristic review on this."
+ 6  "Walk a user through this before I put it in front of real people."
+ 7  "I need research on this — what's the fastest way to a real answer?"
+ 8  "We shipped it. Did it make any difference?"
 
-  RESEARCH
-   5  /ux-intake         I have a research request — triage and route it
-   6  /ux-study          Design the study: questions, sample, probes, thresholds
-   7  /ux-measure        Build the measure and the audience before we run
-
-  PRODUCT
-   8  /ux-prioritise     Rank these options on evidence, not opinion
-   9  /ux-pressure-test  Poke holes in this framing before anyone agrees with it
-  10  /ux-spec           Turn confirmed research into a one-pager + epic
-  11  /ux-adoption       We shipped it — did it work?
-
-  DESIGN
-  12  /ux-critique       Do these mocks cover the spec?
-  13  /ux-persona-check  Walk a persona through this before we recruit
-  14  /ux-test-plan      Plan the usability test
-
-  DATA
-  15  /ux-data           Funnel, drop-off, trend — a quantitative question
+Pick a number, type the matching /ux- command, or just tell me what
+you're working on.
 ```
 
-## 1 · `/ux-frame` — Frame health
+Nothing else goes on the menu. The other 22 skills route from plain chat —
+see [routing.md](routing.md).
 
-> Show me the Frame for **<area>**: the claims we hold, the confidence on
-> each, what they rest on, and what has gone stale. Rank by what a current
-> decision depends on. End with the three things most worth re-checking.
+## 1 · `/ux-context` — What do we already know
 
-Loads `user-context` for the inventory, `frame-maintenance` when anything
-looks stale or they asked what to retire.
+> What do we already know about **<area / flow / cohort / question>**? Sweep
+> Dovetail, PostHog (session replay included), Outset, Pendo and support
+> tickets. Grade what you find — Verified, Indicative, Anecdotal — name the
+> gaps, and say plainly what we cannot answer from what exists.
 
-## 2 · `/ux-context` — What do we know
+Loads `user-context`. Also the right prompt for *"is this hypothesis
+supported"* and *"which of these should we build first"* — same skill, say the
+hypothesis or list the options and it handles both. Sources disagree →
+`research-synthesis`.
 
-> What do we know about **<area / cohort / flow / surface>**? Sweep Dovetail,
-> PostHog (replay included), Outset, Pendo and support tickets. Grade what you
-> find — Verified, Indicative, Anecdotal — name the gaps, and say plainly
-> what we cannot answer from what exists.
+## 2 · `/ux-personas` — Who am I designing for
 
-Loads `user-context`. If two or more sources disagree, hands to
-`research-synthesis` rather than averaging them.
-
-## 3 · `/ux-evidence` — Pressure-test a hypothesis
-
-> Hypothesis: **<statement>**. What evidence supports it, what argues against
-> it, and what has never been tested? Give me a confidence call and the
-> cheapest thing that would change your mind.
-
-Loads `user-context` in critique mode. `anti-sycophancy` if the framing itself
-is the weak part.
-
-## 4 · `/ux-personas` — Persona set and owner
-
-> Walk me through the persona set, then tell me which persona owns
-> **<problem>** — their jobs to be done, their workflow around this, and how
-> confident each claim is. If the problem spans two personas, say which one it
-> must satisfy first and why.
+> Who am I designing for in **<problem / flow>**, and what are they trying to
+> get done? Walk me through the personas in play, their jobs to be done, their
+> workflow around this, and how confident each claim is. If it spans two, say
+> which one it must satisfy first and why.
 
 Loads `user-personas`. Then `brand-operator-ux-persona` or
-`creator-affiliate-ux-persona` for the deeper lens.
+`creator-affiliate-ux-persona` for the deeper lens on one side.
 
-## 5 · `/ux-intake` — Triage a request
+## 3 · `/ux-ideate` — Directions to explore
 
-> Research request: **<paste the ask>**. Run intake — what decision does this
-> unlock, do we already know the answer, and if not, is this MICRO, SPRINT or
-> DEEP, and who runs it? If we already know, say so and stop.
+> Give me a few directions to explore for **<problem>**. Start from the
+> framing we have — one-pager, PRD, epic, tickets or notes — and seed
+> genuinely different approaches, not three versions of one idea. Say what
+> each one assumes and what it would cost to be wrong.
 
-Loads `research-intake`. The "we already know" check goes through
-`user-context` before any route is given.
+Loads `ideate`. `design-system` first when the output is heading for on-brand
+mocks.
 
-## 6 · `/ux-study` — Design the study
-
-> Routed request: **<paste or summarise>**. Design the study worth running:
-> sub-questions, what would disconfirm it, sample and its diversity, the
-> probes, go/no-go thresholds, and the 3-participant rigor pass before the
-> rest launches.
-
-Loads `research-planner`. Drafts only — nothing launches without a human yes.
-
-## 7 · `/ux-measure` — Build the measure first
-
-> Before we run anything on **<feature / flow>**: build the PostHog dashboard
-> that will tell us whether this moved, draw the audience from real usage
-> rather than a guess, and draft the instruments — interview guide, Pendo
-> guide, screener — we'll actually need.
-
-Loads `research-builder`. `pendo-guide-strategy` first if a Pendo guide is in
-scope — strategy before anyone opens the builder.
-
-## 8 · `/ux-prioritise` — Rank on evidence
-
-> Options: **<list them>**. Rank these on what the evidence actually supports.
-> For each: the claim it rests on, the confidence, the users it serves, and
-> what we'd be guessing about. Say which one has the weakest evidence under
-> the loudest advocacy.
-
-Loads `user-context`. Not a roadmap tool — it ranks evidence, not effort.
-
-## 9 · `/ux-pressure-test` — Poke holes
-
-> Here is the framing: **<paste the one-pager / PRD / problem statement>**.
-> Pressure-test it. Where is the evidence thin, where is a feature standing in
-> for a goal, where is the marketplace only being read from one side, and what
-> would a sceptical PM ask that this does not answer?
-
-Loads `anti-sycophancy`. Pair with `user-context` to check specific claims.
-
-## 10 · `/ux-spec` — One-pager and epic
-
-> Research is confirmed: **<link or summary>**. Draft the one-pager — problem,
-> who it hurts, the evidence, success measures — and the linked UX epic. Draft
-> only; I'll confirm before anything is published to Confluence or Jira.
-
-Loads `write-spec`. Publishes nothing without an explicit yes.
-
-## 11 · `/ux-adoption` — Did it work
-
-> We shipped **<thing>** on **<date>**. Read the baseline from the Frame,
-> re-run the measure in PostHog, and tell me whether the research held. Write
-> the outcome back as a claim — including if it didn't hold.
-
-Loads `adoption-check`. The claim gets written either way; a miss is evidence.
-
-## 12 · `/ux-critique` — Mocks vs spec
+## 4 · `/ux-critique` — Do these mocks solve it
 
 > Mocks: **<links>**. Spec: **<one-pager / epic / tickets>**. Build the
 > coverage matrix — what the framing asked for versus what the mocks do — then
 > critique the solution itself. Flag anything the spec needed and the design
 > silently dropped.
 
-Loads `ux-critique`. `accessibility-review` next if a prototype URL exists.
+Loads `ux-critique`. This is the *right problem* question. For usability
+principles use 5; for a named person's journey use 6.
 
-## 13 · `/ux-persona-check` — Synthetic pre-test
+## 5 · `/ux-heuristics` — Heuristic review
+
+> Run a heuristic review on **<screen / flow / prototype / frame>**. It's for
+> **<brand / partner>**, and the job it exists to do is **<task>**. Ten classic
+> heuristics plus the marketplace ones — two-sided consequence, money
+> legibility, role truth, scale asymmetry. Rank by consequence, give me the
+> cheapest fix for each, and tell me what a static frame can't show you.
+
+Loads `heuristic-review`. Expert judgement, never evidence. Minutes, no
+recruiting, no connectors.
+
+## 6 · `/ux-persona-check` — Walk a user through it
 
 > Walk **<persona>** through **<prototype URL / flow / copy>** as a task.
 > Where do they hesitate, what do they look for and not find, what do they do
-> instead? Treat everything as a hypothesis to test with real people, never a
+> instead? Everything here is a hypothesis to test with real people — never a
 > finding.
 
-Loads `persona-check`. Pre-test only — it never substitutes for recruiting.
+Loads `persona-check`. A pre-test, never a substitute for recruiting. Pair
+with `accessibility-review` before sessions.
 
-## 14 · `/ux-test-plan` — Plan the test
+## 7 · `/ux-intake` — Fastest way to a real answer
 
-> Prototype: **<URL>**. Success criteria: **<from the one-pager>**. Draft the
-> usability study — tasks, what each one is actually measuring, the script,
-> and who we need in the room. Run the synthetic pre-test and the
-> accessibility pass before we recruit anyone.
+> I need research on **<question>**. What's the fastest way to a real answer?
+> What decision does this unlock, do we already know, and if not — 48 hours,
+> two weeks, or four-plus, and who should run it?
 
-Loads `test-plan`, which pulls in `persona-check` and `accessibility-review`.
+Loads `research-intake`. The "do we already know" check runs through
+`user-context` first; if it is already answered, it says so and stops rather
+than routing a study. Routed requests continue into `research-planner` and
+`research-builder`.
 
-## 15 · `/ux-data` — Quantitative question
+## 8 · `/ux-adoption` — Did it make any difference
 
-> Question: **<funnel / drop-off / trend / cohort>**. Run it in PostHog or
-> Pendo, show me the numbers, and say what they can and cannot support. Flag
-> instrumentation that would make the answer trustworthy if it is not already.
+> We shipped **<thing>** on **<date>**. Read the baseline, re-run the measure
+> in PostHog, and tell me whether the research held. Write the outcome back as
+> a claim.
 
-Loads `data-analyze`. `research-builder` if the event does not exist yet.
+Loads `adoption-check`. The claim gets written either way — a miss is
+evidence.
 
 ## House rules for every prompt
 
-- Fill the `<placeholders>` from what the designer already said. Ask only for
-  what is genuinely missing, and ask once.
+- Fill the `<placeholders>` from what they already said. Ask once for what is
+  genuinely missing, and only for what the skill cannot start without.
 - Verified vs AI interpretation, labelled, every time.
 - Drafts stop at the human gate. Nothing publishes, launches or recruits.
 - If a connector the prompt needs is not authorised, say which, say what the

@@ -37,6 +37,7 @@ PIPELINE_SKILLS = [
     "design-system",
     "ideate",
     "ux-critique",
+    "heuristic-review",
     "prototype-handoff",
     "ux-prototyping",
     "brand-prototype",

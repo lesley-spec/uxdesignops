@@ -1,8 +1,8 @@
 ---
 name: ux-research-master
 description: >-
-  One front door for the whole impact.com UX pack. First run installs all 31
-  skills plus the /ux-* starter prompts and writes the routing rules, so after
+  One front door for the whole impact.com UX pack. First run installs all 32
+  skills plus the eight /ux-* starter prompts and writes the routing rules, so after
   that a plain-English message gets matched to the right skill on its own.
   Research-led: it asks what decision this unlocks and what the Frame already
   says before it asks anyone to run a study. Use when the user says
@@ -108,12 +108,12 @@ Task Progress:
    curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
    ```
 
-   This installs 31 skill folders, 16 `/ux-*` commands (project + global,
+   This installs 32 skill folders, nine `/ux-*` commands (project + global,
    Cursor + Claude Code), and writes the routing block into `CLAUDE.md` and
    `AGENTS.md`. Flags: `--project-only` · `--global-only` · `--no-rules` ·
    `--target PATH`.
 
-2. **Parse** `UX_MASTER_READY skills=31 commands=16 rules=…`. Do not claim a
+2. **Parse** `UX_MASTER_READY skills=32 commands=9 rules=…`. Do not claim a
    count the script did not print.
 
 3. **Connector preflight.** Check which MCP servers are authorised in this
@@ -122,9 +122,10 @@ Task Progress:
    Never ask for tokens; tell them to authorise in connector settings or
    `/mcp`.
 
-4. **Print the menu** from [references/prompts.md](references/prompts.md) —
-   the 15 starter prompts in their four groups, plus "or just describe what
-   you're working on."
+4. **Ask the question and print the menu** from
+   [references/prompts.md](references/prompts.md) — *"How can UX research help
+   you today?"* and the eight prompts, verbatim. Do not add, reorder or
+   re-word them, and do not append skill names.
 
 5. **Stop.** Wait for a number, a `/ux-*` command, or a sentence.
 
@@ -161,6 +162,7 @@ Research-led means these come first, in this order, whatever was asked:
 ## Anti-patterns
 
 - Printing the menu again on every turn — once per session is enough
+- Putting more than the eight prompts on the menu, or renaming them to skills
 - Routing to `research-planner` before anyone checked the Frame
 - Re-running the installer because the designer said hello
 - Answering a research question from this skill instead of loading the child

@@ -1,5 +1,5 @@
 ---
-description: "Walk a persona through this before we recruit"
+description: "Walk a user through this before I put it in front of real people"
 argument-hint: "<persona> + <prototype / flow / copy>"
 ---
 
@@ -14,10 +14,13 @@ hypothesis to test with real people — never a finding.
 Read `.agents/skills/persona-check/SKILL.md` and run its workflow in this chat
 (fallbacks: `.claude/skills/persona-check/`, `.cursor/skills/persona-check/`,
 `~/.claude/skills/persona-check/`). Do not paraphrase the skill from memory.
-A pre-test, never a substitute for recruiting real participants.
+A pre-test, never a substitute for recruiting. Offer `accessibility-review`
+before sessions.
 
 Standing rules: label Verified vs AI interpretation · never invent a metric,
 quote or participant · Jira, Confluence, Outset and Pendo stay draft-only
 until a human confirms · never launch recruitment or publish a guide to live
 traffic · if a connector this needs is not authorised, say which, say what
 the answer loses, and run the rest.
+
+<!-- managed by ux-research-master -->

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-20T04:28:16Z",
-  "count": 31,
+  "generated_at": "2026-10-20T04:54:20Z",
+  "count": 32,
   "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip",
   "install_script": "https://lesley-spec.github.io/uxdesignops/skills/install.sh",
   "install_all_script": "https://lesley-spec.github.io/uxdesignops/skills/install-all.sh",
@@ -18,7 +18,7 @@
     {
       "name": "ux-install-all-skills",
       "stage": "pipeline",
-      "description": "Installs all 29 impact.com UX Design Thinking + UX Research pipeline skills (Empathize through Test, plus Frame research skills) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
+      "description": "Installs all 30 impact.com UX Design Thinking + UX Research pipeline skills (Empathize through Test, plus Frame research skills) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/",
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills.zip",
@@ -38,7 +38,7 @@
     {
       "name": "ux-research-master",
       "stage": "pipeline",
-      "description": "One front door for the whole impact.com UX pack. First run installs all 31 skills plus the /ux-* starter prompts and writes the routing rules, so after that a plain-English message gets matched to the right skill on its own. Research-led: it asks what decision this unlocks and what the Frame already says before it asks anyone to run a study. Use when the user says ux-research-master, /ux, install the UX skills, set me up, get started, which skill should I use, or opens a UX or product question without naming a skill.",
+      "description": "One front door for the whole impact.com UX pack. First run installs all 32 skills plus the eight /ux-* starter prompts and writes the routing rules, so after that a plain-English message gets matched to the right skill on its own. Research-led: it asks what decision this unlocks and what the Frame already says before it asks anyone to run a study. Use when the user says ux-research-master, /ux, install the UX skills, set me up, get started, which skill should I use, or opens a UX or product question without naming a skill.",
       "figjam_agent": "UX Research Master",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research-master/",
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research-master.zip",
@@ -204,6 +204,16 @@
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/write-spec.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/write-spec/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/write-spec"
+    },
+    {
+      "name": "heuristic-review",
+      "stage": "ideate",
+      "description": "Expert usability pass over a screen, flow, prototype or Figma frame \u2014 the ten classic heuristics plus the marketplace ones impact.com keeps breaking: two-sided consequence, money legibility, role truth, scale asymmetry. Each finding names the heuristic, the likely user cost, a severity, and the cheapest fix. Expert judgement, never evidence. Use when someone says run a heuristic review, expert review, usability review, what's wrong with this screen, give this a once-over before I show it, or review this flow.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/heuristic-review/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/heuristic-review.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/heuristic-review/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/heuristic-review"
     },
     {
       "name": "ideate",

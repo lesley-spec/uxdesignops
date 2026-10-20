@@ -90,6 +90,13 @@ if [[ "$DO_COMMANDS" -eq 1 ]]; then
   [[ "$DO_GLOBAL" -eq 1 ]] && cmd_dests+=("$HOME/.claude/commands" "$HOME/.cursor/commands")
   for dest in "${cmd_dests[@]}"; do
     mkdir -p "$dest"
+    # Drop commands an earlier version of this pack installed and we no longer
+    # ship. Only files carrying our marker are touched.
+    for existing in "$dest"/*.md; do
+      [[ -e "$existing" ]] || continue
+      grep -q '<!-- managed by ux-research-master -->' "$existing" || continue
+      [[ -f "$src_cmds/$(basename "$existing")" ]] || { rm -f "$existing"; info "Removed stale $(basename "$existing")"; }
+    done
     for f in "$src_cmds"/*.md; do
       [[ -e "$f" ]] || continue
       cp -f "$f" "$dest/$(basename "$f")"

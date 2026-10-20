@@ -30,10 +30,10 @@ written down. They just do not all get said.
 curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
 ```
 
-That installs 29 pipeline skills (31 folders), the 16 `/ux-*` starter prompts
-in Cursor and Claude Code, and a routing block in `CLAUDE.md` / `AGENTS.md`.
-After it, type `/ux` for the menu — or just describe what you're working on
-and the right skill loads itself.
+That installs 30 pipeline skills (32 folders), the eight `/ux-*` starter
+prompts in Cursor and Claude Code, and a routing block in `CLAUDE.md` /
+`AGENTS.md`. After it, type `/ux` for the menu — or just describe what you're
+working on and the right skill loads itself.
 
 | Skill | Use when |
 |---|---|
@@ -44,24 +44,23 @@ and the right skill loads itself.
 
 ### The starter prompts
 
-| | | |
+After install it asks *"How can UX research help you today?"* and offers these
+eight. Each is also a slash command, project and global, in Cursor and Claude
+Code.
+
+| | Prompt | Skill |
 |---|---|---|
-| `/ux` | menu | Show everything, or route what you type after it |
-| `/ux-frame` | evidence | What we hold, how confident, what's stale |
-| `/ux-context` | evidence | What do we know about X? |
-| `/ux-evidence` | evidence | Is this hypothesis supported? |
-| `/ux-personas` | evidence | Who are our users, which one owns this? |
-| `/ux-intake` | research | Triage a research request |
-| `/ux-study` | research | Design the study |
-| `/ux-measure` | research | Build the measure and the audience first |
-| `/ux-prioritise` | product | Rank options on evidence |
-| `/ux-pressure-test` | product | Poke holes in a framing |
-| `/ux-spec` | product | One-pager + epic |
-| `/ux-adoption` | product | We shipped it — did it work? |
-| `/ux-critique` | design | Do these mocks cover the spec? |
-| `/ux-persona-check` | design | Walk a persona through it before we recruit |
-| `/ux-test-plan` | design | Plan the usability test |
-| `/ux-data` | data | Funnel, drop-off, trend |
+| `/ux-context` | *"What do we already know about this?"* | `user-context` |
+| `/ux-personas` | *"Who am I designing for, and what are they trying to get done?"* | `user-personas` |
+| `/ux-ideate` | *"Give me a few directions to explore for this problem."* | `ideate` |
+| `/ux-critique` | *"Do these mocks actually solve the problem we wrote down?"* | `ux-critique` |
+| `/ux-heuristics` | *"Run a heuristic review on this."* | `heuristic-review` |
+| `/ux-persona-check` | *"Walk a user through this before I put it in front of real people."* | `persona-check` |
+| `/ux-intake` | *"I need research on this — what's the fastest way to a real answer?"* | `research-intake` |
+| `/ux-adoption` | *"We shipped it. Did it make any difference?"* | `adoption-check` |
+
+`/ux` on its own prints the menu; `/ux <anything>` routes it. The other 22
+skills route from plain chat — they just don't take up a slot on the menu.
 
 Full routing table: [`ux-research-master/references/routing.md`](ux-research-master/references/routing.md).
 
@@ -126,6 +125,7 @@ research-intake ──routed──→ research-planner ──┬──→ resear
 |---|---|
 | `ideate` | Framing → ideation brief + tool routing + starter directions (Solution Ideator) |
 | `ux-critique` | Coverage matrix: mocks vs one-pager / PRD / epic / tickets / notes (UX Critique) |
+| `heuristic-review` | Expert usability pass — ten classic heuristics plus two-sided consequence, money legibility, role truth, scale asymmetry |
 | `prototype-handoff` | Designer happy with mocks → Prototype pack (after `ux-critique`) |
 | `brand-operator-ux-persona` | Brand lens on concepts |
 | `creator-affiliate-ux-persona` | Partner / creator-affiliate lens on concepts |

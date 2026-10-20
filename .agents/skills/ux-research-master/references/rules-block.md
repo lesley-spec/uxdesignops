@@ -25,6 +25,7 @@ Quick map — full table in `routing.md`:
 | One-pager, PRD, epic | `write-spec` |
 | Pressure-testing framing | `anti-sycophancy` |
 | Mocks vs spec | `ux-critique` |
+| A heuristic or expert usability review of a screen | `heuristic-review` |
 | Pre-testing a prototype with a persona | `persona-check` |
 | Usability test plan / accessibility pass | `test-plan` / `accessibility-review` |
 | Post-launch, did it work | `adoption-check` |
@@ -40,7 +41,8 @@ unasked. A number earns its place by changing a decision; everything else
 belongs in the artifact, where it can be found when it is needed. This
 constrains the output, not the rigour.
 
-Starter prompts: `/ux` for the menu, or `/ux-frame`, `/ux-context`,
-`/ux-intake`, `/ux-personas`, and the rest in
+Starter prompts: `/ux` for the menu, then `/ux-context`, `/ux-personas`,
+`/ux-ideate`, `/ux-critique`, `/ux-heuristics`, `/ux-persona-check`,
+`/ux-intake`, `/ux-adoption`. Wording:
 `.agents/skills/ux-research-master/references/prompts.md`.
 <!-- END ux-research-master -->

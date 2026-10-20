@@ -1,24 +1,25 @@
 ---
-description: "Triage a research request: decision, prior art, route"
-argument-hint: "<the request>"
+description: "I need research on this - what's the fastest way to a real answer?"
+argument-hint: "<question>"
 ---
 
-Research request: **$ARGUMENTS**
+I need research on **$ARGUMENTS**. What's the fastest way to a real answer?
 
-Run intake — what decision does this unlock, do we already know the answer,
-and if not, is this MICRO (48h), SPRINT (1–2 weeks) or DEEP (4+ weeks), and
-who runs it?
+What decision does this unlock, do we already know, and if not — 48 hours,
+two weeks, or four-plus, and who should run it?
 
 ## How to run this
 
 Read `.agents/skills/research-intake/SKILL.md` and run its workflow in this chat
 (fallbacks: `.claude/skills/research-intake/`, `.cursor/skills/research-intake/`,
 `~/.claude/skills/research-intake/`). Do not paraphrase the skill from memory.
-The "do we already know" check runs through `user-context` before any route
-is given. If we already know, say so and stop — do not route a study.
+Run the "do we already know" check through `user-context` before routing
+anything. If it is already answered, say so and stop.
 
 Standing rules: label Verified vs AI interpretation · never invent a metric,
 quote or participant · Jira, Confluence, Outset and Pendo stay draft-only
 until a human confirms · never launch recruitment or publish a guide to live
 traffic · if a connector this needs is not authorised, say which, say what
 the answer loses, and run the rest.
+
+<!-- managed by ux-research-master -->

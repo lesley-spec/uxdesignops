@@ -96,6 +96,8 @@ def check_commands(errors: list[str]) -> None:
                 value = value.strip()
                 if value and value[0] in "[{&*!|>%@`" and not value.startswith('"'):
                     fail(errors, f"{f.name} frontmatter {key.strip()} needs quoting")
+        if "<!-- managed by ux-research-master -->" not in body:
+            fail(errors, f"{f.name} missing the managed marker (install cleanup relies on it)")
         if not f.name.startswith("ux"):
             fail(errors, f"{f.name} is not namespaced ux-*")
         slug = f.stem
@@ -123,6 +125,8 @@ def check_rules_and_script(errors: list[str]) -> None:
     body = SCRIPT.read_text(encoding="utf-8")
     if "UX_MASTER_READY" not in body:
         fail(errors, "install-master.sh must print UX_MASTER_READY")
+    if "managed by ux-research-master" not in body:
+        fail(errors, "install-master.sh must clean up stale marked commands")
     for needle in ("--target", "--project-only", "--global-only", "--no-rules",
                    "--skip-skills", "UX_SKIP_POST"):
         if needle not in body:

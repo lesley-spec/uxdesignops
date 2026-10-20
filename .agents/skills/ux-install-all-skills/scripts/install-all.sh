@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install all 29 UX Design Thinking + UX Research pipeline skills into a project +
+# Install all 30 UX Design Thinking + UX Research pipeline skills into a project +
 # globally, plus the /ux-* starter commands and the routing rule block.
 # Usage:
 #   bash install-all.sh
@@ -32,6 +32,7 @@ PIPELINE_SKILLS=(
   design-system
   ideate
   ux-critique
+  heuristic-review
   prototype-handoff
   ux-prototyping
   brand-prototype
