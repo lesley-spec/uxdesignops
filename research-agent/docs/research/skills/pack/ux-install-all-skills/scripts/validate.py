@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate ux-install-all-skills can install the 28 pipeline skills.
+"""Validate ux-install-all-skills can install every pipeline skill.
 
 Usage (from repo root or this directory):
   python3 .agents/skills/ux-install-all-skills/scripts/validate.py
@@ -17,6 +17,7 @@ SCRIPT = SKILL_DIR / "scripts" / "install-all.sh"
 CATALOG = SKILL_DIR / "references" / "catalog.md"
 
 PIPELINE_SKILLS = [
+    "ux-research-master",
     "design-thinking-ux",
     "ux-research",
     "research-intake",
@@ -47,6 +48,8 @@ PIPELINE_SKILLS = [
     "adoption-check",
 ]
 
+PIPELINE_N = len(PIPELINE_SKILLS)
+
 
 def fail(errors: list[str], msg: str) -> None:
     errors.append(msg)
@@ -65,7 +68,7 @@ def check_frontmatter(errors: list[str]) -> None:
         joined = " ".join(line.strip() for line in desc.group(1).splitlines())
         if len(joined) > 1024:
             fail(errors, f"description is {len(joined)} chars (max 1024)")
-        for term in ("ux-install-all-skills", "28", "design thinking"):
+        for term in ("ux-install-all-skills", str(PIPELINE_N), "design thinking"):
             if term.lower() not in joined.lower():
                 fail(errors, f"description missing trigger term: {term}")
     lines = len(text.splitlines())
@@ -91,8 +94,8 @@ def check_catalog_and_siblings(errors: list[str]) -> None:
     named = re.findall(r"`([a-z0-9-]+)`", catalog)
     unique = [n for n in dict.fromkeys(named) if n in PIPELINE_SKILLS or n == "ux-install-all-skills"]
     pipeline_in_catalog = [n for n in unique if n in PIPELINE_SKILLS]
-    if len(pipeline_in_catalog) != 28:
-        fail(errors, f"catalog should name 28 pipeline skills, found {len(pipeline_in_catalog)}")
+    if len(pipeline_in_catalog) != PIPELINE_N:
+        fail(errors, f"catalog should name {PIPELINE_N} pipeline skills, found {len(pipeline_in_catalog)}")
 
 
 def check_script(errors: list[str]) -> None:
@@ -102,8 +105,10 @@ def check_script(errors: list[str]) -> None:
     body = SCRIPT.read_text(encoding="utf-8")
     if "IMPACT_SKILLS_READY" not in body:
         fail(errors, "install-all.sh must print IMPACT_SKILLS_READY")
-    if "pipeline=28" not in body:
-        fail(errors, "install-all.sh must report pipeline=28")
+    if "pipeline=${pipeline_n}" not in body:
+        fail(errors, "install-all.sh must report pipeline=${pipeline_n}")
+    if "ux-research-master/scripts/install-master.sh" not in body:
+        fail(errors, "install-all.sh must hand off to install-master.sh for commands + rules")
     for name in PIPELINE_SKILLS:
         if name not in body:
             fail(errors, f"install-all.sh missing required skill {name}")

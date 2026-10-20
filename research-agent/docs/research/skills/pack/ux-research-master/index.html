@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>(function(){var k="ux-designops-theme",s=localStorage.getItem(k),d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light");})();</script>
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <title>ux-research-master — impact UX DesignOps</title>
+  <link rel="stylesheet" href="../../../shared/designops.css" />
+  <script src="../../../shared/auth-config.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../../../shared/designops-auth.js" defer></script>
+</head>
+<body class="skills-page">
+  <div id="designops-auth-gate" class="designops-auth-screen" role="dialog" aria-modal="true" aria-labelledby="designops-auth-title"><div class="designops-auth-card"><h1 id="designops-auth-title">UX DesignOps</h1><p>Sign in with your <strong>@impact.com</strong> Google account to view this site.</p><div id="designops-google-signin"></div><p id="designops-auth-status"></p></div></div><div id="designops-auth-denied" class="designops-auth-screen" hidden role="alert"><div class="designops-auth-card"><h1 class="designops-auth-denied-title">You don’t have permission to view this</h1><p>This site is restricted to <strong>@impact.com</strong> Google accounts (for example lesley@impact.com).</p><p id="designops-auth-status-denied"></p></div></div>
+  <header class="top-nav" role="banner">
+    <div class="top-nav-inner">
+      <a class="top-nav-brand" href="../../../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 97 32" fill="none" class="top-nav-logo" width="98" height="32" aria-hidden="true" focusable="false">
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M35.9475 14.2949C35.7217 14.2949 35.4825 14.3346 35.27 14.4273C35.0574 14.52 34.8581 14.6391 34.6987 14.8112C34.5393 14.9701 34.4065 15.1687 34.3135 15.3805C34.2205 15.5923 34.1806 15.8306 34.1939 16.0556C34.2338 16.4925 34.433 16.9161 34.7519 17.2074C35.084 17.5119 35.5091 17.6707 35.9475 17.6707C36.3859 17.6707 36.8243 17.4986 37.1432 17.2074C37.4753 16.9029 37.6745 16.4925 37.7011 16.0556C37.7011 15.8173 37.6613 15.5923 37.5816 15.3805C37.4886 15.1687 37.369 14.9701 37.1963 14.8112C37.0369 14.6524 36.8376 14.52 36.625 14.4273C36.4125 14.3346 36.1866 14.2949 35.9475 14.2949Z"/>
+  <path fill="currentColor" d="M37.2492 20.2522H34.6719V32.7493H37.2492V20.2522Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M49.392 22.1453C50.322 20.7817 51.8896 20.0139 53.8159 20.0139C56.9511 20.0139 59.0634 22.0394 59.0369 25.0578V32.7361H56.4197V25.7329C56.4197 23.6942 55.3437 22.5292 53.4439 22.5292C51.5442 22.5292 50.2157 23.8663 50.2157 25.7726V32.7361H47.5853V25.7329C47.5853 23.6942 46.5092 22.5292 44.6094 22.5292C42.7097 22.5292 41.3812 23.8663 41.3812 25.7726V32.7361H38.7773V20.2654H41.4078V21.351C42.6034 20.2125 44.1445 20.0272 45.0213 20.0272C46.9077 20.0139 48.4886 20.795 49.392 22.1453Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M67.1001 20.0139C65.5457 20.0139 64.2039 20.5037 63.181 21.404V20.2522H60.5771V37.6343H63.181V31.4917C64.1907 32.4184 65.5457 32.8949 67.1001 32.8949C70.6604 32.8949 73.344 30.1149 73.344 26.4478C73.344 22.794 70.6604 20.0139 67.1001 20.0139ZM66.8609 30.4458C64.6556 30.4458 63.0481 28.7645 63.0481 26.4743C63.0481 24.1973 64.6423 22.5027 66.8609 22.5027C69.0662 22.5027 70.6737 24.1708 70.6737 26.4743C70.6737 28.791 69.0795 30.4458 66.8609 30.4458Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M85.0085 20.2654V21.4436C83.9855 20.5169 82.657 20.0271 81.1027 20.0271C77.5423 20.0271 74.8721 22.8204 74.8721 26.514C74.8721 30.2075 77.5556 33.0008 81.1027 33.0008C82.657 33.0008 83.9855 32.511 85.0085 31.571V32.7493H87.6389V20.2654H85.0085ZM81.3418 30.4855C79.1365 30.4855 77.5158 28.791 77.5158 26.5007C77.5158 24.2105 79.11 22.5027 81.3418 22.5027C83.5737 22.5027 85.1413 24.1707 85.1413 26.5007C85.1413 28.8174 83.5471 30.4855 81.3418 30.4855Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M95.6235 22.5027C96.7527 22.5027 97.7225 22.9264 98.6126 23.7604L98.8252 23.9722L100.539 22.185L100.366 21.9864C99.2503 20.7156 97.5897 20.0139 95.6899 20.0139C91.9037 20.0139 89.167 22.7543 89.167 26.5008C89.167 30.2473 91.9037 32.9876 95.6899 32.9876C97.5631 32.9876 99.237 32.286 100.366 31.0283L100.539 30.843L98.8916 29.0161L98.679 29.2279C97.8155 30.0619 96.7394 30.512 95.6501 30.512C93.4713 30.512 91.8638 28.8175 91.8638 26.5272C91.8506 24.2238 93.4182 22.5027 95.6235 22.5027Z"/>
+  <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M109.161 30.4854C109.905 30.4854 110.728 30.1942 111.419 29.7308L111.658 29.5852L112.934 31.5975L112.721 31.7563C111.645 32.5639 110.33 32.9875 108.988 32.9875C106.158 32.9875 104.591 31.3062 104.591 28.2481V22.7012H102.04V20.2521H104.591V16.5056H107.221V20.2389H112.203V22.6747H107.221V28.1952C107.221 29.6647 107.912 30.4854 109.161 30.4854Z"/>
+  <path fill="#A9B4BD" d="M24.3899 23.2308C25.1471 23.2308 25.9044 23.4029 26.5819 23.7206C27.2727 24.0383 27.8838 24.5017 28.3754 25.0709C28.6278 24.4884 28.7739 23.8662 28.7739 23.244C28.7739 22.6748 28.6544 22.1055 28.4418 21.5892C28.216 21.0597 27.8971 20.5831 27.4853 20.1859C27.0734 19.7888 26.5952 19.4711 26.0638 19.246C25.5324 19.0342 24.9611 18.915 24.3899 18.915C23.8186 18.915 23.2474 19.0209 22.716 19.246C22.1846 19.4578 21.693 19.7888 21.2945 20.1859C20.8827 20.5831 20.5638 21.0597 20.338 21.5892C20.1121 22.1187 20.0059 22.6748 20.0059 23.244C20.0191 23.8795 20.152 24.5017 20.4044 25.0709C20.896 24.4884 21.5071 24.0383 22.1846 23.7206C22.8754 23.3896 23.6326 23.2175 24.3899 23.2308Z"/>
+  <path fill="currentColor" d="M28.7735 28.4072C28.7735 27.5467 28.5211 26.7126 28.0295 25.9978C27.5513 25.2829 26.8604 24.7269 26.0634 24.3959C25.2663 24.0649 24.3762 23.9855 23.5259 24.1444C22.6757 24.3165 21.8919 24.7269 21.2808 25.3358C20.6697 25.9448 20.2445 26.7126 20.0851 27.5599C19.9124 28.4072 20.0054 29.2677 20.3375 30.062C20.6697 30.8563 21.2276 31.5314 21.9583 32.008C22.6757 32.4846 23.5259 32.7361 24.4027 32.7361C25.5585 32.7229 26.6745 32.2728 27.4981 31.452C28.3218 30.6312 28.7735 29.5589 28.7735 28.4072Z"/>
+  <path fill="#F5333F" d="M28.7735 13.3417C28.7735 12.4812 28.5211 11.6472 28.0295 10.9323C27.5513 10.2175 26.8737 9.66144 26.0634 9.33048C25.2663 8.99952 24.3762 8.92009 23.5259 9.07895C22.6757 9.25105 21.8919 9.66144 21.2808 10.2704C20.6697 10.8794 20.2445 11.6472 20.0851 12.4945C19.9124 13.3417 20.0054 14.2022 20.3375 14.9965C20.6697 15.7909 21.2276 16.466 21.9583 16.9426C22.6757 17.4192 23.5259 17.6707 24.4027 17.6707C25.5718 17.6707 26.6877 17.2074 27.5114 16.3998C28.3085 15.5923 28.7735 14.4802 28.7735 13.3417Z"/>
+</svg><span class="top-nav-brand-text">UX DesignOps</span></a>
+      <div class="top-nav-actions">
+        <nav class="report-nav" aria-label="Site sections">
+          <a class="nav-link" href="../../../" data-nav="pipeline">Design Thinking Pipeline</a>
+          <a class="nav-link is-active" href="../../" data-nav="skills">Skills</a>
+          <a class="nav-link" href="../../../research/" data-nav="listing">Research</a>
+          <a class="nav-link" href="../../../usage/" data-nav="report">Report</a>
+          <a class="nav-link" href="../../../personas/" data-nav="personas">Personas</a>
+          <a class="nav-link" href="../../../feed/" data-nav="feed">Competitors</a>
+          <a class="nav-link" href="../../../reports/2026-08-24-affinity.html" data-nav="affinity">Affinity</a>
+          <a class="nav-link" href="../../../walkthroughs/" data-nav="walkthrough">Examples</a>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="lede"><a href="../../">← All skills</a></p>
+    <header class="page-header">
+      <h1><code>ux-research-master</code></h1>
+      <p class="sub muted">One front door for the whole impact.com UX pack. First run installs all 31 skills plus the /ux-* starter prompts and writes the routing rules, so after that a plain-English message gets matched to the right skill on its own. Research-led: it asks what decision this unlocks and what the Frame already says before it asks anyone to run a study. Use when the user says ux-research-master, /ux, install the UX skills, set me up, get started, which skill should I use, or opens a UX or product question without naming a skill.</p>
+    </header>
+    <p>
+      <a class="skills-btn skills-btn-primary" href="../ux-research-master.zip" download="ux-research-master.zip">Download ux-research-master.zip</a>
+    </p>
+    <p class="muted">Your browser will save the zip. Unzip into <code>.agents/skills/ux-research-master/</code>, or use the one-shot installer on the skills page for the full pack.</p>
+    <h2>Files in this skill</h2>
+    <ul class="skill-file-list"><li><code>SKILL.md</code></li><li><code>commands/ux-adoption.md</code></li><li><code>commands/ux-context.md</code></li><li><code>commands/ux-critique.md</code></li><li><code>commands/ux-data.md</code></li><li><code>commands/ux-evidence.md</code></li><li><code>commands/ux-frame.md</code></li><li><code>commands/ux-intake.md</code></li><li><code>commands/ux-measure.md</code></li><li><code>commands/ux-persona-check.md</code></li><li><code>commands/ux-personas.md</code></li><li><code>commands/ux-pressure-test.md</code></li><li><code>commands/ux-prioritise.md</code></li><li><code>commands/ux-spec.md</code></li><li><code>commands/ux-study.md</code></li><li><code>commands/ux-test-plan.md</code></li><li><code>commands/ux.md</code></li><li><code>references/prompts.md</code></li><li><code>references/routing.md</code></li><li><code>references/rules-block.md</code></li><li><code>references/rules.md</code></li><li><code>scripts/install-master.sh</code></li><li><code>scripts/validate.py</code></li></ul>
+  </main>
+  <script src="../../../shared/designops-theme.js"></script>
+</body>
+</html>

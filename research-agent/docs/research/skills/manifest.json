@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-16T11:21:36Z",
-  "count": 29,
+  "generated_at": "2026-10-20T04:28:16Z",
+  "count": 31,
   "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip",
   "install_script": "https://lesley-spec.github.io/uxdesignops/skills/install.sh",
   "install_all_script": "https://lesley-spec.github.io/uxdesignops/skills/install-all.sh",
@@ -18,7 +18,7 @@
     {
       "name": "ux-install-all-skills",
       "stage": "pipeline",
-      "description": "Installs all 28 impact.com UX Design Thinking + UX Research pipeline skills (Empathize through Test, plus Frame research skills) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
+      "description": "Installs all 29 impact.com UX Design Thinking + UX Research pipeline skills (Empathize through Test, plus Frame research skills) into the current project and globally for Cursor and Claude Code. Use when the user says ux-install-all-skills, install all skills, install the design thinking skills, set up the UX pipeline, get started with Design Thinking UX, or a designer needs the full skill pack before using the framework.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills/",
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-install-all-skills.zip",
@@ -34,6 +34,16 @@
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-research"
+    },
+    {
+      "name": "ux-research-master",
+      "stage": "pipeline",
+      "description": "One front door for the whole impact.com UX pack. First run installs all 31 skills plus the /ux-* starter prompts and writes the routing rules, so after that a plain-English message gets matched to the right skill on its own. Research-led: it asks what decision this unlocks and what the Frame already says before it asks anyone to run a study. Use when the user says ux-research-master, /ux, install the UX skills, set me up, get started, which skill should I use, or opens a UX or product question without naming a skill.",
+      "figjam_agent": "UX Research Master",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research-master/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research-master.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/ux-research-master/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/ux-research-master"
     },
     {
       "name": "data-analyze",
@@ -54,6 +64,16 @@
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/frame-maintenance.zip",
       "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/frame-maintenance/SKILL.md",
       "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/frame-maintenance"
+    },
+    {
+      "name": "pendo-guide-strategy",
+      "stage": "empathize",
+      "description": "The strategic layer before anyone opens Pendo. Sets audience temperature, writes benefit-first copy, collapses the flow to a single step, and defines the three conversion goals that say whether a guide actually recruited anyone. Built for research recruitment and panel building; the levers work for any in-product guide. Use when someone says build a Pendo guide, our guide engagement is low, recruit partners into a research panel, should this be Pendo or email, or why did this guide underperform.",
+      "figjam_agent": "",
+      "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/pendo-guide-strategy/",
+      "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/pendo-guide-strategy.zip",
+      "skill_md_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/pendo-guide-strategy/SKILL.md",
+      "github_url": "https://github.com/lesley-spec/uxdesignops/tree/main/.agents/skills/pendo-guide-strategy"
     },
     {
       "name": "research-intake",
@@ -78,7 +98,7 @@
     {
       "name": "research-synthesis",
       "stage": "empathize",
-      "description": "Triangulates impact.com UX signals across PostHog, Pendo, Dovetail, Outset, and Freshdesk into confidence-scored themes. Use for Empathize cross-source synthesis, Research Insight Monitor follow-ups, or when 2+ sources may agree.",
+      "description": "Triangulates impact.com UX signals across PostHog, Pendo, Dovetail, Outset and Freshdesk into confidence-scored themes \u2014 including what the sources disagree about, and the gaps between what people say and what they do. Use for Empathize cross-source synthesis, Research Insight Monitor follow-ups, or when 2+ sources may agree. Use when someone says triangulate this, do the sources agree, is this real or keyword noise, or what does the evidence actually say.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-synthesis/",
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/research-synthesis.zip",
@@ -88,7 +108,7 @@
     {
       "name": "synthesize-research",
       "stage": "empathize",
-      "description": "Affinity-maps a single research corpus (one Dovetail project, interview set, or study export) into themes and insight cards. Use for Empathize single-source synthesis \u2014 not cross-tool triangulation (use research-synthesis for that).",
+      "description": "Affinity-maps a single research corpus (one Dovetail project, interview set, or study export) into themes and insight cards \u2014 separating how often something came up from how much it matters, and carrying the evidence that argues against each theme as well as for it. Use for Empathize single-source synthesis \u2014 not cross-tool triangulation (use research-synthesis for that). Use when someone says affinity map these notes, theme this study, what came out of these interviews, or turn this corpus into insight cards.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/synthesize-research/",
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/synthesize-research.zip",
@@ -108,7 +128,7 @@
     {
       "name": "user-research",
       "stage": "empathize",
-      "description": "Plans and deep-dives impact.com UX research before confirming a problem worth solving. Use when designing studies, interviewing, probing a Research Insight Monitor finding, Outset/Maze prep, Empathize-stage research, or Test loop-back after sessions.",
+      "description": "The gate brief: deep-dives one finding and says whether the evidence is enough to confirm a problem worth solving, or what is still missing. States the hypothesis, the evidence against it, and what the current evidence cannot tell you. Hands routing to research-intake and study design to research-planner. Use when designing the case for a problem, probing a Research Insight Monitor finding, mapping evidence gaps before Define, or looping Test findings back.",
       "figjam_agent": "",
       "pack_url": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-research/",
       "download_zip": "https://lesley-spec.github.io/uxdesignops/skills/pack/user-research.zip",

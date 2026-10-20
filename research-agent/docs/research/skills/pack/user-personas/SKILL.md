@@ -19,6 +19,20 @@ metadata:
 Routing skill for the reference persona set. Does not invent personas — it points at
 the maintained set and says how to use and refresh it.
 
+## Response shape
+
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 ## Where the set lives
 
 | Resource | Link |
@@ -70,6 +84,13 @@ being withheld.
 - **Nia** wins only on signup, profile and first-link surfaces.
 - **Creator vs affiliate** → unresolved. Escalate rather than guess (see Gaps).
 
+**Tie-breaks are claims too.** Each one above rests on evidence that should be
+named and dated beside it, the same as any persona claim — "most likely to
+leave" is a retention figure someone can check, or it is a belief. Where the
+evidence behind a tie-break is not written down, treat the rule as
+**UNVALIDATED**: usable as a default, not citable in a one-pager, and first in
+line at the next Frame review.
+
 ## Confidence model
 
 Each persona is scored 0–100 on four things, stated openly so it can be argued with:
@@ -79,6 +100,16 @@ known gaps are. It is a judgement, not a statistical measure.
 
 **Never cite a persona claim without its denominator.** Several figures that circulated
 as segment-wide rates were six or four people.
+
+**A score with no date is not a score.** Record when each persona was last
+re-scored. Qualitative evidence ages exactly like any other claim: by
+`frame-maintenance` rules, a source over 12 months old is re-verify-or-retire,
+and that applies to the study behind a persona as much as to a Frame row.
+
+**The mobile app tier has a confidence ceiling.** PostHog carries no native app
+telemetry — "mobile" there is mobile web — so app-specific persona claims cannot
+be behaviourally corroborated from the usual source. One qual source, however
+many interviews, is MEDIUM. Say so rather than scoring around it.
 
 ## Evidence base
 
@@ -109,6 +140,9 @@ dated snapshots — re-check them against Outset before quoting in a decision do
    North America.
 5. **Application submission is uninstrumented**, so time-to-decision cannot be measured
    on either side.
+6. **Native app behaviour is unmeasurable in PostHog.** The 119 Mobile App Exp
+   interviews have no behavioural counterpart there; corroboration has to come
+   from Pendo or Looker, or it does not exist.
 
 ## Workflow
 
@@ -124,7 +158,7 @@ dated snapshots — re-check them against Outset before quoting in a decision do
 
 ```markdown
 ## Persona
-- Primary: … (confidence …/100)
+- Primary: … (confidence …/100, last re-scored …)
 - Explicitly not for: …
 - Tie-break if it conflicts with …: …
 - Unmet need this addresses: …

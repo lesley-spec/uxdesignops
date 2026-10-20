@@ -50,6 +50,18 @@ the second cannot do the first's job.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. **Ground it or do not run it.** Pull the persona from
    [`user-personas`](../user-personas/) and the relevant claims from
    [`user-context`](../user-context/). An ungrounded persona is a confident
@@ -62,6 +74,14 @@ the second cannot do the first's job.
    do on this screen, and what happens when it is not there?"
 5. **Rank by consequence**, not by how many things you found. Ten observations
    with no ordering is a list, not a review.
+6. **Report where it works, not only where it breaks.** A walkthrough that only
+   finds problems gives the designer nothing to protect in the next revision,
+   and reads as advocacy rather than a check.
+7. **Every output is a hypothesis with a test attached.** Each observation says
+   what would confirm or kill it with a real participant — otherwise it is an
+   opinion formatted like a finding.
+8. **Mark which observations the persona card could not support.** Those are
+   coverage gaps, and they belong in the output where someone will act on them.
 
 ## Workflow
 

@@ -106,6 +106,18 @@ state, so the two stay in step.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. **Never fabricate.** If the sweep found nothing, say **"data not available."**
    A plausible answer with no source behind it is the one failure that looks
    identical to success.
@@ -234,11 +246,21 @@ quarter.
 
 New finding, new claim. **Research that does not write back does not compound.**
 
+**A claim is proposed here, confirmed by a person.** Show the claim, its
+confidence and its denominator, and get a yes before writing. A Frame full of
+weak claims is worse than no Frame, because it lends the authority of the record
+to a guess — and the curation is the part that makes the whole thing worth
+having. The sweep proposes; a researcher sets or confirms confidence.
+
+**Every claim carries an owner** — the person who will be asked about it at the
+next review. A claim with no name on it is retired at the first
+`frame-maintenance` pass, so write one in now.
+
 Write with the `ArtifactData` tool against the Frame:
 
 > **https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw**
 
-- One **claim** per finding, into `claims`, with its denominator and source
+- One **claim** per finding, into `claims`, with its denominator, source and owner
 - A **need** into `needs` when the finding names something people lack, linked to
   the claim ids that evidence it
 - Use `batch` for more than a couple of writes

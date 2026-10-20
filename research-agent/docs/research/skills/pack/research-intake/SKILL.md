@@ -33,6 +33,18 @@ and ownership come apart more often than one label allows.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. **Check before you plan.** A request that is already answered does not need
    a method.
 2. **No decision, no study.** Research with nothing waiting on it becomes a
@@ -41,6 +53,10 @@ and ownership come apart more often than one label allows.
    choose. Shrinking method to fit a deadline produces confident fiction.
 4. **Draft the ticket, don't create it.** Show it first.
 5. **"Already answered" is a win.** Log it. It is the cheapest research we do.
+6. **A route is not just a size, it carries a rigor gate.** Every mode gets the
+   3-participant pass and thresholds agreed with the decision owner before
+   fieldwork — `research-planner` sets both. Routing something as MICRO shortens
+   the study, never the gates.
 
 ## Who runs intake
 

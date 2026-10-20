@@ -29,6 +29,18 @@ Routing tables: [references/phases.md](references/phases.md).
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. **Orchestrate, don’t rewrite.** When this skill says invoke `skill-name`,
    Read `.agents/skills/<name>/SKILL.md` (fallback `.cursor/skills/<name>/`)
    plus any references that step needs, then execute that skill’s workflow in
@@ -163,8 +175,11 @@ Ask: prototype URL; Outset vs Maze vs recommend; sessions already done?
 - No sessions → invoke `test-plan` (it runs pre-flight).
 - Sessions done → `synthesize-research` then `test-loopback`.
 
-**Gate:** Designer reviews the study before recruiting; reviews loopback
-before Confluence/Jira. Pipeline **ends** at published loopback (or a
+**Gate:** Designer reviews the study before recruiting; **thresholds agreed
+with the decision owner before sessions**; **the 3-participant pass runs after
+the first three sessions and before the rest** — that one sits mid-study, so the
+board shows IN PHASE, not GATE, and the pipeline still stops there. Designer
+reviews loopback before Confluence/Jira. Pipeline **ends** at published loopback (or a
 ready-to-publish test plan if they stop before sessions). Offer a new
 Empathize cycle only if findings reframe the problem.
 

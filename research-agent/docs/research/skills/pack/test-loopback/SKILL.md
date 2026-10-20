@@ -20,12 +20,35 @@ never on AI-drafted study plans or synthetic pre-tests alone.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. Require **completed sessions** (Outset/Maze export, Dovetail notes, or designer paste).
 2. Run `synthesize-research` or brief `user-research` on the corpus **before** publish.
 3. Label every finding **Verified** (quote/metric from session) vs **AI interpretation**.
 4. Do **not** promote AI synthesis to the research pack without designer confirm.
 5. **Only publish after designer confirms** the loopback summary.
 6. **Atlassian Rovo MCP** — fetch the framing epic with `getJiraIssue` / `search` yourself. Do not ask the designer to paste the ticket or run `/mcp` until a tool call fails.
+7. **Every finding points at a moment.** Participant id, timestamp, clip link.
+   A stakeholder who cannot watch the thing happen is being asked to take it on
+   trust, and in six months nobody will remember which session it came from.
+8. **Frequency and cost are separate columns.** How many hit it, and what it
+   cost them. A readout ranked by mentions buries the blocker one person could
+   not get past.
+9. **Publish what worked too.** Findings with nothing disconfirming read as
+   advocacy, and the designer cannot tell which parts of the design to keep.
+10. **State observations, not recommendations.** "Four of six re-entered details
+    after the error" is a finding the reader can act on. "We should redesign the
+    error state" is your opinion wearing the research's authority.
 
 See [references/publish.md](references/publish.md), [references/integrity.md](references/integrity.md), and [references/atlassian-rovo.md](references/atlassian-rovo.md).
 
@@ -65,10 +88,21 @@ Audience: Brand | Partner | Shared
 ## Decision this informs
 [Ship | iterate prototype | reframe problem | monitor]
 
+## What we asked
+- Research question · why this mode · thresholds agreed before sessions
+- Decision owner: …
+
 ## Verified findings (from sessions)
-| Theme | Evidence (Verified) | vs success criteria |
-|---|---|---|
-| … | quote / metric | confirm \| contradict \| inconclusive |
+| Theme | n / N | Cost to participant | Evidence (Verified) | vs threshold |
+|---|---|---|---|---|
+| … | 4 / 6 | abandoned \| worked around \| recovered | P3 14:22 + clip link | met \| missed \| inconclusive |
+
+Ranked by cost first, then frequency.
+
+## What worked
+- Tasks completed unaided, and by whom
+- Participants who did **not** hit the main finding, and what was different
+  about them
 
 ## AI interpretation (review before publish)
 - …
@@ -78,8 +112,13 @@ Audience: Brand | Partner | Shared
 |---|---|---|
 | … | … | … |
 
-## Recommendation
-- …
+## What this means for the decision
+- Against the thresholds agreed before sessions: …
+- What it changes · what it does not address
+
+## What this cannot tell you
+- Sample size and who was excluded · tasks not covered · segments absent ·
+  questions these sessions never asked
 
 ## Links
 - Test plan / prototype:

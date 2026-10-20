@@ -15,6 +15,20 @@ metadata:
 
 Adversarial review for problem framing. Prefer hard questions over polished agreement.
 
+## Response shape
+
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 ## When to use
 
 - Before publishing a `write-spec` one-pager
@@ -24,6 +38,13 @@ Adversarial review for problem framing. Prefer hard questions over polished agre
 ## Checklist
 
 1. **Evidence** — Which claims are Verified? Which are AI interpretation? Any low-N or empty Dovetail matches?
+1b. **Beliefs table** — Does the one-pager name the claim ids it rests on, with
+   confidence, n and last-verified date? Missing table is itself a finding: the
+   spec cannot be found when one of its claims is retired.
+1c. **Confidence vs commitment** — Is a build decision resting on MEDIUM or LOW?
+   Building needs HIGH with corroboration; deprioritising can rest on MEDIUM.
+   A mismatch here is the most expensive thing on this list, and the easiest to
+   wave through because the doc reads confidently.
 2. **Goal ≠ feature** — Rewrite feature names into customer/business outcomes.
 3. **Marketplace** — Brand and Partner both addressed, or explicit single-side caveat?
 4. **Disconfirming** — What would falsify this problem? Is that mentioned?
@@ -60,4 +81,6 @@ Adversarial review for problem framing. Prefer hard questions over polished agre
 
 - Softening criticism to be “helpful”
 - Inventing counter-evidence
+- Passing a one-pager whose central belief is UNVALIDATED because the writing is good
+- Challenging the prose while leaving the evidence base unexamined
 - Approving framing on single weak source

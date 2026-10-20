@@ -20,10 +20,28 @@ Formal exit from Ideate. Runs **after** the designer is happy with mocks and
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. Require a recent **`ux-critique`** with no open Critical gaps, or documented designer acceptance of residual risk.
 2. Do not invent a “chosen” direction — designer must name it.
 3. Label Verified links vs AI summary of the pack.
 4. Do **not** auto-start Prototype scaffolder; stop after the pack for designer confirm.
+5. **Carry the beliefs forward.** The pack names the claim ids and confidence
+   the direction rests on, copied from the one-pager. A prototype that outlives
+   the evidence behind it is how a retired claim keeps shipping.
+6. **Name what is still unvalidated.** Anything the mocks assume but the
+   research has not shown goes in the open questions, not in the confidence of
+   the presentation.
 
 See [references/pack.md](references/pack.md).
 

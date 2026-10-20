@@ -22,14 +22,50 @@ This is a constraint on the **output**, not on the rigour. The evidence trails,
 disconfirming evidence and confidence grades still get produced and still get
 written down. They just do not all get said.
 
-## Start here (master)
+## Start here
+
+**One name to remember: `ux-research-master`.** Everything else it finds for you.
+
+```bash
+curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+```
+
+That installs 29 pipeline skills (31 folders), the 16 `/ux-*` starter prompts
+in Cursor and Claude Code, and a routing block in `CLAUDE.md` / `AGENTS.md`.
+After it, type `/ux` for the menu — or just describe what you're working on
+and the right skill loads itself.
 
 | Skill | Use when |
 |---|---|
-| `ux-install-all-skills` | First time / new machine: one prompt installs all **19** pipeline skills into this project and globally (Cursor + Claude). Do this before a guided run. |
-| `design-thinking-ux` | Guided run Empathize → Test: intake questions, then the orchestrator **invokes** the phase skills (research, write-spec / tickets, ideate, prototype shells, test-plan). First skill to **run** for a full pipeline. |
+| `ux-research-master` | **Front door.** Installs the pack, routes any message to the right skill, owns the `/ux-*` starter prompts. Start here. |
+| `design-thinking-ux` | Guided run Empathize → Test: intake questions, then the orchestrator **invokes** the phase skills (research, write-spec / tickets, ideate, prototype shells, test-plan). |
+| `ux-research` | Guided **research** run: intake → the Frame → study plan → instruments. |
+| `ux-install-all-skills` | The install step on its own — new machine, or the pack went missing. `ux-research-master` calls it for you. |
 
-Phase skills below still work on their own. The master skill is for “take me through the process.”
+### The starter prompts
+
+| | | |
+|---|---|---|
+| `/ux` | menu | Show everything, or route what you type after it |
+| `/ux-frame` | evidence | What we hold, how confident, what's stale |
+| `/ux-context` | evidence | What do we know about X? |
+| `/ux-evidence` | evidence | Is this hypothesis supported? |
+| `/ux-personas` | evidence | Who are our users, which one owns this? |
+| `/ux-intake` | research | Triage a research request |
+| `/ux-study` | research | Design the study |
+| `/ux-measure` | research | Build the measure and the audience first |
+| `/ux-prioritise` | product | Rank options on evidence |
+| `/ux-pressure-test` | product | Poke holes in a framing |
+| `/ux-spec` | product | One-pager + epic |
+| `/ux-adoption` | product | We shipped it — did it work? |
+| `/ux-critique` | design | Do these mocks cover the spec? |
+| `/ux-persona-check` | design | Walk a persona through it before we recruit |
+| `/ux-test-plan` | design | Plan the usability test |
+| `/ux-data` | data | Funnel, drop-off, trend |
+
+Full routing table: [`ux-research-master/references/routing.md`](ux-research-master/references/routing.md).
+
+Phase skills below still work on their own, and naming one runs just that one.
 
 ## Research engine (runs alongside the five stages)
 

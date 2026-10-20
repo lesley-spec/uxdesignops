@@ -16,12 +16,36 @@ metadata:
 
 Lens for **Brand** advertisers and operators — not Partners.
 
+## Response shape
+
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 ## Sources (prefer live)
 
 1. [Brand UI Personas (JTBD)](https://impact.atlassian.net/wiki/spaces/ux/pages/6439338009/Brand+UI+Personas+Jobs-to-be-Done)
 2. [UX Design & Research](https://impact.atlassian.net/wiki/spaces/ux/overview) hub
 3. Research Insight Monitor / Dovetail Brand themes
 4. Fetch Confluence with Atlassian Rovo MCP (`getConfluencePage` / `search`) yourself — do not invent persona names, and do not ask the designer to paste the page
+
+## Known gaps on the Brand side
+
+| Gap | Consequence for this lens |
+|---|---|
+| **No brand in its first 90 days has been interviewed** | The founder-operator persona is built from reviews and telemetry only. Treat early-life claims as MEDIUM at best |
+| **English-only recruitment** | Just under half of activity is outside North America and is unrepresented |
+| **Application submission is uninstrumented** | Time-to-decision cannot be measured on either side — do not quote it |
+
+See [`user-personas`](../user-personas/) → Known gaps for the full set.
 
 ## How to apply
 
@@ -36,12 +60,16 @@ Lens for **Brand** advertisers and operators — not Partners.
 # Brand lens — [topic]
 Personas in scope: …
 JTBD affected: …
-Verified pain (links): …
+Evidence this rests on: claim ids + confidence + n
+Verified pain (links + dates): …
 Implications for framing: …
+Who this does NOT cover: …
 Gaps / do not assume: …
 ```
 
 ## Anti-patterns
 
 - Speaking for Partners without the creator-affiliate skill
+- Speaking confidently about a brand's first 90 days — nobody has been interviewed
+- Quoting a persona claim without its denominator
 - Using outdated Estalea-only persona docs without noting age

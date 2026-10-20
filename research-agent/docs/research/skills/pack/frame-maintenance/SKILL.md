@@ -30,6 +30,18 @@ Run it quarterly. It takes an hour or two, most of it reading.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. **Re-read the source, don't re-read the claim.** A claim that still sounds
    right is not evidence that it is. Open what it links to.
 2. **Retirement is a feature.** A Frame that only grows is one nobody trusts.
@@ -39,6 +51,11 @@ Run it quarterly. It takes an hour or two, most of it reading.
    A stale claim a roadmap rests on is urgent.
 5. **Pull, don't ask.** Dovetail and PostHog are connected. Read them rather
    than asking the researcher what they remember.
+6. **Confidence is a claim about sources, not about age.** Ageing lowers it, but
+   a fresh claim resting on one source was never HIGH to begin with. Check the
+   grade against the definition, not just the date.
+7. **An unowned claim is an unmaintained claim.** Every row names a person who
+   will be asked about it next quarter.
 
 ## The four questions
 
@@ -57,6 +74,7 @@ Everything below is a way of answering them with evidence.
 Task Progress:
 - [ ] Pull the Frame
 - [ ] Age every claim
+- [ ] Re-grade confidence, owners, duplicates
 - [ ] Re-read what PostHog measures
 - [ ] Re-read what Dovetail holds
 - [ ] Decide: keep / refresh / retire / contest
@@ -88,6 +106,30 @@ Mechanical, no sources needed. Sort by `verified` and bucket:
 Then override by **exposure**: any claim cited by a `needs` row, a one-pager or
 an epic jumps the queue regardless of age. Check `needs[].claims` for which
 claims are load-bearing.
+
+### 2b — Re-grade confidence against the definition
+
+Ageing is not the only reason a grade is wrong. Re-check each claim against what
+the grade actually requires:
+
+| Grade | Requires |
+|---|---|
+| **HIGH** | Two or more **independent** sources agree — different populations, not the same people reached twice. n≥8 consistent. Under 6 months |
+| **MEDIUM** | One primary source, n=4–7 mostly consistent, or 6–12 months old |
+| **LOW** | Anecdotal, conflicting, n<4, single segment, or 12+ months |
+| **UNVALIDATED** | Hypothesis, leadership belief, one person's view. Not Frame material yet |
+
+**The common error is a HIGH built from one study with a large N.** Volume is
+not corroboration. Demote it to MEDIUM and put it at rank 4 of the research
+list — one corroborating source restores it, which is cheaper than a study.
+
+Two more sweeps while you are in the data:
+
+- **Orphans.** Any claim with no owner gets one assigned now, or it is retired.
+  Nobody defends a claim with no name on it.
+- **Near-duplicates.** Claims saying the same thing in different words inflate
+  apparent agreement. Merge them into one row with both evidence trails, and
+  keep the earlier `verified` date — not the flattering one.
 
 ### 3 — Re-read what PostHog measures
 
@@ -198,6 +240,8 @@ Three numbers, quarter on quarter:
 |---|---|
 | Claims re-verified vs retired | Both non-zero. All-keep means nobody looked |
 | Share of claims over 6 months | Falling, or at least flat |
+| Claims with no owner | Zero |
+| HIGH claims resting on one source | Zero — each is either corroborated or demoted |
 | Requests closed as already-answered | Rising |
 
 **All-keep is the failure mode**, not all-retire. A review that retires nothing

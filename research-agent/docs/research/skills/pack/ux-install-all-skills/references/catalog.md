@@ -1,4 +1,4 @@
-# Pipeline skill catalog (28)
+# Pipeline skill catalog (29)
 
 The installer **must** land every name below. Personas and `design-system`
 are listed once; they are reused in later phases.
@@ -7,6 +7,7 @@ are listed once; they are reused in later phases.
 
 | Skill | Use when |
 |---|---|
+| `ux-research-master` | **Front door.** Installs everything, routes any message, owns the `/ux-*` prompts |
 | `design-thinking-ux` | Guided Empathize → Test; invokes the phase skills |
 | `ux-research` | Guided research run; invokes research + Frame skills |
 

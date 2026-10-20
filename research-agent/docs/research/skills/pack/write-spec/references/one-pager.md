@@ -20,6 +20,9 @@ Mirror existing UX one-pagers (e.g. Holistic Brand Experience Rethink):
 5. **Scope** — In / Out
 6. **Design deliverables** — e.g. mocks, prototype (placeholder OK)
 7. **Research context** — links to Empathize sources / report
+8. **Beliefs this rests on** — claim ids, confidence and n, copied from the
+   Frame. This is the back-link `frame-maintenance` uses to rank a claim by
+   exposure; without it a retired claim leaves live specs standing on nothing.
 
 ## Product Shaping sections (when expanding)
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Install all 28 UX Design Thinking + UX Research pipeline skills into a project + globally.
+# Install all 29 UX Design Thinking + UX Research pipeline skills into a project +
+# globally, plus the /ux-* starter commands and the routing rule block.
 # Usage:
 #   bash install-all.sh
 #   bash install-all.sh --target ~/my-project
@@ -11,6 +12,7 @@ set -euo pipefail
 ZIP_URL="${DESIGNOPS_SKILLS_ZIP:-https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip}"
 
 PIPELINE_SKILLS=(
+  ux-research-master
   design-thinking-ux
   ux-research
   research-intake
@@ -44,6 +46,7 @@ PIPELINE_SKILLS=(
 TARGET="."
 DO_PROJECT=1
 DO_GLOBAL=1
+DO_POST=1
 
 die() { echo "ERROR: $*" >&2; exit 1; }
 info() { echo "→ $*"; }
@@ -54,6 +57,7 @@ while [[ $# -gt 0 ]]; do
     --project-only) DO_GLOBAL=0; shift ;;
     --global-only) DO_PROJECT=0; shift ;;
     --no-global) DO_GLOBAL=0; shift ;;
+    --skills-only) DO_POST=0; shift ;;
     -h|--help)
       sed -n '2,10p' "$0"
       exit 0
@@ -199,21 +203,41 @@ $(printf '  %s\n' "${missing[@]}")"
 
 project_line="${project_agents:-skipped}"
 skill_n="${#ALL_NAMES[@]}"
+pipeline_n="${#PIPELINE_SKILLS[@]}"
 
 cat <<EOF
 
 ═══════════════════════════════════════════════════════════
  UX DESIGN THINKING SKILLS READY
 ═══════════════════════════════════════════════════════════
- pipeline skills:  28 / 28
+ pipeline skills:  ${pipeline_n} / ${pipeline_n}
  pack folders:     ${skill_n}
  project:          ${project_line}
  Cursor global:    ${cursor_global_ok}  (${cursor_global})
  Claude global:    ${claude_global_ok}  (${claude_global})
 
- Next: in chat, say  use design-thinking-ux
- or  use ux-research  for research + Frame skills.
+ Next: in chat, say  use ux-research-master  (or type /ux)
+ — it routes to the right skill and shows the starter prompts.
 
-IMPACT_SKILLS_READY pipeline=28 dest=${project_line} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
+IMPACT_SKILLS_READY pipeline=${pipeline_n} dest=${project_line} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
 ═══════════════════════════════════════════════════════════
 EOF
+
+# Hand off to the front door for the /ux-* commands and the routing rules,
+# unless install-master.sh is what invoked us.
+if [[ "$DO_POST" -eq 1 && -z "${UX_SKIP_POST:-}" ]]; then
+  post_script=""
+  for cand in "$project_agents/ux-research-master/scripts/install-master.sh" \
+              "$claude_global/ux-research-master/scripts/install-master.sh" \
+              "$cursor_global/ux-research-master/scripts/install-master.sh"; do
+    [[ -n "$cand" && -f "$cand" ]] && { post_script="$cand"; break; }
+  done
+  if [[ -n "$post_script" ]]; then
+    post_args=(--skip-skills)
+    [[ "$DO_PROJECT" -eq 0 ]] && post_args+=(--global-only)
+    [[ "$DO_GLOBAL" -eq 0 ]] && post_args+=(--project-only)
+    [[ "$DO_PROJECT" -eq 1 ]] && post_args+=(--target "$TARGET")
+    info "Installing /ux-* commands and routing rules…"
+    bash "$post_script" "${post_args[@]}"
+  fi
+fi

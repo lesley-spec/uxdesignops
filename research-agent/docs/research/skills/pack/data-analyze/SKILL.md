@@ -18,13 +18,49 @@ Ad-hoc quantitative analysis. Skill id is `data-analyze`.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 - Query live tools; do not invent series.
 - State window, filters (especially filter-test-accounts), and math definition.
 - Metrics are **Verified**; “why” text is **AI interpretation** until qual agrees.
-- Severity heuristic (Research Insight Monitor): HIGH drop-off >30%, MEDIUM 15–30% — say so explicitly.
-- **Quality gate:** If step-from count is tiny (e.g. <30 persons) or drop is 100% with ~0 completing, label **low sample / monitor only** — do not treat as a confirmed problem.
+- **A number with no baseline is not a finding.** Always pull the prior period
+  and the step's own history. A 35% drop at a step that has always dropped 35%
+  is the design, not a problem.
+- Severity heuristic (Research Insight Monitor): HIGH drop-off >30%, MEDIUM
+  15–30% — say so explicitly, **and say whether it moved**. The absolute figure
+  flags where to look; the change against baseline is what makes it news.
+- **Quality gate:** If step-from count is tiny (e.g. <30 persons) or drop is 100%
+  with ~0 completing, label **low sample / monitor only** — do not treat as a
+  confirmed problem.
+- **Quant answers what and how many, never why.** The "why" line is a hypothesis
+  for `research-synthesis` or a MICRO study to test, and is labelled as one.
+- **Name who is not in the number.** A funnel filtered to one surface, one
+  region or one account tier is a claim about those people only.
 
 See [references/integrity.md](references/integrity.md) and [references/query-playbook.md](references/query-playbook.md).
+
+## Known traps in this instance
+
+Two things about the impact.com PostHog that will silently produce a wrong
+answer. Both were found the hard way; re-confirm either if the instrumentation
+has been changed since.
+
+| Trap | What happens | What to do |
+|---|---|---|
+| **Membersite runs two SDKs** | Every event is captured **twice**, under different session ids. Counts inflate and session-level dedupe does not work | Dedupe on person + timestamp, not on session. Say in the output which you used, and treat raw session counts as unusable |
+| **No native app telemetry** | PostHog "mobile" means **mobile web only**. The iOS and Android apps do not report here | A question about the apps cannot be answered in PostHog. Route to Pendo or Looker and say so rather than returning a web number labelled "mobile" |
+
+*Recorded from Membersite analysis, October 2026.*
 
 ## When to use
 
@@ -52,9 +88,18 @@ See [references/integrity.md](references/integrity.md) and [references/query-pla
 - Window / filters: …
 - Link / tool: …
 
+## Baseline
+- Prior period: … · Ordinary swing across the last four periods: …
+- Is this move larger than that swing? yes | no | not readable yet
+
 ## Caveats
 - Sample size / instrumentation: …
+- Dedupe basis (person, not session — see known traps): …
+- Who is not in this number: …
 - Compared to monitor report: agree | disagree | report may be stale
+
+## What this cannot tell you
+- Why. Which people. Whether it helped anyone.
 
 ## AI interpretation
 - …
@@ -73,6 +118,9 @@ See [references/integrity.md](references/integrity.md) and [references/query-pla
 
 ## Anti-patterns
 
+- **Reporting a figure with no prior period to compare it to**
+- **Counting sessions on Membersite** — two SDKs, every session doubled
+- **Answering an app question with PostHog "mobile"** — that is mobile web
 - Treating 100% drop with <30 starters as a product crisis
 - Comparing PostHog persons to Pendo accounts without a conversion note
 - Answering “why” from quant alone as fact

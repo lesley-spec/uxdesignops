@@ -34,9 +34,18 @@ is not waiting; they are being polite.
 
 **What finding triggers what decision — written before fieldwork starts.**
 
-> If 70%+ mention X unprompted → we build it this quarter
-> If under 50% → we defer and revisit in Q3
-> If between → we run a follow-up on the specific blocker
+For qual, write thresholds as **patterns and behaviour**, not percentages:
+
+> If most participants hit the same blocker and have built a workaround for it
+>   → we build it this quarter
+> If the blocker appears but nobody has worked around it → we defer to Q3
+> If participants split on whether it is a problem at all → we run a follow-up
+>   on what separates the two groups
+
+**Percentages belong to quant.** "70% mention X" at n=8 is a number the sample
+cannot carry — the same error as claiming "90% of users" from eight interviews.
+Reserve percentage thresholds for PostHog, Pendo, or an Outset sample large
+enough to bear one, and name the instrument that will produce the number.
 
 This is the check most teams skip, and skipping it is what lets a study confirm
 whatever was already wanted. Once you have seen the data, "what counts as

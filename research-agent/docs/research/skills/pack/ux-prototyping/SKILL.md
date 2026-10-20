@@ -34,6 +34,18 @@ preview, or Claude preview.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. **Finish in the current harness.** Cursor, Claude Code, Claude chat,
    Figma Make, Copilot/Codex — all valid. Do not bounce them.
 2. **Exclusive shells** — Brand → Brand shell. Partner → Partner shell.
@@ -49,6 +61,16 @@ preview, or Claude preview.
 6. **Do not push to the template remotes** (`one-program-1`,
    `PartnerUI-shell`).
 7. GitHub is **opt-in** after the live preview works.
+8. **Publishing is the designer's call, every time.** A GitHub repo and a Pages
+   site are public artifacts under their name. Confirm before creating either,
+   and never treat an earlier yes as standing permission for the next one.
+**A prototype is not evidence.** It shows what something could be, not that
+anyone needs it or can use it. Everything it appears to demonstrate stays a
+hypothesis until `test-plan` puts it in front of participants — a clickable
+thing persuades out of proportion to what it proves, and hardest on the people
+furthest from the research. Link the one-pager or epic it is built from, so
+anyone looking at it can check the framing.
+
 
 ## When to use
 

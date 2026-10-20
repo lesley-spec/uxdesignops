@@ -22,11 +22,29 @@ Does **not** pick a final direction — designer iterates, then runs `ux-critiqu
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. Prefer a **one-pager or detailed PRD**; accept epic, tickets, Granola/meeting notes, Slack, or chat paste. If framing is thin, build a **Framing snapshot**, label gaps, warn — do not block.
 2. Label **Verified** vs **AI interpretation**. Never invent metrics/quotes from framing sources.
 3. Prompt the designer for **fidelity**, **surface**, and **# of directions** before generating visuals.
 4. Dual marketplace: Brand and/or Partner lenses via personas when audience is known.
 5. Stop short of Prototype pack — that is `prototype-handoff` after `ux-critique`.
+6. **Directions are options, not answers.** Generating five concepts does not
+   make any of them right, and the one that renders best is not thereby the
+   strongest. The designer chooses; `ux-critique` checks it against the framing.
+7. **Never let a concept invent a user need.** If a direction depends on a need
+   the framing does not evidence, say so on the concept rather than in a
+   footnote — that is a research question, and `research-intake` owns it.
 
 See [references/brief.md](references/brief.md), [references/routing.md](references/routing.md).
 
