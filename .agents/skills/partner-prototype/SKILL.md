@@ -30,6 +30,13 @@ follow-on step in the same Cursor chat after READY.
 3. In Figma Make or Claude chat (no shell), do **not** run this script —
    invoke `ux-prototyping` instead (live preview in that harness).
 4. After READY, move the Cursor workspace to the project path when possible.
+**A prototype is not evidence.** It shows what something could be, not that
+anyone needs it or can use it. Everything it appears to demonstrate stays a
+hypothesis until `test-plan` puts it in front of participants — a clickable
+thing persuades out of proportion to what it proves, and hardest on the people
+furthest from the research. Link the one-pager or epic it is built from, so
+anyone looking at it can check the framing.
+
 
 ## When to use
 

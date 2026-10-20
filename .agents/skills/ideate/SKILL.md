@@ -27,6 +27,12 @@ Does **not** pick a final direction — designer iterates, then runs `ux-critiqu
 3. Prompt the designer for **fidelity**, **surface**, and **# of directions** before generating visuals.
 4. Dual marketplace: Brand and/or Partner lenses via personas when audience is known.
 5. Stop short of Prototype pack — that is `prototype-handoff` after `ux-critique`.
+6. **Directions are options, not answers.** Generating five concepts does not
+   make any of them right, and the one that renders best is not thereby the
+   strongest. The designer chooses; `ux-critique` checks it against the framing.
+7. **Never let a concept invent a user need.** If a direction depends on a need
+   the framing does not evidence, say so on the concept rather than in a
+   footnote — that is a research question, and `research-intake` owns it.
 
 See [references/brief.md](references/brief.md), [references/routing.md](references/routing.md).
 

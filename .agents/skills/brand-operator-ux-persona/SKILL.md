@@ -23,6 +23,16 @@ Lens for **Brand** advertisers and operators — not Partners.
 3. Research Insight Monitor / Dovetail Brand themes
 4. Fetch Confluence with Atlassian Rovo MCP (`getConfluencePage` / `search`) yourself — do not invent persona names, and do not ask the designer to paste the page
 
+## Known gaps on the Brand side
+
+| Gap | Consequence for this lens |
+|---|---|
+| **No brand in its first 90 days has been interviewed** | The founder-operator persona is built from reviews and telemetry only. Treat early-life claims as MEDIUM at best |
+| **English-only recruitment** | Just under half of activity is outside North America and is unrepresented |
+| **Application submission is uninstrumented** | Time-to-decision cannot be measured on either side — do not quote it |
+
+See [`user-personas`](../user-personas/) → Known gaps for the full set.
+
 ## How to apply
 
 1. Name the Brand role(s) in scope (e.g. Affiliate Creator Manager, Marketing Director/Analyst, Agency Lead).
@@ -36,12 +46,16 @@ Lens for **Brand** advertisers and operators — not Partners.
 # Brand lens — [topic]
 Personas in scope: …
 JTBD affected: …
-Verified pain (links): …
+Evidence this rests on: claim ids + confidence + n
+Verified pain (links + dates): …
 Implications for framing: …
+Who this does NOT cover: …
 Gaps / do not assume: …
 ```
 
 ## Anti-patterns
 
 - Speaking for Partners without the creator-affiliate skill
+- Speaking confidently about a brand's first 90 days — nobody has been interviewed
+- Quoting a persona claim without its denominator
 - Using outdated Estalea-only persona docs without noting age

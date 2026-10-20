@@ -13,6 +13,34 @@ Canonical source: `.agents/skills/` (open standard). Cursor discovers them via s
 
 Phase skills below still work on their own. The master skill is for “take me through the process.”
 
+## Research engine (runs alongside the five stages)
+
+Not a sixth stage. A loop with its own front door and its own cadence: a request
+gets routed, becomes a study, the study gets instrumented, the finding becomes a
+claim, and the claims get re-checked. It touches Empathize, Define and Test, so
+it sits here rather than inside any one of them.
+
+```
+research-intake ──routed──→ research-planner ──┬──→ research-builder
+                                               └──findings──→ user-context (record)
+                                                                    ↑
+                                                       frame-maintenance (quarterly)
+```
+
+| Skill | Use when |
+|---|---|
+| `user-context` | What do we know about X · is this hypothesis supported · where are the blindspots — reads **and** writes the Frame |
+| `research-intake` | Someone files a research request: four questions, two checks, one route (MICRO 48h / SPRINT 1–2w / DEEP 4w+) |
+| `research-planner` | Routed request → a study worth running: sub-questions, sample, probes, go/no-go thresholds, 3-participant rigor pass |
+| `research-builder` | The instruments around the study — PostHog dashboard **first**, audience from real usage, Pendo guide, interview guide |
+| `frame-maintenance` | Quarterly, or when someone asks if the Frame can still be trusted: what's stale, what to retire, what to research next |
+| `adoption-check` | After something ships: did the measure move, was it bigger than normal variation, and does the claim still hold |
+| `pendo-guide-strategy` | Before building any Pendo guide — warm targeting, benefit-first copy, single step, conversion goals through to participation |
+| `user-personas` | The six reference personas with per-claim confidence and the gaps the set refuses to paper over |
+| `persona-check` | Walk a persona through a design as a task before real participants see it — hypotheses, never findings |
+| `ux-research` | Master research orchestrator — routes intake → Frame → planning → the Empathize pack, one child at a time |
+
+**Human gate:** Everything here drafts. A human finalises the ticket, the screener, the guide, and anything customer-facing (never publish a Pendo guide to live traffic unprompted).
 ## Empathize (stage 1)
 
 | Skill | Use when |

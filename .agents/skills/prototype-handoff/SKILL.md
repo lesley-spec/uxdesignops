@@ -24,6 +24,12 @@ Formal exit from Ideate. Runs **after** the designer is happy with mocks and
 2. Do not invent a “chosen” direction — designer must name it.
 3. Label Verified links vs AI summary of the pack.
 4. Do **not** auto-start Prototype scaffolder; stop after the pack for designer confirm.
+5. **Carry the beliefs forward.** The pack names the claim ids and confidence
+   the direction rests on, copied from the one-pager. A prototype that outlives
+   the evidence behind it is how a retired claim keeps shipping.
+6. **Name what is still unvalidated.** Anything the mocks assume but the
+   research has not shown goes in the open questions, not in the confidence of
+   the presentation.
 
 See [references/pack.md](references/pack.md).
 

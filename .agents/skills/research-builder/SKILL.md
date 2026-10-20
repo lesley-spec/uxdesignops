@@ -25,7 +25,7 @@ because it gets built *before* the study runs.
 |---|---|
 | **PostHog dashboard** | Always, if the question touches behaviour. First |
 | **Audience** | Always. Who, from real usage |
-| **Pendo guide** | In-product reach, large n, people you cannot recruit |
+| **Pendo guide** | In-product reach, large n, people you cannot recruit. Decide targeting and copy with [`pendo-guide-strategy`](../pendo-guide-strategy/) **before** building — a guide shipped to everyone returns 1–5% and burns the audience |
 | **Interview guide** | Human sessions — SPRINT follow-ups, DEEP fieldwork |
 
 ## Integrity

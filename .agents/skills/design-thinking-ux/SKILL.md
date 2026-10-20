@@ -163,8 +163,11 @@ Ask: prototype URL; Outset vs Maze vs recommend; sessions already done?
 - No sessions → invoke `test-plan` (it runs pre-flight).
 - Sessions done → `synthesize-research` then `test-loopback`.
 
-**Gate:** Designer reviews the study before recruiting; reviews loopback
-before Confluence/Jira. Pipeline **ends** at published loopback (or a
+**Gate:** Designer reviews the study before recruiting; **thresholds agreed
+with the decision owner before sessions**; **the 3-participant pass runs after
+the first three sessions and before the rest** — that one sits mid-study, so the
+board shows IN PHASE, not GATE, and the pipeline still stops there. Designer
+reviews loopback before Confluence/Jira. Pipeline **ends** at published loopback (or a
 ready-to-publish test plan if they stop before sessions). Offer a new
 Empathize cycle only if findings reframe the problem.
 

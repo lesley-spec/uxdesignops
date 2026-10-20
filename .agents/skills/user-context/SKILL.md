@@ -234,11 +234,21 @@ quarter.
 
 New finding, new claim. **Research that does not write back does not compound.**
 
+**A claim is proposed here, confirmed by a person.** Show the claim, its
+confidence and its denominator, and get a yes before writing. A Frame full of
+weak claims is worse than no Frame, because it lends the authority of the record
+to a guess — and the curation is the part that makes the whole thing worth
+having. The sweep proposes; a researcher sets or confirms confidence.
+
+**Every claim carries an owner** — the person who will be asked about it at the
+next review. A claim with no name on it is retired at the first
+`frame-maintenance` pass, so write one in now.
+
 Write with the `ArtifactData` tool against the Frame:
 
 > **https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw**
 
-- One **claim** per finding, into `claims`, with its denominator and source
+- One **claim** per finding, into `claims`, with its denominator, source and owner
 - A **need** into `needs` when the finding names something people lack, linked to
   the claim ids that evidence it
 - Use `batch` for more than a couple of writes

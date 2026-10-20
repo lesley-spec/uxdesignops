@@ -41,6 +41,10 @@ and ownership come apart more often than one label allows.
    choose. Shrinking method to fit a deadline produces confident fiction.
 4. **Draft the ticket, don't create it.** Show it first.
 5. **"Already answered" is a win.** Log it. It is the cheapest research we do.
+6. **A route is not just a size, it carries a rigor gate.** Every mode gets the
+   3-participant pass and thresholds agreed with the decision owner before
+   fieldwork — `research-planner` sets both. Routing something as MICRO shortens
+   the study, never the gates.
 
 ## Who runs intake
 

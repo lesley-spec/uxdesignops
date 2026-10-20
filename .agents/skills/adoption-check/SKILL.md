@@ -48,6 +48,11 @@ watching. Almost none of that reaches the research record.
    line chart.
 5. **Write the outcome back whatever it says.** A check that only gets recorded
    when it flatters the research is worse than no check.
+6. **A move inside normal variation is not a move.** Before calling anything a
+   result, look at how much the measure swings on its own.
+7. **This instrument cannot tell you whether it helped.** It reads behaviour.
+   Whether the change made anyone's job better is a different question, with a
+   different instrument.
 
 ## Workflow
 
@@ -56,12 +61,18 @@ Task Progress:
 - [ ] Find the claim and its baseline
 - [ ] Re-run the measure
 - [ ] Compare honestly
+- [ ] Check the move against normal variation
 - [ ] Name what else could explain it
 - [ ] Write the outcome back
 - [ ] Say what it means for the belief
 ```
 
 ### 1 — Find the claim and its baseline
+
+The one-pager's **predicted outcome** is the threshold you are checking against
+([`write-spec`](../write-spec/) records it: measure, from, to, by when, and what
+would mean it failed). Read it before you look at today's number — knowing the
+figure first is how a prediction quietly becomes whatever happened.
 
 From the Frame: the claim the decision rested on, and the baseline figure
 recorded before the change
@@ -101,6 +112,27 @@ usage is weekly or monthly.
 **Check exposure before concluding.** A feature nobody saw cannot have failed.
 Separate *did they encounter it* from *did it help*, every time — conflating
 them is how a discovery problem gets rebuilt as a value problem.
+
+**Then check the move against the noise.** Pull the same measure for the four
+periods *before* the baseline and look at how far it swings with nothing
+happening. A change smaller than that ordinary swing is not a finding, however
+much you want it to be.
+
+| Move vs ordinary swing | Say |
+|---|---|
+| Clearly larger, sustained across the window | A result |
+| Similar size, or only in one week | "Within normal variation — not readable yet" |
+| Larger but only at the start | Novelty. Re-read in a month |
+
+**And when the question is whether it *helped*, stop here.** This skill reads
+usage. Routes for the other half:
+
+| Question | Instrument |
+|---|---|
+| Did more people do it? | This skill |
+| Did it make the job easier? | MICRO study — `research-planner` |
+| What do the people who hit it say, in the moment? | In-product ask — `pendo-guide-strategy` |
+| Did support load change? | Freshdesk via `research-synthesis` |
 
 ### 4 — Name what else could explain it
 

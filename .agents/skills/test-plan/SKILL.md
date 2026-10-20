@@ -27,6 +27,18 @@ pre-tests. Does **not** auto-publish or recruit — designer reviews first.
 4. Label **Verified** vs **AI interpretation** in every output.
 5. **Stop at the human gate** — do not publish to Outset/Maze or share with stakeholders without designer confirm.
 6. After real sessions, loop findings to Empathize via `synthesize-research` — never treat this skill's draft as verified research.
+7. **Thresholds before sessions, agreed with the decision owner.** What result
+   changes the design, and what result ships it, is written down and signed off
+   *before* anyone is recruited. Decided afterwards, every threshold is chosen
+   knowing which side it landed on.
+8. **The 3-participant pass is not optional.** Review the first three sessions
+   end to end before running the rest — a broken task found at participant 3
+   costs three sessions; found at 12, it costs the study.
+9. **Severity is frequency and cost, scored separately.** One participant
+   abandoning the task outranks five who grumbled and carried on.
+10. **Look for what worked, not only what broke.** A report with no
+    disconfirming evidence is a list of complaints, and the designer cannot tell
+    which parts to keep.
 
 See [references/integrity.md](references/integrity.md).
 
@@ -97,10 +109,29 @@ Method: Outset | Maze | hybrid
 ## Research questions
 - …
 
+## Decision and thresholds (agreed before recruiting)
+- **Decision this informs:** …
+- **Decision owner:** … (named person, has agreed to wait)
+- **Ships if:** … (e.g. "all participants complete task 2 unaided")
+- **Changes the design if:** … (e.g. "most hit the same blocker, or any
+  participant abandons")
+- **Agreed on:** … (date) — thresholds written as patterns, not percentages
+
 ## Participants
 - Profile / screener:
-- Target N: (heuristic — state if provisional)
+- Target N: 5–8 for a usability round; state if provisional
+- **Minimum viable diversity:** the axes that must vary — tenure, volume,
+  segment, device. Eight copies of one profile is one participant tested eight
+  times
+- **Who is excluded, and why:** …
 - Recruitment notes:
+
+## 3-participant pass
+- [ ] First three sessions reviewed end to end (recordings, not notes)
+- [ ] Tasks still testing what they were meant to test
+- [ ] Probes producing comparable answers
+- [ ] Decision: proceed | fix the script | re-scope
+- Reviewer: … · Date: …
 
 ## Tasks (think-aloud)
 1. **Task:** …
@@ -109,7 +140,21 @@ Method: Outset | Maze | hybrid
 
 ## Success metrics
 - Task completion / time-on-task / SUS or custom:
-- What would confirm or kill the direction:
+- Measured against the thresholds agreed above — not against what we hoped
+
+## Severity model (score each finding on both)
+| | Frequency | Cost to the participant |
+|---|---|---|
+| | how many of N hit it | abandoned · worked around · recovered unaided |
+
+Rank by cost first, then frequency. The blocker one person could not get past
+matters more than the wrinkle everyone mentioned and then solved.
+
+## What worked (disconfirming evidence)
+- Tasks completed unaided, and by whom
+- Parts of the flow nobody questioned
+- Participants who did *not* hit the main finding — and what was different
+  about them
 
 ## Facilitator script (Outset) / Maze setup notes
 - Intro:
@@ -138,6 +183,10 @@ Method: Outset | Maze | hybrid
 ## Anti-patterns
 
 - Publishing to Outset/Maze without designer review
+- **Running all sessions before anyone reviews the first three**
+- **Deciding what counts as failure after watching people fail**
+- **Reporting only what broke** — the designer cannot tell what to keep
+- Percentage thresholds on five participants
 - Tasks not tied to Verified success criteria
 - Skipping pre-flight when prototype changed since last critique
 - Treating AI-drafted study results as Empathize evidence

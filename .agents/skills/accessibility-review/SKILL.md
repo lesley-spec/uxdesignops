@@ -24,6 +24,27 @@ with axe/DevTools or a11y specialist sign-off.
 2. Label findings **Blocker** (likely WCAG A fail — fix before Maze) vs **Major** vs **Minor**.
 3. Call `design-system` when components should come from Styleguide V2.
 4. Do not claim WCAG conformance — report likely issues for designer follow-up.
+5. **Everything here is a hypothesis to verify, not a finding.** This is a
+   synthetic pass over a static artifact. It generates things to check with a
+   real assistive-technology user; it does not establish that any of them are
+   true for one.
+6. **A clean pass is not evidence of accessibility.** No detected issues means
+   none were detectable this way. Never report "no a11y issues" — report "no
+   issues detectable in a static review", and say what was out of reach.
+7. **Name the blockers that must clear before recruiting.** An unmoderated test
+   run over a keyboard trap wastes the session and the participant's time.
+
+## What a static review cannot tell you
+
+State these in every output, so nobody reads silence as a pass:
+
+| Out of reach here | Needs |
+|---|---|
+| Screen-reader announcement order and verbosity | A real screen reader on the built page |
+| Keyboard traps in live JS, focus restoration after modals | The running prototype, tabbed by hand |
+| Contrast over images, video or dynamic states | Rendered states, not the design file |
+| Cognitive load, timeout pressure, error recovery | A participant with the relevant need |
+| Whether any of this actually blocks anyone | A session with an AT user |
 
 ## When to use
 

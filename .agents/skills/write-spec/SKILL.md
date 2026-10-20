@@ -27,6 +27,16 @@ Does **not** approve framing — Designer signs off when happy, then chats with 
 4. Draft first; **create Confluence/Jira only after the designer confirms** the draft.
 5. Minimize PII in Confluence/Jira.
 6. **Atlassian Rovo MCP** — fetch existing tickets/pages with `getJiraIssue` / `search` yourself. Do not ask the designer to paste a Jira issue or run `/mcp` until a tool call fails.
+7. **Name the beliefs this rests on, by claim id and confidence.** A spec is a
+   bet on what we think is true about users. Writing the claim ids down is what
+   lets `frame-maintenance` find this doc when one of them is retired — and
+   without it, specs quietly outlive the evidence that justified them.
+8. **Match confidence to the commitment.** Building something needs HIGH with
+   corroboration; deprioritising something can rest on MEDIUM. A spec whose
+   central belief is LOW or UNVALIDATED is a research request wearing a
+   one-pager's format — say so rather than shipping it.
+9. **Carry what argues against.** The evidence section names who does not have
+   this problem, or states that nobody checked.
 
 See [references/integrity.md](references/integrity.md), [references/one-pager.md](references/one-pager.md), [references/publish.md](references/publish.md), [references/atlassian-rovo.md](references/atlassian-rovo.md).
 
@@ -77,6 +87,18 @@ Sources: [FigJam / chat ids / latest.json / Confluence links]
 - Brand lens:
 - Partner / creator-affiliate lens:
 
+## Beliefs this rests on
+| Claim id | Statement | Confidence | n | Last verified |
+|---|---|---|---|---|
+| C… | … | HIGH \| MEDIUM \| LOW | … | … |
+
+If the central belief is LOW or UNVALIDATED, stop and route to
+`research-intake` instead of writing around it.
+
+**Who does not have this problem:** … (or: nobody checked)
+
+**What would change this plan:** …
+
 ## Evidence (Verified)
 - PostHog / Pendo / Dovetail / Outset / Freshdesk — with links
 - Discarded / weak evidence:
@@ -88,6 +110,17 @@ Sources: [FigJam / chat ids / latest.json / Confluence links]
 - Quant:
 - Qual:
 - Exit / Designer + PM gate:
+
+## Predicted outcome (what we are betting)
+- **Measure:** the one number this should move · **From:** … **to:** …
+- **By when:** … · **Agreed with:** … (named decision owner)
+- **What would mean this failed:** …
+
+Written before building, not after. This is the prediction
+[`adoption-check`](../adoption-check/) checks once it ships — with no figure
+recorded here, a post-launch read has nothing to compare against and becomes
+storytelling. [`research-builder`](../research-builder/) captures the baseline
+for the same measure before anyone starts.
 
 ## Scope
 - In:

@@ -62,6 +62,14 @@ the second cannot do the first's job.
    do on this screen, and what happens when it is not there?"
 5. **Rank by consequence**, not by how many things you found. Ten observations
    with no ordering is a list, not a review.
+6. **Report where it works, not only where it breaks.** A walkthrough that only
+   finds problems gives the designer nothing to protect in the next revision,
+   and reads as advocacy rather than a check.
+7. **Every output is a hypothesis with a test attached.** Each observation says
+   what would confirm or kill it with a real participant — otherwise it is an
+   opinion formatted like a finding.
+8. **Mark which observations the persona card could not support.** Those are
+   coverage gaps, and they belong in the output where someone will act on them.
 
 ## Workflow
 
