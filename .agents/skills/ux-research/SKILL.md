@@ -3,10 +3,11 @@ name: ux-research
 description: >-
   Master UX research orchestrator for impact.com. Routes research requests
   through intake, the Frame (user-context), personas, planning/builder skills,
-  and the Empathize pack (user-research, research-synthesis, synthesize-research,
-  data-analyze). Use when the user says ux-research, /ux-research, start
-  research, research request, what do we know, triage this study, or wants the
-  full research skill set rather than a single phase skill.
+  study summaries, assumption and measurement checks, recruitment, experiments,
+  evaluations, publishing, and the Empathize pack. Use when the user says
+  ux-research, /ux-research, start research, research request, what do we know,
+  triage this study, or wants the full research skill set rather than a single
+  phase skill.
 license: Proprietary
 metadata:
   stage: pipeline
@@ -68,16 +69,20 @@ asked for the full research run.
 ## Default path
 
 ```
-research-intake  →  (already answered? stop with Frame link)
+assumption-mapper (when a brief exists)
+                 →  research-intake  →  (already answered? stop with Frame link)
                  →  user-context / user-personas as needed
-                 →  research-planner (+ research-builder)
-                 →  user-research / research-synthesis / data-analyze / synthesize-research
+                 →  research-planner (+ panel-planner / research-builder)
+                 →  user-research / study-summary / research-synthesis
+                    / data-analyze / synthesize-research
+                 →  findings-publish
                  →  (after ship) adoption-check
                  →  (quarterly) frame-maintenance
 ```
 
-Prototype / Test lenses from Nihal’s pack when relevant:
-`persona-check` (synthetic pre-test), `adoption-check` (post-launch).
+Cross-phase lenses from Nihal’s pack when relevant: `competitive-analysis`,
+`measurable-check`, `talk-to-users`, `heuristic-evaluation`,
+`persona-check`, `ab-test-planner`, and `adoption-check`.
 
 ## Research board
 
@@ -90,12 +95,15 @@ Status: INTAKE | IN STEP | GATE | DONE
 ## Board
 | Step | Status | Artifacts | Gate |
 |---|---|---|---|
+| Assumptions (`assumption-mapper`) | | | Load-bearing guesses named |
 | Intake (`research-intake`) | | | Route MICRO/SPRINT/DEEP or closed |
 | Frame (`user-context`) | | | Gaps named |
 | Personas (`user-personas`) | | | Persona named if needed |
-| Plan (`research-planner` / `research-builder`) | | | Study + instruments ready |
+| Measure (`measurable-check`) | | | Measurable / partly / not yet / not countable |
+| Plan (`research-planner` / `panel-planner` / `research-builder`) | | | Study + audience + instruments ready |
 | Empathize pack | | | Problem-worth-solving / fieldwork |
-| Pre-test (`persona-check`) | | | Hypotheses only |
+| Pre-test (`heuristic-evaluation` / `persona-check`) | | | Hypotheses only |
+| Publish (`findings-publish`) | | | Human-approved destinations |
 | Adoption (`adoption-check`) | | | Outcome written to Frame |
 
 ## Next

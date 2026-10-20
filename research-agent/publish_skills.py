@@ -46,7 +46,7 @@ Run this with sandbox off / full permissions:
 
 curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
 
-When you see IMPACT_SKILLS_READY pipeline=28, stop. Next I will use design-thinking-ux or ux-research."""
+When you see IMPACT_SKILLS_READY pipeline=37, stop. Next I will use design-thinking-ux or ux-research."""
 
 STAGE_ORDER = ("pipeline", "empathize", "define", "ideate", "prototype", "test")
 
@@ -67,11 +67,14 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "ux-research",
     ],
     "empathize": [
+        "assumption-mapper",
         "research-intake",
         "user-context",
         "user-personas",
         "research-planner",
         "research-builder",
+        "study-summary",
+        "competitive-analysis",
         "frame-maintenance",
         "user-research",
         "research-synthesis",
@@ -85,9 +88,12 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "creator-affiliate-ux-persona",
         "user-personas",
         "design-system",
+        "measurable-check",
+        "panel-planner",
     ],
     "ideate": [
         "ideate",
+        "talk-to-users",
         "ux-critique",
         "prototype-handoff",
         "brand-operator-ux-persona",
@@ -98,6 +104,7 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "ux-prototyping",
         "brand-prototype",
         "partner-prototype",
+        "heuristic-evaluation",
         "persona-check",
         "design-system",
     ],
@@ -106,6 +113,8 @@ STAGE_SKILLS: dict[str, list[str]] = {
         "accessibility-review",
         "ux-critique",
         "test-loopback",
+        "findings-publish",
+        "ab-test-planner",
         "adoption-check",
         "user-research",
         "synthesize-research",
@@ -115,14 +124,17 @@ STAGE_SKILLS: dict[str, list[str]] = {
 }
 
 USE_WHEN: dict[str, str] = {
-    "ux-install-all-skills": "One prompt — install all 28 pipeline skills (project + Cursor/Claude global)",
+    "ux-install-all-skills": "One prompt — install all 37 pipeline skills (project + Cursor/Claude global)",
     "design-thinking-ux": "Master skill — guided Empathize → Test; invokes phase skills",
     "ux-research": "Master research skill — intake, Frame, plan, Empathize pack",
+    "assumption-mapper": "Pull untested assumptions from a brief and rank the load-bearing guesses",
     "research-intake": "Triage a research request (MICRO / SPRINT / DEEP)",
     "user-context": "Ask / critique / record against the Frame",
     "user-personas": "Partner + Brand persona set (Nihal Frame pack)",
     "research-planner": "Design a routed study after intake",
     "research-builder": "Pendo guide, interview guide, PostHog dash, audience",
+    "study-summary": "Summarise mixed raw research material and leave the gaps visible",
+    "competitive-analysis": "Compare competitors around a user job without mistaking parity for evidence",
     "frame-maintenance": "Quarterly Frame staleness / rebuild plan",
     "user-research": "Deep-dive a finding, design a study, or post-session gate brief",
     "research-synthesis": "Triangulate PostHog + Pendo + Dovetail (+ Outset/Freshdesk)",
@@ -133,16 +145,22 @@ USE_WHEN: dict[str, str] = {
     "brand-operator-ux-persona": "Brand-side JTBD / operator lens",
     "creator-affiliate-ux-persona": "Partner / creator-affiliate lens",
     "design-system": "Styleguide + component library constraints",
+    "measurable-check": "Check whether the required PostHog events, properties, and history exist",
+    "panel-planner": "Plan recruitment and panel coverage from a Rally CSV export",
     "ideate": "Framing → ideation brief + tool routing + starter directions",
+    "talk-to-users": "Route an Ideate question to personas, evidence, a walkthrough, or fieldwork",
     "ux-critique": "Coverage matrix: mocks/prototype vs spec (Ideate or Test pre-flight)",
     "prototype-handoff": "Exit pack after critique — ready for Prototype",
     "ux-prototyping": "Any harness → Brand or Partner live preview → optional GitHub Pages on the designer’s account",
     "brand-prototype": "One prompt → Brand UI shell (<code>localhost:5174/one-program-1/</code>)",
     "partner-prototype": "One prompt → Partner UI shell (<code>localhost:5173/</code>)",
+    "heuristic-evaluation": "Expert review of a screen or flow against Nielsen’s heuristics",
     "persona-check": "Synthetic persona walk-through before recruiting",
     "test-plan": "Synthetic pre-flight + Outset MCP / Maze study draft",
     "accessibility-review": "Synthetic a11y check before recruiting",
-    "test-loopback": "Publish Verified session findings → Empathize input",
+    "test-loopback": "Legacy compatibility; superseded by findings-publish",
+    "findings-publish": "Draft finished findings for Dovetail, Slack, Confluence, and Jira",
+    "ab-test-planner": "Plan and size a live online experiment before launch",
     "adoption-check": "Post-ship: did the research hold? Write back to the Frame",
 }
 
@@ -155,17 +173,26 @@ STAGE_NOTES: dict[str, str] = {
 # Cross-phase: invoke via `ux-research` (or directly) at any Design Thinking stage.
 UX_RESEARCH_ANY_PHASE: list[str] = [
     "ux-research",
+    "assumption-mapper",
     "research-intake",
     "user-context",
     "user-personas",
     "research-planner",
     "research-builder",
+    "study-summary",
+    "competitive-analysis",
     "frame-maintenance",
     "user-research",
     "research-synthesis",
     "synthesize-research",
     "data-analyze",
+    "measurable-check",
+    "panel-planner",
+    "talk-to-users",
+    "heuristic-evaluation",
     "persona-check",
+    "findings-publish",
+    "ab-test-planner",
     "adoption-check",
 ]
 

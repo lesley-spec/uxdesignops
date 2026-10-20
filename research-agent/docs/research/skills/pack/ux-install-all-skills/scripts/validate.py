@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate ux-install-all-skills can install the 28 pipeline skills.
+"""Validate ux-install-all-skills can install the 37 pipeline skills.
 
 Usage (from repo root or this directory):
   python3 .agents/skills/ux-install-all-skills/scripts/validate.py
@@ -19,11 +19,14 @@ CATALOG = SKILL_DIR / "references" / "catalog.md"
 PIPELINE_SKILLS = [
     "design-thinking-ux",
     "ux-research",
+    "assumption-mapper",
     "research-intake",
     "user-context",
     "user-personas",
     "research-planner",
     "research-builder",
+    "study-summary",
+    "competitive-analysis",
     "frame-maintenance",
     "user-research",
     "research-synthesis",
@@ -34,16 +37,22 @@ PIPELINE_SKILLS = [
     "brand-operator-ux-persona",
     "creator-affiliate-ux-persona",
     "design-system",
+    "measurable-check",
+    "panel-planner",
     "ideate",
+    "talk-to-users",
     "ux-critique",
     "prototype-handoff",
     "ux-prototyping",
     "brand-prototype",
     "partner-prototype",
+    "heuristic-evaluation",
     "persona-check",
     "test-plan",
     "accessibility-review",
     "test-loopback",
+    "findings-publish",
+    "ab-test-planner",
     "adoption-check",
 ]
 
@@ -65,7 +74,7 @@ def check_frontmatter(errors: list[str]) -> None:
         joined = " ".join(line.strip() for line in desc.group(1).splitlines())
         if len(joined) > 1024:
             fail(errors, f"description is {len(joined)} chars (max 1024)")
-        for term in ("ux-install-all-skills", "28", "design thinking"):
+        for term in ("ux-install-all-skills", "37", "design thinking"):
             if term.lower() not in joined.lower():
                 fail(errors, f"description missing trigger term: {term}")
     lines = len(text.splitlines())
@@ -91,8 +100,8 @@ def check_catalog_and_siblings(errors: list[str]) -> None:
     named = re.findall(r"`([a-z0-9-]+)`", catalog)
     unique = [n for n in dict.fromkeys(named) if n in PIPELINE_SKILLS or n == "ux-install-all-skills"]
     pipeline_in_catalog = [n for n in unique if n in PIPELINE_SKILLS]
-    if len(pipeline_in_catalog) != 28:
-        fail(errors, f"catalog should name 28 pipeline skills, found {len(pipeline_in_catalog)}")
+    if len(pipeline_in_catalog) != 37:
+        fail(errors, f"catalog should name 37 pipeline skills, found {len(pipeline_in_catalog)}")
 
 
 def check_script(errors: list[str]) -> None:
@@ -102,8 +111,8 @@ def check_script(errors: list[str]) -> None:
     body = SCRIPT.read_text(encoding="utf-8")
     if "IMPACT_SKILLS_READY" not in body:
         fail(errors, "install-all.sh must print IMPACT_SKILLS_READY")
-    if "pipeline=28" not in body:
-        fail(errors, "install-all.sh must report pipeline=28")
+    if "pipeline=37" not in body:
+        fail(errors, "install-all.sh must report pipeline=37")
     for name in PIPELINE_SKILLS:
         if name not in body:
             fail(errors, f"install-all.sh missing required skill {name}")

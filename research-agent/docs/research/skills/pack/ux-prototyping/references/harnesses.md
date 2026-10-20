@@ -66,7 +66,7 @@ into `lesley-spec` templates.
 
 ## Skills install (any harness)
 
-Prefer `ux-install-all-skills` (all 28 pipeline skills, project + global).
+Prefer `ux-install-all-skills` (all 37 pipeline skills, project + global).
 If that skill is missing:
 
 ```bash

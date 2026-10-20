@@ -13,7 +13,7 @@ lenses (`brand-operator-ux-persona`, `creator-affiliate-ux-persona`,
 | One-pager / PRD / epic, ready to explore solutions | **Ideate** |
 | Chosen mocks + `ux-critique` (or they accept risk) | **Prototype** (run `prototype-handoff` first if pack is missing) |
 | Runnable prototype URL | **Test** |
-| Completed Outset/Maze / session notes | **Test** loopback (`synthesize-research` → `test-loopback`) |
+| Completed Outset/Maze / session notes | **Test** publishing (`synthesize-research` → `findings-publish`) |
 
 If mixed artifacts, choose the **earliest incomplete gate**. Example: one-pager
 exists but they never confirmed “worth solving” → Empathize gate first.
@@ -110,7 +110,7 @@ Make/Claude preview).
 |---|---|
 | Prototype ready, no sessions yet | `test-plan` (runs `ux-critique`, `accessibility-review`, personas) |
 | Designer wants a11y only | `accessibility-review` |
-| Sessions complete | `synthesize-research` then `test-loopback` |
+| Sessions complete | `synthesize-research` then `findings-publish` |
 | Tiny N / unclear if findings are enough | `user-research` gate brief before loopback publish |
 
 **Exit:** Reviewed study draft (if stopping before recruit) **or** published

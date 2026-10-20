@@ -1,7 +1,7 @@
 ---
 name: ux-install-all-skills
 description: >-
-  Installs all 28 impact.com UX Design Thinking + UX Research pipeline skills
+  Installs all 37 impact.com UX Design Thinking + UX Research pipeline skills
   (Empathize through Test, plus Frame research skills) into the current project
   and globally for Cursor and Claude Code. Use when the user says
   ux-install-all-skills, install all skills, install the design thinking
@@ -16,7 +16,7 @@ metadata:
 
 # UX install all skills (bootstrap)
 
-**One invocation → all 28 pipeline skills installed.** Do not ask the
+**One invocation → all 37 pipeline skills installed.** Do not ask the
 designer to curl, pick a harness, or copy folders. The script does that.
 
 This skill does **not** start Empathize → Test. After READY, offer
@@ -45,7 +45,7 @@ Catalog: [references/catalog.md](references/catalog.md).
 
 ## What gets installed
 
-**28 pipeline skills** (masters + Empathize/Research → Test, including
+**37 pipeline skills** (masters + Empathize/Research → Test, including
 Nihal’s Frame pack). This installer is copied too so they can re-run later.
 Names: [references/catalog.md](references/catalog.md).
 
@@ -107,10 +107,10 @@ Task Progress:
    Optional: `--target /path/to/project` · `--project-only` ·
    `--global-only`.
 5. **Parse READY** — look for
-   `IMPACT_SKILLS_READY pipeline=28 …`.
+   `IMPACT_SKILLS_READY pipeline=37 …`.
 6. **Confirm** — show how many skills landed, where, and this next line:
 
-   > All 19 Design Thinking skills are installed. Start a guided run with
+   > All 37 UX Design Thinking and Research skills are installed. Start a guided run with
    > **use design-thinking-ux** — I’ll walk Empathize → Test and stop at
    > each human gate.
 
@@ -131,7 +131,7 @@ From repo root:
 
 ## Anti-patterns
 
-- Asking the designer to copy 19 folders by hand
+- Asking the designer to copy skill folders by hand
 - Installing only `design-thinking-ux` and hoping the rest appear
 - Starting Empathize intake in the same turn as install (unless they asked)
 - Skipping global install without `--project-only` / an explicit “this repo only”

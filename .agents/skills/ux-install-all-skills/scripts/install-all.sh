@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install all 28 UX Design Thinking + UX Research pipeline skills into a project + globally.
+# Install all 37 UX Design Thinking + UX Research pipeline skills into a project + globally.
 # Usage:
 #   bash install-all.sh
 #   bash install-all.sh --target ~/my-project
@@ -13,11 +13,14 @@ ZIP_URL="${DESIGNOPS_SKILLS_ZIP:-https://lesley-spec.github.io/uxdesignops/skill
 PIPELINE_SKILLS=(
   design-thinking-ux
   ux-research
+  assumption-mapper
   research-intake
   user-context
   user-personas
   research-planner
   research-builder
+  study-summary
+  competitive-analysis
   frame-maintenance
   user-research
   research-synthesis
@@ -28,16 +31,22 @@ PIPELINE_SKILLS=(
   brand-operator-ux-persona
   creator-affiliate-ux-persona
   design-system
+  measurable-check
+  panel-planner
   ideate
+  talk-to-users
   ux-critique
   prototype-handoff
   ux-prototyping
   brand-prototype
   partner-prototype
+  heuristic-evaluation
   persona-check
   test-plan
   accessibility-review
   test-loopback
+  findings-publish
+  ab-test-planner
   adoption-check
 )
 
@@ -131,7 +140,7 @@ _link_skill() {
   ln -sfn "$rel/$name" "$dest_dir/$name"
 }
 
-# Every skill folder in the pack (28 pipeline + this installer + any extras).
+# Every skill folder in the pack (37 pipeline + this installer + any extras).
 ALL_NAMES=()
 for skill_dir in "$SOURCE_PARENT"/*/; do
   [[ -d "$skill_dir" ]] || continue
@@ -205,7 +214,7 @@ cat <<EOF
 ═══════════════════════════════════════════════════════════
  UX DESIGN THINKING SKILLS READY
 ═══════════════════════════════════════════════════════════
- pipeline skills:  28 / 28
+ pipeline skills:  37 / 37
  pack folders:     ${skill_n}
  project:          ${project_line}
  Cursor global:    ${cursor_global_ok}  (${cursor_global})
@@ -214,6 +223,6 @@ cat <<EOF
  Next: in chat, say  use design-thinking-ux
  or  use ux-research  for research + Frame skills.
 
-IMPACT_SKILLS_READY pipeline=28 dest=${project_line} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
+IMPACT_SKILLS_READY pipeline=37 dest=${project_line} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
 ═══════════════════════════════════════════════════════════
 EOF

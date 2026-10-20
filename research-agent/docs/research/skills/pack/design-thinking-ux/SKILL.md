@@ -161,7 +161,7 @@ the Brand or Partner shell. Entice Test: pre-flight + Outset/Maze draft.
 Ask: prototype URL; Outset vs Maze vs recommend; sessions already done?
 
 - No sessions → invoke `test-plan` (it runs pre-flight).
-- Sessions done → `synthesize-research` then `test-loopback`.
+- Sessions done → `synthesize-research` then `findings-publish`.
 
 **Gate:** Designer reviews the study before recruiting; reviews loopback
 before Confluence/Jira. Pipeline **ends** at published loopback (or a
