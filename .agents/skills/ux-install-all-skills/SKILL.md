@@ -110,7 +110,7 @@ Task Progress:
    `IMPACT_SKILLS_READY pipeline=28 …`.
 6. **Confirm** — show how many skills landed, where, and this next line:
 
-   > All 19 Design Thinking skills are installed. Start a guided run with
+   > All 28 Design Thinking + UX Research skills are installed. Start a guided run with
    > **use design-thinking-ux** — I’ll walk Empathize → Test and stop at
    > each human gate.
 
@@ -131,7 +131,7 @@ From repo root:
 
 ## Anti-patterns
 
-- Asking the designer to copy 19 folders by hand
+- Asking the designer to copy 30 folders by hand
 - Installing only `design-thinking-ux` and hoping the rest appear
 - Starting Empathize intake in the same turn as install (unless they asked)
 - Skipping global install without `--project-only` / an explicit “this repo only”
