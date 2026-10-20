@@ -4,6 +4,24 @@ Portable [Agent Skills](https://agentskills.io/specification) for the [UX Design
 
 Canonical source: `.agents/skills/` (open standard). Cursor discovers them via symlinks in `.cursor/skills/`.
 
+## How these skills answer
+
+**Lead with the insight, not the evidence.** What someone gets back from a skill
+is short: the finding, what it changes, and the next thing to do. A few lines,
+not a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they can
+run — *"want the evidence trail behind finding 2?"* — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact — the claim, the card, the one-pager — where it can be found when it is
+needed.
+
+This is a constraint on the **output**, not on the rigour. The evidence trails,
+disconfirming evidence and confidence grades still get produced and still get
+written down. They just do not all get said.
+
 ## Start here (master)
 
 | Skill | Use when |

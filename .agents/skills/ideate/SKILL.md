@@ -22,6 +22,18 @@ Does **not** pick a final direction — designer iterates, then runs `ux-critiqu
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. Prefer a **one-pager or detailed PRD**; accept epic, tickets, Granola/meeting notes, Slack, or chat paste. If framing is thin, build a **Framing snapshot**, label gaps, warn — do not block.
 2. Label **Verified** vs **AI interpretation**. Never invent metrics/quotes from framing sources.
 3. Prompt the designer for **fidelity**, **surface**, and **# of directions** before generating visuals.

@@ -20,6 +20,18 @@ with axe/DevTools or a11y specialist sign-off.
 
 ## Integrity
 
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
+
 1. Review the **actual prototype** (URL or Figma frames), not a generic checklist.
 2. Label findings **Blocker** (likely WCAG A fail — fix before Maze) vs **Major** vs **Minor**.
 3. Call `design-system` when components should come from Styleguide V2.

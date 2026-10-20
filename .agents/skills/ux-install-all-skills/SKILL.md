@@ -1,7 +1,7 @@
 ---
 name: ux-install-all-skills
 description: >-
-  Installs all 28 impact.com UX Design Thinking + UX Research pipeline skills
+  Installs all 29 impact.com UX Design Thinking + UX Research pipeline skills
   (Empathize through Test, plus Frame research skills) into the current project
   and globally for Cursor and Claude Code. Use when the user says
   ux-install-all-skills, install all skills, install the design thinking
@@ -16,7 +16,7 @@ metadata:
 
 # UX install all skills (bootstrap)
 
-**One invocation → all 28 pipeline skills installed.** Do not ask the
+**One invocation → all 29 pipeline skills installed.** Do not ask the
 designer to curl, pick a harness, or copy folders. The script does that.
 
 This skill does **not** start Empathize → Test. After READY, offer
@@ -25,6 +25,18 @@ This skill does **not** start Empathize → Test. After READY, offer
 Catalog: [references/catalog.md](references/catalog.md).
 
 ## Integrity
+
+**Lead with the insight, not the evidence.** What the person gets back is
+short: the finding, what it changes, and the next thing to do. A few lines, not
+a report — they came for a decision, not a download.
+
+**Offer the depth, don't deliver it.** Close with one specific follow-up they
+can run — "want the evidence trail behind finding 2?" — not a menu of five. The
+detail stays available; it does not arrive unasked.
+
+**A number earns its place by changing a decision.** Everything else goes in the
+artifact (the claim, the card, the one-pager) where someone can find it when
+they need it.
 
 1. **Run the install script** — do not improvise `mkdir` / `cp` / `curl`
    of individual skills unless the script is missing.
@@ -45,9 +57,15 @@ Catalog: [references/catalog.md](references/catalog.md).
 
 ## What gets installed
 
-**28 pipeline skills** (masters + Empathize/Research → Test, including
+**29 pipeline skills** (masters + Empathize/Research → Test, including
 Nihal’s Frame pack). This installer is copied too so they can re-run later.
 Names: [references/catalog.md](references/catalog.md).
+
+**Then the front door's own step.** After the skills land, this script hands
+off to `ux-research-master/scripts/install-master.sh`, which installs the 16
+`/ux-*` starter commands (project + global, Cursor + Claude Code) and writes
+the routing block into `CLAUDE.md` and `AGENTS.md`. Skip it with
+`--skills-only`; skip just the rule files with the master's `--no-rules`.
 
 **Where (defaults — do not ask):**
 
@@ -105,14 +123,15 @@ Task Progress:
    ```
 
    Optional: `--target /path/to/project` · `--project-only` ·
-   `--global-only`.
+   `--global-only` · `--skills-only` (no commands, no rule files).
 5. **Parse READY** — look for
-   `IMPACT_SKILLS_READY pipeline=28 …`.
+   `IMPACT_SKILLS_READY pipeline=29 …`, then `UX_MASTER_READY …` from the
+   handoff.
 6. **Confirm** — show how many skills landed, where, and this next line:
 
-   > All 28 Design Thinking + UX Research skills are installed. Start a guided run with
-   > **use design-thinking-ux** — I’ll walk Empathize → Test and stop at
-   > each human gate.
+   > All 29 Design Thinking + UX Research skills are installed, with the
+   > `/ux-*` prompts and routing. Type **/ux** for the starter menu, or just
+   > say what you’re working on — the right skill loads itself.
 
 7. **Stop.** Wait for yes (or a named phase skill).
 
