@@ -1,0 +1,11 @@
+{
+  "name": "impact-ux",
+  "description": "impact.com UX skills for Cursor, including the UX designer. Every skill folder in .agents/skills is part of this plugin.",
+  "version": "1.0.0",
+  "author": {
+    "name": "impact.com UX"
+  },
+  "keywords": ["ux", "impact", "design"],
+  "skills": ".agents/skills",
+  "repository": "https://github.com/lesley-spec/uxdesignops"
+}

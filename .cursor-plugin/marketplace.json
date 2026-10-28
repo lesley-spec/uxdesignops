@@ -1,0 +1,16 @@
+{
+  "name": "impact-ux",
+  "owner": {
+    "name": "impact.com UX"
+  },
+  "metadata": {
+    "description": "impact.com UX skills. New skill folders in .agents/skills are included when this marketplace refreshes."
+  },
+  "plugins": [
+    {
+      "name": "impact-ux",
+      "source": ".",
+      "description": "UX Design Thinking skills, including the UX designer."
+    }
+  ]
+}
