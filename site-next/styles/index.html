@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design tokens — UX DesignOps</title>
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <link rel="stylesheet" href="../assets/site.css?v=7" />
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="../index.html">
+      <svg class="logo-mark" viewBox="0 0 268 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="impact.com">
+  <g>
+    <circle cx="16" cy="16" r="5.088" fill="#e81515"/>
+    <circle cx="16" cy="2.72" r="2.72" fill="#e81515"/>
+    <circle cx="9.37601" cy="9.37601" r="2.72" fill="#e81515"/>
+    <circle cx="2.72" cy="16" r="2.72" fill="#e81515"/>
+    <circle cx="9.37601" cy="22.624" r="2.72" fill="#e81515"/>
+    <circle cx="16" cy="29.28" r="2.72" fill="#e81515"/>
+    <circle cx="22.624" cy="22.624" r="2.72" fill="#e81515"/>
+    <circle cx="29.28" cy="16" r="2.72" fill="#e81515"/>
+    <circle cx="22.624" cy="9.37601" r="2.72" fill="#e81515"/>
+    <circle cx="4.60802" cy="4.60799" r="1.76" fill="#e81515"/>
+    <circle cx="27.392" cy="4.60799" r="1.76" fill="#e81515"/>
+    <circle cx="4.60802" cy="27.392" r="1.76" fill="#e81515"/>
+    <circle cx="27.392" cy="27.392" r="1.76" fill="#e81515"/>
+  </g>
+  <g transform="translate(48 0)">
+    <path d="M153.907 13.3024C155.579 13.3024 157.074 14.3024 157.717 15.8512L157.79 16.0304H164.582L164.496 15.6736C163.496 11.4976 159.042 8.4672 153.905 8.4672C147.95 8.4672 143.106 12.4896 143.106 17.4336C143.106 22.3776 147.95 26.4 153.905 26.4C159.042 26.4 163.496 23.3696 164.496 19.1936L164.582 18.8368H157.79L157.717 19.016C157.076 20.5648 155.581 21.5648 153.907 21.5648C151.634 21.5648 149.783 19.712 149.783 17.4336C149.783 15.1552 151.632 13.3024 153.907 13.3024Z" fill="currentColor"/>
+    <path d="M79.3032 10.7792L78.9981 10.5248C77.3991 9.1936 75.3849 8.4896 73.171 8.4896C68.0675 8.4896 64.2195 12.344 64.2195 17.456C64.2195 22.568 68.0675 26.4224 73.171 26.4224C75.3849 26.4224 77.3991 25.7184 78.9965 24.3872L79.3016 24.1328V25.9264H85.5232V8.9936H79.3016V10.7792H79.3032ZM75.1804 21.5856C72.9074 21.5856 71.0577 19.7328 71.0577 17.4544C71.0577 15.176 72.9074 13.3232 75.1804 13.3232C77.4534 13.3232 79.3048 15.176 79.3048 17.4544C79.3048 19.7328 77.455 21.5856 75.1804 21.5856Z" fill="currentColor"/>
+    <path d="M52.7953 8.4896C50.5814 8.4896 48.5671 9.1936 46.9682 10.5248L46.6631 10.7792V8.9936H40.4415V32H46.6631V24.1312L46.9682 24.3856C48.5655 25.7168 50.5798 26.4208 52.7953 26.4208C57.8988 26.4208 61.7468 22.5664 61.7468 17.4544C61.7468 12.3424 57.8988 8.488 52.7953 8.488V8.4896ZM50.7858 21.5856C48.5128 21.5856 46.6631 19.7328 46.6631 17.4544C46.6631 15.176 48.5128 13.3232 50.7858 13.3232C53.0589 13.3232 54.9102 15.176 54.9102 17.4544C54.9102 19.7328 53.0605 21.5856 50.7858 21.5856Z" fill="currentColor"/>
+    <path d="M6.73439 8.9936H0.512756V25.9184H6.73439V8.9936Z" fill="currentColor"/>
+    <path d="M177.913 8.4912C171.725 8.4912 167.056 12.3456 167.056 17.456C167.056 22.5664 171.725 26.4208 177.913 26.4208C184.101 26.4208 188.767 22.5664 188.767 17.456C188.767 12.3456 184.101 8.4912 177.913 8.4912ZM177.913 21.5856C175.64 21.5856 173.791 19.7328 173.791 17.456C173.791 15.1792 175.64 13.3232 177.913 13.3232C180.186 13.3232 182.036 15.1776 182.036 17.456C182.036 19.7344 180.186 21.5856 177.913 21.5856Z" fill="currentColor"/>
+    <path d="M31.506 8.48C29.1611 8.48 27.0094 9.7616 25.8753 11.7888C24.738 9.7616 22.5848 8.48 20.2383 8.48C18.3902 8.48 16.6475 9.4144 15.4303 10.776V8.9952H9.20709V25.9184H15.4303V15.5008C15.4303 14.1072 16.5612 12.9744 17.9525 12.9744C19.3438 12.9744 20.4747 14.1072 20.4747 15.5008V25.9184H26.698V15.5008C26.698 14.1072 27.8289 12.9744 29.2202 12.9744C30.6114 12.9744 31.7424 14.1072 31.7424 15.5008V25.9184H37.9656V15.0976C37.9656 15.048 37.9656 14.9984 37.9656 14.9488C37.9656 11.3824 35.068 8.4816 31.506 8.4816V8.48Z" fill="currentColor"/>
+    <path d="M118.165 3.4656H111.943V20.992C111.943 23.7072 114.149 25.9168 116.86 25.9168H123.762V21.584H118.165V13.3232H123.762V8.9808H118.165V3.4656Z" fill="currentColor"/>
+    <path d="M98.7986 13.3024C100.471 13.3024 101.966 14.3024 102.608 15.8512L102.682 16.0304H109.474L109.387 15.6736C108.387 11.4976 103.934 8.4672 98.797 8.4672C92.8422 8.4672 87.9974 12.4896 87.9974 17.4336C87.9974 22.3776 92.8422 26.4 98.797 26.4C103.934 26.4 108.387 23.3696 109.387 19.1936L109.474 18.8368H102.682L102.608 19.016C101.968 20.5648 100.471 21.5648 98.7986 21.5648C96.5256 21.5648 94.6743 19.712 94.6743 17.4336C94.6743 15.1552 96.524 13.3024 98.7986 13.3024Z" fill="currentColor"/>
+    <path d="M133.434 21.5872C135.712 21.5872 137.558 19.7376 137.558 17.456C137.558 15.1744 135.712 13.3248 133.434 13.3248C131.156 13.3248 129.309 15.1744 129.309 17.456C129.309 19.7376 131.156 21.5872 133.434 21.5872Z" fill="#e81515"/>
+    <path d="M3.62277 7.2576C5.62357 7.2576 7.24553 5.63293 7.24553 3.6288C7.24553 1.62467 5.62357 0 3.62277 0C1.62197 0 0 1.62467 0 3.6288C0 5.63293 1.62197 7.2576 3.62277 7.2576Z" fill="currentColor"/>
+    <path d="M213.54 8.48C211.195 8.48 209.044 9.7616 207.91 11.7888C206.772 9.7616 204.619 8.48 202.273 8.48C200.425 8.48 198.682 9.4144 197.465 10.776V8.9952H191.241V25.9184H197.465V15.5008C197.465 14.1072 198.596 12.9744 199.987 12.9744C201.378 12.9744 202.509 14.1072 202.509 15.5008V25.9184H208.732V15.5008C208.732 14.1072 209.863 12.9744 211.255 12.9744C212.646 12.9744 213.777 14.1072 213.777 15.5008V25.9184H220V15.0976C220 15.048 220 14.9984 220 14.9488C220 11.3824 217.102 8.4816 213.54 8.4816V8.48Z" fill="currentColor"/>
+  </g>
+</svg>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-name">UX DesignOps</span>
+    </a>
+    <div class="topbar-actions">
+      <a class="preview-link" href="https://lesley-spec.github.io/uxdesignops/">Live site</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle color theme">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="scrim" id="scrim"></div>
+  <div class="layout">
+    <nav class="sidebar" id="sidebar" aria-label="Documentation">
+      <div class="side-nav"><p class="nav-label">Get started</p><a href="../index.html">Overview</a><a href="../get-started/index.html">Install</a><p class="nav-label">Foundations</p><a href="../foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="../styles/index.html" aria-current="page">Design tokens</a><a href="../styles/color/index.html" class="is-child">Color</a><a href="../styles/type/index.html" class="is-child">Type</a><a href="../styles/space/index.html" class="is-child">Space</a><a href="../styles/primitives/index.html" class="is-child">Primitives</a><a href="../styles/layout/index.html" class="is-child">Layout</a><p class="nav-label">Agents</p><a href="../agents/index.html">All agents</a><a href="../agents/designer/index.html" class="is-child">UX designer</a><a href="../agents/researcher/index.html" class="is-child">UX researcher</a><a href="../agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Skills</p><a href="../skills/index.html">All skills</a></div>
+      <p class="side-foot">Preview. The <a href="https://lesley-spec.github.io/uxdesignops/">live site</a> is unchanged.</p>
+    </nav>
+    <main class="page" id="content">
+      <article>
+        <p class="kicker">Styles</p>
+        <h1>Design tokens</h1>
+        <p class="lede">Design tokens are the building blocks of the UI. These pages list the living set: every design token, every VNext primitive, and every screen-size token. The same names are used in Figma and on this site.</p>
+        
+<ul class="points">
+  <li>A token is a name that points at a color, a type style, or a measurement.</li>
+  <li>Bind the token. Do not type the value by hand.</li>
+  <li>The name says where it is used. <span class="token-name">color/text/text-default</span> is the default text color.</li>
+  <li>VNext Light and VNext Dark share the name. The value changes with the mode.</li>
+</ul>
+<section class="section" id="what">
+  <h2>What a token is</h2>
+  <p>Two things. A name, and the value that name points at. The name stays when the value changes, so a screen and this page can share one decision.</p>
+  <div class="token-example">
+    <div>
+      <span class="token-kicker">Name</span>
+      <span class="token-name token-name-lg">color/text/text-default</span>
+    </div>
+    <div>
+      <span class="token-kicker">Value, VNext Light</span>
+      <i class="chip l-text example-chip"></i>
+    </div>
+  </div>
+  <p>Figma binds the variable. This site uses the same name. A hex typed into a frame will not follow the next change.</p>
+</section>
+<section class="section" id="name">
+  <h2>Parts of a name</h2>
+  <p>Names go from the general to the specific. The pieces are separated by slashes.</p>
+  <ol class="name-parts">
+    <li><b>color</b><span>What it is</span></li>
+    <li><b>text</b><span>The role</span></li>
+    <li><b>text-default</b><span>The decision</span></li>
+  </ol>
+  <p>Read it as a sentence: the default color for text.</p>
+</section>
+<section class="section" id="cover">
+  <h2>What they cover</h2>
+  <div class="door-grid">
+    <a class="card" href="color/"><h3>Color</h3><p>Every color role. Text, buttons, navigation, status, AI, and social. Each name has a light value and a dark value.</p><span class="go">Open</span></a>
+    <a class="card" href="type/"><h3>Type</h3><p>Sarabun and Roboto Mono, three weights, and every size on desktop and mobile.</p><span class="go">Open</span></a>
+    <a class="card" href="space/"><h3>Space</h3><p>The spacing scale, then every gap, padding, height, width, and radius.</p><span class="go">Open</span></a>
+    <a class="card" href="primitives/"><h3>Primitives</h3><p>The VNext color ramps, spacing steps, and size steps the tokens point at.</p><span class="go">Open</span></a>
+    <a class="card" href="layout/"><h3>Layout</h3><p>Screen widths, page padding, and grid columns for desktop and mobile.</p><span class="go">Open</span></a>
+  </div>
+  <p>The V2 mode and the Primitives (V2) collection are retired. These pages list VNext Light, VNext Dark, Primitives (VNext), and Screen Size.</p>
+  <div class="resources">
+    <a href="https://www.figma.com/design/Uwg1IvlTgvVA2IvX6WLxOd/Styleguide--V2-"><b>Styleguide V2</b><span>The file. Set Design Tokens to VNext Light or VNext Dark.</span></a>
+    <a href="https://impact.atlassian.net/l/c/yEv0GqPN"><b>Component library</b><span>The components those tokens sit on.</span></a>
+  </div>
+</section>
+<section class="section" id="context">
+  <h2>Light and dark</h2>
+  <p>A context is a mode. The token name does not change. VNext Light is the default. VNext Dark is the other value. This site’s theme control is that switch. The old V2 column in the file is retired.</p>
+  <div class="context-pair">
+    <div class="context light">
+      <p class="context-kicker">VNext Light</p>
+      <p class="context-title">Pick an agent</p>
+      <p class="context-body">Same names. The light values.</p>
+      <span class="context-btn">Primary button</span>
+    </div>
+    <div class="context dark">
+      <p class="context-kicker">VNext Dark</p>
+      <p class="context-title">Pick an agent</p>
+      <p class="context-body">Same names. The dark values.</p>
+      <span class="context-btn">Primary button</span>
+    </div>
+  </div>
+</section>
+<section class="section" id="use">
+  <h2>How to use one</h2>
+  <p>In Figma, bind the variable or apply the text style. On a product screen, clone an example and place a real component. A primary action is the Primary Button, State Default. A field label is the Field Label text style.</p>
+  <p>To check a color, open <a href="color/">Color</a> and search the name. The swatch is the current value. Bind the name.</p>
+</section>
+
+      </article>
+      <aside class="toc"><p>On this page</p><a href="#what">What a token is</a><a href="#name">Parts of a name</a><a href="#cover">What they cover</a><a href="#context">Light and dark</a><a href="#use">How to use one</a></aside>
+    </main>
+  </div>
+  <script src="../assets/site.js"></script>
+</body>
+</html>
