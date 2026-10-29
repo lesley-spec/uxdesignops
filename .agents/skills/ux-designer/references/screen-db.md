@@ -1,6 +1,6 @@
 # Screen DB
 
-Source of existing impact.com product screens. Brand and Partner screens both live here. Each screen row has a Zenix Figma link. That link is the screen to design from.
+Source of existing impact.com product screens. Brand and Partner screens both live here. Each screen row has a VNext Figma link. That link is the screen to design from.
 
 All Screens:
 https://docs.superhuman.com/d/Screen-DB_d4K5aqNTMna/All-Screens_suJvIBge#_lucIMxeq
@@ -14,13 +14,13 @@ The doc is private. Read it in a logged-in session. Do not guess a screen from m
 
 1. Name the area in the request. Contracting, payouts, applications, tax forms, and so on.
 2. Open All Screens and keep the rows whose names match that area and the side (Brand or Partner). A screen that exists on both sides has a row for each.
-3. Open the Zenix Figma link on each matching row.
+3. Open the VNext Figma link on each matching row.
 4. Duplicate those frames into the new working file. Design the variations on the duplicates.
-5. Leave the Zenix source file unchanged. Leave the Styleguide file unchanged.
+5. Leave the VNext source file unchanged. Leave the Styleguide file unchanged.
 
-If a row has no Zenix link, say so and stop. Do not redraw that screen from rectangles.
+If a row has no VNext link, say so and stop. Do not redraw that screen from rectangles.
 
-If the doc cannot be opened, ask for the matching rows or their Zenix links. Do not invent the current screen while waiting.
+If the doc cannot be opened, ask for the matching rows or their VNext links. Do not invent the current screen while waiting.
 
 ## What the variations change
 
@@ -28,4 +28,4 @@ The duplicated frame is the current product. A variation changes the part the pr
 
 ## Example
 
-A contracting problem on Brand: filter All Screens to Brand rows about contracting, open those Zenix links, duplicate the frames, then draw the three variations on those copies.
+A contracting problem on Brand: filter All Screens to Brand rows about contracting, open those VNext links, duplicate the frames, then draw the three variations on those copies.

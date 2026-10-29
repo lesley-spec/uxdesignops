@@ -2,7 +2,7 @@
 name: ux-designer
 description: >-
   The impact.com UX designer agent. Give it a Brand or Partner problem and it
-  draws three screen variations in a new Figma file. It starts from the Zenix
+  draws three screen variations in a new Figma file. It starts from the VNext
   screens in the Screen DB, then builds with Styleguide (V2) components, VNext
   Light or Dark tokens, and named text styles. It edits those
   frames on feedback, draws flows in FigJam only when the problem is a flow,
@@ -28,7 +28,7 @@ brief instead of screens.
 - [references/figma-recipe.md](references/figma-recipe.md) for keys, the build
   script shape, and the audit
 - [references/screen-db.md](references/screen-db.md) for existing Brand and
-  Partner screens and their Zenix Figma links
+  Partner screens and their VNext Figma links
 - Persona lens: [brand-operator-ux-persona](../brand-operator-ux-persona/SKILL.md)
   or [creator-affiliate-ux-persona](../creator-affiliate-ux-persona/SKILL.md)
 
@@ -38,16 +38,16 @@ brief instead of screens.
 2. **Problem.** Restate it in one sentence: who, what they see now, what they
    need to do next. If the request names a person and a number, keep both.
 3. **Existing screens.** Look the area up in the
-   [Screen DB](references/screen-db.md) before drawing. Open the Zenix Figma
+   [Screen DB](references/screen-db.md) before drawing. Open the VNext Figma
    link for every Brand or Partner screen that already covers this job.
    Contracting work starts from the contracting screens, payout work from the
-   payout screens. If the doc cannot be read, ask for the Zenix links and wait.
+   payout screens. If the doc cannot be read, ask for the VNext links and wait.
 4. **File.** Create a new Figma design file in the Impact org. Never draw in
-   the Styleguide file or in the Zenix source file. Name it
+   the Styleguide file or in the VNext source file. Name it
    `Brand — <problem>` or `Partner — <problem>`.
 5. **Theme.** Page `VNext Light` with Design Tokens set to VNext Light. Add a
    `VNext Dark` page only when asked, or when the screen ships in dark mode.
-6. **Build three variations.** Duplicate the Zenix frames into this file, then
+6. **Build three variations.** Duplicate the VNext frames into this file, then
    answer the problem three different ways, not the same layout with new copy.
    Change the part the problem is about and keep the rest of the screen. Use
    library components: VNext Side Nav for Brand, Partner Nav for Partner,
@@ -63,7 +63,7 @@ brief instead of screens.
    asked. Re-run the audit after every change.
 10. **Flows.** If the problem is a sequence of steps across screens, draw the
     flow in FigJam first, then the key screens in Figma. The screens in that
-    flow are the Screen DB screens, in their Zenix frames.
+    flow are the Screen DB screens, in their VNext frames.
 11. **After a direction is chosen.** Run [ux-critique](../ux-critique/SKILL.md),
     then prototype. Brand prototypes start from
     `lesley-spec/ai-inplatform`. Partner prototypes use the Partner shell in

@@ -30,7 +30,7 @@ VNext Light and VNext Dark both resolve
 value. Bind the text style. Do not set a font by hand.
 
 This Figma file is the component and token source. Existing Brand and Partner
-screens live in the Screen DB, and each row links to the Zenix Figma frame to
+screens live in the Screen DB, and each row links to the VNext Figma frame to
 duplicate:
 https://docs.superhuman.com/d/Screen-DB_d4K5aqNTMna/All-Screens_suJvIBge#_lucIMxeq
 
