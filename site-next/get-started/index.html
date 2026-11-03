@@ -58,7 +58,7 @@
   <div class="scrim" id="scrim"></div>
   <div class="layout">
     <nav class="sidebar" id="sidebar" aria-label="Documentation">
-      <div class="side-nav"><p class="nav-label">Get started</p><a href="../index.html">Overview</a><a href="../get-started/index.html" aria-current="page">Install</a><p class="nav-label">Foundations</p><a href="../foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="../styles/index.html">Design tokens</a><a href="../styles/color/index.html" class="is-child">Color</a><a href="../styles/type/index.html" class="is-child">Type</a><a href="../styles/space/index.html" class="is-child">Space</a><a href="../styles/primitives/index.html" class="is-child">Primitives</a><a href="../styles/layout/index.html" class="is-child">Layout</a><p class="nav-label">Agents</p><a href="../agents/index.html">All agents</a><a href="../agents/designer/index.html" class="is-child">UX designer</a><a href="../agents/researcher/index.html" class="is-child">UX researcher</a><a href="../agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Skills</p><a href="../skills/index.html">All skills</a></div>
+      <div class="side-nav"><p class="nav-label">Get started</p><a href="../index.html">Overview</a><a href="../get-started/index.html" aria-current="page">Install</a><p class="nav-label">Agents</p><a href="../agents/index.html">All agents</a><a href="../agents/designer/index.html" class="is-child">UX designer</a><a href="../agents/researcher/index.html" class="is-child">UX researcher</a><a href="../agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Skills</p><a href="../skills/index.html">All skills</a><p class="nav-label">Foundations</p><a href="../foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="../styles/index.html">Design tokens</a><a href="../styles/color/index.html" class="is-child">Color</a><a href="../styles/type/index.html" class="is-child">Type</a><a href="../styles/space/index.html" class="is-child">Space</a><a href="../styles/primitives/index.html" class="is-child">Primitives</a><a href="../styles/layout/index.html" class="is-child">Layout</a></div>
       <p class="side-foot">Preview. The <a href="https://lesley-spec.github.io/uxdesignops/">live site</a> is unchanged.</p>
     </nav>
     <main class="page" id="content">
@@ -67,6 +67,16 @@
         <h1>Install</h1>
         <p class="lede">One install. After that, call an agent. You do not type the names of the skills inside it.</p>
         
+<section class="section" id="then">
+  <h2>Then paste a prompt</h2>
+  <p>Install with the block for your tool below. In a new chat, paste this.</p>
+  <figure class="spec"><div class="spec-top"><span>Start</span><button type="button" class="copy">Copy</button></div><pre>You are the UX designer.</pre></figure>
+  <div class="door-grid">
+    <a class="card" href="../agents/designer/"><span class="status status-ready">Ready</span><h3>UX designer</h3><p>Start here. A screen, or a new project. More prompts are on that page.</p></a>
+    <a class="card" href="../agents/researcher/"><span class="status status-ready">Ready</span><h3>UX researcher</h3><p>Questions about users, evidence, and studies.</p></a>
+    <a class="card" href="../agents/pipeline/"><span class="status status-ready">Ready</span><h3>Design thinking</h3><p>The full walk, with a stop at each gate.</p></a>
+  </div>
+</section>
 <section class="section" id="cursor">
   <h2>Cursor</h2>
   <p>Paste this in a Cursor agent chat. Approve the file access when Cursor asks. The skills, including the UX designer, then work in every project on that computer.</p>
@@ -82,17 +92,8 @@
   <p>Or run the published installer yourself:</p>
   <figure class="spec"><div class="spec-top"><span>Terminal</span><button type="button" class="copy">Copy</button></div><pre>curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash</pre></figure>
 </section>
-<section class="section" id="then">
-  <h2>Then call an agent</h2>
-  <div class="door-grid">
-    <a class="card" href="../agents/researcher/"><span class="status status-ready">Ready</span><h3>UX researcher</h3><p>Questions about users, evidence, and studies.</p></a>
-    <a class="card" href="../agents/pipeline/"><span class="status status-ready">Ready</span><h3>Design thinking</h3><p>The full walk, with a stop at each gate.</p></a>
-    <a class="card" href="../agents/designer/"><span class="status status-soon">Packaging</span><h3>UX designer</h3><p>Screen variations. The door is specified here. It is not callable yet.</p></a>
-  </div>
-</section>
-
       </article>
-      <aside class="toc"><p>On this page</p><a href="#cursor">Cursor</a><a href="#claude">Claude Code</a><a href="#then">Then call an agent</a></aside>
+      <aside class="toc"><p>On this page</p><a href="#then">Then paste a prompt</a><a href="#cursor">Cursor</a><a href="#claude">Claude Code</a></aside>
     </main>
   </div>
   <script src="../assets/site.js"></script>

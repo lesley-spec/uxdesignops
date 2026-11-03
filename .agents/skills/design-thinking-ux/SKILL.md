@@ -66,6 +66,8 @@ also asked for the full pipeline.
 
 ## Session start (always)
 
+If `ux-designer` already asked what they are working on, who it is for, and what they already have, do not ask those again. Start at the phase it named.
+
 0. If sibling skills are missing (`write-spec`, `ideate`, `ux-prototyping`,
    `test-plan`), invoke `ux-install-all-skills` first, then continue.
 1. Show the **pipeline board** (template below). Fill what you already know.
@@ -104,10 +106,8 @@ Ask:
 
 - Existing research? (PostHog, Pendo, Dovetail, Outset, Freshdesk, pack, paste)
 - If yes: links / paste — synthesize; don’t redo fieldwork unless gaps remain
-- If no: Frame check (`user-context` / `ux-research`)? pull live quant
-  (`data-analyze`)? triangulate (`research-synthesis`)? affinity-map one
-  corpus (`synthesize-research`)? plan a study (`user-research` /
-  `research-planner`)?
+- If no: pull live quant (`data-analyze`)? triangulate (`research-synthesis`)?
+  affinity-map one corpus (`synthesize-research`)? plan a study (`user-research`)?
 - What decision must this unlock?
 
 **Gate:** Designer confirms **problem worth solving** (or explicit override /
@@ -161,7 +161,7 @@ the Brand or Partner shell. Entice Test: pre-flight + Outset/Maze draft.
 Ask: prototype URL; Outset vs Maze vs recommend; sessions already done?
 
 - No sessions → invoke `test-plan` (it runs pre-flight).
-- Sessions done → `synthesize-research` then `findings-publish`.
+- Sessions done → `synthesize-research` then `test-loopback`.
 
 **Gate:** Designer reviews the study before recruiting; reviews loopback
 before Confluence/Jira. Pipeline **ends** at published loopback (or a
@@ -204,6 +204,8 @@ Show the board at start, after each child skill, and at each gate.
 - Test complete: “Loopback is the end of this run. Findings can start a new Empathize cycle if the problem shifted.”
 
 ## Prompt examples
+
+The easier start is `You are the UX designer.` That guide asks whether this is a screen or a new project, then calls this skill when the work needs research and a one-pager. Do not ask those intake questions again.
 
 1. `Use Design Thinking UX — I'm starting from scratch on Partner UPS Step 2. I don't have research yet.`  
    → Intake → Empathize skills → gate → offer Define (`write-spec` + epic).

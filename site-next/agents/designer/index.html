@@ -58,51 +58,54 @@
   <div class="scrim" id="scrim"></div>
   <div class="layout">
     <nav class="sidebar" id="sidebar" aria-label="Documentation">
-      <div class="side-nav"><p class="nav-label">Get started</p><a href="../../index.html">Overview</a><a href="../../get-started/index.html">Install</a><p class="nav-label">Foundations</p><a href="../../foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="../../styles/index.html">Design tokens</a><a href="../../styles/color/index.html" class="is-child">Color</a><a href="../../styles/type/index.html" class="is-child">Type</a><a href="../../styles/space/index.html" class="is-child">Space</a><a href="../../styles/primitives/index.html" class="is-child">Primitives</a><a href="../../styles/layout/index.html" class="is-child">Layout</a><p class="nav-label">Agents</p><a href="../../agents/index.html">All agents</a><a href="../../agents/designer/index.html" class="is-child" aria-current="page">UX designer</a><a href="../../agents/researcher/index.html" class="is-child">UX researcher</a><a href="../../agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Skills</p><a href="../../skills/index.html">All skills</a></div>
+      <div class="side-nav"><p class="nav-label">Get started</p><a href="../../index.html">Overview</a><a href="../../get-started/index.html">Install</a><p class="nav-label">Agents</p><a href="../../agents/index.html">All agents</a><a href="../../agents/designer/index.html" class="is-child" aria-current="page">UX designer</a><a href="../../agents/researcher/index.html" class="is-child">UX researcher</a><a href="../../agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Skills</p><a href="../../skills/index.html">All skills</a><p class="nav-label">Foundations</p><a href="../../foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="../../styles/index.html">Design tokens</a><a href="../../styles/color/index.html" class="is-child">Color</a><a href="../../styles/type/index.html" class="is-child">Type</a><a href="../../styles/space/index.html" class="is-child">Space</a><a href="../../styles/primitives/index.html" class="is-child">Primitives</a><a href="../../styles/layout/index.html" class="is-child">Layout</a></div>
       <p class="side-foot">Preview. The <a href="https://lesley-spec.github.io/uxdesignops/">live site</a> is unchanged.</p>
     </nav>
     <main class="page" id="content">
       <article>
         <p class="kicker">Agents</p>
         <h1>UX designer</h1>
-        <p class="lede">Turns a screen problem into a few Brand or Partner variations in Figma, using Styleguide V2. After you pick one, it prototypes that direction.</p>
+        <p class="lede">The easy way in. It asks what you are doing, then either draws three variations of a screen or starts a new project from research and a one-pager.</p>
         
-<p><span class="status status-soon">Packaging</span></p>
+<p><span class="status status-ready">Ready</span></p>
+<section class="section" id="start">
+  <h2>Get started</h2>
+  <p>Install once from <a href="../../get-started/index.html">Install</a>, then paste a prompt. Replace the bracketed link with your frame.</p>
+  <figure class="spec"><div class="spec-top"><span>Not sure yet</span><button type="button" class="copy">Copy</button></div><pre>You are the UX designer.</pre></figure>
+  <figure class="spec"><div class="spec-top"><span>Variations</span><button type="button" class="copy">Copy</button></div><pre>You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. Here is the screen: [Figma link]. I don’t have a working file yet.</pre></figure>
+  <figure class="spec"><div class="spec-top"><span>Screenshot</span><button type="button" class="copy">Copy</button></div><pre>You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. I don’t have a Figma link. The screenshot is the current screen. I don’t have a working file yet.</pre></figure>
+  <figure class="spec"><div class="spec-top"><span>New project</span><button type="button" class="copy">Copy</button></div><pre>You are the UX designer. This is a new project. Partner. I only have a hunch. No research yet.</pre></figure>
+  <ul class="plain">
+    <li>A Figma link is the screen to design from. A screenshot is the fallback.</li>
+    <li>It duplicates the closest Page Template into a working file. It does not draw in the Styleguide file.</li>
+    <li>Color is a Styleguide V2 variable. Type is a named text style. It asks before it creates a file.</li>
+  </ul>
+</section>
 <section class="section" id="overview">
   <h2>Overview</h2>
-  <p>The designer is the door for screen work. It asks Brand or Partner only if you have not said which. It clones a real example, draws with Styleguide V2 components and tokens, and waits after the variations.</p>
+  <p>Say you are the UX designer. You do not need to name a skill or a phase. It asks whether this is a specific screen or a new project, who it is for, and what you already have. A screen becomes three variations. A new project starts the pipeline and does not draw yet.</p>
 </section>
 <section class="section" id="usage">
   <h2>Usage</h2>
   <div class="split">
-    <article class="card"><h3>Use it when</h3><p>Someone can point at a screen and say what it fails to do. Christine’s welcome header does not say what to do with 35 new applications.</p></article>
-    <article class="card"><h3>Use another door when</h3><p>The question is about users. That is the researcher. The work still needs evidence or a one-pager. That is design thinking.</p></article>
+    <article class="card"><h3>Use it when</h3><p>You have a screen that fails a job, or you are starting a project and are not sure where to begin. Christine’s welcome header does not say what to do with 35 new applications.</p></article>
+    <article class="card"><h3>Use another door when</h3><p>The only question is about users. That is the researcher. You already know you want the full walk and want to name it. That is design thinking.</p></article>
   </div>
 </section>
 <section class="section" id="anatomy">
   <h2>Anatomy</h2>
   <div class="anatomy">
-    <article><span class="n">1</span><div><h3>Who it’s for</h3><p><a class="skill" href="../../skills/user-personas/index.html">user-personas</a>, then <a class="skill" href="../../skills/brand-operator-ux-persona/index.html">brand-operator-ux-persona</a> or <a class="skill" href="../../skills/creator-affiliate-ux-persona/index.html">creator-affiliate-ux-persona</a>.</p></div></article>
-    <article><span class="n">2</span><div><h3>The screen</h3><p><a class="skill" href="../../skills/design-system/index.html">design-system</a> clones the closest Styleguide V2 example. No new rectangles, no raw hex.</p></div></article>
-    <article><span class="n">3</span><div><h3>Variations</h3><p>Three directions. FigJam only when the problem is a flow. Then it stops.</p></div></article>
-    <article><span class="n">4</span><div><h3>Check</h3><p><a class="skill" href="../../skills/ux-critique/index.html">ux-critique</a> against the one-pager, PRD, or epic, after a direction is chosen.</p></div></article>
-    <article><span class="n">5</span><div><h3>Prototype</h3><p><a class="skill" href="../../skills/ux-prototyping/index.html">ux-prototyping</a>, then <a class="skill" href="../../skills/brand-prototype/index.html">brand-prototype</a> or <a class="skill" href="../../skills/partner-prototype/index.html">partner-prototype</a>. Brand’s current shell is ai-inplatform.</p></div></article>
+    <article><span class="n">1</span><div><h3>Ask</h3><p>A specific screen or a new project. Brand or Partner. A hunch, research, a one-pager, mocks, or a prototype.</p></div></article>
+    <article><span class="n">2</span><div><h3>The screen</h3><p>Paste a Figma link. A screenshot works if you do not have one. It reads <a href="https://www.figma.com/design/Uwg1IvlTgvVA2IvX6WLxOd/Styleguide--V2-?node-id=5314-16">Page Templates</a> and duplicates the closest one. It does not draw on that page.</p></div></article>
+    <article><span class="n">3</span><div><h3>Tokens</h3><p><a class="skill" href="../../skills/design-system/index.html">design-system</a>. Styleguide V2 only. VNext Light or VNext Dark. Named text styles. No raw hex, including from a screenshot.</p></div></article>
+    <article><span class="n">4</span><div><h3>Variations</h3><p>Three directions in a working file. It asks before it creates that file. Then it stops.</p></div></article>
+    <article><span class="n">5</span><div><h3>Or the pipeline</h3><p>A new project goes to research, then a one-pager. No screens until you ask for them.</p></div></article>
   </div>
 </section>
 <section class="section" id="runs">
   <h2>Skills it runs</h2>
-  <p>This door is still being packaged, so it will not run them for you yet. The skills are ready. Call one by name today. When the designer is installed, this is the set it runs, and you can still call any of them yourself.</p>
+  <p>You do not call these yourself. A screen runs the set below. A new project runs <a href="../pipeline/">design thinking</a> from the phase your artifacts point to. You can still call any skill by name.</p>
   <div class="skill-rows"><a class="skill-row" href="../../skills/user-personas/index.html"><span class="skill">user-personas</span><span class="skill-blurb"><b>User personas</b>The partner and brand persona set.</span></a><a class="skill-row" href="../../skills/brand-operator-ux-persona/index.html"><span class="skill">brand-operator-ux-persona</span><span class="skill-blurb"><b>Brand operator</b>The job on the brand side.</span></a><a class="skill-row" href="../../skills/creator-affiliate-ux-persona/index.html"><span class="skill">creator-affiliate-ux-persona</span><span class="skill-blurb"><b>Creator and affiliate</b>The job on the partner side.</span></a><a class="skill-row" href="../../skills/design-system/index.html"><span class="skill">design-system</span><span class="skill-blurb"><b>Design system</b>Styleguide V2, the components, and the tokens.</span></a><a class="skill-row" href="../../skills/ux-critique/index.html"><span class="skill">ux-critique</span><span class="skill-blurb"><b>UX critique</b>Check a direction against the one-pager, PRD, or epic.</span></a><a class="skill-row" href="../../skills/ux-prototyping/index.html"><span class="skill">ux-prototyping</span><span class="skill-blurb"><b>UX prototyping</b>A Brand or Partner screen you can click, in this chat.</span></a><a class="skill-row" href="../../skills/brand-prototype/index.html"><span class="skill">brand-prototype</span><span class="skill-blurb"><b>Brand prototype</b>The Brand UI shell.</span></a><a class="skill-row" href="../../skills/partner-prototype/index.html"><span class="skill">partner-prototype</span><span class="skill-blurb"><b>Partner prototype</b>The Partner UI shell.</span></a></div>
-</section>
-<section class="section" id="specs">
-  <h2>Specs</h2>
-  <p>This prompt is the spec. Install the skill first from <a href="../../get-started/index.html#cursor">Cursor</a> or <a href="../../get-started/index.html#claude">Claude Code</a> on the Install page.</p>
-  <figure class="spec"><div class="spec-top"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. Put three variations on the Styleguide V2 sandbox page. Clone the closest example. Use only Styleguide V2 components and tokens.</pre></figure>
-  <ul class="plain">
-    <li>Primary actions are a Primary Button instance, State Default.</li>
-    <li>Type uses the named text styles. Field labels are Field Label.</li>
-    <li>Color is a Styleguide V2 variable, not a hex typed by hand.</li>
-  </ul>
 </section>
 <section class="section" id="related">
   <h2>Related</h2>
@@ -116,7 +119,7 @@
 </section>
 
       </article>
-      <aside class="toc"><p>On this page</p><a href="#overview">Overview</a><a href="#usage">Usage</a><a href="#anatomy">Anatomy</a><a href="#runs">Skills it runs</a><a href="#specs">Specs</a><a href="#related">Related</a></aside>
+      <aside class="toc"><p>On this page</p><a href="#start">Get started</a><a href="#overview">Overview</a><a href="#usage">Usage</a><a href="#anatomy">Anatomy</a><a href="#runs">Skills it runs</a><a href="#related">Related</a></aside>
     </main>
   </div>
   <script src="../../assets/site.js"></script>

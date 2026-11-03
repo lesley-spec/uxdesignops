@@ -12,6 +12,15 @@ NAV = [
         ("home", "Overview", "index.html", False),
         ("start", "Install", "get-started/index.html", False),
     ]),
+    ("Agents", [
+        ("agents", "All agents", "agents/index.html", False),
+        ("designer", "UX designer", "agents/designer/index.html", True),
+        ("researcher", "UX researcher", "agents/researcher/index.html", True),
+        ("pipeline", "Design thinking", "agents/pipeline/index.html", True),
+    ]),
+    ("Skills", [
+        ("skills", "All skills", "skills/index.html", False),
+    ]),
     ("Foundations", [
         ("foundations", "The pipeline", "foundations/index.html", False),
     ]),
@@ -22,15 +31,6 @@ NAV = [
         ("space", "Space", "styles/space/index.html", True),
         ("primitives", "Primitives", "styles/primitives/index.html", True),
         ("layout", "Layout", "styles/layout/index.html", True),
-    ]),
-    ("Agents", [
-        ("agents", "All agents", "agents/index.html", False),
-        ("designer", "UX designer", "agents/designer/index.html", True),
-        ("researcher", "UX researcher", "agents/researcher/index.html", True),
-        ("pipeline", "Design thinking", "agents/pipeline/index.html", True),
-    ]),
-    ("Skills", [
-        ("skills", "All skills", "skills/index.html", False),
     ]),
 ]
 
@@ -242,6 +242,11 @@ def skill_page_body(slug):
     if slug == "test-loopback":
         extra = "<p>New studies use findings-publish.</p>"
     return f"""
+<section class="section" id="call">
+  <h2>Call it yourself</h2>
+  <p>Name the skill. The agent is the package around it, not a requirement.</p>
+  {spec("Prompt", "use " + slug)}
+</section>
 <section class="section" id="overview">
   <h2>Overview</h2>
   <p>{blurb}</p>
@@ -251,11 +256,6 @@ def skill_page_body(slug):
 <section class="section" id="used">
   <h2>Used by</h2>
   {agent_pills(slug, 2)}
-</section>
-<section class="section" id="call">
-  <h2>Call it yourself</h2>
-  <p>Name the skill. The agent is the package around it, not a requirement.</p>
-  {spec("Prompt", "use " + slug)}
 </section>
 <section class="section" id="related">
   <h2>Nearby skills</h2>
@@ -350,14 +350,20 @@ PAGES["home"] = dict(
     title="Pick an agent",
     kicker="UX DesignOps",
     lede="Three doors. The skills stay inside them. You do not have to choose from a list of 38 names.",
-    toc=[("doors", "The doors"), ("system", "How this is organized"), ("which", "Which door")],
+    toc=[("start", "Get started"), ("doors", "The doors"), ("system", "How this is organized"), ("which", "Which door")],
     body=f"""
+<section class="section" id="start">
+  <h2>Get started</h2>
+  <p><a href="get-started/index.html">Install the pack once</a>, then paste this. It asks whether you have a screen or a new project.</p>
+  {spec("Prompt", "You are the UX designer.")}
+  <p class="quiet">More prompts are on <a href="agents/designer/">UX designer</a>, including a Figma link, a screenshot, and a new project.</p>
+</section>
 <section class="section" id="doors">
   <div class="door-grid">
     <a class="card" href="agents/designer/">
-      <span class="status status-soon">Packaging</span>
-      <h2>Design a screen</h2>
-      <p>You know the screen and the problem. Get a few Brand or Partner variations, then a prototype of the one you pick.</p>
+      <span class="status status-ready">Available</span>
+      <h2>Start here</h2>
+      <p>A screen that is not working, or a new project. It asks a few questions, then draws variations or starts research and a one-pager.</p>
       <span class="go">UX designer</span>
     </a>
     <a class="card" href="agents/researcher/">
@@ -388,9 +394,9 @@ PAGES["home"] = dict(
 <section class="section" id="which">
   <h2>Which door</h2>
   <div class="split">
-    <article class="card"><h3>A screen to change</h3><p>UX designer. Say Brand or Partner, and what the screen fails to do.</p></article>
+    <article class="card"><h3>A screen to change</h3><p>UX designer. Paste a Figma link to the screen, or a screenshot if you do not have one.</p></article>
     <article class="card"><h3>A question about users</h3><p>UX researcher. It checks the Frame before it proposes a new study.</p></article>
-    <article class="card"><h3>A project, start unclear</h3><p>Design thinking. It asks where you already are and joins there.</p></article>
+    <article class="card"><h3>A project, start unclear</h3><p>UX designer. Say it is a new project. It starts research, then a one-pager, and waits.</p></article>
     <article class="card"><h3>First time on this machine</h3><p>Install, then come back to a door. The skills are the parts inside the agent.</p></article>
   </div>
   <p class="quiet">This folder is a preview. It does not replace the current DesignOps site.</p>
@@ -402,8 +408,18 @@ PAGES["start"] = dict(
     title="Install",
     kicker="Get started",
     lede="One install. After that, call an agent. You do not type the names of the skills inside it.",
-    toc=[("cursor", "Cursor"), ("claude", "Claude Code"), ("then", "Then call an agent")],
+    toc=[("then", "Then paste a prompt"), ("cursor", "Cursor"), ("claude", "Claude Code")],
     body=f"""
+<section class="section" id="then">
+  <h2>Then paste a prompt</h2>
+  <p>Install with the block for your tool below. In a new chat, paste this.</p>
+  {spec("Start", "You are the UX designer.")}
+  <div class="door-grid">
+    <a class="card" href="../agents/designer/"><span class="status status-ready">Ready</span><h3>UX designer</h3><p>Start here. A screen, or a new project. More prompts are on that page.</p></a>
+    <a class="card" href="../agents/researcher/"><span class="status status-ready">Ready</span><h3>UX researcher</h3><p>Questions about users, evidence, and studies.</p></a>
+    <a class="card" href="../agents/pipeline/"><span class="status status-ready">Ready</span><h3>Design thinking</h3><p>The full walk, with a stop at each gate.</p></a>
+  </div>
+</section>
 <section class="section" id="cursor">
   <h2>Cursor</h2>
   <p>Paste this in a Cursor agent chat. Approve the file access when Cursor asks. The skills, including the UX designer, then work in every project on that computer.</p>
@@ -418,14 +434,6 @@ PAGES["start"] = dict(
   <p>Run the same prompt again after a new skill is pushed. A new chat uses the updated copy.</p>
   <p>Or run the published installer yourself:</p>
   {spec("Terminal", "curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash")}
-</section>
-<section class="section" id="then">
-  <h2>Then call an agent</h2>
-  <div class="door-grid">
-    <a class="card" href="../agents/researcher/"><span class="status status-ready">Ready</span><h3>UX researcher</h3><p>Questions about users, evidence, and studies.</p></a>
-    <a class="card" href="../agents/pipeline/"><span class="status status-ready">Ready</span><h3>Design thinking</h3><p>The full walk, with a stop at each gate.</p></a>
-    <a class="card" href="../agents/designer/"><span class="status status-soon">Packaging</span><h3>UX designer</h3><p>Screen variations. The door is specified here. It is not callable yet.</p></a>
-  </div>
 </section>
 """,
 )
@@ -1088,9 +1096,9 @@ PAGES["agents"] = dict(
   <h2>Make</h2>
   <div class="layer-grid">
     <a class="card" href="designer/">
-      <span class="status status-soon">Packaging</span>
+      <span class="status status-ready">Ready</span>
       <h3>UX designer</h3>
-      <p>A few variations of a Brand or Partner screen, then a prototype of the chosen one.</p>
+      <p>Start here. Variations of a screen, or a new project from research and a one-pager.</p>
       <span class="go">Open</span>
     </a>
   </div>
@@ -1131,45 +1139,48 @@ PAGES["agents"] = dict(
 PAGES["designer"] = dict(
     title="UX designer",
     kicker="Agents",
-    lede="Turns a screen problem into a few Brand or Partner variations in Figma, using Styleguide V2. After you pick one, it prototypes that direction.",
-    toc=[("overview", "Overview"), ("usage", "Usage"), ("anatomy", "Anatomy"), ("runs", "Skills it runs"), ("specs", "Specs"), ("related", "Related")],
+    lede="The easy way in. It asks what you are doing, then either draws three variations of a screen or starts a new project from research and a one-pager.",
+    toc=[("start", "Get started"), ("overview", "Overview"), ("usage", "Usage"), ("anatomy", "Anatomy"), ("runs", "Skills it runs"), ("related", "Related")],
     body=f"""
-<p><span class="status status-soon">Packaging</span></p>
+<p><span class="status status-ready">Ready</span></p>
+<section class="section" id="start">
+  <h2>Get started</h2>
+  <p>Install once from <a href="../../get-started/index.html">Install</a>, then paste a prompt. Replace the bracketed link with your frame.</p>
+  {spec("Not sure yet", "You are the UX designer.")}
+  {spec("Variations", "You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. Here is the screen: [Figma link]. I don’t have a working file yet.")}
+  {spec("Screenshot", "You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. I don’t have a Figma link. The screenshot is the current screen. I don’t have a working file yet.")}
+  {spec("New project", "You are the UX designer. This is a new project. Partner. I only have a hunch. No research yet.")}
+  <ul class="plain">
+    <li>A Figma link is the screen to design from. A screenshot is the fallback.</li>
+    <li>It duplicates the closest Page Template into a working file. It does not draw in the Styleguide file.</li>
+    <li>Color is a Styleguide V2 variable. Type is a named text style. It asks before it creates a file.</li>
+  </ul>
+</section>
 <section class="section" id="overview">
   <h2>Overview</h2>
-  <p>The designer is the door for screen work. It asks Brand or Partner only if you have not said which. It clones a real example, draws with Styleguide V2 components and tokens, and waits after the variations.</p>
+  <p>Say you are the UX designer. You do not need to name a skill or a phase. It asks whether this is a specific screen or a new project, who it is for, and what you already have. A screen becomes three variations. A new project starts the pipeline and does not draw yet.</p>
 </section>
 <section class="section" id="usage">
   <h2>Usage</h2>
   <div class="split">
-    <article class="card"><h3>Use it when</h3><p>Someone can point at a screen and say what it fails to do. Christine’s welcome header does not say what to do with 35 new applications.</p></article>
-    <article class="card"><h3>Use another door when</h3><p>The question is about users. That is the researcher. The work still needs evidence or a one-pager. That is design thinking.</p></article>
+    <article class="card"><h3>Use it when</h3><p>You have a screen that fails a job, or you are starting a project and are not sure where to begin. Christine’s welcome header does not say what to do with 35 new applications.</p></article>
+    <article class="card"><h3>Use another door when</h3><p>The only question is about users. That is the researcher. You already know you want the full walk and want to name it. That is design thinking.</p></article>
   </div>
 </section>
 <section class="section" id="anatomy">
   <h2>Anatomy</h2>
   <div class="anatomy">
-    <article><span class="n">1</span><div><h3>Who it’s for</h3><p>{chip("user-personas", 2)}, then {chip("brand-operator-ux-persona", 2)} or {chip("creator-affiliate-ux-persona", 2)}.</p></div></article>
-    <article><span class="n">2</span><div><h3>The screen</h3><p>{chip("design-system", 2)} clones the closest Styleguide V2 example. No new rectangles, no raw hex.</p></div></article>
-    <article><span class="n">3</span><div><h3>Variations</h3><p>Three directions. FigJam only when the problem is a flow. Then it stops.</p></div></article>
-    <article><span class="n">4</span><div><h3>Check</h3><p>{chip("ux-critique", 2)} against the one-pager, PRD, or epic, after a direction is chosen.</p></div></article>
-    <article><span class="n">5</span><div><h3>Prototype</h3><p>{chip("ux-prototyping", 2)}, then {chip("brand-prototype", 2)} or {chip("partner-prototype", 2)}. Brand’s current shell is ai-inplatform.</p></div></article>
+    <article><span class="n">1</span><div><h3>Ask</h3><p>A specific screen or a new project. Brand or Partner. A hunch, research, a one-pager, mocks, or a prototype.</p></div></article>
+    <article><span class="n">2</span><div><h3>The screen</h3><p>Paste a Figma link. A screenshot works if you do not have one. It reads <a href="https://www.figma.com/design/Uwg1IvlTgvVA2IvX6WLxOd/Styleguide--V2-?node-id=5314-16">Page Templates</a> and duplicates the closest one. It does not draw on that page.</p></div></article>
+    <article><span class="n">3</span><div><h3>Tokens</h3><p>{chip("design-system", 2)}. Styleguide V2 only. VNext Light or VNext Dark. Named text styles. No raw hex, including from a screenshot.</p></div></article>
+    <article><span class="n">4</span><div><h3>Variations</h3><p>Three directions in a working file. It asks before it creates that file. Then it stops.</p></div></article>
+    <article><span class="n">5</span><div><h3>Or the pipeline</h3><p>A new project goes to research, then a one-pager. No screens until you ask for them.</p></div></article>
   </div>
 </section>
 <section class="section" id="runs">
   <h2>Skills it runs</h2>
-  <p>This door is still being packaged, so it will not run them for you yet. The skills are ready. Call one by name today. When the designer is installed, this is the set it runs, and you can still call any of them yourself.</p>
+  <p>You do not call these yourself. A screen runs the set below. A new project runs <a href="../pipeline/">design thinking</a> from the phase your artifacts point to. You can still call any skill by name.</p>
   {skill_rows(DESIGNER_RUNS, 2)}
-</section>
-<section class="section" id="specs">
-  <h2>Specs</h2>
-  <p>This prompt is the spec. Install the skill first from <a href="../../get-started/index.html#cursor">Cursor</a> or <a href="../../get-started/index.html#claude">Claude Code</a> on the Install page.</p>
-  {spec("Prompt", DESIGNER)}
-  <ul class="plain">
-    <li>Primary actions are a Primary Button instance, State Default.</li>
-    <li>Type uses the named text styles. Field labels are Field Label.</li>
-    <li>Color is a Styleguide V2 variable, not a hex typed by hand.</li>
-  </ul>
 </section>
 <section class="section" id="related">
   <h2>Related</h2>
@@ -1188,9 +1199,15 @@ PAGES["researcher"] = dict(
     title="UX researcher",
     kicker="Agents",
     lede="Answers a question from what impact.com already knows, then plans only the study that is still missing.",
-    toc=[("overview", "Overview"), ("usage", "Usage"), ("anatomy", "Anatomy"), ("runs", "Skills it runs"), ("specs", "Specs"), ("related", "Related")],
+    toc=[("start", "Get started"), ("overview", "Overview"), ("usage", "Usage"), ("anatomy", "Anatomy"), ("runs", "Skills it runs"), ("related", "Related")],
     body=f"""
 <p><span class="status status-ready">Ready</span></p>
+<section class="section" id="start">
+  <h2>Get started</h2>
+  <p><a href="../../get-started/index.html">Install</a> once, then paste this.</p>
+  {spec("Prompt", RESEARCH)}
+  <p>When the gate is “problem worth solving,” the next door is design thinking at Define. It does not start ideating on its own.</p>
+</section>
 <section class="section" id="overview">
   <h2>Overview</h2>
   <p>Call <span class="skill">ux-research</span>. It reads one skill at a time. It checks the Frame before it plans fieldwork, and it stops before it launches a study or writes tickets. Name a single skill if you only want that job.</p>
@@ -1219,11 +1236,6 @@ PAGES["researcher"] = dict(
   <h3>When the question needs them</h3>
   {skill_rows(RESEARCHER_LENSES, 2)}
 </section>
-<section class="section" id="specs">
-  <h2>Specs</h2>
-  {spec("Prompt", RESEARCH)}
-  <p>When the gate is “problem worth solving,” the next door is design thinking at Define. It does not start ideating on its own.</p>
-</section>
 <section class="section" id="related">
   <h2>Related</h2>
   <div class="related">
@@ -1240,9 +1252,16 @@ PAGES["pipeline"] = dict(
     title="Design thinking",
     kicker="Agents",
     lede="Walks a project from Empathize to Test. It calls the phase skill, shows the work, and waits at each gate.",
-    toc=[("overview", "Overview"), ("usage", "Usage"), ("anatomy", "Anatomy"), ("runs", "Skills it runs"), ("specs", "Specs"), ("related", "Related")],
+    toc=[("start", "Get started"), ("overview", "Overview"), ("usage", "Usage"), ("anatomy", "Anatomy"), ("runs", "Skills it runs"), ("related", "Related")],
     body=f"""
 <p><span class="status status-ready">Ready</span></p>
+<section class="section" id="start">
+  <h2>Get started</h2>
+  <p>The easier start is the <a href="../designer/">UX designer</a>. <a href="../../get-started/index.html">Install</a> once, then paste a prompt.</p>
+  {spec("Easier start", "You are the UX designer. This is a new project. Partner. I only have a hunch. No research yet.")}
+  {spec("This agent", PIPELINE)}
+  <p>You can join mid-pipeline: “We already have a one-pager and UX-1234. Jump to Ideate.”</p>
+</section>
 <section class="section" id="overview">
   <h2>Overview</h2>
   <p>Call <span class="skill">design-thinking-ux</span> when you want the whole pipeline. If you only want research or only a screen, use those doors instead. This one is for the project.</p>
@@ -1267,11 +1286,6 @@ PAGES["pipeline"] = dict(
   <p>Name <span class="skill">design-thinking-ux</span> for the whole walk. Name a skill below when you already know the phase. Empathize is the researcher.</p>
   {pipeline_skill_blocks(2)}
 </section>
-<section class="section" id="specs">
-  <h2>Specs</h2>
-  {spec("Prompt", PIPELINE)}
-  <p>You can join mid-pipeline: “We already have a one-pager and UX-1234. Jump to Ideate.”</p>
-</section>
 <section class="section" id="related">
   <h2>Related</h2>
   <div class="related">
@@ -1294,7 +1308,7 @@ PAGES["skills"] = dict(
     body=f"""
 <section class="section" id="designer">
   <h2>UX designer</h2>
-  <p>A screen to change. The designer runs this set, then waits for you to pick a direction. That door is still being packaged, so today you call the skill. <a href="../agents/designer/">Open the designer</a>.</p>
+  <p>A screen to change, or a new project. The designer runs this set, then waits for you to pick a direction. <a href="../agents/designer/">Open the designer</a>.</p>
   {skill_rows(DESIGNER_RUNS, 1)}
 </section>
 <section class="section" id="researcher">
@@ -1327,7 +1341,7 @@ for slug in SKILLS:
         title=title,
         kicker="Skills",
         lede=blurb,
-        toc=[("overview", "Overview"), ("used", "Used by"), ("call", "Call it yourself"), ("related", "Nearby skills")],
+        toc=[("call", "Call it yourself"), ("overview", "Overview"), ("used", "Used by"), ("related", "Nearby skills")],
         href=f"skills/{slug}/index.html",
         nav="skills",
         body=skill_page_body(slug),

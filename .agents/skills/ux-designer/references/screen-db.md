@@ -1,31 +1,28 @@
-# Screen DB
+# Current screen
 
-Source of existing impact.com product screens. Brand and Partner screens both live here. Each screen row has a VNext Figma link. That link is the screen to design from.
+The current screen is the one the person shares. Do not fetch the Screen DB. The Coda doc is private and this session cannot log in. Do not mention it. Do not guess the screen from memory, from the Styleguide sandbox page, or from `lesley-spec/ai-inplatform`.
 
-All Screens:
-https://docs.superhuman.com/d/Screen-DB_d4K5aqNTMna/All-Screens_suJvIBge#_lucIMxeq
+## Ask before drawing
 
-Same doc:
-https://coda.io/d/Screen-DB_d4K5aqNTMna/All-Screens_suJvIBge#Screens_tuIY81uM
+1. Prefer a Figma link to the frame. That is a file URL with the node, or the file URL plus which page.
+2. If they do not have a link, a screenshot of the screen is enough to see what is there now.
+3. If they share neither, stop. Do not invent the current screen.
 
-The doc is private. Read it in a logged-in session. Do not guess a screen from memory, from the Styleguide file, or from `lesley-spec/ai-inplatform`.
+The link they share is the source. The working file is where the three variations go. Those are different files. Leave the source file unchanged. Leave the Styleguide file unchanged. Page Templates are read, then duplicated into the working file. Page Examples and the sandbox page are not the working file and not the template source.
 
-## Before drawing
+## What to do with the answer
 
-1. Name the area in the request. Contracting, payouts, applications, tax forms, and so on.
-2. Open All Screens and keep the rows whose names match that area and the side (Brand or Partner). A screen that exists on both sides has a row for each.
-3. Open the VNext Figma link on each matching row.
-4. Duplicate those frames into the new working file. Design the variations on the duplicates.
-5. Leave the VNext source file unchanged. Leave the Styleguide file unchanged.
+- **Figma link.** Open that file. Read the linked frame. Duplicate it into the working file and use it for the content. If the duplicate has a raw hex, an unbound fill, or text with no text style, rebind it to a Styleguide (V2) token. Do not keep the raw paint because the source had it.
+- **Screenshot only.** Use it for layout and the header. Build from the closest Page Template and published Styleguide (V2) components. Do not sample a hex from the image. Say that the screenshot is not a frame that can be cloned, so spacing and content are matched by eye.
 
-If a row has no VNext link, say so and stop. Do not redraw that screen from rectangles.
+## Page Templates
 
-If the doc cannot be opened, ask for the matching rows or their VNext links. Do not invent the current screen while waiting.
+Read [Page Templates](https://www.figma.com/design/Uwg1IvlTgvVA2IvX6WLxOd/Styleguide--V2-?node-id=5314-16) before building. File key `Uwg1IvlTgvVA2IvX6WLxOd`, node `5314:16`. Do not add or edit frames on that page.
 
-## What the variations change
+Open the page, name the templates on it, and pick the closest one to the screen they shared. Re-read the page in Figma. Duplicate that template into the working file. Keep its component instances and token bindings. Then apply the person's screen content and the three variations.
 
-The duplicated frame is the current product. A variation changes the part the problem is about. It keeps the nav, page structure, and neighboring content from that frame, and it still uses Styleguide (V2) components, VNext Light or VNext Dark, and named text styles for anything new.
+## Tokens
 
-## Example
+Styleguide (V2) is the only token source. Theme the working file to **VNext Light**, or **VNext Dark** when the screen ships in dark mode or the person asks. Never set Design Tokens to V2.
 
-A contracting problem on Brand: filter All Screens to Brand rows about contracting, open those VNext links, duplicate the frames, then draw the three variations on those copies.
+Bind fills and strokes to `color/…` variables. Bind text to a named text style. The style resolves to Sarabun. Do not set a font by hand. Buttons, alerts, nav, badges, tables, and inputs are library instances.

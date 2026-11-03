@@ -4,7 +4,7 @@ Library: **Styleguide (V2)**. Library key:
 `lk-6470a9011d08f785e09e9db87e63dc8933b79436f0d83a05a3cfbe8c937d4cfb28194eb63856824b3710fdcd94701bf1a10415eea76c162ad3bed50a83bfe045`.
 Pass it as `includeLibraryKeys` on every `search_design_system` call.
 
-New files go in plan `organization::1068571974229129913` (Impact).
+Create a file only after the user says to. New files go in plan `organization::1068571974229129913` (Impact). Never draw in the Styleguide file.
 
 ## Keys
 

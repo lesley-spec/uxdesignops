@@ -18,21 +18,23 @@ collection (`VariableCollectionId:11424:35287`).
 - Light screens: mode **VNext Light** (`14329:2`)
 - Dark screens: mode **VNext Dark** (`14329:3`)
 
-Do the work in a new Figma file. Do not add or edit frames in the Styleguide
-file. Create the file in the Impact org, then import Styleguide (V2)
-components, text styles, and variables so that library is attached. Theme the
-new file by setting Design Tokens to **VNext Light** or **VNext Dark** on the
-page. The collection id inside the Styleguide file is local to that file.
-In a new file, import the variable and set the mode by name.
+Do not add or edit frames in the Styleguide file. Page Examples and the
+sandbox page are references only. Ask whether the user already has a Figma
+file and will share the link, or whether to create a new one. Create a file
+only after they say yes. A new file goes in the Impact org. Import Styleguide
+(V2) components, text styles, and variables so that library is attached.
+Theme the working file by setting Design Tokens to **VNext Light** or **VNext
+Dark** on the page. The collection id inside the Styleguide file is local to
+that file. In the working file, import the variable and set the mode by name.
 
 VNext Light and VNext Dark both resolve
 `typography/font family/font-family` to **Sarabun**. Mulish is the retired V2
 value. Bind the text style. Do not set a font by hand.
 
-This Figma file is the component and token source. Existing Brand and Partner
-screens live in the Screen DB, and each row links to the VNext Figma frame to
-duplicate:
-https://docs.superhuman.com/d/Screen-DB_d4K5aqNTMna/All-Screens_suJvIBge#_lucIMxeq
+This Figma file is the component and token source. The current product screen
+is the Figma link the person shares, or a screenshot if they have no link. Do
+not fetch the Screen DB. Page Templates (`5314:16`) are the layout to
+duplicate into the working file. Do not edit that page.
 
 Brand click-through prototypes still start from `lesley-spec/ai-inplatform`
 ([live](https://lesley-spec.github.io/ai-inplatform/)). That repo is the
@@ -40,10 +42,10 @@ prototype shell, not the screen inventory.
 
 ## Draw rules
 
-1. Create a new Figma design file. Leave the Styleguide file unchanged.
+1. Leave the Styleguide file unchanged. Ask for an existing Figma link, or create a new file only after the user says to.
 2. Attach Styleguide (V2) by importing its published components, text styles, and variables.
-3. Theme the file to VNext Light or VNext Dark.
-4. Use the closest Page Template or Page Example only as the reference. Build the screen in the new file from published components.
+3. Theme the working file to VNext Light or VNext Dark.
+4. Read Page Templates (`5314:16`) and duplicate the closest template into the working file. Page Examples, including the sandbox page, are not the template source. Build from published components and bind every paint to a Styleguide (V2) token.
 5. Bind paints to `color/…` variables and text to the named text styles.
 6. Pick the component variant that matches the state (Default, Hover, Disabled, Error, Read Only). Do not fake a state with opacity.
 7. If the library has no component, stop and say so.
@@ -65,9 +67,9 @@ Foundations, under DESIGN:
 Screens to clone, on Page Templates: Checklist Example, Wizard Example,
 Table Example / Spacious, Table Example / Condensed, Form, Form Section.
 
-More product screens, on Page Examples (`15445:43918`, sandbox): Current Brand
-Dashboard, Brand / Performance / One Column / Narrow, Data Lab, Form Example,
-Table Example / Spacious.
+Page Examples (`15445:43918`, sandbox) are not the template source. Do not
+clone Current Brand Dashboard, Brand / Performance / One Column / Narrow,
+Data Lab, Form Example, or Table Example / Spacious from that page.
 
 Component pages live under COMPONENTS. Open the VNext frame on the page.
 Skip the V2 frame. The component list is in the skill index below.

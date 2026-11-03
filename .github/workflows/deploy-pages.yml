@@ -9,6 +9,7 @@ on:
       - "research-agent/competitor_feed.py"
       - "research-agent/scripts/write_auth_config.py"
       - ".agents/skills/**"
+      - "site-next/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -39,6 +40,23 @@ jobs:
         env:
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
         run: python3 research-agent/scripts/write_auth_config.py
+
+      - name: Publish the preview site at /v2
+        run: |
+          python3 - <<'PY'
+          import shutil
+          from pathlib import Path
+          src = Path("site-next")
+          dst = Path("research-agent/docs/research/v2")
+          if dst.exists():
+              shutil.rmtree(dst)
+          shutil.copytree(
+              src,
+              dst,
+              ignore=shutil.ignore_patterns("_build.py", "__pycache__", "*.pyc", ".DS_Store"),
+          )
+          print(f"copied {src} -> {dst}")
+          PY
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
