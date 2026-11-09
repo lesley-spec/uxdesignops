@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parent
 
 NAV = [
     ("Get started", [
-        ("home", "Overview", "index.html", False),
         ("expect", "What to expect", "expect/index.html", False),
+        ("home", "Overview", "index.html", False),
         ("start", "Install", "get-started/index.html", False),
     ]),
     ("Agents", [
@@ -107,7 +107,7 @@ SKILLS = {
     "creator-affiliate-ux-persona": ("Creator and affiliate", "The job on the partner side."),
     "design-system": ("Design system", "Styleguide V2, the components, and the tokens."),
     "ux-critique": ("UX critique", "Check a direction against the one-pager, PRD, or epic."),
-    "ux-prototyping": ("UX prototyping", "A Brand or Partner screen you can click, in this chat."),
+    "ux-prototyping": ("UX prototyping", "Orchestrator. A Brand or Partner screen you can click, in this chat."),
     "brand-prototype": ("Brand prototype", "The Brand UI shell."),
     "partner-prototype": ("Partner prototype", "The Partner UI shell."),
     "write-spec": ("Write a spec", "A one-pager and a linked UX epic."),
@@ -117,6 +117,19 @@ SKILLS = {
     "test-plan": ("Test plan", "A usability study from a prototype and its success criteria."),
     "accessibility-review": ("Accessibility review", "A synthetic accessibility pass before sessions."),
     "test-loopback": ("Test loopback", "The older publish path. Findings publish replaces it."),
+    "ux-designer": ("UX designer", "Orchestrator. The front door. Asks what you are doing, then runs a screen or a new project."),
+    "ux-research": ("UX research", "Orchestrator. Routes a research request through intake, the Frame, and the planning skills."),
+    "design-thinking-ux": ("Design thinking", "Orchestrator. Walks a project from Empathize to Test and waits at each gate."),
+}
+
+# Orchestrators run other skills in order. Each one is also callable by name.
+ORCHESTRATORS = ["ux-designer", "ux-research", "design-thinking-ux", "ux-prototyping"]
+
+# The agent page that runs each orchestrator, and the skills it runs.
+ORCHESTRATOR_AGENT = {
+    "ux-designer": "designer",
+    "ux-research": "researcher",
+    "design-thinking-ux": "pipeline",
 }
 
 DESIGNER_RUNS = [
@@ -238,8 +251,43 @@ def used_by_sentence(slug):
     return f"{names[0]}, {names[1]}, and {names[2]} run this when the work needs it. Call it by name when you want only this job."
 
 
+def orchestrator_runs(slug):
+    if slug == "ux-designer":
+        return DESIGNER_RUNS
+    if slug == "ux-research":
+        return RESEARCHER_RUNS + RESEARCHER_LENSES
+    if slug == "design-thinking-ux":
+        found = []
+        for _, group in PIPELINE_PHASES:
+            found.extend(s for s in group if s not in found)
+        return found
+    return []
+
+
+def orchestrator_page_body(slug):
+    title, blurb = SKILLS[slug]
+    agent_name, agent_href = AGENT_LINKS[ORCHESTRATOR_AGENT[slug]]
+    return f"""
+<section class="section" id="call">
+  <h2>Call it yourself</h2>
+  <p>Name the skill when you want the whole job in one chat. Open the agent when you want the steps laid out.</p>
+  {spec("Prompt", "use " + slug)}
+</section>
+<section class="section" id="overview">
+  <h2>Overview</h2>
+  <p>This is the skill behind the <a href="{rel(2, agent_href)}">{agent_name}</a> agent. It runs the skills below, one at a time, and stops at the points where it needs you.</p>
+</section>
+<section class="section" id="runs">
+  <h2>Skills it runs</h2>
+  {skill_rows(orchestrator_runs(slug), 2)}
+</section>
+"""
+
+
 def skill_page_body(slug):
     title, blurb = SKILLS[slug]
+    if slug in ORCHESTRATOR_AGENT:
+        return orchestrator_page_body(slug)
     extra = ""
     if slug == "test-loopback":
         extra = "<p>New studies use findings-publish.</p>"
@@ -1170,6 +1218,7 @@ PAGES["designer"] = dict(
 <section class="section" id="overview">
   <h2>Overview</h2>
   <p>Say you are the UX designer. You do not need to name a skill or a phase. It asks whether this is a specific screen or a new project, who it is for, and what you already have. A screen becomes three variations. A new project starts the pipeline and does not draw yet.</p>
+  <p>This agent is the {chip("ux-designer", 2)} skill. Call it by name to run the same flow in any chat.</p>
 </section>
 <section class="section" id="usage">
   <h2>Usage</h2>
@@ -1221,7 +1270,7 @@ PAGES["researcher"] = dict(
 </section>
 <section class="section" id="overview">
   <h2>Overview</h2>
-  <p>Call <span class="skill">ux-research</span>. It reads one skill at a time. It checks the Frame before it plans fieldwork, and it stops before it launches a study or writes tickets. Name a single skill if you only want that job.</p>
+  <p>Call {chip("ux-research", 2)}. It reads one skill at a time. It checks the Frame before it plans fieldwork, and it stops before it launches a study or writes tickets. Name a single skill if you only want that job.</p>
 </section>
 <section class="section" id="usage">
   <h2>Usage</h2>
@@ -1275,7 +1324,7 @@ PAGES["pipeline"] = dict(
 </section>
 <section class="section" id="overview">
   <h2>Overview</h2>
-  <p>Call <span class="skill">design-thinking-ux</span> when you want the whole pipeline. If you only want research or only a screen, use those doors instead. This one is for the project.</p>
+  <p>Call {chip("design-thinking-ux", 2)} when you want the whole pipeline. If you only want research or only a screen, use those doors instead. This one is for the project.</p>
 </section>
 <section class="section" id="usage">
   <h2>Usage</h2>
@@ -1314,9 +1363,14 @@ PAGES["skills"] = dict(
     title="Skills",
     kicker="Skills",
     lede="An agent is a package of these. Call the agent and it picks the skill. Call a skill when you already know which job you want.",
-    toc=[("designer", "UX designer"), ("researcher", "UX researcher"), ("pipeline", "Design thinking")],
+    toc=[("orchestrators", "Orchestrators"), ("designer", "UX designer"), ("researcher", "UX researcher"), ("pipeline", "Design thinking")],
     href="skills/index.html",
     body=f"""
+<section class="section" id="orchestrators">
+  <h2>Orchestrators</h2>
+  <p>These skills run other skills in order. Call one when you want the whole job. Each one is also the skill behind an agent. The lists below are the skills they call, and you can still name any of them yourself.</p>
+  {skill_rows(ORCHESTRATORS, 1)}
+</section>
 <section class="section" id="designer">
   <h2>UX designer</h2>
   <p>A screen to change, or a new project. The designer runs this set, then waits for you to pick a direction. <a href="../agents/designer/">Open the designer</a>.</p>
@@ -1338,7 +1392,7 @@ PAGES["skills"] = dict(
 """,
 )
 
-covered = set(DESIGNER_RUNS) | set(RESEARCHER_RUNS) | set(RESEARCHER_LENSES)
+covered = set(DESIGNER_RUNS) | set(RESEARCHER_RUNS) | set(RESEARCHER_LENSES) | set(ORCHESTRATORS)
 for _, group in PIPELINE_PHASES:
     covered.update(group)
 missing = set(SKILLS) - covered
@@ -1352,7 +1406,11 @@ for slug in SKILLS:
         title=title,
         kicker="Skills",
         lede=blurb,
-        toc=[("call", "Call it yourself"), ("overview", "Overview"), ("used", "Used by"), ("related", "Nearby skills")],
+        toc=(
+            [("call", "Call it yourself"), ("overview", "Overview"), ("runs", "Skills it runs")]
+            if slug in ORCHESTRATOR_AGENT
+            else [("call", "Call it yourself"), ("overview", "Overview"), ("used", "Used by"), ("related", "Nearby skills")]
+        ),
         href=f"skills/{slug}/index.html",
         nav="skills",
         body=skill_page_body(slug),
