@@ -260,7 +260,7 @@
     var link = document.createElement("a");
     link.className = "nav-link";
     link.setAttribute("data-nav", "expect");
-    link.href = "/uxdesignops/expect/";
+    link.href = "/uxdesignops/";
     link.textContent = "What to expect";
     nav.insertBefore(link, nav.firstChild);
   }

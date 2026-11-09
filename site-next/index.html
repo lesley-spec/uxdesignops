@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pick an agent — UX DesignOps</title>
+  <title>Pick what you are doing — UX DesignOps</title>
   <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
   <link rel="stylesheet" href="assets/site.css?v=7" />
 </head>
@@ -58,67 +58,174 @@
   <div class="scrim" id="scrim"></div>
   <div class="layout">
     <nav class="sidebar" id="sidebar" aria-label="Documentation">
-      <div class="side-nav"><p class="nav-label">Get started</p><a href="expect/index.html">What to expect</a><a href="index.html" aria-current="page">Overview</a><a href="get-started/index.html">Install</a><p class="nav-label">Agents</p><a href="agents/index.html">All agents</a><a href="agents/designer/index.html" class="is-child">UX designer</a><a href="agents/researcher/index.html" class="is-child">UX researcher</a><a href="agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Skills</p><a href="skills/index.html">All skills</a><p class="nav-label">Foundations</p><a href="foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="styles/index.html">Design tokens</a><a href="styles/color/index.html" class="is-child">Color</a><a href="styles/type/index.html" class="is-child">Type</a><a href="styles/space/index.html" class="is-child">Space</a><a href="styles/primitives/index.html" class="is-child">Primitives</a><a href="styles/layout/index.html" class="is-child">Layout</a></div>
+      <div class="side-nav"><p class="nav-label">Get started</p><a href="index.html" aria-current="page">What to expect</a><a href="overview/index.html">Overview</a><a href="get-started/index.html">Install</a><p class="nav-label">Agents</p><a href="agents/index.html">All agents</a><a href="agents/designer/index.html" class="is-child">UX designer</a><a href="agents/researcher/index.html" class="is-child">UX researcher</a><a href="agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Skills</p><a href="skills/index.html">All skills</a><p class="nav-label">Foundations</p><a href="foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="styles/index.html">Design tokens</a><a href="styles/color/index.html" class="is-child">Color</a><a href="styles/type/index.html" class="is-child">Type</a><a href="styles/space/index.html" class="is-child">Space</a><a href="styles/primitives/index.html" class="is-child">Primitives</a><a href="styles/layout/index.html" class="is-child">Layout</a></div>
       <p class="side-foot">The previous site is kept at <a href="v1/">/v1</a>.</p>
     </nav>
     <main class="page" id="content">
       <article>
         <p class="kicker">UX DesignOps</p>
-        <h1>Pick an agent</h1>
-        <p class="lede">Three doors. The skills stay inside them. You do not have to choose from a list of 38 names.</p>
-        
-<section class="section" id="start">
-  <h2>Get started</h2>
-  <p><a href="get-started/index.html">Install the pack once</a>, then paste this. It asks whether you have a screen or a new project.</p>
-  <figure class="spec"><div class="spec-top"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>You are the UX designer.</pre></figure>
-  <p class="quiet">More prompts are on <a href="agents/designer/">UX designer</a>, including a Figma link, a screenshot, and a new project.</p>
-</section>
-<section class="section" id="doors">
-  <div class="door-grid">
-    <a class="card" href="agents/designer/">
-      <span class="status status-ready">Available</span>
-      <h2>Start here</h2>
-      <p>A screen that is not working, or a new project. It asks a few questions, then draws variations or starts research and a one-pager.</p>
-      <span class="go">UX designer</span>
-    </a>
-    <a class="card" href="agents/researcher/">
-      <span class="status status-ready">Available</span>
-      <h2>Research a question</h2>
-      <p>Answer a question about users from what we already know. Plan a new study only for the part we still cannot answer.</p>
-      <span class="go">UX researcher</span>
-    </a>
-    <a class="card" href="agents/pipeline/">
-      <span class="status status-ready">Available</span>
-      <h2>Walk the whole project</h2>
-      <p>Go from first research through usability testing, one step at a time. It pauses at each decision and waits for you.</p>
-      <span class="go">Design thinking</span>
-    </a>
+        <h1>Pick what you are doing</h1>
+        <p class="lede">The pack has 41 skills. Most of them sit in two places: UX research, which finds out what we know, and UX design, which shapes and checks the work. A small design ops group runs the pipeline between them.</p>
+        <link rel="stylesheet" href="assets/pack.css?v=2" />
+<div class="pack">
+  <div id="overview">
+<div class="counts" aria-label="Skills by role">
+        <div class="count-tile research">
+          <b>21</b>
+          <span>UX research skills</span>
+          <small>Empathize and Define</small>
+        </div>
+        <div class="count-tile design">
+          <b>14</b>
+          <span>UX design skills</span>
+          <small>Ideate, Prototype and Test</small>
+        </div>
+        <div class="count-tile ops">
+          <b>6</b>
+          <span>UX design ops skills</span>
+          <small>Across every phase</small>
+        </div>
+      </div>
+
+      <div class="pipeline" role="img" aria-label="Design thinking pipeline: Empathize, Define, Ideate, Prototype, Test. UX research spans the first two phases with 21 skills. UX design spans the last three with 14 skills. UX design ops runs across all phases with 6 skills.">
+        <svg viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Front door -->
+          <rect x="8" y="6" width="944" height="34" rx="8" style="fill:var(--bg-dimmed)"/>
+          <text class="front" x="24" y="28">Front door · 4 skills · type /UX, install the pack, or run a guided project</text>
+
+          <!-- Phases: research (blue) then design (purple) -->
+          <polygon points="8,70 180,70 190,102 180,134 8,134" style="fill:var(--research)"/>
+          <text class="phase-name" x="99" y="98" text-anchor="middle">Empathize</text>
+          <text class="phase-sub" x="99" y="119" text-anchor="middle">What we know</text>
+
+          <polygon points="198,70 370,70 380,102 370,134 198,134 208,102" style="fill:var(--research)"/>
+          <text class="phase-name" x="289" y="98" text-anchor="middle">Define</text>
+          <text class="phase-sub" x="289" y="119" text-anchor="middle">The spec</text>
+
+          <polygon points="388,70 560,70 570,102 560,134 388,134 398,102" style="fill:var(--design)"/>
+          <text class="phase-name" x="479" y="98" text-anchor="middle">Ideate</text>
+          <text class="phase-sub" x="479" y="119" text-anchor="middle">Directions</text>
+
+          <polygon points="578,70 750,70 760,102 750,134 578,134 588,102" style="fill:var(--design)"/>
+          <text class="phase-name" x="669" y="98" text-anchor="middle">Prototype</text>
+          <text class="phase-sub" x="669" y="119" text-anchor="middle">Shells and walks</text>
+
+          <polygon points="768,70 940,70 940,134 768,134 778,102" style="fill:var(--design)"/>
+          <text class="phase-name" x="859" y="98" text-anchor="middle">Test</text>
+          <text class="phase-sub" x="859" y="119" text-anchor="middle">Sessions and findings</text>
+
+          <!-- Role brackets -->
+          <path d="M8 150 V160 H380 V150" style="fill:none;stroke:var(--research);stroke-width:2"/>
+          <text class="bar-label" x="194" y="182" text-anchor="middle" style="fill:var(--research)">UX research · 21 skills</text>
+          <path d="M388 150 V160 H940 V150" style="fill:none;stroke:var(--design);stroke-width:2"/>
+          <text class="bar-label" x="664" y="182" text-anchor="middle" style="fill:var(--design)">UX design · 14 skills</text>
+
+          <!-- Ops bar -->
+          <rect x="8" y="202" width="944" height="38" rx="8" style="fill:var(--bg);stroke:var(--ops);stroke-width:1.5"/>
+          <text class="bar-label" x="24" y="227" style="fill:var(--ops)">UX design ops · 6 skills</text>
+          <text class="bar-note" x="230" y="227">The spec-to-prototype handoff, the research job in order, and the pipeline itself</text>
+
+          <text class="caption" x="8" y="272">Counts are by role. Each role works mostly in the phases shown under it.</text>
+        </svg>
+      </div>
+
+      <div class="expect">
+        <article>
+          <h4>Ask in plain words</h4>
+          <p>Describe the problem. You never need a skill name to start.</p>
+        </article>
+        <article>
+          <h4>Each skill says what it needs</h4>
+          <p>It asks once for what is missing, then shows its working.</p>
+        </article>
+        <article>
+          <h4>A person decides at each gate</h4>
+          <p>Nothing is published, recruited or launched without a yes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="start" aria-labelledby="h-start">
+      <h2 id="h-start">Get started</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num" aria-hidden="true">1</span>
+          <div>
+            <h3>Install the pack once</h3>
+            <p>Paste this into your tool. It installs the whole pack for the project and for you.</p>
+            <div class="prompt">
+              <div class="prompt-head"><span>Prompt</span><button type="button" data-copy="use ux-install-all-skills">Copy</button></div>
+              <pre>use <b>ux-install-all-skills</b></pre>
+            </div>
+            <p class="more"><a href="https://claude.ai/artifact/9zWbv9TeToVfQwEEAaBp1R" target="_blank" rel="noopener">How to install it on Cursor, Claude, Figma and Magic Patterns →</a></p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num" aria-hidden="true">2</span>
+          <div>
+            <h3>Say what you are working on</h3>
+            <p>Type <span class="mono">/UX</span> and then your question, in plain words.</p>
+            <div class="prompt">
+              <div class="prompt-head"><span>Prompt</span><button type="button" data-copy="/UX What are our biggest creator pain points?">Copy</button></div>
+              <pre><b>/UX</b> What are our biggest creator pain points?</pre>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="step-num" aria-hidden="true">3</span>
+          <div>
+            <h3>Review before anything goes out</h3>
+            <p>The skill asks once for what it needs, shows its working, and stops at the gate. You confirm, edit or reject.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="role" aria-labelledby="h-role">
+      <h2 id="h-role">Pick a role</h2>
+      <p class="sub">Your role sets the top use cases below.</p>
+      <div class="doors" id="agents"></div>
+    </section>
+
+    <section id="do" aria-labelledby="h-uc">
+      <h2 id="h-uc">What do you want to do?</h2>
+      <p class="sub" id="uc-sub">Pick a role above to see its top use cases.</p>
+      <ol class="uc-list" id="ucs"></ol>
+      <div class="ask" id="ask">
+        <label for="q">Or type a question</label>
+        <div class="row">
+          <input id="q" type="text" placeholder="For example: is there any research on partner churn?" autocomplete="off">
+          <button class="btn" id="go" type="button">Find the skill</button>
+        </div>
+        <div class="chips" id="examples"></div>
+        <div class="routed" id="routed" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="how" aria-labelledby="h-how">
+      <h2 id="h-how">How this is organized</h2>
+      <div class="split">
+        <article>
+          <h4>Three roles</h4>
+          <p>UX research, UX design and UX design ops. Each of the 41 skills belongs to exactly one, so nothing is listed twice.</p>
+        </article>
+        <article>
+          <h4>You can still call a skill by itself</h4>
+          <p>The roles are a way in, not a wall. Name a skill in chat and it runs on its own.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <span>Built from the skill folders in <span class="mono">.agents/skills</span>.</span>
+      <a href="https://claude.ai/artifact/R4QBeZtpupvcDBpXLZEg6w" target="_blank" rel="noopener">Open the full field guide, all 41 skills</a>
+    </footer>
   </div>
-</section>
-<section class="section" id="system">
-  <h2>How this is organized</h2>
-  <p>Same shape as a design system. Foundations are the rules. Styles are what every screen and study has to apply. Agents are the packages you call. Skills are the jobs inside them, and you can still call a skill by itself.</p>
-  <div class="layer-grid">
-    <a class="card" href="foundations/"><h3>Foundations</h3><p>Five phases, with a review point at the end of each one.</p><span class="go">The pipeline</span></a>
-    <a class="card" href="styles/"><h3>Styles</h3><p>Design tokens (the named colors, type and spacing) with the same names as in Figma.</p><span class="go">Design tokens</span></a>
-    <a class="card" href="agents/"><h3>Agents</h3><p>Pick the one that matches your job: designer, researcher, or the full project walk.</p><span class="go">All agents</span></a>
-    <a class="card" href="skills/"><h3>Skills</h3><p>The jobs an agent runs for you. Open one when you want only that job.</p><span class="go">All skills</span></a>
-    <a class="card" href="get-started/"><h3>Get started</h3><p>Install the pack once. Then call an agent, or a single skill.</p><span class="go">Install</span></a>
-  </div>
-</section>
-<section class="section" id="which">
-  <h2>Which door</h2>
-  <div class="split">
-    <article class="card"><h3>A screen to change</h3><p>UX designer. Paste a Figma link to the screen, or a screenshot if you do not have one.</p></article>
-    <article class="card"><h3>A question about users</h3><p>UX researcher. It checks what we already know about users (the Frame) before it proposes a new study.</p></article>
-    <article class="card"><h3>A project, start unclear</h3><p>UX designer. Say it is a new project. It starts research, then a one-pager, and waits.</p></article>
-    <article class="card"><h3>First time on this machine</h3><p>Install, then come back to a door. The skills are the parts inside the agent.</p></article>
-  </div>
-  <p class="quiet">This folder is a preview. It does not replace the current DesignOps site.</p>
-</section>
+</div>
+<script src="assets/pack.js?v=4"></script>
 
       </article>
-      <aside class="toc"><p>On this page</p><a href="#start">Get started</a><a href="#doors">The doors</a><a href="#system">How this is organized</a><a href="#which">Which door</a></aside>
+      <aside class="toc"><p>On this page</p><a href="#overview">What to expect</a><a href="#start">Get started</a><a href="#role">Pick a role</a><a href="#do">What do you want to do?</a><a href="#how">How this is organized</a></aside>
     </main>
   </div>
   <script src="assets/site.js"></script>

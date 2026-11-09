@@ -740,16 +740,16 @@ function route(text) {
 
 // The page matches the question against the skill list. It does not call Claude.
 const SKILL_PAGES = {
-  'ux-research': '../agents/researcher/',
-  'design-thinking-ux': '../agents/pipeline/',
-  'ux-research-master': '../agents/designer/',
-  'ux-install-all-skills': '../get-started/',
+  'ux-research': 'agents/researcher/',
+  'design-thinking-ux': 'agents/pipeline/',
+  'ux-research-master': 'agents/designer/',
+  'ux-install-all-skills': 'get-started/',
 };
 
 function skillHref(slug) {
   if (SKILL_PAGES[slug]) return SKILL_PAGES[slug];
   const onSite = ['ab-test-planner', 'accessibility-review', 'adoption-check', 'anti-sycophancy', 'assumption-mapper', 'brand-operator-ux-persona', 'brand-prototype', 'competitive-analysis', 'creator-affiliate-ux-persona', 'data-analyze', 'design-system', 'findings-publish', 'frame-maintenance', 'heuristic-evaluation', 'ideate', 'measurable-check', 'panel-planner', 'partner-prototype', 'persona-check', 'prototype-handoff', 'research-builder', 'research-intake', 'research-planner', 'research-synthesis', 'study-summary', 'synthesize-research', 'talk-to-users', 'test-loopback', 'test-plan', 'user-context', 'user-personas', 'user-research', 'ux-critique', 'ux-prototyping', 'write-spec'];
-  return onSite.indexOf(slug) >= 0 ? '../skills/' + slug + '/' : '';
+  return onSite.indexOf(slug) >= 0 ? 'skills/' + slug + '/' : '';
 }
 
 function askQuestion(text) {

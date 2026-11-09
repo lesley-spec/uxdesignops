@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parent
 
 NAV = [
     ("Get started", [
-        ("expect", "What to expect", "expect/index.html", False),
-        ("home", "Overview", "index.html", False),
+        ("expect", "What to expect", "index.html", False),
+        ("home", "Overview", "overview/index.html", False),
         ("start", "Install", "get-started/index.html", False),
     ]),
     ("Agents", [
@@ -36,8 +36,8 @@ NAV = [
 ]
 
 DEPTH = {
-    "home": 0,
-    "expect": 1,
+    "home": 1,
+    "expect": 0,
     "start": 1,
     "foundations": 1,
     "styles": 1,
@@ -404,25 +404,25 @@ PAGES["home"] = dict(
     body=f"""
 <section class="section" id="start">
   <h2>Get started</h2>
-  <p><a href="get-started/index.html">Install the pack once</a>, then paste this. It asks whether you have a screen or a new project.</p>
+  <p><a href="../get-started/index.html">Install the pack once</a>, then paste this. It asks whether you have a screen or a new project.</p>
   {spec("Prompt", "You are the UX designer.")}
-  <p class="quiet">More prompts are on <a href="agents/designer/">UX designer</a>, including a Figma link, a screenshot, and a new project.</p>
+  <p class="quiet">More prompts are on <a href="../agents/designer/">UX designer</a>, including a Figma link, a screenshot, and a new project.</p>
 </section>
 <section class="section" id="doors">
   <div class="door-grid">
-    <a class="card" href="agents/designer/">
+    <a class="card" href="../agents/designer/">
       <span class="status status-ready">Available</span>
       <h2>Start here</h2>
       <p>A screen that is not working, or a new project. It asks a few questions, then draws variations or starts research and a one-pager.</p>
       <span class="go">UX designer</span>
     </a>
-    <a class="card" href="agents/researcher/">
+    <a class="card" href="../agents/researcher/">
       <span class="status status-ready">Available</span>
       <h2>Research a question</h2>
       <p>Answer a question about users from what we already know. Plan a new study only for the part we still cannot answer.</p>
       <span class="go">UX researcher</span>
     </a>
-    <a class="card" href="agents/pipeline/">
+    <a class="card" href="../agents/pipeline/">
       <span class="status status-ready">Available</span>
       <h2>Walk the whole project</h2>
       <p>Go from first research through usability testing, one step at a time. It pauses at each decision and waits for you.</p>
@@ -434,11 +434,11 @@ PAGES["home"] = dict(
   <h2>How this is organized</h2>
   <p>Same shape as a design system. Foundations are the rules. Styles are what every screen and study has to apply. Agents are the packages you call. Skills are the jobs inside them, and you can still call a skill by itself.</p>
   <div class="layer-grid">
-    <a class="card" href="foundations/"><h3>Foundations</h3><p>Five phases, with a review point at the end of each one.</p><span class="go">The pipeline</span></a>
-    <a class="card" href="styles/"><h3>Styles</h3><p>Design tokens (the named colors, type and spacing) with the same names as in Figma.</p><span class="go">Design tokens</span></a>
-    <a class="card" href="agents/"><h3>Agents</h3><p>Pick the one that matches your job: designer, researcher, or the full project walk.</p><span class="go">All agents</span></a>
-    <a class="card" href="skills/"><h3>Skills</h3><p>The jobs an agent runs for you. Open one when you want only that job.</p><span class="go">All skills</span></a>
-    <a class="card" href="get-started/"><h3>Get started</h3><p>Install the pack once. Then call an agent, or a single skill.</p><span class="go">Install</span></a>
+    <a class="card" href="../foundations/"><h3>Foundations</h3><p>Five phases, with a review point at the end of each one.</p><span class="go">The pipeline</span></a>
+    <a class="card" href="../styles/"><h3>Styles</h3><p>Design tokens (the named colors, type and spacing) with the same names as in Figma.</p><span class="go">Design tokens</span></a>
+    <a class="card" href="../agents/"><h3>Agents</h3><p>Pick the one that matches your job: designer, researcher, or the full project walk.</p><span class="go">All agents</span></a>
+    <a class="card" href="../skills/"><h3>Skills</h3><p>The jobs an agent runs for you. Open one when you want only that job.</p><span class="go">All skills</span></a>
+    <a class="card" href="../get-started/"><h3>Get started</h3><p>Install the pack once. Then call an agent, or a single skill.</p><span class="go">Install</span></a>
   </div>
 </section>
 <section class="section" id="which">
@@ -459,8 +459,7 @@ PAGES["expect"] = dict(
     kicker="UX DesignOps",
     lede="The pack has 41 skills. Most of them sit in two places: UX research, which finds out what we know, and UX design, which shapes and checks the work. A small design ops group runs the pipeline between them.",
     toc=[("overview", "What to expect"), ("start", "Get started"), ("role", "Pick a role"), ("do", "What do you want to do?"), ("how", "How this is organized")],
-    href="expect/index.html",
-    body=(ROOT / "_partials" / "expect-body.html").read_text(),
+    body=(ROOT / "_partials" / "expect-body.html").read_text().replace("../assets/", "assets/"),
 )
 
 PAGES["start"] = dict(
@@ -1433,3 +1432,21 @@ for key, page in PAGES.items():
     )
     out.write_text(html)
     print(out.relative_to(ROOT))
+
+redirect = ROOT / "expect" / "index.html"
+redirect.parent.mkdir(parents=True, exist_ok=True)
+redirect.write_text("""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=../" />
+  <link rel="canonical" href="../" />
+  <title>What to expect — UX DesignOps</title>
+  <script>location.replace("../")</script>
+</head>
+<body>
+  <p><a href="../">What to expect</a></p>
+</body>
+</html>
+""")
+print(redirect.relative_to(ROOT))
