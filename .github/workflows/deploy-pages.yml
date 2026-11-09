@@ -41,27 +41,43 @@ jobs:
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
         run: python3 research-agent/scripts/write_auth_config.py
 
-      - name: Publish the preview site at /v2
+      - name: Stage the new site at / and the previous site at /v1
         run: |
           python3 - <<'PY'
           import shutil
           from pathlib import Path
-          src = Path("site-next")
-          dst = Path("research-agent/docs/research/v2")
-          if dst.exists():
-              shutil.rmtree(dst)
+          old = Path("research-agent/docs/research")
+          new = Path("site-next")
+          stage = Path("_site")
+          if stage.exists():
+              shutil.rmtree(stage)
+          stage.mkdir()
+          junk = shutil.ignore_patterns("__pycache__", "*.pyc", ".DS_Store")
+          # The previous site, unchanged, under /v1.
+          shutil.copytree(old, stage / "v1", ignore=junk)
+          # The new site at the root.
           shutil.copytree(
-              src,
-              dst,
-              ignore=shutil.ignore_patterns("_build.py", "__pycache__", "*.pyc", ".DS_Store"),
+              new,
+              stage,
+              dirs_exist_ok=True,
+              ignore=shutil.ignore_patterns("_build.py", "_partials", "README.md", "__pycache__", "*.pyc", ".DS_Store"),
           )
-          print(f"copied {src} -> {dst}")
+          # Installer files keep their existing URLs, because the install commands on the new site download them.
+          for item in (old / "skills").iterdir():
+              if item.name == "index.html":
+                  continue
+              target = stage / "skills" / item.name
+              if item.is_dir():
+                  shutil.copytree(item, target, dirs_exist_ok=True, ignore=junk)
+              else:
+                  shutil.copy2(item, target)
+          print(f"staged {stage}: new site at /, previous site at /v1/")
           PY
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: research-agent/docs/research
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment

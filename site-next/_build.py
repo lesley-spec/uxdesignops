@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent
 NAV = [
     ("Get started", [
         ("home", "Overview", "index.html", False),
+        ("expect", "What to expect", "expect/index.html", False),
         ("start", "Install", "get-started/index.html", False),
     ]),
     ("Agents", [
@@ -36,6 +37,7 @@ NAV = [
 
 DEPTH = {
     "home": 0,
+    "expect": 1,
     "start": 1,
     "foundations": 1,
     "styles": 1,
@@ -312,7 +314,7 @@ def shell(key, title, kicker, lede, toc, body, nav_key=None):
       <span class="brand-name">UX DesignOps</span>
     </a>
     <div class="topbar-actions">
-      <a class="preview-link" href="https://lesley-spec.github.io/uxdesignops/">Live site</a>
+      <a class="preview-link" href="{rel(depth, "v1/")}">Previous site</a>
       <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -326,7 +328,7 @@ def shell(key, title, kicker, lede, toc, body, nav_key=None):
   <div class="layout">
     <nav class="sidebar" id="sidebar" aria-label="Documentation">
       <div class="side-nav">{"".join(nav)}</div>
-      <p class="side-foot">Preview. The <a href="https://lesley-spec.github.io/uxdesignops/">live site</a> is unchanged.</p>
+      <p class="side-foot">The previous site is kept at <a href="{rel(depth, "v1/")}">/v1</a>.</p>
     </nav>
     <main class="page" id="content">
       <article>
@@ -367,15 +369,15 @@ PAGES["home"] = dict(
       <span class="go">UX designer</span>
     </a>
     <a class="card" href="agents/researcher/">
-      <span class="status status-ready">Ready</span>
+      <span class="status status-ready">Available</span>
       <h2>Research a question</h2>
-      <p>Start from what we already know. Plan a study only for the part we still cannot answer.</p>
+      <p>Answer a question about users from what we already know. Plan a new study only for the part we still cannot answer.</p>
       <span class="go">UX researcher</span>
     </a>
     <a class="card" href="agents/pipeline/">
-      <span class="status status-ready">Ready</span>
+      <span class="status status-ready">Available</span>
       <h2>Walk the whole project</h2>
-      <p>Empathize through Test. It stops at every decision and waits for you.</p>
+      <p>Go from first research through usability testing, one step at a time. It pauses at each decision and waits for you.</p>
       <span class="go">Design thinking</span>
     </a>
   </div>
@@ -384,9 +386,9 @@ PAGES["home"] = dict(
   <h2>How this is organized</h2>
   <p>Same shape as a design system. Foundations are the rules. Styles are what every screen and study has to apply. Agents are the packages you call. Skills are the jobs inside them, and you can still call a skill by itself.</p>
   <div class="layer-grid">
-    <a class="card" href="foundations/"><h3>Foundations</h3><p>Five phases, and the gate at the end of each one.</p><span class="go">The pipeline</span></a>
-    <a class="card" href="styles/"><h3>Styles</h3><p>Every living Styleguide V2 token. The same names in Figma and on this site.</p><span class="go">Design tokens</span></a>
-    <a class="card" href="agents/"><h3>Agents</h3><p>Designer, researcher, and the full pipeline. A product manager door comes later.</p><span class="go">All agents</span></a>
+    <a class="card" href="foundations/"><h3>Foundations</h3><p>Five phases, with a review point at the end of each one.</p><span class="go">The pipeline</span></a>
+    <a class="card" href="styles/"><h3>Styles</h3><p>Design tokens (the named colors, type and spacing) with the same names as in Figma.</p><span class="go">Design tokens</span></a>
+    <a class="card" href="agents/"><h3>Agents</h3><p>Pick the one that matches your job: designer, researcher, or the full project walk.</p><span class="go">All agents</span></a>
     <a class="card" href="skills/"><h3>Skills</h3><p>The jobs an agent runs for you. Open one when you want only that job.</p><span class="go">All skills</span></a>
     <a class="card" href="get-started/"><h3>Get started</h3><p>Install the pack once. Then call an agent, or a single skill.</p><span class="go">Install</span></a>
   </div>
@@ -395,13 +397,22 @@ PAGES["home"] = dict(
   <h2>Which door</h2>
   <div class="split">
     <article class="card"><h3>A screen to change</h3><p>UX designer. Paste a Figma link to the screen, or a screenshot if you do not have one.</p></article>
-    <article class="card"><h3>A question about users</h3><p>UX researcher. It checks the Frame before it proposes a new study.</p></article>
+    <article class="card"><h3>A question about users</h3><p>UX researcher. It checks what we already know about users (the Frame) before it proposes a new study.</p></article>
     <article class="card"><h3>A project, start unclear</h3><p>UX designer. Say it is a new project. It starts research, then a one-pager, and waits.</p></article>
     <article class="card"><h3>First time on this machine</h3><p>Install, then come back to a door. The skills are the parts inside the agent.</p></article>
   </div>
   <p class="quiet">This folder is a preview. It does not replace the current DesignOps site.</p>
 </section>
 """,
+)
+
+PAGES["expect"] = dict(
+    title="Pick what you are doing",
+    kicker="UX DesignOps",
+    lede="The pack has 41 skills. Most of them sit in two places: UX research, which finds out what we know, and UX design, which shapes and checks the work. A small design ops group runs the pipeline between them.",
+    toc=[("overview", "What to expect"), ("start", "Get started"), ("role", "Pick a role"), ("do", "What do you want to do?"), ("how", "How this is organized")],
+    href="expect/index.html",
+    body=(ROOT / "_partials" / "expect-body.html").read_text(),
 )
 
 PAGES["start"] = dict(
