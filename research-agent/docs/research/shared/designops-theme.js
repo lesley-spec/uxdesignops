@@ -254,14 +254,27 @@
     document.head.appendChild(style);
   }
 
+  function ensureExpectNav() {
+    var nav = document.querySelector(".report-nav");
+    if (!nav || nav.querySelector('[data-nav="expect"]')) return;
+    var link = document.createElement("a");
+    link.className = "nav-link";
+    link.setAttribute("data-nav", "expect");
+    link.href = "/uxdesignops/expect/";
+    link.textContent = "What to expect";
+    nav.insertBefore(link, nav.firstChild);
+  }
+
   function init() {
     applyTheme(resolveTheme(localStorage.getItem(STORAGE_KEY)));
     ensureDropdownStyles();
     var nav = normalizeTopNav();
+    ensureExpectNav();
     ensureRequestsNav();
     removeSecondaryBar();
     ensureResearchDropdown(nav);
     orderPrimaryNav(nav);
+    ensureExpectNav();
     syncStickyOffset();
     window.addEventListener("resize", syncStickyOffset);
 
