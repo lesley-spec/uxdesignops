@@ -13,7 +13,7 @@ metadata:
   pipeline: impact-ux-designops
   author: impact.com-ux
   cadence: quarterly
-  frame: https://lesley-spec.github.io/uxdesignops/frame/
+  frame: https://lesley-spec.github.io/uxdesignops/v1/frame/
   frame_claude: https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw
 ---
 

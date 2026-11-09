@@ -4,7 +4,7 @@ Reference persona set for the UX DesignOps pipeline: three partner personas and 
 brand personas, each with goals, a job-to-be-done, a workflow map and a stated
 confidence score.
 
-**Live on DesignOps:** https://lesley-spec.github.io/uxdesignops/personas/
+**Live on DesignOps:** https://lesley-spec.github.io/uxdesignops/v1/personas/
 
 Claude artifact (optional, live connectors on claude.ai):
 https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ — ask UX Research for access.

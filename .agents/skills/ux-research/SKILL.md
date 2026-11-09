@@ -112,6 +112,6 @@ Status: INTAKE | IN STEP | GATE | DONE
 
 ## Site
 
-- Frame (DesignOps): `https://lesley-spec.github.io/uxdesignops/frame/`
+- Frame (DesignOps): `https://lesley-spec.github.io/uxdesignops/v1/frame/`
 - Claude live Ask: https://claude.ai/artifact/FHc7oAPoyohgxo87VdxCGw
-- Insight Monitor: `https://lesley-spec.github.io/uxdesignops/research/`
+- Insight Monitor: `https://lesley-spec.github.io/uxdesignops/v1/research/`

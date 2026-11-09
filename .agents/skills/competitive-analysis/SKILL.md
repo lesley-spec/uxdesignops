@@ -65,7 +65,7 @@ notes are the most useful thing in the building for this and the least read.
 
 ### The weekly competitor feed
 
-> **https://lesley-spec.github.io/uxdesignops/feed/**
+> **https://lesley-spec.github.io/uxdesignops/v1/feed/**
 
 Our own DesignOps site runs a competitor feed that refreshes every Monday, built
 from the competitors' own changelogs and blogs plus a filtered news sweep. It

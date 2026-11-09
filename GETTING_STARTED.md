@@ -173,7 +173,7 @@ The GitHub Pages site uses a **Google sign-in gate** restricted to `@impact.com`
 
 After a successful run you get:
 
-- **Public report:** `https://lesley-spec.github.io/uxdesignops/reports/YYYY-MM-DD.html`
+- **Public report:** `https://lesley-spec.github.io/uxdesignops/v1/reports/YYYY-MM-DD.html`
 - **Latest JSON:** `.../latest.json`
 - **Confluence page** in [Impact UX](https://impact.atlassian.net/wiki/spaces/ux) space (if token set)
 - Console output with issue counts, triangulation flags, and share link

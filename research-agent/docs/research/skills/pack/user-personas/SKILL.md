@@ -23,8 +23,8 @@ the maintained set and says how to use and refresh it.
 
 | Resource | Link |
 |---|---|
-| DesignOps personas page | https://lesley-spec.github.io/uxdesignops/personas/ |
-| Frame (claims) | https://lesley-spec.github.io/uxdesignops/frame/ |
+| DesignOps personas page | https://lesley-spec.github.io/uxdesignops/v1/personas/ |
+| Frame (claims) | https://lesley-spec.github.io/uxdesignops/v1/frame/ |
 | Markdown copy (in this skill) | [references/personas.md](references/personas.md) |
 | Claude artifact (Ask + live connectors) | https://claude.ai/artifact/FaBjbFu7hiM5LYBfALemAQ |
 
