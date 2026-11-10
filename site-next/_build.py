@@ -57,7 +57,7 @@ CURSOR = """Install the impact.com UX skills for me. Clone https://github.com/le
 
 CLAUDE = """Install the impact.com UX skills for me. Clone https://github.com/lesley-spec/uxdesignops and copy every folder in .agents/skills that contains a SKILL.md into ~/.claude/skills/, replacing any existing copy of those skills."""
 
-DESIGNER = """You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. Put three variations on the Styleguide V2 sandbox page. Clone the closest example. Use only Styleguide V2 components and tokens."""
+DESIGNER = """use ux-designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. I have a screenshot of the current screen and no working file yet."""
 
 RESEARCH = """use ux-research. What do we already know about how brand operators review new partner applications, and what would we still need to learn?"""
 
@@ -1204,48 +1204,39 @@ PAGES["agents"] = dict(
 PAGES["designer"] = dict(
     title="UX designer",
     kicker="Agents",
-    lede="The easy way in. It asks what you are doing, then either draws three variations of a screen or starts a new project from research and a one-pager.",
+    lede="Draws three variations of a screen, or starts a new project from research and a one-pager.",
     toc=[("start", "Get started"), ("overview", "Overview"), ("usage", "Usage"), ("anatomy", "Anatomy"), ("runs", "Skills it runs"), ("related", "Related")],
     body=f"""
 <p><span class="status status-ready">Ready</span></p>
 <section class="section" id="start">
   <h2>Get started</h2>
-  <p>Install once from <a href="../../get-started/index.html">Install</a>, then paste a prompt. Replace the bracketed link with your frame.</p>
-  {spec("Not sure yet", "You are the UX designer.")}
-  {spec("Variations", "You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. Here is the screen: [Figma link]. I don’t have a working file yet.")}
-  {spec("Screenshot", "You are the UX designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. I don’t have a Figma link. The screenshot is the current screen. I don’t have a working file yet.")}
-  {spec("New project", "You are the UX designer. This is a new project. Partner. I only have a hunch. No research yet.")}
-  <ul class="plain">
-    <li>A Figma link is the screen to design from. A screenshot is the fallback.</li>
-    <li>It duplicates the closest Page Template into a working file. It does not draw in the Styleguide file.</li>
-    <li>Color is a Styleguide V2 variable. Type is a named text style. It asks before it creates a file.</li>
-  </ul>
+  <p><a href="../../get-started/index.html">Install</a> once, then paste this.</p>
+  {spec("Prompt", DESIGNER)}
+  <p>A screen becomes three variations, then it stops. A new project goes to design thinking at the phase your artifacts point to. It does not draw until you ask.</p>
 </section>
 <section class="section" id="overview">
   <h2>Overview</h2>
-  <p>Say you are the UX designer. You do not need to name a skill or a phase. It asks whether this is a specific screen or a new project, who it is for, and what you already have. A screen becomes three variations. A new project starts the pipeline and does not draw yet.</p>
-  <p>This agent is the {chip("ux-designer", 2)} skill. Call it by name to run the same flow in any chat.</p>
+  <p>Call {chip("ux-designer", 2)}. It asks whether this is a specific screen or a new project, who it is for, and what you already have. Then it reads one design skill at a time. It uses Styleguide V2 only, and it never draws in the Styleguide file. Name a single skill if you only want that job.</p>
 </section>
 <section class="section" id="usage">
   <h2>Usage</h2>
   <div class="split">
-    <article class="card"><h3>Use it when</h3><p>You have a screen that fails a job, or you are starting a project and are not sure where to begin. Christine’s welcome header does not say what to do with 35 new applications.</p></article>
+    <article class="card"><h3>Use it when</h3><p>A screen fails a job, you want variations, or you are starting a project and are not sure where to begin. Christine’s welcome header does not say what to do with 35 new applications.</p></article>
     <article class="card"><h3>Use another door when</h3><p>The only question is about users. That is the researcher. You already know you want the full walk and want to name it. That is design thinking.</p></article>
   </div>
 </section>
 <section class="section" id="anatomy">
   <h2>Anatomy</h2>
   <div class="anatomy">
-    <article><span class="n">1</span><div><h3>Ask</h3><p>A specific screen or a new project. Brand or Partner. A hunch, research, a one-pager, mocks, or a prototype.</p></div></article>
-    <article><span class="n">2</span><div><h3>The screen</h3><p>Paste a Figma link. A screenshot works if you do not have one. It reads <a href="https://www.figma.com/design/Uwg1IvlTgvVA2IvX6WLxOd/Styleguide--V2-?node-id=5314-16">Page Templates</a> and duplicates the closest one. It does not draw on that page.</p></div></article>
-    <article><span class="n">3</span><div><h3>Tokens</h3><p>{chip("design-system", 2)}. Styleguide V2 only. VNext Light or VNext Dark. Named text styles. No raw hex, including from a screenshot.</p></div></article>
-    <article><span class="n">4</span><div><h3>Variations</h3><p>Three directions in a working file. It asks before it creates that file. Then it stops.</p></div></article>
-    <article><span class="n">5</span><div><h3>Or the pipeline</h3><p>A new project goes to research, then a one-pager. No screens until you ask for them.</p></div></article>
+    <article><span class="n">1</span><div><h3>Ask</h3><p>{chip("ux-designer", 2)} asks three things: a specific screen or a new project, Brand or Partner, and what you already have.</p></div></article>
+    <article><span class="n">2</span><div><h3>Who it is for</h3><p>{chip("brand-operator-ux-persona", 2)} or {chip("creator-affiliate-ux-persona", 2)}, with {chip("user-personas", 2)} for the set.</p></div></article>
+    <article><span class="n">3</span><div><h3>The screen</h3><p>{chip("design-system", 2)}. Styleguide V2 only. Named text styles. No raw hex, including from a screenshot. It duplicates the closest Page Template into a working file. It does not draw on the Styleguide page.</p></div></article>
+    <article><span class="n">4</span><div><h3>Check, then prototype</h3><p>{chip("ux-critique", 2)} against the one-pager or epic. Then {chip("ux-prototyping", 2)}, {chip("brand-prototype", 2)}, or {chip("partner-prototype", 2)} when you want something you can click.</p></div></article>
   </div>
 </section>
 <section class="section" id="runs">
   <h2>Skills it runs</h2>
-  <p>You do not call these yourself. A screen runs the set below. A new project runs <a href="../pipeline/">design thinking</a> from the phase your artifacts point to. You can still call any skill by name.</p>
+  <p>One at a time, for the path you are on. A screen runs this set, then waits for you to pick a direction. A new project hands off to <a href="../pipeline/">design thinking</a>. Call any row by name and the designer will not wrap the rest of the path around it.</p>
   {skill_rows(DESIGNER_RUNS, 2)}
 </section>
 <section class="section" id="related">
