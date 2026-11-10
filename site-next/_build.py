@@ -455,7 +455,7 @@ PAGES["home"] = dict(
 )
 
 PAGES["expect"] = dict(
-    title="Pick what you are doing",
+    title="What to expect",
     kicker="UX DesignOps",
     lede="The pack has 41 skills. Most of them sit in two places: UX research, which finds out what we know, and UX design, which shapes and checks the work. A small design ops group runs the pipeline between them.",
     toc=[("overview", "What to expect"), ("start", "Get started"), ("role", "Pick a role"), ("do", "What do you want to do?"), ("how", "How this is organized")],
