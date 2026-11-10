@@ -415,13 +415,6 @@ PAGES["home"] = dict(
 <section class="section" id="system">
   <h2>How this is organized</h2>
   <p>Same shape as a design system. Foundations are the rules. Styles are what every screen and study has to apply. Agents are the packages you call. Skills are the jobs inside them, and you can still call a skill by itself.</p>
-  <div class="layer-grid">
-    <a class="card" href="../foundations/"><h3>Foundations</h3><p>Five phases, with a review point at the end of each one.</p><span class="go">The pipeline</span></a>
-    <a class="card" href="../styles/"><h3>Styles</h3><p>Design tokens (the named colors, type and spacing) with the same names as in Figma.</p><span class="go">Design tokens</span></a>
-    <a class="card" href="../agents/"><h3>Agents</h3><p>Pick the one that matches your job: designer, researcher, or the full project walk.</p><span class="go">All agents</span></a>
-    <a class="card" href="../skills/"><h3>Skills</h3><p>The jobs an agent runs for you. Open one when you want only that job.</p><span class="go">All skills</span></a>
-    <a class="card" href="../get-started/"><h3>Get started</h3><p>Install the pack once. Then call an agent, or a single skill.</p><span class="go">Install</span></a>
-  </div>
 </section>
 <section class="section" id="which">
   <h2>Which door</h2>
