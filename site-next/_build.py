@@ -362,7 +362,7 @@ def shell(key, title, kicker, lede, toc, body, nav_key=None):
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title} — UX DesignOps</title>
   <script>(function(){{try{{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}}catch(x){{}}}})();</script>
-  <link rel="stylesheet" href="{asset}site.css?v=7" />
+  <link rel="stylesheet" href="{asset}site.css?v=8" />
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
@@ -1159,35 +1159,38 @@ PAGES["agents"] = dict(
 </section>
 <section class="section" id="make">
   <h2>Make</h2>
-  <div class="layer-grid">
+  <div class="split">
     <a class="card" href="designer/">
       <span class="status status-ready">Ready</span>
       <h3>UX designer</h3>
       <p>Start here. Variations of a screen, or a new project from research and a one-pager.</p>
       <span class="go">Open</span>
     </a>
+    {spec("Prompt", DESIGNER)}
   </div>
 </section>
 <section class="section" id="learn">
   <h2>Learn</h2>
-  <div class="layer-grid">
+  <div class="split">
     <a class="card" href="researcher/">
       <span class="status status-ready">Ready</span>
       <h3>UX researcher</h3>
       <p>Intake, the Frame, a study only if we still need one, then findings.</p>
       <span class="go">Open</span>
     </a>
+    {spec("Prompt", RESEARCH)}
   </div>
 </section>
 <section class="section" id="run">
   <h2>Run the whole job</h2>
-  <div class="layer-grid">
+  <div class="split">
     <a class="card" href="pipeline/">
       <span class="status status-ready">Ready</span>
       <h3>Design thinking</h3>
       <p>Empathize through Test. Use this when the work is a project, not a single screen or a single question.</p>
       <span class="go">Open</span>
     </a>
+    {spec("Prompt", "use design-thinking-ux. This is a new project. Partner. I only have a hunch. No research yet.")}
   </div>
 </section>
 """,

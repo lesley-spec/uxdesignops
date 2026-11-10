@@ -336,6 +336,14 @@ p { margin: 0 0 16px; }
 .layer-grid,
 .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
+.split > .spec {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.split > .spec pre { flex: 1; }
+
 .card {
   display: flex;
   flex-direction: column;
