@@ -367,8 +367,9 @@ def shell(key, title, kicker, lede, toc, body, nav_key=None):
 <body>
   <a class="skip" href="#content">Skip to content</a>
   <header class="topbar">
-    <a class="brand" href="{rel(depth, "index.html")}" aria-label="UX DesignOps home">
+    <a class="brand" href="{rel(depth, "index.html")}">
       {icon_markup()}
+      <span class="brand-name">UX DesignOps</span>
     </a>
     <div class="topbar-actions">
       <a class="preview-link" href="{rel(depth, "v1/")}">Previous site</a>
