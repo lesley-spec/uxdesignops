@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent
 NAV = [
     ("Get started", [
         ("expect", "What to expect", "index.html", False),
-        ("home", "Overview", "overview/index.html", False),
+        ("home", "How this is organized", "overview/index.html", False),
         ("start", "Install", "get-started/index.html", False),
     ]),
     ("Agents", [
