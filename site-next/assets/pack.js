@@ -631,18 +631,18 @@ const AGENTS = [
 // Design and ops are one use case per phase of the design thinking cycle.
 const ROLE_CASES = {
   research: [
-    { title: 'Look at what we already know', phase: null, what: 'Searches the research sources, grades every finding, and names what we do not know yet.', skill: 'user-context', ask: '/UX What do we know about partner churn?' },
-    { title: 'Talk to a user persona', phase: null, what: 'Shows which of the six personas owns this problem, how confident we are in each, and what the set cannot tell us.', skill: 'user-personas', ask: '/UX Which persona owns this problem?' },
-    { title: 'Test my designs', phase: null, what: 'Runs critique and accessibility checks on the prototype first, then drafts the usability study for your approval.', skill: 'test-plan', ask: '/UX Plan a usability test for this prototype.' },
-    { title: 'Create a research request for the UX research team', phase: null, what: 'Asks four questions, runs two checks, and routes the request to MICRO, SPRINT or DEEP. The ticket is a draft until you confirm.', skill: 'research-intake', ask: '/UX I need research on this, what is the fastest way?' },
-    { title: 'Check whether an adoption moved', phase: null, what: 'After a launch, re-runs the baseline, says whether the research held, and writes the outcome back as a claim.', skill: 'adoption-check', ask: '/UX Did it work? We shipped the invite flow.' },
+    { title: 'Look at what we already know', phase: null, what: 'Searches the research sources, grades every finding, and names what we do not know yet.', skill: 'user-context', ask: '/ux-research What do we know about partner churn?' },
+    { title: 'Talk to a user persona', phase: null, what: 'Shows which of the six personas owns this problem, how confident we are in each, and what the set cannot tell us.', skill: 'user-personas', ask: '/ux-research Which persona owns this problem?' },
+    { title: 'Test my designs', phase: null, what: 'Runs critique and accessibility checks on the prototype first, then drafts the usability study for your approval.', skill: 'test-plan', ask: '/ux-research Plan a usability test for this prototype.' },
+    { title: 'Create a research request for the UX research team', phase: null, what: 'Asks four questions, runs two checks, and routes the request to MICRO, SPRINT or DEEP. The ticket is a draft until you confirm.', skill: 'research-intake', ask: '/ux-research I need research on this, what is the fastest way?' },
+    { title: 'Check whether an adoption moved', phase: null, what: 'After a launch, re-runs the baseline, says whether the research held, and writes the outcome back as a claim.', skill: 'adoption-check', ask: '/ux-research Did it work? We shipped the invite flow.' },
   ],
   design: [
-    { title: 'Explore directions for a problem', phase: 'Ideate', what: 'Turns the framing into a brief and three to five rough directions, without picking one.', skill: 'ideate', ask: '/UX Give me a few directions to explore for this problem.' },
-    { title: 'Pressure-test mocks against the spec', phase: 'Ideate', what: 'Builds a coverage matrix of the mocks against the one-pager or epic, then critiques the solution.', skill: 'ux-critique', ask: '/UX Do these mocks cover the spec?' },
-    { title: 'Start a live prototype', phase: 'Prototype', what: 'Gets a Brand or Partner preview running in the tool you already use.', skill: 'ux-prototyping', ask: '/UX Start a prototype on localhost.' },
-    { title: 'Walk a persona through the prototype', phase: 'Prototype', what: 'Shows where a named persona hesitates. Hypotheses to test, not findings.', skill: 'persona-check', ask: '/UX Walk a creator through this before we recruit.' },
-    { title: 'Plan the usability test', phase: 'Test', what: 'Runs critique and accessibility checks first, then drafts the study for your approval.', skill: 'test-plan', ask: '/UX Plan a usability test for this prototype.' },
+    { title: 'Explore directions for a problem', phase: 'Ideate', what: 'Turns the framing into a brief and three to five rough directions, without picking one.', skill: 'ideate', ask: '/ux-designer Give me a few directions to explore for this problem.' },
+    { title: 'Pressure-test mocks against the spec', phase: 'Ideate', what: 'Builds a coverage matrix of the mocks against the one-pager or epic, then critiques the solution.', skill: 'ux-critique', ask: '/ux-designer Do these mocks cover the spec?' },
+    { title: 'Start a live prototype', phase: 'Prototype', what: 'Gets a Brand or Partner preview running in the tool you already use.', skill: 'ux-prototyping', ask: '/ux-designer Start a prototype on localhost.' },
+    { title: 'Walk a persona through the prototype', phase: 'Prototype', what: 'Shows where a named persona hesitates. Hypotheses to test, not findings.', skill: 'persona-check', ask: '/ux-designer Walk a creator through this before we recruit.' },
+    { title: 'Plan the usability test', phase: 'Test', what: 'Runs critique and accessibility checks first, then drafts the study for your approval.', skill: 'test-plan', ask: '/ux-designer Plan a usability test for this prototype.' },
   ],
   ops: [
     { title: 'Run a research job from start to finish', phase: 'Empathize', what: 'Works through intake, the Frame, the plan and the instruments, one step at a time.', skill: 'ux-research', ask: '/UX Start research on partner churn.' },
