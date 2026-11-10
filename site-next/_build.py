@@ -1127,14 +1127,8 @@ PAGES["agents"] = dict(
     title="How agents work",
     kicker="Agents",
     lede="Call the agent. It runs the skills inside it. Name a skill yourself when you only want that job.",
-    toc=[("start", "Get started"), ("doors", "The doors"), ("make", "Make"), ("learn", "Learn"), ("run", "Run the whole job")],
+    toc=[("doors", "The doors"), ("make", "Make"), ("learn", "Learn"), ("run", "Run the whole job")],
     body=f"""
-<section class="section" id="start">
-  <h2>Get started</h2>
-  <p><a href="../get-started/index.html">Install the pack once</a>, then paste this. It asks whether you have a screen or a new project.</p>
-  {spec("Prompt", "You are the UX designer.")}
-  <p class="quiet">More prompts are on <a href="designer/">UX designer</a>, including a Figma link, a screenshot, and a new project.</p>
-</section>
 <section class="section" id="doors">
   <div class="door-grid">
     <a class="card" href="designer/">
