@@ -1155,7 +1155,7 @@ PAGES["agents"] = dict(
     title="Agents",
     kicker="Agents",
     lede="Call the agent. It runs the skills inside it. Name a skill yourself when you only want that job.",
-    toc=[("make", "Make"), ("learn", "Learn"), ("run", "Run the whole job"), ("later", "Later")],
+    toc=[("make", "Make"), ("learn", "Learn"), ("run", "Run the whole job")],
     body="""
 <section class="section" id="make">
   <h2>Make</h2>
@@ -1189,14 +1189,6 @@ PAGES["agents"] = dict(
       <span class="go">Open</span>
     </a>
   </div>
-</section>
-<section class="section" id="later">
-  <h2>Later</h2>
-  <article class="card">
-    <span class="status status-later">Not a door yet</span>
-    <h3>Product manager</h3>
-    <p>Specs, epics, and the handoff after Define. We will add this door after designer and researcher are clear.</p>
-  </article>
 </section>
 """,
 )
