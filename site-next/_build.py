@@ -1124,7 +1124,7 @@ PAGES["layout"] = dict(
 )
 
 PAGES["agents"] = dict(
-    title="Agents",
+    title="How agents work",
     kicker="Agents",
     lede="Call the agent. It runs the skills inside it. Name a skill yourself when you only want that job.",
     toc=[("start", "Get started"), ("doors", "The doors"), ("make", "Make"), ("learn", "Learn"), ("run", "Run the whole job")],
