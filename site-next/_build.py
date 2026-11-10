@@ -466,12 +466,9 @@ PAGES["start"] = dict(
     title="Install",
     kicker="Get started",
     lede="One install. After that, call an agent. You do not type the names of the skills inside it.",
-    toc=[("then", "Then paste a prompt"), ("cursor", "Cursor"), ("claude", "Claude Code")],
+    toc=[("cursor", "Cursor"), ("claude", "Claude Code")],
     body=f"""
 <section class="section" id="then">
-  <h2>Then paste a prompt</h2>
-  <p>Install with the block for your tool below. In a new chat, paste this.</p>
-  {spec("Start", "You are the UX designer.")}
   <div class="door-grid">
     <a class="card" href="../agents/designer/"><span class="status status-ready">Ready</span><h3>UX designer</h3><p>Start here. A screen, or a new project. More prompts are on that page.</p></a>
     <a class="card" href="../agents/researcher/"><span class="status status-ready">Ready</span><h3>UX researcher</h3><p>Questions about users, evidence, and studies.</p></a>
