@@ -410,36 +410,8 @@ PAGES["home"] = dict(
     title="Pick an agent",
     kicker="UX DesignOps",
     lede="Three doors. The skills stay inside them. You do not have to choose from a list of 38 names.",
-    toc=[("start", "Get started"), ("doors", "The doors"), ("system", "How this is organized"), ("which", "Which door")],
+    toc=[("system", "How this is organized"), ("which", "Which door")],
     body=f"""
-<section class="section" id="start">
-  <h2>Get started</h2>
-  <p><a href="../get-started/index.html">Install the pack once</a>, then paste this. It asks whether you have a screen or a new project.</p>
-  {spec("Prompt", "You are the UX designer.")}
-  <p class="quiet">More prompts are on <a href="../agents/designer/">UX designer</a>, including a Figma link, a screenshot, and a new project.</p>
-</section>
-<section class="section" id="doors">
-  <div class="door-grid">
-    <a class="card" href="../agents/designer/">
-      <span class="status status-ready">Available</span>
-      <h2>Start here</h2>
-      <p>A screen that is not working, or a new project. It asks a few questions, then draws variations or starts research and a one-pager.</p>
-      <span class="go">UX designer</span>
-    </a>
-    <a class="card" href="../agents/researcher/">
-      <span class="status status-ready">Available</span>
-      <h2>Research a question</h2>
-      <p>Answer a question about users from what we already know. Plan a new study only for the part we still cannot answer.</p>
-      <span class="go">UX researcher</span>
-    </a>
-    <a class="card" href="../agents/pipeline/">
-      <span class="status status-ready">Available</span>
-      <h2>Walk the whole project</h2>
-      <p>Go from first research through usability testing, one step at a time. It pauses at each decision and waits for you.</p>
-      <span class="go">Design thinking</span>
-    </a>
-  </div>
-</section>
 <section class="section" id="system">
   <h2>How this is organized</h2>
   <p>Same shape as a design system. Foundations are the rules. Styles are what every screen and study has to apply. Agents are the packages you call. Skills are the jobs inside them, and you can still call a skill by itself.</p>
@@ -1155,8 +1127,36 @@ PAGES["agents"] = dict(
     title="Agents",
     kicker="Agents",
     lede="Call the agent. It runs the skills inside it. Name a skill yourself when you only want that job.",
-    toc=[("make", "Make"), ("learn", "Learn"), ("run", "Run the whole job")],
-    body="""
+    toc=[("start", "Get started"), ("doors", "The doors"), ("make", "Make"), ("learn", "Learn"), ("run", "Run the whole job")],
+    body=f"""
+<section class="section" id="start">
+  <h2>Get started</h2>
+  <p><a href="../get-started/index.html">Install the pack once</a>, then paste this. It asks whether you have a screen or a new project.</p>
+  {spec("Prompt", "You are the UX designer.")}
+  <p class="quiet">More prompts are on <a href="designer/">UX designer</a>, including a Figma link, a screenshot, and a new project.</p>
+</section>
+<section class="section" id="doors">
+  <div class="door-grid">
+    <a class="card" href="designer/">
+      <span class="status status-ready">Available</span>
+      <h2>Start here</h2>
+      <p>A screen that is not working, or a new project. It asks a few questions, then draws variations or starts research and a one-pager.</p>
+      <span class="go">UX designer</span>
+    </a>
+    <a class="card" href="researcher/">
+      <span class="status status-ready">Available</span>
+      <h2>Research a question</h2>
+      <p>Answer a question about users from what we already know. Plan a new study only for the part we still cannot answer.</p>
+      <span class="go">UX researcher</span>
+    </a>
+    <a class="card" href="pipeline/">
+      <span class="status status-ready">Available</span>
+      <h2>Walk the whole project</h2>
+      <p>Go from first research through usability testing, one step at a time. It pauses at each decision and waits for you.</p>
+      <span class="go">Design thinking</span>
+    </a>
+  </div>
+</section>
 <section class="section" id="make">
   <h2>Make</h2>
   <div class="layer-grid">
