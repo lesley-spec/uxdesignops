@@ -78,6 +78,17 @@ def logo_markup():
     return svg
 
 
+def icon_markup():
+    """The impact.com dot mark only: the first group of the logo, without the wordmark."""
+    svg = (ROOT / "assets" / "impact-logo.svg").read_text().strip()
+    group = re.search(r"<g>.*?</g>", svg, re.S).group(0)
+    return (
+        '<svg class="logo-mark" viewBox="0 0 32 32" fill="none" '
+        'xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">'
+        f"{group}</svg>"
+    )
+
+
 # Skills the agents run. Each one can still be called by name.
 # Designer is the screen package. Researcher is the research package.
 # Design thinking calls the researcher for Empathize, then the phase skills.
@@ -356,10 +367,8 @@ def shell(key, title, kicker, lede, toc, body, nav_key=None):
 <body>
   <a class="skip" href="#content">Skip to content</a>
   <header class="topbar">
-    <a class="brand" href="{rel(depth, "index.html")}">
-      {logo_markup()}
-      <span class="brand-divider" aria-hidden="true"></span>
-      <span class="brand-name">UX DesignOps</span>
+    <a class="brand" href="{rel(depth, "index.html")}" aria-label="UX DesignOps home">
+      {icon_markup()}
     </a>
     <div class="topbar-actions">
       <a class="preview-link" href="{rel(depth, "v1/")}">Previous site</a>
