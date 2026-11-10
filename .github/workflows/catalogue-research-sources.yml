@@ -1,0 +1,35 @@
+name: Catalogue Dovetail and Outset
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install requests
+        run: python -m pip install requests
+
+      - name: Build catalogue
+        env:
+          DOVETAIL_API_KEY: ${{ secrets.DOVETAIL_API_KEY }}
+          DOVETAIL_BASE_URL: ${{ secrets.DOVETAIL_BASE_URL }}
+          OUTSET_API_KEY: ${{ secrets.OUTSET_API_KEY }}
+          CATALOGUE_OUT: catalogue.md
+        run: python research-agent/scripts/catalogue_sources.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: research-catalogue
+          path: catalogue.md
+          retention-days: 5
