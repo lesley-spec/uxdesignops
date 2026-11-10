@@ -621,8 +621,8 @@ const AGENTS = [
   },
   {
     key: 'ops', name: 'UX design ops',
-    blurb: 'Walks the phases with design-thinking-ux. That skill calls the right skill for the phase you are in.',
-    hint: 'Phases, via design-thinking-ux',
+    blurb: 'design-thinking-ux is the orchestrator. It walks the phases and automatically runs the skill for the phase you are in.',
+    hint: 'Orchestrated by design-thinking-ux',
     skills: ['ux-research-master', 'ux-research', 'design-thinking-ux', 'ux-install-all-skills', 'write-spec', 'prototype-handoff'],
   },
 ];
@@ -645,17 +645,17 @@ const ROLE_CASES = {
     { title: 'Plan the usability test', phase: 'Test', what: 'Runs critique and accessibility checks first, then drafts the study for your approval.', skill: 'test-plan', ask: '/ux-designer Plan a usability test for this prototype.' },
   ],
   ops: [
-    { title: 'Run a research job from start to finish', phase: 'Empathize', what: 'design-thinking-ux calls ux-research for this phase: intake, the Frame, the plan and the instruments, one step at a time.', skill: 'design-thinking-ux', ask: '/design-thinking-ux Start at Empathize, on partner churn.' },
-    { title: 'Turn confirmed research into a spec', phase: 'Define', what: 'design-thinking-ux calls write-spec for this phase: a one-pager and a linked UX epic, once you sign off.', skill: 'design-thinking-ux', ask: '/design-thinking-ux We are at Define. Write the one-pager.' },
-    { title: 'Hand a chosen direction to Prototype', phase: 'Ideate', what: 'design-thinking-ux calls prototype-handoff for this phase: the decision, the mocks, the coverage gaps and the open questions.', skill: 'design-thinking-ux', ask: '/design-thinking-ux We picked a direction. Move to the next phase.' },
-    { title: 'Get a prototype running', phase: 'Prototype', what: 'design-thinking-ux calls ux-prototyping for this phase and gets a Brand or Partner preview running.', skill: 'design-thinking-ux', ask: '/design-thinking-ux Start the Prototype phase.' },
-    { title: 'Publish findings and loop them back', phase: 'Test', what: 'design-thinking-ux calls findings-publish for this phase: a report, a Slack post and Jira tickets.', skill: 'design-thinking-ux', ask: '/design-thinking-ux We finished Test. Write this up.' },
+    { title: 'Run a research job from start to finish', phase: 'Empathize', what: 'Works through intake, the Frame, the plan and the instruments, one step at a time.', skill: 'ux-research', ask: '/UX Start research on partner churn.' },
+    { title: 'Turn confirmed research into a spec', phase: 'Define', what: 'Writes a one-pager and a linked UX epic, once the designer signs off.', skill: 'write-spec', ask: '/UX Write the one-pager for this.' },
+    { title: 'Hand a chosen direction to Prototype', phase: 'Ideate', what: 'Packs the decision, the mocks, the coverage gaps and the open questions.', skill: 'prototype-handoff', ask: '/UX We picked a direction, hand this off.' },
+    { title: 'Keep the project on its gates', phase: 'Prototype', what: 'Walks the project through the phases and stops at each sign-off.', skill: 'design-thinking-ux', ask: '/UX Take me through the Prototype phase.' },
+    { title: 'Publish findings and loop them back', phase: 'Test', what: 'Turns a finished study into a report, a Slack post and Jira tickets, and loops the findings back.', skill: 'findings-publish', ask: '/UX Write this up for the team.' },
   ],
 };
 const SUB = {
   research: 'Top five UX research use cases.',
   design: 'Top five design use cases, from the skills in the pipeline.',
-  ops: 'Call design-thinking-ux. It walks the phases and runs the skill for the one you are in.',
+  ops: 'design-thinking-ux is the orchestrator. It automatically runs the skill on each card for that phase.',
 };
 
 const ALL_SKILLS = [...SKILLS_A, ...SKILLS_B, ...SKILLS_C];
