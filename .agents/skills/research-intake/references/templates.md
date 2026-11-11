@@ -90,6 +90,8 @@ board and link them from the UX ticket, which stays open until the data lands.
 No custom fields — prose is fine until there are enough tickets to want
 otherwise.
 
+**Title:** `Research: [topic]`. A ticket from a meeting also gets a source line under the title: meeting, date, and who was there.
+
 ```markdown
 h2. Question
 [what they want to know]
@@ -112,6 +114,7 @@ h2. Route
 h2. Scope
 *Question:* …
 *Sub-questions:* … (SPRINT/DEEP)
+*Who:* [segment, who is in and out, sample size if discussed]
 *Method:* …
 ```
 

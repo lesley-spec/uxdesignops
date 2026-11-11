@@ -4,7 +4,7 @@ description: >-
   Research request front door for impact.com UX. Four questions, two checks,
   one route: is there a decision, do we already know the answer, and if not —
   MICRO (48 hours), SPRINT (1–2 weeks), or DEEP (4+ weeks), run by research or
-  by the team that asked. Use when someone files or asks for research, or says
+  by the team that asked. Use when someone files or asks for research, pastes a transcript or notes from a briefing, kickoff or scoping call (Granola, Zoom, Google Meet), or says
   research request, research intake, triage this, route this study, scope this
   research, is this micro sprint or deep, or asks UX Research to look into
   something.
@@ -109,6 +109,7 @@ Look before you plan. Proportionate to the ask — a 48-hour question gets a
 | **Dovetail** | Have we interviewed on this? |
 | **Outset** | Has a study already run — or is one running right now? |
 | **PostHog** | Only if the question is behavioural |
+| **Jira, UX board** | Is a ticket already open on this? Read-only, two searches at most, run before drafting. |
 
 **Read the Frame before touching a connector.** It is one `ArtifactData` query,
 instant, already graded, and it records what was unanswerable last time — the
@@ -229,6 +230,10 @@ the mode needs longer than they have, offer three things and let them pick:
 
 Option 3 is legitimate. Running option 3 while calling it the full study is not.
 
+## Input: a meeting transcript
+
+If the request arrives as a transcript or notes from a briefing, kickoff or scoping call, follow [references/transcript-intake.md](references/transcript-intake.md). It runs the same checks and routes the same way. The meeting supplies most of the answers, and nothing reaches Jira until the draft is approved.
+
 ## Step 4 — Ticket and handoff
 
 Draft the ticket ([references/templates.md](references/templates.md)), show it,
@@ -267,6 +272,7 @@ failure — say so, and re-route it.
   two bugs in the original routing spec that this version fixes
 - [references/templates.md](references/templates.md) — reply templates and the
   ticket template
+- [references/transcript-intake.md](references/transcript-intake.md): a meeting transcript in, a draft ticket out
 
 ## What to watch
 
