@@ -2,10 +2,10 @@
 name: findings-publish
 description: >-
   Takes a finished study and turns it into the things people actually read. It
-  pulls together what Outset, Pendo and PostHog hold, writes a Dovetail report
-  with a TL;DR, key insights and deep dives, drafts a short Slack post, puts a
-  page wherever you point it in Confluence, and suggests Jira tickets worth
-  raising. Use when someone says write this up, publish the findings, share what
+  pulls together what Outset, Pendo and PostHog hold, writes a Dovetail data
+  entry with a TL;DR, persona, jobs to be done, current workflow, friction and key
+  quotes, drafts a short Slack post, puts a page wherever you point it in
+  Confluence, and suggests Jira tickets worth raising. Use when someone says write this up, publish the findings, share what
   we learned, or loop this back to the squad.
 license: Proprietary
 metadata:
@@ -17,7 +17,7 @@ metadata:
 
 # Findings publish
 
-A study has finished. This turns it into four things: a report in Dovetail, a
+A study has finished. This turns it into four things: a data entry in Dovetail, a
 short post for Slack, a Confluence page where you want it, and a list of tickets
 worth raising.
 
@@ -60,46 +60,89 @@ report built from numbers first reads like a dashboard with sentences.
 **Say what you could not get to.** If Pendo was empty or PostHog had no event
 for this, that belongs in the report, not left out quietly.
 
-## 1. The Dovetail report
+## 1. The Dovetail data entry
 
-Three layers, in this order.
+One data entry per participant or account, or one per study when the evidence is
+pooled. Dovetail holds research material as data entries, not documents, so this
+is not a doc.
+
+The shape follows the Backcountry entry in Dovetail
+(https://impact.dovetail.com/data/6Abp2MM39JJuG0PvrSdV8E). Keep the section order
+and the formatting. The topics change with the study: rename the topic-specific
+sections (the example's "Stance on AI" becomes whatever the study is testing).
+Drop a section only when the session has nothing on it, and then write "Not
+discussed in this session" rather than leaving it out quietly.
+
+### Header
+
+Title: `<Account or participant> - <Segment or study topic>`, for example
+`Backcountry - Strategic Growth Brand`.
+
+Under the title, one metadata line: account ID, brand size, partner count and the
+participant's role. Then the link to the Dovetail entry, and the recording link if
+there is one.
+
+Then one line: `AI-written summary. Quotes are verbatim from the transcript;
+everything else is interpretation.`
 
 ### TL;DR
 
-Five or six lines. What we asked, what we found, what it means for the decision.
+Heading `TL;DR: <Name> (<segment>)`, then four or five bullets, each with a bold
+label. Two sentences at most per bullet:
+
+- **The User:** who they are, what they are responsible for, the scale they manage.
+- **Current Workflow:** how they do the job today.
+- **Current Friction:** the two or three biggest pain points, worst first.
+- **Stance on <topic>:** their position, and the condition they attach to it.
+
 Someone should be able to read only this and not be misled.
 
-### Key insights
+### User persona
 
-Three to five. Any more and nothing stands out.
+- **Persona type:** their role, in one line.
+- **<Topic> appetite:** one line.
+- **Core goals:** three or four bullets, in the participant's own terms.
+- **Primary jobs to be done:** three or four bullets, each as "verb + outcome".
 
-Each one opens with the finding in plain words, then a quote that shows it, then
-how common it was and what contradicts it.
+### Current workflow
 
-```
-**Partners give up on the assets page rather than ask for help.**
+One subsection per stage, in the order they do the job (two to four stages). Each
+opens with a bold lead-in on the key point, then the detail. Keep quotes light
+here; they sit in Key quotes.
 
-> "I just gave up and emailed my contact. Took two days but at least
->  I knew it'd get done." P7
+### Current friction
 
-Six of eleven did something similar. Two found it first time and were
-surprised anyone struggled, both of them daily users.
-```
+One bullet per friction point, worst first. Each names the moment it happens and
+the cost: time, trust, money or the brand. If something in the session contradicts
+a friction point, say so in the same bullet.
 
-The disconfirming line is not optional. If you looked and found nothing against
-it, say that instead.
+### Stance on <topic>
 
-### Deep dives
+One or two bullets: the position, the condition attached to it, and the main
+concern.
 
-One section per insight for people who want the detail. Transcript quotes with
-timestamps, the behavioural read if there is one, what you are still unsure
-about.
+### Key quotes
 
-This is where numbers belong. Keep them out of the top two layers unless the
-number is the finding.
+Three blockquotes at most, each tied to a point above. Verbatim only. Then the
+link: `[Click to see in Dovetail](<entry link>)`.
 
-Write it with `create_doc` into the project the evidence sits in, after you have
-shown the draft.
+#### Transcript
+
+The full transcript with speaker labels and timestamps, copied from the source, not
+condensed or cleaned up. Check the participant's consent to share the transcript
+before including it, and leave it out if they have not agreed.
+
+### Rules for the entry
+
+- Quotes are verbatim. Never paraphrase inside quotation marks, and never invent a
+  quote, a participant or a number.
+- Every claim traces to something said in this session. If the session does not
+  cover it, say so.
+- Write the body as HTML, not Markdown. `create_data` takes plain text or HTML:
+  `h2`/`h3` for headings, `ul`/`li` for bullets, `blockquote` for quotes, `strong`
+  for bold labels. Never write it as a Dovetail doc.
+- Show the full draft in chat and wait for a yes. Then `create_data` into the
+  project the evidence sits in, with the title above.
 
 ## 2. The Slack post
 
@@ -133,7 +176,7 @@ without the caveat.
 **Ask where it goes.** Do not guess at a space. If the person has not said,
 ask, and offer what `getConfluenceSpaces` returns.
 
-The page carries the report plus the bits Dovetail does not hold well: who
+The page carries the findings plus the bits Dovetail does not hold well: who
 decided what, what happens next, and which beliefs this changed.
 
 ## 4. Jira tickets
