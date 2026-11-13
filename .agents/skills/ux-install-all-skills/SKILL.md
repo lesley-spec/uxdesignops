@@ -3,7 +3,8 @@ name: ux-install-all-skills
 description: >-
   Installs all 37 impact.com UX Design Thinking + UX Research pipeline skills
   (Empathize through Test, plus Frame research skills) into the current project
-  and globally for Cursor and Claude Code. Use when the user says
+  and globally for Cursor and Claude Code. Skips a scope that already has the
+  full pack, and does not ask about that scope again. Use when the user says
   ux-install-all-skills, install all skills, install the design thinking
   skills, set up the UX pipeline, get started with Design Thinking UX, or a
   designer needs the full skill pack before using the framework.
@@ -32,7 +33,8 @@ Catalog: [references/catalog.md](references/catalog.md).
    The orchestrator needs every child skill.
 3. **Do not start the pipeline** unless they asked for a guided run in the
    same message. Install, confirm READY, entice `design-thinking-ux`.
-4. **Overwrite is OK.** Re-running updates skills. Do not ask “replace?”
+4. **Do not replace a pack that is already there.** Ask only about a scope
+   that is missing. Overwrite only when they say “update” (`--update`).
 5. **No-shell harnesses** (Figma Make, Claude chat): give the zip / skills
    page. Do not pretend a local install ran.
 
@@ -49,7 +51,7 @@ Catalog: [references/catalog.md](references/catalog.md).
 Nihal’s Frame pack). This installer is copied too so they can re-run later.
 Names: [references/catalog.md](references/catalog.md).
 
-**Where (defaults — do not ask):**
+**Where:**
 
 | Location | Path |
 |---|---|
@@ -62,8 +64,24 @@ Names: [references/catalog.md](references/catalog.md).
 Global copies mean the pack works in **any** later project, not only this
 folder.
 
-`--project-only` if they said “just this repo.” `--target ~/path` if they
-named another folder. Otherwise cwd.
+**Check before you ask.** A scope is already installed when its folder
+contains `design-thinking-ux`, `ux-research`, and `ux-install-all-skills`.
+Still run the script without `--update`. It leaves a complete copy in place
+and finishes a partial one. It prints `already` when it changes nothing.
+
+- Global already there: do **not** ask about installing for every project.
+  Say it is already installed.
+- This project already there (`.agents/skills/` or the harness folder): do
+  **not** ask.
+- Both missing: ask once — this project, every project on this computer, or
+  both — and wait.
+- Only this project missing: ask only about this project.
+- Only the global copy missing: install that global folder without asking.
+- “Update” / “update the pack”: pass `--update` and replace existing copies.
+
+`--project-only` if they said “just this repo.” `--global-only` if they said
+“every project” and this folder should stay untouched. `--target ~/path` if
+they named another folder. Otherwise cwd.
 
 ## Workflow (Cursor / Claude Code / Copilot)
 
@@ -105,7 +123,9 @@ Task Progress:
    ```
 
    Optional: `--target /path/to/project` · `--project-only` ·
-   `--global-only`.
+   `--global-only` · `--update` (only when they asked to replace an
+   existing copy). A normal run leaves a complete copy in place and
+   prints `already` for that scope.
 5. **Parse READY** — look for
    `IMPACT_SKILLS_READY pipeline=37 …`.
 6. **Confirm** — show how many skills landed, where, and this next line:
@@ -134,6 +154,10 @@ From repo root:
 - Asking the designer to copy skill folders by hand
 - Installing only `design-thinking-ux` and hoping the rest appear
 - Starting Empathize intake in the same turn as install (unless they asked)
-- Skipping global install without `--project-only` / an explicit “this repo only”
+- Asking again about a global install that is already in `~/.cursor/skills/`
+  or `~/.claude/skills/`
+- Replacing an existing pack without “update” / `--update`
+- Skipping a global install that is actually missing, unless they said this
+  repo only
 - Treating a zip download in Make as a substitute for running this in Cursor
   when they actually have a shell

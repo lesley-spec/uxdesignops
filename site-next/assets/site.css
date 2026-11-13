@@ -1076,6 +1076,92 @@ a.skill:hover { text-decoration: underline; }
   line-height: 18px;
 }
 
+.snapshot {
+  margin: 0 0 20px;
+  color: var(--text-subdued);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.research-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: end;
+  margin: 0 0 12px;
+}
+
+.research-bar label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-subdued);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.research-bar input,
+.research-bar select {
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-default);
+  background: var(--background-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  min-width: 160px;
+}
+
+.research-bar .search-field { flex: 1 1 220px; }
+.research-bar .search-field input { width: 100%; }
+
+.filter-status {
+  margin: 0 0 12px;
+  color: var(--text-subdued);
+  font-size: 14px;
+}
+
+.nuggets { display: grid; gap: 12px; }
+
+.nugget {
+  margin: 0;
+  padding: 16px 20px;
+  background: var(--background-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+}
+
+.nugget p { margin: 0; color: var(--text-default); font-size: 16px; line-height: 24px; }
+
+.nugget-meta {
+  margin-top: 8px;
+  color: var(--text-subdued);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.nugget-meta a { color: var(--text-interactive); }
+
+.empty-note {
+  margin: 8px 0 0;
+  color: var(--text-subdued);
+}
+
+.more-btn {
+  margin-top: 16px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--text-default);
+  background: var(--background-default);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.more-btn:hover { background: var(--background-hover); }
+
 @media (max-width: 1080px) {
   .page { grid-template-columns: minmax(0, 1fr); padding: 40px 24px 64px; }
   .toc {

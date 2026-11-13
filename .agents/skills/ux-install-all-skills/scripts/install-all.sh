@@ -5,7 +5,9 @@
 #   bash install-all.sh --target ~/my-project
 #   bash install-all.sh --project-only
 #   bash install-all.sh --global-only
+#   bash install-all.sh --update
 #   curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash
+#   curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash -s -- --update
 set -euo pipefail
 
 ZIP_URL="${DESIGNOPS_SKILLS_ZIP:-https://lesley-spec.github.io/uxdesignops/skills/designops-skills.zip}"
@@ -53,6 +55,7 @@ PIPELINE_SKILLS=(
 TARGET="."
 DO_PROJECT=1
 DO_GLOBAL=1
+DO_UPDATE=0
 
 die() { echo "ERROR: $*" >&2; exit 1; }
 info() { echo "→ $*"; }
@@ -62,12 +65,13 @@ while [[ $# -gt 0 ]]; do
     --target) TARGET="${2:-}"; shift 2 ;;
     --project-only) DO_GLOBAL=0; shift ;;
     --global-only) DO_PROJECT=0; shift ;;
+    --update) DO_UPDATE=1; shift ;;
     --no-global) DO_GLOBAL=0; shift ;;
     -h|--help)
       sed -n '2,10p' "$0"
       exit 0
       ;;
-    *) die "Unknown flag: $1 (use --target PATH | --project-only | --global-only)" ;;
+    *) die "Unknown flag: $1 (use --target PATH | --project-only | --global-only | --update)" ;;
   esac
 done
 
@@ -140,6 +144,16 @@ _link_skill() {
   ln -sfn "$rel/$name" "$dest_dir/$name"
 }
 
+# The full pack is present only when every required skill is on disk.
+# A partial copy is installed again. A complete copy is left alone unless --update.
+_pack_present() {
+  local base="$1" name
+  [[ -d "$base" ]] || return 1
+  for name in "${PIPELINE_SKILLS[@]}" ux-install-all-skills; do
+    [[ -f "$base/$name/SKILL.md" ]] || return 1
+  done
+}
+
 # Every skill folder in the pack (37 pipeline + this installer + any extras).
 ALL_NAMES=()
 for skill_dir in "$SOURCE_PARENT"/*/; do
@@ -155,32 +169,56 @@ for name in "${PIPELINE_SKILLS[@]}"; do
 done
 
 project_agents=""
+project_state="skipped"
 cursor_global="${HOME}/.cursor/skills"
 claude_global="${HOME}/.claude/skills"
 cursor_global_ok="no"
 claude_global_ok="no"
 
+_install_tree() {
+  local dest_root="$1"
+  mkdir -p "$dest_root"
+  local name
+  for name in "${ALL_NAMES[@]}"; do
+    _copy_skill "$SOURCE_PARENT/$name" "$dest_root/$name"
+  done
+}
+
 if [[ "$DO_PROJECT" -eq 1 ]]; then
   TARGET="$(cd "$TARGET" && pwd)" || die "Cannot cd to --target $TARGET"
   project_agents="$TARGET/.agents/skills"
-  mkdir -p "$project_agents" "$TARGET/.cursor/skills" "$TARGET/.claude/skills"
-  info "Installing into $project_agents (Cursor + Claude symlinks)…"
-  for name in "${ALL_NAMES[@]}"; do
-    _copy_skill "$SOURCE_PARENT/$name" "$project_agents/$name"
-    _link_skill "$name" "$TARGET/.cursor/skills" "../../.agents/skills"
-    _link_skill "$name" "$TARGET/.claude/skills" "../../.agents/skills"
-  done
+  if [[ "$DO_UPDATE" -eq 0 ]] && _pack_present "$project_agents"; then
+    info "Already installed in this project: $project_agents"
+    project_state="already"
+  else
+    info "Installing into $project_agents (Cursor + Claude symlinks)…"
+    mkdir -p "$project_agents" "$TARGET/.cursor/skills" "$TARGET/.claude/skills"
+    for name in "${ALL_NAMES[@]}"; do
+      _copy_skill "$SOURCE_PARENT/$name" "$project_agents/$name"
+      _link_skill "$name" "$TARGET/.cursor/skills" "../../.agents/skills"
+      _link_skill "$name" "$TARGET/.claude/skills" "../../.agents/skills"
+    done
+    project_state="installed"
+  fi
 fi
 
 if [[ "$DO_GLOBAL" -eq 1 ]]; then
-  info "Installing globally for Cursor + Claude Code…"
-  mkdir -p "$cursor_global" "$claude_global"
-  for name in "${ALL_NAMES[@]}"; do
-    _copy_skill "$SOURCE_PARENT/$name" "$cursor_global/$name"
-    _copy_skill "$SOURCE_PARENT/$name" "$claude_global/$name"
-  done
-  cursor_global_ok="yes"
-  claude_global_ok="yes"
+  if [[ "$DO_UPDATE" -eq 0 ]] && _pack_present "$cursor_global"; then
+    info "Already installed for Cursor: $cursor_global"
+    cursor_global_ok="already"
+  else
+    info "Installing globally for Cursor…"
+    _install_tree "$cursor_global"
+    cursor_global_ok="yes"
+  fi
+  if [[ "$DO_UPDATE" -eq 0 ]] && _pack_present "$claude_global"; then
+    info "Already installed for Claude Code: $claude_global"
+    claude_global_ok="already"
+  else
+    info "Installing globally for Claude Code…"
+    _install_tree "$claude_global"
+    claude_global_ok="yes"
+  fi
 fi
 
 missing=()
@@ -216,13 +254,15 @@ cat <<EOF
 ═══════════════════════════════════════════════════════════
  pipeline skills:  37 / 37
  pack folders:     ${skill_n}
- project:          ${project_line}
+ project:          ${project_state}  (${project_line})
  Cursor global:    ${cursor_global_ok}  (${cursor_global})
  Claude global:    ${claude_global_ok}  (${claude_global})
+
+ already = left in place. installed = copied now. Say "update the pack" to replace a copy.
 
  Next: in chat, say  use design-thinking-ux
  or  use ux-research  for research + Frame skills.
 
-IMPACT_SKILLS_READY pipeline=37 dest=${project_line} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
+IMPACT_SKILLS_READY pipeline=37 dest=${project_line} project=${project_state} global_cursor=${cursor_global_ok} global_claude=${claude_global_ok}
 ═══════════════════════════════════════════════════════════
 EOF

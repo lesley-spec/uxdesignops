@@ -39,12 +39,12 @@ const SKILLS_A = [
   },
   {
     name: 'ux-install-all-skills', stage: 'Front door',
-    purpose: 'Installs the full UX skill set in one run, for the project and globally.',
+    purpose: 'Installs the full UX skill set for this project and for every project. Skips a copy that is already there.',
     enter: ['install all skills', 'set up the UX pipeline', 'a skill is missing'],
     enterNeeds: 'Nothing, by default.',
     from: ['you', 'design-thinking-ux or ux-research, when sibling skills are missing'], to: ['design-thinking-ux'],
-    gate: 'None.',
-    logic: ['Find or download the installer.', 'Run it with the sandbox off.', 'Read the ready line.', 'Offer the next step.'],
+    gate: 'Asks only about a scope that is missing. A global install that is already there is not asked again.',
+    logic: ['Check the global folder and this project for the pack.', 'Skip a scope that already has it.', 'Ask only about a missing scope.', 'Run the installer with the sandbox off.', 'Read the ready line.', 'Offer the next step.'],
     produces: 'Skill folders for Cursor and Claude Code, plus a ready line.',
     never: ['Installs a subset', 'Starts the pipeline unasked', 'Claims an install in a chat with no shell'],
     connectors: 'None. Needs a shell and network access.', inRouting: true

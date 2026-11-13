@@ -19,6 +19,12 @@ NAV = [
         ("researcher", "UX researcher", "agents/researcher/index.html", True),
         ("pipeline", "Design thinking", "agents/pipeline/index.html", True),
     ]),
+    ("Research", [
+        ("research", "Research", "research/index.html", False),
+    ]),
+    ("Library", [
+        ("library", "Context library", "library/index.html", False),
+    ]),
     ("Skills", [
         ("skills", "All skills", "skills/index.html", False),
     ]),
@@ -51,11 +57,31 @@ DEPTH = {
     "researcher": 2,
     "pipeline": 2,
     "skills": 1,
+    "research": 1,
+    "library": 1,
 }
 
-CURSOR = """Install the impact.com UX skills for me. Clone https://github.com/lesley-spec/uxdesignops and copy every folder in .agents/skills that contains a SKILL.md into ~/.cursor/skills/, replacing any existing copy of those skills. Do not add a team marketplace."""
+def install_prompt(project_dir, global_dir):
+    return (
+        "Install the impact.com UX skills for me. Clone https://github.com/lesley-spec/uxdesignops "
+        "and copy every folder in .agents/skills that contains a SKILL.md. "
+        f"The pack is already installed for every project when {global_dir} contains design-thinking-ux, "
+        "ux-research, and ux-install-all-skills. If those three are there, do not ask about a global install. "
+        "Say they are already installed, and run the installer without --update so a complete copy stays in place. "
+        f"This project already has the pack when .agents/skills/ or {project_dir} in the open folder contains "
+        "those three. If it does, do not ask. "
+        "Ask only about a scope that is missing. If both are missing, ask whether I want this project, "
+        "every project on this computer, or both, and wait for my answer. If only this project is missing, "
+        "ask only about this project. If only the global copy is missing, install it into "
+        f"{global_dir} without asking. "
+        f"This project means .agents/skills/ and {project_dir} in the open folder. Every project means {global_dir}. "
+        "Replace existing copies only if I say update. Do not add a team marketplace. "
+        "Ask me to approve the file writes before you copy."
+    )
 
-CLAUDE = """Install the impact.com UX skills for me. Clone https://github.com/lesley-spec/uxdesignops and copy every folder in .agents/skills that contains a SKILL.md into ~/.claude/skills/, replacing any existing copy of those skills."""
+
+CURSOR = install_prompt(".cursor/skills/", "~/.cursor/skills/")
+CLAUDE = install_prompt(".claude/skills/", "~/.claude/skills/")
 
 DESIGNER = """use ux-designer. Brand. Christine’s welcome header doesn’t say what to do with 35 new applications. I have a screenshot of the current screen and no working file yet."""
 
@@ -362,7 +388,7 @@ def shell(key, title, kicker, lede, toc, body, nav_key=None):
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title} — UX DesignOps</title>
   <script>(function(){{try{{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}}catch(x){{}}}})();</script>
-  <link rel="stylesheet" href="{asset}site.css?v=8" />
+  <link rel="stylesheet" href="{asset}site.css?v=9" />
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
@@ -457,17 +483,17 @@ PAGES["start"] = dict(
 </section>
 <section class="section" id="cursor">
   <h2>Cursor</h2>
-  <p>Paste this in a Cursor agent chat. Approve the file access when Cursor asks. The skills, including the UX designer, then work in every project on that computer.</p>
+  <p>Paste this in a Cursor agent chat. It checks what is already installed. If the pack is already on this computer, it does not ask you to install that again. It asks only about a project that does not have the pack yet. Approve the file access when Cursor asks.</p>
   {spec("Cursor", CURSOR)}
-  <p>Run the same prompt again after a new skill is pushed. A new chat uses the updated copy.</p>
+  <p>Say “update the pack” when a new skill is pushed. A normal install does not replace a copy that is already there.</p>
   <p>A Cursor admin can install the pack for the whole team. In the dashboard, open Plugins and MCPs, choose Add Marketplace, then Import from Repo, and paste <code>https://github.com/lesley-spec/uxdesignops</code>. Turn on Auto Refresh and set the impact-ux plugin to Required. That import is limited to admins.</p>
 </section>
 <section class="section" id="claude">
   <h2>Claude Code</h2>
-  <p>Paste this in Claude Code. Approve the file access when it asks. The skills, including the UX designer, then work in every project on that computer. The browser chat cannot run this.</p>
+  <p>Paste this in Claude Code. It checks what is already installed. If the pack is already on this computer, it does not ask you to install that again. It asks only about a project that does not have the pack yet. Approve the file access when it asks. The browser chat cannot run this.</p>
   {spec("Claude Code", CLAUDE)}
-  <p>Run the same prompt again after a new skill is pushed. A new chat uses the updated copy.</p>
-  <p>Or run the published installer yourself:</p>
+  <p>Say “update the pack” when a new skill is pushed. A normal install does not replace a copy that is already there.</p>
+  <p>Or run the published installer yourself. It skips a copy that is already there. Add <code>--update</code> to replace it.</p>
   {spec("Terminal", "curl -fsSL https://lesley-spec.github.io/uxdesignops/skills/install-all.sh | bash")}
 </section>
 """,
@@ -1399,6 +1425,90 @@ for slug in SKILLS:
         nav="skills",
         body=skill_page_body(slug),
     )
+
+PAGES["research"] = dict(
+    title="Research",
+    kicker="UX DesignOps",
+    lede="Search pain points from Dovetail, Outset, PostHog, and Pendo. As of 27 Aug 2026, window 29 May to 27 Aug. Audience is Brand, Partner, or Shared. These records are not tagged to a named persona.",
+    toc=[],
+    href="research/index.html",
+    body="""
+<section class="section" id="findings">
+  <p class="snapshot">PostHog 23 · Pendo 150 saved of 275 counted · Dovetail 1,576 · Outset 53.</p>
+  <form class="research-bar" id="research-filters" role="search">
+    <label class="search-field">Search
+      <input type="search" id="q" name="q" placeholder="Payments, onboarding, links" />
+    </label>
+    <label>Source
+      <select id="source" name="source">
+        <option value="">All sources</option>
+        <option value="dovetail">Dovetail</option>
+        <option value="outset">Outset</option>
+        <option value="posthog">PostHog</option>
+        <option value="pendo">Pendo</option>
+      </select>
+    </label>
+    <label>Audience
+      <select id="audience" name="audience">
+        <option value="">All audiences</option>
+        <option value="Brand">Brand</option>
+        <option value="Partner">Partner</option>
+        <option value="Shared">Shared</option>
+      </select>
+    </label>
+    <label>Product area
+      <select id="area" name="area">
+        <option value="">All product areas</option>
+      </select>
+    </label>
+    <label>Signal
+      <select id="signal" name="signal">
+        <option value="">All signals</option>
+        <option value="user_feedback">User feedback</option>
+        <option value="bug">Bug reports</option>
+        <option value="friction">Friction</option>
+        <option value="quant">Quant drop-offs</option>
+        <option value="research">Research</option>
+      </select>
+    </label>
+  </form>
+  <p class="filter-status" id="result-count" aria-live="polite"></p>
+  <div class="nuggets" id="nuggets"></div>
+  <p class="empty-note" id="empty" hidden>No findings match that search.</p>
+  <button type="button" class="more-btn" id="more" hidden>Show more</button>
+</section>
+<script src="../assets/research.js"></script>
+""",
+)
+
+PAGES["library"] = dict(
+    title="Context library",
+    kicker="Library",
+    lede="Prototypes, Figma files, and research notes live in the UX context library. Ask in Slack, or open the catalogue.",
+    toc=[("find", "Find something"), ("add", "Add something")],
+    href="library/index.html",
+    body="""
+<section class="section" id="find">
+  <h2>Find something</h2>
+  <p>In Slack, mention @Ask Platform. Or open the <a href="https://impact.atlassian.net/wiki/spaces/PM/pages/6895534082">Impact UX Context Library</a> in Confluence. The list of what is catalogued is on <a href="https://impact.atlassian.net/wiki/spaces/PM/pages/6895272000">What is the UX library?</a></p>
+  <div class="split">
+    <article class="card"><h3>Which prototype covers partner activation?</h3><p><a href="https://www.magicpatterns.com/c/7rogfovtyafdqtirusidww/preview">Partner Activation preview</a>. Catalogue date 22 Oct 2026. Exploration.</p></article>
+    <article class="card"><h3>Where are the current personas?</h3><p><a href="https://lesley-spec.github.io/uxdesignops/personas/">Personas V2</a> on this site. The research index says which findings are still current is unknown for the August 2026 monitor.</p></article>
+    <article class="card"><h3>What research do we have on a topic?</h3><p>Ask that question with the topic named. Dated extracts: Dovetail insights and Outset studies, 10 Nov 2026, in the context library.</p></article>
+    <article class="card"><h3>Styleguide V2</h3><p><a href="https://www.figma.com/design/Uwg1IvlTgvVA2IvX6WLxOd/Styleguide--V2-">Figma file</a> for colors, type, and components. Current as of 22 Oct 2026.</p></article>
+  </div>
+</section>
+<section class="section" id="add">
+  <h2>Add something</h2>
+  <p>Open <a href="https://github.com/ImpactInc/impact-ux-context-library">impact-ux-context-library</a> in Cursor. You need write access. Paste the name, the link, who it is for, and whether the company should see it yet. A paste stays off Confluence and Ask until someone who knows the topic confirms it.</p>
+  <div class="split">
+    <article class="card"><h3>A prototype</h3><p>Name, preview URL, product area, and whether it is exploratory or the thing being built.</p></article>
+    <article class="card"><h3>A Figma file</h3><p>Name, Figma URL, and what someone should use it for.</p></article>
+    <article class="card"><h3>A research note</h3><p>Name, where it lives, the date, and the one-line finding.</p></article>
+  </div>
+</section>
+""",
+)
 
 NAV_HREF = {k: h for _, items in NAV for k, _, h, _ in items}
 
