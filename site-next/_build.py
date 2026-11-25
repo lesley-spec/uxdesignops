@@ -24,6 +24,7 @@ NAV = [
     ]),
     ("Library", [
         ("library", "Context library", "library/index.html", False),
+        ("library-add", "Add to the library", "library/add/index.html", False),
     ]),
     ("Skills", [
         ("skills", "All skills", "skills/index.html", False),
@@ -59,6 +60,7 @@ DEPTH = {
     "skills": 1,
     "research": 1,
     "library": 1,
+    "library-add": 2,
 }
 
 def install_prompt(project_dir, global_dir):
@@ -1501,11 +1503,70 @@ PAGES["library"] = dict(
 <section class="section" id="add">
   <h2>Add something</h2>
   <p>Open <a href="https://github.com/ImpactInc/impact-ux-context-library">impact-ux-context-library</a> in Cursor. You need write access. Paste the name, the link, who it is for, and whether the company should see it yet. A paste stays off Confluence and Ask until someone who knows the topic confirms it.</p>
+  <p>Step-by-step instructions and paste templates: <a href="add/index.html">Add to the library</a>.</p>
   <div class="split">
     <article class="card"><h3>A prototype</h3><p>Name, preview URL, product area, and whether it is exploratory or the thing being built.</p></article>
     <article class="card"><h3>A Figma file</h3><p>Name, Figma URL, and what someone should use it for.</p></article>
     <article class="card"><h3>A research note</h3><p>Name, where it lives, the date, and the one-line finding.</p></article>
   </div>
+</section>
+""",
+)
+
+PAGES["library-add"] = dict(
+    title="Add to the library",
+    kicker="Library",
+    lede="Add a prototype, Figma file, or research note to the UX context library. You paste it into Cursor; the agent does the filing.",
+    toc=[("before", "Before you start"), ("steps", "Steps"), ("templates", "Paste templates"), ("after", "After you add it")],
+    href="library/add/index.html",
+    body="""
+<section class="section" id="before">
+  <h2>Before you start</h2>
+  <div class="split">
+    <article class="card"><h3>Write access</h3><p>You need write access to <a href="https://github.com/ImpactInc/impact-ux-context-library">ImpactInc/impact-ux-context-library</a> on GitHub. If you cannot open the repo, ask for access before you start.</p></article>
+    <article class="card"><h3>Cursor</h3><p>Install Cursor and sign in to GitHub from inside it. Any AI coding assistant that can open a folder works the same way.</p></article>
+    <article class="card"><h3>The link</h3><p>Have the Figma URL, preview URL, or document link ready. Link to the source. Do not paste its contents.</p></article>
+  </div>
+</section>
+<section class="section" id="steps">
+  <h2>Steps</h2>
+  <ol>
+    <li>Clone the repo once: <code>git clone https://github.com/ImpactInc/impact-ux-context-library.git</code>, then open the folder in Cursor.</li>
+    <li>Open a new chat in Cursor and paste one of the templates below. Replace the bracketed parts.</li>
+    <li>The agent files the entry on its own branch and opens a pull request. Check the summary it gives you.</li>
+    <li>A library reviewer checks the pull request and merges it. Merging is what updates the library.</li>
+  </ol>
+</section>
+<section class="section" id="templates">
+  <h2>Paste templates</h2>
+  <div class="split">
+    <article class="card"><h3>A prototype</h3>
+<pre><code>Add this prototype to the library.
+Name: [Prototype name]
+Preview URL: [link]
+Product area: [area, e.g. Partner Activation]
+Who it is for: [UX, product, engineering, or everyone]
+This is exploratory. The company should not see it yet.</code></pre></article>
+    <article class="card"><h3>A Figma file</h3>
+<pre><code>Add this Figma file to the library.
+Name: [File name]
+Figma URL: [link]
+Use it for: [what someone should use it for]
+Who it is for: [designers, product, engineering]
+The company should not see it yet.</code></pre></article>
+    <article class="card"><h3>A research note</h3>
+<pre><code>Add this research note to the library.
+Name: [Note name]
+Where it lives: [link]
+Date: [YYYY-MM-DD]
+Finding: [one line]</code></pre></article>
+  </div>
+</section>
+<section class="section" id="after">
+  <h2>After you add it</h2>
+  <p>Nothing shows on the website, in Confluence, or in Ask until someone who knows the topic confirms it. Entries you add are saved as unpublished, so they will not appear there by accident.</p>
+  <p>Do not paste the full text of a research report, public Help Center pages, or customer data. Link to them instead.</p>
+  <p>Questions about the process go to the UX library owner. Background for the people maintaining the library is in the <a href="https://github.com/ImpactInc/impact-ux-context-library/blob/main/context/contributing/how-to-contribute.md">contributor guide</a>.</p>
 </section>
 """,
 )

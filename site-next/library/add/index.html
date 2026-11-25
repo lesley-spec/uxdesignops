@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add to the library — UX DesignOps</title>
+  <script>(function(){try{var k="theme",s=localStorage.getItem(k),d;if(s==="dark")d=true;else if(s==="light")d=false;else d=window.matchMedia("(prefers-color-scheme: dark)").matches;var e=document.documentElement;if(d)e.classList.add("dark");else e.classList.remove("dark");e.style.colorScheme=d?"dark":"light";}catch(x){}})();</script>
+  <link rel="stylesheet" href="../../assets/site.css?v=9" />
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g>
+    <circle cx="16" cy="16" r="5.088" fill="#e81515"/>
+    <circle cx="16" cy="2.72" r="2.72" fill="#e81515"/>
+    <circle cx="9.37601" cy="9.37601" r="2.72" fill="#e81515"/>
+    <circle cx="2.72" cy="16" r="2.72" fill="#e81515"/>
+    <circle cx="9.37601" cy="22.624" r="2.72" fill="#e81515"/>
+    <circle cx="16" cy="29.28" r="2.72" fill="#e81515"/>
+    <circle cx="22.624" cy="22.624" r="2.72" fill="#e81515"/>
+    <circle cx="29.28" cy="16" r="2.72" fill="#e81515"/>
+    <circle cx="22.624" cy="9.37601" r="2.72" fill="#e81515"/>
+    <circle cx="4.60802" cy="4.60799" r="1.76" fill="#e81515"/>
+    <circle cx="27.392" cy="4.60799" r="1.76" fill="#e81515"/>
+    <circle cx="4.60802" cy="27.392" r="1.76" fill="#e81515"/>
+    <circle cx="27.392" cy="27.392" r="1.76" fill="#e81515"/>
+  </g></svg>
+      <span class="brand-name">UX DesignOps</span>
+    </a>
+    <div class="topbar-actions">
+      <a class="preview-link" href="../../v1/">Previous site</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-pressed="false" aria-label="Toggle color theme">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="scrim" id="scrim"></div>
+  <div class="layout">
+    <nav class="sidebar" id="sidebar" aria-label="Documentation">
+      <div class="side-nav"><p class="nav-label">Get started</p><a href="../../index.html">What to expect</a><a href="../../overview/index.html">How this is organized</a><a href="../../get-started/index.html">Install</a><p class="nav-label">Agents</p><a href="../../agents/index.html">All agents</a><a href="../../agents/designer/index.html" class="is-child">UX designer</a><a href="../../agents/researcher/index.html" class="is-child">UX researcher</a><a href="../../agents/pipeline/index.html" class="is-child">Design thinking</a><p class="nav-label">Research</p><a href="../../research/index.html">Research</a><p class="nav-label">Library</p><a href="../../library/index.html">Context library</a><a href="../../library/add/index.html" aria-current="page">Add to the library</a><p class="nav-label">Skills</p><a href="../../skills/index.html">All skills</a><p class="nav-label">Foundations</p><a href="../../foundations/index.html">The pipeline</a><p class="nav-label">Styles</p><a href="../../styles/index.html">Design tokens</a><a href="../../styles/color/index.html" class="is-child">Color</a><a href="../../styles/type/index.html" class="is-child">Type</a><a href="../../styles/space/index.html" class="is-child">Space</a><a href="../../styles/primitives/index.html" class="is-child">Primitives</a><a href="../../styles/layout/index.html" class="is-child">Layout</a></div>
+      <p class="side-foot">The previous site is kept at <a href="../../v1/">/v1</a>.</p>
+    </nav>
+    <main class="page" id="content">
+      <article>
+        <p class="kicker">Library</p>
+        <h1>Add to the library</h1>
+        <p class="lede">Add a prototype, Figma file, or research note to the UX context library. You paste it into Cursor; the agent does the filing.</p>
+        
+<section class="section" id="before">
+  <h2>Before you start</h2>
+  <div class="split">
+    <article class="card"><h3>Write access</h3><p>You need write access to <a href="https://github.com/ImpactInc/impact-ux-context-library">ImpactInc/impact-ux-context-library</a> on GitHub. If you cannot open the repo, ask for access before you start.</p></article>
+    <article class="card"><h3>Cursor</h3><p>Install Cursor and sign in to GitHub from inside it. Any AI coding assistant that can open a folder works the same way.</p></article>
+    <article class="card"><h3>The link</h3><p>Have the Figma URL, preview URL, or document link ready. Link to the source. Do not paste its contents.</p></article>
+  </div>
+</section>
+<section class="section" id="steps">
+  <h2>Steps</h2>
+  <ol>
+    <li>Clone the repo once: <code>git clone https://github.com/ImpactInc/impact-ux-context-library.git</code>, then open the folder in Cursor.</li>
+    <li>Open a new chat in Cursor and paste one of the templates below. Replace the bracketed parts.</li>
+    <li>The agent files the entry on its own branch and opens a pull request. Check the summary it gives you.</li>
+    <li>A library reviewer checks the pull request and merges it. Merging is what updates the library.</li>
+  </ol>
+</section>
+<section class="section" id="templates">
+  <h2>Paste templates</h2>
+  <div class="split">
+    <article class="card"><h3>A prototype</h3>
+<pre><code>Add this prototype to the library.
+Name: [Prototype name]
+Preview URL: [link]
+Product area: [area, e.g. Partner Activation]
+Who it is for: [UX, product, engineering, or everyone]
+This is exploratory. The company should not see it yet.</code></pre></article>
+    <article class="card"><h3>A Figma file</h3>
+<pre><code>Add this Figma file to the library.
+Name: [File name]
+Figma URL: [link]
+Use it for: [what someone should use it for]
+Who it is for: [designers, product, engineering]
+The company should not see it yet.</code></pre></article>
+    <article class="card"><h3>A research note</h3>
+<pre><code>Add this research note to the library.
+Name: [Note name]
+Where it lives: [link]
+Date: [YYYY-MM-DD]
+Finding: [one line]</code></pre></article>
+  </div>
+</section>
+<section class="section" id="after">
+  <h2>After you add it</h2>
+  <p>Nothing shows on the website, in Confluence, or in Ask until someone who knows the topic confirms it. Entries you add are saved as unpublished, so they will not appear there by accident.</p>
+  <p>Do not paste the full text of a research report, public Help Center pages, or customer data. Link to them instead.</p>
+  <p>Questions about the process go to the UX library owner. Background for the people maintaining the library is in the <a href="https://github.com/ImpactInc/impact-ux-context-library/blob/main/context/contributing/how-to-contribute.md">contributor guide</a>.</p>
+</section>
+
+      </article>
+      <aside class="toc"><p>On this page</p><a href="#before">Before you start</a><a href="#steps">Steps</a><a href="#templates">Paste templates</a><a href="#after">After you add it</a></aside>
+    </main>
+  </div>
+  <script src="../../assets/site.js"></script>
+</body>
+</html>
