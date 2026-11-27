@@ -1,12 +1,14 @@
 ---
 name: outset-prototype-builder
 description: >-
-  Builds a behavioural Outset study around a clickable prototype. Takes the study
-  goals, drafts a first guide and screener, writes the outreach invitation, then
-  refines the guide from real transcripts and screen recordings. Use when someone
-  says build an Outset study for this prototype, write the guide for the
-  prototype, draft the outreach to participants, refine the guide from the
-  transcripts, or review a prototype session recording.
+  Builds Outset studies around a clickable prototype, an exploratory interview or
+  an A/B preference test with images. Takes the study goals, drafts a first guide
+  and screener, writes the outreach invitation, then refines the guide from real
+  transcripts and screen recordings. Use when someone says build an Outset study
+  for this prototype, write the guide for the prototype, write an exploratory
+  interview on Outset, set up an A/B or preference test with images, draft the
+  outreach to participants, refine the guide from the transcripts, or review a
+  prototype session recording.
 license: Proprietary
 metadata:
   stage: test
@@ -19,7 +21,10 @@ metadata:
 
 Turns a prototype and a set of study goals into an Outset study that watches what
 people do, then tightens it on what the first sessions show. Five stages, and the
-researcher signs off between each one.
+researcher signs off between each one. Three study types share those stages: a
+prototype task study (Branch A, the default), an exploratory interview (Branch B)
+and an A/B preference test (Branch C). Branches B and C have their own rules in
+`references/`. Stages 1, 3 and 4 apply to all three.
 
 **Draft only.** Build and edit the Outset study, the invitation and the guide as
 drafts. Do not launch recruitment, publish the study to live traffic or send
@@ -32,16 +37,24 @@ invent participants, quotes or metrics.
 
 ## Choose the branch first
 
-Outset has two disciplines. Pick the right one before writing a question.
+Pick the study type before writing a question. The table decides, and the
+researcher should name the decision the study serves.
 
 | The question is | Use |
 |---|---|
-| How much, is it ready, which of two (closed, gated, under 5 minutes) | [research-planner outset.md](../research-planner/references/outset.md) |
-| What do they do, where do they get stuck, what is the workaround (tasks, think-aloud, 10 minutes) | **This skill** |
+| How much, is it ready, which of two, closed and gated, under 5 minutes, no why needed | [research-planner outset.md](../research-planner/references/outset.md) |
+| What do they do, where do they get stuck, what is the workaround, with a prototype or live product (tasks, about 10 minutes) | **Branch A: prototype task study.** This file, from Stage 2 |
+| What is going on, how do they decide or work, in an area we have not defined yet (no prototype) | **Branch B: exploratory interview.** [references/exploratory-interview.md](references/exploratory-interview.md) |
+| Which of two designs do they prefer, and why, shown as images or screens | **Branch C: A/B preference test.** [references/ab-preference-test.md](references/ab-preference-test.md) |
 
-A prototype study with tasks is the behavioural branch. Read
+If a request fits two rows, ask which decision it serves, and let the answer pick
+the row. A preference result is not a performance result. Branch C's fit check
+explains when to send a question to a live experiment instead.
+
+Branch A is the behavioural branch. Read
 [prompts.md](../research-planner/references/prompts.md) for the wording rules,
-which ban yes/no comprehension and terminology questions.
+which ban yes/no comprehension and terminology questions. Those rules apply to all
+three branches.
 
 ## Stage 1: Intake the study goals
 
@@ -61,7 +74,11 @@ Then map every goal to a task or question. Name any goal with no task, for
 example discovery outside the participant's existing relationships, or interest in
 a concept that is never shown. Ask whether to add a task, or drop the goal.
 
-## Stage 2: Build the first version
+## Stage 2: Build the first version (Branch A)
+
+All three branches keep the guide format below. Branches B and C replace the
+question rules that follow with their own, in their reference files. The screener,
+the incentive and the Outset-building steps apply to all three.
 
 Write the guide in this order. It is the format the Outset builder reads.
 
@@ -153,6 +170,8 @@ Use this structure. It is the one agreed for the marketplace study.
 - Check the incentive against the real session length. For a 10-minute B2B session,
   $30 is at the generous end of the usual range, provided the session really does
   take about 10 minutes.
+- Branch C: describe the task as comparing two designs, not as an A/B test. The
+  phrase "A/B test" tells participants they are being measured.
 
 ## Stage 4: Refine from the real transcripts
 
@@ -175,6 +194,10 @@ Run this after each batch of sessions, and before changing the guide.
    severe. Treat early edits as hypotheses for the next batch.
 7. **Log the version** with a change log that links each change to its evidence.
 
+Branch B adds goal coverage and probe-firing counts per session. Branch C reports
+counts with reasons, and only the counts the test can support. Both are in their
+reference files.
+
 ## Stage 5: Screen recording review
 
 Only when the recording includes the participant's screen. Check first. If the
@@ -196,10 +219,13 @@ clicks can be read from it.
 
 ## Output checklist
 
-- [ ] Goals mapped to tasks, with gaps named
-- [ ] Probes capped at three, each with a trigger
+- [ ] Study type chosen from the table, with the decision it serves named
+- [ ] Goals mapped to tasks or questions, with gaps named
+- [ ] Probes capped (three at most, two for Branch B), each with a trigger
 - [ ] Verbatim marked on wording-critical questions
 - [ ] Reward timing matches across invitation, screener and guide
 - [ ] Length estimated from words, pilot planned before the invitation promises it
 - [ ] Nothing published, launched or sent without the researcher's go
 - [ ] Every finding labelled Verified or AI interpretation, with sample size
+- [ ] Branch B: five to seven main questions, a time budget, a good-enough answer per goal
+- [ ] Branch C: stimuli matched and counterbalanced, two or three options, results as counts with n and reasons, no performance claim
